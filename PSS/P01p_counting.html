@@ -1,0 +1,797 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P01-Pracitce01: Re-writing the department counting case &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python-Basic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="P01_counting.html">
+   Counting: The fruit-counting problem
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Jupyter-Book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/PSS/P01p_counting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/PSS/P01p_counting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P01p_counting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/PSS/P01p_counting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   P01-Pracitce01: Re-writing the department counting case
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keyvalue">
+     簡單地印出所有的key與value
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-loop">
+     用for-loop印出每個科系的人數，由大而小
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#p01-practice02-ntu-s-gpa-grading">
+   P01 Practice02 NTU’s GPA Grading
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#p01-practice03-sorting-keyword-frequency">
+   P01 Practice03 Sorting keyword frequency
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>P01-Pracitce01: Re-writing the department counting case</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   P01-Pracitce01: Re-writing the department counting case
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keyvalue">
+     簡單地印出所有的key與value
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-loop">
+     用for-loop印出每個科系的人數，由大而小
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#p01-practice02-ntu-s-gpa-grading">
+   P01 Practice02 NTU’s GPA Grading
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#p01-practice03-sorting-keyword-frequency">
+   P01 Practice03 Sorting keyword frequency
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/P4CSS/PSS/blob/master/P01p_counting.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<section class="tex2jax_ignore mathjax_ignore" id="p01-pracitce01-re-writing-the-department-counting-case">
+<h1>P01-Pracitce01: Re-writing the department counting case<a class="headerlink" href="#p01-pracitce01-re-writing-the-department-counting-case" title="Permalink to this headline">#</a></h1>
+<p>嘗試參考P01的案例教學，用<code class="docutils literal notranslate"><span class="pre">Counter()</span></code>改寫計算每個科系出現幾次的案例。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stu_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;soc&quot;</span><span class="p">,</span> <span class="s2">&quot;soc&quot;</span><span class="p">,</span> <span class="s2">&quot;econ&quot;</span><span class="p">,</span> <span class="s2">&quot;bio&quot;</span><span class="p">,</span> <span class="s2">&quot;psy&quot;</span><span class="p">,</span> <span class="s2">&quot;psy&quot;</span><span class="p">,</span> <span class="s2">&quot;econ&quot;</span><span class="p">,</span> <span class="s2">&quot;poli&quot;</span><span class="p">,</span> <span class="s2">&quot;econ&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="keyvalue">
+<h2>簡單地印出所有的key與value<a class="headerlink" href="#keyvalue" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>Output：
+dict_keys([&#39;soc&#39;, &#39;econ&#39;, &#39;bio&#39;, &#39;psy&#39;, &#39;poli&#39;])
+dict_values([2, 3, 1, 2, 1])
+</pre></div>
+</div>
+</section>
+<section id="for-loop">
+<h2>用for-loop印出每個科系的人數，由大而小<a class="headerlink" href="#for-loop" title="Permalink to this headline">#</a></h2>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span><span class="p">:</span> 
+<span class="n">econ</span> <span class="mi">3</span>
+<span class="n">soc</span> <span class="mi">2</span>
+<span class="n">psy</span> <span class="mi">2</span>
+<span class="n">bio</span> <span class="mi">1</span>
+<span class="n">poli</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="p01-practice02-ntu-s-gpa-grading">
+<h1>P01 Practice02 NTU’s GPA Grading<a class="headerlink" href="#p01-practice02-ntu-s-gpa-grading" title="Permalink to this headline">#</a></h1>
+<p>參考「成績百分制轉等第制」的案例，參考<a class="reference external" href="https://www.aca.ntu.edu.tw/WebUPD/aca/UAADForms/%E7%AD%89%E7%AC%AC%E5%88%B6%E6%88%90%E7%B8%BE%E5%AE%9A%E7%BE%A9%E8%88%87%E7%AD%89%E7%AC%AC%E7%B8%BE%E5%88%86%E8%A1%A8.pdf">台大百分制轉等第的規定</a>，寫出完整且合乎規定的百分制的轉換if-else邏輯判斷式。</p>
+<p>用for-loop列印出每個等第個有多少人？</p>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="p01-practice03-sorting-keyword-frequency">
+<h1>P01 Practice03 Sorting keyword frequency<a class="headerlink" href="#p01-practice03-sorting-keyword-frequency" title="Permalink to this headline">#</a></h1>
+<p>仿照教學範例中最後一節的排序函式，將Wikipedia詞頻計算結果由大而小排序，並用for-loop將排序結果印出來。觀察一下，詞頻高的字詞有哪些呢？一共有三種寫法，請三種寫法都寫寫看。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wikipedia</span>    <span class="c1"># import a 3rd-party library into runtime</span>
+<span class="n">string_a</span>  <span class="o">=</span> <span class="n">wikipedia</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Big_data&quot;</span><span class="p">,</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># get data by 3rd-party function</span>
+
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="n">translator</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
+<span class="n">string_a</span> <span class="o">=</span> <span class="n">string_a</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">translator</span><span class="p">)</span>
+<span class="n">string_a</span> <span class="o">=</span> <span class="n">string_a</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">string_a</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">word_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method 1: sorting tuples </span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method 2: sort by dict.get()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Method 3: sort by Counter&#39;s most_common() function</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>data 23
+and 15
+of 11
+to 9
+big 8
+the 8
+with 5
+that 4
+or 4
+analysis 4
+in 4
+analytics 4
+sets 3
+large 3
+a 3
+business 3
+devices 3
+refers 2
+are 2
+complex 2
+by 2
+software 2
+higher 2
+challenges 2
+information 2
+volume 2
+variety 2
+sampling 2
+thus 2
+for 2
+veracity 2
+can 2
+value 2
+from 2
+size 2
+is 2
+available 2
+new 2
+scientists 2
+including 2
+internet 2
+informatics 2
+as 2
+too 1
+be 1
+dealt 1
+traditional 1
+dataprocessing 1
+application 1
+many 1
+fields 1
+rows 1
+offer 1
+greater 1
+statistical 1
+power 1
+while 1
+complexity 1
+more 1
+attributes 1
+columns 1
+may 1
+lead 1
+false 1
+discovery 1
+rate 1
+include 1
+capturing 1
+storage 1
+search 1
+sharing 1
+transfer 1
+visualization 1
+querying 1
+updating 1
+privacy 1
+source 1
+was 1
+originally 1
+associated 1
+three 1
+key 1
+concepts 1
+velocity 1
+presents 1
+previously 1
+allowing 1
+only 1
+observations 1
+fourth 1
+concept 1
+quality 1
+insightfulness 1
+without 1
+sufficient 1
+investment 1
+expertise 1
+then 1
+produce 1
+costs 1
+risks 1
+exceed 1
+an 1
+organizations 1
+capacity 1
+create 1
+capture 1
+datacurrent 1
+usage 1
+term 1
+tends 1
+refer 1
+use 1
+predictive 1
+user 1
+behavior 1
+certain 1
+other 1
+advanced 1
+methods 1
+extract 1
+seldom 1
+particular 1
+set 1
+there 1
+little 1
+doubt 1
+quantities 1
+now 1
+indeed 1
+but 1
+thats 1
+not 1
+most 1
+relevant 1
+characteristic 1
+this 1
+ecosystem 1
+find 1
+correlations 1
+spot 1
+trends 1
+prevent 1
+diseases 1
+combat 1
+crime 1
+so 1
+on 1
+executives 1
+medical 1
+practitioners 1
+advertising 1
+governments 1
+alike 1
+regularly 1
+meet 1
+difficulties 1
+datasets 1
+areas 1
+searches 1
+fintech 1
+healthcare 1
+geographic 1
+systems 1
+urban 1
+encounter 1
+limitations 1
+escience 1
+work 1
+meteorology 1
+genomics 1
+connectomics 1
+physics 1
+simulations 1
+biology 1
+environmental 1
+researchthe 1
+number 1
+have 1
+grown 1
+rapidly 1
+collected 1
+such 1
+mobile 1
+cheap 1
+numerous 1
+informationsensing 1
+things 1
+aerial 1
+remote 1
+sensing 1
+logs 1
+cameras 1
+microphones 1
+radiofrequency 1
+identification 1
+rfid 1
+readers 1
+wireless 1
+sensor 1
+networks 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
