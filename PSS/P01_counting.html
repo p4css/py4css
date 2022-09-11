@@ -1,0 +1,1513 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Counting: The fruit-counting problem &#8212; My sample book</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">My sample book</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python-Basic
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Counting: The fruit-counting problem
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Jupyter-Book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/jourpss/master?urlpath=tree/PSS/P01_counting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/jourpss/blob/master/PSS/P01_counting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/jourpss"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/jourpss/issues/new?title=Issue%20on%20page%20%2FPSS/P01_counting.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/PSS/P01_counting.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computational-thinking">
+   Computational thinking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elaborated-thinking">
+     Elaborated thinking
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#describing-in-in-english">
+     Describing in in English
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-python">
+     Convert to Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   程式碼說明
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assignment">
+     Assignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list">
+     List資料型態（資料結構）
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dict">
+     Dict資料型態
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iteration-for">
+     Iteration: for
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#condition-if-else">
+     Condition: if, else
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#incremental">
+     Incremental
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionary-print-out">
+   Dictionary: Print-out
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keys-and-values-of-a-dict">
+     Keys and values of a Dict
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-dict-by-for-loop">
+     Print Dict by for-loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shorter-versions">
+   Shorter versions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-list-count-key">
+     Using list.count(key)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-set-fruit-list-to-gaurantee-unique-value-in-the-list">
+     Using set(fruit_list) to gaurantee unique value in the list¶
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-comprehensive-dictionary">
+     by Comprehensive dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-counter">
+     by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Counter()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#counting-word-frequency-a-document-as-your-fruits">
+   Counting Word frequency: A document as your “fruits”
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instal-wikipedia-wrapper">
+     instal wikipedia wrapper
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obtaining-some-qurery-result-from-wikipedia">
+     Obtaining some qurery result from wikipedia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#text-process-replacing-punctuation">
+     text process - replacing punctuation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#capitalization-converting-string-to-lower">
+     Capitalization: Converting string to lower
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tokenization-splitting-text-to-word">
+     Tokenization: splitting text to word
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#counting-word-frequency">
+     Counting word frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-histogram-of-word-frequency">
+     Plot histogram of word frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-a-shortest-version-to-count-word-frequency">
+     More: A shortest version to count word frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-sorting-all-pairs-of-key-and-value">
+     More:Sorting all pairs of key and value
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sort-the-data-by-value">
+   Sort the data by value
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-counting-pass-fail">
+   (Application) Counting Pass/Fail
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-grades">
+     Generating grades
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initializing-a-dict-to-store-the-frequency">
+     Initializing a dict to store the frequency
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Counting: The fruit-counting problem</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#computational-thinking">
+   Computational thinking
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#elaborated-thinking">
+     Elaborated thinking
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#describing-in-in-english">
+     Describing in in English
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-python">
+     Convert to Python
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   程式碼說明
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assignment">
+     Assignment
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#list">
+     List資料型態（資料結構）
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#dict">
+     Dict資料型態
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#iteration-for">
+     Iteration: for
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#condition-if-else">
+     Condition: if, else
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#incremental">
+     Incremental
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dictionary-print-out">
+   Dictionary: Print-out
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#keys-and-values-of-a-dict">
+     Keys and values of a Dict
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-dict-by-for-loop">
+     Print Dict by for-loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#shorter-versions">
+   Shorter versions
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-list-count-key">
+     Using list.count(key)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-set-fruit-list-to-gaurantee-unique-value-in-the-list">
+     Using set(fruit_list) to gaurantee unique value in the list¶
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-comprehensive-dictionary">
+     by Comprehensive dictionary
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-counter">
+     by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       Counter()
+      </span>
+     </code>
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#counting-word-frequency-a-document-as-your-fruits">
+   Counting Word frequency: A document as your “fruits”
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#instal-wikipedia-wrapper">
+     instal wikipedia wrapper
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#obtaining-some-qurery-result-from-wikipedia">
+     Obtaining some qurery result from wikipedia
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#text-process-replacing-punctuation">
+     text process - replacing punctuation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#capitalization-converting-string-to-lower">
+     Capitalization: Converting string to lower
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tokenization-splitting-text-to-word">
+     Tokenization: splitting text to word
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#counting-word-frequency">
+     Counting word frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#plot-histogram-of-word-frequency">
+     Plot histogram of word frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-a-shortest-version-to-count-word-frequency">
+     More: A shortest version to count word frequency
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-sorting-all-pairs-of-key-and-value">
+     More:Sorting all pairs of key and value
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sort-the-data-by-value">
+   Sort the data by value
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#application-counting-pass-fail">
+   (Application) Counting Pass/Fail
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-grades">
+     Generating grades
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#initializing-a-dict-to-store-the-frequency">
+     Initializing a dict to store the frequency
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice">
+   Practice
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <p><a href="https://colab.research.google.com/github/P4CSS/PSS/blob/master/P01_counting.ipynb" target="_parent"><img src="https://colab.research.google.com/assets/colab-badge.svg" alt="Open In Colab"/></a></p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.google.com/presentation/d/e/2PACX-1vT9xw6FZzdlR1QcXHZe-bQ8eeYftltAAutHPNTyyMcLkevEr2bHOBfrpaaZpMaTb1gb1ufUX00jeu8w/pub?start=false&amp;loop=false&amp;delayms=3000">Slide: Py01 Counting</a></p></li>
+<li><p><a class="reference external" href="https://github.com/P4CSS/PSS">Github Repo</a></p></li>
+</ul>
+<section class="tex2jax_ignore mathjax_ignore" id="counting-the-fruit-counting-problem">
+<h1>Counting: The fruit-counting problem<a class="headerlink" href="#counting-the-fruit-counting-problem" title="Permalink to this headline">#</a></h1>
+<p>寫程式是模仿你解決問題的邏輯，讓電腦幫你重複做，大量的做。因此，重要的是你解決問題的邏輯。例如計數／計量（Counting）就是一個簡單且實用的演算法邏輯。計數的程式邏輯目標是計算一堆物件中，每個物件各有幾個。相關範例有：</p>
+<ul class="simple">
+<li><p>全班有這麼多人，我想算算每個科系有多少人，好知道系所比例安排專題。</p></li>
+<li><p>我被當好人跑腿，幫全班買飲料。但現在飲料品項很多，且有糖量、冰量的選擇，通常會逐一詢問後，逐一登記眾人所提出來的品項，有重複的畫正字記號累計。</p></li>
+<li><p>在統計中常見的狀況是依照0~10、10~20依此類推計算學生的成績分布。</p></li>
+<li><p>在社會科學中常見的狀況是，計算某一篇文章裡面，每個詞出現幾次（詞頻）？</p></li>
+</ul>
+<p><strong>計數的任務定義</strong>：考慮一個狀況，有一個跟一座山一樣多的水果，不知道有幾種水果，也不知道有幾顆，你必須要數出各種水果有幾顆，你會怎麼數？</p>
+<p><strong>別的程式語言會怎麼做？</strong></p>
+<ul class="simple">
+<li><p>如果是Google Sheet或Excel要做到這件事的話，要先用<code class="docutils literal notranslate"><span class="pre">unique()</span></code>找出相異的data value，然後用<code class="docutils literal notranslate"><span class="pre">countif()</span></code>函式來計算，每個相異值個別出現過幾次。作法如<a class="reference external" href="https://paper.dropbox.com/doc/Excel-skills--AMhtEb1RwJRKglJS17HxOonIAQ-oFgGCjW9W1m7UXBsdq6UG">Excel skills: How do I get the distinct/uniq</a></p></li>
+<li><p>如果你是用R來處理的話，那就會是<code class="docutils literal notranslate"><span class="pre">count(vec)</span></code>。</p></li>
+</ul>
+<section id="computational-thinking">
+<h2>Computational thinking<a class="headerlink" href="#computational-thinking" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>首先你會有一列水果（物品）：A(pple), B(anana), C(herry), G(rapes), A, A, G, C, G, O(range), O, ..</p></li>
+<li><p><strong>想想若你在數水果實際上你是怎麼數？</strong> 會從第一顆開始，一顆一顆地數，數到結束為止（水果有幾顆，就得數幾次）。</p></li>
+<li><p><strong>那你怎麼記住哪一種水果有幾顆？</strong> 拿出一張紙，看到一種沒看過的水果，就新增一個「對應」，將水果名稱對應到0，然後在對應的欄位數值遞增一。若已經看過該水果，那就直接找到那個欄位遞增一即可。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">iteration</span><span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">B</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">3</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">4</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">6</span><span class="p">,</span> <span class="n">A</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">7</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">C</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">2</span>
+<span class="n">iteration</span><span class="o">=</span> <span class="mi">9</span><span class="p">,</span> <span class="n">G</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">3</span>
+<span class="n">iteration</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">O</span><span class="p">:</span> <span class="mi">1</span>
+<span class="n">iteration</span><span class="o">=</span><span class="mi">11</span><span class="p">,</span> <span class="n">O</span><span class="p">,</span> <span class="n">A</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">B</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="n">C</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="n">G</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">O</span><span class="p">:</span> <span class="mi">2</span>
+</pre></div>
+</div>
+<section id="elaborated-thinking">
+<h3>Elaborated thinking<a class="headerlink" href="#elaborated-thinking" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>先拿出一張紙做對應表， 左一行要寫水果名，右一行為他所對應到的水果數量</p></li>
+<li><p>把水果排成一列準備一個一個數</p></li>
+<li><p>對籃子裡的每一顆水果，逐一開始數：</p>
+<ul class="simple">
+<li><p>如果沒看過該種水果</p>
+<ul>
+<li><p>就在對應表記下該種水果，登記該水果為1顆。</p></li>
+</ul>
+</li>
+<li><p>若有看過該種水果</p>
+<ul>
+<li><p>就把對應表上的那種水果所對應到的數字加1。</p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="describing-in-in-english">
+<h3>Describing in in English<a class="headerlink" href="#describing-in-in-english" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>build a <strong>look-up table</strong>to record each fruit and number of the fruit(calls it dictionary), naming as <code class="docutils literal notranslate"><span class="pre">fruit_count</span></code></p></li>
+<li><p>keep all fruits in a <strong>list</strong> named <code class="docutils literal notranslate"><span class="pre">fruit_list</span></code></p></li>
+<li><p>for each <code class="docutils literal notranslate"><span class="pre">fruit</span></code> in <code class="docutils literal notranslate"><span class="pre">fruit_list</span></code>:</p>
+<ul class="simple">
+<li><p>If the fruit does not appear in <code class="docutils literal notranslate"><span class="pre">fruit_count</span></code></p>
+<ul>
+<li><p>Create a mapping in <code class="docutils literal notranslate"><span class="pre">fruit_count</span></code> to map the <code class="docutils literal notranslate"><span class="pre">fruit</span></code> name to 1</p></li>
+</ul>
+</li>
+<li><p>else</p>
+<ul>
+<li><p>increase the mapped value of the <code class="docutils literal notranslate"><span class="pre">fruit</span></code> name in <code class="docutils literal notranslate"><span class="pre">fruit_count</span></code></p></li>
+</ul>
+</li>
+</ul>
+</li>
+</ol>
+</section>
+<section id="convert-to-python">
+<h3>Convert to Python<a class="headerlink" href="#convert-to-python" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Create an empty Dict(ionry) to store the key to value pairs</span>
+<span class="c1"># Assign an empty Dict(ionry) to a variable &#39;fruit_count&#39;</span>
+<span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="c1"># Create a list to store all things to count</span>
+<span class="c1"># Assign the List with value to a new variable &#39;fruit_list&#39;</span>
+<span class="n">fruit_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">]</span> <span class="c1"># A list of fruit</span>
+
+<span class="c1"># For each fruit in the list...</span>
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruit_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fruit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="p">:</span>
+        <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="id1">
+<h2>程式碼說明<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p>在上述程式碼中，有幾個重要的概念</p>
+<section id="assignment">
+<h3>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">=</span></code>稱為Assignment，將右側的數據Assign給左側的變數。</p></li>
+<li><p>例如<code class="docutils literal notranslate"><span class="pre">fruit_count</span> <span class="pre">=</span> <span class="pre">{}</span></code>即是把一個空的<code class="docutils literal notranslate"><span class="pre">Dict</span></code>(tionary) Assign給左側的變項<code class="docutils literal notranslate"><span class="pre">fruit_count</span></code>。</p></li>
+<li><p>例如<code class="docutils literal notranslate"><span class="pre">fruit_list</span> <span class="pre">=</span> <span class="pre">['apple',</span> <span class="pre">'apple',</span> <span class="pre">'banana',</span> <span class="pre">'apple',</span> <span class="pre">'banana',</span> <span class="pre">'grape',</span> <span class="pre">'banana',</span> <span class="pre">'apple']</span></code>便是把一列的水果名（字串）Assign給左側的變項<code class="docutils literal notranslate"><span class="pre">fruit_list</span></code>。</p></li>
+</ul>
+</section>
+<section id="list">
+<h3>List資料型態（資料結構）<a class="headerlink" href="#list" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Def</strong>: List是一種有序結構，可以用整數作為索引來存取，從0開始編號，第0個、第1個、第2個。</p></li>
+<li><p><strong>Access(Read)</strong>: 可以用小於List長度的整數作為索引來取出List中的某個值，例如一個比較簡短的例子<code class="docutils literal notranslate"><span class="pre">alist</span> <span class="pre">=</span> <span class="pre">['a',</span> <span class="pre">'b',</span> <span class="pre">'c']</span></code>中，<code class="docutils literal notranslate"><span class="pre">alist[0]</span></code>的值為<code class="docutils literal notranslate"><span class="pre">'a'</span></code>，<code class="docutils literal notranslate"><span class="pre">alist[2]</span></code>的值為<code class="docutils literal notranslate"><span class="pre">'c'</span></code>。</p></li>
+<li><p><strong>Access(Write)</strong>: 也可以用Assign覆寫List中某個元素值，例如<code class="docutils literal notranslate"><span class="pre">alist[2]=3</span></code>，那麼<code class="docutils literal notranslate"><span class="pre">alist[2]</span></code>的值就不再是<code class="docutils literal notranslate"><span class="pre">'c'</span></code>，而是<code class="docutils literal notranslate"><span class="pre">3</span></code>。</p></li>
+</ul>
+</section>
+<section id="dict">
+<h3>Dict資料型態<a class="headerlink" href="#dict" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Def</strong>: Dict(tionary)是一種無序（Unordered）的鍵值（key-to-value）對應結構結構。如<code class="docutils literal notranslate"><span class="pre">adict</span> <span class="pre">=</span> <span class="pre">{'a':</span> <span class="pre">1,</span> <span class="pre">'b':</span> <span class="pre">2}</span></code>。</p></li>
+<li><p><strong>Access(Read)</strong>: 要知道Dict的某個key是mapping到哪一個value的話，亦是用<code class="docutils literal notranslate"><span class="pre">[]</span></code>來讀取，如上例<code class="docutils literal notranslate"><span class="pre">adict['a']</span></code>的值為1。</p></li>
+<li><p><strong>Access(Write)</strong><code class="docutils literal notranslate"><span class="pre">fruit_count[fruit]</span> <span class="pre">=</span> <span class="pre">1</span></code>是用來將值Assign給Dict某個key，承上例，如果<code class="docutils literal notranslate"><span class="pre">adict['a']</span> <span class="pre">=</span> <span class="pre">3</span></code>後再讀取一次<code class="docutils literal notranslate"><span class="pre">adict['a']</span></code>的值，便會是3。</p></li>
+</ul>
+</section>
+<section id="iteration-for">
+<h3>Iteration: for<a class="headerlink" href="#iteration-for" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><strong>Def</strong>: 這裡的for比較像是for-each的概念。<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">fruit</span> <span class="pre">in</span> <span class="pre">fruit_list:</span></code>的意思是，依序將<code class="docutils literal notranslate"><span class="pre">fruit_list</span></code>中的每一個值，assign給<code class="docutils literal notranslate"><span class="pre">fruit</span></code>；簡而言之，<code class="docutils literal notranslate"><span class="pre">fruit</span></code>這個變項會走訪過每個<code class="docutils literal notranslate"><span class="pre">fruit_list</span></code>中的值。</p></li>
+<li><p>for-loop中所要反覆執行的程式碼，必須向右多一個tab。</p></li>
+</ul>
+</section>
+<section id="condition-if-else">
+<h3>Condition: if, else<a class="headerlink" href="#condition-if-else" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">if...else</span></code>表示式的意義如英文字，如果滿足前述條件的話，就做什麼事，不然的話（else），就做什麼事。</p></li>
+<li><p>if判斷式中，符合條件或不符合條件（else）所要執行的程式碼，亦必須向右多一個tab。</p></li>
+<li><p>因此，綜合本程式範例的Iteration和Condition，程式碼會縮排成這個樣子</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruit_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fruit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="p">:</span>
+        <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+</pre></div>
+</div>
+</section>
+<section id="incremental">
+<h3>Incremental<a class="headerlink" href="#incremental" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">1</span></code>是一種遞增運算，將原本的<code class="docutils literal notranslate"><span class="pre">a</span></code>加上1後Assign給原本的<code class="docutils literal notranslate"><span class="pre">a</span></code>，除了會覆蓋掉原本<code class="docutils literal notranslate"><span class="pre">a</span></code>的數值外，相當於將<code class="docutils literal notranslate"><span class="pre">a</span></code>遞增一。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">fruit_count[fruit]</span> <span class="pre">=</span> <span class="pre">fruit_count[fruit]</span> <span class="pre">+</span> <span class="pre">1</span></code>即是將某種<code class="docutils literal notranslate"><span class="pre">fruit</span></code>作為key所對應到的Dict值遞增一。</p></li>
+</ul>
+</section>
+</section>
+<section id="dictionary-print-out">
+<h2>Dictionary: Print-out<a class="headerlink" href="#dictionary-print-out" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">{'apple':</span> <span class="pre">4,</span> <span class="pre">'banana':</span> <span class="pre">3,</span> <span class="pre">'grape':</span> <span class="pre">1}</span></code>這種從key-to-value對應形態的資料稱之為<code class="docutils literal notranslate"><span class="pre">Dictionary</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">['apple',</span> <span class="pre">'apple',</span> <span class="pre">'banana',</span> <span class="pre">'apple']</span></code>這種從0開始編號起，第0個、第1個、第2個的資料型態稱之為<code class="docutils literal notranslate"><span class="pre">List</span></code>。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out fruit_list for observation</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">)</span>
+
+<span class="c1"># print out fruit_count</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apple&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;apple&#39;, &#39;banana&#39;, &#39;grape&#39;, &#39;banana&#39;, &#39;apple&#39;]
+{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="keys-and-values-of-a-dict">
+<h3>Keys and values of a Dict<a class="headerlink" href="#keys-and-values-of-a-dict" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>既然稱之為一種key-to-value對應形態的資料，那這種資料型態就應該會有一群keys，然後每個keys對應至唯一的values，不會有一個keys對應到多個values的情形。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">keys()</span></code>可以傳回一個dictionary的所有keys</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">values()</span></code>可以傳回一個dictionary的所有values</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">items()</span></code>可傳回一個dictionary的所有key-to-value pairs，以<code class="docutils literal notranslate"><span class="pre">(key1,</span> <span class="pre">value1),</span> <span class="pre">(key2,</span> <span class="pre">value2)</span></code>的型態。</p></li>
+</ul>
+<p>傳回來的這三個東西，都是list，分別是keys的list、values的list、和key-to-value pairs的list。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the dictionary</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+
+<span class="c1"># Print all keys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+
+<span class="c1"># Print all values mapped by keys</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1"># Print all key-to-value pairs</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+dict_keys([&#39;apple&#39;, &#39;banana&#39;, &#39;grape&#39;])
+dict_values([4, 3, 1])
+dict_items([(&#39;apple&#39;, 4), (&#39;banana&#39;, 3), (&#39;grape&#39;, 1)])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="print-dict-by-for-loop">
+<h3>Print Dict by for-loop<a class="headerlink" href="#print-dict-by-for-loop" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">fruit_count</span><span class="p">[</span><span class="n">k</span><span class="p">])</span>
+<span class="c1">#     print(key, fruit_count[key])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apple 	 4
+banana 	 3
+grape 	 1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apple 	 4
+banana 	 3
+grape 	 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="shorter-versions">
+<h2>Shorter versions<a class="headerlink" href="#shorter-versions" title="Permalink to this headline">#</a></h2>
+<section id="using-list-count-key">
+<h3>Using list.count(key)<a class="headerlink" href="#using-list-count-key" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="s2">&quot;apple&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{}</span> <span class="c1"># dictionary, key to value pairs</span>
+
+<span class="n">fruit_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">]</span> <span class="c1"># A list of fruit</span>
+
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruit_list</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">fruit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="p">:</span>
+        <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="n">fruit_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">fruit</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-set-fruit-list-to-gaurantee-unique-value-in-the-list">
+<h3>Using set(fruit_list) to gaurantee unique value in the list¶<a class="headerlink" href="#using-set-fruit-list-to-gaurantee-unique-value-in-the-list" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="http://pythontutor.com/visualize.html#code=fruit_list%20%3D%20%5B%27apple%27,%20%27apple%27,%20%27banana%27,%20%27apple%27,%20%27banana%27,%20%27grape%27,%20%27banana%27,%20%27apple%27%5D%0Afruit_count%20%3D%20%7B%7D%0Afor%20k%20in%20set%28fruit_list%29%3A%0A%20%20%20%20fruit_count%5Bk%5D%20%3D%20fruit_list.count%28k%29%0Aprint%28fruit_count%29&amp;cumulative=false&amp;curInstr=10&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Visualized by PythonTutor</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">set</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;, &#39;banana&#39;, &#39;grape&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">):</span>
+    <span class="n">fruit_count</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="n">fruit_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;grape&#39;: 1, &#39;banana&#39;: 3, &#39;apple&#39;: 4}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="by-comprehensive-dictionary">
+<h3>by Comprehensive dictionary<a class="headerlink" href="#by-comprehensive-dictionary" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">fruit_list</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;grape&#39;: 1, &#39;banana&#39;: 3, &#39;apple&#39;: 4}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="by-counter">
+<h3>by <code class="docutils literal notranslate"><span class="pre">Counter()</span></code><a class="headerlink" href="#by-counter" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="http://pythontutor.com/visualize.html#code=from%20collections%20import%20Counter%0Afruit_list%20%3D%20%5B%27apple%27,%20%27apple%27,%20%27banana%27,%20%27apple%27,%20%27banana%27,%20%27grape%27,%20%27banana%27,%20%27apple%27%5D%20%23%20A%20list%20of%20fruit%0Afruit_count%20%3D%20Counter%28fruit_list%29%0Afor%20k,%20v,%20in%20fruit_count.items%28%29%3A%0A%20%20%20%20print%28k,%20%22%5Ct%22,%20v%29&amp;cumulative=false&amp;curInstr=9&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Visualized by PythonTutor</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">fruit_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">]</span> <span class="c1"># A list of fruit</span>
+<span class="n">fruit_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">fruit_list</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apple 	 4
+banana 	 3
+grape 	 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="counting-word-frequency-a-document-as-your-fruits">
+<h2>Counting Word frequency: A document as your “fruits”<a class="headerlink" href="#counting-word-frequency-a-document-as-your-fruits" title="Permalink to this headline">#</a></h2>
+<p>演算邏輯都是一樣的，所以，我也可以將一篇文章裡面每個字詞視為相異的「水果」。有一套函式庫是wikipedia wrapper可以將wikipedia的內容抓回來（用<code class="docutils literal notranslate"><span class="pre">!pip</span> <span class="pre">install</span> <span class="pre">wikipedia</span></code>安裝該函式庫）。用wikipedia的函式把某頁wikipedia的內容抓少許回來後，要先把該篇文章拆成字（用<code class="docutils literal notranslate"><span class="pre">str.split()</span></code>）。然後再用前面教的方法來計算每個字的出現次數。</p>
+<section id="instal-wikipedia-wrapper">
+<h3>instal wikipedia wrapper<a class="headerlink" href="#instal-wikipedia-wrapper" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip install wikipedia  # install a new third-party library
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wikipedia in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (1.4.0)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (2.27.1)
+Requirement already satisfied: beautifulsoup4 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (4.11.1)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.26.9)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2022.5.18.1)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="obtaining-some-qurery-result-from-wikipedia">
+<h3>Obtaining some qurery result from wikipedia<a class="headerlink" href="#obtaining-some-qurery-result-from-wikipedia" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wikipedia</span>    <span class="c1"># import a 3rd-party library into runtime</span>
+<span class="n">string_a</span>  <span class="o">=</span> <span class="n">wikipedia</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Big_data&quot;</span><span class="p">,</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># get data by 3rd-party function</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">string_a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string_a</span><span class="p">)</span>
+<span class="c1"># string_a = &quot;In 2004, Obama received national attention during his campaign to represent Illinois in the United States Senate with his victory in the March Democratic Party primary, his keynote address at the Democratic National Convention in July, and his election to the Senate in November. He began his presidential campaign in 2007 and, after a close primary campaign against Hillary Rodham Clinton in 2008, he won sufficient delegates in the Democratic Party primaries to receive the presidential nomination. He then defeated Republican nominee John McCain in the general election, and was inaugurated as president on January 20, 2009. Nine months after his inauguration, Obama was named the 2009 Nobel Peace Prize laureate&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+Big data refers to data sets that are too large or complex to be dealt with by traditional data-processing application software. Data with many fields (rows) offer greater statistical power, while data with higher complexity (more attributes or columns) may lead to a higher false discovery rate. Big data analysis challenges include capturing data, data storage, data analysis, search, sharing, transfer, visualization, querying, updating, information privacy, and data source. Big data was originally associated with three key concepts: volume, variety, and velocity. The analysis of big data presents challenges in sampling, and thus previously allowing for only observations and sampling. Thus a fourth concept, veracity, refers to the quality or insightfulness of the data. Without sufficient investment in expertise for big data veracity, then the volume and variety of data can produce costs and risks that exceed an organization&#39;s capacity to create and capture value from big data.Current usage of the term big data tends to refer to the use of predictive analytics, user behavior analytics, or certain other advanced data analytics methods that extract value from big data, and seldom to a particular size of data set. &quot;There is little doubt that the quantities of data now available are indeed large, but that&#39;s not the most relevant characteristic of this new data ecosystem.&quot;
+Analysis of data sets can find new correlations to &quot;spot business trends, prevent diseases, combat crime and so on&quot;. Scientists, business executives, medical practitioners, advertising and governments alike regularly meet difficulties with large data-sets in areas including Internet searches, fintech, healthcare analytics, geographic information systems, urban informatics, and business informatics. Scientists encounter limitations in e-Science work, including meteorology, genomics, connectomics, complex physics simulations, biology, and environmental research.The size and number of available data sets have grown rapidly as data is collected by devices such as mobile devices, cheap and numerous information-sensing Internet of things devices, aerial (remote sensing), software logs, cameras, microphones, radio-frequency identification (RFID) readers and wireless sensor networks.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="text-process-replacing-punctuation">
+<h3>text process - replacing punctuation<a class="headerlink" href="#text-process-replacing-punctuation" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+!&quot;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">translator</span> <span class="o">=</span> <span class="nb">str</span><span class="o">.</span><span class="n">maketrans</span><span class="p">(</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="s1">&#39;&#39;</span><span class="p">,</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>
+<span class="n">string_a</span> <span class="o">=</span> <span class="n">string_a</span><span class="o">.</span><span class="n">translate</span><span class="p">(</span><span class="n">translator</span><span class="p">)</span>
+<span class="n">string_a</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;Big data refers to data sets that are too large or complex to be dealt with by traditional dataprocessing application software Data with many fields rows offer greater statistical power while data with higher complexity more attributes or columns may lead to a higher false discovery rate Big data analysis challenges include capturing data data storage data analysis search sharing transfer visualization querying updating information privacy and data source Big data was originally associated with three key concepts volume variety and velocity The analysis of big data presents challenges in sampling and thus previously allowing for only observations and sampling Thus a fourth concept veracity refers to the quality or insightfulness of the data Without sufficient investment in expertise for big data veracity then the volume and variety of data can produce costs and risks that exceed an organizations capacity to create and capture value from big dataCurrent usage of the term big data tends to refer to the use of predictive analytics user behavior analytics or certain other advanced data analytics methods that extract value from big data and seldom to a particular size of data set There is little doubt that the quantities of data now available are indeed large but thats not the most relevant characteristic of this new data ecosystem\nAnalysis of data sets can find new correlations to spot business trends prevent diseases combat crime and so on Scientists business executives medical practitioners advertising and governments alike regularly meet difficulties with large datasets in areas including Internet searches fintech healthcare analytics geographic information systems urban informatics and business informatics Scientists encounter limitations in eScience work including meteorology genomics connectomics complex physics simulations biology and environmental researchThe size and number of available data sets have grown rapidly as data is collected by devices such as mobile devices cheap and numerous informationsensing Internet of things devices aerial remote sensing software logs cameras microphones radiofrequency identification RFID readers and wireless sensor networks&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="capitalization-converting-string-to-lower">
+<h3>Capitalization: Converting string to lower<a class="headerlink" href="#capitalization-converting-string-to-lower" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string_a</span> <span class="o">=</span> <span class="n">string_a</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string_a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>big data refers to data sets that are too large or complex to be dealt with by traditional dataprocessing application software data with many fields rows offer greater statistical power while data with higher complexity more attributes or columns may lead to a higher false discovery rate big data analysis challenges include capturing data data storage data analysis search sharing transfer visualization querying updating information privacy and data source big data was originally associated with three key concepts volume variety and velocity the analysis of big data presents challenges in sampling and thus previously allowing for only observations and sampling thus a fourth concept veracity refers to the quality or insightfulness of the data without sufficient investment in expertise for big data veracity then the volume and variety of data can produce costs and risks that exceed an organizations capacity to create and capture value from big datacurrent usage of the term big data tends to refer to the use of predictive analytics user behavior analytics or certain other advanced data analytics methods that extract value from big data and seldom to a particular size of data set there is little doubt that the quantities of data now available are indeed large but thats not the most relevant characteristic of this new data ecosystem
+analysis of data sets can find new correlations to spot business trends prevent diseases combat crime and so on scientists business executives medical practitioners advertising and governments alike regularly meet difficulties with large datasets in areas including internet searches fintech healthcare analytics geographic information systems urban informatics and business informatics scientists encounter limitations in escience work including meteorology genomics connectomics complex physics simulations biology and environmental researchthe size and number of available data sets have grown rapidly as data is collected by devices such as mobile devices cheap and numerous informationsensing internet of things devices aerial remote sensing software logs cameras microphones radiofrequency identification rfid readers and wireless sensor networks
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tokenization-splitting-text-to-word">
+<h3>Tokenization: splitting text to word<a class="headerlink" href="#tokenization-splitting-text-to-word" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># astring = astring.translate(None, string.punctuation) for python 2.x</span>
+<span class="n">words</span> <span class="o">=</span> <span class="n">string_a</span><span class="o">.</span><span class="n">split</span><span class="p">()</span>
+<span class="n">words</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;big&#39;, &#39;data&#39;, &#39;refers&#39;, &#39;to&#39;, &#39;data&#39;, &#39;sets&#39;, &#39;that&#39;, &#39;are&#39;, &#39;too&#39;, &#39;large&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="counting-word-frequency">
+<h3>Counting word frequency<a class="headerlink" href="#counting-word-frequency" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_freq</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">word_freq</span><span class="p">:</span> <span class="c1"># dictionary key-value initilization</span>
+        <span class="n">word_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">word_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="c1">#         word_freq[w] = word_freq[w] + 1</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">word_freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>201
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">words</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word_freq</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_freq</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="n">value_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">word_freq</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">value_freq</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>201
+dict_values([8, 23, 2, 9, 3, 4, 2, 1, 3, 4, 2, 1, 1, 5, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 15, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 8, 11, 1, 4, 2, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+Counter({1: 158, 2: 26, 3: 5, 4: 5, 8: 2, 23: 1, 9: 1, 5: 1, 15: 1, 11: 1})
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="plot-histogram-of-word-frequency">
+<h3>Plot histogram of word frequency<a class="headerlink" href="#plot-histogram-of-word-frequency" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">word_freq</span><span class="o">.</span><span class="n">values</span><span class="p">(),</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">,</span> <span class="n">bins</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([184.,   5.,   5.,   1.,   0.,   0.,   2.,   1.,   0.,   1.,   0.,
+          0.,   1.,   0.,   0.,   0.,   0.,   0.,   0.,   1.]),
+ array([ 1. ,  2.1,  3.2,  4.3,  5.4,  6.5,  7.6,  8.7,  9.8, 10.9, 12. ,
+        13.1, 14.2, 15.3, 16.4, 17.5, 18.6, 19.7, 20.8, 21.9, 23. ]),
+ &lt;BarContainer object of 20 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/P01_counting_40_1.png" src="../_images/P01_counting_40_1.png" />
+</div>
+</div>
+</section>
+<section id="more-a-shortest-version-to-count-word-frequency">
+<h3>More: A shortest version to count word frequency<a class="headerlink" href="#more-a-shortest-version-to-count-word-frequency" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_freq</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">words</span><span class="p">)}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-sorting-all-pairs-of-key-and-value">
+<h3>More:Sorting all pairs of key and value<a class="headerlink" href="#more-sorting-all-pairs-of-key-and-value" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">operator</span>
+<span class="n">sorted_x</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">word_freq</span><span class="o">.</span><span class="n">items</span><span class="p">(),</span> 
+                  <span class="n">key</span><span class="o">=</span><span class="n">operator</span><span class="o">.</span><span class="n">itemgetter</span><span class="p">(</span><span class="mi">1</span><span class="p">),</span> 
+                  <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">sorted_x</span><span class="p">[:</span><span class="mi">6</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;data&#39;, 23)
+(&#39;and&#39;, 15)
+(&#39;of&#39;, 11)
+(&#39;to&#39;, 9)
+(&#39;the&#39;, 8)
+(&#39;big&#39;, 8)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sort-the-data-by-value">
+<h2>Sort the data by value<a class="headerlink" href="#sort-the-data-by-value" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_keys</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">fruit_count</span><span class="o">.</span><span class="n">get</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sorted_keys</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;apple&#39;, &#39;banana&#39;, &#39;grape&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">sorted_keys</span><span class="p">[:</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="n">fruit_count</span><span class="p">[</span><span class="n">key</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>apple 4
+banana 3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="application-counting-pass-fail">
+<h2>(Application) Counting Pass/Fail<a class="headerlink" href="#application-counting-pass-fail" title="Permalink to this headline">#</a></h2>
+<p>假設我有一群學生共75人<code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">75)</span></code>，考試成績為整數35~99分的隨機分佈<code class="docutils literal notranslate"><span class="pre">random.randint(35,</span> <span class="pre">100)</span></code>。我想計算看看Fail/Pass各有多少人。</p>
+<section id="generating-grades">
+<h3>Generating grades<a class="headerlink" href="#generating-grades" title="Permalink to this headline">#</a></h3>
+<p>先不要管下面怎麼做的，先知道這樣的方式可以產生隨機75個35~99間的數字並儲存到<code class="docutils literal notranslate"><span class="pre">grades</span></code>這個<code class="docutils literal notranslate"><span class="pre">list</span></code>中。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">grades</span>  <span class="o">=</span>  <span class="p">[</span><span class="n">random</span><span class="o">.</span><span class="n">randint</span><span class="p">(</span><span class="mi">35</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span> <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">75</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Length of: &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">grades</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Grades: &quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">g</span><span class="p">)</span> <span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of:  75
+Grades:  95 68 44 62 100 37 53 51 77 75 35 83 97 71 70 98 69 74 69 99 79 38 59 86 100 77 62 55 58 82 79 87 58 55 78 56 38 64 53 53 43 71 48 88 73 43 64 40 80 98 98 95 50 83 78 59 80 39 53 50 90 40 53 95 77 54 96 42 61 91 96 47 87 71 81
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="initializing-a-dict-to-store-the-frequency">
+<h3>Initializing a dict to store the frequency<a class="headerlink" href="#initializing-a-dict-to-store-the-frequency" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grade_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Pass&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;Fail&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">grade_dict</span><span class="p">[</span><span class="s2">&quot;Pass&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">grade_dict</span><span class="p">[</span><span class="s2">&quot;Fail&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grade_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Pass&#39;: 46, &#39;Fail&#39;: 29}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="practice">
+<h2>Practice<a class="headerlink" href="#practice" title="Permalink to this headline">#</a></h2>
+<p><span class="xref myst">P01p.ipynb</span> and <span class="xref myst">P01p_Ans.ipynb</span></p>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="../intro.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Welcome to your Jupyter Book</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Markdown Files</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By The Jupyter Book Community<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
