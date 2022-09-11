@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Markdown Files" href="../markdown.html" />
+    <link rel="next" title="P01-Pracitce01: Re-writing the department counting case" href="P01p_counting.html" />
     <link rel="prev" title="Welcome to your Jupyter Book" href="../intro.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -122,6 +122,21 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    Counting: The fruit-counting problem
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P01p_counting.html">
+   P01-Pracitce01: Re-writing the department counting case
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P02b_basic.html">
+   Resource
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P03b_list_dictionary.html">
+   Index
   </a>
  </li>
 </ul>
@@ -1236,7 +1251,7 @@ grape 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;grape&#39;: 1, &#39;banana&#39;: 3}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banana&#39;: 3, &#39;grape&#39;: 1, &#39;apple&#39;: 4}
 </pre></div>
 </div>
 </div>
@@ -1253,7 +1268,7 @@ grape 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;grape&#39;: 1, &#39;banana&#39;: 3}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banana&#39;: 3, &#39;grape&#39;: 1, &#39;apple&#39;: 4}
 </pre></div>
 </div>
 </div>
@@ -1320,21 +1335,14 @@ grape 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Collecting wikipedia
-  Downloading https://files.pythonhosted.org/packages/67/35/25e68fbc99e672127cc6fbb14b8ec1ba3dfef035bf1e4c90f78f24a80b7d/wikipedia-1.4.0.tar.gz
-Requirement already satisfied: beautifulsoup4 in /usr/local/lib/python3.7/dist-packages (from wikipedia) (4.6.3)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /usr/local/lib/python3.7/dist-packages (from wikipedia) (2.23.0)
-Requirement already satisfied: urllib3!=1.25.0,!=1.25.1,&lt;1.26,&gt;=1.21.1 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.24.3)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2020.12.5)
-Requirement already satisfied: chardet&lt;4,&gt;=3.0.2 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.0.4)
-Requirement already satisfied: idna&lt;3,&gt;=2.5 in /usr/local/lib/python3.7/dist-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.10)
-Building wheels for collected packages: wikipedia
-  Building wheel for wikipedia (setup.py) ... ?25l?25hdone
-  Created wheel for wikipedia: filename=wikipedia-1.4.0-cp37-none-any.whl size=11686 sha256=bf7d6d2d9a8691c604b66a95b2826405a9f7557fa8615856bd0246bcd5c3eb16
-  Stored in directory: /root/.cache/pip/wheels/87/2a/18/4e471fd96d12114d16fe4a446d00c3b38fb9efcb744bd31f4a
-Successfully built wikipedia
-Installing collected packages: wikipedia
-Successfully installed wikipedia-1.4.0
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wikipedia in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (1.4.0)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (2.27.1)
+Requirement already satisfied: beautifulsoup4 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (4.11.1)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2022.5.18.1)
+Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.26.9)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
 </pre></div>
 </div>
 </div>
@@ -1525,12 +1533,12 @@ Counter({1: 158, 2: 26, 3: 5, 4: 5, 8: 2, 23: 1, 9: 1, 5: 1, 15: 1, 11: 1})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;data&#39;, 21)
-(&#39;and&#39;, 11)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;data&#39;, 23)
+(&#39;and&#39;, 15)
 (&#39;of&#39;, 11)
-(&#39;to&#39;, 10)
-(&#39;the&#39;, 7)
-(&#39;with&#39;, 7)
+(&#39;to&#39;, 9)
+(&#39;the&#39;, 8)
+(&#39;big&#39;, 8)
 </pre></div>
 </div>
 </div>
@@ -1555,7 +1563,7 @@ Counter({1: 158, 2: 26, 3: 5, 4: 5, 8: 2, 23: 1, 9: 1, 5: 1, 15: 1, 11: 1})
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of:  75
-Grades:  74 37 91 92 40 64 74 56 66 56 35 47 64 73 43 55 73 88 79 69 95 51 43 81 67 96 46 62 45 82 99 97 55 95 62 74 82 55 35 100 59 56 45 99 85 80 57 35 79 64 83 47 96 59 70 66 38 69 78 56 49 43 92 97 95 78 59 69 68 52 48 83 100 56 72
+Grades:  57 66 45 42 53 41 40 95 87 87 91 54 69 87 61 67 86 76 64 81 91 58 36 52 69 49 97 83 50 60 100 45 94 88 40 85 82 57 58 100 80 75 97 93 82 59 73 58 91 71 73 74 49 53 43 41 86 56 42 77 40 67 71 80 60 80 87 64 62 76 99 80 41 63 42
 </pre></div>
 </div>
 </div>
@@ -1583,7 +1591,7 @@ Grades:  74 37 91 92 40 64 74 56 66 56 35 47 64 73 43 55 73 88 79 69 95 51 43 81
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 23, &#39;C&#39;: 16, &#39;B&#39;: 5, &#39;A&#39;: 31}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 27, &#39;C&#39;: 14, &#39;B&#39;: 7, &#39;A&#39;: 27}
 </pre></div>
 </div>
 </div>
@@ -1717,10 +1725,10 @@ grape 1
             <p class="prev-next-title">Welcome to your Jupyter Book</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../markdown.html" title="next page">
+    <a class='right-next' id="next-link" href="P01p_counting.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Markdown Files</p>
+        <p class="prev-next-title">P01-Pracitce01: Re-writing the department counting case</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
