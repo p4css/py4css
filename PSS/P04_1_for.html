@@ -1,0 +1,1235 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P04-For-if-else &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P01-Practice" href="P01p_counting.html" />
+    <link rel="prev" title="P03-List and Dictionary" href="P03_list_dictionary.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Python-Basic
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="P01_counting.html">
+   P01-Counting
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P02_basic.html">
+   P02-Python Basic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+ </li>
+ <li class="toctree-l1 current active has-children">
+  <a class="current reference internal" href="#">
+   P04-For-if-else
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Practices
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="P01p_counting.html">
+   P01-Practice
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P02b_basic.html">
+   P02-blank-Python Basic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P03b_list_dictionary.html">
+   P03-blank-List &amp; Dictionary
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Jupyter-Book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../markdown.html">
+   Markdown Files
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/PSS/P04_1_for.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P04_1_for.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P04_1_for.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/PSS/P04_1_for.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop">
+   For-loop
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-enumerating-each-items">
+     For enumerating each items
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#str-is-also-a-sequential-type-class">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         str
+        </span>
+       </code>
+       is also a sequential type class
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-continue-to-stop-for-loop-conditionally">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       break
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       continue
+      </span>
+     </code>
+     to stop for-loop conditionally
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#range-function">
+     range() function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-up-all-values-in-a-list">
+     Sum up all values in a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-up-the-number-of-ubike">
+     Sum up the number of ubike
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-values-into-equal-length-brackets">
+     Assign values into equal length brackets
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plotting-by-hist">
+       Plotting by
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         hist()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#counting-then-plotting-by-bar">
+       Counting then plotting by
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         bar()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-fibonnacci-sequence">
+     Generating fibonnacci sequence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-pi">
+     Generating Pi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-9x9-tables">
+     Print 9x9 tables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>P04-For-if-else</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#for-loop">
+   For-loop
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#for-enumerating-each-items">
+     For enumerating each items
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#str-is-also-a-sequential-type-class">
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         str
+        </span>
+       </code>
+       is also a sequential type class
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-continue-to-stop-for-loop-conditionally">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       break
+      </span>
+     </code>
+     &amp;
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       continue
+      </span>
+     </code>
+     to stop for-loop conditionally
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#range-function">
+     range() function
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#examples">
+   Examples
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-up-all-values-in-a-list">
+     Sum up all values in a list
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sum-up-the-number-of-ubike">
+     Sum up the number of ubike
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#assign-values-into-equal-length-brackets">
+     Assign values into equal length brackets
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#plotting-by-hist">
+       Plotting by
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         hist()
+        </span>
+       </code>
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#counting-then-plotting-by-bar">
+       Counting then plotting by
+       <code class="docutils literal notranslate">
+        <span class="pre">
+         bar()
+        </span>
+       </code>
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-fibonnacci-sequence">
+     Generating fibonnacci sequence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#generating-pi">
+     Generating Pi
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#print-9x9-tables">
+     Print 9x9 tables
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="p04-for-if-else">
+<h1>P04-For-if-else<a class="headerlink" href="#p04-for-if-else" title="Permalink to this headline">#</a></h1>
+<p><strong>for-if-else</strong>的語法概念本身並不難，一個是重複執行的結構，一個是條件判斷式。學習重點應在於，會怎麼活用他們來完成一些任務。</p>
+<p><strong>for-loop: Review</strong></p>
+<ul class="simple">
+<li><p>Print out elements iteratively</p></li>
+<li><p>Sum up all values in a list</p></li>
+<li><p>Assign values into equal length brackets</p></li>
+<li><p>(More) Plotting</p></li>
+<li><p>(More) Plotting</p></li>
+</ul>
+<p><strong>for-loop: More applications</strong></p>
+<ul class="simple">
+<li><p>Application: generating fibonnacci sequence</p></li>
+<li><p>Application: Generating Pi</p></li>
+<li><p>Application: 9x9 table</p></li>
+</ul>
+<section id="for-loop">
+<h2>For-loop<a class="headerlink" href="#for-loop" title="Permalink to this headline">#</a></h2>
+<p>無論是計數或把所有youbike站台的資訊列印出來，都需要用到一個指令<code class="docutils literal notranslate"><span class="pre">for</span></code>。它會讓程式在指定的範圍內重複執行，所以也經常被稱為<strong>for-each</strong>。</p>
+<section id="for-enumerating-each-items">
+<h3>For enumerating each items<a class="headerlink" href="#for-enumerating-each-items" title="Permalink to this headline">#</a></h3>
+<p>這裡的for-loop用以列舉過list中的每個物件來達到計數的功能。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Counting</span>
+<span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">fruit_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruit_list</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">fruit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="p">:</span>
+       <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">else</span><span class="p">:</span>
+       <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<p>用以僅僅是把所有的內容給print出來。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;cherry&#39;</span><span class="p">,</span> <span class="s1">&#39;Durian&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I love&quot;</span><span class="p">,</span> <span class="n">fruit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I love apple
+I love banana
+I love cherry
+I love Durian
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sjoerd&#39;</span><span class="p">:</span> <span class="mi">41273</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">:</span> <span class="mi">409</span><span class="p">,</span> <span class="s1">&#39;Dcab&#39;</span><span class="p">:</span> <span class="mi">7678</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1"> ==&gt; </span><span class="si">{</span><span class="nb">id</span><span class="si">:</span><span class="s1">10d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sjoerd     ==&gt;      41273
+Jack       ==&gt;        409
+Dcab       ==&gt;       7678
+</pre></div>
+</div>
+</div>
+</div>
+<section id="str-is-also-a-sequential-type-class">
+<h4><code class="docutils literal notranslate"><span class="pre">str</span></code> is also a sequential type class<a class="headerlink" href="#str-is-also-a-sequential-type-class" title="Permalink to this headline">#</a></h4>
+<p>之前在P02提及多種資料型態時，在(4)序列（sequence Types）的地方曾提及文字字串（<code class="docutils literal notranslate"><span class="pre">str</span></code>）也是一種序列型態。所以，如果有一個文字<code class="docutils literal notranslate"><span class="pre">word</span> <span class="pre">=</span> <span class="pre">banana</span></code>的話，<code class="docutils literal notranslate"><span class="pre">word[0]</span></code>會是<code class="docutils literal notranslate"><span class="pre">b</span></code>，而<code class="docutils literal notranslate"><span class="pre">word[1]</span></code>會是<code class="docutils literal notranslate"><span class="pre">a</span></code>，依此類推。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;banana&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">word</span><span class="p">:</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>b a
+b
+a
+n
+a
+n
+a
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="break-continue-to-stop-for-loop-conditionally">
+<h3><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code> to stop for-loop conditionally<a class="headerlink" href="#break-continue-to-stop-for-loop-conditionally" title="Permalink to this headline">#</a></h3>
+<p>在for-loop執行過程中，有時候會希望在某些條件成立時，就直接終止並跳出整個for-loop，或者，迴圈內以下的內容就不要執行，直接執行下一個iteration。包含以下兩種指令：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>: 當條件成立，下方的迴圈內容就不再執行，直接進入下一個iteration。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>：當條件成立，就終止整個回圈，跳出回圈的執行。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">grades</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">&gt;=</span><span class="mi">100</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carlos
+ellen
+</pre></div>
+</div>
+</div>
+</div>
+<p>在下面的例子中，若讀到小於100的數值，就直接進入下一個iteration，就不會執行到<code class="docutils literal notranslate"><span class="pre">print(g)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">grades</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carlos
+ellen
+</pre></div>
+</div>
+</div>
+</div>
+<p>在下面的例子中，若讀到大於等於100的數值，break會使得整個for-loop終止。通常用於找到一序列的資料中，有沒有包含某個合乎條件的情形，有的話便跳出。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">grades</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carlos
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apple&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>    <span class="c1"># k, v is a tuble containing a pair of variables, equals to (k, v)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_items([(&#39;apple&#39;, 4), (&#39;banana&#39;, 3), (&#39;grape&#39;, 1)])
+apple 	 4
+banana 	 3
+grape 	 1
+apple 	 4
+banana 	 3
+grape 	 1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="range-function">
+<h3>range() function<a class="headerlink" href="#range-function" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+3
+4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+5
+8
+11
+14
+17
+20
+23
+26
+29
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="examples">
+<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
+<section id="sum-up-all-values-in-a-list">
+<h3>Sum up all values in a list<a class="headerlink" href="#sum-up-all-values-in-a-list" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">sum_a</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="n">alist</span><span class="p">:</span>
+    <span class="n">sum_a</span> <span class="o">+=</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sum_a</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
+<span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>55
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="n">grade_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="n">grade_sum</span> <span class="o">+=</span> <span class="n">grades</span><span class="p">[</span><span class="n">g</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grade_sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>367
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="sum-up-the-number-of-ubike">
+<h3>Sum up the number of ubike<a class="headerlink" href="#sum-up-the-number-of-ubike" title="Permalink to this headline">#</a></h3>
+<p>計算讀到的資料中，目前共有多少個ubike停駐位、又有多少ubike目前正停駐在車格上</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span> <span class="c1"># &lt;class &#39;requests.models.Response&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">))</span> <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+<span class="n">bike_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;requests.models.Response&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">bike_data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">])</span>
+<span class="n">bike_data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;0001&#39;, &#39;0002&#39;, &#39;0003&#39;, &#39;0004&#39;, &#39;0005&#39;, &#39;0006&#39;, &#39;0007&#39;, &#39;0008&#39;, &#39;0009&#39;, &#39;0010&#39;, &#39;0011&#39;, &#39;0012&#39;, &#39;0013&#39;, &#39;0014&#39;, &#39;0016&#39;, &#39;0017&#39;, &#39;0018&#39;, &#39;0019&#39;, &#39;0021&#39;, &#39;0022&#39;, &#39;0023&#39;, &#39;0024&#39;, &#39;0025&#39;, &#39;0026&#39;, &#39;0027&#39;, &#39;0028&#39;, &#39;0029&#39;, &#39;0030&#39;, &#39;0031&#39;, &#39;0032&#39;, &#39;0033&#39;, &#39;0034&#39;, &#39;0035&#39;, &#39;0036&#39;, &#39;0037&#39;, &#39;0038&#39;, &#39;0039&#39;, &#39;0040&#39;, &#39;0041&#39;, &#39;0042&#39;, &#39;0043&#39;, &#39;0044&#39;, &#39;0045&#39;, &#39;0046&#39;, &#39;0047&#39;, &#39;0048&#39;, &#39;0049&#39;, &#39;0050&#39;, &#39;0051&#39;, &#39;0052&#39;, &#39;0053&#39;, &#39;0054&#39;, &#39;0055&#39;, &#39;0056&#39;, &#39;0057&#39;, &#39;0058&#39;, &#39;0059&#39;, &#39;0060&#39;, &#39;0061&#39;, &#39;0062&#39;, &#39;0063&#39;, &#39;0064&#39;, &#39;0065&#39;, &#39;0066&#39;, &#39;0067&#39;, &#39;0068&#39;, &#39;0069&#39;, &#39;0070&#39;, &#39;0071&#39;, &#39;0072&#39;, &#39;0073&#39;, &#39;0074&#39;, &#39;0075&#39;, &#39;0076&#39;, &#39;0077&#39;, &#39;0078&#39;, &#39;0079&#39;, &#39;0080&#39;, &#39;0081&#39;, &#39;0082&#39;, &#39;0083&#39;, &#39;0084&#39;, &#39;0085&#39;, &#39;0086&#39;, &#39;0087&#39;, &#39;0088&#39;, &#39;0089&#39;, &#39;0090&#39;, &#39;0091&#39;, &#39;0092&#39;, &#39;0093&#39;, &#39;0094&#39;, &#39;0095&#39;, &#39;0096&#39;, &#39;0097&#39;, &#39;0098&#39;, &#39;0099&#39;, &#39;0100&#39;, &#39;0101&#39;, &#39;0102&#39;, &#39;0103&#39;, &#39;0104&#39;, &#39;0105&#39;, &#39;0106&#39;, &#39;0107&#39;, &#39;0108&#39;, &#39;0109&#39;, &#39;0110&#39;, &#39;0111&#39;, &#39;0112&#39;, &#39;0113&#39;, &#39;0114&#39;, &#39;0115&#39;, &#39;0116&#39;, &#39;0117&#39;, &#39;0118&#39;, &#39;0119&#39;, &#39;0120&#39;, &#39;0121&#39;, &#39;0122&#39;, &#39;0123&#39;, &#39;0124&#39;, &#39;0125&#39;, &#39;0126&#39;, &#39;0127&#39;, &#39;0128&#39;, &#39;0129&#39;, &#39;0130&#39;, &#39;0131&#39;, &#39;0132&#39;, &#39;0133&#39;, &#39;0134&#39;, &#39;0135&#39;, &#39;0136&#39;, &#39;0137&#39;, &#39;0138&#39;, &#39;0139&#39;, &#39;0140&#39;, &#39;0141&#39;, &#39;0142&#39;, &#39;0143&#39;, &#39;0144&#39;, &#39;0145&#39;, &#39;0146&#39;, &#39;0147&#39;, &#39;0148&#39;, &#39;0149&#39;, &#39;0150&#39;, &#39;0151&#39;, &#39;0152&#39;, &#39;0153&#39;, &#39;0154&#39;, &#39;0155&#39;, &#39;0156&#39;, &#39;0157&#39;, &#39;0158&#39;, &#39;0159&#39;, &#39;0161&#39;, &#39;0162&#39;, &#39;0163&#39;, &#39;0164&#39;, &#39;0165&#39;, &#39;0166&#39;, &#39;0167&#39;, &#39;0168&#39;, &#39;0169&#39;, &#39;0170&#39;, &#39;0171&#39;, &#39;0172&#39;, &#39;0173&#39;, &#39;0174&#39;, &#39;0175&#39;, &#39;0176&#39;, &#39;0177&#39;, &#39;0178&#39;, &#39;0179&#39;, &#39;0180&#39;, &#39;0181&#39;, &#39;0182&#39;, &#39;0183&#39;, &#39;0184&#39;, &#39;0185&#39;, &#39;0186&#39;, &#39;0187&#39;, &#39;0188&#39;, &#39;0189&#39;, &#39;0190&#39;, &#39;0191&#39;, &#39;0192&#39;, &#39;0193&#39;, &#39;0194&#39;, &#39;0195&#39;, &#39;0196&#39;, &#39;0197&#39;, &#39;0201&#39;, &#39;0202&#39;, &#39;0203&#39;, &#39;0204&#39;, &#39;0205&#39;, &#39;0206&#39;, &#39;0207&#39;, &#39;0208&#39;, &#39;0209&#39;, &#39;0210&#39;, &#39;0211&#39;, &#39;0212&#39;, &#39;0213&#39;, &#39;0214&#39;, &#39;0215&#39;, &#39;0216&#39;, &#39;0217&#39;, &#39;0218&#39;, &#39;0219&#39;, &#39;0220&#39;, &#39;0221&#39;, &#39;0222&#39;, &#39;0223&#39;, &#39;0224&#39;, &#39;0225&#39;, &#39;0226&#39;, &#39;0227&#39;, &#39;0228&#39;, &#39;0229&#39;, &#39;0230&#39;, &#39;0231&#39;, &#39;0232&#39;, &#39;0233&#39;, &#39;0234&#39;, &#39;0235&#39;, &#39;0236&#39;, &#39;0237&#39;, &#39;0238&#39;, &#39;0239&#39;, &#39;0240&#39;, &#39;0241&#39;, &#39;0242&#39;, &#39;0243&#39;, &#39;0244&#39;, &#39;0245&#39;, &#39;0246&#39;, &#39;0247&#39;, &#39;0248&#39;, &#39;0249&#39;, &#39;0250&#39;, &#39;0251&#39;, &#39;0252&#39;, &#39;0253&#39;, &#39;0254&#39;, &#39;0255&#39;, &#39;0256&#39;, &#39;0257&#39;, &#39;0258&#39;, &#39;0259&#39;, &#39;0260&#39;, &#39;0261&#39;, &#39;0262&#39;, &#39;0263&#39;, &#39;0264&#39;, &#39;0265&#39;, &#39;0266&#39;, &#39;0267&#39;, &#39;0268&#39;, &#39;0269&#39;, &#39;0270&#39;, &#39;0271&#39;, &#39;0272&#39;, &#39;0273&#39;, &#39;0274&#39;, &#39;0275&#39;, &#39;0276&#39;, &#39;0277&#39;, &#39;0278&#39;, &#39;0279&#39;, &#39;0280&#39;, &#39;0281&#39;, &#39;0282&#39;, &#39;0283&#39;, &#39;0284&#39;, &#39;0285&#39;, &#39;0286&#39;, &#39;0287&#39;, &#39;0288&#39;, &#39;0289&#39;, &#39;0290&#39;, &#39;0291&#39;, &#39;0292&#39;, &#39;0293&#39;, &#39;0294&#39;, &#39;0295&#39;, &#39;0296&#39;, &#39;0297&#39;, &#39;0298&#39;, &#39;0299&#39;, &#39;0300&#39;, &#39;0301&#39;, &#39;0302&#39;, &#39;0303&#39;, &#39;0304&#39;, &#39;0305&#39;, &#39;0306&#39;, &#39;0307&#39;, &#39;0308&#39;, &#39;0309&#39;, &#39;0310&#39;, &#39;0311&#39;, &#39;0312&#39;, &#39;0313&#39;, &#39;0314&#39;, &#39;0315&#39;, &#39;0316&#39;, &#39;0317&#39;, &#39;0318&#39;, &#39;0319&#39;, &#39;0320&#39;, &#39;0321&#39;, &#39;0322&#39;, &#39;0323&#39;, &#39;0324&#39;, &#39;0325&#39;, &#39;0326&#39;, &#39;0327&#39;, &#39;0328&#39;, &#39;0329&#39;, &#39;0330&#39;, &#39;0331&#39;, &#39;0332&#39;, &#39;0333&#39;, &#39;0334&#39;, &#39;0335&#39;, &#39;0336&#39;, &#39;0337&#39;, &#39;0338&#39;, &#39;0339&#39;, &#39;0340&#39;, &#39;0341&#39;, &#39;0342&#39;, &#39;0343&#39;, &#39;0344&#39;, &#39;0345&#39;, &#39;0346&#39;, &#39;0347&#39;, &#39;0348&#39;, &#39;0349&#39;, &#39;0350&#39;, &#39;0351&#39;, &#39;0352&#39;, &#39;0353&#39;, &#39;0354&#39;, &#39;0355&#39;, &#39;0356&#39;, &#39;0357&#39;, &#39;0358&#39;, &#39;0359&#39;, &#39;0360&#39;, &#39;0361&#39;, &#39;0362&#39;, &#39;0363&#39;, &#39;0364&#39;, &#39;0365&#39;, &#39;0366&#39;, &#39;0367&#39;, &#39;0368&#39;, &#39;0369&#39;, &#39;0370&#39;, &#39;0371&#39;, &#39;0372&#39;, &#39;0373&#39;, &#39;0374&#39;, &#39;0375&#39;, &#39;0376&#39;, &#39;0377&#39;, &#39;0378&#39;, &#39;0379&#39;, &#39;0380&#39;, &#39;0381&#39;, &#39;0382&#39;, &#39;0383&#39;, &#39;0384&#39;, &#39;0385&#39;, &#39;0386&#39;, &#39;0387&#39;, &#39;0388&#39;, &#39;0389&#39;, &#39;0390&#39;, &#39;0391&#39;, &#39;0392&#39;, &#39;0393&#39;, &#39;0394&#39;, &#39;0395&#39;, &#39;0396&#39;, &#39;0397&#39;, &#39;0398&#39;, &#39;0399&#39;, &#39;0400&#39;, &#39;0401&#39;, &#39;0402&#39;, &#39;0403&#39;, &#39;0404&#39;, &#39;0405&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># accmulate all sbi</span>
+<span class="n">sbi_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">tot_sum</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">bike_data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">sbi_sum</span> <span class="o">=</span> <span class="n">sbi_sum</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">])</span>
+    <span class="n">tot_sum</span> <span class="o">=</span> <span class="n">tot_sum</span> <span class="o">+</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sbi_sum</span><span class="p">,</span> <span class="n">tot_sum</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>4861 14772
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="assign-values-into-equal-length-brackets">
+<h3>Assign values into equal length brackets<a class="headerlink" href="#assign-values-into-equal-length-brackets" title="Permalink to this headline">#</a></h3>
+<p>之前在做Counting時，每個項目是離散的，但今天我如果要把成績的百分制等分均分至數個區間後（0-10, 10-20, …, 90-100, 100），分別計算每個區間有多少人要怎麼做？</p>
+<section id="plotting-by-hist">
+<h4>Plotting by <code class="docutils literal notranslate"><span class="pre">hist()</span></code><a class="headerlink" href="#plotting-by-hist" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">grades</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([9., 7., 3., 8., 5., 3., 7., 4., 8., 6.]),
+ array([ 0. ,  9.9, 19.8, 29.7, 39.6, 49.5, 59.4, 69.3, 79.2, 89.1, 99. ]),
+ &lt;a list of 10 Patch objects&gt;)
+</pre></div>
+</div>
+<img alt="../_images/P04_1_for_30_1.png" src="../_images/P04_1_for_30_1.png" />
+</div>
+</div>
+</section>
+<section id="counting-then-plotting-by-bar">
+<h4>Counting then plotting by <code class="docutils literal notranslate"><span class="pre">bar()</span></code><a class="headerlink" href="#counting-then-plotting-by-bar" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">73</span><span class="p">]</span>
+<span class="n">glist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glist</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="n">glist</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="mi">10</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glist</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">glist</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+[0, 0, 0, 0, 0, 0, 6, 3, 0, 2, 1]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 11 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/P04_1_for_32_2.png" src="../_images/P04_1_for_32_2.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="generating-fibonnacci-sequence">
+<h3>Generating fibonnacci sequence<a class="headerlink" href="#generating-fibonnacci-sequence" title="Permalink to this headline">#</a></h3>
+<p>費氏數列第一個為0，第二個為1，第三者之後為前兩項相加，請問第10項是多少？
+請嘗試將你的答案列印為以下的模樣</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> 	 <span class="mi">1</span>
+<span class="mi">2</span> 	 <span class="mi">2</span>
+<span class="mi">3</span> 	 <span class="mi">3</span>
+<span class="mi">4</span> 	 <span class="mi">5</span>
+<span class="mi">5</span> 	 <span class="mi">8</span>
+<span class="mi">6</span> 	 <span class="mi">13</span>
+<span class="mi">7</span> 	 <span class="mi">21</span>
+<span class="mi">8</span> 	 <span class="mi">34</span>
+<span class="mi">9</span> 	 <span class="mi">55</span>
+<span class="mi">10</span> 	 <span class="mi">89</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Generating fibonnacci number sequence</span>
+<span class="c1"># 0, 1, 1, 2, 3, 5, 8, 13, 21, 34, 55, ...</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 	 1
+1 	 2
+2 	 3
+3 	 5
+5 	 8
+8 	 13
+13 	 21
+21 	 34
+34 	 55
+55 	 89
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="generating-pi">
+<h3>Generating Pi<a class="headerlink" href="#generating-pi" title="Permalink to this headline">#</a></h3>
+<p>Gregory and Leibniz found Pi/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9…
+<a class="reference external" href="https://mathworld.wolfram.com/PiFormulas.html">https://mathworld.wolfram.com/PiFormulas.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pi</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="n">sign</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">100000000</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="n">pi</span> <span class="o">+=</span> <span class="n">sign</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="n">i</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span>
+    <span class="n">sign</span> <span class="o">*=</span> <span class="o">-</span><span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pi</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3.1415926335902506
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="print-9x9-tables">
+<h3>Print 9x9 tables<a class="headerlink" href="#print-9x9-tables" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%d</span><span class="s2">*</span><span class="si">%d</span><span class="s2"> =</span><span class="si">%-2d</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">),</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1*1 =1   1*2 =2   1*3 =3   1*4 =4   1*5 =5   1*6 =6   1*7 =7   1*8 =8   1*9 =9   
+2*1 =2   2*2 =4   2*3 =6   2*4 =8   2*5 =10  2*6 =12  2*7 =14  2*8 =16  2*9 =18  
+3*1 =3   3*2 =6   3*3 =9   3*4 =12  3*5 =15  3*6 =18  3*7 =21  3*8 =24  3*9 =27  
+4*1 =4   4*2 =8   4*3 =12  4*4 =16  4*5 =20  4*6 =24  4*7 =28  4*8 =32  4*9 =36  
+5*1 =5   5*2 =10  5*3 =15  5*4 =20  5*5 =25  5*6 =30  5*7 =35  5*8 =40  5*9 =45  
+6*1 =6   6*2 =12  6*3 =18  6*4 =24  6*5 =30  6*6 =36  6*7 =42  6*8 =48  6*9 =54  
+7*1 =7   7*2 =14  7*3 =21  7*4 =28  7*5 =35  7*6 =42  7*7 =49  7*8 =56  7*9 =63  
+8*1 =8   8*2 =16  8*3 =24  8*4 =32  8*5 =40  8*6 =48  8*7 =56  8*8 =64  8*9 =72  
+9*1 =9   9*2 =18  9*3 =27  9*4 =36  9*5 =45  9*6 =54  9*7 =63  9*8 =72  9*9 =81  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P03_list_dictionary.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">P03-List and Dictionary</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="P01p_counting.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P01-Practice</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
