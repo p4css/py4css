@@ -119,27 +119,46 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="P01_counting.html">
    P01-Counting
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="P02_basic.html">
    P02-Python Basic
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="P03_list_dictionary.html">
    P03-List and Dictionary
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="simple">
+  </ul>
  </li>
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="P04_1_for.html">
    P04-For-if-else
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
-  <label for="toctree-checkbox-1">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -153,11 +172,6 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="current nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="P01p_counting.html">
-   P01-Practice
-  </a>
- </li>
  <li class="toctree-l1">
   <a class="reference internal" href="P02b_basic.html">
    P02-blank-Python Basic
@@ -184,8 +198,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../notebooks.html">
    Content with notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
-  <label for="toctree-checkbox-2">
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -492,11 +506,6 @@ title="Print to PDF"
    Iterating a dictionary
   </a>
  </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-ubike">
-   Practice: 計算出每個行政區有多少個ubike站台
-  </a>
- </li>
 </ul>
 
     </nav>
@@ -585,11 +594,6 @@ title="Print to PDF"
  <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#iterating-a-dictionary">
    Iterating a dictionary
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#practice-ubike">
-   Practice: 計算出每個行政區有多少個ubike站台
   </a>
  </li>
 </ul>
@@ -1371,47 +1375,6 @@ dict_keys([&#39;retCode&#39;, &#39;retVal&#39;])
 0402 下灣公園 12 28
 0403 捷運內湖站(1號出口) 3 28
 0404 民族延平路口 16 30
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="practice-ubike">
-<h2>Practice: 計算出每個行政區有多少個ubike站台<a class="headerlink" href="#practice-ubike" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
-    <span class="k">if</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;sarea&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">area_dict</span><span class="p">:</span>
-        <span class="n">area_dict</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;sarea&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">area_dict</span><span class="p">[</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">][</span><span class="n">key</span><span class="p">][</span><span class="s1">&#39;sarea&#39;</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
-
-
-
-<span class="c1"># area_dict = {}</span>
-<span class="c1"># for key, row in data[&quot;retVal&quot;].items():</span>
-<span class="c1">#     if row[&quot;sarea&quot;] not in area_dict:</span>
-<span class="c1">#         area_dict[row[&quot;sarea&quot;]] = 1</span>
-<span class="c1">#     else:</span>
-<span class="c1">#         area_dict[row[&quot;sarea&quot;]] += 1</span>
-<span class="n">area_dict</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;信義區&#39;: 38,
- &#39;大安區&#39;: 48,
- &#39;中山區&#39;: 46,
- &#39;松山區&#39;: 34,
- &#39;南港區&#39;: 22,
- &#39;中正區&#39;: 34,
- &#39;萬華區&#39;: 22,
- &#39;文山區&#39;: 27,
- &#39;大同區&#39;: 22,
- &#39;士林區&#39;: 36,
- &#39;內湖區&#39;: 42,
- &#39;北投區&#39;: 28}
 </pre></div>
 </div>
 </div>
