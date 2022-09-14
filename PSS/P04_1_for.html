@@ -52,8 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="P02-blank-Python Basic" href="P02b_basic.html" />
-    <link rel="prev" title="P03-List and Dictionary" href="P03_list_dictionary.html" />
+    <link rel="next" title="P04 for-if applications" href="P04_2_for_if.html" />
+    <link rel="prev" title="P03-Practice List &amp; Dict" href="P03p.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -150,25 +150,43 @@ const thebe_selector_output = ".output, .cell_output"
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
   </ul>
  </li>
- <li class="toctree-l1 current active has-children">
+ <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    P04-For-if-else
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
-  <label for="toctree-checkbox-3">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul class="simple">
-  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 for-if applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P05_read_csv_json.html">
+   READ Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P06_pandas.html">
+   P06 Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P07_visualization.html">
+   P07 Visualization with Pandas
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Practices
+  Blank files
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -198,8 +216,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../notebooks.html">
    Content with notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -444,21 +462,19 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#for-enumerating-each-items">
      For enumerating each items
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#str-is-also-a-sequential-type-class">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         str
-        </span>
-       </code>
-       is also a sequential type class
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#break-continue-to-stop-for-loop-conditionally">
+    <a class="reference internal nav-link" href="#str-is-also-sequential-type">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       str
+      </span>
+     </code>
+     is also sequential type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-continue-to-stop-for-loop">
      <code class="docutils literal notranslate">
       <span class="pre">
        break
@@ -470,7 +486,7 @@ title="Print to PDF"
        continue
       </span>
      </code>
-     to stop for-loop conditionally
+     to stop for-loop
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -481,63 +497,56 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
+  <a class="reference internal nav-link" href="#ex01-sum-up-all-values-in-a-list">
+   EX01 Sum up all values in a list
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex02-sum-up-the-number-of-ubike">
+   EX02 Sum up the number of ubike
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex03-assign-values-into-equal-length-brackets">
+   EX03 Assign values into equal length brackets
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sum-up-all-values-in-a-list">
-     Sum up all values in a list
+    <a class="reference internal nav-link" href="#plotting-by-hist">
+     Plotting by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       hist()
+      </span>
+     </code>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sum-up-the-number-of-ubike">
-     Sum up the number of ubike
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assign-values-into-equal-length-brackets">
-     Assign values into equal length brackets
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plotting-by-hist">
-       Plotting by
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         hist()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#counting-then-plotting-by-bar">
-       Counting then plotting by
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         bar()
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generating-fibonnacci-sequence">
-     Generating fibonnacci sequence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generating-pi">
-     Generating Pi
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#print-9x9-tables">
-     Print 9x9 tables
+    <a class="reference internal nav-link" href="#counting-then-plotting-by-bar">
+     Counting then plotting by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       bar()
+      </span>
+     </code>
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex04-generating-fibonnacci-sequence">
+   EX04 Generating fibonnacci sequence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex05-generating-pi">
+   EX05 Generating Pi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex06-print-9x9-tables">
+   EX06 Print 9x9 tables
+  </a>
  </li>
 </ul>
 
@@ -567,21 +576,19 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#for-enumerating-each-items">
      For enumerating each items
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#str-is-also-a-sequential-type-class">
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         str
-        </span>
-       </code>
-       is also a sequential type class
-      </a>
-     </li>
-    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#break-continue-to-stop-for-loop-conditionally">
+    <a class="reference internal nav-link" href="#str-is-also-sequential-type">
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       str
+      </span>
+     </code>
+     is also sequential type
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#break-continue-to-stop-for-loop">
      <code class="docutils literal notranslate">
       <span class="pre">
        break
@@ -593,7 +600,7 @@ title="Print to PDF"
        continue
       </span>
      </code>
-     to stop for-loop conditionally
+     to stop for-loop
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -604,63 +611,56 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#examples">
-   Examples
+  <a class="reference internal nav-link" href="#ex01-sum-up-all-values-in-a-list">
+   EX01 Sum up all values in a list
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex02-sum-up-the-number-of-ubike">
+   EX02 Sum up the number of ubike
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex03-assign-values-into-equal-length-brackets">
+   EX03 Assign values into equal length brackets
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sum-up-all-values-in-a-list">
-     Sum up all values in a list
+    <a class="reference internal nav-link" href="#plotting-by-hist">
+     Plotting by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       hist()
+      </span>
+     </code>
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sum-up-the-number-of-ubike">
-     Sum up the number of ubike
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#assign-values-into-equal-length-brackets">
-     Assign values into equal length brackets
-    </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#plotting-by-hist">
-       Plotting by
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         hist()
-        </span>
-       </code>
-      </a>
-     </li>
-     <li class="toc-h4 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#counting-then-plotting-by-bar">
-       Counting then plotting by
-       <code class="docutils literal notranslate">
-        <span class="pre">
-         bar()
-        </span>
-       </code>
-      </a>
-     </li>
-    </ul>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generating-fibonnacci-sequence">
-     Generating fibonnacci sequence
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#generating-pi">
-     Generating Pi
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#print-9x9-tables">
-     Print 9x9 tables
+    <a class="reference internal nav-link" href="#counting-then-plotting-by-bar">
+     Counting then plotting by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       bar()
+      </span>
+     </code>
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex04-generating-fibonnacci-sequence">
+   EX04 Generating fibonnacci sequence
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex05-generating-pi">
+   EX05 Generating Pi
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#ex06-print-9x9-tables">
+   EX06 Print 9x9 tables
+  </a>
  </li>
 </ul>
 
@@ -750,8 +750,9 @@ Dcab       ==&gt;       7678
 </div>
 </div>
 </div>
-<section id="str-is-also-a-sequential-type-class">
-<h4><code class="docutils literal notranslate"><span class="pre">str</span></code> is also a sequential type class<a class="headerlink" href="#str-is-also-a-sequential-type-class" title="Permalink to this headline">#</a></h4>
+</section>
+<section id="str-is-also-sequential-type">
+<h3><code class="docutils literal notranslate"><span class="pre">str</span></code> is also sequential type<a class="headerlink" href="#str-is-also-sequential-type" title="Permalink to this headline">#</a></h3>
 <p>之前在P02提及多種資料型態時，在(4)序列（sequence Types）的地方曾提及文字字串（<code class="docutils literal notranslate"><span class="pre">str</span></code>）也是一種序列型態。所以，如果有一個文字<code class="docutils literal notranslate"><span class="pre">word</span> <span class="pre">=</span> <span class="pre">banana</span></code>的話，<code class="docutils literal notranslate"><span class="pre">word[0]</span></code>會是<code class="docutils literal notranslate"><span class="pre">b</span></code>，而<code class="docutils literal notranslate"><span class="pre">word[1]</span></code>會是<code class="docutils literal notranslate"><span class="pre">a</span></code>，依此類推。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -775,9 +776,8 @@ a
 </div>
 </div>
 </section>
-</section>
-<section id="break-continue-to-stop-for-loop-conditionally">
-<h3><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code> to stop for-loop conditionally<a class="headerlink" href="#break-continue-to-stop-for-loop-conditionally" title="Permalink to this headline">#</a></h3>
+<section id="break-continue-to-stop-for-loop">
+<h3><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code> to stop for-loop<a class="headerlink" href="#break-continue-to-stop-for-loop" title="Permalink to this headline">#</a></h3>
 <p>在for-loop執行過程中，有時候會希望在某些條件成立時，就直接終止並跳出整個for-loop，或者，迴圈內以下的內容就不要執行，直接執行下一個iteration。包含以下兩種指令：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>: 當條件成立，下方的迴圈內容就不再執行，直接進入下一個iteration。</p></li>
@@ -830,31 +830,6 @@ ellen
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carlos
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;apple&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>    <span class="c1"># k, v is a tuble containing a pair of variables, equals to (k, v)</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-
-<span class="k">for</span> <span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_items([(&#39;apple&#39;, 4), (&#39;banana&#39;, 3), (&#39;grape&#39;, 1)])
-apple 	 4
-banana 	 3
-grape 	 1
-apple 	 4
-banana 	 3
-grape 	 1
 </pre></div>
 </div>
 </div>
@@ -920,10 +895,8 @@ grape 	 1
 </div>
 </section>
 </section>
-<section id="examples">
-<h2>Examples<a class="headerlink" href="#examples" title="Permalink to this headline">#</a></h2>
-<section id="sum-up-all-values-in-a-list">
-<h3>Sum up all values in a list<a class="headerlink" href="#sum-up-all-values-in-a-list" title="Permalink to this headline">#</a></h3>
+<section id="ex01-sum-up-all-values-in-a-list">
+<h2>EX01 Sum up all values in a list<a class="headerlink" href="#ex01-sum-up-all-values-in-a-list" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">10</span><span class="p">]</span>
@@ -970,8 +943,8 @@ grape 	 1
 </div>
 </div>
 </section>
-<section id="sum-up-the-number-of-ubike">
-<h3>Sum up the number of ubike<a class="headerlink" href="#sum-up-the-number-of-ubike" title="Permalink to this headline">#</a></h3>
+<section id="ex02-sum-up-the-number-of-ubike">
+<h2>EX02 Sum up the number of ubike<a class="headerlink" href="#ex02-sum-up-the-number-of-ubike" title="Permalink to this headline">#</a></h2>
 <p>計算讀到的資料中，目前共有多少個ubike停駐位、又有多少ubike目前正停駐在車格上</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1024,11 +997,11 @@ grape 	 1
 </div>
 </div>
 </section>
-<section id="assign-values-into-equal-length-brackets">
-<h3>Assign values into equal length brackets<a class="headerlink" href="#assign-values-into-equal-length-brackets" title="Permalink to this headline">#</a></h3>
+<section id="ex03-assign-values-into-equal-length-brackets">
+<h2>EX03 Assign values into equal length brackets<a class="headerlink" href="#ex03-assign-values-into-equal-length-brackets" title="Permalink to this headline">#</a></h2>
 <p>之前在做Counting時，每個項目是離散的，但今天我如果要把成績的百分制等分均分至數個區間後（0-10, 10-20, …, 90-100, 100），分別計算每個區間有多少人要怎麼做？</p>
 <section id="plotting-by-hist">
-<h4>Plotting by <code class="docutils literal notranslate"><span class="pre">hist()</span></code><a class="headerlink" href="#plotting-by-hist" title="Permalink to this headline">#</a></h4>
+<h3>Plotting by <code class="docutils literal notranslate"><span class="pre">hist()</span></code><a class="headerlink" href="#plotting-by-hist" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
@@ -1045,12 +1018,12 @@ grape 	 1
  &lt;a list of 10 Patch objects&gt;)
 </pre></div>
 </div>
-<img alt="../_images/P04_1_for_30_1.png" src="../_images/P04_1_for_30_1.png" />
+<img alt="../_images/P04_1_for_29_1.png" src="../_images/P04_1_for_29_1.png" />
 </div>
 </div>
 </section>
 <section id="counting-then-plotting-by-bar">
-<h4>Counting then plotting by <code class="docutils literal notranslate"><span class="pre">bar()</span></code><a class="headerlink" href="#counting-then-plotting-by-bar" title="Permalink to this headline">#</a></h4>
+<h3>Counting then plotting by <code class="docutils literal notranslate"><span class="pre">bar()</span></code><a class="headerlink" href="#counting-then-plotting-by-bar" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">73</span><span class="p">]</span>
@@ -1079,13 +1052,13 @@ grape 	 1
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 11 artists&gt;
 </pre></div>
 </div>
-<img alt="../_images/P04_1_for_32_2.png" src="../_images/P04_1_for_32_2.png" />
+<img alt="../_images/P04_1_for_31_2.png" src="../_images/P04_1_for_31_2.png" />
 </div>
 </div>
 </section>
 </section>
-<section id="generating-fibonnacci-sequence">
-<h3>Generating fibonnacci sequence<a class="headerlink" href="#generating-fibonnacci-sequence" title="Permalink to this headline">#</a></h3>
+<section id="ex04-generating-fibonnacci-sequence">
+<h2>EX04 Generating fibonnacci sequence<a class="headerlink" href="#ex04-generating-fibonnacci-sequence" title="Permalink to this headline">#</a></h2>
 <p>費氏數列第一個為0，第二個為1，第三者之後為前兩項相加，請問第10項是多少？
 請嘗試將你的答案列印為以下的模樣</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> 	 <span class="mi">1</span>
@@ -1127,8 +1100,8 @@ grape 	 1
 </div>
 </div>
 </section>
-<section id="generating-pi">
-<h3>Generating Pi<a class="headerlink" href="#generating-pi" title="Permalink to this headline">#</a></h3>
+<section id="ex05-generating-pi">
+<h2>EX05 Generating Pi<a class="headerlink" href="#ex05-generating-pi" title="Permalink to this headline">#</a></h2>
 <p>Gregory and Leibniz found Pi/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9…
 <a class="reference external" href="https://mathworld.wolfram.com/PiFormulas.html">https://mathworld.wolfram.com/PiFormulas.html</a></p>
 <div class="cell docutils container">
@@ -1149,8 +1122,8 @@ grape 	 1
 </div>
 </div>
 </section>
-<section id="print-9x9-tables">
-<h3>Print 9x9 tables<a class="headerlink" href="#print-9x9-tables" title="Permalink to this headline">#</a></h3>
+<section id="ex06-print-9x9-tables">
+<h2>EX06 Print 9x9 tables<a class="headerlink" href="#ex06-print-9x9-tables" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
@@ -1175,9 +1148,6 @@ grape 	 1
 </div>
 </div>
 </section>
-</section>
-<div class="toctree-wrapper compound">
-</div>
 </section>
 
     <script type="text/x-thebe-config">
@@ -1207,17 +1177,17 @@ grape 	 1
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="P03_list_dictionary.html" title="previous page">
+    <a class='left-prev' id="prev-link" href="P03p.html" title="previous page">
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">P03-List and Dictionary</p>
+            <p class="prev-next-title">P03-Practice List &amp; Dict</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="P02b_basic.html" title="next page">
+    <a class='right-next' id="next-link" href="P04_2_for_if.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">P02-blank-Python Basic</p>
+        <p class="prev-next-title">P04 for-if applications</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

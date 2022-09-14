@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>INDEX &#8212; Programming for Social Scientists</title>
+    <title>READ Files &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P06 Pandas" href="P06_pandas.html" />
+    <link rel="prev" title="P04 for-if applications" href="P04_2_for_if.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
   Python-Basic
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="P01_counting.html">
    P01-Counting
@@ -139,27 +141,52 @@ const thebe_selector_output = ".output, .cell_output"
    P02-Python Basic
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="P03_list_dictionary.html">
    P03-List and Dictionary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="P04_1_for.html">
-   P04-For-if-else
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_1_for.html">
+   P04-For-if-else
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 for-if applications
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   READ Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P06_pandas.html">
+   P06 Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P07_visualization.html">
+   P07 Visualization with Pandas
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Practices
+  Blank files
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -426,44 +453,37 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   INDEX
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-csv">
+   Read CSV
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i-read-csv">
-   I. Read CSV
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#file-path">
      File path
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#csv">
-       CSV檔案內容
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv">
+     CSV檔案內容
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#m-1-read-csv-by-lines">
      M.1 Read CSV by lines
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#m-2-read-by-csv-reader">
      M.2 Read by csv.reader()
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#m-3-read-by-pandas-data-frame">
      M.3 Read by pandas data.frame
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#read-url-directly-by-pandas">
        Read url directly by pandas
       </a>
@@ -472,51 +492,51 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ii-json">
-   II. JSON
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#json">
+   JSON
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dump-and-load-json">
      Dump and load JSON
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-loading-json-ubike">
      Example: Loading json: ubike
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-1-requests-to-get-data-from-internet">
        Step 1. requests to get data from internet
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-2-convert-json-text-to-python-objects">
        Step 2. Convert json text to python objects
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trial-load-youbike-json-by-pandas">
-     Trial: Load youbike json by pandas
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-youbike-json-by-pandas">
+     Load youbike json by pandas
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iii-converting-data-structure">
-   III. Converting data structure
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-data-structure">
+   Converting data structure
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coverting-to-typical-json">
      Coverting to typical JSON
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#converting-csv-to-json">
      Converting csv to json
     </a>
@@ -532,7 +552,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>INDEX</h1>
+                <h1>READ Files</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -542,44 +562,37 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   INDEX
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#read-csv">
+   Read CSV
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#i-read-csv">
-   I. Read CSV
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#file-path">
      File path
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#csv">
-       CSV檔案內容
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#csv">
+     CSV檔案內容
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#m-1-read-csv-by-lines">
      M.1 Read CSV by lines
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#m-2-read-by-csv-reader">
      M.2 Read by csv.reader()
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#m-3-read-by-pandas-data-frame">
      M.3 Read by pandas data.frame
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#read-url-directly-by-pandas">
        Read url directly by pandas
       </a>
@@ -588,51 +601,51 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#ii-json">
-   II. JSON
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#json">
+   JSON
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dump-and-load-json">
      Dump and load JSON
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#example-loading-json-ubike">
      Example: Loading json: ubike
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-1-requests-to-get-data-from-internet">
        Step 1. requests to get data from internet
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#step-2-convert-json-text-to-python-objects">
        Step 2. Convert json text to python objects
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#trial-load-youbike-json-by-pandas">
-     Trial: Load youbike json by pandas
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-youbike-json-by-pandas">
+     Load youbike json by pandas
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#iii-converting-data-structure">
-   III. Converting data structure
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#converting-data-structure">
+   Converting data structure
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#coverting-to-typical-json">
      Coverting to typical JSON
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#converting-csv-to-json">
      Converting csv to json
     </a>
@@ -649,8 +662,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="index">
-<h1>INDEX<a class="headerlink" href="#index" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="read-files">
+<h1>READ Files<a class="headerlink" href="#read-files" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Read <a class="reference external" href="https://docs.google.com/presentation/d/1ZQoBdfjIsd-RdXEby3RmFfotBHZXR0bzKzhaZThkfJU/edit?usp=sharing">Slide</a> to know what is CSV and JSON</p></li>
 <li><p>Read CSV (Metdho 1, 2, 3)</p></li>
@@ -659,9 +672,8 @@ title="Print to PDF"
 <li><p>Eseential functions in Pandas</p></li>
 <li><p>Convert data structures</p></li>
 </ul>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="i-read-csv">
-<h1>I. Read CSV<a class="headerlink" href="#i-read-csv" title="Permalink to this headline">#</a></h1>
+<section id="read-csv">
+<h2>Read CSV<a class="headerlink" href="#read-csv" title="Permalink to this headline">#</a></h2>
 <p>當規劃要讀進一個CSV檔時，我可能有三種做法：</p>
 <ol class="simple">
 <li><p>全部靠自己逐行讀，用<code class="docutils literal notranslate"><span class="pre">readlines()</span></code>來判斷換行符號，將所有資料依照換行符號切割為list內的Element，再將每個Elements遇到逗號進行切割。</p></li>
@@ -669,7 +681,7 @@ title="Print to PDF"
 <li><p>利用pandas的函式讀檔</p></li>
 </ol>
 <section id="file-path">
-<h2>File path<a class="headerlink" href="#file-path" title="Permalink to this headline">#</a></h2>
+<h3>File path<a class="headerlink" href="#file-path" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>若已經把ipynb下載回本機端，就只需要把相對位置作為資料路徑即可。</p></li>
 <li><p>如果是都在colab上執行，就要先在程式中mount google drive，並把位置指到相對應的路徑。</p></li>
@@ -711,6 +723,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
 <section id="csv">
 <h3>CSV檔案內容<a class="headerlink" href="#csv" title="Permalink to this headline">#</a></h3>
 <p>當我用<code class="docutils literal notranslate"><span class="pre">f.read()</span></code>讀取純文字檔案內的內容時，整個內容會被轉為單一string。由於我加了Slicing <code class="docutils literal notranslate"><span class="pre">f.read()[:400]</span></code>來取出前400個字，剛好可以看見第一列的詮釋資料、第一二三筆資料，但到了第三筆資料的一半，便超過400個字。</p>
@@ -746,9 +759,8 @@ title="Print to PDF"
 </div>
 </div>
 </section>
-</section>
 <section id="m-1-read-csv-by-lines">
-<h2>M.1 Read CSV by lines<a class="headerlink" href="#m-1-read-csv-by-lines" title="Permalink to this headline">#</a></h2>
+<h3>M.1 Read CSV by lines<a class="headerlink" href="#m-1-read-csv-by-lines" title="Permalink to this headline">#</a></h3>
 <p>前面說到，CSV檔的每一列都有一個<code class="docutils literal notranslate"><span class="pre">\n</span></code>做換行，所以，我要讀取CSV就可以用<code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code>讀進每一列的資料，該函式會遇到<code class="docutils literal notranslate"><span class="pre">\n</span></code>即切開為一行，切開後的資料就存進一個外層List中。之後，我可以針對切開的每一列資料（例如底下的<code class="docutils literal notranslate"><span class="pre">line</span></code>），遇到逗號就斷開<code class="docutils literal notranslate"><span class="pre">line.split(&quot;,&quot;)</span></code>，每一列就會變成一個List。所以最後會產生一個兩層的List。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">.read()</span></code>是讀取整個檔案變成一個字串，因此，必須在後面跟著用<code class="docutils literal notranslate"><span class="pre">split()</span></code>函式，讓這個大字串遇到<code class="docutils literal notranslate"><span class="pre">\n</span></code>就會切成分行的小字串。</p></li>
@@ -812,7 +824,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="m-2-read-by-csv-reader">
-<h2>M.2 Read by csv.reader()<a class="headerlink" href="#m-2-read-by-csv-reader" title="Permalink to this headline">#</a></h2>
+<h3>M.2 Read by csv.reader()<a class="headerlink" href="#m-2-read-by-csv-reader" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">csv_read()</span></code>並非預載於python runtime environment的基本函式，因此要import csv library，才可以使用該library中的<code class="docutils literal notranslate"><span class="pre">csv_read()</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -849,7 +861,7 @@ Yahoo！奇摩拍賣
 </div>
 </section>
 <section id="m-3-read-by-pandas-data-frame">
-<h2>M.3 Read by pandas data.frame<a class="headerlink" href="#m-3-read-by-pandas-data-frame" title="Permalink to this headline">#</a></h2>
+<h3>M.3 Read by pandas data.frame<a class="headerlink" href="#m-3-read-by-pandas-data-frame" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1045,7 +1057,7 @@ Yahoo！奇摩拍賣
 </div></div></div>
 </div>
 <section id="read-url-directly-by-pandas">
-<h3>Read url directly by pandas<a class="headerlink" href="#read-url-directly-by-pandas" title="Permalink to this headline">#</a></h3>
+<h4>Read url directly by pandas<a class="headerlink" href="#read-url-directly-by-pandas" title="Permalink to this headline">#</a></h4>
 <ol class="simple">
 <li><p>至https://data.taipei/ 搜尋「結婚」可找到「臺北市婚姻概況按月別」後，對「下載資料」按右鍵複製連結即得https://data.taipei/api/getDatasetInfo/downloadResource?id=bc83f1a0-2192-4e06-acc2-4d2a0bc9121b&amp;rid=d4ce96ce-a463-40dc-95b2-0c88d81a5427</p></li>
 <li><p>(無法直接讀取URL，只能用下載的) Find an interesting dataset on <a class="reference external" href="https://data.gov.tw/">https://data.gov.tw/</a> (e.g.) 結婚對數按婚姻類型、性別及年齡分(按登記) <a class="reference external" href="https://data.gov.tw/dataset/130547">https://data.gov.tw/dataset/130547</a> . Click “檢視資料” to obtain data link <a class="reference external" href="https://data.moi.gov.tw/MoiOD/System/DownloadFile.aspx?DATA=50E1F8E9-3A75-45A7-A50D-306CC625A700">https://data.moi.gov.tw/MoiOD/System/DownloadFile.aspx?DATA=50E1F8E9-3A75-45A7-A50D-306CC625A700</a></p></li>
@@ -1326,10 +1338,10 @@ Yahoo！奇摩拍賣
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="ii-json">
-<h1>II. JSON<a class="headerlink" href="#ii-json" title="Permalink to this headline">#</a></h1>
+<section id="json">
+<h2>JSON<a class="headerlink" href="#json" title="Permalink to this headline">#</a></h2>
 <section id="dump-and-load-json">
-<h2>Dump and load JSON<a class="headerlink" href="#dump-and-load-json" title="Permalink to this headline">#</a></h2>
+<h3>Dump and load JSON<a class="headerlink" href="#dump-and-load-json" title="Permalink to this headline">#</a></h3>
 <p>通常把資料寫到檔案中稱為dump out（或者save、write視程式語言的函式而不同），而把資料從檔案中讀成程式語言所能處理的結構則稱為load（或read）。無論是讀入資料或寫出資料，都要先開啟檔案（如<code class="docutils literal notranslate"><span class="pre">open('sample.json',</span> <span class="pre">'w')</span></code>）。檔案開啟後，才可以將資料寫入。完整的寫法如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">sample_data</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
 </pre></div>
@@ -1375,10 +1387,10 @@ Yahoo！奇摩拍賣
 </div>
 </section>
 <section id="example-loading-json-ubike">
-<h2>Example: Loading json: ubike<a class="headerlink" href="#example-loading-json-ubike" title="Permalink to this headline">#</a></h2>
+<h3>Example: Loading json: ubike<a class="headerlink" href="#example-loading-json-ubike" title="Permalink to this headline">#</a></h3>
 <p>這個例子載入了台北市ubike的即時資料，該資料以JSON格式儲存，但他並非List of dict(s)的型態，而是Dict of dict(s)的型態，在最外面亦多一層Dictionary包裹著資料和回傳是否傳輸成功的確認碼。因此，和一般的例子比較起來，這個例子必須要找到資料的節點，在解出為Python的物件時，也要考慮如何處理資料中兩層的Dictionary。</p>
 <section id="step-1-requests-to-get-data-from-internet">
-<h3>Step 1. requests to get data from internet<a class="headerlink" href="#step-1-requests-to-get-data-from-internet" title="Permalink to this headline">#</a></h3>
+<h4>Step 1. requests to get data from internet<a class="headerlink" href="#step-1-requests-to-get-data-from-internet" title="Permalink to this headline">#</a></h4>
 <p>在以下的程式碼中，我用<code class="docutils literal notranslate"><span class="pre">requests</span></code>這個套件發出一個<code class="docutils literal notranslate"><span class="pre">get()</span></code>要求，然後我嘗試列印出一些該要求的回傳資料，以確認我成功地獲得我要求的資料。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1418,7 +1430,7 @@ Yahoo！奇摩拍賣
 </div>
 </section>
 <section id="step-2-convert-json-text-to-python-objects">
-<h3>Step 2. Convert json text to python objects<a class="headerlink" href="#step-2-convert-json-text-to-python-objects" title="Permalink to this headline">#</a></h3>
+<h4>Step 2. Convert json text to python objects<a class="headerlink" href="#step-2-convert-json-text-to-python-objects" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
@@ -1440,8 +1452,8 @@ Yahoo！奇摩拍賣
 </div>
 </section>
 </section>
-<section id="trial-load-youbike-json-by-pandas">
-<h2>Trial: Load youbike json by pandas<a class="headerlink" href="#trial-load-youbike-json-by-pandas" title="Permalink to this headline">#</a></h2>
+<section id="load-youbike-json-by-pandas">
+<h3>Load youbike json by pandas<a class="headerlink" href="#load-youbike-json-by-pandas" title="Permalink to this headline">#</a></h3>
 <p>如果要載入的JSON資料檔是表述為<strong>a List of dict</strong>，那麼pandas套件有函式可以將JSON字串轉為data frame。可以從以下的stackoverflow網站找到類似的函式。但如果資料並非典型List of dict的型態，那麼被解出來的資料常不會是所預期的List of dictionary的型態。不過，總之JSON解析後所轉成的Python物件必然是
 <a class="reference external" href="https://stackoverflow.com/questions/20638006/convert-list-of-dictionaries-to-dataframe">https://stackoverflow.com/questions/20638006/convert-list-of-dictionaries-to-dataframe</a></p>
 <div class="cell docutils container">
@@ -1581,10 +1593,10 @@ Yahoo！奇摩拍賣
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="iii-converting-data-structure">
-<h1>III. Converting data structure<a class="headerlink" href="#iii-converting-data-structure" title="Permalink to this headline">#</a></h1>
+<section id="converting-data-structure">
+<h2>Converting data structure<a class="headerlink" href="#converting-data-structure" title="Permalink to this headline">#</a></h2>
 <section id="coverting-to-typical-json">
-<h2>Coverting to typical JSON<a class="headerlink" href="#coverting-to-typical-json" title="Permalink to this headline">#</a></h2>
+<h3>Coverting to typical JSON<a class="headerlink" href="#coverting-to-typical-json" title="Permalink to this headline">#</a></h3>
 <p>現在我嘗試要把Dictionary of dictionry的資料整理為List of dictionary的型態。要這麼做並不難，我只需要把所有內層的dictionary取出來，一一<code class="docutils literal notranslate"><span class="pre">append()</span></code>到一個空的List即可。最後，我把這樣的結構用<code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code>轉為一個pandas的Data frame。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1727,7 +1739,7 @@ Yahoo！奇摩拍賣
 </div>
 </section>
 <section id="converting-csv-to-json">
-<h2>Converting csv to json<a class="headerlink" href="#converting-csv-to-json" title="Permalink to this headline">#</a></h2>
+<h3>Converting csv to json<a class="headerlink" href="#converting-csv-to-json" title="Permalink to this headline">#</a></h3>
 <p>現在我想做的是，假設我有一個檔案是CSV檔，但我希望用手動方式把它改為JSON檔，要怎麼做？做法其實就是先把CSV第一列取出來儲存為Key，然後把這個Key一一和每一列的值給對應起來結合成一個又一個的Dictionary，最後把每列所產生的Dictionary用<code class="docutils literal notranslate"><span class="pre">append()</span></code>加入一個List中，就會是一個List of dictionaries結構的JSON格式。</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string">https://stackoverflow.com/questions/17912307/u-ufeff-in-python-string</a></p></li>
@@ -1801,6 +1813,7 @@ Yahoo！奇摩拍賣
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1829,6 +1842,20 @@ Yahoo！奇摩拍賣
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P04_2_for_if.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">P04 for-if applications</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="P06_pandas.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P06 Pandas</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

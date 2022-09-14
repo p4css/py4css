@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Beginning &#8212; Programming for Social Scientists</title>
+    <title>P06 Pandas &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P07 Visualization with Pandas" href="P07_visualization.html" />
+    <link rel="prev" title="READ Files" href="P05_read_csv_json.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
   Python-Basic
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="P01_counting.html">
    P01-Counting
@@ -139,27 +141,52 @@ const thebe_selector_output = ".output, .cell_output"
    P02-Python Basic
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="P03_list_dictionary.html">
    P03-List and Dictionary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="P04_1_for.html">
-   P04-For-if-else
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_1_for.html">
+   P04-For-if-else
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 for-if applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P05_read_csv_json.html">
+   READ Files
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   P06 Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P07_visualization.html">
+   P07 Visualization with Pandas
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Practices
+  Blank files
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -428,7 +455,7 @@ title="Print to PDF"
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Beginning
+   P06 Pandas
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -471,54 +498,40 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-data-by-index">
-     Accessing data by index
+    <a class="reference internal nav-link" href="#access-data-by-index">
+     Access data by index
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#slicing-and-accessing-to-observe-data">
-     Slicing and accessing to observe data
+    <a class="reference internal nav-link" href="#slice-and-access-data">
+     Slice and access data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#observing-single-variable">
-     Observing single variable
+    <a class="reference internal nav-link" href="#observe-single-variable">
+     Observe single variable
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-2-mutating-new-variables-converting-data-type">
-   Pandas 2. Mutating new variables, converting data type
-  </a>
-  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-ratio-sbi-tot-for-ubike-data">
-     Creating
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       ratio
-      </span>
-      <span class="pre">
-       =
-      </span>
-      <span class="pre">
-       sbi/tot
-      </span>
-     </code>
-     for ubike data
+    <a class="reference internal nav-link" href="#convert-variable-type">
+     Convert variable type
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutate-new-variable">
+     Mutate new variable
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-3-summarize-data-according-to-several-variables">
-   Pandas 3. Summarize data according to several variables
+  <a class="reference internal nav-link" href="#pandas-2-summarizing-data">
+   Pandas 2. Summarizing data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#counting-single-variable">
-     Counting single variable
+    <a class="reference internal nav-link" href="#count-single-variable">
+     Count single variable
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -534,23 +547,18 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-4-sort-by-arrange">
-   Pandas 4. Sort-by (Arrange)
+  <a class="reference internal nav-link" href="#pandas-3-sort-by-arrange">
+   Pandas 3. Sort-by (Arrange)
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-5-rent591">
-   Pandas 5. rent591
+  <a class="reference internal nav-link" href="#pandas-4-example-rent591">
+   Pandas 4. Example: rent591
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-colab">
-     Using colab
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-local-pc">
-     Using local PC
+    <a class="reference internal nav-link" href="#loading-data">
+     Loading data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -564,16 +572,14 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sort-by-value">
-     Sort by value
+    <a class="reference internal nav-link" href="#sorting-df-by-value">
+     Sorting df by value
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#chaining-style">
-       Chaining style
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chaining-style">
+     Chaining style
+    </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#counting-frequency">
@@ -588,8 +594,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-6-pivot-to-long-or-wide-form">
-   Pandas 6. Pivot to long- or wide-form
+  <a class="reference internal nav-link" href="#pandas-5-pivot-to-long-or-wide-form">
+   Pandas 5. Pivot to long- or wide-form
   </a>
  </li>
 </ul>
@@ -601,7 +607,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Beginning</h1>
+                <h1>P06 Pandas</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -613,7 +619,7 @@ title="Print to PDF"
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h1 nav-item toc-entry">
   <a class="reference internal nav-link" href="#">
-   Beginning
+   P06 Pandas
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
@@ -656,54 +662,40 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#accessing-data-by-index">
-     Accessing data by index
+    <a class="reference internal nav-link" href="#access-data-by-index">
+     Access data by index
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#slicing-and-accessing-to-observe-data">
-     Slicing and accessing to observe data
+    <a class="reference internal nav-link" href="#slice-and-access-data">
+     Slice and access data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#observing-single-variable">
-     Observing single variable
+    <a class="reference internal nav-link" href="#observe-single-variable">
+     Observe single variable
     </a>
    </li>
-  </ul>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-2-mutating-new-variables-converting-data-type">
-   Pandas 2. Mutating new variables, converting data type
-  </a>
-  <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#creating-ratio-sbi-tot-for-ubike-data">
-     Creating
-     <code class="docutils literal notranslate">
-      <span class="pre">
-       ratio
-      </span>
-      <span class="pre">
-       =
-      </span>
-      <span class="pre">
-       sbi/tot
-      </span>
-     </code>
-     for ubike data
+    <a class="reference internal nav-link" href="#convert-variable-type">
+     Convert variable type
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#mutate-new-variable">
+     Mutate new variable
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-3-summarize-data-according-to-several-variables">
-   Pandas 3. Summarize data according to several variables
+  <a class="reference internal nav-link" href="#pandas-2-summarizing-data">
+   Pandas 2. Summarizing data
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#counting-single-variable">
-     Counting single variable
+    <a class="reference internal nav-link" href="#count-single-variable">
+     Count single variable
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -719,23 +711,18 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-4-sort-by-arrange">
-   Pandas 4. Sort-by (Arrange)
+  <a class="reference internal nav-link" href="#pandas-3-sort-by-arrange">
+   Pandas 3. Sort-by (Arrange)
   </a>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-5-rent591">
-   Pandas 5. rent591
+  <a class="reference internal nav-link" href="#pandas-4-example-rent591">
+   Pandas 4. Example: rent591
   </a>
   <ul class="visible nav section-nav flex-column">
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-colab">
-     Using colab
-    </a>
-   </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#using-local-pc">
-     Using local PC
+    <a class="reference internal nav-link" href="#loading-data">
+     Loading data
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -749,16 +736,14 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#sort-by-value">
-     Sort by value
+    <a class="reference internal nav-link" href="#sorting-df-by-value">
+     Sorting df by value
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#chaining-style">
-       Chaining style
-      </a>
-     </li>
-    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chaining-style">
+     Chaining style
+    </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
     <a class="reference internal nav-link" href="#counting-frequency">
@@ -773,8 +758,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-6-pivot-to-long-or-wide-form">
-   Pandas 6. Pivot to long- or wide-form
+  <a class="reference internal nav-link" href="#pandas-5-pivot-to-long-or-wide-form">
+   Pandas 5. Pivot to long- or wide-form
   </a>
  </li>
 </ul>
@@ -787,8 +772,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="beginning">
-<h1>Beginning<a class="headerlink" href="#beginning" title="Permalink to this headline">#</a></h1>
+  <section id="p06-pandas">
+<h1>P06 Pandas<a class="headerlink" href="#p06-pandas" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.google.com/presentation/d/1OP8GcjUUWc9MWxfPNW2Ch47iENpXyOKeMKGzSth1UPs/edit?usp=sharing">Slide: Py06 Pandas and data manipulation</a></p></li>
 <li><p>Pandas cheat sheet: <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</a></p></li>
@@ -798,7 +783,7 @@ title="Print to PDF"
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/20638006/convert-list-of-dictionaries-to-dataframe">stackoverflow: Convert to json</a></p></li>
 </ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="read-data-records">
+<section id="read-data-records">
 <h1>Read data records - 違規藥品廣告<a class="headerlink" href="#read-data-records" title="Permalink to this headline">#</a></h1>
 <p>違規藥品廣告資料集 <a class="reference external" href="https://data.nat.gov.tw/dataset/14196">https://data.nat.gov.tw/dataset/14196</a></p>
 <div class="cell docutils container">
@@ -811,7 +796,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_28125/2567337408.py:2: FutureWarning: The error_bad_lines argument has been deprecated and will be removed in a future version. Use on_bad_lines in the future.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_74793/2567337408.py:2: FutureWarning: The error_bad_lines argument has been deprecated and will be removed in a future version. Use on_bad_lines in the future.
 
 
   drug_df = pd.read_csv(&#39;https://github.com/P4CSS/PSS/raw/master/data/14196_drug_adv.csv&#39;, error_bad_lines=False)
@@ -1091,7 +1076,7 @@ Name: pubMediaType, dtype: int64
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="read-json-data-value-youbike">
+<section id="read-json-data-value-youbike">
 <h1>Read JSON data value: Youbike<a class="headerlink" href="#read-json-data-value-youbike" title="Permalink to this headline">#</a></h1>
 <p><code class="docutils literal notranslate"><span class="pre">df.head()</span></code> print out the first 5 entries of data</p>
 <section id="m1-convert-to-list-of-dicts-by-hand">
@@ -1384,7 +1369,7 @@ Name: pubMediaType, dtype: int64
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-1-observing-data">
+<section id="pandas-1-observing-data">
 <h1>Pandas 1. Observing data<a class="headerlink" href="#pandas-1-observing-data" title="Permalink to this headline">#</a></h1>
 <p><strong>Oberserving data</strong> <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> and <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> 觀察各個變數的分佈 to check data type or get basic summary of data 。</p>
 <section id="overview-whole-df">
@@ -1643,8 +1628,8 @@ memory usage: 46.9+ KB
 </div></div></div>
 </div>
 </section>
-<section id="accessing-data-by-index">
-<h2>Accessing data by index<a class="headerlink" href="#accessing-data-by-index" title="Permalink to this headline">#</a></h2>
+<section id="access-data-by-index">
+<h2>Access data by index<a class="headerlink" href="#access-data-by-index" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access single row</span>
@@ -1707,8 +1692,8 @@ Name: pubMediaType, Length: 1760, dtype: object
 </div>
 </div>
 </section>
-<section id="slicing-and-accessing-to-observe-data">
-<h2>Slicing and accessing to observe data<a class="headerlink" href="#slicing-and-accessing-to-observe-data" title="Permalink to this headline">#</a></h2>
+<section id="slice-and-access-data">
+<h2>Slice and access data<a class="headerlink" href="#slice-and-access-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drug_df</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
@@ -2161,8 +2146,8 @@ Name: pubMediaType, Length: 1760, dtype: object
 </div></div></div>
 </div>
 </section>
-<section id="observing-single-variable">
-<h2>Observing single variable<a class="headerlink" href="#observing-single-variable" title="Permalink to this headline">#</a></h2>
+<section id="observe-single-variable">
+<h2>Observe single variable<a class="headerlink" href="#observe-single-variable" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">))</span>
@@ -2432,15 +2417,10 @@ Name: pubMediaType, dtype: object
 </div></div></div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-2-mutating-new-variables-converting-data-type">
-<h1>Pandas 2. Mutating new variables, converting data type<a class="headerlink" href="#pandas-2-mutating-new-variables-converting-data-type" title="Permalink to this headline">#</a></h1>
+<section id="convert-variable-type">
+<h2>Convert variable type<a class="headerlink" href="#convert-variable-type" title="Permalink to this headline">#</a></h2>
 <p><strong>Cleaning data</strong> <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(var)</span></code> 修改變數型態 to convert data type</p>
 <p><strong>Mutate new variables</strong></p>
-<ul class="simple">
-<li><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.assign(new_var</span> <span class="pre">=</span> <span class="pre">old_var1</span> <span class="pre">/</span> <span class="pre">old_var2)</span></code> 產生新的變數（方法一） to create or convert new variable. Be careful! You must assign to left to overwrite original df.</p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">df[&quot;new_var&quot;]</span> <span class="pre">=</span> <span class="pre">df.old_var1</span> <span class="pre">/</span> <span class="pre">df.old_var2</span></code> 產生新的變數（方法二）</p></li>
-</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">slist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;11&#39;</span><span class="p">,</span> <span class="s1">&#39;22&#39;</span><span class="p">,</span> <span class="s1">&#39;33&#39;</span><span class="p">]</span>
@@ -2713,9 +2693,15 @@ Name: pubMediaType, dtype: object
 <p>400 rows × 15 columns</p>
 </div></div></div>
 </div>
-<section id="creating-ratio-sbi-tot-for-ubike-data">
-<h2>Creating <code class="docutils literal notranslate"><span class="pre">ratio</span> <span class="pre">=</span> <span class="pre">sbi/tot</span></code> for ubike data<a class="headerlink" href="#creating-ratio-sbi-tot-for-ubike-data" title="Permalink to this headline">#</a></h2>
-<p><code class="docutils literal notranslate"><span class="pre">pd.to_numeric()</span></code> to covert one variable type</p>
+</section>
+<section id="mutate-new-variable">
+<h2>Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.assign(new_var</span> <span class="pre">=</span> <span class="pre">old_var1</span> <span class="pre">/</span> <span class="pre">old_var2)</span></code> 產生新的變數（方法一） to create or convert new variable. Be careful! You must assign to left to overwrite original df.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df[&quot;new_var&quot;]</span> <span class="pre">=</span> <span class="pre">df.old_var1</span> <span class="pre">/</span> <span class="pre">df.old_var2</span></code> 產生新的變數（方法二）</p></li>
+<li><p>Creating <code class="docutils literal notranslate"><span class="pre">ratio</span> <span class="pre">=</span> <span class="pre">sbi/tot</span></code> for ubike data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pd.to_numeric()</span></code> to covert one variable type</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span> <span class="o">=</span> <span class="n">ubike_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">sbi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ubike_df</span><span class="o">.</span><span class="n">sbi</span><span class="p">),</span>
@@ -3066,8 +3052,8 @@ Name: pubMediaType, dtype: object
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-3-summarize-data-according-to-several-variables">
-<h1>Pandas 3. Summarize data according to several variables<a class="headerlink" href="#pandas-3-summarize-data-according-to-several-variables" title="Permalink to this headline">#</a></h1>
+<section id="pandas-2-summarizing-data">
+<h1>Pandas 2. Summarizing data<a class="headerlink" href="#pandas-2-summarizing-data" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>Tutorial: <a class="reference external" href="https://jamesrledoux.com/code/group-by-aggregate-pandas">groupby pandas</a></p></li>
 </ul>
@@ -3076,8 +3062,8 @@ Name: pubMediaType, dtype: object
 <li><p><code class="docutils literal notranslate"><span class="pre">df.groupby(col1)[col2].mean()</span></code> summarize col2 according to col1 by calculating their average of each category</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">df.groupby([col1,</span> <span class="pre">col3])[col2].count()</span></code> summarize col2 according to col1 and col3 by counting</p></li>
 </ul>
-<section id="counting-single-variable">
-<h2>Counting single variable<a class="headerlink" href="#counting-single-variable" title="Permalink to this headline">#</a></h2>
+<section id="count-single-variable">
+<h2>Count single variable<a class="headerlink" href="#count-single-variable" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conventional way</span>
@@ -3087,7 +3073,14 @@ Name: pubMediaType, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;網路&#39;: 1479, &#39;平面媒體&#39;: 111, &#39;其他&#39;: 13, &#39;廣播電台&#39;: 71, &#39;電視&#39;: 86})
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Conventional way</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;drug_df&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -3601,8 +3594,8 @@ Name: tot, dtype: int64
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-4-sort-by-arrange">
-<h1>Pandas 4. Sort-by (Arrange)<a class="headerlink" href="#pandas-4-sort-by-arrange" title="Permalink to this headline">#</a></h1>
+<section id="pandas-3-sort-by-arrange">
+<h1>Pandas 3. Sort-by (Arrange)<a class="headerlink" href="#pandas-3-sort-by-arrange" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ascending=False to sort by dscending order</span>
@@ -3962,10 +3955,11 @@ Name: tot, dtype: int64
 </div></div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-5-rent591">
-<h1>Pandas 5. rent591<a class="headerlink" href="#pandas-5-rent591" title="Permalink to this headline">#</a></h1>
-<section id="using-colab">
-<h2>Using colab<a class="headerlink" href="#using-colab" title="Permalink to this headline">#</a></h2>
+<section id="pandas-4-example-rent591">
+<h1>Pandas 4. Example: rent591<a class="headerlink" href="#pandas-4-example-rent591" title="Permalink to this headline">#</a></h1>
+<section id="loading-data">
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<p>Using Colab</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget https://github.com/P4CSS/PSS/raw/master/data/rent591.pkl -O rent591.pkl
@@ -3977,9 +3971,7 @@ Name: tot, dtype: int64
 </div>
 </div>
 </div>
-</section>
-<section id="using-local-pc">
-<h2>Using local PC<a class="headerlink" href="#using-local-pc" title="Permalink to this headline">#</a></h2>
+<p>Using local PC</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Download data to your local PC and read with jupyter notebook(lab)</span>
@@ -4433,8 +4425,8 @@ Name: id, Length: 1549, dtype: int64
 </div></div></div>
 </div>
 </section>
-<section id="sort-by-value">
-<h2>Sort by value<a class="headerlink" href="#sort-by-value" title="Permalink to this headline">#</a></h2>
+<section id="sorting-df-by-value">
+<h2>Sorting df by value<a class="headerlink" href="#sorting-df-by-value" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rent_count_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -4527,8 +4519,9 @@ Name: id, Length: 1549, dtype: int64
 <p>1549 rows × 2 columns</p>
 </div></div></div>
 </div>
+</section>
 <section id="chaining-style">
-<h3>Chaining style<a class="headerlink" href="#chaining-style" title="Permalink to this headline">#</a></h3>
+<h2>Chaining style<a class="headerlink" href="#chaining-style" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">rent_count_df</span> <span class="o">=</span> <span class="n">df591</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;user_id&quot;</span><span class="p">)[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">([</span><span class="s1">&#39;n&#39;</span><span class="p">],</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
@@ -4540,7 +4533,6 @@ Name: id, Length: 1549, dtype: int64
 <li><p>counting frequency of items in a list</p></li>
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/2161752/how-to-count-the-frequency-of-the-elements-in-a-list/2162045">https://stackoverflow.com/questions/2161752/how-to-count-the-frequency-of-the-elements-in-a-list/2162045</a></p></li>
 </ul>
-</section>
 </section>
 <section id="counting-frequency">
 <h2>Counting frequency<a class="headerlink" href="#counting-frequency" title="Permalink to this headline">#</a></h2>
@@ -4616,8 +4608,8 @@ Name: id, Length: 1549, dtype: int64
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-6-pivot-to-long-or-wide-form">
-<h1>Pandas 6. Pivot to long- or wide-form<a class="headerlink" href="#pandas-6-pivot-to-long-or-wide-form" title="Permalink to this headline">#</a></h1>
+<section id="pandas-5-pivot-to-long-or-wide-form">
+<h1>Pandas 5. Pivot to long- or wide-form<a class="headerlink" href="#pandas-5-pivot-to-long-or-wide-form" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -5213,6 +5205,20 @@ Name: id, Length: 1549, dtype: int64
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P05_read_csv_json.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">READ Files</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="P07_visualization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P07 Visualization with Pandas</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

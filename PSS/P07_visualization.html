@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Filtering data &#8212; Programming for Social Scientists</title>
+    <title>P07 Visualization with Pandas &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P02-blank-Python Basic" href="P02b_basic.html" />
+    <link rel="prev" title="P06 Pandas" href="P06_pandas.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -116,7 +118,7 @@ const thebe_selector_output = ".output, .cell_output"
   Python-Basic
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="P01_counting.html">
    P01-Counting
@@ -139,27 +141,52 @@ const thebe_selector_output = ".output, .cell_output"
    P02-Python Basic
   </a>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="P03_list_dictionary.html">
    P03-List and Dictionary
-  </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="P04_1_for.html">
-   P04-For-if-else
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
   <label for="toctree-checkbox-2">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul class="simple">
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_1_for.html">
+   P04-For-if-else
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 for-if applications
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P05_read_csv_json.html">
+   READ Files
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P06_pandas.html">
+   P06 Pandas
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   P07 Visualization with Pandas
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
-  Practices
+  Blank files
  </span>
 </p>
 <ul class="nav bd-sidenav">
@@ -426,63 +453,66 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Filtering data
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-vaccination-data">
+   Loading vaccination data
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-chart-presentation">
-   Pandas chart presentation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#line-plot-of-time-series-on-new-cases">
-   line plot of time series on new cases
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#by-pandas">
-     by Pandas
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observing-data">
+     Observing data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-data">
+     Filtering data
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#line-ploting-pivot-to-more-columns">
-   line ploting: pivot to more columns
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#line-plot-of-time-series">
+   line plot of time series
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     by pandas
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-pandas">
+     by Pandas
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#more-params">
-       More params
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pivot-to-more-columns">
+     Pivot to more columns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-by-pandas">
+     Visualizing by pandas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-params">
+     More params
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#by-plot-bokeh-line-plot-with-pandas-bokeh">
      by plot_bokeh line plot with pandas_bokeh
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bar-chart-vaccinating-rate">
    Bar chart: vaccinating rate
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#by-pure-pandas-plot">
-     by pure pandas plot
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-pure-pandas">
+     by pure pandas
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#by-plot-bokeh">
      by plot_bokeh
     </a>
@@ -498,7 +528,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Filtering data</h1>
+                <h1>P07 Visualization with Pandas</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -508,63 +538,66 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Filtering data
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#loading-vaccination-data">
+   Loading vaccination data
   </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pandas-chart-presentation">
-   Pandas chart presentation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#line-plot-of-time-series-on-new-cases">
-   line plot of time series on new cases
-  </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#by-pandas">
-     by Pandas
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#observing-data">
+     Observing data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filtering-data">
+     Filtering data
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#line-ploting-pivot-to-more-columns">
-   line ploting: pivot to more columns
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#line-plot-of-time-series">
+   line plot of time series
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
-     by pandas
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-pandas">
+     by Pandas
     </a>
-    <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
-      <a class="reference internal nav-link" href="#more-params">
-       More params
-      </a>
-     </li>
-    </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#pivot-to-more-columns">
+     Pivot to more columns
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#visualizing-by-pandas">
+     Visualizing by pandas
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-params">
+     More params
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#by-plot-bokeh-line-plot-with-pandas-bokeh">
      by plot_bokeh line plot with pandas_bokeh
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#bar-chart-vaccinating-rate">
    Bar chart: vaccinating rate
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#by-pure-pandas-plot">
-     by pure pandas plot
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-pure-pandas">
+     by pure pandas
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#by-plot-bokeh">
      by plot_bokeh
     </a>
@@ -581,13 +614,11 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-</pre></div>
-</div>
-</div>
-</div>
+  <section class="tex2jax_ignore mathjax_ignore" id="p07-visualization-with-pandas">
+<h1>P07 Visualization with Pandas<a class="headerlink" href="#p07-visualization-with-pandas" title="Permalink to this headline">#</a></h1>
+<p>Main Reference: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html</a></p>
+<section id="loading-vaccination-data">
+<h2>Loading vaccination data<a class="headerlink" href="#loading-vaccination-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://ourworldindata.org/covid-vaccinations">https://ourworldindata.org/covid-vaccinations</a></p></li>
 <li><p><a class="reference external" href="https://github.com/owid/covid-19-data/tree/master/public/data">https://github.com/owid/covid-19-data/tree/master/public/data</a></p></li>
@@ -595,13 +626,14 @@ title="Print to PDF"
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 </div>
-<section id="filtering-data">
-<h1>Filtering data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">#</a></h1>
+<section id="observing-data">
+<h3>Observing data<a class="headerlink" href="#observing-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">raw</span><span class="o">.</span><span class="n">columns</span>
@@ -653,6 +685,9 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
+<section id="filtering-data">
+<h3>Filtering data<a class="headerlink" href="#filtering-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_asia</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;continent&#39;</span><span class="p">]</span><span class="o">==</span><span class="s2">&quot;Asia&quot;</span><span class="p">]</span>
@@ -662,7 +697,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Syria&#39;, &#39;Iran&#39;, &#39;Lebanon&#39;, &#39;Indonesia&#39;, &#39;United Arab Emirates&#39;, &#39;China&#39;, &#39;Japan&#39;, &#39;Maldives&#39;, &#39;Nepal&#39;, &#39;Israel&#39;, &#39;Brunei&#39;, &#39;Kazakhstan&#39;, &#39;Northern Cyprus&#39;, &#39;Thailand&#39;, &#39;Turkmenistan&#39;, &#39;Laos&#39;, &#39;India&#39;, &#39;Saudi Arabia&#39;, &#39;South Korea&#39;, &#39;Uzbekistan&#39;, &#39;Yemen&#39;, &#39;Armenia&#39;, &#39;Singapore&#39;, &#39;Turkey&#39;, &#39;Afghanistan&#39;, &#39;Malaysia&#39;, &#39;Azerbaijan&#39;, &#39;Cambodia&#39;, &#39;Macao&#39;, &#39;Bahrain&#39;, &#39;Iraq&#39;, &#39;Oman&#39;, &#39;North Korea&#39;, &#39;Taiwan&#39;, &#39;Jordan&#39;, &#39;Mongolia&#39;, &#39;Myanmar&#39;, &#39;Bhutan&#39;, &#39;Bangladesh&#39;, &#39;Kuwait&#39;, &#39;Kyrgyzstan&#39;, &#39;Tajikistan&#39;, &#39;Palestine&#39;, &#39;Timor&#39;, &#39;Vietnam&#39;, &#39;Georgia&#39;, &#39;Hong Kong&#39;, &#39;Pakistan&#39;, &#39;Philippines&#39;, &#39;Sri Lanka&#39;, &#39;Qatar&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Cambodia&#39;, &#39;Thailand&#39;, &#39;Yemen&#39;, &#39;Japan&#39;, &#39;Pakistan&#39;, &#39;Philippines&#39;, &#39;Turkey&#39;, &#39;Jordan&#39;, &#39;South Korea&#39;, &#39;Qatar&#39;, &#39;Palestine&#39;, &#39;Iraq&#39;, &#39;Afghanistan&#39;, &#39;Laos&#39;, &#39;Oman&#39;, &#39;Georgia&#39;, &#39;Brunei&#39;, &#39;Sri Lanka&#39;, &#39;North Korea&#39;, &#39;Kuwait&#39;, &#39;Syria&#39;, &#39;Taiwan&#39;, &#39;Timor&#39;, &#39;Uzbekistan&#39;, &#39;Nepal&#39;, &#39;United Arab Emirates&#39;, &#39;Kazakhstan&#39;, &#39;China&#39;, &#39;Lebanon&#39;, &#39;India&#39;, &#39;Macao&#39;, &#39;Indonesia&#39;, &#39;Armenia&#39;, &#39;Singapore&#39;, &#39;Northern Cyprus&#39;, &#39;Iran&#39;, &#39;Tajikistan&#39;, &#39;Turkmenistan&#39;, &#39;Israel&#39;, &#39;Vietnam&#39;, &#39;Mongolia&#39;, &#39;Bangladesh&#39;, &#39;Bahrain&#39;, &#39;Malaysia&#39;, &#39;Bhutan&#39;, &#39;Kyrgyzstan&#39;, &#39;Saudi Arabia&#39;, &#39;Myanmar&#39;, &#39;Hong Kong&#39;, &#39;Azerbaijan&#39;, &#39;Maldives&#39;}
 51
 </pre></div>
 </div>
@@ -725,7 +760,7 @@ title="Print to PDF"
   </thead>
   <tbody>
     <tr>
-      <th>188750</th>
+      <th>188931</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -749,7 +784,7 @@ title="Print to PDF"
       <td>NaN</td>
     </tr>
     <tr>
-      <th>188751</th>
+      <th>188932</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -773,7 +808,7 @@ title="Print to PDF"
       <td>NaN</td>
     </tr>
     <tr>
-      <th>188752</th>
+      <th>188933</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -797,7 +832,7 @@ title="Print to PDF"
       <td>NaN</td>
     </tr>
     <tr>
-      <th>188753</th>
+      <th>188934</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -821,7 +856,7 @@ title="Print to PDF"
       <td>NaN</td>
     </tr>
     <tr>
-      <th>188754</th>
+      <th>188935</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -869,31 +904,7 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>189716</th>
-      <td>TWN</td>
-      <td>Asia</td>
-      <td>Taiwan</td>
-      <td>2022-09-08</td>
-      <td>5580027.0</td>
-      <td>35053.0</td>
-      <td>33988.714</td>
-      <td>10170.0</td>
-      <td>29.0</td>
-      <td>31.429</td>
-      <td>...</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>80.46</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>189717</th>
+      <th>189898</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -917,7 +928,7 @@ title="Print to PDF"
       <td>NaN</td>
     </tr>
     <tr>
-      <th>189718</th>
+      <th>189899</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -941,7 +952,7 @@ title="Print to PDF"
       <td>NaN</td>
     </tr>
     <tr>
-      <th>189719</th>
+      <th>189900</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -965,7 +976,7 @@ title="Print to PDF"
       <td>NaN</td>
     </tr>
     <tr>
-      <th>189720</th>
+      <th>189901</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -988,9 +999,33 @@ title="Print to PDF"
       <td>NaN</td>
       <td>NaN</td>
     </tr>
+    <tr>
+      <th>189902</th>
+      <td>TWN</td>
+      <td>Asia</td>
+      <td>Taiwan</td>
+      <td>2022-09-13</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>...</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>80.46</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
   </tbody>
 </table>
-<p>971 rows × 67 columns</p>
+<p>972 rows × 67 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1029,14 +1064,9 @@ Length: 67, dtype: object
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pandas-chart-presentation">
-<h1>Pandas chart presentation<a class="headerlink" href="#pandas-chart-presentation" title="Permalink to this headline">#</a></h1>
-<ul class="simple">
-<li><p>Main Reference: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html</a></p></li>
-</ul>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="line-plot-of-time-series-on-new-cases">
-<h1>line plot of time series on new cases<a class="headerlink" href="#line-plot-of-time-series-on-new-cases" title="Permalink to this headline">#</a></h1>
+<section id="line-plot-of-time-series">
+<h2>line plot of time series<a class="headerlink" href="#line-plot-of-time-series" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">df_tw</span><span class="o">.</span><span class="n">date</span><span class="p">))</span>
@@ -1060,7 +1090,7 @@ object
 datetime64[ns]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_28130/4139459774.py:9: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_74799/4139459774.py:9: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -1075,7 +1105,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <li><p><code class="docutils literal notranslate"><span class="pre">figsize=(10,5)</span></code>: The size in <code class="docutils literal notranslate"><span class="pre">figsize=(5,3)</span></code> is given in inches per (width, height). See <a class="reference external" href="https://stackoverflow.com/questions/51174691/how-to-increase-image-size-of-pandas-dataframe-plot">https://stackoverflow.com/questions/51174691/how-to-increase-image-size-of-pandas-dataframe-plot</a></p></li>
 </ul>
 <section id="by-pandas">
-<h2>by Pandas<a class="headerlink" href="#by-pandas" title="Permalink to this headline">#</a></h2>
+<h3>by Pandas<a class="headerlink" href="#by-pandas" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_tw</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;new_cases&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1099,7 +1129,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">df1</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;location&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">([</span><span class="s2">&quot;Taiwan&quot;</span><span class="p">,</span> <span class="s2">&quot;Japan&quot;</span><span class="p">])]</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="nb">set</span><span class="p">(</span><span class="n">df1</span><span class="o">.</span><span class="n">location</span><span class="p">)</span>
 
@@ -1109,9 +1139,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </section>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="line-ploting-pivot-to-more-columns">
-<h1>line ploting: pivot to more columns<a class="headerlink" href="#line-ploting-pivot-to-more-columns" title="Permalink to this headline">#</a></h1>
+<section id="pivot-to-more-columns">
+<h3>Pivot to more columns<a class="headerlink" href="#pivot-to-more-columns" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_wide</span> <span class="o">=</span> <span class="n">df1</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s2">&quot;location&quot;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;new_cases&quot;</span><span class="p">,</span> <span class="s2">&quot;total_cases&quot;</span><span class="p">,</span> <span class="s2">&quot;total_vaccinations_per_hundred&quot;</span><span class="p">])</span>
@@ -1446,8 +1475,9 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <p>653 rows × 7 columns</p>
 </div></div></div>
 </div>
-<section id="id1">
-<h2>by pandas<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="visualizing-by-pandas">
+<h3>Visualizing by pandas<a class="headerlink" href="#visualizing-by-pandas" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_wide</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="s2">&quot;date&quot;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s2">&quot;new_cases&quot;</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
@@ -1461,6 +1491,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <img alt="../_images/P07_visualization_23_1.png" src="../_images/P07_visualization_23_1.png" />
 </div>
 </div>
+</section>
 <section id="more-params">
 <h3>More params<a class="headerlink" href="#more-params" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html">https://pandas.pydata.org/pandas-docs/version/0.22/generated/pandas.DataFrame.plot.html</a></p>
@@ -1502,9 +1533,8 @@ Name: Taiwan, Length: 653, dtype: float64
 </div>
 </div>
 </section>
-</section>
 <section id="by-plot-bokeh-line-plot-with-pandas-bokeh">
-<h2>by plot_bokeh line plot with pandas_bokeh<a class="headerlink" href="#by-plot-bokeh-line-plot-with-pandas-bokeh" title="Permalink to this headline">#</a></h2>
+<h3>by plot_bokeh line plot with pandas_bokeh<a class="headerlink" href="#by-plot-bokeh-line-plot-with-pandas-bokeh" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/beautiful-and-easy-plotting-in-python-pandas-bokeh-afa92d792167">https://towardsdatascience.com/beautiful-and-easy-plotting-in-python-pandas-bokeh-afa92d792167</a></p></li>
 <li><p><a class="reference external" href="https://patrikhlobil.github.io/Pandas-Bokeh/">https://patrikhlobil.github.io/Pandas-Bokeh/</a> (Document of Pandas-Bokeh)</p></li>
@@ -2066,8 +2096,8 @@ Successfully installed pandas-bokeh-0.5.5
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="bar-chart-vaccinating-rate">
-<h1>Bar chart: vaccinating rate<a class="headerlink" href="#bar-chart-vaccinating-rate" title="Permalink to this headline">#</a></h1>
+<section id="bar-chart-vaccinating-rate">
+<h2>Bar chart: vaccinating rate<a class="headerlink" href="#bar-chart-vaccinating-rate" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
@@ -2132,8 +2162,8 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 </div>
-<section id="by-pure-pandas-plot">
-<h2>by pure pandas plot<a class="headerlink" href="#by-pure-pandas-plot" title="Permalink to this headline">#</a></h2>
+<section id="by-pure-pandas">
+<h3>by pure pandas<a class="headerlink" href="#by-pure-pandas" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_recent</span><span class="o">.</span><span class="n">columns</span>
@@ -2189,7 +2219,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 <section id="by-plot-bokeh">
-<h2>by plot_bokeh<a class="headerlink" href="#by-plot-bokeh" title="Permalink to this headline">#</a></h2>
+<h3>by plot_bokeh<a class="headerlink" href="#by-plot-bokeh" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df_recent</span><span class="o">.</span><span class="n">fillna</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;total_vaccinations_per_hundred&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">plot_bokeh</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> 
@@ -2251,6 +2281,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -2279,6 +2310,20 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P06_pandas.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">P06 Pandas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="P02b_basic.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P02-blank-Python Basic</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
