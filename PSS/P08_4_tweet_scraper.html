@@ -1,0 +1,1076 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Get Tweet Data &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Logic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P01_counting.html">
+   P01-Counting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P02_basic.html">
+   P02-Python Basic
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P02b_basic.html">
+     P02-blank-Python Basic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03b_list_dictionary.html">
+     P03-blank-List &amp; Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_1_for.html">
+   P04-For-if-else
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 for-if applications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P05_read_csv_json.html">
+   P05 READ Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P05_read_other_format.html">
+     Read more formats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P06_pandas.html">
+   P06 Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P06a_pandas_tricks.html">
+     Pandas Tricks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P07_visualization.html">
+   P07 Visualization with Pandas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="P08_3_cases.html">
+   P08-3 Scraping cases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Jupyter-Book
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/video_list.html">
+   Python教學影片
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/IDEs.html">
+   Python開發環境
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/PSS/P08_4_tweet_scraper.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P08_4_tweet_scraper.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P08_4_tweet_scraper.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/PSS/P08_4_tweet_scraper.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tweepy-for-api-1-0">
+   tweepy for API 1.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#api-2-0">
+   API 2.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#by-pure-twitter-api">
+   By Pure Twitter API
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-with-parameters">
+     Query with parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-data-from-next-token-pagination">
+     Get data from next token (Pagination)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-by-link">
+     Query by link
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#starting">
+       Starting
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Get Tweet Data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tweepy-for-api-1-0">
+   tweepy for API 1.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#api-2-0">
+   API 2.0
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#by-pure-twitter-api">
+   By Pure Twitter API
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-with-parameters">
+     Query with parameters
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-data-from-next-token-pagination">
+     Get data from next token (Pagination)
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-by-link">
+     Query by link
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#starting">
+       Starting
+      </a>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="get-tweet-data">
+<h1>Get Tweet Data<a class="headerlink" href="#get-tweet-data" title="Permalink to this headline">#</a></h1>
+<section id="tweepy-for-api-1-0">
+<h2>tweepy for API 1.0<a class="headerlink" href="#tweepy-for-api-1-0" title="Permalink to this headline">#</a></h2>
+<p>要注意自己用的tweepy lib function是for 1.0 or 2.0，以下是Code fore 1.0。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># pip install tweepy</span>
+
+<span class="c1"># API 1.0?</span>
+
+<span class="kn">import</span> <span class="nn">tweepy</span>
+
+<span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuth1UserHandler</span><span class="p">(</span>
+   <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span>
+<span class="p">)</span>
+
+<span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># pip install tweepy</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># API 1.0?</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuth1UserHandler</span><span class="p">(</span>
+<span class="ne">----&gt; </span><span class="mi">8</span>    <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;consumer_key&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">public_tweets</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">home_timeline</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">public_tweets</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">user</span> <span class="o">=</span> <span class="n">api</span><span class="o">.</span><span class="n">get_user</span><span class="p">(</span><span class="n">screen_name</span><span class="o">=</span><span class="s1">&#39;adolfux&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="api-2-0">
+<h2>API 2.0<a class="headerlink" href="#api-2-0" title="Permalink to this headline">#</a></h2>
+<p>現在Twitter API2.0主要分成三種存取權限，通常剛註冊的人給的就是Essentials，學者有機會可以申請到Academic Research，可以獲得更多的Tweets。
+<img alt="image.png" src="PSS/attachment:994bb5c3-e706-47ac-8477-061d9fe3354d.png" /></p>
+<p>以下是搭配tweepy for Twitter API 2.0的函式操作結果</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">&quot;AAAAAAAAAAAAAAAAAAAAALW%2BhAEAAAAA%2BcmN%2BODfzcWe1dlk7Ho8F%2BSCYmY%3DbgYizorcMfgzuomVL3iTTVRmsx47pzwFT6pPLSjudfYWRf9vfP&quot;</span><span class="p">)</span>
+<span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import tweepy</span>
+
+<span class="c1"># bearer_token = &quot;AAAAAAAAAAAAAAAAAAAAALW%2BhAEAAAAA%2BcmN%2BODfzcWe1dlk7Ho8F%2BSCYmY%3DbgYizorcMfgzuomVL3iTTVRmsx47pzwFT6pPLSjudfYWRf9vfP&quot;</span>
+<span class="c1"># consumer_key = &#39;visEpk0iAvn5GF07kuhf3FTwS&#39;</span>
+<span class="c1"># # consumer_key = &#39;cjZsVW5TeFFna1hELWVFb0NiWnQ6MTpjaQ&#39; # client id</span>
+<span class="c1"># consumer_secret = &#39;VCkUNtrVh5Uiden1AdLwcLUSwsYve6SvBN7lsrsVvJwJ2mQioo&#39;</span>
+<span class="c1"># # consumer_secret = &#39;ZgsSvESUuEP04qaFRzA8g799nN3bxn_bI5mhaphnxr2jqE3Yqp&#39; # client secret</span>
+<span class="c1"># access_token = &#39;53118769-fcM2H5zMRa3JSl299BwXnm3TC648xm95MDD4qTzAF&#39;</span>
+<span class="c1"># access_token_secret = &#39;1qLxtoe0RMv1Yz5huKXhddDjRKfc9viULhr8nskorRSrB&#39;</span>
+
+<span class="c1"># client  = tweepy.Client(bearer_token=bearer_token, </span>
+<span class="c1">#                         consumer_key=consumer_key, </span>
+<span class="c1">#                         consumer_secret=consumer_secret, </span>
+<span class="c1">#                         access_token=access_token, </span>
+<span class="c1">#                         access_token_secret=access_token_secret)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search_recent_tweets</span><span class="p">(</span><span class="s2">&quot;taiwan&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">context_annotations</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">tweet</span><span class="o">.</span><span class="n">context_annotations</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are headed for Dual #Supplychain. One led by Europe &amp;amp; the US, and the other by China &amp;amp; Russia, following #Ukraine &amp;amp; #Taiwan. 
+Is it beneficial for the Globe? 
+#Ukraine is not the end in itself nor for that matter,  #Taiwan. https://t.co/C73aQC6kym https://t.co/0KGmLPSGTL
+6.6-Magnitude Earthquake Hits Taiwan’s East Coast https://t.co/m2cmlgRidn
+RT @foreignersinTW: Cat map of Taiwan https://t.co/Ey0kf4BYQf
+RT @twbf1988: The Fairy Pitta - a migratory bird that went from relative obscurity in Taiwan to the face of an environmental movement.
+
+Als…
+Andy Vermaut shares:6.6-Magnitude Earthquake Hits Taiwan&#39;s East Coast: A 6.6-magnitude earthquake struck off the east coast of Taiwan today, the US Geological Survey said. https://t.co/xNU0WFzGnA Thank you. https://t.co/ZCsDnIUNDp
+6.4-magnitude earthquake strikes off east coast of Taiwan https://t.co/0EpRdMO5LZ
+6.6-Magnitude Earthquake Hits Taiwan’s East Coast https://t.co/hsGLQhKRTg
+RT @disclosetv: JUST IN - 6.6 magnitude earthquake hits Taiwan — USGS
+RT @AZmilitary1: ⚠️🇨🇳 🇹🇼 🇺🇸 China has threatened to sever relations with the United States over the Taiwan issue if Washington passes 2022…
+RT @eew_p: Automatically Plotted Shakemaps:
+* 2022-09-17 21:42:20 (UTC+08:00, Taipei)
+* Evt. 20220917214120, 60s after trig.
+* Total 669 tr…
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="by-pure-twitter-api">
+<h2>By Pure Twitter API<a class="headerlink" href="#by-pure-twitter-api" title="Permalink to this headline">#</a></h2>
+<p>其實Twitter也有提供大量的範例可以讓使用者學習，例如這個範例<a class="reference external" href="https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Recent-Search/recent_search.py">recent_search.py</a>程式碼就教你怎麼搜尋最近某個關鍵字的相關Tweets。</p>
+<section id="query-with-parameters">
+<h3>Query with parameters<a class="headerlink" href="#query-with-parameters" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># To set your environment variables in your terminal run the following line:</span>
+<span class="c1"># export &#39;BEARER_TOKEN&#39;=&#39;&lt;your_bearer_token&gt;&#39;</span>
+<span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;AAAAAAAAAAAAAAAAAAAAALW%2BhAEAAAAA%2BcmN%2BODfzcWe1dlk7Ho8F%2BSCYmY%3DbgYizorcMfgzuomVL3iTTVRmsx47pzwFT6pPLSjudfYWRf9vfP&quot;</span>
+
+<span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent&quot;</span>
+
+<span class="c1"># Optional params: start_time,end_time,since_id,until_id,max_results,next_token,</span>
+<span class="c1"># expansions,tweet.fields,media.fields,poll.fields,place.fields,user.fields</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">bearer_oauth</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Authorization&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">bearer_token</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;v2RecentSearchPython&quot;</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="k">def</span> <span class="nf">connect_to_endpoint</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">bearer_oauth</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+
+<span class="k">def</span> <span class="nf">main</span><span class="p">():</span>
+    <span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+
+<span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s2">&quot;__main__&quot;</span><span class="p">:</span>
+    <span class="n">main</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+{
+    &quot;data&quot;: [
+        {
+            &quot;author_id&quot;: &quot;915192618&quot;,
+            &quot;id&quot;: &quot;1571197586186407936&quot;,
+            &quot;text&quot;: &quot;RT @EpochTimesChina: #Taiwan\u2019s government accused #China of exerting pressure on #Malaysian technology event organizers to block a Taiwanes\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;21637092&quot;,
+            &quot;id&quot;: &quot;1571197582361370624&quot;,
+            &quot;text&quot;: &quot;Pelosi In Taiwan, is War with China Imminent..? \u2013 #PELOSI #CHINA #TAIWAN https://t.co/rt9Bf4ptlt https://t.co/lwF1dho36W&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;206797546&quot;,
+            &quot;id&quot;: &quot;1571197565374287873&quot;,
+            &quot;text&quot;: &quot;Public schools lead in the final national exams\nhttps://t.co/fL60XZzdhH\nRep of #Somaliland #Djibouti #Taiwan #UK #USA #Kenya #Ethiopia #Somalia #Africa #World https://t.co/yU0BrCF2jE&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;730412904&quot;,
+            &quot;id&quot;: &quot;1571197555509428225&quot;,
+            &quot;text&quot;: &quot;RT @iingwen: A pleasure to celebrate the 201st anniversary of Central American independence with #Honduras &amp;amp; #Guatemala. #Taiwan will conti\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1032843521663885312&quot;,
+            &quot;id&quot;: &quot;1571197552799715332&quot;,
+            &quot;text&quot;: &quot;RT @TreasChest: Report: \ud83d\udc40\n\nSome unverified visual from the earthquake affected Kaohsiung Cheng Yi, 24th Floor Swimming Pool\n\nKaohsiung City\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;79708099&quot;,
+            &quot;id&quot;: &quot;1571197551113834497&quot;,
+            &quot;text&quot;: &quot;RT @TaiwanInNewYork: #Taiwan continues to be excluded from the United Nations system despite being one of the world&#39;s freest countries and\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1394765014616068096&quot;,
+            &quot;id&quot;: &quot;1571197521070034951&quot;,
+            &quot;text&quot;: &quot;RT @iingwen: A pleasure to celebrate the 201st anniversary of Central American independence with #Honduras &amp;amp; #Guatemala. #Taiwan will conti\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1414561711680417804&quot;,
+            &quot;id&quot;: &quot;1571197510835896320&quot;,
+            &quot;text&quot;: &quot;\u5e9c\u524d\u8857\u4e00\u4e01\u76ee National Taiwan University Library Collection https://t.co/3HyMDjLxXf #taiwanhistory #taiwanphoto #taiwan https://t.co/UlYmKjpmeu&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1368280167274151937&quot;,
+            &quot;id&quot;: &quot;1571197477168074756&quot;,
+            &quot;text&quot;: &quot;RT @TaiwanFreedom89: Taiwan is all our friends.\n#Taiwan #Ukraine #MilkTeaAlliance https://t.co/whob6dcgkQ&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1480487265935708163&quot;,
+            &quot;id&quot;: &quot;1571197342220419072&quot;,
+            &quot;text&quot;: &quot;#China #NewsUpdate (20220917)\nhttps://t.co/6FWym6FtEg\n#realReason #US #Sanctions #Taiwan #Pelosi #TaiwanTrip #Intentionally\n#PearlHarbor #Oahu #Hawaii #ChineseIntelligence #PLA #TaoHuang\n#Queen\n\n#CCP #WW3 #WorldWarIII #TheDeepState #Playbook #ExposeCorruptPoliticians #HunterBiden https://t.co/hMHaLLWdA0&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;newest_id&quot;: &quot;1571197586186407936&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzbk32abzaefcnj20p7xkuk4o6q9p&quot;,
+        &quot;oldest_id&quot;: &quot;1571197342220419072&quot;,
+        &quot;result_count&quot;: 10
+    }
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="get-data-from-next-token-pagination">
+<h3>Get data from next token (Pagination)<a class="headerlink" href="#get-data-from-next-token-pagination" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate">https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># url = &#39;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;next_token=b26v89c19zqg8o3fpzbk32abzaefcnj20p7xkuk4o6q9p&#39;</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;next_token&#39;</span><span class="p">:</span> <span class="s1">&#39;b26v89c19zqg8o3fpzbk32abzaefcnj20p7xkuk4o6q9p&#39;</span><span class="p">}</span>
+<span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="query-by-link">
+<h3>Query by link<a class="headerlink" href="#query-by-link" title="Permalink to this headline">#</a></h3>
+<p>如果不知道有哪些欄位可以查詢，可以參考Twitter所提供的API Tools去建構。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/apitools/api">https://developer.twitter.com/apitools/api</a></p></li>
+<li><p>Choose endpoints <strong>GET /2/tweets/counts/recent</strong> (Returns Tweet Counts from the last 7 days that match a search query)</p></li>
+</ul>
+<p>有一個非常有趣的fields是<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/annotations/overview">entities annotations</a>，他會去標註在每一則Tweet中有哪些命名實體。例如在這則Tweeet中「<em>【出張TAIWAN PLUS 2022&#64;expo】
+『#pppppins 』は台湾デザイナーAlice Wangにより設立されたブランド。陽気、皮肉、そして文化的なモチーフのピンズはビジュアルを生き生きとさせるカラフルな色使いで、柔らかいエナメルを施した真鍮製です。🍧⛰🌵🦕#TAIWANPLUS2022</em>」就有「台湾」和「Alice Wang」兩個NER被標註出來，除了位置之外，還有辨識為人名、機構、地區的機率（probability）與類別（type）。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;entities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u53f0\u6e7e&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6719</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice Wang&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7319</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+</pre></div>
+</div>
+<section id="starting">
+<h4>Starting<a class="headerlink" href="#starting" title="Permalink to this headline">#</a></h4>
+<ol class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/en/docs/tutorials/step-by-step-guide-to-making-your-first-request-to-the-twitter-api-v2">Sign-up twitter developter account</a></p></li>
+<li><p>Create a project and an application</p></li>
+<li><p>Applying and copying Bear token</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># bearer_token = &quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">auth</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">bearer_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;v2RecentSearchPython&quot;</span><span class="p">}</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=created_at,geo,id,lang&quot;</span>
+<span class="c1"># url = &quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,source,text,withheld&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;data&quot;: [
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:22.000Z&quot;,
+            &quot;id&quot;: &quot;1571349890462273540&quot;,
+            &quot;lang&quot;: &quot;qme&quot;,
+            &quot;text&quot;: &quot;https://t.co/CDKgnH92pG\n\n#taiwan&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:17.000Z&quot;,
+            &quot;id&quot;: &quot;1571349867821420544&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;@mrbcyber Nobody&#39;ll be able to take Taiwan which is such a prosperous &amp;amp; beautiful independent country  !\n\nYes, Taiwan&#39;s an exemplary country in the family of nations that deserves UNO membership finally again !\n\nPeace &amp;amp; Justice will prevail globally, well stated in https://t.co/mE3PEq919Y&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:16.000Z&quot;,
+            &quot;id&quot;: &quot;1571349863551406080&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;RT @ChartsJJK: Left and Right\n\nShazam Top 200\n\n#99 Worldwide (-1)\n\n#4 Malaysia (=)\n#9 Singapore (+1)\n#13 Thailand (-1)\n#14 Indonesia (+1)\n#\u2026&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:14.000Z&quot;,
+            &quot;id&quot;: &quot;1571349855276269570&quot;,
+            &quot;lang&quot;: &quot;und&quot;,
+            &quot;text&quot;: &quot;#taiwan 4 https://t.co/pwL7of6CVE&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:13.000Z&quot;,
+            &quot;id&quot;: &quot;1571349853384413184&quot;,
+            &quot;lang&quot;: &quot;es&quot;,
+            &quot;text&quot;: &quot;RT @SismoMundial: R\u00e9plicas en Taiw\u00e1n luego del temblor de magnitud 6.5 de este s\u00e1bado: M5.1, M5.5 y 4.7 a las 14:35, 14:45 y 15:00 UTC, res\u2026&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:12.000Z&quot;,
+            &quot;id&quot;: &quot;1571349848984809473&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;I urge Tsai ing Wen&#39;s government to surrender as soon as possible, no matter sooner or later, the sooner the more initiative\uff01\nhttps://t.co/oAPzNajYeP\n#taiwan\n#\u8521\u82f1\u6587\n#\u6566\u4fc3\u8521\u82f1\u6587\u53ca\u5176\u8ecd\u653f\u9996\u8166\u6295\u964d\u66f8&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:07.000Z&quot;,
+            &quot;id&quot;: &quot;1571349825563623425&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;Covid Coverups, Taiwan Tensions &amp;amp; Coming Capitulation  https://t.co/6L8xwOTn6j&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:06.000Z&quot;,
+            &quot;id&quot;: &quot;1571349823995117568&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;I urge Tsai ing Wen&#39;s government to surrender as soon as possible, no matter sooner or later, the sooner the more initiative\uff01\nhttps://t.co/nZHaIEAnp5\n#taiwan\n#\u8521\u82f1\u6587\n#\u6566\u4fc3\u8521\u82f1\u6587\u53ca\u5176\u8ecd\u653f\u9996\u8166\u6295\u964d\u66f8&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:04.000Z&quot;,
+            &quot;id&quot;: &quot;1571349815681769472&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;6.4-magnitude earthquake strikes off east coast of Taiwan  https://t.co/AxXk57d0ci&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-09-18T04:06:04.000Z&quot;,
+            &quot;id&quot;: &quot;1571349814599880704&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;RT @swimming971010: \ud835\ude3e\ud835\ude64\ud835\ude63\ud835\ude5c\ud835\ude67\ud835\ude56\ud835\ude69\ud835\ude6a\ud835\ude61\ud835\ude56\ud835\ude69\ud835\ude5e\ud835\ude64\ud835\ude63\ud835\ude68 \ud835\ude69\ud835\ude64 @seng_wichai \ud835\ude64\ud835\ude63 \ud835\ude69\ud835\ude5d\ud835\ude5a \ud835\ude5b\ud835\ude5e\ud835\ude69\ud835\ude69\ud835\ude5e\ud835\ude63\ud835\ude5c \ud835\ude59\ud835\ude56\ud835\ude6e \ud835\ude64\ud835\ude5b \ud835\ude69\ud835\ude5d\ud835\ude5a \ud835\ude63\ud835\ude5a\ud835\ude6c \ud835\ude62\ud835\ude64\ud835\ude6b\ud835\ude5e\ud835\ude5a.\n\ud835\udd4a\ud835\udd61\ud835\udd56\ud835\udd54\ud835\udd5a\ud835\udd52\ud835\udd5d \ud835\udd4b\ud835\udd59\ud835\udd52\ud835\udd5f\ud835\udd5c\ud835\udd64 \ud83e\udef0\n @ planb.thaisupport (Ins)&amp;amp; @alie\u2026&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;newest_id&quot;: &quot;1571349890462273540&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzbk36iaevra5ljynz5v927nq8ol9&quot;,
+        &quot;oldest_id&quot;: &quot;1571349814599880704&quot;,
+        &quot;result_count&quot;: 10
+    }
+}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">)</span>
+<span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">])</span>
+<span class="n">data</span><span class="p">[</span><span class="s1">&#39;meta&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+<span class="c1"># len(data[&#39;data&#39;])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;newest_id&#39;, &#39;oldest_id&#39;, &#39;result_count&#39;, &#39;next_token&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

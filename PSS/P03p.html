@@ -528,6 +528,23 @@ title="Print to PDF"
    Practice02-Traversing json data: cnyes
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice03-traversing-twitter-data">
+   Practice03-Traversing twitter data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting">
+     Starting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-by-link">
+     Query by link
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -573,6 +590,23 @@ title="Print to PDF"
   <a class="reference internal nav-link" href="#practice02-traversing-json-data-cnyes">
    Practice02-Traversing json data: cnyes
   </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practice03-traversing-twitter-data">
+   Practice03-Traversing twitter data
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#starting">
+     Starting
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-by-link">
+     Query by link
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -675,6 +709,78 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
+<section id="practice03-traversing-twitter-data">
+<h2>Practice03-Traversing twitter data<a class="headerlink" href="#practice03-traversing-twitter-data" title="Permalink to this headline">#</a></h2>
+<section id="starting">
+<h3>Starting<a class="headerlink" href="#starting" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/en/docs/tutorials/step-by-step-guide-to-making-your-first-request-to-the-twitter-api-v2">Sign-up twitter developter account</a></p></li>
+<li><p>Create a project and an application</p></li>
+<li><p>Applying and copying Bear token</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span> <span class="c1"># paste your own bearer token into</span>
+<span class="n">auth</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;Authorization&quot;</span><span class="p">:</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">bearer_token</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> 
+        <span class="s2">&quot;User-Agent&quot;</span><span class="p">:</span> <span class="s2">&quot;v2RecentSearchPython&quot;</span><span class="p">}</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=created_at,geo,id,lang&quot;</span>
+<span class="c1"># url = &quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=attachments,author_id,context_annotations,conversation_id,created_at,entities,geo,id,in_reply_to_user_id,lang,source,text,withheld&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
+    &quot;detail&quot;: &quot;Unauthorized&quot;,
+    &quot;status&quot;: 401,
+    &quot;title&quot;: &quot;Unauthorized&quot;,
+    &quot;type&quot;: &quot;about:blank&quot;
+}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="query-by-link">
+<h3>Query by link<a class="headerlink" href="#query-by-link" title="Permalink to this headline">#</a></h3>
+<p>如果不知道有哪些欄位可以查詢，可以參考Twitter所提供的API Tools去建構。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/apitools/api">https://developer.twitter.com/apitools/api</a></p></li>
+<li><p>Choose endpoints <strong>GET /2/tweets/counts/recent</strong> (Returns Tweet Counts from the last 7 days that match a search query)</p></li>
+</ul>
+<p>有一個非常有趣的fields是<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/annotations/overview">entities annotations</a>，他會去標註在每一則Tweet中有哪些命名實體。例如在這則Tweeet中「<em>【出張TAIWAN PLUS 2022&#64;expo】
+『#pppppins 』は台湾デザイナーAlice Wangにより設立されたブランド。陽気、皮肉、そして文化的なモチーフのピンズはビジュアルを生き生きとさせるカラフルな色使いで、柔らかいエナメルを施した真鍮製です。🍧⛰🌵🦕#TAIWANPLUS2022</em>」就有「台湾」和「Alice Wang」兩個NER被標註出來，除了位置之外，還有辨識為人名、機構、地區的機率（probability）與類別（type）。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;entities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u53f0\u6e7e&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6719</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice Wang&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7319</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
 </section>
 </section>
 
