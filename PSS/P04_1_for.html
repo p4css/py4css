@@ -847,6 +847,13 @@ a
 <li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>: 當條件成立，下方的迴圈內容就不再執行，直接進入下一個iteration。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>：當條件成立，就終止整個回圈，跳出回圈的執行。</p></li>
 </ul>
+<p>在寫爬蟲的時候經常會用到<code class="docutils literal notranslate"><span class="pre">break</span></code>和<code class="docutils literal notranslate"><span class="pre">continue</span></code>的指令，原因是常常不知道究竟要爬多少頁才要停下來，或者，會不會爬到一個已經被移除的貼文（例如PTT）。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>的應用：在撰寫爬蟲的時候，偶而會遇到不知道要爬到什麼時候，或者總資料筆數有多少（例如Twitter、DCard等等有API的服務）。此時通常會為for-loop設定一個過大停止值，例如撈個1000,000頁。此時，for-loop會一頁一頁往下撈，但總會遇到for-loop撈不到下一頁的情形，那就看看產生的錯誤是什麼，然後用<code class="docutils literal notranslate"><span class="pre">if</span></code>來判斷，如果出現該錯誤的時候，我就<code class="docutils literal notranslate"><span class="pre">break</span></code>出整個for-loop迴圈，就會停止該for-loop而不會真的撈到100,000頁。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>的應用：在撰寫爬蟲的時候，通常我們會在for-loop中邊爬邊剖析資料，也就是把一個頁面爬下來之後，就立刻剖析他，偵測看看標題、作者是什麼，然後才進入下一迴圈、爬下一個頁面。但是，偶而就會遇到像是PTT的貼文一樣，明明還有該網址，但是內容卻被移除了。既然內容被移除了，那就偵測不到標題和作者了。這時候，程式的寫法往往會是，我偵測看看是不是貼文是不是被移除了，如果被移除了，雖然我把該頁抓下來了，那我就用<code class="docutils literal notranslate"><span class="pre">continue</span></code>跳過剖析頁面資料的過程，直接進入下一圈迴圈（沒跳過反而會出現Error）。但也許各位會問，那這樣不就和if-else很像？如果偵測到什麼，就做什麼事。但利用<code class="docutils literal notranslate"><span class="pre">continue</span></code>可以讓程式碼比較乾淨，不用把之後要剖析資料的程式碼，放在if-else的判斷式裡面。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">continue</span></code>的邏輯示意圖如下，當滿足某個條件而執行<code class="docutils literal notranslate"><span class="pre">continue</span></code>時，便不會執行在for-loop在<code class="docutils literal notranslate"><span class="pre">continue</span></code>後面的指令，而會直接進入下一圈for-loop（Illustration from <a class="reference external" href="https://www.geeksforgeeks.org/break-continue-and-pass-in-python/%EF%BC%89%E3%80%82">https://www.geeksforgeeks.org/break-continue-and-pass-in-python/）。</a>
+<img alt="image.png" src="PSS/attachment:0cd50692-f6c5-4815-82a6-31c6d9a7b356.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
@@ -1055,7 +1062,7 @@ ellen
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2754 7240
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2863 7240
 </pre></div>
 </div>
 </div>
