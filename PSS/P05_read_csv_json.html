@@ -534,6 +534,23 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#get-files">
      Get files
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#colab-jupyterlab-read-file-via-link">
+       Colab/jupyterlab. Read file via link
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#colab-mount-drive-then-read">
+       Colab. Mount drive then read
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#jupyterlab-read-from-local-pc">
+       Jupyterlab. Read from local PC
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#open-files">
@@ -653,6 +670,23 @@ title="Print to PDF"
     <a class="reference internal nav-link" href="#get-files">
      Get files
     </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#colab-jupyterlab-read-file-via-link">
+       Colab/jupyterlab. Read file via link
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#colab-mount-drive-then-read">
+       Colab. Mount drive then read
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#jupyterlab-read-from-local-pc">
+       Jupyterlab. Read from local PC
+      </a>
+     </li>
+    </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#open-files">
@@ -773,13 +807,27 @@ title="Print to PDF"
 <li><p>若已經把ipynb下載回本機端，就只需要把相對位置作為資料路徑即可。</p></li>
 <li><p>如果是都在colab上執行，就要先在程式中mount google drive，並把位置指到相對應的路徑。</p></li>
 </ul>
+<section id="colab-jupyterlab-read-file-via-link">
+<h4>Colab/jupyterlab. Read file via link<a class="headerlink" href="#colab-jupyterlab-read-file-via-link" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !wget </span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv -o drug_156_2.csv
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;drug_156_2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;_io.TextIOWrapper name=&#39;drug_156_2.csv&#39; mode=&#39;r&#39; encoding=&#39;utf-8-sig&#39;&gt;
+&lt;class &#39;_io.TextIOWrapper&#39;&gt;
 </pre></div>
 </div>
 </div>
 </div>
+</section>
+<section id="colab-mount-drive-then-read">
+<h4>Colab. Mount drive then read<a class="headerlink" href="#colab-mount-drive-then-read" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Mount google drive as data</span>
@@ -805,9 +853,12 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
+<section id="jupyterlab-read-from-local-pc">
+<h4>Jupyterlab. Read from local PC<a class="headerlink" href="#jupyterlab-read-from-local-pc" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># local PC</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Must specify right path</span>
 <span class="n">relative_path</span> <span class="o">=</span> <span class="s2">&quot;../_build/html/data/drug_156_2.csv&quot;</span>
 
 <span class="c1"># Assign gdrive_path as my fin_path(file_in_path)</span>
@@ -817,6 +868,7 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+</section>
 </section>
 <section id="open-files">
 <h3>Open files<a class="headerlink" href="#open-files" title="Permalink to this headline">#</a></h3>
