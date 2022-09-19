@@ -536,11 +536,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#traverse-each-items-by-for-loop">
-     Traverse each items by for-loop
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#counting-sites-by-area">
      Counting sites by area
     </a>
@@ -604,11 +599,6 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#traverse-each-items-by-for-loop">
-     Traverse each items by for-loop
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#counting-sites-by-area">
      Counting sites by area
     </a>
@@ -656,7 +646,7 @@ title="Print to PDF"
 <h1>P03-Practice List &amp; Dict<a class="headerlink" href="#p03-practice-list-dict" title="Permalink to this headline">#</a></h1>
 <section id="practice01-counting-youbike-sites-by-area">
 <h2>Practice01-Counting youbike sites by area<a class="headerlink" href="#practice01-counting-youbike-sites-by-area" title="Permalink to this headline">#</a></h2>
-<p>現在我們已經可以用簡單的for-loop逐一跑過所有的ubike即時資料。我們可以結合P01的Counting來計算一下每個行政區有多少個ubike site。</p>
+<p>在本節P03的教學中除了用程式碼去探詢Youbike的結構外，尚介紹了如何用for-loop逐一跑過每一個Youbike站台的資料。在此希望結合P01的Counting來計算一下每個行政區有多少個Youbike站台。</p>
 <section id="getting-data">
 <h3>Getting data<a class="headerlink" href="#getting-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
@@ -678,21 +668,14 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;requests.models.Response&#39;&gt;
 &lt;class &#39;str&#39;&gt;
+&lt;class &#39;dict&#39;&gt;
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
-</pre></div>
 </div>
 </div>
-</div>
-</section>
-<section id="traverse-each-items-by-for-loop">
-<h3>Traverse each items by for-loop<a class="headerlink" href="#traverse-each-items-by-for-loop" title="Permalink to this headline">#</a></h3>
-<p>單純把要拿來加總的數值或物件用for-loop逐一print印出來看看。</p>
 </section>
 <section id="counting-sites-by-area">
 <h3>Counting sites by area<a class="headerlink" href="#counting-sites-by-area" title="Permalink to this headline">#</a></h3>
-<p>計算每一個行政區有多少個youbike停駐場</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">Sample</span><span class="p">:</span> 
 <span class="n">信義區</span> <span class="mi">38</span>
 <span class="n">大安區</span> <span class="mi">48</span>
@@ -716,6 +699,9 @@ title="Print to PDF"
 
 
 
+
+
+
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">area_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
 </pre></div>
@@ -725,21 +711,12 @@ title="Print to PDF"
 </section>
 <section id="more">
 <h3>More<a class="headerlink" href="#more" title="Permalink to this headline">#</a></h3>
-<p>計算每個區現在有多少台單車要怎麼計算？（數量上實際上沒什麼意義，每個區大小不太一樣）</p>
-<ul class="simple">
-<li><p>邏輯上是一樣的，先把必要的資料印出來，如果要知道每個區加總起來有多少台單車，那就要印出來，每個站台的所屬行政區和目前有多少台Youbike。相較於此，前面那一題只需要知道每個站台的所屬行政區，並不用知道有幾台腳踏車。</p></li>
-<li><p>前面是掃過所有站台，如果他屬於某個行政區的話，該行政區的站台數就加一。但這個題目是掃過所有站台，如果屬於某個行政區的話，該行政區的Youbike數就加上該站台的Youbike數量</p></li>
-</ul>
+<p>如果要計算每個區現在有多少台單車要怎麼計算？（數量上實際上沒什麼意義，每個區大小不太一樣）</p>
 </section>
 </section>
 <section id="practice02-traversing-json-data-cnyes">
 <h2>Practice02-Traversing json data: cnyes<a class="headerlink" href="#practice02-traversing-json-data-cnyes" title="Permalink to this headline">#</a></h2>
-<p>以下為財經新聞媒體鉅亨網的新聞API，請嘗試用dict和list來了解這份檔案裡面包涵什麼樣的內容？嘗試回答，</p>
-<ol class="simple">
-<li><p>下一份資料的鏈結在哪裡？</p></li>
-<li><p>這份檔案裡面有幾筆資料等等的問題。</p></li>
-<li><p>總共有幾則新聞？</p></li>
-</ol>
+<p>以下為財經新聞媒體鉅亨網的新聞API，請嘗試用dict和list來了解這份檔案裡面包涵什麼樣的內容？嘗試回答，下一份資料的鏈結在哪裡？資料總筆數有幾筆？這份檔案裡面有幾筆資料等等的問題。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
