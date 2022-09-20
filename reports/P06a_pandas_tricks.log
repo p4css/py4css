@@ -17,27 +17,27 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-for i in range(len(aqdata)):
-    if aqdata[i]["PM2.5"] == "":
-        aqdata[i]["PM2.5"] = -1
-    else:
-        aqdata[i]["PM2.5"] = int(aqdata[i]["PM2.5"])
+df = pd.DataFrame(np.array(([1, 2, 3], [4, 5, 6])),
+                  index=['mouse', 'rabbit'],
+                  columns=['one', 'two', 'three'])
 
+# select columns by regular expression
+df.filter(regex='e$', axis=1)
 
+# select rows containing 'bbi
+df.filter(like='bbi', axis=0) # defualt: axis=1 for columns
 
-# print out the first 10 records for glimpse
-for site in aqdata[:10]:
-    print(site["SiteName"], site["AQI"], site["PM2.5"])
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mKeyError[0m                                  Traceback (most recent call last)
-Input [0;32mIn [5][0m, in [0;36m<cell line: 1>[0;34m()[0m
-[1;32m      1[0m [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;28mlen[39m(aqdata)):
-[0;32m----> 2[0m     [38;5;28;01mif[39;00m [43maqdata[49m[43m[[49m[43mi[49m[43m][49m[43m[[49m[38;5;124;43m"[39;49m[38;5;124;43mPM2.5[39;49m[38;5;124;43m"[39;49m[43m][49m [38;5;241m==[39m [38;5;124m"[39m[38;5;124m"[39m:
-[1;32m      3[0m         aqdata[i][[38;5;124m"[39m[38;5;124mPM2.5[39m[38;5;124m"[39m] [38;5;241m=[39m [38;5;241m-[39m[38;5;241m1[39m
-[1;32m      4[0m     [38;5;28;01melse[39;00m:
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [2][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m df [38;5;241m=[39m pd[38;5;241m.[39mDataFrame([43mnp[49m[38;5;241m.[39marray(([[38;5;241m1[39m, [38;5;241m2[39m, [38;5;241m3[39m], [[38;5;241m4[39m, [38;5;241m5[39m, [38;5;241m6[39m])),
+[1;32m      2[0m                   index[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mmouse[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mrabbit[39m[38;5;124m'[39m],
+[1;32m      3[0m                   columns[38;5;241m=[39m[[38;5;124m'[39m[38;5;124mone[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mtwo[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mthree[39m[38;5;124m'[39m])
+[1;32m      5[0m [38;5;66;03m# select columns by regular expression[39;00m
+[1;32m      6[0m df[38;5;241m.[39mfilter(regex[38;5;241m=[39m[38;5;124m'[39m[38;5;124me$[39m[38;5;124m'[39m, axis[38;5;241m=[39m[38;5;241m1[39m)
 
-[0;31mKeyError[0m: 'PM2.5'
-KeyError: 'PM2.5'
+[0;31mNameError[0m: name 'np' is not defined
+NameError: name 'np' is not defined
 

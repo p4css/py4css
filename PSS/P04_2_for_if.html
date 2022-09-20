@@ -536,49 +536,49 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-traversing-aqi-content">
-     (Practice) Traversing AQI content
+    <a class="reference internal nav-link" href="#traversing-aqi-content">
+     Traversing AQI content
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-print-out-data-by-for-loop">
-     (Practice) Print out data by for-loop
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-updating-missing-pm2-5-value">
-     (Practice) Updating missing PM2.5 value
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-using-i-as-index-to-update-data-another-way">
-     (Practice) Using
+    <a class="reference internal nav-link" href="#method-2-using-range-to-traverse-list-by-index">
+     Method 2: Using
      <code class="docutils literal notranslate">
       <span class="pre">
-       i
+       range()
       </span>
      </code>
-     as index to update data (Another way)
+     to traverse list by index
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-using-enumerate-to-access-index-and-data">
-     (Practice) Using
+    <a class="reference internal nav-link" href="#using-enumerate-to-access-index-and-data-simultaneously">
+     Using
      <code class="docutils literal notranslate">
       <span class="pre">
        enumerate()
       </span>
      </code>
-     to access index and data
+     to access index and data simultaneously
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#converting-aqi-data-format">
-   Converting AQI data format
+  <a class="reference internal nav-link" href="#search-and-query-site-data">
+   Search and query site data
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-01-search-with-for-loop">
+     Method 01. Search with for-loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-02-convert-data-structure">
+     Method 02. Convert data structure
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dump-new-dict-to-json">
      Dump new dict to .json
@@ -699,49 +699,49 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-traversing-aqi-content">
-     (Practice) Traversing AQI content
+    <a class="reference internal nav-link" href="#traversing-aqi-content">
+     Traversing AQI content
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-print-out-data-by-for-loop">
-     (Practice) Print out data by for-loop
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-updating-missing-pm2-5-value">
-     (Practice) Updating missing PM2.5 value
-    </a>
-   </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-using-i-as-index-to-update-data-another-way">
-     (Practice) Using
+    <a class="reference internal nav-link" href="#method-2-using-range-to-traverse-list-by-index">
+     Method 2: Using
      <code class="docutils literal notranslate">
       <span class="pre">
-       i
+       range()
       </span>
      </code>
-     as index to update data (Another way)
+     to traverse list by index
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-using-enumerate-to-access-index-and-data">
-     (Practice) Using
+    <a class="reference internal nav-link" href="#using-enumerate-to-access-index-and-data-simultaneously">
+     Using
      <code class="docutils literal notranslate">
       <span class="pre">
        enumerate()
       </span>
      </code>
-     to access index and data
+     to access index and data simultaneously
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#converting-aqi-data-format">
-   Converting AQI data format
+  <a class="reference internal nav-link" href="#search-and-query-site-data">
+   Search and query site data
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-01-search-with-for-loop">
+     Method 01. Search with for-loop
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#method-02-convert-data-structure">
+     Method 02. Convert data structure
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#dump-new-dict-to-json">
      Dump new dict to .json
@@ -886,188 +886,14 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.epa.gov.tw/api/v1/AQI?</span><span class="si">%24s</span><span class="s2">kip=0&amp;%24top=1000&amp;</span><span class="si">%24f</span><span class="s2">ormat=json&quot;</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="n">aqdata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">))</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/20%2011:00&quot;</span>
+<span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">SSLCertVerificationError</span><span class="g g-Whitespace">                  </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:703,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Make the request on the httplib connection object.</span>
-<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">httplib_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span>     <span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">707</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">708</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">709</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">710</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">711</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">713</span> <span class="c1"># If we&#39;re going to release the connection in ``finally:``, then</span>
-<span class="g g-Whitespace">    </span><span class="mi">714</span> <span class="c1"># the response doesn&#39;t need to know about the connection. Otherwise</span>
-<span class="g g-Whitespace">    </span><span class="mi">715</span> <span class="c1"># it will also try to release it and we&#39;ll have a double-release</span>
-<span class="g g-Whitespace">    </span><span class="mi">716</span> <span class="c1"># mess.</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:386,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">385</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">386</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">387</span> <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">388</span>     <span class="c1"># Py2 raises this as a BaseSSLError, Py3 raises it as socket timeout.</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:1040,</span> in <span class="ni">HTTPSConnectionPool._validate_conn</span><span class="nt">(self, conn)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1039</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s2">&quot;sock&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">):</span>  <span class="c1"># AppEngine might not have  `.sock`</span>
-<span class="ne">-&gt; </span><span class="mi">1040</span>     <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1042</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_verified</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connection.py:414,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">412</span>     <span class="n">context</span><span class="o">.</span><span class="n">load_default_certs</span><span class="p">()</span>
-<span class="ne">--&gt; </span><span class="mi">414</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">ssl_wrap_socket</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">415</span>     <span class="n">sock</span><span class="o">=</span><span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">416</span>     <span class="n">keyfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">key_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">417</span>     <span class="n">certfile</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cert_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="n">key_password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">key_password</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">419</span>     <span class="n">ca_certs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_certs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">420</span>     <span class="n">ca_cert_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_cert_dir</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">421</span>     <span class="n">ca_cert_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_cert_data</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">422</span>     <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">423</span>     <span class="n">ssl_context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">424</span>     <span class="n">tls_in_tls</span><span class="o">=</span><span class="n">tls_in_tls</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">425</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">427</span> <span class="c1"># If we&#39;re using all defaults and the connection</span>
-<span class="g g-Whitespace">    </span><span class="mi">428</span> <span class="c1"># is TLSv1 or TLSv1.1 we throw a DeprecationWarning</span>
-<span class="g g-Whitespace">    </span><span class="mi">429</span> <span class="c1"># for the host.</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/util/ssl_.py:449,</span> in <span class="ni">ssl_wrap_socket</span><span class="nt">(sock, keyfile, certfile, cert_reqs, ca_certs, server_hostname, ssl_version, ciphers, ssl_context, ca_cert_dir, key_password, ca_cert_data, tls_in_tls)</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span> <span class="k">if</span> <span class="n">send_sni</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">449</span>     <span class="n">ssl_sock</span> <span class="o">=</span> <span class="n">_ssl_wrap_socket_impl</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>         <span class="n">sock</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">tls_in_tls</span><span class="p">,</span> <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">452</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/util/ssl_.py:493,</span> in <span class="ni">_ssl_wrap_socket_impl</span><span class="nt">(sock, ssl_context, tls_in_tls, server_hostname)</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="k">if</span> <span class="n">server_hostname</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">493</span>     <span class="k">return</span> <span class="n">ssl_context</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/ssl.py:500,</span> in <span class="ni">SSLContext.wrap_socket</span><span class="nt">(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">def</span> <span class="nf">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sock</span><span class="p">,</span> <span class="n">server_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>                 <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>                 <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>                 <span class="n">server_hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span>     <span class="c1"># SSLSocket class handles server_hostname encoding before it calls</span>
-<span class="g g-Whitespace">    </span><span class="mi">499</span>     <span class="c1"># ctx._wrap_socket()</span>
-<span class="ne">--&gt; </span><span class="mi">500</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sslsocket_class</span><span class="o">.</span><span class="n">_create</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>         <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">502</span>         <span class="n">server_side</span><span class="o">=</span><span class="n">server_side</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span>         <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="n">do_handshake_on_connect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="n">suppress_ragged_eofs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">505</span>         <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">506</span>         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span>         <span class="n">session</span><span class="o">=</span><span class="n">session</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span>     <span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/ssl.py:1040,</span> in <span class="ni">SSLSocket._create</span><span class="nt">(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1039</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;do_handshake_on_connect should not be specified for non-blocking sockets&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1040</span>         <span class="bp">self</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1041</span> <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/ssl.py:1309,</span> in <span class="ni">SSLSocket.do_handshake</span><span class="nt">(self, block)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1308</span>         <span class="bp">self</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1309</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1310</span> <span class="k">finally</span><span class="p">:</span>
-
-<span class="ne">SSLCertVerificationError</span>: [SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1129)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">MaxRetryError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/adapters.py:440,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">439</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">chunked</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">440</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">441</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">442</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">443</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">444</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">445</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">446</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">449</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">453</span> <span class="c1"># Send the request.</span>
-<span class="g g-Whitespace">    </span><span class="mi">454</span> <span class="k">else</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:785,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">783</span>     <span class="n">e</span> <span class="o">=</span> <span class="n">ProtocolError</span><span class="p">(</span><span class="s2">&quot;Connection aborted.&quot;</span><span class="p">,</span> <span class="n">e</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">785</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">_pool</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">_stacktrace</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">787</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span> <span class="n">retries</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/util/retry.py:592,</span> in <span class="ni">Retry.increment</span><span class="nt">(self, method, url, response, error, _pool, _stacktrace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">if</span> <span class="n">new_retry</span><span class="o">.</span><span class="n">is_exhausted</span><span class="p">():</span>
-<span class="ne">--&gt; </span><span class="mi">592</span>     <span class="k">raise</span> <span class="n">MaxRetryError</span><span class="p">(</span><span class="n">_pool</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span> <span class="ow">or</span> <span class="n">ResponseError</span><span class="p">(</span><span class="n">cause</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span> <span class="n">log</span><span class="o">.</span><span class="n">debug</span><span class="p">(</span><span class="s2">&quot;Incremented Retry for (url=&#39;</span><span class="si">%s</span><span class="s2">&#39;): </span><span class="si">%r</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">new_retry</span><span class="p">)</span>
-
-<span class="ne">MaxRetryError</span>: HTTPSConnectionPool(host=&#39;opendata.epa.gov.tw&#39;, port=443): Max retries exceeded with url: /api/v1/AQI?%24skip=0&amp;%24top=1000&amp;%24format=json (Caused by SSLError(SSLCertVerificationError(1, &#39;[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1129)&#39;)))
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">SSLError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://opendata.epa.gov.tw/api/v1/AQI?</span><span class="si">%24s</span><span class="s2">kip=0&amp;%24top=1000&amp;</span><span class="si">%24f</span><span class="s2">ormat=json&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">aqdata</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">))</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/api.py:75,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
-<span class="g g-Whitespace">     </span><span class="mi">66</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">67</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd">     :rtype: requests.Response</span>
-<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">75</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/api.py:61,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># By using the &#39;with&#39; statement we are sure the session is closed, thus we</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="c1"># avoid leaving sockets open which can trigger a ResourceWarning in some</span>
-<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="c1"># cases, and look like a memory leak in others.</span>
-<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">61</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/sessions.py:529,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">524</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">526</span>     <span class="s1">&#39;allow_redirects&#39;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">529</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="k">return</span> <span class="n">resp</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/sessions.py:645,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">644</span> <span class="c1"># Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">645</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">647</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
-<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/adapters.py:517,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">513</span>         <span class="k">raise</span> <span class="n">ProxyError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">_SSLError</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>         <span class="c1"># This branch is for urllib3 v1.22 and later.</span>
-<span class="ne">--&gt; </span><span class="mi">517</span>         <span class="k">raise</span> <span class="n">SSLError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="k">except</span> <span class="n">ClosedPoolError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="ne">SSLError</span>: HTTPSConnectionPool(host=&#39;opendata.epa.gov.tw&#39;, port=443): Max retries exceeded with url: /api/v1/AQI?%24skip=0&amp;%24top=1000&amp;%24format=json (Caused by SSLError(SSLCertVerificationError(1, &#39;[SSL: CERTIFICATE_VERIFY_FAILED] certificate verify failed: certificate has expired (_ssl.c:1129)&#39;)))
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -1080,18 +906,20 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteName&#39;: &#39;屏東(建興)&#39;, &#39;County&#39;: &#39;屏東縣&#39;, &#39;AQI&#39;: &#39;71&#39;, &#39;Pollutant&#39;: &#39;臭氧八小時&#39;, &#39;Status&#39;: &#39;普通&#39;, &#39;SO2&#39;: &#39;0.1&#39;, &#39;CO&#39;: &#39;0.35&#39;, &#39;CO_8hr&#39;: &#39;0.2&#39;, &#39;O3&#39;: &#39;41.4&#39;, &#39;O3_8hr&#39;: &#39;61&#39;, &#39;PM10&#39;: &#39;17&#39;, &#39;PM2.5&#39;: &#39;12&#39;, &#39;NO2&#39;: &#39;3.8&#39;, &#39;NOx&#39;: &#39;5.2&#39;, &#39;NO&#39;: &#39;1.3&#39;, &#39;WindSpeed&#39;: &#39;0.6&#39;, &#39;WindDirec&#39;: &#39;47&#39;, &#39;PublishTime&#39;: &#39;2021/10/02 17:00:00&#39;, &#39;PM2.5_AVG&#39;: &#39;19&#39;, &#39;PM10_AVG&#39;: &#39;30&#39;, &#39;SO2_AVG&#39;: &#39;0&#39;, &#39;Longitude&#39;: &#39;121.00379167&#39;, &#39;Latitude&#39;: &#39;22.650525&#39;, &#39;SiteId&#39;: &#39;313&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;1&#39;, &#39;SiteName&#39;: &#39;二林&#39;, &#39;AQI&#39;: &#39;79&#39;, &#39;ViewName&#39;: &#39;二林&#39;, &#39;AreaName&#39;: &#39;中部空品區&#39;, &#39;AreaID&#39;: &#39;3&#39;, &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;, &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;, &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;, &#39;TWD97_Lon&#39;: 120.409653, &#39;TWD97_Lat&#39;: 23.925175, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 &lt;class &#39;dict&#39;&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="practice-traversing-aqi-content">
-<h3>(Practice) Traversing AQI content<a class="headerlink" href="#practice-traversing-aqi-content" title="Permalink to this headline">#</a></h3>
-<p><em>(同Youbike的範例）</em><br>
-<strong>法則一：如果偵測出他是一個list</strong>，那就取出第0筆資料往下追蹤。</p>
-<p><strong>法則二：如果偵測出他是一個dict</strong>，就用<code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code>將其所有的key給列印出來，然後挑你所需要的key往下追蹤。但如果<code class="docutils literal notranslate"><span class="pre">.keys()</span></code>印出來的結果是類似流水號的id（e.g., youbike data），那就代表設計者把id對應到該id的資料。此時，也是不失一般性，取第一個id作為索引來往下存取即可。</p>
+<section id="traversing-aqi-content">
+<h3>Traversing AQI content<a class="headerlink" href="#traversing-aqi-content" title="Permalink to this headline">#</a></h3>
+<p>同Traversing Youbike的範例</p>
+<ul class="simple">
+<li><p><strong>法則一：如果偵測出他是一個list</strong>，那就取出第0筆資料往下追蹤。</p></li>
+<li><p><strong>法則二：如果偵測出他是一個dict</strong>，就用<code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code>將其所有的key給列印出來，然後挑你所需要的key往下追蹤。但如果<code class="docutils literal notranslate"><span class="pre">.keys()</span></code>印出來的結果是類似流水號的id（e.g., youbike data），那就代表設計者把id對應到該id的資料。此時，也是不失一般性，取第一個id作為索引來往下存取即可。</p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">))</span>
@@ -1104,222 +932,200 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;list&#39;&gt;
-Length of: 84
-The first item of: {&#39;SiteName&#39;: &#39;屏東(建興)&#39;, &#39;County&#39;: &#39;屏東縣&#39;, &#39;AQI&#39;: &#39;71&#39;, &#39;Pollutant&#39;: &#39;臭氧八小時&#39;, &#39;Status&#39;: &#39;普通&#39;, &#39;SO2&#39;: &#39;0.1&#39;, &#39;CO&#39;: &#39;0.35&#39;, &#39;CO_8hr&#39;: &#39;0.2&#39;, &#39;O3&#39;: &#39;41.4&#39;, &#39;O3_8hr&#39;: &#39;61&#39;, &#39;PM10&#39;: &#39;17&#39;, &#39;PM2.5&#39;: &#39;12&#39;, &#39;NO2&#39;: &#39;3.8&#39;, &#39;NOx&#39;: &#39;5.2&#39;, &#39;NO&#39;: &#39;1.3&#39;, &#39;WindSpeed&#39;: &#39;0.6&#39;, &#39;WindDirec&#39;: &#39;47&#39;, &#39;PublishTime&#39;: &#39;2021/10/02 17:00:00&#39;, &#39;PM2.5_AVG&#39;: &#39;19&#39;, &#39;PM10_AVG&#39;: &#39;30&#39;, &#39;SO2_AVG&#39;: &#39;0&#39;, &#39;Longitude&#39;: &#39;121.00379167&#39;, &#39;Latitude&#39;: &#39;22.650525&#39;, &#39;SiteId&#39;: &#39;313&#39;}
+Length of: 86
+The first item of: {&#39;SiteID&#39;: &#39;1&#39;, &#39;SiteName&#39;: &#39;二林&#39;, &#39;AQI&#39;: &#39;79&#39;, &#39;ViewName&#39;: &#39;二林&#39;, &#39;AreaName&#39;: &#39;中部空品區&#39;, &#39;AreaID&#39;: &#39;3&#39;, &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;, &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;, &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;, &#39;TWD97_Lon&#39;: 120.409653, &#39;TWD97_Lat&#39;: 23.925175, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 &lt;class &#39;dict&#39;&gt;
-dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#39;, &#39;Status&#39;, &#39;SO2&#39;, &#39;CO&#39;, &#39;CO_8hr&#39;, &#39;O3&#39;, &#39;O3_8hr&#39;, &#39;PM10&#39;, &#39;PM2.5&#39;, &#39;NO2&#39;, &#39;NOx&#39;, &#39;NO&#39;, &#39;WindSpeed&#39;, &#39;WindDirec&#39;, &#39;PublishTime&#39;, &#39;PM2.5_AVG&#39;, &#39;PM10_AVG&#39;, &#39;SO2_AVG&#39;, &#39;Longitude&#39;, &#39;Latitude&#39;, &#39;SiteId&#39;])
+dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#39;, &#39;AreaName&#39;, &#39;AreaID&#39;, &#39;COUNTY_Eng&#39;, &#39;POLLUTANT&#39;, &#39;SiteAddres&#39;, &#39;TWD97_Lon&#39;, &#39;TWD97_Lat&#39;, &#39;SiteType&#39;, &#39;SiteType2&#39;, &#39;siteowner&#39;])
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="practice-print-out-data-by-for-loop">
-<h3>(Practice) Print out data by for-loop<a class="headerlink" href="#practice-print-out-data-by-for-loop" title="Permalink to this headline">#</a></h3>
-<p>print formation rules <a class="reference external" href="https://docs.python.org/3/tutorial/inputoutput.html">https://docs.python.org/3/tutorial/inputoutput.html</a></p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">龍潭</span> <span class="mi">68</span> <span class="mi">10</span>
-<span class="n">新竹</span> <span class="mi">80</span> 
-<span class="n">湖口</span> <span class="mi">72</span> <span class="mi">21</span>
-<span class="n">竹東</span> <span class="mi">66</span> <span class="mi">11</span>
-<span class="n">頭份</span> <span class="mi">95</span> 
-<span class="n">苗栗</span> <span class="mi">78</span> <span class="mi">24</span>
-<span class="n">三義</span> <span class="mi">72</span> <span class="mi">32</span>
-<span class="n">豐原</span> <span class="mi">71</span> <span class="mi">24</span>
-<span class="n">沙鹿</span> <span class="mi">89</span> <span class="mi">33</span>
-</pre></div>
-</div>
+<p>列印出相關資料來做觀察，包含AQI、POLLUTANT（污染物種類）。如果資料筆數過多不易觀察的話，應該用List Slicing取出前數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[:10]</span></code>）或後數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[-3:]</span></code>）來觀察</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code should be here</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>屏東(建興)	71	12
-臺南(學甲)	75	20
-新北(樹林)	40	8
-屏東(琉球)	108	28
-臺南(麻豆)	122	14
-高雄(湖內)	108	26
-大城	108	14
-富貴角	74	7
-麥寮	97	14
-關山	35	15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林	79	細懸浮微粒
+三重	58	細懸浮微粒
+三義	57	細懸浮微粒
+土城	51	懸浮微粒
+士林	57	細懸浮微粒
+大同	65	細懸浮微粒
+大里	75	細懸浮微粒
+大園	61	懸浮微粒
+大寮	76	細懸浮微粒
+小港	76	細懸浮微粒
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="practice-updating-missing-pm2-5-value">
-<h3>(Practice) Updating missing PM2.5 value<a class="headerlink" href="#practice-updating-missing-pm2-5-value" title="Permalink to this headline">#</a></h3>
-<p>在這個例子中，由於我發現PM2.5偶而會有空值（就該場站的資料沒有傳回來），我可以用<code class="docutils literal notranslate"><span class="pre">for</span></code>-each掃過所有的資料，然後用<code class="docutils literal notranslate"><span class="pre">if</span></code>來判斷，如果資料是空值的話（如下面的空字串<code class="docutils literal notranslate"><span class="pre">&quot;&quot;</span></code>或者被標示為<code class="docutils literal notranslate"><span class="pre">ND</span></code>），就把<code class="docutils literal notranslate"><span class="pre">-1</span></code>assign給他，不然的話就保留原本的數值，或是像下面一樣，用<code class="docutils literal notranslate"><span class="pre">int()</span></code>把它轉為整數。我在<code class="docutils literal notranslate"><span class="pre">for</span></code>-each掃過所有資料時，我用了一個變數<code class="docutils literal notranslate"><span class="pre">site</span></code>，他的效果相當於把<code class="docutils literal notranslate"><span class="pre">aqdata[&quot;Data&quot;]</span></code>裡面的每一個項目走訪一遍，當<code class="docutils literal notranslate"><span class="pre">site</span></code>內容被改變時，<code class="docutils literal notranslate"><span class="pre">aqdata[&quot;Data&quot;]</span></code>的內容也會一併被改變。</p>
+<section id="method-2-using-range-to-traverse-list-by-index">
+<h3>Method 2: Using <code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#method-2-using-range-to-traverse-list-by-index" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>因為<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>是一個list，也可以透過index去access<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>中第0個、第1個、第2個dict的內容。但此時你就要去用index存取<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>內的值，你的程式碼會稍微長一點點。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(n)</span></code>函式，相當於<code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">n)</span></code>，可以產生<code class="docutils literal notranslate"><span class="pre">0</span></code>至<code class="docutils literal notranslate"><span class="pre">n-1</span></code>的list，用<code class="docutils literal notranslate"><span class="pre">list()</span></code>轉換後（例如<code class="docutils literal notranslate"><span class="pre">list(range(10))</span></code>)便會顯示出其內容。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t)</span></code>表從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t,</span> <span class="pre">u)</span></code>表示從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>，每間隔<code class="docutils literal notranslate"><span class="pre">u</span></code>，如果<code class="docutils literal notranslate"><span class="pre">u</span></code>等於2的話，就等於隔一個數字。所以<code class="docutils literal notranslate"><span class="pre">range(3,</span> <span class="pre">10,</span> <span class="pre">2)</span></code>會是<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></code>。</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code should be here</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">])</span>
-
-
-<span class="c1"># print out the first 10 records for glimpse</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>屏東(建興) 71 12
-臺南(學甲) 75 20
-新北(樹林) 40 8
-屏東(琉球) 108 28
-臺南(麻豆) 122 14
-高雄(湖內) 108 26
-大城 108 14
-富貴角 74 7
-麥寮 97 14
-關山 35 15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[3, 4, 5, 6, 7, 8, 9]
+[3, 5, 7, 9]
+3
+5
+7
+9
 </pre></div>
 </div>
 </div>
 </div>
-</section>
-<section id="practice-using-i-as-index-to-update-data-another-way">
-<h3>(Practice) Using <code class="docutils literal notranslate"><span class="pre">i</span></code> as index to update data (Another way)<a class="headerlink" href="#practice-using-i-as-index-to-update-data-another-way" title="Permalink to this headline">#</a></h3>
-<p>我也可以透過index去access<code class="docutils literal notranslate"><span class="pre">aqdata[&quot;Data&quot;]</span></code>中第0個、第1個、第2個dict的內容。但此時你就要去用index存取<code class="docutils literal notranslate"><span class="pre">aqdata[&quot;Data&quot;]</span></code>內的值，你的程式碼會稍微長一點點。</p>
+<p>而<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>這個list的長度為<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，其list index從0至<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，所以使用<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(aqdata)):</span></code>可以走訪整個list的內容。（註：以下的例子只列印出前10個）</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)):</span>
-    <span class="k">if</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-        <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">])</span>
-
-
-
-<span class="c1"># print out the first 10 records for glimpse</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">])):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>屏東(建興) 71 12
-臺南(學甲) 75 20
-新北(樹林) 40 8
-屏東(琉球) 108 28
-臺南(麻豆) 122 14
-高雄(湖內) 108 26
-大城 108 14
-富貴角 74 7
-麥寮 97 14
-關山 35 15
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林	79	細懸浮微粒
+三重	58	細懸浮微粒
+三義	57	細懸浮微粒
+土城	51	懸浮微粒
+士林	57	細懸浮微粒
+大同	65	細懸浮微粒
+大里	75	細懸浮微粒
+大園	61	懸浮微粒
+大寮	76	細懸浮微粒
+小港	76	細懸浮微粒
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="practice-using-enumerate-to-access-index-and-data">
-<h3>(Practice) Using <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and data<a class="headerlink" href="#practice-using-enumerate-to-access-index-and-data" title="Permalink to this headline">#</a></h3>
+<section id="using-enumerate-to-access-index-and-data-simultaneously">
+<h3>Using <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and data simultaneously<a class="headerlink" href="#using-enumerate-to-access-index-and-data-simultaneously" title="Permalink to this headline">#</a></h3>
 <p>前面我們介紹到兩個版本，</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">site</span> <span class="pre">in</span> <span class="pre">aqdata[&quot;Data&quot;]:</span></code>是用<code class="docutils literal notranslate"><span class="pre">site</span></code>作為臨時變數以在for-loop中存取所有的資料項目；此時，對<code class="docutils literal notranslate"><span class="pre">site</span></code>的任何修改，都不會更動到原本<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>內的數值。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(aqdata[&quot;Data&quot;])):</span></code>的做法則是用<code class="docutils literal notranslate"><span class="pre">i</span></code>作為index來存取原本的<code class="docutils literal notranslate"><span class="pre">aqdata[&quot;Data&quot;]</span></code>。由於是直接用<code class="docutils literal notranslate"><span class="pre">i</span></code>作為index來取用<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>內的數值，所以任何更改都會更動到原本<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>的內容。</p></li>
 </ol>
 <p>但其實還有第三種選擇就是用<code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>來同時存取index和資料項目，當我需要access這是第幾個項目，或者需要access原本的項目值時，那我就用index，但我如果只是要判斷一下大小，那我就可以用被取出來的資料項目。寫法如下：</p>
-<p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i,</span> <span class="pre">site</span> <span class="pre">in</span> <span class="pre">enumerate(aqdata[&quot;Data&quot;]):</span></code></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>for i, site in enumerate(aqdata[&quot;Data&quot;]):`
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)))</span>
 
-<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">aqdata</span><span class="p">):</span>
-    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="o">-</span><span class="mi">1</span>
-    <span class="k">else</span><span class="p">:</span>
-        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">])</span>
-
-<span class="c1"># print out the first 10 records for glimpse</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;PM2.5&quot;</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
+    
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;enumerate&#39;&gt;
-屏東(建興) 71 12
-臺南(學甲) 75 20
-新北(樹林) 40 8
-屏東(琉球) 108 28
-臺南(麻豆) 122 14
-高雄(湖內) 108 26
-大城 108 14
-富貴角 74 7
-麥寮 97 14
-關山 35 15
+0	二林	79	細懸浮微粒
+1	三重	58	細懸浮微粒
+2	三義	57	細懸浮微粒
+3	土城	51	懸浮微粒
+4	士林	57	細懸浮微粒
+5	大同	65	細懸浮微粒
+6	大里	75	細懸浮微粒
+7	大園	61	懸浮微粒
+8	大寮	76	細懸浮微粒
+9	小港	76	細懸浮微粒
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="converting-aqi-data-format">
-<h2>Converting AQI data format<a class="headerlink" href="#converting-aqi-data-format" title="Permalink to this headline">#</a></h2>
+<section id="search-and-query-site-data">
+<h2>Search and query site data<a class="headerlink" href="#search-and-query-site-data" title="Permalink to this headline">#</a></h2>
 <p>顯然AQI資料是一個非常標準的JSON格式，轉換為Python的資料型態就會變成List of dictionary。<br>
-但這樣我無法直接用站台名稱來存取該站台的資料，也就是不能用<code class="docutils literal notranslate"><span class="pre">aqdict[&quot;三重&quot;]</span></code>就直接列印出<code class="docutils literal notranslate"><span class="pre">三重</span></code>的所有資料。<br></p>
-<p>但我可以重建一個新的以測站作為key的dictionary。此時，我只需要把整個list of dict走訪過一遍，把list中每個dict assign給該dict中的測站名稱 <code class="docutils literal notranslate"><span class="pre">site[&quot;SiteName&quot;]</span></code></p>
+但我希望可以用空品站名稱來查詢空品站的指標，要怎麼做呢？有兩種方法：<br></p>
+<ol class="simple">
+<li><p>我可以用for-loop把所有資料跑一遍，如果等於該空品站名稱的話，那就列印出來。</p></li>
+<li><p>我想要建立一個新的<code class="docutils literal notranslate"><span class="pre">aqdict</span></code>，希望可以用<code class="docutils literal notranslate"><span class="pre">aqdict[&quot;三重&quot;]</span></code>就直接列印出<code class="docutils literal notranslate"><span class="pre">三重</span></code>的資料。</p></li>
+</ol>
+<section id="method-01-search-with-for-loop">
+<h3>Method 01. Search with for-loop<a class="headerlink" href="#method-01-search-with-for-loop" title="Permalink to this headline">#</a></h3>
+<p>就把所有資料用for-loop走訪一遍，如果站台名稱等於所欲查詢的站台的話，那就把他列印出來。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;三重&quot;</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>三重	58	細懸浮微粒
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-02-convert-data-structure">
+<h3>Method 02. Convert data structure<a class="headerlink" href="#method-02-convert-data-structure" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>如果想要建立一個新的aqdict，希望可以用aqdict[“三重”]就直接列印出三重的資料，有一個方法是重建一個新的以測站作為key的dict，這樣我只需要有站名，我就可以直接mapping到該站的資料。</p></li>
+<li><p>建立方法是我只需要把整個list of dict走訪過一遍，把list中每個dict assign給該dict中的測站名稱 <code class="docutils literal notranslate"><span class="pre">site[&quot;SiteName&quot;]</span></code></p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqdict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Initialize a new dictionary</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
     <span class="n">aqdict</span><span class="p">[</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">site</span>
-</pre></div>
-</div>
-</div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqdict</span><span class="p">[</span><span class="s2">&quot;三重&quot;</span><span class="p">]</span>
+
+<span class="n">aqdict</span><span class="p">[</span><span class="s2">&quot;三重&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteName&#39;: &#39;三重&#39;,
- &#39;County&#39;: &#39;新北市&#39;,
- &#39;AQI&#39;: &#39;51&#39;,
- &#39;Pollutant&#39;: &#39;二氧化氮&#39;,
- &#39;Status&#39;: &#39;普通&#39;,
- &#39;SO2&#39;: &#39;2.3&#39;,
- &#39;CO&#39;: &#39;1.15&#39;,
- &#39;CO_8hr&#39;: &#39;0.8&#39;,
- &#39;O3&#39;: &#39;20.7&#39;,
- &#39;O3_8hr&#39;: &#39;28&#39;,
- &#39;PM10&#39;: &#39;24&#39;,
- &#39;PM2.5&#39;: 13,
- &#39;NO2&#39;: &#39;31.9&#39;,
- &#39;NOx&#39;: &#39;62.4&#39;,
- &#39;NO&#39;: &#39;30.5&#39;,
- &#39;WindSpeed&#39;: &#39;-&#39;,
- &#39;WindDirec&#39;: &#39;-&#39;,
- &#39;PublishTime&#39;: &#39;2021/10/02 17:00:00&#39;,
- &#39;PM2.5_AVG&#39;: &#39;12&#39;,
- &#39;PM10_AVG&#39;: &#39;25&#39;,
- &#39;SO2_AVG&#39;: &#39;1&#39;,
- &#39;Longitude&#39;: &#39;121.493806&#39;,
- &#39;Latitude&#39;: &#39;25.072611&#39;,
- &#39;SiteId&#39;: &#39;67&#39;}
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;,
+ &#39;SiteName&#39;: &#39;三重&#39;,
+ &#39;AQI&#39;: &#39;58&#39;,
+ &#39;ViewName&#39;: &#39;三重&#39;,
+ &#39;AreaName&#39;: &#39;北部空品區&#39;,
+ &#39;AreaID&#39;: &#39;1&#39;,
+ &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;,
+ &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;,
+ &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;,
+ &#39;TWD97_Lon&#39;: 121.493806,
+ &#39;TWD97_Lat&#39;: 25.072611,
+ &#39;SiteType&#39;: &#39;交通站&#39;,
+ &#39;SiteType2&#39;: &#39;中央政府&#39;,
+ &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 <section id="dump-new-dict-to-json">
 <h3>Dump new dict to .json<a class="headerlink" href="#dump-new-dict-to-json" title="Permalink to this headline">#</a></h3>
 <p>在Python中把資料dump成json會遠比csv來得方便，在R中則剛好相反。原因是Python的dictionary與list兩項資料結構恰好json的格式一一相符，所以非常容易就可以把資料dump出去或者read進來。如果是要dump成csv檔的話，就必須想辦法把資料整理成pandas dataframe的二維型態。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">aqdict</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;aqi.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># json.dump(aqdict, open(&#39;aqi.json&#39;, &#39;w&#39;))</span>
 </pre></div>
 </div>
 </div>
@@ -1332,15 +1138,15 @@ dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#
 <img alt="image.png" src="PSS/attachment:daeaaaf2-20f5-4cb7-8cd3-47cd280e4e25.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">aqdata</span><span class="p">):</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-        <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Unknown&quot;</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Unknown&quot;</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span>
-        <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Green&quot;</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Green&quot;</span>
     <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">100</span> <span class="p">:</span>
-        <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Brown&quot;</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Brown&quot;</span>
     <span class="c1">## add more role here</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
@@ -1349,90 +1155,92 @@ dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>屏東(建興) 	 yellow
-臺南(學甲) 	 yellow
-新北(樹林) 	 Green
-屏東(琉球) 	 Brown
-臺南(麻豆) 	 Brown
-高雄(湖內) 	 Brown
-大城 	 Brown
-富貴角 	 yellow
-麥寮 	 yellow
-關山 	 Green
-馬公 	 yellow
-金門 	 yellow
-馬祖 	 yellow
-埔里 	 yellow
-復興 	 yellow
-永和 	 Green
-竹山 	 Brown
-中壢 	 yellow
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 	 yellow
 三重 	 yellow
-冬山 	 Green
-宜蘭 	 Green
-陽明 	 Green
-花蓮 	 Green
-臺東 	 Green
-恆春 	 Green
-潮州 	 Brown
-屏東 	 yellow
-小港 	 yellow
-前鎮 	 Brown
-前金 	 Brown
-左營 	 Brown
-楠梓 	 yellow
-林園 	 Brown
+三義 	 yellow
+土城 	 yellow
+士林 	 yellow
+大同 	 yellow
+大里 	 yellow
+大園 	 yellow
 大寮 	 yellow
-鳳山 	 yellow
+小港 	 yellow
+中山 	 yellow
+中壢 	 yellow
 仁武 	 yellow
-橋頭 	 yellow
-美濃 	 yellow
-臺南 	 Brown
-安南 	 Brown
-善化 	 Brown
-新營 	 Brown
-嘉義 	 Brown
-臺西 	 Brown
-朴子 	 Brown
-新港 	 Brown
-崙背 	 yellow
-斗六 	 Brown
-南投 	 Brown
-二林 	 yellow
-線西 	 yellow
-彰化 	 Brown
-西屯 	 yellow
-忠明 	 Brown
-大里 	 Brown
-沙鹿 	 yellow
-豐原 	 yellow
-三義 	 Brown
-苗栗 	 yellow
-頭份 	 yellow
-新竹 	 yellow
+斗六 	 yellow
+冬山 	 yellow
+古亭 	 yellow
+左營 	 yellow
+平鎮 	 yellow
+永和 	 yellow
+安南 	 yellow
+朴子 	 yellow
+汐止 	 yellow
+竹山 	 yellow
 竹東 	 yellow
-湖口 	 yellow
-龍潭 	 yellow
-平鎮 	 Green
-觀音 	 Green
-大園 	 Green
+西屯 	 yellow
+沙鹿 	 yellow
+宜蘭 	 yellow
+忠明 	 yellow
+松山 	 yellow
+板橋 	 yellow
+林口 	 yellow
+林園 	 yellow
+花蓮 	 yellow
+金門 	 Brown
+前金 	 yellow
+前鎮 	 yellow
+南投 	 yellow
+屏東 	 yellow
+恆春 	 yellow
+美濃 	 yellow
+苗栗 	 yellow
+埔里 	 yellow
 桃園 	 yellow
-大同 	 Green
-松山 	 Green
-古亭 	 Green
-萬華 	 Green
-中山 	 Green
-士林 	 Green
-淡水 	 Green
-林口 	 Green
-菜寮 	 Green
-新莊 	 Green
-板橋 	 Green
-土城 	 Green
-新店 	 Green
-萬里 	 yellow
-汐止 	 Green
+馬公 	 Brown
+馬祖 	 Brown
 基隆 	 yellow
+崙背 	 yellow
+淡水 	 yellow
+麥寮 	 yellow
+善化 	 yellow
+復興 	 yellow
+湖口 	 yellow
+菜寮 	 yellow
+陽明 	 Green
+新竹 	 yellow
+新店 	 yellow
+新莊 	 yellow
+新港 	 yellow
+新營 	 yellow
+楠梓 	 yellow
+萬里 	 Brown
+萬華 	 yellow
+嘉義 	 yellow
+彰化 	 yellow
+臺西 	 yellow
+臺東 	 yellow
+臺南 	 yellow
+鳳山 	 yellow
+潮州 	 yellow
+線西 	 yellow
+橋頭 	 yellow
+頭份 	 yellow
+龍潭 	 yellow
+豐原 	 yellow
+關山 	 yellow
+觀音 	 yellow
+彰化(員林) 	 yellow
+高雄(湖內) 	 Brown
+臺南(麻豆) 	 yellow
+屏東(琉球) 	 yellow
+桃園(三民) 	 yellow
+新北(樹林) 	 yellow
+臺南(學甲) 	 yellow
+屏東(枋寮) 	 yellow
+富貴角 	 yellow
+大城 	 yellow
 </pre></div>
 </div>
 </div>
@@ -1472,104 +1280,106 @@ dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#
 <p>為了避免過多的if-elif-else或者switch的使用，可以先把scale和category寫成兩個List，然後用多一層for-loop來trace該value會落在List的哪個區間。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;L&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;M&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;H&#39;</span><span class="p">,</span><span class="s1">&#39;H&#39;</span><span class="p">,</span> <span class="s1">&#39;vH&#39;</span><span class="p">]</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">41</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">53</span><span class="p">,</span> <span class="mi">58</span><span class="p">,</span> <span class="mi">64</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Good&#39;</span><span class="p">,</span> <span class="s1">&#39;Moderate&#39;</span><span class="p">,</span> <span class="s1">&#39;Unhealthy for Sensitive Groups&#39;</span><span class="p">,</span> <span class="s1">&#39;Unhealthy&#39;</span><span class="p">,</span> <span class="s1">&#39;Very Unhealthy&#39;</span><span class="p">,</span> <span class="s1">&#39;Hazardous&#39;</span><span class="p">]</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
         <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scaler</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
+            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
                 <span class="n">d</span> <span class="o">=</span> <span class="n">i</span>
                 <span class="k">break</span>     
-        <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">]),</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]),</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12 屏東(建興) 2 L
-20 臺南(學甲) 2 L
-8 新北(樹林) 1 L
-28 屏東(琉球) 3 L
-14 臺南(麻豆) 2 L
-26 高雄(湖內) 3 L
-14 大城 2 L
-7 富貴角 1 L
-14 麥寮 2 L
-15 關山 2 L
-10 馬公 1 L
-10 金門 1 L
-5 馬祖 1 L
-25 埔里 3 L
-30 復興 3 L
-12 永和 2 L
-22 竹山 2 L
-11 中壢 2 L
-13 三重 2 L
-7 冬山 1 L
-5 宜蘭 1 L
-11 陽明 2 L
-12 花蓮 2 L
-14 臺東 2 L
-13 恆春 2 L
-11 潮州 2 L
-22 屏東 2 L
-26 小港 3 L
-24 前鎮 3 L
-23 前金 3 L
-25 左營 3 L
-23 楠梓 3 L
-16 林園 2 L
-22 大寮 2 L
-36 鳳山 4 M
-26 仁武 3 L
-31 橋頭 3 L
-22 美濃 2 L
-26 臺南 3 L
-22 安南 2 L
-24 善化 3 L
-25 新營 3 L
-27 嘉義 3 L
-16 臺西 2 L
-23 朴子 3 L
-16 新港 2 L
-14 崙背 2 L
-21 斗六 2 L
-20 南投 2 L
-14 二林 2 L
-15 線西 2 L
-13 彰化 2 L
-19 西屯 2 L
-18 忠明 2 L
-19 大里 2 L
-15 沙鹿 2 L
-17 豐原 2 L
-15 三義 2 L
-14 苗栗 2 L
-13 頭份 2 L
-13 新竹 2 L
-13 竹東 2 L
-14 湖口 2 L
-10 龍潭 1 L
-15 平鎮 2 L
-10 觀音 1 L
-6 大園 1 L
-9 桃園 1 L
-11 大同 2 L
-8 松山 1 L
-9 古亭 1 L
-11 萬華 2 L
-12 中山 2 L
-15 士林 2 L
-9 淡水 1 L
-11 林口 2 L
-10 菜寮 1 L
-13 新莊 2 L
-7 板橋 1 L
-7 土城 1 L
-10 新店 1 L
-8 萬里 1 L
-12 汐止 2 L
-9 基隆 1 L
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79 二林 2 Moderate
+58 三重 2 Moderate
+57 三義 2 Moderate
+51 土城 2 Moderate
+57 士林 2 Moderate
+65 大同 2 Moderate
+75 大里 2 Moderate
+61 大園 2 Moderate
+76 大寮 2 Moderate
+76 小港 2 Moderate
+54 中山 2 Moderate
+65 中壢 2 Moderate
+76 仁武 2 Moderate
+92 斗六 2 Moderate
+58 冬山 2 Moderate
+62 古亭 2 Moderate
+80 左營 2 Moderate
+56 平鎮 2 Moderate
+60 永和 2 Moderate
+98 安南 2 Moderate
+95 朴子 2 Moderate
+55 汐止 2 Moderate
+82 竹山 2 Moderate
+71 竹東 2 Moderate
+70 西屯 2 Moderate
+65 沙鹿 2 Moderate
+56 宜蘭 2 Moderate
+69 忠明 2 Moderate
+54 松山 2 Moderate
+57 板橋 2 Moderate
+53 林口 2 Moderate
+64 林園 2 Moderate
+85 花蓮 2 Moderate
+126 金門 3 Unhealthy for Sensitive Groups
+83 前金 2 Moderate
+76 前鎮 2 Moderate
+85 南投 2 Moderate
+66 屏東 2 Moderate
+77 恆春 2 Moderate
+59 美濃 2 Moderate
+67 苗栗 2 Moderate
+80 埔里 2 Moderate
+62 桃園 2 Moderate
+115 馬公 3 Unhealthy for Sensitive Groups
+122 馬祖 3 Unhealthy for Sensitive Groups
+57 基隆 2 Moderate
+85 崙背 2 Moderate
+57 淡水 2 Moderate
+81 麥寮 2 Moderate
+72 善化 2 Moderate
+80 復興 2 Moderate
+62 湖口 2 Moderate
+58 菜寮 2 Moderate
+47 陽明 1 Good
+54 新竹 2 Moderate
+57 新店 2 Moderate
+58 新莊 2 Moderate
+97 新港 2 Moderate
+87 新營 2 Moderate
+75 楠梓 2 Moderate
+103 萬里 3 Unhealthy for Sensitive Groups
+56 萬華 2 Moderate
+84 嘉義 2 Moderate
+69 彰化 2 Moderate
+74 臺西 2 Moderate
+53 臺東 2 Moderate
+89 臺南 2 Moderate
+79 鳳山 2 Moderate
+67 潮州 2 Moderate
+71 線西 2 Moderate
+82 橋頭 2 Moderate
+80 頭份 2 Moderate
+54 龍潭 2 Moderate
+70 豐原 2 Moderate
+61 關山 2 Moderate
+65 觀音 2 Moderate
+82 彰化(員林) 2 Moderate
+102 高雄(湖內) 3 Unhealthy for Sensitive Groups
+70 臺南(麻豆) 2 Moderate
+77 屏東(琉球) 2 Moderate
+61 桃園(三民) 2 Moderate
+61 新北(樹林) 2 Moderate
+90 臺南(學甲) 2 Moderate
+57 屏東(枋寮) 2 Moderate
+80 富貴角 2 Moderate
+84 大城 2 Moderate
 </pre></div>
 </div>
 </div>
@@ -1585,8 +1395,6 @@ dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finding the maximum value</span>
-<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
-
 <span class="n">mina</span><span class="p">,</span> <span class="n">maxa</span> <span class="o">=</span> <span class="mi">10000</span><span class="p">,</span> <span class="mi">0</span>
 <span class="n">min_site</span><span class="p">,</span> <span class="n">max_site</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span>
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
@@ -1606,8 +1414,8 @@ dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>關山 35
-竹山 132
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>陽明 47
+金門 126
 </pre></div>
 </div>
 </div>
@@ -1618,7 +1426,8 @@ dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#
 <p>這類比較大小的簡單功能一定都有人幫忙寫好了（如以下的例子），只要記得使用它就好。但是，要記得這樣的函式其實就是透過類似上述方法來比較大小以找到最大值。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
@@ -1634,31 +1443,28 @@ dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#
 <p>接下來我們將以上述的演算邏輯來找到PM2.5最高的那個site。我們先用上述的核心邏輯來找到最大值（下方的<code class="docutils literal notranslate"><span class="pre">max_value</span></code>）為何，然後再用一個<code class="docutils literal notranslate"><span class="pre">for</span></code>-loop把所有站台看一遍，看看哪些站台的PM2.5值等於<code class="docutils literal notranslate"><span class="pre">max_value</span></code>。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-
-<span class="c1"># Initialize a very small maximum value</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a very small maximum value</span>
 <span class="n">max_value</span> <span class="o">=</span> <span class="mi">0</span>
 
 <span class="c1"># Compare to see if any one larger than the maximum value</span>
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
     <span class="c1"># add code here</span>
-    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">max_value</span><span class="p">:</span>
-        <span class="n">max_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">max_value</span><span class="p">:</span>
+        <span class="n">max_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span>
 
     
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The maximum PM2.5 value: &quot;</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The maximum AQI value: &quot;</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>
 
 <span class="c1"># Traverse all sites by for loop to see whose value equals to the maximum PM2.5 value</span>
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="n">max_value</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="n">max_value</span><span class="p">:</span>
         <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">max_value</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;SiteName&#39;, &#39;County&#39;, &#39;AQI&#39;, &#39;Pollutant&#39;, &#39;Status&#39;, &#39;SO2&#39;, &#39;CO&#39;, &#39;CO_8hr&#39;, &#39;O3&#39;, &#39;O3_8hr&#39;, &#39;PM10&#39;, &#39;PM2.5&#39;, &#39;NO2&#39;, &#39;NOx&#39;, &#39;NO&#39;, &#39;WindSpeed&#39;, &#39;WindDirec&#39;, &#39;PublishTime&#39;, &#39;PM2.5_AVG&#39;, &#39;PM10_AVG&#39;, &#39;SO2_AVG&#39;, &#39;Longitude&#39;, &#39;Latitude&#39;, &#39;SiteId&#39;, &#39;Quality&#39;])
-The maximum PM2.5 value:  36
-鳳山 36
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The maximum AQI value:  126
+金門 126
 </pre></div>
 </div>
 </div>
@@ -1679,20 +1485,20 @@ The maximum PM2.5 value:  36
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Use a list to store all PM2.5 value</span>
-<span class="n">pm_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">aqlist</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="n">pm_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">]))</span>
+    <span class="n">aqlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]))</span>
 
         
 <span class="c1">## sort the list by sorted()</span>
-<span class="n">pm_list</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">pm_list</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
+<span class="n">aqlist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">aqlist</span><span class="p">,</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">pm_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[36, 31, 30, 28, 27, 26, 26, 26, 26, 25, 25, 25, 24, 24, 23, 23, 23, 22, 22, 22, 22, 22, 21, 20, 20, 19, 19, 18, 17, 16, 16, 16, 15, 15, 15, 15, 15, 15, 14, 14, 14, 14, 14, 14, 14, 14, 13, 13, 13, 13, 13, 13, 13, 12, 12, 12, 12, 12, 11, 11, 11, 11, 11, 11, 10, 10, 10, 10, 10, 10, 9, 9, 9, 9, 8, 8, 8, 7, 7, 7, 7, 6, 5, 5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[126, 122, 115, 103, 102, 98, 97, 95, 92, 90, 89, 87, 85, 85, 85, 84, 84, 83, 82, 82, 82, 81, 80, 80, 80, 80, 80, 79, 79, 77, 77, 76, 76, 76, 76, 75, 75, 74, 72, 71, 71, 70, 70, 70, 69, 69, 67, 67, 66, 65, 65, 65, 65, 64, 62, 62, 62, 61, 61, 61, 61, 60, 59, 58, 58, 58, 58, 57, 57, 57, 57, 57, 57, 57, 56, 56, 56, 55, 54, 54, 54, 54, 53, 53, 51, 47]
 </pre></div>
 </div>
 </div>
@@ -1702,38 +1508,38 @@ The maximum PM2.5 value:  36
 <h3>(Practice) Print out the site which values are larger than the first quarter<a class="headerlink" href="#practice-print-out-the-site-which-values-are-larger-than-the-first-quarter" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">pm_list</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pm_list</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">aqlist</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)])</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">pm_list</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pm_list</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">aqlist</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span><span class="o">/</span><span class="mi">4</span><span class="p">)]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
-屏東(琉球) 28
-高雄(湖內) 26
-埔里 25
-復興 30
-竹山 22
-屏東 22
-小港 26
-前鎮 24
-前金 23
-左營 25
-楠梓 23
-大寮 22
-鳳山 36
-仁武 26
-橋頭 31
-美濃 22
-臺南 26
-安南 22
-善化 24
-新營 25
-嘉義 27
-朴子 23
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81
+斗六 92
+安南 98
+朴子 95
+竹山 82
+花蓮 85
+金門 126
+前金 83
+南投 85
+馬公 115
+馬祖 122
+崙背 85
+麥寮 81
+新港 97
+新營 87
+萬里 103
+嘉義 84
+臺南 89
+橋頭 82
+彰化(員林) 82
+高雄(湖內) 102
+臺南(學甲) 90
+大城 84
 </pre></div>
 </div>
 </div>
@@ -1743,18 +1549,18 @@ The maximum PM2.5 value:  36
 <h3>(Practice) Print out sites with top 3 serious values<a class="headerlink" href="#practice-print-out-sites-with-top-3-serious-values" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">pm_list</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">aqlist</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">pm_list</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">])</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">aqlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>28
-復興 30
-鳳山 36
-橋頭 31
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103
+金門 126
+馬公 115
+馬祖 122
 </pre></div>
 </div>
 </div>
@@ -1782,24 +1588,24 @@ The maximum PM2.5 value:  36
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pm_list</span> <span class="o">=</span> <span class="p">[]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqlist</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">site_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ND&quot;</span><span class="p">:</span>
-        <span class="n">pm_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;PM2.5&#39;</span><span class="p">]))</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ND&quot;</span><span class="p">:</span>
+        <span class="n">aqlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]))</span>
         <span class="n">site_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">])</span>
         
-<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">pm_list</span><span class="p">)):</span>
-    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">pm_list</span><span class="p">)):</span>
-        <span class="k">if</span> <span class="n">pm_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">pm_list</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
-            <span class="n">pm_list</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">pm_list</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">pm_list</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">pm_list</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
-<span class="nb">print</span><span class="p">(</span><span class="n">pm_list</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[36, 31, 30, 28, 27, 26, 26, 26, 26, 25, 25, 25, 24, 24, 23, 23, 23, 22, 22, 22, 22, 22, 21, 20, 20, 19, 19, 18, 17, 16, 16, 16, 15, 15, 15, 15, 15, 15, 14, 14, 14, 14, 14, 14, 14, 14, 13, 13, 13, 13, 13, 13, 13, 12, 12, 12, 12, 12, 11, 11, 11, 11, 11, 11, 10, 10, 10, 10, 10, 10, 9, 9, 9, 9, 8, 8, 8, 7, 7, 7, 7, 6, 5, 5]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[126, 122, 115, 103, 102, 98, 97, 95, 92, 90, 89, 87, 85, 85, 85, 84, 84, 83, 82, 82, 82, 81, 80, 80, 80, 80, 80, 79, 79, 77, 77, 76, 76, 76, 76, 75, 75, 74, 72, 71, 71, 70, 70, 70, 69, 69, 67, 67, 66, 65, 65, 65, 65, 64, 62, 62, 62, 61, 61, 61, 61, 60, 59, 58, 58, 58, 58, 57, 57, 57, 57, 57, 57, 57, 56, 56, 56, 55, 54, 54, 54, 54, 53, 53, 51, 47]
 </pre></div>
 </div>
 </div>
@@ -1814,7 +1620,7 @@ The maximum PM2.5 value:  36
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -1831,11 +1637,11 @@ The maximum PM2.5 value:  36
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;180&#39;, &#39;sbi&#39;: &#39;3&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20211002222317&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;176&#39;, &#39;act&#39;: &#39;1&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;14&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220920144835&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;70&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;48&#39;, &#39;sbi&#39;: &#39;4&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20211002222333&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;43&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220920144835&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;16&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0003&#39;, &#39;sna&#39;: &#39;台北市政府&#39;, &#39;tot&#39;: &#39;40&#39;, &#39;sbi&#39;: &#39;22&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20211002222344&#39;, &#39;lat&#39;: &#39;25.0377972222&#39;, &#39;lng&#39;: &#39;121.565169444&#39;, &#39;ar&#39;: &#39;台北市政府東門(松智路) (鄰近信義商圈/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Taipei City Hall&#39;, &#39;aren&#39;: &#39;Taipei City Government Eastgate (Song Zhi Road)&#39;, &#39;bemp&#39;: &#39;18&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;5&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220920144830&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;27&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -1888,85 +1694,85 @@ The maximum PM2.5 value:  36
       <th>0</th>
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
-      <td>180</td>
-      <td>3</td>
+      <td>88</td>
+      <td>14</td>
       <td>信義區</td>
-      <td>20211002222317</td>
+      <td>20220920144835</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>176</td>
+      <td>70</td>
       <td>1</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
-      <td>48</td>
-      <td>4</td>
+      <td>16</td>
+      <td>0</td>
       <td>大安區</td>
-      <td>20211002222333</td>
+      <td>20220920144835</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>43</td>
+      <td>16</td>
       <td>1</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0003</td>
-      <td>台北市政府</td>
-      <td>40</td>
-      <td>22</td>
-      <td>信義區</td>
-      <td>20211002222344</td>
-      <td>25.0377972222</td>
-      <td>121.565169444</td>
-      <td>台北市政府東門(松智路) (鄰近信義商圈/台北探索館)</td>
-      <td>Xinyi Dist.</td>
-      <td>Taipei City Hall</td>
-      <td>Taipei City Government Eastgate (Song Zhi Road)</td>
-      <td>18</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
       <td>0004</td>
       <td>市民廣場</td>
-      <td>60</td>
-      <td>2</td>
+      <td>32</td>
+      <td>5</td>
       <td>信義區</td>
-      <td>20211002222334</td>
+      <td>20220920144830</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>58</td>
+      <td>27</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>3</th>
       <td>0005</td>
       <td>興雅國中</td>
-      <td>60</td>
-      <td>21</td>
+      <td>32</td>
+      <td>7</td>
       <td>信義區</td>
-      <td>20211002222316</td>
+      <td>20220920144829</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>37</td>
+      <td>25</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>43</td>
+      <td>信義區</td>
+      <td>20220920144818</td>
+      <td>25.034047</td>
+      <td>121.565973</td>
+      <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>NAN SHAN PLAZA</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+      <td>11</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1987,93 +1793,93 @@ The maximum PM2.5 value:  36
       <td>...</td>
     </tr>
     <tr>
-      <th>394</th>
+      <th>366</th>
       <td>0401</td>
       <td>南京新生路口</td>
-      <td>24</td>
-      <td>6</td>
+      <td>16</td>
+      <td>10</td>
       <td>中山區</td>
-      <td>20211002222322</td>
+      <td>20220920144818</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>18</td>
+      <td>6</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>395</th>
+      <th>367</th>
       <td>0402</td>
       <td>下灣公園</td>
-      <td>28</td>
-      <td>4</td>
+      <td>12</td>
+      <td>0</td>
       <td>內湖區</td>
-      <td>20211002222349</td>
+      <td>20220920144841</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
       <td>Neihu Dist.</td>
       <td>Siawan Park</td>
       <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
-      <td>14</td>
+      <td>12</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>396</th>
+      <th>368</th>
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
-      <td>28</td>
-      <td>1</td>
+      <td>10</td>
+      <td>9</td>
       <td>內湖區</td>
-      <td>20211002222334</td>
+      <td>20220920144836</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>27</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>397</th>
+      <th>369</th>
       <td>0404</td>
       <td>民族延平路口</td>
-      <td>20</td>
-      <td>11</td>
+      <td>10</td>
+      <td>0</td>
       <td>大同區</td>
-      <td>20211002222338</td>
+      <td>20220920144822</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
       <td>Datong Dist.</td>
       <td>Minzu &amp; Yanping Intersection</td>
       <td>No.310, Minzu W. Rd.</td>
-      <td>9</td>
+      <td>10</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>398</th>
+      <th>370</th>
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
-      <td>66</td>
-      <td>4</td>
+      <td>46</td>
+      <td>9</td>
       <td>大安區</td>
-      <td>20211002222321</td>
+      <td>20220920144728</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>57</td>
+      <td>34</td>
       <td>1</td>
     </tr>
   </tbody>
 </table>
-<p>399 rows × 14 columns</p>
+<p>371 rows × 14 columns</p>
 </div></div></div>
 </div>
 </section>
