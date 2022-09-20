@@ -618,11 +618,6 @@ title="Print to PDF"
      Use built-in functions
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-find-the-sites-with-the-maximum-pm2-5-value">
-     (Practice) Find the sites with the maximum PM2.5 value
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -781,11 +776,6 @@ title="Print to PDF"
      Use built-in functions
     </a>
    </li>
-   <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#practice-find-the-sites-with-the-maximum-pm2-5-value">
-     (Practice) Find the sites with the maximum PM2.5 value
-    </a>
-   </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -846,26 +836,18 @@ title="Print to PDF"
 <h1>P04 for-if applications<a class="headerlink" href="#p04-for-if-applications" title="Permalink to this headline">#</a></h1>
 <p><strong>for-loop + if-else: conditional operators</strong></p>
 <ul class="simple">
-<li><p>if-else Application: Traversing AQX</p>
-<ul>
-<li><p>Rescaling to categories</p></li>
-<li><p>Detecting prominants</p>
+<li><p><strong>Counting</strong>: 把所有文字看過一遍，計算文字的出現次數</p></li>
+<li><p><strong>Filtering</strong>: 列印出你所要呈現的youbike站台：指定要某幾個、透過if來判斷，指定要滿載的</p></li>
+<li><p><strong>Detecting prominants</strong>: 透過比較來找到最大值和最小值</p>
 <ul>
 <li><p>Top value</p></li>
 <li><p>Top site</p></li>
 <li><p>Top 3 sites</p></li>
 </ul>
 </li>
-</ul>
-</li>
-</ul>
-<ul class="simple">
-<li><p><strong>Counting</strong>: 把所有文字看過一遍，計算文字的出現次數</p></li>
-<li><p><strong>Filtering</strong>: 列印出你所要呈現的youbike站台：指定要某幾個、透過if來判斷，指定要滿載的</p></li>
-<li><p><strong>Finding Max/Min</strong>: 透過比較來找到最大值和最小值</p></li>
 <li><p><strong>Conditional Replacing</strong>: 處理缺漏值，AQX不定期地會有缺漏值，要用<code class="docutils literal notranslate"><span class="pre">if</span></code>來偵測是否有缺漏值，並指定遇到缺漏值要怎麼做處理。或者是查驗輸入的日期是否合理</p></li>
-<li><p><strong>Sorting</strong>: 用<code class="docutils literal notranslate"><span class="pre">for</span></code>遍歷PM2.5的值來對PM2.5做排序，找到最大或者是前三大的PM2.5站台</p></li>
-<li><p><strong>Rescaling</strong>: 分組。若告訴一個使用者PM2.5是67，他可能不知道這個數字代表什麼意義，但你若透過一個標準的Mapping把它mapping到非常高、高、中、低、非常低等五個等級，並告訴使用者說現在這個區域PM2.5是高，那他就聽得懂。</p></li>
+<li><p><strong>Sorting</strong>: 用<code class="docutils literal notranslate"><span class="pre">for</span></code>遍歷AQI的值來對AQI做排序，找到最大或者是前三大的AQI站台</p></li>
+<li><p><strong>Rescaling</strong>: 分組。若告訴一個使用者AQI是67，他可能不知道這個數字代表什麼意義，但你若透過一個標準的Mapping把它mapping到非常高、高、中、低、非常低等五個等級，並告訴使用者說現在這個區域AQI是高，那他就聽得懂。</p></li>
 </ul>
 <section id="the-aqx-case">
 <h2>The AQX case<a class="headerlink" href="#the-aqx-case" title="Permalink to this headline">#</a></h2>
@@ -900,14 +882,29 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">aqdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;1&#39;, &#39;SiteName&#39;: &#39;二林&#39;, &#39;AQI&#39;: &#39;79&#39;, &#39;ViewName&#39;: &#39;二林&#39;, &#39;AreaName&#39;: &#39;中部空品區&#39;, &#39;AreaID&#39;: &#39;3&#39;, &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;, &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;, &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;, &#39;TWD97_Lon&#39;: 120.409653, &#39;TWD97_Lat&#39;: 23.925175, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
-&lt;class &#39;dict&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;1&#39;,
+ &#39;SiteName&#39;: &#39;二林&#39;,
+ &#39;AQI&#39;: &#39;79&#39;,
+ &#39;ViewName&#39;: &#39;二林&#39;,
+ &#39;AreaName&#39;: &#39;中部空品區&#39;,
+ &#39;AreaID&#39;: &#39;3&#39;,
+ &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;,
+ &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;,
+ &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;,
+ &#39;TWD97_Lon&#39;: 120.409653,
+ &#39;TWD97_Lat&#39;: 23.925175,
+ &#39;SiteType&#39;: &#39;一般站&#39;,
+ &#39;SiteType2&#39;: &#39;中央政府&#39;,
+ &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
@@ -943,7 +940,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 <p>列印出相關資料來做觀察，包含AQI、POLLUTANT（污染物種類）。如果資料筆數過多不易觀察的話，應該用List Slicing取出前數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[:10]</span></code>）或後數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[-3:]</span></code>）來觀察</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
 </pre></div>
 </div>
@@ -959,6 +956,82 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 大園	61	懸浮微粒
 大寮	76	細懸浮微粒
 小港	76	細懸浮微粒
+中山	54	懸浮微粒
+中壢	65	細懸浮微粒
+仁武	76	細懸浮微粒
+斗六	92	細懸浮微粒
+冬山	58	細懸浮微粒
+古亭	62	細懸浮微粒
+左營	80	細懸浮微粒
+平鎮	56	細懸浮微粒
+永和	60	細懸浮微粒
+安南	98	細懸浮微粒
+朴子	95	細懸浮微粒
+汐止	55	細懸浮微粒
+竹山	82	細懸浮微粒
+竹東	71	臭氧八小時
+西屯	70	細懸浮微粒
+沙鹿	65	細懸浮微粒
+宜蘭	56	細懸浮微粒
+忠明	69	細懸浮微粒
+松山	54	懸浮微粒
+板橋	57	細懸浮微粒
+林口	53	細懸浮微粒
+林園	64	細懸浮微粒
+花蓮	85	細懸浮微粒
+金門	126	臭氧八小時
+前金	83	細懸浮微粒
+前鎮	76	細懸浮微粒
+南投	85	細懸浮微粒
+屏東	66	細懸浮微粒
+恆春	77	臭氧八小時
+美濃	59	細懸浮微粒
+苗栗	67	臭氧八小時
+埔里	80	細懸浮微粒
+桃園	62	細懸浮微粒
+馬公	115	臭氧八小時
+馬祖	122	臭氧八小時
+基隆	57	細懸浮微粒
+崙背	85	細懸浮微粒
+淡水	57	懸浮微粒
+麥寮	81	細懸浮微粒
+善化	72	細懸浮微粒
+復興	80	細懸浮微粒
+湖口	62	細懸浮微粒
+菜寮	58	細懸浮微粒
+陽明	47	
+新竹	54	臭氧八小時
+新店	57	細懸浮微粒
+新莊	58	細懸浮微粒
+新港	97	細懸浮微粒
+新營	87	細懸浮微粒
+楠梓	75	細懸浮微粒
+萬里	103	懸浮微粒
+萬華	56	細懸浮微粒
+嘉義	84	細懸浮微粒
+彰化	69	細懸浮微粒
+臺西	74	懸浮微粒
+臺東	53	細懸浮微粒
+臺南	89	細懸浮微粒
+鳳山	79	細懸浮微粒
+潮州	67	細懸浮微粒
+線西	71	細懸浮微粒
+橋頭	82	細懸浮微粒
+頭份	80	臭氧八小時
+龍潭	54	臭氧八小時
+豐原	70	細懸浮微粒
+關山	61	細懸浮微粒
+觀音	65	懸浮微粒
+彰化(員林)	82	細懸浮微粒
+高雄(湖內)	102	細懸浮微粒
+臺南(麻豆)	70	細懸浮微粒
+屏東(琉球)	77	細懸浮微粒
+桃園(三民)	61	細懸浮微粒
+新北(樹林)	61	細懸浮微粒
+臺南(學甲)	90	細懸浮微粒
+屏東(枋寮)	57	細懸浮微粒
+富貴角	80	懸浮微粒
+大城	84	細懸浮微粒
 </pre></div>
 </div>
 </div>
@@ -1150,97 +1223,97 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
     <span class="c1">## add more role here</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 	 yellow
-三重 	 yellow
-三義 	 yellow
-土城 	 yellow
-士林 	 yellow
-大同 	 yellow
-大里 	 yellow
-大園 	 yellow
-大寮 	 yellow
-小港 	 yellow
-中山 	 yellow
-中壢 	 yellow
-仁武 	 yellow
-斗六 	 yellow
-冬山 	 yellow
-古亭 	 yellow
-左營 	 yellow
-平鎮 	 yellow
-永和 	 yellow
-安南 	 yellow
-朴子 	 yellow
-汐止 	 yellow
-竹山 	 yellow
-竹東 	 yellow
-西屯 	 yellow
-沙鹿 	 yellow
-宜蘭 	 yellow
-忠明 	 yellow
-松山 	 yellow
-板橋 	 yellow
-林口 	 yellow
-林園 	 yellow
-花蓮 	 yellow
-金門 	 Brown
-前金 	 yellow
-前鎮 	 yellow
-南投 	 yellow
-屏東 	 yellow
-恆春 	 yellow
-美濃 	 yellow
-苗栗 	 yellow
-埔里 	 yellow
-桃園 	 yellow
-馬公 	 Brown
-馬祖 	 Brown
-基隆 	 yellow
-崙背 	 yellow
-淡水 	 yellow
-麥寮 	 yellow
-善化 	 yellow
-復興 	 yellow
-湖口 	 yellow
-菜寮 	 yellow
-陽明 	 Green
-新竹 	 yellow
-新店 	 yellow
-新莊 	 yellow
-新港 	 yellow
-新營 	 yellow
-楠梓 	 yellow
-萬里 	 Brown
-萬華 	 yellow
-嘉義 	 yellow
-彰化 	 yellow
-臺西 	 yellow
-臺東 	 yellow
-臺南 	 yellow
-鳳山 	 yellow
-潮州 	 yellow
-線西 	 yellow
-橋頭 	 yellow
-頭份 	 yellow
-龍潭 	 yellow
-豐原 	 yellow
-關山 	 yellow
-觀音 	 yellow
-彰化(員林) 	 yellow
-高雄(湖內) 	 Brown
-臺南(麻豆) 	 yellow
-屏東(琉球) 	 yellow
-桃園(三民) 	 yellow
-新北(樹林) 	 yellow
-臺南(學甲) 	 yellow
-屏東(枋寮) 	 yellow
-富貴角 	 yellow
-大城 	 yellow
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 	 79 	 細懸浮微粒 	 yellow
+三重 	 58 	 細懸浮微粒 	 yellow
+三義 	 57 	 細懸浮微粒 	 yellow
+土城 	 51 	 懸浮微粒 	 yellow
+士林 	 57 	 細懸浮微粒 	 yellow
+大同 	 65 	 細懸浮微粒 	 yellow
+大里 	 75 	 細懸浮微粒 	 yellow
+大園 	 61 	 懸浮微粒 	 yellow
+大寮 	 76 	 細懸浮微粒 	 yellow
+小港 	 76 	 細懸浮微粒 	 yellow
+中山 	 54 	 懸浮微粒 	 yellow
+中壢 	 65 	 細懸浮微粒 	 yellow
+仁武 	 76 	 細懸浮微粒 	 yellow
+斗六 	 92 	 細懸浮微粒 	 yellow
+冬山 	 58 	 細懸浮微粒 	 yellow
+古亭 	 62 	 細懸浮微粒 	 yellow
+左營 	 80 	 細懸浮微粒 	 yellow
+平鎮 	 56 	 細懸浮微粒 	 yellow
+永和 	 60 	 細懸浮微粒 	 yellow
+安南 	 98 	 細懸浮微粒 	 yellow
+朴子 	 95 	 細懸浮微粒 	 yellow
+汐止 	 55 	 細懸浮微粒 	 yellow
+竹山 	 82 	 細懸浮微粒 	 yellow
+竹東 	 71 	 臭氧八小時 	 yellow
+西屯 	 70 	 細懸浮微粒 	 yellow
+沙鹿 	 65 	 細懸浮微粒 	 yellow
+宜蘭 	 56 	 細懸浮微粒 	 yellow
+忠明 	 69 	 細懸浮微粒 	 yellow
+松山 	 54 	 懸浮微粒 	 yellow
+板橋 	 57 	 細懸浮微粒 	 yellow
+林口 	 53 	 細懸浮微粒 	 yellow
+林園 	 64 	 細懸浮微粒 	 yellow
+花蓮 	 85 	 細懸浮微粒 	 yellow
+金門 	 126 	 臭氧八小時 	 Brown
+前金 	 83 	 細懸浮微粒 	 yellow
+前鎮 	 76 	 細懸浮微粒 	 yellow
+南投 	 85 	 細懸浮微粒 	 yellow
+屏東 	 66 	 細懸浮微粒 	 yellow
+恆春 	 77 	 臭氧八小時 	 yellow
+美濃 	 59 	 細懸浮微粒 	 yellow
+苗栗 	 67 	 臭氧八小時 	 yellow
+埔里 	 80 	 細懸浮微粒 	 yellow
+桃園 	 62 	 細懸浮微粒 	 yellow
+馬公 	 115 	 臭氧八小時 	 Brown
+馬祖 	 122 	 臭氧八小時 	 Brown
+基隆 	 57 	 細懸浮微粒 	 yellow
+崙背 	 85 	 細懸浮微粒 	 yellow
+淡水 	 57 	 懸浮微粒 	 yellow
+麥寮 	 81 	 細懸浮微粒 	 yellow
+善化 	 72 	 細懸浮微粒 	 yellow
+復興 	 80 	 細懸浮微粒 	 yellow
+湖口 	 62 	 細懸浮微粒 	 yellow
+菜寮 	 58 	 細懸浮微粒 	 yellow
+陽明 	 47 	  	 Green
+新竹 	 54 	 臭氧八小時 	 yellow
+新店 	 57 	 細懸浮微粒 	 yellow
+新莊 	 58 	 細懸浮微粒 	 yellow
+新港 	 97 	 細懸浮微粒 	 yellow
+新營 	 87 	 細懸浮微粒 	 yellow
+楠梓 	 75 	 細懸浮微粒 	 yellow
+萬里 	 103 	 懸浮微粒 	 Brown
+萬華 	 56 	 細懸浮微粒 	 yellow
+嘉義 	 84 	 細懸浮微粒 	 yellow
+彰化 	 69 	 細懸浮微粒 	 yellow
+臺西 	 74 	 懸浮微粒 	 yellow
+臺東 	 53 	 細懸浮微粒 	 yellow
+臺南 	 89 	 細懸浮微粒 	 yellow
+鳳山 	 79 	 細懸浮微粒 	 yellow
+潮州 	 67 	 細懸浮微粒 	 yellow
+線西 	 71 	 細懸浮微粒 	 yellow
+橋頭 	 82 	 細懸浮微粒 	 yellow
+頭份 	 80 	 臭氧八小時 	 yellow
+龍潭 	 54 	 臭氧八小時 	 yellow
+豐原 	 70 	 細懸浮微粒 	 yellow
+關山 	 61 	 細懸浮微粒 	 yellow
+觀音 	 65 	 懸浮微粒 	 yellow
+彰化(員林) 	 82 	 細懸浮微粒 	 yellow
+高雄(湖內) 	 102 	 細懸浮微粒 	 Brown
+臺南(麻豆) 	 70 	 細懸浮微粒 	 yellow
+屏東(琉球) 	 77 	 細懸浮微粒 	 yellow
+桃園(三民) 	 61 	 細懸浮微粒 	 yellow
+新北(樹林) 	 61 	 細懸浮微粒 	 yellow
+臺南(學甲) 	 90 	 細懸浮微粒 	 yellow
+屏東(枋寮) 	 57 	 細懸浮微粒 	 yellow
+富貴角 	 80 	 懸浮微粒 	 yellow
+大城 	 84 	 細懸浮微粒 	 yellow
 </pre></div>
 </div>
 </div>
@@ -1289,97 +1362,97 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
             <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
                 <span class="n">d</span> <span class="o">=</span> <span class="n">i</span>
                 <span class="k">break</span>     
-        <span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]),</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]),</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">],</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>79 二林 2 Moderate
-58 三重 2 Moderate
-57 三義 2 Moderate
-51 土城 2 Moderate
-57 士林 2 Moderate
-65 大同 2 Moderate
-75 大里 2 Moderate
-61 大園 2 Moderate
-76 大寮 2 Moderate
-76 小港 2 Moderate
-54 中山 2 Moderate
-65 中壢 2 Moderate
-76 仁武 2 Moderate
-92 斗六 2 Moderate
-58 冬山 2 Moderate
-62 古亭 2 Moderate
-80 左營 2 Moderate
-56 平鎮 2 Moderate
-60 永和 2 Moderate
-98 安南 2 Moderate
-95 朴子 2 Moderate
-55 汐止 2 Moderate
-82 竹山 2 Moderate
-71 竹東 2 Moderate
-70 西屯 2 Moderate
-65 沙鹿 2 Moderate
-56 宜蘭 2 Moderate
-69 忠明 2 Moderate
-54 松山 2 Moderate
-57 板橋 2 Moderate
-53 林口 2 Moderate
-64 林園 2 Moderate
-85 花蓮 2 Moderate
-126 金門 3 Unhealthy for Sensitive Groups
-83 前金 2 Moderate
-76 前鎮 2 Moderate
-85 南投 2 Moderate
-66 屏東 2 Moderate
-77 恆春 2 Moderate
-59 美濃 2 Moderate
-67 苗栗 2 Moderate
-80 埔里 2 Moderate
-62 桃園 2 Moderate
-115 馬公 3 Unhealthy for Sensitive Groups
-122 馬祖 3 Unhealthy for Sensitive Groups
-57 基隆 2 Moderate
-85 崙背 2 Moderate
-57 淡水 2 Moderate
-81 麥寮 2 Moderate
-72 善化 2 Moderate
-80 復興 2 Moderate
-62 湖口 2 Moderate
-58 菜寮 2 Moderate
-47 陽明 1 Good
-54 新竹 2 Moderate
-57 新店 2 Moderate
-58 新莊 2 Moderate
-97 新港 2 Moderate
-87 新營 2 Moderate
-75 楠梓 2 Moderate
-103 萬里 3 Unhealthy for Sensitive Groups
-56 萬華 2 Moderate
-84 嘉義 2 Moderate
-69 彰化 2 Moderate
-74 臺西 2 Moderate
-53 臺東 2 Moderate
-89 臺南 2 Moderate
-79 鳳山 2 Moderate
-67 潮州 2 Moderate
-71 線西 2 Moderate
-82 橋頭 2 Moderate
-80 頭份 2 Moderate
-54 龍潭 2 Moderate
-70 豐原 2 Moderate
-61 關山 2 Moderate
-65 觀音 2 Moderate
-82 彰化(員林) 2 Moderate
-102 高雄(湖內) 3 Unhealthy for Sensitive Groups
-70 臺南(麻豆) 2 Moderate
-77 屏東(琉球) 2 Moderate
-61 桃園(三民) 2 Moderate
-61 新北(樹林) 2 Moderate
-90 臺南(學甲) 2 Moderate
-57 屏東(枋寮) 2 Moderate
-80 富貴角 2 Moderate
-84 大城 2 Moderate
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 79 細懸浮微粒 2 Moderate
+三重 58 細懸浮微粒 2 Moderate
+三義 57 細懸浮微粒 2 Moderate
+土城 51 懸浮微粒 2 Moderate
+士林 57 細懸浮微粒 2 Moderate
+大同 65 細懸浮微粒 2 Moderate
+大里 75 細懸浮微粒 2 Moderate
+大園 61 懸浮微粒 2 Moderate
+大寮 76 細懸浮微粒 2 Moderate
+小港 76 細懸浮微粒 2 Moderate
+中山 54 懸浮微粒 2 Moderate
+中壢 65 細懸浮微粒 2 Moderate
+仁武 76 細懸浮微粒 2 Moderate
+斗六 92 細懸浮微粒 2 Moderate
+冬山 58 細懸浮微粒 2 Moderate
+古亭 62 細懸浮微粒 2 Moderate
+左營 80 細懸浮微粒 2 Moderate
+平鎮 56 細懸浮微粒 2 Moderate
+永和 60 細懸浮微粒 2 Moderate
+安南 98 細懸浮微粒 2 Moderate
+朴子 95 細懸浮微粒 2 Moderate
+汐止 55 細懸浮微粒 2 Moderate
+竹山 82 細懸浮微粒 2 Moderate
+竹東 71 臭氧八小時 2 Moderate
+西屯 70 細懸浮微粒 2 Moderate
+沙鹿 65 細懸浮微粒 2 Moderate
+宜蘭 56 細懸浮微粒 2 Moderate
+忠明 69 細懸浮微粒 2 Moderate
+松山 54 懸浮微粒 2 Moderate
+板橋 57 細懸浮微粒 2 Moderate
+林口 53 細懸浮微粒 2 Moderate
+林園 64 細懸浮微粒 2 Moderate
+花蓮 85 細懸浮微粒 2 Moderate
+金門 126 臭氧八小時 3 Unhealthy for Sensitive Groups
+前金 83 細懸浮微粒 2 Moderate
+前鎮 76 細懸浮微粒 2 Moderate
+南投 85 細懸浮微粒 2 Moderate
+屏東 66 細懸浮微粒 2 Moderate
+恆春 77 臭氧八小時 2 Moderate
+美濃 59 細懸浮微粒 2 Moderate
+苗栗 67 臭氧八小時 2 Moderate
+埔里 80 細懸浮微粒 2 Moderate
+桃園 62 細懸浮微粒 2 Moderate
+馬公 115 臭氧八小時 3 Unhealthy for Sensitive Groups
+馬祖 122 臭氧八小時 3 Unhealthy for Sensitive Groups
+基隆 57 細懸浮微粒 2 Moderate
+崙背 85 細懸浮微粒 2 Moderate
+淡水 57 懸浮微粒 2 Moderate
+麥寮 81 細懸浮微粒 2 Moderate
+善化 72 細懸浮微粒 2 Moderate
+復興 80 細懸浮微粒 2 Moderate
+湖口 62 細懸浮微粒 2 Moderate
+菜寮 58 細懸浮微粒 2 Moderate
+陽明 47  1 Good
+新竹 54 臭氧八小時 2 Moderate
+新店 57 細懸浮微粒 2 Moderate
+新莊 58 細懸浮微粒 2 Moderate
+新港 97 細懸浮微粒 2 Moderate
+新營 87 細懸浮微粒 2 Moderate
+楠梓 75 細懸浮微粒 2 Moderate
+萬里 103 懸浮微粒 3 Unhealthy for Sensitive Groups
+萬華 56 細懸浮微粒 2 Moderate
+嘉義 84 細懸浮微粒 2 Moderate
+彰化 69 細懸浮微粒 2 Moderate
+臺西 74 懸浮微粒 2 Moderate
+臺東 53 細懸浮微粒 2 Moderate
+臺南 89 細懸浮微粒 2 Moderate
+鳳山 79 細懸浮微粒 2 Moderate
+潮州 67 細懸浮微粒 2 Moderate
+線西 71 細懸浮微粒 2 Moderate
+橋頭 82 細懸浮微粒 2 Moderate
+頭份 80 臭氧八小時 2 Moderate
+龍潭 54 臭氧八小時 2 Moderate
+豐原 70 細懸浮微粒 2 Moderate
+關山 61 細懸浮微粒 2 Moderate
+觀音 65 懸浮微粒 2 Moderate
+彰化(員林) 82 細懸浮微粒 2 Moderate
+高雄(湖內) 102 細懸浮微粒 3 Unhealthy for Sensitive Groups
+臺南(麻豆) 70 細懸浮微粒 2 Moderate
+屏東(琉球) 77 細懸浮微粒 2 Moderate
+桃園(三民) 61 細懸浮微粒 2 Moderate
+新北(樹林) 61 細懸浮微粒 2 Moderate
+臺南(學甲) 90 細懸浮微粒 2 Moderate
+屏東(枋寮) 57 細懸浮微粒 2 Moderate
+富貴角 80 懸浮微粒 2 Moderate
+大城 84 細懸浮微粒 2 Moderate
 </pre></div>
 </div>
 </div>
@@ -1433,38 +1506,6 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 82 197 13 15.153846153846153
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="practice-find-the-sites-with-the-maximum-pm2-5-value">
-<h3>(Practice) Find the sites with the maximum PM2.5 value<a class="headerlink" href="#practice-find-the-sites-with-the-maximum-pm2-5-value" title="Permalink to this headline">#</a></h3>
-<p>接下來我們將以上述的演算邏輯來找到PM2.5最高的那個site。我們先用上述的核心邏輯來找到最大值（下方的<code class="docutils literal notranslate"><span class="pre">max_value</span></code>）為何，然後再用一個<code class="docutils literal notranslate"><span class="pre">for</span></code>-loop把所有站台看一遍，看看哪些站台的PM2.5值等於<code class="docutils literal notranslate"><span class="pre">max_value</span></code>。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initialize a very small maximum value</span>
-<span class="n">max_value</span> <span class="o">=</span> <span class="mi">0</span>
-
-<span class="c1"># Compare to see if any one larger than the maximum value</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="c1"># add code here</span>
-    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&gt;</span> <span class="n">max_value</span><span class="p">:</span>
-        <span class="n">max_value</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span>
-
-    
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The maximum AQI value: &quot;</span><span class="p">,</span> <span class="n">max_value</span><span class="p">)</span>
-
-<span class="c1"># Traverse all sites by for loop to see whose value equals to the maximum PM2.5 value</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">==</span> <span class="n">max_value</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">max_value</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The maximum AQI value:  126
-金門 126
 </pre></div>
 </div>
 </div>
@@ -1637,11 +1678,11 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;14&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220920144835&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;70&#39;, &#39;act&#39;: &#39;1&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;21&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220920164436&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;63&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220920144835&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;16&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;5&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220920164334&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;11&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;5&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220920144830&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;27&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;3&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220920164429&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;29&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -1695,16 +1736,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
       <td>88</td>
-      <td>14</td>
+      <td>21</td>
       <td>信義區</td>
-      <td>20220920144835</td>
+      <td>20220920164436</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>70</td>
+      <td>63</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1712,16 +1753,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
       <td>16</td>
-      <td>0</td>
+      <td>5</td>
       <td>大安區</td>
-      <td>20220920144835</td>
+      <td>20220920164334</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>16</td>
+      <td>11</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1729,16 +1770,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0004</td>
       <td>市民廣場</td>
       <td>32</td>
-      <td>5</td>
+      <td>3</td>
       <td>信義區</td>
-      <td>20220920144830</td>
+      <td>20220920164429</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>27</td>
+      <td>29</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1746,9 +1787,9 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0005</td>
       <td>興雅國中</td>
       <td>32</td>
-      <td>7</td>
+      <td>6</td>
       <td>信義區</td>
-      <td>20220920144829</td>
+      <td>20220920164432</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
@@ -1763,16 +1804,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0006</td>
       <td>臺北南山廣場</td>
       <td>54</td>
-      <td>43</td>
+      <td>39</td>
       <td>信義區</td>
-      <td>20220920144818</td>
+      <td>20220920164419</td>
       <td>25.034047</td>
       <td>121.565973</td>
       <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>NAN SHAN PLAZA</td>
       <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
-      <td>11</td>
+      <td>15</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1797,16 +1838,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0401</td>
       <td>南京新生路口</td>
       <td>16</td>
-      <td>10</td>
+      <td>8</td>
       <td>中山區</td>
-      <td>20220920144818</td>
+      <td>20220920164418</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>6</td>
+      <td>8</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1816,7 +1857,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>12</td>
       <td>0</td>
       <td>內湖區</td>
-      <td>20220920144841</td>
+      <td>20220920164441</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
@@ -1831,16 +1872,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
       <td>10</td>
-      <td>9</td>
+      <td>10</td>
       <td>內湖區</td>
-      <td>20220920144836</td>
+      <td>20220920164441</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>1</td>
+      <td>0</td>
       <td>1</td>
     </tr>
     <tr>
@@ -1850,7 +1891,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>10</td>
       <td>0</td>
       <td>大同區</td>
-      <td>20220920144822</td>
+      <td>20220920164422</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
@@ -1865,16 +1906,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
       <td>46</td>
-      <td>9</td>
+      <td>1</td>
       <td>大安區</td>
-      <td>20220920144728</td>
+      <td>20220920164429</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>34</td>
+      <td>42</td>
       <td>1</td>
     </tr>
   </tbody>
