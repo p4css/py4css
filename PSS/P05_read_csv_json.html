@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="Read more formats" href="P05_read_other_format.html" />
-    <link rel="prev" title="P04 for-if applications" href="P04_2_for_if.html" />
+    <link rel="prev" title="P04 For-if applications" href="P04_2_for_if.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -182,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="P04_2_for_if.html">
-   P04 for-if applications
+   P04 For-if applications
   </a>
  </li>
 </ul>
@@ -809,9 +809,17 @@ title="Print to PDF"
 </ul>
 <section id="colab-jupyterlab-read-file-via-link">
 <h4>Colab/jupyterlab. Read file via link<a class="headerlink" href="#colab-jupyterlab-read-file-via-link" title="Permalink to this headline">#</a></h4>
+<p>在Colab上可以用<code class="docutils literal notranslate"><span class="pre">wget</span></code>指令，將該檔案讀回來，<code class="docutils literal notranslate"><span class="pre">-o</span></code>的意思是代表如果已經有一樣的檔案就覆寫（Overwrite）過去，<code class="docutils literal notranslate"><span class="pre">-o</span></code>後面是新的檔名，可以用此命名為比較好記的檔名，但我個人習慣保持一樣的檔名。<code class="docutils literal notranslate"><span class="pre">wget</span></code>的步驟是把檔案抓回Colab的工作環境中。下一步才是開啟檔案。</p>
+<p>開啟檔案時，需要先開啟該檔案，並指到一個變數，例如下例中的<code class="docutils literal notranslate"><span class="pre">f</span></code>，並且指定要用什麼讀取模式來開啟檔案。<br>相關說明可見<a class="reference external" href="https://www.tutorialspoint.com/python/python_files_io.htm">Python-File Handling</a></p>
+<ol class="simple">
+<li><p>讀寫模式主要有三種，<code class="docutils literal notranslate"><span class="pre">r</span></code>表讀取、<code class="docutils literal notranslate"><span class="pre">w</span></code>表直接從頭覆寫寫入、<code class="docutils literal notranslate"><span class="pre">a</span></code>為寫入新資料在檔案最後（Append的意思）。</p></li>
+<li><p>後面跟著一個<code class="docutils literal notranslate"><span class="pre">b</span></code>的代表是binary檔案，例如<code class="docutils literal notranslate"><span class="pre">wb</span></code>、<code class="docutils literal notranslate"><span class="pre">rb</span></code>，初學者比較少用到，html、json、txt、csv等都是文字檔案，都不是binary檔案；如果是pdf、bin、docx就都是binary檔案。</p></li>
+<li><p>如果後面跟著一個<code class="docutils literal notranslate"><span class="pre">+</span></code>的， <code class="docutils literal notranslate"><span class="pre">r+</span></code>代表可讀寫、<code class="docutils literal notranslate"><span class="pre">w+</span></code>代表可讀寫，且寫入時如果沒有該檔案，他會自動建立該檔案。</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv -o drug_156_2.csv
+
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;drug_156_2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
@@ -828,6 +836,7 @@ title="Print to PDF"
 </section>
 <section id="colab-mount-drive-then-read">
 <h4>Colab. Mount drive then read<a class="headerlink" href="#colab-mount-drive-then-read" title="Permalink to this headline">#</a></h4>
+<p>Google Colab提供一個選項是把個人的Google Drive 掛載（Mount）到Colab的執行環境中，意味著可以用程式直接讀取個人放在Google drive裡面的資料。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">#Mount google drive as data</span>
@@ -856,6 +865,12 @@ title="Print to PDF"
 </section>
 <section id="jupyterlab-read-from-local-pc">
 <h4>Jupyterlab. Read from local PC<a class="headerlink" href="#jupyterlab-read-from-local-pc" title="Permalink to this headline">#</a></h4>
+<p>如果是在個人PC上，用VS Code或Jupyter等自行安裝的編輯器寫作的話，那就需要在程式碼中指定該檔案的路徑，通常以指定相對路徑為佳。相關說明如<a class="reference external" href="https://www.injerry.com/blog_view/131#:~:text=%E7%9B%B8%E5%B0%8D%E8%B7%AF%E5%BE%91%E6%8C%87%E7%9A%84%E6%98%AF,%E5%9C%A8%E9%80%99%E5%80%8B%E8%B3%87%E6%96%99%E5%A4%BE%E8%A3%A1%E9%9D%A2%E3%80%82">相對路徑</a></p>
+<ol class="simple">
+<li><p>如果.ipynb和test.csv在同一個資料夾內，用<code class="docutils literal notranslate"><span class="pre">test.csv</span></code>或者<code class="docutils literal notranslate"><span class="pre">./test.csv</span></code>便可讀取在同一個資料夾內的檔案。</p></li>
+<li><p>如果test.csv被放置在.ipynb所在位置的test資料夾中，用<code class="docutils literal notranslate"><span class="pre">test/test.csv</span></code>便可讀取，意即，在同一層中的test資料夾中的test.csv。</p></li>
+<li><p>如果test.csv被放置在.ipynb所在位置的外部資料夾中，那就要用<code class="docutils literal notranslate"><span class="pre">../test.csv</span></code>往外跳出這層資料夾，每多一個<code class="docutils literal notranslate"><span class="pre">..</span></code>就代表往外跳一層，例如<code class="docutils literal notranslate"><span class="pre">../../test.csv</span></code>代表往外跳兩層</p></li>
+</ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Must specify right path</span>
@@ -872,6 +887,7 @@ title="Print to PDF"
 </section>
 <section id="open-files">
 <h3>Open files<a class="headerlink" href="#open-files" title="Permalink to this headline">#</a></h3>
+<p>如果直接把開好的檔案Print出來的話，會看見的是<code class="docutils literal notranslate"><span class="pre">f</span></code>這個變數的變數內容。還需要用<code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code>或<code class="docutils literal notranslate"><span class="pre">f.read()</span></code>函式來讀取文字內容。這兩者的差別在於，<code class="docutils literal notranslate"><span class="pre">f.readlines()</span></code>在讀取的時候如果遇到換行符號就會自動斷開成為一個字串，最後會傳回一個被換行符號所斷開的字串List。而<code class="docutils literal notranslate"><span class="pre">f.read()</span></code>則是傳回包含整個檔案的字串，之後我們可以自己在寫</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">fin_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
@@ -2335,7 +2351,7 @@ title="Print to PDF"
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">P04 for-if applications</p>
+            <p class="prev-next-title">P04 For-if applications</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="P05_read_other_format.html" title="next page">
