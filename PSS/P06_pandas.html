@@ -182,7 +182,7 @@ const thebe_selector_output = ".output, .cell_output"
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="P04_2_for_if.html">
-   P04 for-if applications
+   P04 For-if applications
   </a>
  </li>
 </ul>
@@ -839,28 +839,39 @@ title="Print to PDF"
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.google.com/presentation/d/1OP8GcjUUWc9MWxfPNW2Ch47iENpXyOKeMKGzSth1UPs/edit?usp=sharing">Slide: Py06 Pandas and data manipulation</a></p></li>
 <li><p>Pandas cheat sheet: <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</a></p></li>
-</ul>
-<p><strong>Resource</strong></p>
-<ul class="simple">
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/20638006/convert-list-of-dictionaries-to-dataframe">stackoverflow: Convert to json</a></p></li>
 </ul>
+<p>Pandas模仿Matlab或R的dataframe的函式庫。在資料科學逐漸發展的過程，這些資料大多以類似統計軟體或者Excel等試算表（Sheet）的狀態儲存，也就是二維的表格，且通常是直欄為變數、而橫列為資料列。把這些資料讀進Python時，固然可以讀成List-of-dictionary或List-of-list的型態，但大部分資料操作的思考邏輯，都是以欄和列為基礎，例如增加一個欄是refactor以後的結果、或者篩選出某些變數符合條件的資料列，或者依據某個欄來重新排列資料列的位置。而Pandas可以說就是被設計來滿足這樣的需求的，而且隨著資料科學受世人重視，而發展的越來越完整。例如，Pandas中便有以下函式：</p>
+<ol class="simple">
+<li><p>讀取CSV <code class="docutils literal notranslate"><span class="pre">pd.read_csv('data.csv')</span></code>或讀取JSON <code class="docutils literal notranslate"><span class="pre">pd.read_json('data.json')</span></code></p></li>
+<li><p>取代空值（Replace empty cell） <code class="docutils literal notranslate"><span class="pre">df.dropna()</span></code>、移除重複列 <code class="docutils literal notranslate"><span class="pre">df.drop_duplicates(inplace</span> <span class="pre">=</span> <span class="pre">True)</span></code></p></li>
+<li><p>執行基礎的關聯運算 <code class="docutils literal notranslate"><span class="pre">df.corr()</span></code></p></li>
+</ol>
+<p>這個章節將更系統化地用實際案例來介紹，</p>
+<ol class="simple">
+<li><p>如何subset資料（類似slicing）的功能。</p></li>
+<li><p>產生一個新變數、觀察一個變數、改變變數型態</p></li>
+<li><p>計數某個變數、根據某個變數來做計數／加總／彙整、根據數個變數來做計數。</p></li>
+<li><p>根據某個變數來排序整個dataframe的資料列</p></li>
+<li><p>樞紐分析與轉換長寬表格。</p></li>
+</ol>
 <section id="read-data-records">
 <h2>Read data records - 違規藥品廣告<a class="headerlink" href="#read-data-records" title="Permalink to this headline">#</a></h2>
 <p>違規藥品廣告資料集 <a class="reference external" href="https://data.nat.gov.tw/dataset/14196">https://data.nat.gov.tw/dataset/14196</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">drug_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://github.com/P4CSS/PSS/raw/master/data/14196_drug_adv.csv&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">drug_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="c1"># drug_df</span>
 <span class="n">drug_df</span><span class="o">.</span><span class="n">columns</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_6059/2567337408.py:2: FutureWarning: The error_bad_lines argument has been deprecated and will be removed in a future version. Use on_bad_lines in the future.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_9213/2820388479.py:2: FutureWarning: The error_bad_lines argument has been deprecated and will be removed in a future version. Use on_bad_lines in the future.
 
 
-  drug_df = pd.read_csv(&#39;https://github.com/P4CSS/PSS/raw/master/data/14196_drug_adv.csv&#39;, error_bad_lines=False)
+  drug_df = pd.read_csv(&#39;https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv&#39;, error_bad_lines=False)
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;違規產品名稱&#39;, &#39;違規廠商名稱或負責人&#39;, &#39;處分機關&#39;, &#39;處分日期&#39;, &#39;處分法條&#39;, &#39;違規情節&#39;, &#39;刊播日期&#39;,
@@ -925,68 +936,68 @@ title="Print to PDF"
   <tbody>
     <tr>
       <th>0</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y7868533113/鍾青砡</td>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>03 31 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>廣播電台</td>
+      <td>噶瑪蘭廣播電台股份有限公司</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>《現貨》大正漢方腸胃藥 60錠</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 21 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>日本小林製藥 - 喉嚨噴劑 (現貨)</td>
-      <td>**VIOLA Shop**/代號 Y0899501333/蔡佩蓉</td>
+      <td>✈日本 代購 TSUMURA 中將湯 24天包裝</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>05 16 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>《現貨》日本 小林製藥 命之母 生命之 840錠 女性更年期保養</td>
-      <td>日本藥妝全職服務現貨快速出/代號 Y4681313568/鍾青砡</td>
+      <td>_Salty.shop 日本代購 樂敦小花</td>
+      <td>曾O嫺/曾O嫺</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
-      <td>NaN</td>
+      <td>02 17 2022 12:00AM</td>
+      <td>藥事法第27條</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>12 6 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1002,89 +1013,96 @@ title="Print to PDF"
       <td>...</td>
     </tr>
     <tr>
-      <th>1755</th>
-      <td>全新麵包超人止癢貼片（76入）</td>
-      <td>非廠商/蕭千容</td>
+      <th>2967</th>
+      <td>*健人館* 千鶴薄荷棒11g*2個</td>
+      <td>新東海藥局/ O聰敏</td>
       <td>NaN</td>
-      <td>10 19 2017 12:00AM</td>
+      <td>NaN</td>
+      <td>藥事法第27條</td>
+      <td>標示內容與規定不符</td>
+      <td>05 6 2020 12:00AM</td>
+      <td>網路</td>
+      <td>NaN</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2968</th>
+      <td>（現貨）GO LIVER DETOX 高之源 護肝排毒膠囊 120粒</td>
+      <td>連O毅/連O毅</td>
+      <td>NaN</td>
+      <td>06 30 2020 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>02 5 2020 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2969</th>
+      <td>日本帶回樂敦小花新鮮貨</td>
+      <td>張O萍/張O萍</td>
+      <td>NaN</td>
+      <td>06 23 2020 12:00AM</td>
+      <td>NaN</td>
+      <td>難以判定產品屬性</td>
+      <td>03 10 2020 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2970</th>
+      <td>全新 洗眼杯 可平信 洗眼 小林製藥 小花 ROHTO Lycee 可搭配生理食鹽水 空汙 ...</td>
+      <td>盧O/盧O</td>
+      <td>NaN</td>
+      <td>09 4 2020 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>06 22 2017 12:00AM</td>
+      <td>03 10 2020 12:00AM</td>
       <td>網路</td>
-      <td>蝦皮拍賣網站</td>
+      <td>蝦皮購物</td>
       <td>輔導結案</td>
     </tr>
     <tr>
-      <th>1756</th>
-      <td>御岳百草丸</td>
-      <td>非廠商/吳俊儀</td>
+      <th>2971</th>
+      <td>0.9%生理食鹽水 20ml 預購最低價 每人限購2盒</td>
+      <td>張O軒/張O軒</td>
       <td>NaN</td>
-      <td>11 1 2017 12:00AM</td>
-      <td>藥事法第39條</td>
-      <td>藥品未申請查驗登記</td>
-      <td>05 23 2017 12:00AM</td>
+      <td>06 11 2020 12:00AM</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>03 31 2020 12:00AM</td>
       <td>網路</td>
-      <td>蝦皮拍賣網站</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>1757</th>
-      <td>（現貨供應中）日本樂敦，減輕疲憊</td>
-      <td>非廠商/陳O卿</td>
+      <td>蝦皮購物</td>
       <td>NaN</td>
-      <td>10 20 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>無照藥商藥品未申請查驗登記</td>
-      <td>07 20 2017 12:00AM</td>
-      <td>網路</td>
-      <td>商店街個人賣場網站</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>1758</th>
-      <td>客製訂單～詹淑惠</td>
-      <td>非廠商/陳O卿</td>
-      <td>NaN</td>
-      <td>10 20 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>無照藥商藥品未申請查驗登記</td>
-      <td>07 20 2017 12:00AM</td>
-      <td>網路</td>
-      <td>商店街個人賣場網站</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>1759</th>
-      <td>bb美白錠</td>
-      <td>非廠商/楊庭妮</td>
-      <td>NaN</td>
-      <td>09 28 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>廣告內容誇大不實</td>
-      <td>06 7 2017 12:00AM</td>
-      <td>網路</td>
-      <td>蝦皮拍賣網站</td>
-      <td>輔導結案</td>
     </tr>
   </tbody>
 </table>
-<p>1760 rows × 10 columns</p>
+<p>2972 rows × 10 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span>print(drug_df.pubMediaType)
-≈
-# print(set(drug_df.pubMediaType))
-# drug_df
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">)</span>
+<span class="c1"># print(set(drug_df.pubMediaType))</span>
+<span class="c1"># drug_df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  Input In [4]
-    ≈
-    ^
-SyntaxError: invalid character &#39;≈&#39; (U+2248)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       廣播電台
+1         網路
+2         網路
+3         網路
+4         網路
+        ... 
+2967      網路
+2968      網路
+2969      網路
+2970      網路
+2971      網路
+Name: pubMediaType, Length: 2972, dtype: object
 </pre></div>
 </div>
 </div>
@@ -1096,7 +1114,13 @@ SyntaxError: invalid character &#39;≈&#39; (U+2248)
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
 <span class="n">type_dict</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">type_dict</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">fact</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">fact</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;網路&#39;: 2609, &#39;廣播電台&#39;: 119, &#39;平面媒體&#39;: 117, &#39;電視&#39;: 109, &#39;其他&#39;: 16, nan: 2})
+[(&#39;無照藥商&#39;, 1434), (&#39;廣告違規&#39;, 248), (&#39;無違規&#39;, 185), (&#39;其刊登或宣播之廣告內容與原核准廣告內容不符&#39;, 134), (nan, 132), (&#39;非藥商刊登或宣播藥物廣告&#39;, 108), (&#39;藥品未申請查驗登記&#39;, 94), (&#39;刊播未申請核准之廣告&#39;, 85), (&#39;廣告內容誇大不實&#39;, 67), (&#39;禁藥&#39;, 40)]
 </pre></div>
 </div>
 </div>
@@ -1108,11 +1132,11 @@ SyntaxError: invalid character &#39;≈&#39; (U+2248)
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>網路      1479
-平面媒體     111
-電視        86
-廣播電台      71
-其他        13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>網路      2609
+廣播電台     119
+平面媒體     117
+電視       109
+其他        16
 Name: pubMediaType, dtype: int64
 </pre></div>
 </div>
@@ -1125,11 +1149,11 @@ Name: pubMediaType, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>網路      1479
-平面媒體     111
-電視        86
-廣播電台      71
-其他        13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>網路      2609
+廣播電台     119
+平面媒體     117
+電視       109
+其他        16
 Name: pubMediaType, dtype: int64
 </pre></div>
 </div>
@@ -1162,132 +1186,22 @@ Name: pubMediaType, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;180&#39;, &#39;sbi&#39;: &#39;89&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20210322163525&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;90&#39;, &#39;act&#39;: &#39;1&#39;}, {&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;48&#39;, &#39;sbi&#39;: &#39;7&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20210322163540&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;41&#39;, &#39;act&#39;: &#39;1&#39;}, {&#39;sno&#39;: &#39;0003&#39;, &#39;sna&#39;: &#39;台北市政府&#39;, &#39;tot&#39;: &#39;40&#39;, &#39;sbi&#39;: &#39;16&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20210322163520&#39;, &#39;lat&#39;: &#39;25.0377972222&#39;, &#39;lng&#39;: &#39;121.565169444&#39;, &#39;ar&#39;: &#39;台北市政府東門(松智路) (鄰近信義商圈/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Taipei City Hall&#39;, &#39;aren&#39;: &#39;Taipei City Government Eastgate (Song Zhi Road)&#39;, &#39;bemp&#39;: &#39;15&#39;, &#39;act&#39;: &#39;1&#39;}]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 9&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># all_list = []</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># for k, v in data[&quot;retVal&quot;].items():</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="c1"># #     print(k, v)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="c1">#     all_list.append(v)</span>
+<span class="ne">----&gt; </span><span class="mi">9</span> <span class="nb">print</span><span class="p">(</span><span class="n">all_list</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Using list comprehension</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">all_list</span> <span class="o">=</span> <span class="p">[</span><span class="n">v</span> <span class="k">for</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">()]</span>
+
+<span class="ne">NameError</span>: name &#39;all_list&#39; is not defined
 </pre></div>
 </div>
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>sno</th>
-      <th>sna</th>
-      <th>tot</th>
-      <th>sbi</th>
-      <th>sarea</th>
-      <th>mday</th>
-      <th>lat</th>
-      <th>lng</th>
-      <th>ar</th>
-      <th>sareaen</th>
-      <th>snaen</th>
-      <th>aren</th>
-      <th>bemp</th>
-      <th>act</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>0001</td>
-      <td>捷運市政府站(3號出口)</td>
-      <td>180</td>
-      <td>88</td>
-      <td>信義區</td>
-      <td>20210322163825</td>
-      <td>25.0408578889</td>
-      <td>121.567904444</td>
-      <td>忠孝東路/松仁路(東南側)</td>
-      <td>Xinyi Dist.</td>
-      <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
-      <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>91</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>0002</td>
-      <td>捷運國父紀念館站(2號出口)</td>
-      <td>48</td>
-      <td>7</td>
-      <td>大安區</td>
-      <td>20210322163840</td>
-      <td>25.041254</td>
-      <td>121.55742</td>
-      <td>忠孝東路四段/光復南路口(西南側)</td>
-      <td>Daan Dist.</td>
-      <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
-      <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>41</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>0003</td>
-      <td>台北市政府</td>
-      <td>40</td>
-      <td>16</td>
-      <td>信義區</td>
-      <td>20210322163823</td>
-      <td>25.0377972222</td>
-      <td>121.565169444</td>
-      <td>台北市政府東門(松智路) (鄰近信義商圈/台北探索館)</td>
-      <td>Xinyi Dist.</td>
-      <td>Taipei City Hall</td>
-      <td>Taipei City Government Eastgate (Song Zhi Road)</td>
-      <td>15</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>0004</td>
-      <td>市民廣場</td>
-      <td>60</td>
-      <td>29</td>
-      <td>信義區</td>
-      <td>20210322163844</td>
-      <td>25.0360361111</td>
-      <td>121.562325</td>
-      <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
-      <td>Xinyi Dist.</td>
-      <td>Citizen Square</td>
-      <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>31</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>0005</td>
-      <td>興雅國中</td>
-      <td>60</td>
-      <td>40</td>
-      <td>信義區</td>
-      <td>20210322163822</td>
-      <td>25.0365638889</td>
-      <td>121.5686639</td>
-      <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
-      <td>Xinyi Dist.</td>
-      <td>Xingya Jr. High School</td>
-      <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>18</td>
-      <td>1</td>
-    </tr>
-  </tbody>
-</table>
-</div></div></div>
+</div>
 </div>
 </section>
 <section id="m2-using-built-in-function-to-pandas">
@@ -1343,85 +1257,85 @@ Name: pubMediaType, dtype: int64
       <th>0001</th>
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
-      <td>180</td>
-      <td>49</td>
+      <td>88</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20210322235225</td>
+      <td>20220922232241</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>129</td>
+      <td>82</td>
       <td>1</td>
     </tr>
     <tr>
       <th>0002</th>
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
-      <td>48</td>
-      <td>3</td>
+      <td>16</td>
+      <td>0</td>
       <td>大安區</td>
-      <td>20210322235239</td>
+      <td>20220922232217</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>45</td>
-      <td>1</td>
-    </tr>
-    <tr>
-      <th>0003</th>
-      <td>0003</td>
-      <td>台北市政府</td>
-      <td>40</td>
-      <td>9</td>
-      <td>信義區</td>
-      <td>20210322235220</td>
-      <td>25.0377972222</td>
-      <td>121.565169444</td>
-      <td>台北市政府東門(松智路) (鄰近信義商圈/台北探索館)</td>
-      <td>Xinyi Dist.</td>
-      <td>Taipei City Hall</td>
-      <td>Taipei City Government Eastgate (Song Zhi Road)</td>
-      <td>22</td>
+      <td>16</td>
       <td>1</td>
     </tr>
     <tr>
       <th>0004</th>
       <td>0004</td>
       <td>市民廣場</td>
-      <td>60</td>
-      <td>5</td>
+      <td>32</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20210322235245</td>
+      <td>20220922232236</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>55</td>
+      <td>32</td>
       <td>1</td>
     </tr>
     <tr>
       <th>0005</th>
       <td>0005</td>
       <td>興雅國中</td>
-      <td>60</td>
+      <td>32</td>
       <td>4</td>
       <td>信義區</td>
-      <td>20210322235222</td>
+      <td>20220922232234</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>55</td>
+      <td>27</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>2</td>
+      <td>信義區</td>
+      <td>20220922232229</td>
+      <td>25.034047</td>
+      <td>121.565973</td>
+      <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>NAN SHAN PLAZA</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+      <td>50</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1443,26 +1357,26 @@ Name: pubMediaType, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
-Index: 400 entries, 0001 to 0405
+Index: 371 entries, 0001 to 0405
 Data columns (total 14 columns):
  #   Column   Non-Null Count  Dtype 
 ---  ------   --------------  ----- 
- 0   sno      400 non-null    object
- 1   sna      400 non-null    object
- 2   tot      400 non-null    object
- 3   sbi      400 non-null    object
- 4   sarea    400 non-null    object
- 5   mday     400 non-null    object
- 6   lat      400 non-null    object
- 7   lng      400 non-null    object
- 8   ar       400 non-null    object
- 9   sareaen  400 non-null    object
- 10  snaen    400 non-null    object
- 11  aren     400 non-null    object
- 12  bemp     400 non-null    object
- 13  act      400 non-null    object
+ 0   sno      371 non-null    object
+ 1   sna      371 non-null    object
+ 2   tot      371 non-null    object
+ 3   sbi      371 non-null    object
+ 4   sarea    371 non-null    object
+ 5   mday     371 non-null    object
+ 6   lat      371 non-null    object
+ 7   lng      371 non-null    object
+ 8   ar       371 non-null    object
+ 9   sareaen  371 non-null    object
+ 10  snaen    371 non-null    object
+ 11  aren     371 non-null    object
+ 12  bemp     371 non-null    object
+ 13  act      371 non-null    object
 dtypes: object(14)
-memory usage: 46.9+ KB
+memory usage: 43.5+ KB
 </pre></div>
 </div>
 </div>
@@ -1507,68 +1421,68 @@ memory usage: 46.9+ KB
   <tbody>
     <tr>
       <th>0</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y7868533113/鍾青砡</td>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>03 31 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>廣播電台</td>
+      <td>噶瑪蘭廣播電台股份有限公司</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>《現貨》大正漢方腸胃藥 60錠</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 21 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>日本小林製藥 - 喉嚨噴劑 (現貨)</td>
-      <td>**VIOLA Shop**/代號 Y0899501333/蔡佩蓉</td>
+      <td>✈日本 代購 TSUMURA 中將湯 24天包裝</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>05 16 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>《現貨》日本 小林製藥 命之母 生命之 840錠 女性更年期保養</td>
-      <td>日本藥妝全職服務現貨快速出/代號 Y4681313568/鍾青砡</td>
+      <td>_Salty.shop 日本代購 樂敦小花</td>
+      <td>曾O嫺/曾O嫺</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
-      <td>NaN</td>
+      <td>02 17 2022 12:00AM</td>
+      <td>藥事法第27條</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>12 6 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
     </tr>
   </tbody>
 </table>
@@ -1618,71 +1532,71 @@ memory usage: 46.9+ KB
   <tbody>
     <tr>
       <th>count</th>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
-      <td>400</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
     </tr>
     <tr>
       <th>unique</th>
-      <td>400</td>
-      <td>400</td>
-      <td>35</td>
-      <td>48</td>
+      <td>371</td>
+      <td>371</td>
+      <td>27</td>
+      <td>30</td>
       <td>12</td>
-      <td>49</td>
-      <td>398</td>
-      <td>399</td>
-      <td>400</td>
+      <td>41</td>
+      <td>369</td>
+      <td>370</td>
+      <td>371</td>
       <td>12</td>
-      <td>399</td>
-      <td>398</td>
-      <td>51</td>
-      <td>2</td>
+      <td>370</td>
+      <td>369</td>
+      <td>40</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>top</th>
-      <td>0154</td>
-      <td>福華商場</td>
-      <td>30</td>
-      <td>18</td>
-      <td>大安區</td>
-      <td>20210322163826</td>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>12</td>
+      <td>0</td>
+      <td>中山區</td>
+      <td>20220922232223</td>
       <td>25.068530</td>
       <td>121.525322</td>
-      <td>重慶北路三段154號(前方/東側)</td>
-      <td>Daan Dist.</td>
+      <td>忠孝東路/松仁路(東南側)</td>
+      <td>Zhongshan Dist.</td>
       <td>Nangang Park</td>
       <td>The N.S. side of Lianyun St. &amp; Sec. 2, Xinyi Rd.</td>
-      <td>24</td>
+      <td>7</td>
       <td>1</td>
     </tr>
     <tr>
       <th>freq</th>
       <td>1</td>
       <td>1</td>
+      <td>50</td>
       <td>54</td>
-      <td>27</td>
-      <td>49</td>
-      <td>21</td>
+      <td>44</td>
+      <td>18</td>
       <td>2</td>
       <td>2</td>
       <td>1</td>
-      <td>49</td>
+      <td>44</td>
       <td>2</td>
       <td>2</td>
-      <td>22</td>
-      <td>395</td>
+      <td>32</td>
+      <td>371</td>
     </tr>
   </tbody>
 </table>
@@ -1699,16 +1613,16 @@ memory usage: 46.9+ KB
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pname           《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏
-cname                 Y9159169900/鍾青砡
-agency                            NaN
-issuedate          08 15 2017 12:00AM
-law                               NaN
-fact                             無照藥商
-pubDate             02 3 2017 12:00AM
-pubMediaType                       網路
-pubMedia                   Yahoo！奇摩拍賣
-trace                         相關案件已處分
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pname           ✈日本 代購 參天製藥 處方簽點眼液
+cname                      蘇O涵/蘇O涵
+agency                         NaN
+issuedate       01 25 2022 12:00AM
+law                            NaN
+fact                          無照藥商
+pubDate         08 27 2021 12:00AM
+pubMediaType                    網路
+pubMedia                      蝦皮購物
+trace                          NaN
 Name: 2, dtype: object
 </pre></div>
 </div>
@@ -1747,7 +1661,7 @@ Name: pubMediaType, Length: 1760, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>✈日本 代購 參天製藥 處方簽點眼液
 </pre></div>
 </div>
 </div>
@@ -1795,42 +1709,42 @@ Name: pubMediaType, Length: 1760, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y7868533113/鍾青砡</td>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>03 31 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>廣播電台</td>
+      <td>噶瑪蘭廣播電台股份有限公司</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>《現貨》大正漢方腸胃藥 60錠</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 21 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
@@ -1876,55 +1790,55 @@ Name: pubMediaType, Length: 1760, dtype: object
   <tbody>
     <tr>
       <th>1</th>
-      <td>《現貨》大正漢方腸胃藥 60錠</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 21 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>日本小林製藥 - 喉嚨噴劑 (現貨)</td>
-      <td>**VIOLA Shop**/代號 Y0899501333/蔡佩蓉</td>
+      <td>✈日本 代購 TSUMURA 中將湯 24天包裝</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>05 16 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>《現貨》日本 小林製藥 命之母 生命之 840錠 女性更年期保養</td>
-      <td>日本藥妝全職服務現貨快速出/代號 Y4681313568/鍾青砡</td>
+      <td>_Salty.shop 日本代購 樂敦小花</td>
+      <td>曾O嫺/曾O嫺</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
-      <td>NaN</td>
+      <td>02 17 2022 12:00AM</td>
+      <td>藥事法第27條</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>12 6 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
     </tr>
   </tbody>
 </table>
@@ -1970,237 +1884,393 @@ Name: pubMediaType, Length: 1760, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y7868533113/鍾青砡</td>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>03 31 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>廣播電台</td>
+      <td>噶瑪蘭廣播電台股份有限公司</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>100</th>
-      <td>日本帶回 超好用 Rohto Lycee 小花眼藥水 隱形眼鏡 8ml 全新現貨</td>
-      <td>strewberry/周小妘</td>
+      <td>泰國正品NIDA戴挪倫膏口腔潰瘍口腔發炎牙痛舌痛潰瘍藥膏燙傷膏</td>
+      <td>ROCOMO JHONOLYN ROMOLETE/ROCOMO JHONOLYN ROMOLETE</td>
       <td>NaN</td>
-      <td>04 12 2016 12:00AM</td>
-      <td>藥事法第27條藥事法第39條</td>
-      <td>無照藥商</td>
-      <td>01 11 2016 12:00AM</td>
+      <td>03 27 2019 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告內容誇大不實</td>
+      <td>08 23 2018 12:00AM</td>
       <td>網路</td>
-      <td>露天</td>
-      <td>未違規結案</td>
+      <td>Yahoo!奇摩拍賣</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>200</th>
-      <td>05/01現貨 ROIHI-TSUBOKO 痠痛 肩膀 腰局部 溫感/冷感 圓貼布 156枚</td>
-      <td>toowank/歐子源</td>
+      <td>桃園現貨供應 日本進口獅王祛痘膏pair acne祛痘 祛痘膏24g 祛粉刺 不傷肌膚</td>
+      <td>李O漩/李O漩</td>
       <td>NaN</td>
-      <td>07 12 2016 12:00AM</td>
-      <td>藥事法第27條藥事法第39條</td>
-      <td>無照藥商藥品未申請查驗登記</td>
-      <td>05 16 2016 12:00AM</td>
-      <td>網路</td>
-      <td>露天拍賣網站</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>300</th>
-      <td>❤藥妝代購❤　日本原裝 若元胃腸錠 WAKAMOTO 若元錠 1000錠 【現貨】</td>
-      <td>非廠商/吳政勳</td>
+      <td>05 30 2019 12:00AM</td>
       <td>NaN</td>
-      <td>12 21 2015 12:00AM</td>
-      <td>藥事法第27條藥事法第39條</td>
-      <td>無照藥商</td>
-      <td>05 5 2015 12:00AM</td>
-      <td>網路</td>
-      <td>YAHOO！奇摩拍賣</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>400</th>
-      <td>胃養健膠囊</td>
-      <td>平安藥局/吳東諺</td>
-      <td>花蓮縣</td>
-      <td>05 10 2016 12:00AM</td>
-      <td>NaN</td>
-      <td>刊播未申請核准之廣告</td>
-      <td>03 9 2016 12:00AM</td>
-      <td>平面媒體</td>
-      <td>平安藥局</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>500</th>
-      <td>日本帶回 FX COOL 眼藥水 15ML WACOALIS 5度超涼 減緩眼睛疲勞充血</td>
-      <td>袁華昱/</td>
-      <td>NaN</td>
-      <td>10 14 2015 12:00AM</td>
-      <td>藥事法第27條</td>
-      <td>無照藥商</td>
-      <td>03 13 2015 12:00AM</td>
-      <td>網路</td>
-      <td>露天</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>600</th>
-      <td>電子煙火點火器 , 日本電子煙品牌 電子煙價格 , 電子煙霧化器 加特林134電子煙二代機械...</td>
-      <td>非廠商/林?辰(Y3528019251)</td>
-      <td>NaN</td>
-      <td>07 6 2015 12:00AM</td>
-      <td>NaN</td>
-      <td>不得製造、輸入或販賣菸品形狀之任何物品</td>
-      <td>05 5 2015 12:00AM</td>
-      <td>網路</td>
-      <td>NaN</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>700</th>
-      <td>力洛膜衣錠(衛部藥輸字第026207號)</td>
-      <td>大統貿易股份有限公司/</td>
-      <td>臺北市</td>
-      <td>02 16 2015 12:00AM</td>
-      <td>NaN</td>
-      <td>廣告違規</td>
-      <td>12 3 2014 12:00AM</td>
-      <td>平面媒體</td>
-      <td>藥師週刊</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>800</th>
-      <td>【MusicBeats】 正品 JEFF煙油 10ml 20種 自由選擇 ( 非電子 煙霧化...</td>
-      <td>beats450/林晉輝</td>
-      <td>NaN</td>
-      <td>12 29 2014 12:00AM</td>
-      <td>NaN</td>
-      <td>偽禁藥物標示</td>
-      <td>10 22 2014 12:00AM</td>
+      <td>禁藥</td>
+      <td>05 28 2019 12:00AM</td>
       <td>網路</td>
       <td>露天拍賣</td>
       <td>相關案件已處分</td>
     </tr>
     <tr>
-      <th>900</th>
-      <td>康斯丁錠</td>
-      <td>三禾生物科技有限公司/</td>
-      <td>NaN</td>
-      <td>05 22 2015 12:00AM</td>
-      <td>藥事法第66條第2項</td>
-      <td>其刊登或宣播之廣告內容與原核准廣告內容不符</td>
-      <td>03 15 2015 12:00AM</td>
-      <td>電視</td>
-      <td>NaN</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>1000</th>
-      <td>胃潰安膜衣錠</td>
-      <td>百茂藥品有限公司/塗聰岳</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>貴公司102年1月9、13日、4月22、23、24日於有線電視蕃薯電視台宣播「陳建誠虎蜂養血...</td>
-      <td>01 13 2013 12:00AM</td>
-      <td>電視</td>
-      <td>寶福有線電視股份有限公司、振道有線電視股份有限公司、佳聯有線電視股份有限公司、長德有線電視股...</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>1100</th>
-      <td>防蚊義日本正貨</td>
-      <td>鄭郁琳-/</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>無照藥商</td>
-      <td>05 22 2014 12:00AM</td>
-      <td>網路</td>
-      <td>NaN</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>1200</th>
-      <td>@錦龍@日本 武田 EX Plus 270錠 1650</td>
-      <td>非廠商/葉威佑</td>
-      <td>NaN</td>
-      <td>05 24 2018 12:00AM</td>
-      <td>藥事法第27條藥事法第39條</td>
-      <td>無照藥商</td>
-      <td>01 25 2018 12:00AM</td>
-      <td>網路</td>
-      <td>露天拍賣網站</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>1300</th>
-      <td>美國攜帶式兒童抗菌消炎止痛噴霧</td>
+      <th>300</th>
+      <td>天然燕麥藍色舒緩發癢止癢乳霜</td>
       <td>/</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>05 15 2013 12:00AM</td>
+      <td>販售輸入化粧品藥品</td>
+      <td>09 11 2013 12:00AM</td>
       <td>網路</td>
-      <td>奇摩</td>
-      <td>輔導結案</td>
+      <td>露天拍賣</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>400</th>
+      <td>台灣第一三共汎得命膜衣錠（衛署藥製字第030525號）</td>
+      <td>台灣第一三共股份有限公司/</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>廣告內容宣稱療效</td>
+      <td>04 23 2014 12:00AM</td>
+      <td>網路</td>
+      <td>台灣第一三共股份有限公司</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>500</th>
+      <td>預購 特價 小花眼藥水 8ml</td>
+      <td>wenlin5606/王O聖</td>
+      <td>NaN</td>
+      <td>06 3 2016 12:00AM</td>
+      <td>藥事法第27條藥事法第39條</td>
+      <td>無照藥商製造或輸入偽藥或禁藥</td>
+      <td>06 17 2015 12:00AM</td>
+      <td>網路</td>
+      <td>露天市集</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>600</th>
+      <td>【啡閣樓！】日本 興和制藥 Kowa 蚊蟲 止癢液 60ml 空盒 現貨(限量中)</td>
+      <td>goodselina/鍾O林</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>藥事法第39條</td>
+      <td>藥品未申請查驗登記</td>
+      <td>08 4 2015 12:00AM</td>
+      <td>網路</td>
+      <td>NaN</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>700</th>
+      <td>淨膚隆軟膏</td>
+      <td>桐瑛生技事業股份有限公司/</td>
+      <td>NaN</td>
+      <td>12 26 2016 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告內容誇大不實</td>
+      <td>06 3 2016 12:00AM</td>
+      <td>電視</td>
+      <td>中投有線電視</td>
+      <td>相關案件已處分</td>
+    </tr>
+    <tr>
+      <th>800</th>
+      <td>滴可明眼用凝膠劑</td>
+      <td>諾得健康世界股份有限公司/</td>
+      <td>台南市</td>
+      <td>01 11 2017 12:00AM</td>
+      <td>藥事法第66條第2項</td>
+      <td>廣告內容誇大不實</td>
+      <td>01 11 2017 12:00AM</td>
+      <td>平面媒體</td>
+      <td>NaN</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>900</th>
+      <td>賀必容</td>
+      <td>tiara6133/歐O辰</td>
+      <td>NaN</td>
+      <td>05 22 2017 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>02 22 2017 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮拍賣</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>1000</th>
+      <td>奧利司他膠囊21粒裝 男女瘦身藥品 體脂剋星 減少油脂</td>
+      <td>非廠商/陳O博</td>
+      <td>NaN</td>
+      <td>06 8 2018 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>01 5 2018 12:00AM</td>
+      <td>網路</td>
+      <td>YAHOO奇摩拍賣</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>1100</th>
+      <td>YUSKIN 悠斯晶 止癢乳膏65g</td>
+      <td>非廠商/</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>05 24 2018 12:00AM</td>
+      <td>網路</td>
+      <td>NaN</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>1200</th>
+      <td>泰國必買Counterpain按摩膏</td>
+      <td>/蘇O玲</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>藥物之販售攸關民眾用藥安全，目前藥事法並未允准網路販售藥品，台端擅自於拍賣網路刊登販售「泰國...</td>
+      <td>01 3 2013 12:00AM</td>
+      <td>網路</td>
+      <td>露天拍賣網站</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>1300</th>
+      <td>全新富帝芬贴片</td>
+      <td>林O兒/林O兒</td>
+      <td>NaN</td>
+      <td>05 14 2021 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>01 7 2021 12:00AM</td>
+      <td>網路</td>
+      <td>PChome商店街</td>
+      <td>處分結案</td>
     </tr>
     <tr>
       <th>1400</th>
-      <td>ROIHI-TSUBOKO 日本穴位 溫感貼布貼片</td>
-      <td>非廠商”/楊惠淳</td>
+      <td>olo漲潮水 興奮劑 女用催情強效催情 激發慾望</td>
+      <td>是方電訊股份有限公司/吳O宏</td>
       <td>NaN</td>
-      <td>04 10 2017 12:00AM</td>
-      <td>藥事法第39條</td>
-      <td>藥品未申請查驗登記</td>
-      <td>01 4 2017 12:00AM</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>疑似販賣藥品</td>
+      <td>07 5 2021 12:00AM</td>
       <td>網路</td>
-      <td>蝦皮拍賣</td>
-      <td>未違規結案</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1500</th>
-      <td>太田胃散</td>
-      <td>非廠商/林禮雍</td>
+      <td>日本帶回 Kowa興和 新UNA Cool超涼防蚊止癢液 現貨供應中</td>
+      <td>劉佳穎/劉O穎</td>
       <td>NaN</td>
-      <td>11 1 2017 12:00AM</td>
+      <td>06 26 2015 12:00AM</td>
       <td>藥事法第27條</td>
-      <td>無照藥商</td>
-      <td>03 1 2017 12:00AM</td>
+      <td>製造或輸入偽藥或禁藥</td>
+      <td>01 23 2015 12:00AM</td>
       <td>網路</td>
-      <td>蝦皮拍賣網</td>
-      <td>未違規結案</td>
+      <td>奇摩拍賣</td>
+      <td>處分結案</td>
     </tr>
     <tr>
       <th>1600</th>
-      <td>日本 代購 武田 合利他命 合力他命 [現貨不用問]</td>
-      <td>李易儒/李易儒</td>
+      <td>『Monster Vapors 怪獸蒸氣』黑色 Joyetech Ego One 1100m...</td>
+      <td>非廠商/譚O恩(monstervapors)</td>
       <td>NaN</td>
-      <td>02 14 2018 12:00AM</td>
-      <td>藥事法第27條</td>
-      <td>無照藥商</td>
-      <td>11 23 2017 12:00AM</td>
+      <td>06 9 2015 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告內容宣稱療效非屬藥物，其廣告內容宣稱醫療效能</td>
+      <td>04 21 2015 12:00AM</td>
       <td>網路</td>
-      <td>PChome商店街-個人賣場</td>
+      <td>露天拍賣</td>
       <td>未違規結案</td>
     </tr>
     <tr>
       <th>1700</th>
-      <td>【潮流商城】台灣手作 Mr.Cantaloupe 哈密瓜先生 30ML 清爽的好滋味 電子果...</td>
-      <td>fashion_vape/陳永富</td>
+      <td>《預購》小林製藥 命之母 母之命 藍180錠空盒 生理期適用外盒(日本帶回/2罐免運)</td>
+      <td>maggie8105/魏O君</td>
       <td>NaN</td>
-      <td>05 5 2017 12:00AM</td>
+      <td>01 4 2017 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告內容誇大不實</td>
+      <td>10 20 2016 12:00AM</td>
+      <td>網路</td>
+      <td>露天拍賣</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>1800</th>
+      <td>【日本代購】NT$330 現貨在台-大正 口內貼片/ 外盒</td>
+      <td>chiauyiag/蔡O盈</td>
+      <td>NaN</td>
+      <td>05 13 2016 12:00AM</td>
+      <td>NaN</td>
+      <td>無違規</td>
+      <td>04 15 2016 12:00AM</td>
+      <td>網路</td>
+      <td>露天拍賣網站</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>1900</th>
+      <td>日本俏正美 Chocola BB 糖衣錠 4月份日本代購預購</td>
+      <td>吳佩禹/</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>05 12 2014 12:00AM</td>
+      <td>網路</td>
+      <td>露天拍賣</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2000</th>
+      <td>倍適舒祕腸溶糖衣錠</td>
+      <td>永甲興業股份有限公司/</td>
+      <td>臺北市</td>
+      <td>04 14 2015 12:00AM</td>
       <td>NaN</td>
       <td>廣告違規</td>
-      <td>10 31 2016 12:00AM</td>
-      <td>網路</td>
-      <td>蝦皮拍賣</td>
+      <td>03 29 2015 12:00AM</td>
+      <td>平面媒體</td>
+      <td>康是美</td>
       <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2100</th>
+      <td>醫生好辣👑 現貨強推維它命D nature made Vitamin 維生素 D3 2000...</td>
+      <td>孟O桂/</td>
+      <td>NaN</td>
+      <td>08 30 2018 12:00AM</td>
+      <td>藥事法第27條藥事法第39條</td>
+      <td>非藥商刊登或宣播藥物廣告</td>
+      <td>07 25 2018 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2200</th>
+      <td>Healthy-Care-Vitamin-D3-1000IU-維生素D3膠囊-維他命D3（非...</td>
+      <td>蘇荷棨/</td>
+      <td>NaN</td>
+      <td>02 20 2019 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>11 1 2018 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2300</th>
+      <td>VIKAR女性私護套盒</td>
+      <td>江O雯/</td>
+      <td>NaN</td>
+      <td>03 13 2019 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告違規</td>
+      <td>08 23 2018 12:00AM</td>
+      <td>網路</td>
+      <td>Yahoo!奇摩拍賣</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2400</th>
+      <td>妙利散-日本境內-現貨</td>
+      <td>戴O玲/戴O玲</td>
+      <td>NaN</td>
+      <td>11 12 2020 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>06 30 2020 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮拍賣網站</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2500</th>
+      <td>JP大正 44 代購 日本境內購入</td>
+      <td>曾O茵/曾O茵</td>
+      <td>NaN</td>
+      <td>03 16 2021 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>11 27 2020 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2600</th>
+      <td>【喬依絲日貨】現貨 日本製 龍角散 薄荷</td>
+      <td>Y5376639228/洪O淳</td>
+      <td>NaN</td>
+      <td>08 7 2017 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>06 5 2017 12:00AM</td>
+      <td>網路</td>
+      <td>奇摩拍賣</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2700</th>
+      <td>模範堂3</td>
+      <td>非廠商/呂O瑜</td>
+      <td>NaN</td>
+      <td>12 29 2017 12:00AM</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>09 15 2017 12:00AM</td>
+      <td>網路</td>
+      <td>PChome商店街</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2800</th>
+      <td>《現貨商品》⽇本 EVE A EX錠 銀⽩ ⽣理痛 頭痛 ⽌痛藥 ⽌痛錠 40錠 效期202...</td>
+      <td>鍾O砡/鍾O砡</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>07 23 2019 12:00AM</td>
+      <td>網路</td>
+      <td>NaN</td>
+      <td>相關案件已處分</td>
+    </tr>
+    <tr>
+      <th>2900</th>
+      <td>「日本JP親自帶回小林製藥洗眼液」</td>
+      <td>鍾O涵/鍾O涵</td>
+      <td>NaN</td>
+      <td>02 14 2020 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>09 25 2019 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
     </tr>
   </tbody>
 </table>
@@ -2220,16 +2290,16 @@ Name: pubMediaType, Length: 1760, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
-0    網路
-1    網路
-2    網路
-3    網路
-4    網路
-5    網路
-6    網路
-7    網路
-8    網路
-9    網路
+0    廣播電台
+1      網路
+2      網路
+3      網路
+4      網路
+5      網路
+6      網路
+7      網路
+8      網路
+9      網路
 Name: pubMediaType, dtype: object
 </pre></div>
 </div>
@@ -2267,28 +2337,28 @@ Name: pubMediaType, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y7868533113/鍾青砡</td>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>《現貨》大正漢方腸胃藥 60錠</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>日本小林製藥 - 喉嚨噴劑 (現貨)</td>
-      <td>**VIOLA Shop**/代號 Y0899501333/蔡佩蓉</td>
+      <td>✈日本 代購 TSUMURA 中將湯 24天包裝</td>
+      <td>蘇O涵/蘇O涵</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>《現貨》日本 小林製藥 命之母 生命之 840錠 女性更年期保養</td>
-      <td>日本藥妝全職服務現貨快速出/代號 Y4681313568/鍾青砡</td>
+      <td>_Salty.shop 日本代購 樂敦小花</td>
+      <td>曾O嫺/曾O嫺</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2296,33 +2366,33 @@ Name: pubMediaType, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>1755</th>
-      <td>全新麵包超人止癢貼片（76入）</td>
-      <td>非廠商/蕭千容</td>
+      <th>2967</th>
+      <td>*健人館* 千鶴薄荷棒11g*2個</td>
+      <td>新東海藥局/ O聰敏</td>
     </tr>
     <tr>
-      <th>1756</th>
-      <td>御岳百草丸</td>
-      <td>非廠商/吳俊儀</td>
+      <th>2968</th>
+      <td>（現貨）GO LIVER DETOX 高之源 護肝排毒膠囊 120粒</td>
+      <td>連O毅/連O毅</td>
     </tr>
     <tr>
-      <th>1757</th>
-      <td>（現貨供應中）日本樂敦，減輕疲憊</td>
-      <td>非廠商/陳O卿</td>
+      <th>2969</th>
+      <td>日本帶回樂敦小花新鮮貨</td>
+      <td>張O萍/張O萍</td>
     </tr>
     <tr>
-      <th>1758</th>
-      <td>客製訂單～詹淑惠</td>
-      <td>非廠商/陳O卿</td>
+      <th>2970</th>
+      <td>全新 洗眼杯 可平信 洗眼 小林製藥 小花 ROHTO Lycee 可搭配生理食鹽水 空汙 ...</td>
+      <td>盧O/盧O</td>
     </tr>
     <tr>
-      <th>1759</th>
-      <td>bb美白錠</td>
-      <td>非廠商/楊庭妮</td>
+      <th>2971</th>
+      <td>0.9%生理食鹽水 20ml 預購最低價 每人限購2盒</td>
+      <td>張O軒/張O軒</td>
     </tr>
   </tbody>
 </table>
-<p>1760 rows × 2 columns</p>
+<p>2972 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2376,47 +2446,47 @@ Name: pubMediaType, dtype: object
     <tr>
       <th>0</th>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>03 31 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>相關案件已處分</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 21 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>相關案件已處分</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>2</th>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>相關案件已處分</td>
+      <td>08 27 2021 12:00AM</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
       <td>NaN</td>
-      <td>05 16 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>相關案件已處分</td>
+      <td>08 27 2021 12:00AM</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>4</th>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
-      <td>NaN</td>
+      <td>02 17 2022 12:00AM</td>
+      <td>藥事法第27條</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>相關案件已處分</td>
+      <td>12 6 2021 12:00AM</td>
+      <td>處分結案</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2428,53 +2498,53 @@ Name: pubMediaType, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>1755</th>
+      <th>2967</th>
       <td>NaN</td>
-      <td>10 19 2017 12:00AM</td>
+      <td>NaN</td>
+      <td>藥事法第27條</td>
+      <td>標示內容與規定不符</td>
+      <td>05 6 2020 12:00AM</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2968</th>
+      <td>NaN</td>
+      <td>06 30 2020 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>02 5 2020 12:00AM</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2969</th>
+      <td>NaN</td>
+      <td>06 23 2020 12:00AM</td>
+      <td>NaN</td>
+      <td>難以判定產品屬性</td>
+      <td>03 10 2020 12:00AM</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2970</th>
+      <td>NaN</td>
+      <td>09 4 2020 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>06 22 2017 12:00AM</td>
+      <td>03 10 2020 12:00AM</td>
       <td>輔導結案</td>
     </tr>
     <tr>
-      <th>1756</th>
+      <th>2971</th>
       <td>NaN</td>
-      <td>11 1 2017 12:00AM</td>
-      <td>藥事法第39條</td>
-      <td>藥品未申請查驗登記</td>
-      <td>05 23 2017 12:00AM</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>1757</th>
+      <td>06 11 2020 12:00AM</td>
       <td>NaN</td>
-      <td>10 20 2017 12:00AM</td>
+      <td>無照藥商</td>
+      <td>03 31 2020 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商藥品未申請查驗登記</td>
-      <td>07 20 2017 12:00AM</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>1758</th>
-      <td>NaN</td>
-      <td>10 20 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>無照藥商藥品未申請查驗登記</td>
-      <td>07 20 2017 12:00AM</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>1759</th>
-      <td>NaN</td>
-      <td>09 28 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>廣告內容誇大不實</td>
-      <td>06 7 2017 12:00AM</td>
-      <td>輔導結案</td>
     </tr>
   </tbody>
 </table>
-<p>1760 rows × 6 columns</p>
+<p>2972 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -2555,91 +2625,91 @@ Name: pubMediaType, dtype: object
       <th>0001</th>
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
-      <td>180</td>
-      <td>49</td>
+      <td>88</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20210322235225</td>
+      <td>20220922232241</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>129</td>
+      <td>82</td>
       <td>1</td>
-      <td>0.272222</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0002</th>
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
-      <td>48</td>
-      <td>3</td>
+      <td>16</td>
+      <td>0</td>
       <td>大安區</td>
-      <td>20210322235239</td>
+      <td>20220922232217</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>45</td>
+      <td>16</td>
       <td>1</td>
-      <td>0.062500</td>
-    </tr>
-    <tr>
-      <th>0003</th>
-      <td>0003</td>
-      <td>台北市政府</td>
-      <td>40</td>
-      <td>9</td>
-      <td>信義區</td>
-      <td>20210322235220</td>
-      <td>25.0377972222</td>
-      <td>121.565169444</td>
-      <td>台北市政府東門(松智路) (鄰近信義商圈/台北探索館)</td>
-      <td>Xinyi Dist.</td>
-      <td>Taipei City Hall</td>
-      <td>Taipei City Government Eastgate (Song Zhi Road)</td>
-      <td>22</td>
-      <td>1</td>
-      <td>0.225000</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0004</th>
       <td>0004</td>
       <td>市民廣場</td>
-      <td>60</td>
-      <td>5</td>
+      <td>32</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20210322235245</td>
+      <td>20220922232236</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>55</td>
+      <td>32</td>
       <td>1</td>
-      <td>0.083333</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0005</th>
       <td>0005</td>
       <td>興雅國中</td>
-      <td>60</td>
+      <td>32</td>
       <td>4</td>
       <td>信義區</td>
-      <td>20210322235222</td>
+      <td>20220922232234</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>55</td>
+      <td>27</td>
       <td>1</td>
-      <td>0.066667</td>
+      <td>0.125000</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>2</td>
+      <td>信義區</td>
+      <td>20220922232229</td>
+      <td>25.034047</td>
+      <td>121.565973</td>
+      <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>NAN SHAN PLAZA</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+      <td>50</td>
+      <td>1</td>
+      <td>0.037037</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2663,95 +2733,95 @@ Name: pubMediaType, dtype: object
       <th>0401</th>
       <td>0401</td>
       <td>南京新生路口</td>
-      <td>34</td>
-      <td>15</td>
+      <td>16</td>
+      <td>1</td>
       <td>中山區</td>
-      <td>20210322235222</td>
+      <td>20220922232216</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>19</td>
+      <td>15</td>
       <td>1</td>
-      <td>0.441176</td>
+      <td>0.062500</td>
     </tr>
     <tr>
       <th>0402</th>
       <td>0402</td>
       <td>下灣公園</td>
-      <td>28</td>
       <td>12</td>
+      <td>4</td>
       <td>內湖區</td>
-      <td>20210322235241</td>
+      <td>20220922232234</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
       <td>Neihu Dist.</td>
       <td>Siawan Park</td>
       <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
-      <td>16</td>
+      <td>8</td>
       <td>1</td>
-      <td>0.428571</td>
+      <td>0.333333</td>
     </tr>
     <tr>
       <th>0403</th>
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
-      <td>28</td>
-      <td>5</td>
+      <td>10</td>
+      <td>0</td>
       <td>內湖區</td>
-      <td>20210322235225</td>
+      <td>20220922232233</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>23</td>
+      <td>10</td>
       <td>1</td>
-      <td>0.178571</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0404</th>
       <td>0404</td>
       <td>民族延平路口</td>
-      <td>30</td>
-      <td>21</td>
+      <td>10</td>
+      <td>10</td>
       <td>大同區</td>
-      <td>20210322235231</td>
+      <td>20220922232244</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
       <td>Datong Dist.</td>
       <td>Minzu &amp; Yanping Intersection</td>
       <td>No.310, Minzu W. Rd.</td>
-      <td>9</td>
+      <td>0</td>
       <td>1</td>
-      <td>0.700000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>0405</th>
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
-      <td>66</td>
-      <td>27</td>
+      <td>46</td>
+      <td>1</td>
       <td>大安區</td>
-      <td>20210322235217</td>
+      <td>20220922232233</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>36</td>
+      <td>43</td>
       <td>1</td>
-      <td>0.409091</td>
+      <td>0.021739</td>
     </tr>
   </tbody>
 </table>
-<p>400 rows × 15 columns</p>
+<p>371 rows × 15 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -2810,7 +2880,6 @@ Name: pubMediaType, dtype: object
       <th>bemp</th>
       <th>act</th>
       <th>ratio</th>
-      <th>ratio1</th>
     </tr>
   </thead>
   <tbody>
@@ -2818,100 +2887,94 @@ Name: pubMediaType, dtype: object
       <th>0001</th>
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
-      <td>180</td>
-      <td>49</td>
+      <td>88</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20210322235225</td>
+      <td>20220922232241</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>129</td>
+      <td>82</td>
       <td>1</td>
-      <td>0.272222</td>
-      <td>0.272222</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0002</th>
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
-      <td>48</td>
-      <td>3</td>
+      <td>16</td>
+      <td>0</td>
       <td>大安區</td>
-      <td>20210322235239</td>
+      <td>20220922232217</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>45</td>
+      <td>16</td>
       <td>1</td>
-      <td>0.062500</td>
-      <td>0.062500</td>
-    </tr>
-    <tr>
-      <th>0003</th>
-      <td>0003</td>
-      <td>台北市政府</td>
-      <td>40</td>
-      <td>9</td>
-      <td>信義區</td>
-      <td>20210322235220</td>
-      <td>25.0377972222</td>
-      <td>121.565169444</td>
-      <td>台北市政府東門(松智路) (鄰近信義商圈/台北探索館)</td>
-      <td>Xinyi Dist.</td>
-      <td>Taipei City Hall</td>
-      <td>Taipei City Government Eastgate (Song Zhi Road)</td>
-      <td>22</td>
-      <td>1</td>
-      <td>0.225000</td>
-      <td>0.225000</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0004</th>
       <td>0004</td>
       <td>市民廣場</td>
-      <td>60</td>
-      <td>5</td>
+      <td>32</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20210322235245</td>
+      <td>20220922232236</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>55</td>
+      <td>32</td>
       <td>1</td>
-      <td>0.083333</td>
-      <td>0.083333</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0005</th>
       <td>0005</td>
       <td>興雅國中</td>
-      <td>60</td>
+      <td>32</td>
       <td>4</td>
       <td>信義區</td>
-      <td>20210322235222</td>
+      <td>20220922232234</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>55</td>
+      <td>27</td>
       <td>1</td>
-      <td>0.066667</td>
-      <td>0.066667</td>
+      <td>0.125000</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>2</td>
+      <td>信義區</td>
+      <td>20220922232229</td>
+      <td>25.034047</td>
+      <td>121.565973</td>
+      <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>NAN SHAN PLAZA</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+      <td>50</td>
+      <td>1</td>
+      <td>0.037037</td>
     </tr>
     <tr>
       <th>...</th>
-      <td>...</td>
       <td>...</td>
       <td>...</td>
       <td>...</td>
@@ -2932,100 +2995,95 @@ Name: pubMediaType, dtype: object
       <th>0401</th>
       <td>0401</td>
       <td>南京新生路口</td>
-      <td>34</td>
-      <td>15</td>
+      <td>16</td>
+      <td>1</td>
       <td>中山區</td>
-      <td>20210322235222</td>
+      <td>20220922232216</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>19</td>
+      <td>15</td>
       <td>1</td>
-      <td>0.441176</td>
-      <td>0.441176</td>
+      <td>0.062500</td>
     </tr>
     <tr>
       <th>0402</th>
       <td>0402</td>
       <td>下灣公園</td>
-      <td>28</td>
       <td>12</td>
+      <td>4</td>
       <td>內湖區</td>
-      <td>20210322235241</td>
+      <td>20220922232234</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
       <td>Neihu Dist.</td>
       <td>Siawan Park</td>
       <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
-      <td>16</td>
+      <td>8</td>
       <td>1</td>
-      <td>0.428571</td>
-      <td>0.428571</td>
+      <td>0.333333</td>
     </tr>
     <tr>
       <th>0403</th>
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
-      <td>28</td>
-      <td>5</td>
+      <td>10</td>
+      <td>0</td>
       <td>內湖區</td>
-      <td>20210322235225</td>
+      <td>20220922232233</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>23</td>
+      <td>10</td>
       <td>1</td>
-      <td>0.178571</td>
-      <td>0.178571</td>
+      <td>0.000000</td>
     </tr>
     <tr>
       <th>0404</th>
       <td>0404</td>
       <td>民族延平路口</td>
-      <td>30</td>
-      <td>21</td>
+      <td>10</td>
+      <td>10</td>
       <td>大同區</td>
-      <td>20210322235231</td>
+      <td>20220922232244</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
       <td>Datong Dist.</td>
       <td>Minzu &amp; Yanping Intersection</td>
       <td>No.310, Minzu W. Rd.</td>
-      <td>9</td>
+      <td>0</td>
       <td>1</td>
-      <td>0.700000</td>
-      <td>0.700000</td>
+      <td>1.000000</td>
     </tr>
     <tr>
       <th>0405</th>
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
-      <td>66</td>
-      <td>27</td>
+      <td>46</td>
+      <td>1</td>
       <td>大安區</td>
-      <td>20210322235217</td>
+      <td>20220922232233</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>36</td>
+      <td>43</td>
       <td>1</td>
-      <td>0.409091</td>
-      <td>0.409091</td>
+      <td>0.021739</td>
     </tr>
   </tbody>
 </table>
-<p>400 rows × 16 columns</p>
+<p>371 rows × 15 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3061,51 +3119,51 @@ Name: pubMediaType, dtype: object
   <tbody>
     <tr>
       <th>count</th>
-      <td>400.000000</td>
-      <td>400.000000</td>
-      <td>400.000000</td>
+      <td>371.000000</td>
+      <td>371.000000</td>
+      <td>371.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>40.470000</td>
-      <td>14.150000</td>
-      <td>0.364980</td>
+      <td>19.342318</td>
+      <td>6.239892</td>
+      <td>0.342587</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>13.899716</td>
-      <td>9.169662</td>
-      <td>0.210643</td>
+      <td>10.655227</td>
+      <td>6.084462</td>
+      <td>0.291937</td>
     </tr>
     <tr>
       <th>min</th>
-      <td>18.000000</td>
+      <td>4.000000</td>
       <td>0.000000</td>
       <td>0.000000</td>
     </tr>
     <tr>
       <th>25%</th>
-      <td>32.000000</td>
-      <td>8.000000</td>
-      <td>0.202778</td>
+      <td>12.000000</td>
+      <td>1.500000</td>
+      <td>0.092330</td>
     </tr>
     <tr>
       <th>50%</th>
-      <td>38.000000</td>
-      <td>14.000000</td>
-      <td>0.357143</td>
+      <td>16.000000</td>
+      <td>5.000000</td>
+      <td>0.272727</td>
     </tr>
     <tr>
       <th>75%</th>
-      <td>46.000000</td>
-      <td>19.000000</td>
-      <td>0.531771</td>
+      <td>22.000000</td>
+      <td>9.000000</td>
+      <td>0.574176</td>
     </tr>
     <tr>
       <th>max</th>
-      <td>180.000000</td>
-      <td>74.000000</td>
-      <td>0.941176</td>
+      <td>88.000000</td>
+      <td>31.000000</td>
+      <td>1.000000</td>
     </tr>
   </tbody>
 </table>
@@ -3134,14 +3192,7 @@ Name: pubMediaType, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Conventional way</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">)</span>
-
-<span class="ne">NameError</span>: name &#39;drug_df&#39; is not defined
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;廣播電台&#39;: 119, &#39;網路&#39;: 2609, &#39;平面媒體&#39;: 117, &#39;其他&#39;: 16, &#39;電視&#39;: 109, nan: 2})
 </pre></div>
 </div>
 </div>
@@ -3186,68 +3237,68 @@ Name: pubMediaType, dtype: object
   <tbody>
     <tr>
       <th>0</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y7868533113/鍾青砡</td>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>03 31 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
-      <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>廣播電台</td>
+      <td>噶瑪蘭廣播電台股份有限公司</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>《現貨》大正漢方腸胃藥 60錠</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 21 2022 12:00AM</td>
       <td>NaN</td>
-      <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>《現貨》日本熱銷 超人氣SS製藥 痘痘乳膏</td>
-      <td>Y9159169900/鍾青砡</td>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>日本小林製藥 - 喉嚨噴劑 (現貨)</td>
-      <td>**VIOLA Shop**/代號 Y0899501333/蔡佩蓉</td>
+      <td>✈日本 代購 TSUMURA 中將湯 24天包裝</td>
+      <td>蘇O涵/蘇O涵</td>
       <td>NaN</td>
-      <td>05 16 2017 12:00AM</td>
+      <td>01 25 2022 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>08 27 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>《現貨》日本 小林製藥 命之母 生命之 840錠 女性更年期保養</td>
-      <td>日本藥妝全職服務現貨快速出/代號 Y4681313568/鍾青砡</td>
+      <td>_Salty.shop 日本代購 樂敦小花</td>
+      <td>曾O嫺/曾O嫺</td>
       <td>NaN</td>
-      <td>08 15 2017 12:00AM</td>
-      <td>NaN</td>
+      <td>02 17 2022 12:00AM</td>
+      <td>藥事法第27條</td>
       <td>無照藥商</td>
-      <td>02 3 2017 12:00AM</td>
+      <td>12 6 2021 12:00AM</td>
       <td>網路</td>
-      <td>Yahoo！奇摩拍賣</td>
-      <td>相關案件已處分</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3263,73 +3314,73 @@ Name: pubMediaType, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>1755</th>
-      <td>全新麵包超人止癢貼片（76入）</td>
-      <td>非廠商/蕭千容</td>
+      <th>2967</th>
+      <td>*健人館* 千鶴薄荷棒11g*2個</td>
+      <td>新東海藥局/ O聰敏</td>
       <td>NaN</td>
-      <td>10 19 2017 12:00AM</td>
+      <td>NaN</td>
+      <td>藥事法第27條</td>
+      <td>標示內容與規定不符</td>
+      <td>05 6 2020 12:00AM</td>
+      <td>網路</td>
+      <td>NaN</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2968</th>
+      <td>（現貨）GO LIVER DETOX 高之源 護肝排毒膠囊 120粒</td>
+      <td>連O毅/連O毅</td>
+      <td>NaN</td>
+      <td>06 30 2020 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>02 5 2020 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
+    </tr>
+    <tr>
+      <th>2969</th>
+      <td>日本帶回樂敦小花新鮮貨</td>
+      <td>張O萍/張O萍</td>
+      <td>NaN</td>
+      <td>06 23 2020 12:00AM</td>
+      <td>NaN</td>
+      <td>難以判定產品屬性</td>
+      <td>03 10 2020 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2970</th>
+      <td>全新 洗眼杯 可平信 洗眼 小林製藥 小花 ROHTO Lycee 可搭配生理食鹽水 空汙 ...</td>
+      <td>盧O/盧O</td>
+      <td>NaN</td>
+      <td>09 4 2020 12:00AM</td>
       <td>NaN</td>
       <td>無照藥商</td>
-      <td>06 22 2017 12:00AM</td>
+      <td>03 10 2020 12:00AM</td>
       <td>網路</td>
-      <td>蝦皮拍賣網站</td>
+      <td>蝦皮購物</td>
       <td>輔導結案</td>
     </tr>
     <tr>
-      <th>1756</th>
-      <td>御岳百草丸</td>
-      <td>非廠商/吳俊儀</td>
+      <th>2971</th>
+      <td>0.9%生理食鹽水 20ml 預購最低價 每人限購2盒</td>
+      <td>張O軒/張O軒</td>
       <td>NaN</td>
-      <td>11 1 2017 12:00AM</td>
-      <td>藥事法第39條</td>
-      <td>藥品未申請查驗登記</td>
-      <td>05 23 2017 12:00AM</td>
+      <td>06 11 2020 12:00AM</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>03 31 2020 12:00AM</td>
       <td>網路</td>
-      <td>蝦皮拍賣網站</td>
-      <td>未違規結案</td>
-    </tr>
-    <tr>
-      <th>1757</th>
-      <td>（現貨供應中）日本樂敦，減輕疲憊</td>
-      <td>非廠商/陳O卿</td>
+      <td>蝦皮購物</td>
       <td>NaN</td>
-      <td>10 20 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>無照藥商藥品未申請查驗登記</td>
-      <td>07 20 2017 12:00AM</td>
-      <td>網路</td>
-      <td>商店街個人賣場網站</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>1758</th>
-      <td>客製訂單～詹淑惠</td>
-      <td>非廠商/陳O卿</td>
-      <td>NaN</td>
-      <td>10 20 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>無照藥商藥品未申請查驗登記</td>
-      <td>07 20 2017 12:00AM</td>
-      <td>網路</td>
-      <td>商店街個人賣場網站</td>
-      <td>輔導結案</td>
-    </tr>
-    <tr>
-      <th>1759</th>
-      <td>bb美白錠</td>
-      <td>非廠商/楊庭妮</td>
-      <td>NaN</td>
-      <td>09 28 2017 12:00AM</td>
-      <td>NaN</td>
-      <td>廣告內容誇大不實</td>
-      <td>06 7 2017 12:00AM</td>
-      <td>網路</td>
-      <td>蝦皮拍賣網站</td>
-      <td>輔導結案</td>
     </tr>
   </tbody>
 </table>
-<p>1760 rows × 10 columns</p>
+<p>2972 rows × 10 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3340,11 +3391,11 @@ Name: pubMediaType, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>網路      1479
-平面媒體     111
-電視        86
-廣播電台      71
-其他        13
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>網路      2609
+廣播電台     119
+平面媒體     117
+電視       109
+其他        16
 Name: pubMediaType, dtype: int64
 </pre></div>
 </div>
@@ -3360,8 +3411,8 @@ Name: pubMediaType, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:1: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
-  &quot;&quot;&quot;Entry point for launching an IPython kernel.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_8968/942870560.py:1: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  drug_df.groupby(&#39;pubMediaType&#39;)[&#39;pname&#39;, &#39;agency&#39;].count()
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -3394,27 +3445,27 @@ Name: pubMediaType, dtype: int64
   <tbody>
     <tr>
       <th>其他</th>
-      <td>13</td>
+      <td>16</td>
       <td>0</td>
     </tr>
     <tr>
       <th>平面媒體</th>
-      <td>111</td>
-      <td>111</td>
+      <td>117</td>
+      <td>117</td>
     </tr>
     <tr>
       <th>廣播電台</th>
-      <td>71</td>
+      <td>119</td>
       <td>0</td>
     </tr>
     <tr>
       <th>網路</th>
-      <td>1479</td>
+      <td>2609</td>
       <td>0</td>
     </tr>
     <tr>
       <th>電視</th>
-      <td>86</td>
+      <td>109</td>
       <td>0</td>
     </tr>
   </tbody>
@@ -3463,27 +3514,27 @@ Name: pubMediaType, dtype: int64
     <tr>
       <th>0001</th>
       <td>信義區</td>
-      <td>180</td>
+      <td>88</td>
     </tr>
     <tr>
       <th>0002</th>
       <td>大安區</td>
-      <td>48</td>
-    </tr>
-    <tr>
-      <th>0003</th>
-      <td>信義區</td>
-      <td>40</td>
+      <td>16</td>
     </tr>
     <tr>
       <th>0004</th>
       <td>信義區</td>
-      <td>60</td>
+      <td>32</td>
     </tr>
     <tr>
       <th>0005</th>
       <td>信義區</td>
-      <td>60</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>信義區</td>
+      <td>54</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3493,31 +3544,31 @@ Name: pubMediaType, dtype: int64
     <tr>
       <th>0401</th>
       <td>中山區</td>
-      <td>34</td>
+      <td>16</td>
     </tr>
     <tr>
       <th>0402</th>
       <td>內湖區</td>
-      <td>28</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>0403</th>
       <td>內湖區</td>
-      <td>28</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>0404</th>
       <td>大同區</td>
-      <td>30</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>0405</th>
       <td>大安區</td>
-      <td>66</td>
+      <td>46</td>
     </tr>
   </tbody>
 </table>
-<p>400 rows × 2 columns</p>
+<p>371 rows × 2 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -3530,18 +3581,18 @@ Name: pubMediaType, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sarea
-中山區    26
-中正區    24
-信義區    26
-內湖區    18
-北投區    28
-南港區    26
-士林區    24
-大同區    22
-大安區    24
-文山區    24
-松山區    22
-萬華區    26
+中山區     8
+中正區     8
+信義區     4
+內湖區     8
+北投區    10
+南港區    10
+士林區     8
+大同區    10
+大安區     4
+文山區    10
+松山區     8
+萬華區    10
 Name: tot, dtype: int64
 </pre></div>
 </div>
@@ -3557,8 +3608,8 @@ Name: tot, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.7/site-packages/ipykernel_launcher.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
-  This is separate from the ipykernel package so we can avoid doing imports until
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_8968/2129354148.py:3: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  ubike_stat = ubike_df.groupby(&quot;sarea&quot;)[&quot;tot&quot;, &quot;sbi&quot;].sum()
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -3591,63 +3642,63 @@ Name: tot, dtype: int64
   <tbody>
     <tr>
       <th>中山區</th>
-      <td>1864</td>
-      <td>735</td>
+      <td>704</td>
+      <td>186</td>
     </tr>
     <tr>
       <th>中正區</th>
-      <td>1462</td>
-      <td>355</td>
+      <td>654</td>
+      <td>177</td>
     </tr>
     <tr>
       <th>信義區</th>
-      <td>1770</td>
-      <td>496</td>
+      <td>738</td>
+      <td>188</td>
     </tr>
     <tr>
       <th>內湖區</th>
-      <td>1570</td>
-      <td>626</td>
+      <td>828</td>
+      <td>242</td>
     </tr>
     <tr>
       <th>北投區</th>
-      <td>1226</td>
-      <td>439</td>
+      <td>584</td>
+      <td>226</td>
     </tr>
     <tr>
       <th>南港區</th>
-      <td>840</td>
-      <td>375</td>
+      <td>388</td>
+      <td>169</td>
     </tr>
     <tr>
       <th>士林區</th>
-      <td>1412</td>
-      <td>522</td>
+      <td>722</td>
+      <td>208</td>
     </tr>
     <tr>
       <th>大同區</th>
-      <td>818</td>
-      <td>307</td>
+      <td>308</td>
+      <td>96</td>
     </tr>
     <tr>
       <th>大安區</th>
-      <td>2114</td>
-      <td>564</td>
+      <td>868</td>
+      <td>181</td>
     </tr>
     <tr>
       <th>文山區</th>
-      <td>1002</td>
-      <td>418</td>
+      <td>472</td>
+      <td>225</td>
     </tr>
     <tr>
       <th>松山區</th>
-      <td>1246</td>
-      <td>463</td>
+      <td>500</td>
+      <td>193</td>
     </tr>
     <tr>
       <th>萬華區</th>
-      <td>864</td>
-      <td>360</td>
+      <td>410</td>
+      <td>224</td>
     </tr>
   </tbody>
 </table>
@@ -3695,63 +3746,63 @@ Name: tot, dtype: int64
   <tbody>
     <tr>
       <th>大安區</th>
-      <td>2114</td>
-      <td>564</td>
-    </tr>
-    <tr>
-      <th>中山區</th>
-      <td>1864</td>
-      <td>735</td>
-    </tr>
-    <tr>
-      <th>信義區</th>
-      <td>1770</td>
-      <td>496</td>
+      <td>868</td>
+      <td>181</td>
     </tr>
     <tr>
       <th>內湖區</th>
-      <td>1570</td>
-      <td>626</td>
+      <td>828</td>
+      <td>242</td>
     </tr>
     <tr>
-      <th>中正區</th>
-      <td>1462</td>
-      <td>355</td>
+      <th>信義區</th>
+      <td>738</td>
+      <td>188</td>
     </tr>
     <tr>
       <th>士林區</th>
-      <td>1412</td>
-      <td>522</td>
+      <td>722</td>
+      <td>208</td>
     </tr>
     <tr>
-      <th>松山區</th>
-      <td>1246</td>
-      <td>463</td>
+      <th>中山區</th>
+      <td>704</td>
+      <td>186</td>
+    </tr>
+    <tr>
+      <th>中正區</th>
+      <td>654</td>
+      <td>177</td>
     </tr>
     <tr>
       <th>北投區</th>
-      <td>1226</td>
-      <td>439</td>
+      <td>584</td>
+      <td>226</td>
+    </tr>
+    <tr>
+      <th>松山區</th>
+      <td>500</td>
+      <td>193</td>
     </tr>
     <tr>
       <th>文山區</th>
-      <td>1002</td>
-      <td>418</td>
+      <td>472</td>
+      <td>225</td>
     </tr>
     <tr>
       <th>萬華區</th>
-      <td>864</td>
-      <td>360</td>
+      <td>410</td>
+      <td>224</td>
     </tr>
     <tr>
       <th>南港區</th>
-      <td>840</td>
-      <td>375</td>
+      <td>388</td>
+      <td>169</td>
     </tr>
     <tr>
       <th>大同區</th>
-      <td>818</td>
-      <td>307</td>
+      <td>308</td>
+      <td>96</td>
     </tr>
   </tbody>
 </table>
@@ -3797,104 +3848,98 @@ Name: tot, dtype: int64
       <th>bemp</th>
       <th>act</th>
       <th>ratio</th>
-      <th>ratio1</th>
     </tr>
   </thead>
   <tbody>
     <tr>
-      <th>0040</th>
-      <td>0040</td>
-      <td>玉成公園</td>
-      <td>34</td>
-      <td>32</td>
-      <td>南港區</td>
-      <td>20210322235238</td>
-      <td>25.04287</td>
-      <td>121.58640</td>
-      <td>玉成街247號前</td>
-      <td>Nangang Dist.</td>
-      <td>Yucheng Park</td>
-      <td>The front of No. 247, Yucheng St.</td>
-      <td>2</td>
-      <td>1</td>
-      <td>0.941176</td>
-      <td>0.941176</td>
-    </tr>
-    <tr>
-      <th>0210</th>
-      <td>0210</td>
-      <td>樂群二敬業四路口</td>
-      <td>60</td>
-      <td>53</td>
+      <th>0051</th>
+      <td>0051</td>
+      <td>建國農安街口</td>
+      <td>16</td>
+      <td>16</td>
       <td>中山區</td>
-      <td>20210322235219</td>
-      <td>25.079766</td>
-      <td>121.558135</td>
-      <td>樂群二路180號前廣場</td>
+      <td>20220922232220</td>
+      <td>25.065031</td>
+      <td>121.536775</td>
+      <td>建國北路/農安街口(中油旁邊空地)(鄰近榮星公園(原榮星花園))</td>
       <td>Zhongshan Dist.</td>
-      <td>Lequn 2nd &amp; Jingye 4th Intersection</td>
-      <td>No.180, Lequn 2nd Rd.</td>
-      <td>7</td>
+      <td>Jianguo &amp; Nongan Intersection</td>
+      <td>(Behind empty area of CPC coporation) Jianguo ...</td>
+      <td>0</td>
       <td>1</td>
-      <td>0.883333</td>
-      <td>0.883333</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>0261</th>
-      <td>0261</td>
-      <td>健康新城</td>
-      <td>44</td>
-      <td>37</td>
-      <td>松山區</td>
-      <td>20210322235238</td>
-      <td>25.054095</td>
-      <td>121.560928</td>
-      <td>健康路177號前人行道(健康新城)</td>
-      <td>Songshan Dist.</td>
-      <td>Jiankang New Village</td>
-      <td>No.177, Jiankang Rd.</td>
-      <td>7</td>
-      <td>1</td>
-      <td>0.840909</td>
-      <td>0.840909</td>
-    </tr>
-    <tr>
-      <th>0337</th>
-      <td>0337</td>
-      <td>彩虹橋</td>
-      <td>30</td>
-      <td>25</td>
+      <th>0192</th>
+      <td>0192</td>
+      <td>捷運葫洲站(1號出口)</td>
+      <td>12</td>
+      <td>12</td>
       <td>內湖區</td>
-      <td>20210322235227</td>
-      <td>25.053010</td>
-      <td>121.575920</td>
-      <td>潭美街27號西側(行善公園東南角)(鄰近饒河街夜市/彩虹橋)</td>
+      <td>20220922232235</td>
+      <td>25.072485</td>
+      <td>121.607955</td>
+      <td>康寧路三段/成功路五段450巷21弄(西北側)(捷運葫洲站1號出口前自行車停放區)</td>
       <td>Neihu Dist.</td>
-      <td>Rainbow Bridge</td>
-      <td>No.27, Tanmei St.</td>
-      <td>5</td>
+      <td>MRT Huzhou Sta. (Exit 1)</td>
+      <td>Sec. 3, Kangning Rd./Aly. 21, Ln. 450, Sec. 5,...</td>
+      <td>0</td>
       <td>1</td>
-      <td>0.833333</td>
-      <td>0.833333</td>
+      <td>1.0</td>
     </tr>
     <tr>
-      <th>0280</th>
-      <td>0280</td>
-      <td>士林新天地</td>
-      <td>28</td>
-      <td>23</td>
-      <td>士林區</td>
-      <td>20210322235217</td>
-      <td>25.089034</td>
-      <td>121.517320</td>
-      <td>大南路325號前方人行道</td>
-      <td>Shilin Dist.</td>
-      <td>Shilin New Village</td>
-      <td>No.325, Danan Rd.</td>
-      <td>5</td>
+      <th>0287</th>
+      <td>0287</td>
+      <td>第二果菜批發市場</td>
+      <td>8</td>
+      <td>8</td>
+      <td>中山區</td>
+      <td>20220922232219</td>
+      <td>25.066424</td>
+      <td>121.537354</td>
+      <td>民族東路410巷1號 對面 遷到 民族東路410巷2弄20號 東側</td>
+      <td>Zhongshan Dist.</td>
+      <td>Taipei Second Fruits and Vegetables Wholesale ...</td>
+      <td>The E. side of  No. 20, Aly. 2, Ln. 410, Minzu...</td>
+      <td>4</td>
       <td>1</td>
-      <td>0.821429</td>
-      <td>0.821429</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>0383</th>
+      <td>0383</td>
+      <td>一壽橋</td>
+      <td>12</td>
+      <td>12</td>
+      <td>文山區</td>
+      <td>20220922232232</td>
+      <td>24.978480</td>
+      <td>121.555450</td>
+      <td>樟新街64號前方</td>
+      <td>Wenshan Dist.</td>
+      <td>Yishou Bridge</td>
+      <td>No.64, Zhangxin St.</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>0128</th>
+      <td>0128</td>
+      <td>成功國宅</td>
+      <td>16</td>
+      <td>16</td>
+      <td>大安區</td>
+      <td>20220922232243</td>
+      <td>25.026808</td>
+      <td>121.546726</td>
+      <td>四維路198巷/和平東路三段1巷</td>
+      <td>Daan Dist.</td>
+      <td>Chengong Public Housing</td>
+      <td>Ln. 198, Siwei Rd./Ln. 1, Sec. 3, Heping E. Rd</td>
+      <td>0</td>
+      <td>1</td>
+      <td>1.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -3913,106 +3958,100 @@ Name: tot, dtype: int64
       <td>...</td>
       <td>...</td>
       <td>...</td>
-      <td>...</td>
     </tr>
     <tr>
-      <th>0099</th>
-      <td>0099</td>
-      <td>捷運雙連站(2號出口)</td>
-      <td>42</td>
+      <th>0172</th>
+      <td>0172</td>
+      <td>捷運南京三民站(1號出口)</td>
+      <td>16</td>
+      <td>0</td>
+      <td>松山區</td>
+      <td>20220922232216</td>
+      <td>25.051562</td>
+      <td>121.562891</td>
+      <td>南京東路五段/三民路(西北側)</td>
+      <td>Songshan Dist.</td>
+      <td>MRT Nanjing Sanmin Sta. (Exit 1)</td>
+      <td>Sec. 5, Nanjing E. Rd./Sanmin Rd.</td>
+      <td>14</td>
+      <td>1</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>0159</th>
+      <td>0159</td>
+      <td>捷運西湖站(1號出口)</td>
+      <td>20</td>
+      <td>0</td>
+      <td>內湖區</td>
+      <td>20220922232230</td>
+      <td>25.082866</td>
+      <td>121.566695</td>
+      <td>環山路一段9巷/內湖路一段285巷(西南側)</td>
+      <td>Neihu Dist.</td>
+      <td>MRT Xihu Sta. (Exit 1)</td>
+      <td>Ln. 9, Sec. 1, Huanshan Rd./Ln. 285, Sec. 1, N...</td>
+      <td>36</td>
+      <td>1</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>0140</th>
+      <td>0140</td>
+      <td>捷運大橋頭站(2號出口)</td>
+      <td>20</td>
       <td>0</td>
       <td>大同區</td>
-      <td>20201029115850</td>
-      <td>25.057866</td>
-      <td>121.520711</td>
-      <td>民生西路/萬全街(東北側)</td>
+      <td>20220922232244</td>
+      <td>25.063404</td>
+      <td>121.512909</td>
+      <td>民權西路/重慶北路三段(東北側)(鄰近延三夜市(大橋頭夜市))</td>
       <td>Datong Dist.</td>
-      <td>MRT Shuanglian Sta. (Exit 2)</td>
-      <td>The N.E. side of Minsheng W. Rd. &amp; Wanquan St.</td>
-      <td>2</td>
+      <td>MRT Daqiaotou Sta. (Exit 2)</td>
+      <td>Minquan W. Rd./ Sec. 3, Chongqing N. Rd.</td>
+      <td>20</td>
       <td>1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>0307</th>
-      <td>0307</td>
-      <td>仁愛安和路口</td>
-      <td>30</td>
+      <th>0139</th>
+      <td>0139</td>
+      <td>永樂市場</td>
+      <td>24</td>
       <td>0</td>
-      <td>大安區</td>
-      <td>20210322235229</td>
-      <td>25.037570</td>
-      <td>121.552076</td>
-      <td>仁愛路四段 / 仁愛路四段222巷(東南側)</td>
-      <td>Daan Dist.</td>
-      <td>Renai &amp; Anhe Intersection</td>
-      <td>Sec. 4, Ren’ai Rd. / Ln. 222, Sec. 4, Ren’ai Rd.</td>
-      <td>30</td>
+      <td>大同區</td>
+      <td>20220922232243</td>
+      <td>25.054501</td>
+      <td>121.510549</td>
+      <td>民樂街/南京西路233巷(西北側)(鄰近迪化街/永樂市場(永樂布業商場)/霞海城隍廟)</td>
+      <td>Datong Dist.</td>
+      <td>Yongle Market</td>
+      <td>Minle St., Datong Dist./Ln. 233, Nanjing W. Rd.</td>
+      <td>22</td>
       <td>1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>0047</th>
-      <td>0047</td>
-      <td>捷運忠孝新生站(4號出口)</td>
-      <td>32</td>
+      <th>0001</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>88</td>
       <td>0</td>
-      <td>大安區</td>
-      <td>20210322235225</td>
-      <td>25.042275</td>
-      <td>121.533939</td>
-      <td>忠孝東路三段 / 新生南路一段口 東北側(鄰近國立台北科技大學)</td>
-      <td>Daan Dist.</td>
-      <td>MRT Zhongxiao Xinsheng Sta.(Exit 4)</td>
-      <td>The intersection of Sec. 3, Zhongxiao E. Rd. &amp;...</td>
-      <td>32</td>
+      <td>信義區</td>
+      <td>20220922232241</td>
+      <td>25.0408578889</td>
+      <td>121.567904444</td>
+      <td>忠孝東路/松仁路(東南側)</td>
+      <td>Xinyi Dist.</td>
+      <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
+      <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
+      <td>82</td>
       <td>1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>0061</th>
-      <td>0061</td>
-      <td>台灣科技大學</td>
-      <td>86</td>
-      <td>0</td>
-      <td>大安區</td>
-      <td>20210322235230</td>
-      <td>25.0131</td>
-      <td>121.539723</td>
-      <td>基隆路四段/基隆路四段73巷交叉口(鄰近國立台灣科技大學)</td>
-      <td>Daan Dist.</td>
-      <td>N.T.U.S.T</td>
-      <td>The intersection of Sec. 4, Keelung Rd. &amp; Ln. ...</td>
-      <td>86</td>
-      <td>1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
-    </tr>
-    <tr>
-      <th>0292</th>
-      <td>0292</td>
-      <td>合心廣場</td>
-      <td>40</td>
-      <td>0</td>
-      <td>南港區</td>
-      <td>20210322235223</td>
-      <td>25.046361</td>
-      <td>121.582848</td>
-      <td>玉成街80號(對面)</td>
-      <td>Nangang Dist.</td>
-      <td>Hesin Square</td>
-      <td>No.80, Yucheng St.(oppsite)</td>
-      <td>39</td>
-      <td>1</td>
-      <td>0.000000</td>
-      <td>0.000000</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>400 rows × 16 columns</p>
+<p>371 rows × 15 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -4031,6 +4070,25 @@ Name: tot, dtype: int64
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-09-22 23:26:01--  https://github.com/P4CSS/PSS/raw/master/data/rent591.pkl
+Resolving github.com (github.com)... 20.27.177.113
+Connecting to github.com (github.com)|20.27.177.113|:443... connected.
+HTTP request sent, awaiting response... 302 Found
+Location: https://raw.githubusercontent.com/P4CSS/PSS/master/data/rent591.pkl [following]
+--2022-09-22 23:26:01--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/rent591.pkl
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.109.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
+Length: 5593005 (5.3M) [application/octet-stream]
+Saving to: &#39;rent591.pkl&#39;
+
+rent591.pkl         100%[===================&gt;]   5.33M  9.49MB/s    in 0.6s    
+
+2022-09-22 23:26:04 (9.49 MB/s) - &#39;rent591.pkl&#39; saved [5593005/5593005]
+</pre></div>
+</div>
+</div>
 </div>
 <p>Using local PC</p>
 <div class="cell docutils container">
@@ -4039,6 +4097,19 @@ Name: tot, dtype: int64
 <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/rent591.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
     <span class="n">list591</span><span class="p">,</span> <span class="n">df591</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [39],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1">#Download data to your local PC and read with jupyter notebook(lab)</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pickle</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/rent591.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">list591</span><span class="p">,</span> <span class="n">df591</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/rent591.pkl&#39;
 </pre></div>
 </div>
 </div>
@@ -4606,7 +4677,7 @@ Name: id, Length: 1549, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({1: 1243, 2: 159, 3: 54, 4: 30, 5: 17, 6: 12, 7: 9, 9: 8, 10: 4, 8: 3, 15: 2, 34: 1, 22: 1, 11: 1, 14: 1, 44: 1, 21: 1, 27: 1, 20: 1})
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({1: 1243, 2: 159, 3: 54, 4: 30, 5: 17, 6: 12, 7: 9, 9: 8, 10: 4, 8: 3, 15: 2, 44: 1, 34: 1, 27: 1, 22: 1, 21: 1, 20: 1, 14: 1, 11: 1})
 </pre></div>
 </div>
 </div>
@@ -4630,7 +4701,7 @@ Name: id, Length: 1549, dtype: int64
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([1.503e+03, 3.200e+01, 5.000e+00, 3.000e+00, 3.000e+00, 0.000e+00,
         1.000e+00, 1.000e+00, 0.000e+00, 1.000e+00]),
  array([ 1. ,  5.3,  9.6, 13.9, 18.2, 22.5, 26.8, 31.1, 35.4, 39.7, 44. ]),
- &lt;a list of 10 Patch objects&gt;)
+ &lt;BarContainer object of 10 artists&gt;)
 </pre></div>
 </div>
 <img alt="../_images/P06_pandas_72_1.png" src="../_images/P06_pandas_72_1.png" />
@@ -4677,6 +4748,14 @@ Name: id, Length: 1549, dtype: int64
 <span class="n">moi_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://github.com/P4CSS/PSS/raw/master/data/opendata108Y020.csv&#39;</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 <span class="n">moi_df</span> <span class="o">=</span> <span class="n">moi_df</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
 <span class="n">moi_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;statistic_yyy&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_8968/2169341433.py:2: FutureWarning: The error_bad_lines argument has been deprecated and will be removed in a future version. Use on_bad_lines in the future.
+
+
+  moi_df = pd.read_csv(&#39;https://github.com/P4CSS/PSS/raw/master/data/opendata108Y020.csv&#39;, error_bad_lines=False)
 </pre></div>
 </div>
 </div>
@@ -5092,9 +5171,18 @@ Name: id, Length: 1549, dtype: int64
 </div>
 <p>Separate columns into multiple columns
 <a class="reference external" href="https://www.geeksforgeeks.org/python-pandas-split-strings-into-two-list-columns-using-str-split/">https://www.geeksforgeeks.org/python-pandas-split-strings-into-two-list-columns-using-str-split/</a></p>
+<p>以下僅是拆掉<code class="docutils literal notranslate"><span class="pre">town_stat[&quot;variable&quot;]</span></code>這個變項，但仍須依照上例把拆出來的新變項填回原本的<code class="docutils literal notranslate"><span class="pre">town_stat</span></code>中，但因為直接拆解的狀況不乾淨，所以這邊沒有操作。例如：</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="c1"># making separate first name column from new data frame</span>
+<span class="n">town_stat</span><span class="p">[</span><span class="s2">&quot;ageLower&quot;</span><span class="p">]</span><span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+ 
+<span class="c1"># making separate last name column from new data frame</span>
+<span class="n">town_stat</span><span class="p">[</span><span class="s2">&quot;ageUpper&quot;</span><span class="p">]</span><span class="o">=</span> <span class="n">new</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">town_stat</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
+<span class="n">new</span>
 </pre></div>
 </div>
 </div>
@@ -5229,13 +5317,6 @@ Name: id, Length: 1549, dtype: int64
 </table>
 <p>364720 rows × 6 columns</p>
 </div></div></div>
-</div>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">new</span> <span class="o">=</span> <span class="n">town_stat</span><span class="p">[</span><span class="s2">&quot;variable&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;_&quot;</span><span class="p">,</span> <span class="n">expand</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)</span> 
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <div class="toctree-wrapper compound">

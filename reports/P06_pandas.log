@@ -17,16 +17,34 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-print(drug_df.pubMediaType)
-≈
-# print(set(drug_df.pubMediaType))
-# drug_df
+import requests
+data = requests.get('https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz').json()
+
+# all_list = []
+# for k, v in data["retVal"].items():
+# #     print(k, v)
+#     all_list.append(v)
+
+print(all_list[:3])
+# Using list comprehension
+all_list = [v for v in data["retVal"].values()]
+    
+ubike_df = pd.DataFrame(all_list)
+ubike_df.head()
 ------------------
 
-[0;36m  Input [0;32mIn [4][0;36m[0m
-[0;31m    ≈[0m
-[0m    ^[0m
-[0;31mSyntaxError[0m[0;31m:[0m invalid character '≈' (U+2248)
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [8][0m, in [0;36m<cell line: 9>[0;34m()[0m
+[1;32m      2[0m data [38;5;241m=[39m requests[38;5;241m.[39mget([38;5;124m'[39m[38;5;124mhttps://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz[39m[38;5;124m'[39m)[38;5;241m.[39mjson()
+[1;32m      4[0m [38;5;66;03m# all_list = [][39;00m
+[1;32m      5[0m [38;5;66;03m# for k, v in data["retVal"].items():[39;00m
+[1;32m      6[0m [38;5;66;03m# #     print(k, v)[39;00m
+[1;32m      7[0m [38;5;66;03m#     all_list.append(v)[39;00m
+[0;32m----> 9[0m [38;5;28mprint[39m([43mall_list[49m[:[38;5;241m3[39m])
+[1;32m     10[0m [38;5;66;03m# Using list comprehension[39;00m
+[1;32m     11[0m all_list [38;5;241m=[39m [v [38;5;28;01mfor[39;00m v [38;5;129;01min[39;00m data[[38;5;124m"[39m[38;5;124mretVal[39m[38;5;124m"[39m][38;5;241m.[39mvalues()]
 
-SyntaxError: invalid character '≈' (U+2248) (4074183409.py, line 2)
+[0;31mNameError[0m: name 'all_list' is not defined
+NameError: name 'all_list' is not defined
 
