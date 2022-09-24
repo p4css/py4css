@@ -938,7 +938,52 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:910,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">910</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">911</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/20%2011:00&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:917,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">915</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">917</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="ne">JSONDecodeError</span>: [Errno Expecting value] : 0
 </pre></div>
 </div>
 </div>
@@ -975,7 +1020,8 @@ title="Print to PDF"
  &#39;TWD97_Lat&#39;: 23.925175,
  &#39;SiteType&#39;: &#39;一般站&#39;,
  &#39;SiteType2&#39;: &#39;中央政府&#39;,
- &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+ &#39;siteowner&#39;: &#39;行政院環境保護署&#39;,
+ &#39;Quality&#39;: &#39;yellow&#39;}
 </pre></div>
 </div>
 </div>
@@ -2007,11 +2053,11 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220922233240&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;82&#39;, &#39;act&#39;: &#39;1&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;18&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220922130941&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;65&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220922233217&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;16&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;6&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220922130917&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;10&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220922233235&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;32&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;10&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220922130936&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;22&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -2066,16 +2112,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
       <td>88</td>
-      <td>0</td>
+      <td>18</td>
       <td>信義區</td>
-      <td>20220922233240</td>
+      <td>20220922130941</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>82</td>
+      <td>65</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2083,16 +2129,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
       <td>16</td>
-      <td>0</td>
+      <td>6</td>
       <td>大安區</td>
-      <td>20220922233217</td>
+      <td>20220922130917</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>16</td>
+      <td>10</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2100,16 +2146,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0004</td>
       <td>市民廣場</td>
       <td>32</td>
-      <td>0</td>
+      <td>10</td>
       <td>信義區</td>
-      <td>20220922233235</td>
+      <td>20220922130936</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>32</td>
+      <td>22</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2117,16 +2163,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0005</td>
       <td>興雅國中</td>
       <td>32</td>
-      <td>4</td>
+      <td>18</td>
       <td>信義區</td>
-      <td>20220922233234</td>
+      <td>20220922130935</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>27</td>
+      <td>14</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2134,16 +2180,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0006</td>
       <td>臺北南山廣場</td>
       <td>54</td>
-      <td>2</td>
+      <td>24</td>
       <td>信義區</td>
-      <td>20220922233229</td>
+      <td>20220922130929</td>
       <td>25.034047</td>
       <td>121.565973</td>
       <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>NAN SHAN PLAZA</td>
       <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
-      <td>50</td>
+      <td>30</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2168,16 +2214,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0401</td>
       <td>南京新生路口</td>
       <td>16</td>
-      <td>1</td>
+      <td>13</td>
       <td>中山區</td>
-      <td>20220922233215</td>
+      <td>20220922130915</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>15</td>
+      <td>3</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2185,16 +2231,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0402</td>
       <td>下灣公園</td>
       <td>12</td>
-      <td>4</td>
+      <td>1</td>
       <td>內湖區</td>
-      <td>20220922233234</td>
+      <td>20220922130933</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
       <td>Neihu Dist.</td>
       <td>Siawan Park</td>
       <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
-      <td>8</td>
+      <td>11</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2202,16 +2248,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
       <td>10</td>
-      <td>0</td>
+      <td>4</td>
       <td>內湖區</td>
-      <td>20220922233233</td>
+      <td>20220922130932</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>10</td>
+      <td>6</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2219,16 +2265,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0404</td>
       <td>民族延平路口</td>
       <td>10</td>
-      <td>10</td>
+      <td>1</td>
       <td>大同區</td>
-      <td>20220922233244</td>
+      <td>20220922130944</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
       <td>Datong Dist.</td>
       <td>Minzu &amp; Yanping Intersection</td>
       <td>No.310, Minzu W. Rd.</td>
-      <td>0</td>
+      <td>9</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2236,16 +2282,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
       <td>46</td>
-      <td>2</td>
+      <td>0</td>
       <td>大安區</td>
-      <td>20220922233233</td>
+      <td>20220922130932</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>42</td>
+      <td>43</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -2383,27 +2429,27 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
     </tr>
     <tr>
       <th>sbi</th>
-      <td>0</td>
-      <td>0</td>
-      <td>0</td>
-      <td>4</td>
-      <td>2</td>
-      <td>0</td>
-      <td>1</td>
-      <td>13</td>
-      <td>23</td>
-      <td>16</td>
-      <td>...</td>
-      <td>2</td>
-      <td>7</td>
-      <td>4</td>
-      <td>4</td>
-      <td>2</td>
-      <td>1</td>
-      <td>4</td>
-      <td>0</td>
+      <td>18</td>
+      <td>6</td>
       <td>10</td>
+      <td>18</td>
+      <td>24</td>
+      <td>14</td>
+      <td>5</td>
+      <td>14</td>
       <td>2</td>
+      <td>0</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>0</td>
+      <td>4</td>
+      <td>0</td>
+      <td>13</td>
+      <td>1</td>
+      <td>4</td>
+      <td>1</td>
+      <td>0</td>
     </tr>
     <tr>
       <th>sarea</th>
@@ -2431,27 +2477,27 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
     </tr>
     <tr>
       <th>mday</th>
-      <td>20220922233240</td>
-      <td>20220922233217</td>
-      <td>20220922233235</td>
-      <td>20220922233234</td>
-      <td>20220922233229</td>
-      <td>20220922233225</td>
-      <td>20220922233225</td>
-      <td>20220922233242</td>
-      <td>20220922233231</td>
-      <td>20220922233240</td>
+      <td>20220922130941</td>
+      <td>20220922130917</td>
+      <td>20220922130936</td>
+      <td>20220922130935</td>
+      <td>20220922130929</td>
+      <td>20220922130921</td>
+      <td>20220922130925</td>
+      <td>20220922130943</td>
+      <td>20220922130930</td>
+      <td>20220922130939</td>
       <td>...</td>
-      <td>20220922233244</td>
-      <td>20220922233226</td>
-      <td>20220922233240</td>
-      <td>20220922233243</td>
-      <td>20220922233217</td>
-      <td>20220922233215</td>
-      <td>20220922233234</td>
-      <td>20220922233233</td>
-      <td>20220922233244</td>
-      <td>20220922233233</td>
+      <td>20220922130844</td>
+      <td>20220922130927</td>
+      <td>20220922130940</td>
+      <td>20220922130943</td>
+      <td>20220922130916</td>
+      <td>20220922130915</td>
+      <td>20220922130933</td>
+      <td>20220922130932</td>
+      <td>20220922130944</td>
+      <td>20220922130932</td>
     </tr>
     <tr>
       <th>lat</th>
@@ -2599,27 +2645,27 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
     </tr>
     <tr>
       <th>bemp</th>
-      <td>82</td>
-      <td>16</td>
-      <td>32</td>
-      <td>27</td>
-      <td>50</td>
+      <td>65</td>
+      <td>10</td>
+      <td>22</td>
+      <td>14</td>
+      <td>30</td>
+      <td>26</td>
       <td>37</td>
-      <td>40</td>
-      <td>7</td>
-      <td>7</td>
-      <td>0</td>
+      <td>6</td>
+      <td>28</td>
+      <td>14</td>
       <td>...</td>
-      <td>8</td>
-      <td>5</td>
-      <td>20</td>
-      <td>20</td>
-      <td>10</td>
-      <td>15</td>
-      <td>8</td>
-      <td>10</td>
-      <td>0</td>
-      <td>42</td>
+      <td>9</td>
+      <td>11</td>
+      <td>24</td>
+      <td>19</td>
+      <td>12</td>
+      <td>3</td>
+      <td>11</td>
+      <td>6</td>
+      <td>9</td>
+      <td>43</td>
     </tr>
     <tr>
       <th>act</th>
@@ -2700,16 +2746,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
       <td>88</td>
-      <td>0</td>
+      <td>18</td>
       <td>信義區</td>
-      <td>20220922233240</td>
+      <td>20220922130941</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>82</td>
+      <td>65</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2717,16 +2763,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
       <td>16</td>
-      <td>0</td>
+      <td>6</td>
       <td>大安區</td>
-      <td>20220922233217</td>
+      <td>20220922130917</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>16</td>
+      <td>10</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2734,16 +2780,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0004</td>
       <td>市民廣場</td>
       <td>32</td>
-      <td>0</td>
+      <td>10</td>
       <td>信義區</td>
-      <td>20220922233235</td>
+      <td>20220922130936</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>32</td>
+      <td>22</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2751,16 +2797,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0005</td>
       <td>興雅國中</td>
       <td>32</td>
-      <td>4</td>
+      <td>18</td>
       <td>信義區</td>
-      <td>20220922233234</td>
+      <td>20220922130935</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>27</td>
+      <td>14</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2768,16 +2814,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0006</td>
       <td>臺北南山廣場</td>
       <td>54</td>
-      <td>2</td>
+      <td>24</td>
       <td>信義區</td>
-      <td>20220922233229</td>
+      <td>20220922130929</td>
       <td>25.034047</td>
       <td>121.565973</td>
       <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>NAN SHAN PLAZA</td>
       <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
-      <td>50</td>
+      <td>30</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2802,16 +2848,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0401</td>
       <td>南京新生路口</td>
       <td>16</td>
-      <td>1</td>
+      <td>13</td>
       <td>中山區</td>
-      <td>20220922233215</td>
+      <td>20220922130915</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>15</td>
+      <td>3</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2819,16 +2865,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0402</td>
       <td>下灣公園</td>
       <td>12</td>
-      <td>4</td>
+      <td>1</td>
       <td>內湖區</td>
-      <td>20220922233234</td>
+      <td>20220922130933</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
       <td>Neihu Dist.</td>
       <td>Siawan Park</td>
       <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
-      <td>8</td>
+      <td>11</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2836,16 +2882,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
       <td>10</td>
-      <td>0</td>
+      <td>4</td>
       <td>內湖區</td>
-      <td>20220922233233</td>
+      <td>20220922130932</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>10</td>
+      <td>6</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2853,16 +2899,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0404</td>
       <td>民族延平路口</td>
       <td>10</td>
-      <td>10</td>
+      <td>1</td>
       <td>大同區</td>
-      <td>20220922233244</td>
+      <td>20220922130944</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
       <td>Datong Dist.</td>
       <td>Minzu &amp; Yanping Intersection</td>
       <td>No.310, Minzu W. Rd.</td>
-      <td>0</td>
+      <td>9</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2870,16 +2916,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
       <td>46</td>
-      <td>2</td>
+      <td>0</td>
       <td>大安區</td>
-      <td>20220922233233</td>
+      <td>20220922130932</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>42</td>
+      <td>43</td>
       <td>1</td>
     </tr>
   </tbody>

@@ -1,0 +1,1012 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>AS02 List-dict-for-if &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Logic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P01_counting.html">
+   P01-Counting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P02_basic.html">
+   P02-Python Basic
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P02b_basic.html">
+     P02-blank-Python Basic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P03b_list_dictionary.html">
+     P03-blank-List &amp; Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PSS/P04_1_for.html">
+   P04-For-if-else
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PSS/P04_2_for_if.html">
+   P04 For-if applications
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P05_read_csv_json.html">
+   P05 READ Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P05_read_other_format.html">
+     Read more formats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P06_pandas.html">
+   P06 Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P06a_pandas_tricks.html">
+     Pandas Tricks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PSS/P07_visualization.html">
+   P07 Visualization with Pandas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PSS/P08_3_cases.html">
+   P08-3 Scraping cases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM01_tokenization.html">
+   Tokenization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="AS01_basic.html">
+   AS01 for Python Basic
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/video_list.html">
+   Python教學影片
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/IDEs.html">
+   Python開發環境
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/AS/AS02_list_dict_for_if.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/AS/AS02_list_dict_for_if.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS02_list_dict_for_if.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/AS/AS02_list_dict_for_if.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q1-using-site-name-as-dict-id">
+   Q1 Using site name as dict id
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-code">
+     Q1_Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-verification">
+     Q1_Verification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q2-calculating-the-fullness-of-each-youbike-site">
+   Q2 Calculating the fullness of each youbike site
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-code">
+     Q2_Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-code-verification">
+     Q2_Code &amp; Verification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q3-finding-maximum">
+   Q3 Finding Maximum
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-code-verification-finding-sites-with-maximum-perc">
+     Q3_Code &amp; Verification: Finding sites with maximum
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       perc
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-code-verification-top-10">
+     Q3_Code &amp; Verification: Top 10
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q4-categorizing-fullness">
+   Q4: Categorizing fullness
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-code-verification">
+     Q4_Code &amp; Verification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q5-e">
+   Q5_e 自然常數的泰勒展式
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>AS02 List-dict-for-if</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q1-using-site-name-as-dict-id">
+   Q1 Using site name as dict id
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-code">
+     Q1_Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q1-verification">
+     Q1_Verification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q2-calculating-the-fullness-of-each-youbike-site">
+   Q2 Calculating the fullness of each youbike site
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-code">
+     Q2_Code
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q2-code-verification">
+     Q2_Code &amp; Verification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q3-finding-maximum">
+   Q3 Finding Maximum
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-code-verification-finding-sites-with-maximum-perc">
+     Q3_Code &amp; Verification: Finding sites with maximum
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       perc
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q3-code-verification-top-10">
+     Q3_Code &amp; Verification: Top 10
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q4-categorizing-fullness">
+   Q4: Categorizing fullness
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#q4-code-verification">
+     Q4_Code &amp; Verification
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#q5-e">
+   Q5_e 自然常數的泰勒展式
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="as02-list-dict-for-if">
+<h1>AS02 List-dict-for-if<a class="headerlink" href="#as02-list-dict-for-if" title="Permalink to this headline">#</a></h1>
+<section id="q1-using-site-name-as-dict-id">
+<h2>Q1 Using site name as dict id<a class="headerlink" href="#q1-using-site-name-as-dict-id" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting youtube data</span>
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="q1-code">
+<h3>Q1_Code<a class="headerlink" href="#q1-code" title="Permalink to this headline">#</a></h3>
+<ol class="simple">
+<li><p>建立一個<code class="docutils literal notranslate"><span class="pre">site_dict</span></code>，可用以查詢某個youbike站台的資料。原本的Youbike data除了第一層有<code class="docutils literal notranslate"><span class="pre">retCode</span></code>和<code class="docutils literal notranslate"><span class="pre">retVal</span></code>外，在<code class="docutils literal notranslate"><span class="pre">retVal</span></code>所對應到的資料中，是以<code class="docutils literal notranslate"><span class="pre">sno</span></code>也就是駐車站編號作為dict的key。我希望把整筆資料轉個型態，仍保持dict of dict，但最外層的dictionary裡面的每個key是站台「中文名稱」，並以<code class="docutils literal notranslate"><span class="pre">site_dict</span></code>來作為新的dictionary的變數名稱。</p></li>
+<li><p>除此之外，請參考下列資料，移除幾個儲存英文站名、英文區域和英文地址的keys與values，有<code class="docutils literal notranslate"><span class="pre">['sareaen',</span> <span class="pre">'snaen',</span> <span class="pre">'aren']</span></code>。參考資料：<a class="reference external" href="https://stackoverflow.com/questions/8995611/removing-multiple-keys-from-a-dictionary-safely">Removing multiple keys from a dictionary safely (stackoverflow)</a></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;retCode&#39;, &#39;retVal&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">site_dict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Using this as new dict name</span>
+<span class="n">en_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sareaen&#39;</span><span class="p">,</span> <span class="s1">&#39;snaen&#39;</span><span class="p">,</span> <span class="s1">&#39;aren&#39;</span><span class="p">]</span>
+
+<span class="c1"># Your code should go here</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;sna&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">site</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">en_keys</span><span class="p">:</span>
+        <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;sna&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q1-verification">
+<h3>Q1_Verification<a class="headerlink" href="#q1-verification" title="Permalink to this headline">#</a></h3>
+<p>執行以下程式碼以驗證你的程式撰寫是否成功。你不能更動以下Cell的Code，僅能在上面的Cell撰寫程式，使得以下的Code列印出來的資料與預期相同。助教會看這個Cell的結果來判斷你是否達到題目要求。以下的程式碼會從你所建立的<code class="docutils literal notranslate"><span class="pre">site_dict</span></code>中隨機抽五個站，然後列印出這些站的資料。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">random_sites</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">site_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random_sites</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">random_sites</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;和平敦化路口&#39;, &#39;臺北市網球中心&#39;, &#39;玉成公園&#39;, &#39;捷運關渡站&#39;, &#39;捷運中山國小站(4號出口)&#39;]
+dict_values([&#39;0400&#39;, &#39;和平敦化路口&#39;, &#39;12&#39;, &#39;8&#39;, &#39;大安區&#39;, &#39;20220924195032&#39;, &#39;25.024440&#39;, &#39;121.549076&#39;, &#39;和平東路三段 / 敦化南路二段口(東側)&#39;, &#39;4&#39;, &#39;1&#39;])
+dict_values([&#39;0356&#39;, &#39;臺北市網球中心&#39;, &#39;16&#39;, &#39;4&#39;, &#39;內湖區&#39;, &#39;20220924195041&#39;, &#39;25.067400&#39;, &#39;121.597490&#39;, &#39;民權東路六段/民權東路六段210巷口(西南側)&#39;, &#39;12&#39;, &#39;1&#39;])
+dict_values([&#39;0040&#39;, &#39;玉成公園&#39;, &#39;16&#39;, &#39;2&#39;, &#39;南港區&#39;, &#39;20220924195019&#39;, &#39;25.04287&#39;, &#39;121.58640&#39;, &#39;玉成街247號前&#39;, &#39;14&#39;, &#39;1&#39;])
+dict_values([&#39;0202&#39;, &#39;捷運關渡站&#39;, &#39;30&#39;, &#39;4&#39;, &#39;北投區&#39;, &#39;20220924195045&#39;, &#39;25.124646&#39;, &#39;121.467336&#39;, &#39;大度路三段270巷/立功街55巷(西南側人行道)&#39;, &#39;26&#39;, &#39;1&#39;])
+dict_values([&#39;0162&#39;, &#39;捷運中山國小站(4號出口)&#39;, &#39;44&#39;, &#39;9&#39;, &#39;中山區&#39;, &#39;20220924195045&#39;, &#39;25.062924&#39;, &#39;121.52772&#39;, &#39;民權東路一段/新生北路三段(北側)(新生高架橋下)&#39;, &#39;34&#39;, &#39;1&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="q2-calculating-the-fullness-of-each-youbike-site">
+<h2>Q2 Calculating the fullness of each youbike site<a class="headerlink" href="#q2-calculating-the-fullness-of-each-youbike-site" title="Permalink to this headline">#</a></h2>
+<section id="q2-code">
+<h3>Q2_Code<a class="headerlink" href="#q2-code" title="Permalink to this headline">#</a></h3>
+<p>建立一個新的指標<code class="docutils literal notranslate"><span class="pre">perc</span> <span class="pre">=</span> <span class="pre">sbi/tot</span></code>，為現有單車數(<code class="docutils literal notranslate"><span class="pre">sbi</span></code>)除以總單車格數（<code class="docutils literal notranslate"><span class="pre">tot</span></code>）作為滿站的比例，並希望在每個駐車站的資料中多一個key為<code class="docutils literal notranslate"><span class="pre">perc</span></code>來存放滿站比例。你可以接續上題作，或者回到原本撈回來的資料做。</p>
+<p>例如</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s1">&#39;捷運市政府站(3號出口)&#39;</span><span class="p">:{</span>
+    <span class="s1">&#39;sna&#39;</span><span class="p">:</span> <span class="s1">&#39;捷運市政府站(3號出口)&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;sno&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+    <span class="s1">&#39;tot&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+    <span class="s1">&#39;sbi&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span> 
+    <span class="s1">&#39;perc&#39;</span><span class="p">:</span> <span class="o">...</span><span class="p">,</span>
+    <span class="o">...</span><span class="p">},</span>
+    <span class="o">...</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code should be here</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">site_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">site</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">])</span>
+    <span class="n">site</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">])</span>
+    <span class="n">site</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q2-code-verification">
+<h3>Q2_Code &amp; Verification<a class="headerlink" href="#q2-code-verification" title="Permalink to this headline">#</a></h3>
+<p>以下所附的Code將會隨機選出五個站台於list <code class="docutils literal notranslate"><span class="pre">random_sites</span></code>中，請用for-loop印出這五個站台的sbi, tot, perc, 和sna。<br>
+預期結果如下，請嘗試用format()格式化你的輸出，讓你的輸出符合以下浮點數以下二位的樣子。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>	<span class="mi">20</span>	      <span class="mf">0.15</span>	<span class="n">捷運芝山站</span><span class="p">(</span><span class="mi">2</span><span class="n">號出口</span><span class="p">)</span>
+<span class="mi">3</span>	<span class="mi">20</span>	      <span class="mf">0.15</span>	<span class="n">螢橋國小</span>
+<span class="mi">4</span>	<span class="mi">18</span>	      <span class="mf">0.22</span>	<span class="n">樹德公園</span>
+<span class="mi">0</span>	<span class="mi">18</span>	      <span class="mf">0.00</span>	<span class="n">民生光復路口</span>
+<span class="mi">5</span>	<span class="mi">14</span>	      <span class="mf">0.36</span>	<span class="n">湖光國宅</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
+<span class="n">random_sites</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">site_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">random_sites</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">random_sites</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{:10.2f}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;sbi&#39;</span><span class="p">],</span>
+                                  <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;tot&#39;</span><span class="p">],</span>
+                                  <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;perc&#39;</span><span class="p">],</span>
+                                  <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;sna&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;南京建國路口&#39;, &#39;合心廣場&#39;, &#39;德明財經科技大學&#39;, &#39;社正公園&#39;, &#39;富台公園&#39;]
+1	16	      0.06	南京建國路口
+9	22	      0.41	合心廣場
+2	18	      0.11	德明財經科技大學
+6	32	      0.19	社正公園
+5	10	      0.50	富台公園
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="q3-finding-maximum">
+<h2>Q3 Finding Maximum<a class="headerlink" href="#q3-finding-maximum" title="Permalink to this headline">#</a></h2>
+<section id="q3-code-verification-finding-sites-with-maximum-perc">
+<h3>Q3_Code &amp; Verification: Finding sites with maximum <code class="docutils literal notranslate"><span class="pre">perc</span></code><a class="headerlink" href="#q3-code-verification-finding-sites-with-maximum-perc" title="Permalink to this headline">#</a></h3>
+<p>用<code class="docutils literal notranslate"><span class="pre">for-loop</span></code>和<code class="docutils literal notranslate"><span class="pre">if-else</span></code>找出<code class="docutils literal notranslate"><span class="pre">perc</span></code>(fullness)最高的駐車站，並印出其站名和<code class="docutils literal notranslate"><span class="pre">perc</span></code>數值，以及時間。<br>
+預期輸出格式如下（至於最高<code class="docutils literal notranslate"><span class="pre">perc</span></code>與其站台則因個人查詢當時狀態而不同）：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">At</span> <span class="mi">20211014204443</span><span class="p">,</span> <span class="n">the</span> <span class="n">highest</span> <span class="n">perc</span> <span class="ow">is</span> <span class="mf">0.937500</span> <span class="p">(</span><span class="n">Station</span><span class="p">:</span> <span class="n">士林運動中心</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fullest_sna</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">fullest_perc</span> <span class="o">=</span> <span class="mf">0.0</span>
+<span class="n">fullest_time</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+
+<span class="c1"># Your code should be here</span>
+
+
+
+
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;At </span><span class="si">%s</span><span class="s2">, the highest perc is </span><span class="si">%f</span><span class="s2"> (Station: </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">fullest_time</span><span class="p">,</span> <span class="n">fullest_perc</span><span class="p">,</span> <span class="n">fullest_sna</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At , the highest perc is 0.000000 (Station: )
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q3-code-verification-top-10">
+<h3>Q3_Code &amp; Verification: Top 10<a class="headerlink" href="#q3-code-verification-top-10" title="Permalink to this headline">#</a></h3>
+<p>用內建或第三方的sorting函式，將<code class="docutils literal notranslate"><span class="pre">perc</span></code>(fullness)按照full to empty排序，用for-loop列印出，<code class="docutils literal notranslate"><span class="pre">perc</span></code>最高的10個駐車站的<code class="docutils literal notranslate"><span class="pre">sna</span></code>、<code class="docutils literal notranslate"><span class="pre">perc</span></code>、<code class="docutils literal notranslate"><span class="pre">tot</span></code>、<code class="docutils literal notranslate"><span class="pre">sbi</span></code>(（請善用printing formation和<code class="docutils literal notranslate"><span class="pre">\t</span></code>將之對齊排列好，但不用照高低順序）。<br></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code should be here</span>
+
+
+
+    
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="q4-categorizing-fullness">
+<h2>Q4: Categorizing fullness<a class="headerlink" href="#q4-categorizing-fullness" title="Permalink to this headline">#</a></h2>
+<p>當要建立回歸模型來預測腳踏車的滿站程度時，我們需要的可能是上述的<code class="docutils literal notranslate"><span class="pre">perc</span></code>來作為依變項Y；但我如果只是要仿照Youbike地圖，用顏色來標示出滿站程度時（如https://taipei.youbike.com.tw/station/map） ，就需要將<code class="docutils literal notranslate"><span class="pre">perc</span></code>按數值分區。</p>
+<section id="q4-code-verification">
+<h3>Q4_Code &amp; Verification<a class="headerlink" href="#q4-code-verification" title="Permalink to this headline">#</a></h3>
+<p>設計if-else搭配for-loop來計算每個資料區間各有多少個腳踏車站台。一共分成以下幾個label。</p>
+<ul class="simple">
+<li><p>full: perc = 1.0，</p></li>
+<li><p>empty: perc = 0.0,</p></li>
+<li><p>few: 0.0 &lt; perc &lt;0.3</p></li>
+<li><p>general: 0.3 &lt;= perc &lt; 0.7</p></li>
+<li><p>many: 0.7 &lt;=  perc &lt; 1.0
+請在每個站台的dictionary中新增一個key為label，然後用Counting來累計並<strong>列印出</strong>當時刻full, empty, few, general, many各有多少個站台。</p></li>
+</ul>
+<p>範例輸出（可能因為不同時間而數量不同）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">few</span> <span class="mi">173</span>
+<span class="n">general</span> <span class="mi">152</span>
+<span class="n">empty</span> <span class="mi">44</span>
+<span class="n">many</span> <span class="mi">30</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code should be here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="q5-e">
+<h2>Q5_e 自然常數的泰勒展式<a class="headerlink" href="#q5-e" title="Permalink to this headline">#</a></h2>
+<p>e的值可用以下的泰勒展式去逼近，請嘗試完成下列迴圈，計算e的近似值。</p>
+<ul class="simple">
+<li><p>e ≈ 2.71828 18284 59045 23536</p></li>
+<li><p><img alt="image.png" src="AS/attachment:fd9f0b1b-d708-453b-b38a-5edc4d8a6a6b.png" /></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">):</span>
+    <span class="c1"># Your code should be here</span>
+    
+    
+    
+    
+    
+<span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">10</span><span class="p">]</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./AS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
