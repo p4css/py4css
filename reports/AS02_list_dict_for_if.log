@@ -17,22 +17,29 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-e = 1
-for i in range(1, 1000):
-    # Your code should be here
-    
-    
-    
-    
-    
-print(e)
-        
+import random
+random_sites = random.sample(list(site_dict.keys()), 5)
+print(random_sites)
+
+for site in random_sites:
+    print(site_dict[site].values())
 ------------------
 
-[0;36m  Input [0;32mIn [10][0;36m[0m
-[0;31m    print(e)[0m
-[0m    ^[0m
-[0;31mIndentationError[0m[0;31m:[0m expected an indented block
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Input [0;32mIn [4][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mrandom[39;00m
+[0;32m----> 2[0m random_sites [38;5;241m=[39m [43mrandom[49m[38;5;241;43m.[39;49m[43msample[49m[43m([49m[38;5;28;43mlist[39;49m[43m([49m[43msite_dict[49m[38;5;241;43m.[39;49m[43mkeys[49m[43m([49m[43m)[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m5[39;49m[43m)[49m
+[1;32m      3[0m [38;5;28mprint[39m(random_sites)
+[1;32m      5[0m [38;5;28;01mfor[39;00m site [38;5;129;01min[39;00m random_sites:
 
-IndentationError: expected an indented block (1409661195.py, line 9)
+File [0;32m~/opt/anaconda3/lib/python3.9/random.py:449[0m, in [0;36mRandom.sample[0;34m(self, population, k, counts)[0m
+[1;32m    447[0m randbelow [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_randbelow
+[1;32m    448[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;241m0[39m [38;5;241m<[39m[38;5;241m=[39m k [38;5;241m<[39m[38;5;241m=[39m n:
+[0;32m--> 449[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mSample larger than population or is negative[39m[38;5;124m"[39m)
+[1;32m    450[0m result [38;5;241m=[39m [[38;5;28;01mNone[39;00m] [38;5;241m*[39m k
+[1;32m    451[0m setsize [38;5;241m=[39m [38;5;241m21[39m        [38;5;66;03m# size of a small set minus size of an empty list[39;00m
+
+[0;31mValueError[0m: Sample larger than population or is negative
+ValueError: Sample larger than population or is negative
 

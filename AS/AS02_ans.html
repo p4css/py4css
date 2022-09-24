@@ -52,8 +52,6 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Python教學影片" href="../Resource/video_list.html" />
-    <link rel="prev" title="AS01 for Python Basic" href="AS01_basic.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -261,14 +259,14 @@ const thebe_selector_output = ".output, .cell_output"
   Assignments
  </span>
 </p>
-<ul class="current nav bd-sidenav">
+<ul class="nav bd-sidenav">
  <li class="toctree-l1">
   <a class="reference internal" href="AS01_basic.html">
    AS01 for Python Basic
   </a>
  </li>
- <li class="toctree-l1 current active">
-  <a class="current reference internal" href="#">
+ <li class="toctree-l1">
+  <a class="reference internal" href="AS02_list_dict_for_if.html">
    AS02 List-dict-for-if
   </a>
  </li>
@@ -365,7 +363,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/AS/AS02_list_dict_for_if.ipynb"
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/AS/AS02_ans.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -383,7 +381,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/AS/AS02_list_dict_for_if.ipynb"
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/AS/AS02_ans.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -443,7 +441,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS02_list_dict_for_if.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS02_ans.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -471,7 +469,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/AS/AS02_list_dict_for_if.ipynb"
+        <a href="../_sources/AS/AS02_ans.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -744,6 +742,12 @@ title="Print to PDF"
 <span class="n">en_keys</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;sareaen&#39;</span><span class="p">,</span> <span class="s1">&#39;snaen&#39;</span><span class="p">,</span> <span class="s1">&#39;aren&#39;</span><span class="p">]</span>
 
 <span class="c1"># Your code should go here</span>
+
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;sna&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="n">site</span>
+    <span class="k">for</span> <span class="n">key</span> <span class="ow">in</span> <span class="n">en_keys</span><span class="p">:</span>
+        <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;sna&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">key</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    
 </pre></div>
 </div>
 </div>
@@ -764,22 +768,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">random</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">random_sites</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">site_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="mi">5</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">random_sites</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">random_sites</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/random.py:449,</span> in <span class="ni">Random.sample</span><span class="nt">(self, population, k, counts)</span>
-<span class="g g-Whitespace">    </span><span class="mi">447</span> <span class="n">randbelow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_randbelow</span>
-<span class="g g-Whitespace">    </span><span class="mi">448</span> <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">449</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sample larger than population or is negative&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
-<span class="g g-Whitespace">    </span><span class="mi">451</span> <span class="n">setsize</span> <span class="o">=</span> <span class="mi">21</span>        <span class="c1"># size of a small set minus size of an empty list</span>
-
-<span class="ne">ValueError</span>: Sample larger than population or is negative
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;金山市民路口&#39;, &#39;秀山區民活動中心&#39;, &#39;豐年公園&#39;, &#39;湖光國宅&#39;, &#39;大業大同街口&#39;]
+dict_values([&#39;0100&#39;, &#39;金山市民路口&#39;, &#39;40&#39;, &#39;0&#39;, &#39;中正區&#39;, &#39;20220924200444&#39;, &#39;25.045753&#39;, &#39;121.530697&#39;, &#39;金山北路/市民大道三段(南側)(鄰近華山文化創意產業園區/光華數位新天地(光華商場)/三創生活園區)&#39;, &#39;20&#39;, &#39;1&#39;])
+dict_values([&#39;0264&#39;, &#39;秀山區民活動中心&#39;, &#39;14&#39;, &#39;9&#39;, &#39;北投區&#39;, &#39;20220924200420&#39;, &#39;25.145936&#39;, &#39;121.493009&#39;, &#39;秀山路50號北側道路路側&#39;, &#39;5&#39;, &#39;1&#39;])
+dict_values([&#39;0367&#39;, &#39;豐年公園&#39;, &#39;14&#39;, &#39;1&#39;, &#39;北投區&#39;, &#39;20220924200419&#39;, &#39;25.135970&#39;, &#39;121.497019&#39;, &#39;大業路539號(東側)&#39;, &#39;13&#39;, &#39;1&#39;])
+dict_values([&#39;0230&#39;, &#39;湖光國宅&#39;, &#39;14&#39;, &#39;5&#39;, &#39;內湖區&#39;, &#39;20220924200434&#39;, &#39;25.075366&#39;, &#39;121.580811&#39;, &#39;文德路22巷67號對面綠地&#39;, &#39;9&#39;, &#39;1&#39;])
+dict_values([&#39;0118&#39;, &#39;大業大同街口&#39;, &#39;14&#39;, &#39;5&#39;, &#39;北投區&#39;, &#39;20220924200432&#39;, &#39;25.136929&#39;, &#39;121.499152&#39;, &#39;大業路/大同街口&#39;, &#39;9&#39;, &#39;1&#39;])
 </pre></div>
 </div>
 </div>
@@ -806,6 +800,10 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code should be here</span>
+<span class="k">for</span> <span class="n">key</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">site_dict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">site</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">])</span>
+    <span class="n">site</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">])</span>
+    <span class="n">site</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">]</span><span class="o">/</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -827,16 +825,22 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">random</span>
 <span class="n">random_sites</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">site_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="mi">5</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">random_sites</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">random_sites</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{:10.2f}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;sbi&#39;</span><span class="p">],</span>
+                                  <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;tot&#39;</span><span class="p">],</span>
+                                  <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;perc&#39;</span><span class="p">],</span>
+                                  <span class="n">site_dict</span><span class="p">[</span><span class="n">site</span><span class="p">][</span><span class="s1">&#39;sna&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;中山天母路口&#39;, &#39;市民林森路口&#39;, &#39;南京新生路口&#39;, &#39;萬華車站&#39;, &#39;市民廣場&#39;]
-8	16	      0.50	中山天母路口
-0	14	      0.00	市民林森路口
-7	16	      0.44	南京新生路口
-6	28	      0.21	萬華車站
-17	32	      0.53	市民廣場
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;仁愛安和路口&#39;, &#39;忠孝東路三段217巷口&#39;, &#39;樂群二明水路口&#39;, &#39;國防大學&#39;, &#39;雨農國小&#39;]
+5	10	      0.50	仁愛安和路口
+1	4	      0.25	忠孝東路三段217巷口
+4	24	      0.17	樂群二明水路口
+3	10	      0.30	國防大學
+4	22	      0.18	雨農國小
 </pre></div>
 </div>
 </div>
@@ -860,17 +864,18 @@ title="Print to PDF"
 
 <span class="c1"># Your code should be here</span>
 
-
-
-
-
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">fullest_perc</span><span class="p">:</span>
+        <span class="n">fullest_perc</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span>
+        <span class="n">fullest_sna</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;sna&#39;</span><span class="p">]</span>
+        <span class="n">fullest_time</span> <span class="o">=</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;mday&#39;</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;At </span><span class="si">%s</span><span class="s2">, the highest perc is </span><span class="si">%f</span><span class="s2"> (Station: </span><span class="si">%s</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">fullest_time</span><span class="p">,</span> <span class="n">fullest_perc</span><span class="p">,</span> <span class="n">fullest_sna</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At 20220924191821, the highest perc is 1.250000 (Station: 基隆路一段101巷口)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>At 20220924200421, the highest perc is 1.250000 (Station: 基隆路一段101巷口)
 </pre></div>
 </div>
 </div>
@@ -894,19 +899,24 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code should be here</span>
+
+<span class="n">top10</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span> <span class="n">reverse</span> <span class="o">=</span> <span class="kc">True</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">&gt;</span> <span class="n">top10</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%3d</span><span class="se">\t</span><span class="si">%3d</span><span class="se">\t</span><span class="si">%.2f</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">]),</span> <span class="nb">int</span><span class="p">(</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">]),</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;sna&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> 16	 15	0.94	成功國宅
- 24	 21	0.88	新東公園
- 12	 11	0.92	圓環站
  30	 28	0.93	基河一期國宅
-  8	  7	0.88	第二果菜批發市場
+ 12	 10	0.83	健康新城
+  8	  8	1.00	第二果菜批發市場
   4	  5	1.25	基隆路一段101巷口
   8	  7	0.88	捷運中山站(2號出口)
  10	  9	0.90	南京光復路口
   8	 10	1.25	南京東興路口
+ 46	 38	0.83	捷運科技大樓站(台北教育大學)
 </pre></div>
 </div>
 </div>
@@ -934,6 +944,35 @@ title="Print to PDF"
 <span class="n">many</span> <span class="mi">30</span>
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">1.0</span><span class="p">:</span>
+        <span class="n">v</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;full&quot;</span>
+    <span class="k">elif</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.7</span><span class="p">:</span>
+        <span class="n">v</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;many&quot;</span>
+    <span class="k">elif</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mf">0.3</span><span class="p">:</span>
+        <span class="n">v</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;general&quot;</span>
+    <span class="k">elif</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;perc&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="mf">0.0</span><span class="p">:</span>
+        <span class="n">v</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;empty&quot;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">v</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;few&quot;</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">([</span><span class="n">v</span><span class="p">[</span><span class="s1">&#39;label&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">()])</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>general 167
+few 155
+many 25
+empty 21
+full 3
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="q5-e">
@@ -948,12 +987,9 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">e</span> <span class="o">=</span> <span class="mi">1</span>
 <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1000</span><span class="p">):</span>
     <span class="n">denominator</span> <span class="o">=</span> <span class="mi">1</span>
-    <span class="c1"># Your code should go here</span>
-    
-    
-    
-    
-    
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+        <span class="n">denominator</span> <span class="o">*=</span> <span class="n">j</span>
+    <span class="n">e</span> <span class="o">+=</span> <span class="mi">1</span><span class="o">/</span><span class="n">denominator</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">e</span><span class="p">)</span>
         
 </pre></div>
@@ -995,20 +1031,6 @@ title="Print to PDF"
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
-    <a class='left-prev' id="prev-link" href="AS01_basic.html" title="previous page">
-        <i class="fas fa-angle-left"></i>
-        <div class="prev-next-info">
-            <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">AS01 for Python Basic</p>
-        </div>
-    </a>
-    <a class='right-next' id="next-link" href="../Resource/video_list.html" title="next page">
-    <div class="prev-next-info">
-        <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Python教學影片</p>
-    </div>
-    <i class="fas fa-angle-right"></i>
-    </a>
 </div>
             </footer>
         </div>
