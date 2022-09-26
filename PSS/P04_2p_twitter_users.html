@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Counting &#8212; Programming for Social Scientists</title>
+    <title>P04_2p Study Twitter Problematic Users &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -197,7 +197,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Counting
+     P04_2p Study Twitter Problematic Users
     </a>
    </li>
   </ul>
@@ -548,29 +548,75 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#count-by-for-each">
-   Count by for-each
+  <a class="reference internal nav-link" href="#read-twitter-users-data">
+   Read twitter users data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-traverse-list-by-index-and-range">
-   Sampling: Traverse list by index and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     range()
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#counting">
+   Counting
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-by-for-each">
+     Count by for-each
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-traverse-list-by-enumerate">
-   Sampling: Traverse list by
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     enumerate()
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#sampling">
+   Sampling
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-list-by-index-and-range">
+     Traverse list by index and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       range()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-list-by-enumerate">
+     Traverse list by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       enumerate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-list-by-list-slicing">
+     Traverse list by list slicing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting-a-list-of-dict-by-dict-value">
+   Sorting a list of dict by dict value
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-by-hand-made-sorting-algorithm">
+     Sorting by hand-made sorting algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-1">
+     Trick 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-2">
+     Trick 2
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -581,7 +627,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Counting</h1>
+                <h1>P04_2p Study Twitter Problematic Users</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -592,29 +638,75 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#count-by-for-each">
-   Count by for-each
+  <a class="reference internal nav-link" href="#read-twitter-users-data">
+   Read twitter users data
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-traverse-list-by-index-and-range">
-   Sampling: Traverse list by index and
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     range()
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#counting">
+   Counting
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#count-by-for-each">
+     Count by for-each
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#sampling-traverse-list-by-enumerate">
-   Sampling: Traverse list by
-   <code class="docutils literal notranslate">
-    <span class="pre">
-     enumerate()
-    </span>
-   </code>
+  <a class="reference internal nav-link" href="#sampling">
+   Sampling
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-list-by-index-and-range">
+     Traverse list by index and
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       range()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-list-by-enumerate">
+     Traverse list by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       enumerate()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-list-by-list-slicing">
+     Traverse list by list slicing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting-a-list-of-dict-by-dict-value">
+   Sorting a list of dict by dict value
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#sorting-by-hand-made-sorting-algorithm">
+     Sorting by hand-made sorting algorithm
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-1">
+     Trick 1
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#trick-2">
+     Trick 2
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -626,9 +718,36 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="p04-2p-study-twitter-problematic-users">
+<h1>P04_2p Study Twitter Problematic Users<a class="headerlink" href="#p04-2p-study-twitter-problematic-users" title="Permalink to this headline">#</a></h1>
+<section id="read-twitter-users-data">
+<h2>Read twitter users data<a class="headerlink" href="#read-twitter-users-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fpath</span> <span class="o">=</span> <span class="s2">&quot;../_build/html/data/twitter_user1_hashed.csv&quot;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Colab or Jupyterlab</span>
+<span class="o">!</span>wget https://raw.githubusercontent.com/p4css/py4css/main/data/twitter_user1_hashed.csv -o twitter_user1_hashed.csv
+<span class="n">fpath</span> <span class="o">=</span> <span class="s2">&quot;twitter_user1_hashed.csv&quot;</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span> 
+<span class="n">users</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
+    <span class="n">fpath</span> <span class="o">=</span> <span class="s2">&quot;twitter_user1_hashed.csv&quot;</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+                                      <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+<p>Download the file and put into your working directory
+<a class="reference external" href="https://raw.githubusercontent.com/p4css/py4css/main/data/twitter_user1_hashed.csv">https://raw.githubusercontent.com/p4css/py4css/main/data/twitter_user1_hashed.csv</a> -o twitter_user1_hashed.csv</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Jupyterlab</span>
+<span class="n">fpath</span> <span class="o">=</span> <span class="s2">&quot;../_build/html/data/twitter_user1_hashed.csv&quot;</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span> 
 <span class="n">users</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
@@ -671,10 +790,11 @@ dict_keys([&#39;userid&#39;, &#39;user_display_name&#39;, &#39;user_screen_name&
 </div>
 </div>
 </div>
+</section>
 <section id="counting">
-<h1>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h1>
+<h2>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h2>
 <section id="count-by-for-each">
-<h2>Count by for-each<a class="headerlink" href="#count-by-for-each" title="Permalink to this headline">#</a></h2>
+<h3>Count by for-each<a class="headerlink" href="#count-by-for-each" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -683,26 +803,57 @@ dict_keys([&#39;userid&#39;, &#39;user_display_name&#39;, &#39;user_screen_name&
     <span class="n">lang_dict</span><span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;account_language&#39;</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
 
 <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">lang_dict</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{:&lt;3}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%-3s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{:&gt;3}</span><span class="s2"> </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%3s</span><span class="s2"> </span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">k</span><span class="p">))</span>
+    <span class="c1"># print(&quot;{:3}\t{:-3d}\t{:3}&quot;.format(k, v, k))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zh-cn 569
-en 104
-ru 36
-zh-CN 13
-zh-tw 10
-es 8
-en-gb 3
-ja 1
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zh-cn	569 zh-cn
+zh-cn	569 zh-cn
+zh-cn	569 zh-cn
+zh-cn	569 zh-cn
+en	104 en
+en	104 en
+en	104 en
+en	104 en
+ru	36  ru
+ru	36  ru
+ru	 36 ru
+ru	 36 ru
+zh-CN	13  zh-CN
+zh-CN	13  zh-CN
+zh-CN	 13 zh-CN
+zh-CN	 13 zh-CN
+zh-tw	10  zh-tw
+zh-tw	10  zh-tw
+zh-tw	 10 zh-tw
+zh-tw	 10 zh-tw
+es	8   es
+es	8   es
+es	  8 es
+es	  8 es
+en-gb	3   en-gb
+en-gb	3   en-gb
+en-gb	  3 en-gb
+en-gb	  3 en-gb
+ja	1   ja
+ja	1   ja
+ja	  1 ja
+ja	  1 ja
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="sampling-traverse-list-by-index-and-range">
-<h2>Sampling: Traverse list by index and <code class="docutils literal notranslate"><span class="pre">range()</span></code><a class="headerlink" href="#sampling-traverse-list-by-index-and-range" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="sampling">
+<h2>Sampling<a class="headerlink" href="#sampling" title="Permalink to this headline">#</a></h2>
+<section id="traverse-list-by-index-and-range">
+<h3>Traverse list by index and <code class="docutils literal notranslate"><span class="pre">range()</span></code><a class="headerlink" href="#traverse-list-by-index-and-range" title="Permalink to this headline">#</a></h3>
 <p>如果你要做sampling，只想均勻地取出一半的資料出來做分析，那要怎麼做？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -728,8 +879,8 @@ en-gb	1
 </div>
 </div>
 </section>
-<section id="sampling-traverse-list-by-enumerate">
-<h2>Sampling: Traverse list by <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code><a class="headerlink" href="#sampling-traverse-list-by-enumerate" title="Permalink to this headline">#</a></h2>
+<section id="traverse-list-by-enumerate">
+<h3>Traverse list by <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code><a class="headerlink" href="#traverse-list-by-enumerate" title="Permalink to this headline">#</a></h3>
 <p>如果你要做sampling，只想均勻地取出一半的資料出來做分析，那要怎麼做？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -754,6 +905,112 @@ en-gb	1
 </div>
 </div>
 </div>
+</section>
+<section id="traverse-list-by-list-slicing">
+<h3>Traverse list by list slicing<a class="headerlink" href="#traverse-list-by-list-slicing" title="Permalink to this headline">#</a></h3>
+<p>如果你要做sampling，只想均勻地取出一半的資料出來做分析，那要怎麼做？</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lang_dict</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">users</span><span class="p">[::</span><span class="mi">2</span><span class="p">]:</span>
+    <span class="n">lang_dict</span><span class="p">[</span><span class="n">user</span><span class="p">[</span><span class="s1">&#39;account_language&#39;</span><span class="p">]]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">lang_dict</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zh-cn	275
+en	63
+ru	18
+zh-CN	6
+es	5
+zh-tw	4
+en-gb	1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="sorting-a-list-of-dict-by-dict-value">
+<h2>Sorting a list of dict by dict value<a class="headerlink" href="#sorting-a-list-of-dict-by-dict-value" title="Permalink to this headline">#</a></h2>
+<section id="sorting-by-hand-made-sorting-algorithm">
+<h3>Sorting by hand-made sorting algorithm<a class="headerlink" href="#sorting-by-hand-made-sorting-algorithm" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="trick-1">
+<h3>Trick 1<a class="headerlink" href="#trick-1" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sorted_users</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">d</span><span class="p">:</span> <span class="n">d</span><span class="p">[</span><span class="s1">&#39;follower_count&#39;</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">sorted_users</span><span class="p">[:</span><span class="mi">20</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;20}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;user_screen_name&quot;</span><span class="p">],</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;follower_count&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     benjaminkudla39	170155
+         nurlanyc5sr	130077
+           motor0529	105754
+       zhangbide9600	105215
+           nessniven	100847
+        Trina31Owens	93490
+          _srk_Ciell	84772
+     Rodrigu14132402	76750
+       homerbros7780	76718
+      Rodrigu_beauty	69841
+     mH6OwMaYxK33tpT	69659
+         tattazueva2	67522
+        wangduoyu121	66675
+     oDrjiwIOmq09XaZ	65063
+       CarriexWalker	64519
+     ISfVQ1b1vwAK9IP	64398
+     belousovasofiy2	63602
+       bobylevamaina	63428
+     jiajiashijiajia	61815
+     3xrVKytdmflyeox	58880
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="trick-2">
+<h3>Trick 2<a class="headerlink" href="#trick-2" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">operator</span> <span class="kn">import</span> <span class="n">itemgetter</span>
+<span class="n">sorted_users2</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">users</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">itemgetter</span><span class="p">(</span><span class="s1">&#39;follower_count&#39;</span><span class="p">),</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span> 
+<span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">sorted_users2</span><span class="p">[:</span><span class="mi">20</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{:&gt;20}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">user</span><span class="p">[</span><span class="s2">&quot;user_screen_name&quot;</span><span class="p">],</span> <span class="n">user</span><span class="p">[</span><span class="s2">&quot;follower_count&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     benjaminkudla39	170155
+         nurlanyc5sr	130077
+           motor0529	105754
+       zhangbide9600	105215
+           nessniven	100847
+        Trina31Owens	93490
+          _srk_Ciell	84772
+     Rodrigu14132402	76750
+       homerbros7780	76718
+      Rodrigu_beauty	69841
+     mH6OwMaYxK33tpT	69659
+         tattazueva2	67522
+        wangduoyu121	66675
+     oDrjiwIOmq09XaZ	65063
+       CarriexWalker	64519
+     ISfVQ1b1vwAK9IP	64398
+     belousovasofiy2	63602
+       bobylevamaina	63428
+     jiajiashijiajia	61815
+     3xrVKytdmflyeox	58880
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 </section>
 
