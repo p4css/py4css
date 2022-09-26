@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="P05 READ Files" href="P05_read_csv_json.html" />
+    <link rel="next" title="Counting" href="P04_2p_twitter_users.html" />
     <link rel="prev" title="P04 For-if applications" href="P04_2_for_if.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -193,6 +193,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
      P04-blank For-if applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2p_twitter_users.html">
+     Counting
     </a>
    </li>
   </ul>
@@ -563,8 +568,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-range-to-traverse-list-by-index">
-     (Alternative)
+    <a class="reference internal nav-link" href="#range-to-traverse-list-by-index">
      <code class="docutils literal notranslate">
       <span class="pre">
        range()
@@ -574,14 +578,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-enumerate-to-access-index-and-data-simultaneously">
-     (Alternative)
+    <a class="reference internal nav-link" href="#enumerate-to-access-index-and-item-simultaneously">
      <code class="docutils literal notranslate">
       <span class="pre">
        enumerate()
       </span>
      </code>
-     to access index and data simultaneously
+     to access index and item simultaneously
     </a>
    </li>
   </ul>
@@ -597,8 +600,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#method-02-convert-data-structure">
-     Method 02. Convert data structure
+    <a class="reference internal nav-link" href="#method-02-convert-data-structure-hashing">
+     Method 02. Convert data structure - hashing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -752,8 +755,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-range-to-traverse-list-by-index">
-     (Alternative)
+    <a class="reference internal nav-link" href="#range-to-traverse-list-by-index">
      <code class="docutils literal notranslate">
       <span class="pre">
        range()
@@ -763,14 +765,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-enumerate-to-access-index-and-data-simultaneously">
-     (Alternative)
+    <a class="reference internal nav-link" href="#enumerate-to-access-index-and-item-simultaneously">
      <code class="docutils literal notranslate">
       <span class="pre">
        enumerate()
       </span>
      </code>
-     to access index and data simultaneously
+     to access index and item simultaneously
     </a>
    </li>
   </ul>
@@ -786,8 +787,8 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#method-02-convert-data-structure">
-     Method 02. Convert data structure
+    <a class="reference internal nav-link" href="#method-02-convert-data-structure-hashing">
+     Method 02. Convert data structure - hashing
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
@@ -930,8 +931,7 @@ title="Print to PDF"
 </ul>
 <section id="the-aqx-case">
 <h2>The AQX case<a class="headerlink" href="#the-aqx-case" title="Permalink to this headline">#</a></h2>
-<p><strong>範例說明</strong>：從資料來源為行政院環保署的空氣品質監測網（<a class="reference external" href="https://taqm.epa.gov.tw/taqm/tw/default.aspx">PM2.5 introduced by 行政院環保署</a>）可以看到即時的空氣品質，包含指標和嚴重程度（上顏色）。上顏色的方法是依照AQI的值分成六個等級。當要把AQI值繪製為相對應的等級時，必須要判斷AQI值落在哪一個區間，此時，需要用if-else的條件判斷式來判斷，究竟是落在哪個區間。而測站不會只有一個，因此，要一個接一個判斷完現在所有的測站落在哪一個區間的話，那就要用for-loop來判斷完所有的測站。</p>
-<p><strong>資料來源</strong>：行政院環保署有一個自己的開放資料網站https://opendata.epa.gov.tw ，即時更新的速度會比政府開放資料平台快。<a class="reference external" href="https://opendata.epa.gov.tw/api/v1/AQI?%24skip=0&amp;%24top=1000&amp;%24format=json">https://opendata.epa.gov.tw/api/v1/AQI?$skip=0&amp;$top=1000&amp;$format=json</a></p>
+<p><strong>範例說明</strong>：從資料來源為行政院環保署的空氣品質監測網，可以看到即時的空氣品質，包含指標和嚴重程度（上顏色）。上顏色的方法是依照AQI的值分成六個等級。當要把AQI值繪製為相對應的等級時，必須要判斷AQI值落在哪一個區間，此時，需要用if-else的條件判斷式來判斷，究竟是落在哪個區間。而測站不會只有一個，因此，要一個接一個判斷完現在所有的測站落在哪一個區間的話，那就要用for-loop來判斷完所有的測站。</p>
 <p><strong>分析策略</strong>：看到空氣品質的資料，或類似的資料（例如水污染、噪音、紫外線）一般會想要做什麼事？</p>
 <ol class="simple">
 <li><p>找到突出的（Prominent）資料：找到最嚴重的地區。如果最嚴重的地區不只一個，那就要列印出多個地區。要做這件事就要找到最大值或者是最小值。在程式的邏輯上就是把所有資料看過一遍，透過大小比較，找出最大的那個值。</p></li>
@@ -948,14 +948,8 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/24%2011:00&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/26%2011:00&quot;</span>
 <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -972,6 +966,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the data type</span>
 
+
 <span class="c1"># Print the content of the first data entry</span>
 </pre></div>
 </div>
@@ -980,10 +975,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the length of the data</span>
-
-
-<span class="c1"># Print metadata if has</span>
-
 
 <span class="c1"># Print all keys of one data entry</span>
 </pre></div>
@@ -1004,26 +995,53 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print AQI and POLLUTANT of each site</span>
-
-
+<span class="c1"># for site in aqdata:</span>
+<span class="c1">#     print(&quot;{}\t{}\t{}&quot;.format(site[&#39;SiteName&#39;], site[&#39;AQI&#39;], site[&#39;POLLUTANT&#39;]))</span>
+    
 <span class="c1"># Print AQI and POLLUTANT of the first 10 sites</span>
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="alternative-range-to-traverse-list-by-index">
-<h3>(Alternative) <code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#alternative-range-to-traverse-list-by-index" title="Permalink to this headline">#</a></h3>
+<section id="range-to-traverse-list-by-index">
+<h3><code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#range-to-traverse-list-by-index" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>因為<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>是一個list，也可以透過index去access<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>中第0個、第1個、第2個dict的內容。<br>但此時你就要去用index存取<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>內的值，你的程式碼會稍微長一點點。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">range(n)</span></code>函式，相當於<code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">n)</span></code>，可以產生<code class="docutils literal notranslate"><span class="pre">0</span></code>至<code class="docutils literal notranslate"><span class="pre">n-1</span></code>的list。<br>用<code class="docutils literal notranslate"><span class="pre">list()</span></code>轉換後（例如<code class="docutils literal notranslate"><span class="pre">list(range(10))</span></code>)便會顯示出其內容。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t)</span></code>表從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t,</span> <span class="pre">u)</span></code>表示從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>，每間隔<code class="docutils literal notranslate"><span class="pre">u</span></code>，如果<code class="docutils literal notranslate"><span class="pre">u</span></code>等於2的話，就等於隔一個數字。所以<code class="docutils literal notranslate"><span class="pre">range(3,</span> <span class="pre">10,</span> <span class="pre">2)</span></code>會是<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></code>。</p></li>
 </ol>
+<p>Question: 什麼時候會用到？取樣的時候，例如多加一個if判斷式，來取出偶數位置的樣本。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 3, 5, 7, 9]
+1
+3
+5
+7
+9
+</pre></div>
+</div>
+</div>
+</div>
 <p>而<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>這個list的長度為<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，其list index從0至<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，所以使用<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(aqdata)):</span></code>可以走訪整個list的內容。（註：以下的例子只列印出前10個）</p>
 </section>
-<section id="alternative-enumerate-to-access-index-and-data-simultaneously">
-<h3>(Alternative) <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and data simultaneously<a class="headerlink" href="#alternative-enumerate-to-access-index-and-data-simultaneously" title="Permalink to this headline">#</a></h3>
+<section id="enumerate-to-access-index-and-item-simultaneously">
+<h3><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and item simultaneously<a class="headerlink" href="#enumerate-to-access-index-and-item-simultaneously" title="Permalink to this headline">#</a></h3>
 <p>前面我們介紹到兩個版本，</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">site</span> <span class="pre">in</span> <span class="pre">aqdata[&quot;Data&quot;]:</span></code>是用<code class="docutils literal notranslate"><span class="pre">site</span></code>作為臨時變數以在for-loop中存取所有的資料項目。</p></li>
@@ -1031,7 +1049,7 @@ title="Print to PDF"
 </ol>
 <p>但其實還有第三種選擇就是用<code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>來同時存取index和資料項目。<br>
 當需要存取這是第幾個項目時，那我就用index，但我如果只是要判斷一下大小，那我就可以用被取出來的資料項目。<br>寫法如下：</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>for i, site in enumerate(aqdata[&quot;Data&quot;]):`
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>for i, site in enumerate(aqdata):`
 </pre></div>
 </div>
 <div class="cell docutils container">
@@ -1059,9 +1077,23 @@ title="Print to PDF"
 <section id="method-01-search-with-for-loop">
 <h3>Method 01. Search with for-loop<a class="headerlink" href="#method-01-search-with-for-loop" title="Permalink to this headline">#</a></h3>
 <p>就把所有資料用for-loop走訪一遍，如果站台名稱等於所欲查詢的站台的話，那就把他列印出來。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;三重&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;三重&quot;</span><span class="p">,</span> <span class="s2">&quot;萬里&quot;</span><span class="p">,</span> <span class="s2">&quot;萬華&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
-<section id="method-02-convert-data-structure">
-<h3>Method 02. Convert data structure<a class="headerlink" href="#method-02-convert-data-structure" title="Permalink to this headline">#</a></h3>
+<section id="method-02-convert-data-structure-hashing">
+<h3>Method 02. Convert data structure - hashing<a class="headerlink" href="#method-02-convert-data-structure-hashing" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>如果希望可以用<code class="docutils literal notranslate"><span class="pre">aqdict[&quot;三重&quot;]</span></code>就直接列印出三重的資料，有一個方法是重建一個新的以測站作為key的dict，這樣只需要有站名，就可以直接藉由key-to-value的對應找到該站的資料，所以要建的dict是站名對應到該空品站資料的對應。</p></li>
 <li><p>建立方法是把整個list of dict走訪過一遍，把list中每個dict assign給該dict中的測站名稱 <code class="docutils literal notranslate"><span class="pre">site[&quot;SiteName&quot;]</span></code></p></li>
@@ -1069,10 +1101,6 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqdict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Initialize a new dictionary</span>
-
-
-
-<span class="c1"># aqdict[&quot;三重&quot;]</span>
 </pre></div>
 </div>
 </div>
@@ -1094,38 +1122,46 @@ title="Print to PDF"
 <h2>Rescale AQI index<a class="headerlink" href="#rescale-aqi-index" title="Permalink to this headline">#</a></h2>
 <p>前面說到一般大眾其實不了解AQI數值的意義，也不知道最大最小值是多少，所以在對外作呈現的時候，呈現AQI數值是沒意義的。大眾比較容易了解的是「現在嚴不嚴重」。因此，我們可以依照環保署對於空氣品質的等級劃分方法來將所有站台區分成幾個等級，相當於是按照數值做統計上的分層，將數值轉為factor的操作。</p>
 <p>而程式邏輯上要做的事情是，用if-elif-else來設計好不同的區間判斷，然後用for-loop把所有AQI的值走訪過一遍，看每個站台落入哪個區間。</p>
-<p><img alt="image.png" src="PSS/attachment:daeaaaf2-20f5-4cb7-8cd3-47cd280e4e25.png" /></p>
+<p><img alt="image.png" src="PSS/attachment:47374209-14dd-44c8-a5cc-dc60f9565867.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for site in aqdata:</span>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <span class="c1"># print(site[&quot;SiteName&quot;], site[&quot;AQI&quot;], site[&quot;Quality&quot;])</span>
+</pre></div>
+</div>
+</div>
+</div>
 <section id="option-rescale-better">
 <h3>(Option) Rescale better<a class="headerlink" href="#option-rescale-better" title="Permalink to this headline">#</a></h3>
-<p>為了避免過多的if-elif-else或者switch的使用，可以先把scale和category寫成兩個List，然後用多一層for-loop來trace該value會落在List的哪個區間。</p>
-<p>AQI by epa’s standard</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Label</p></th>
-<th class="head"><p>Range</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Good</p></td>
-<td><p>0~50</p></td>
-</tr>
-<tr class="row-odd"><td><p>Moderate</p></td>
-<td><p>51~100</p></td>
-</tr>
-<tr class="row-even"><td><p>Unhealthy for Sensitive Groups</p></td>
-<td><p>101~150</p></td>
-</tr>
-<tr class="row-odd"><td><p>Unhealthy</p></td>
-<td><p>151~200</p></td>
-</tr>
-<tr class="row-even"><td><p>Very Unhealthy</p></td>
-<td><p>201~300</p></td>
-</tr>
-<tr class="row-odd"><td><p>Hazardous</p></td>
-<td><p>301~500</p></td>
-</tr>
-</tbody>
-</table>
+<p>為了避免過多的if-elif-else或者switch的使用，可以先把scale和category寫成兩個List，然後用多一層for-loop來trace該value會落在List的哪個區間。
+<img alt="image.png" src="PSS/attachment:636ae1de-2309-4048-9d44-46fb039807ec.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;良好&quot;</span><span class="p">,</span> <span class="s2">&quot;普通&quot;</span><span class="p">,</span> <span class="s2">&quot;對敏感族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;對所有族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;非常不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;危害&quot;</span><span class="p">]</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">sdict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">degree</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sdict</span><span class="p">)</span>
+
+<span class="c1"># scaler = {-1:&quot;Unknown&quot;, 50:&quot;良好&quot;, 100:&quot;普通&quot;, 150:&quot;對敏感族群不健康&quot;, 200:&quot;對所有族群不健康&quot;, 300:&quot;非常不健康&quot;, 1000:&quot;危害&quot;}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{-1: &#39;Unknown&#39;, 50: &#39;良好&#39;, 100: &#39;普通&#39;, 150: &#39;對敏感族群不健康&#39;, 200: &#39;對所有族群不健康&#39;, 300: &#39;非常不健康&#39;, 1000: &#39;危害&#39;}
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 </section>
 <section id="detect-prominant-data">
@@ -1140,12 +1176,13 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finding the maximum value</span>
 
 
-
 <span class="c1"># mina, maxa = 100, 0</span>
 
 
 
 <span class="c1">#     print maxa, a</span>
+<span class="c1"># print(max_site, maxa)</span>
+<span class="c1"># print(min_site, mina)</span>
 </pre></div>
 </div>
 </div>
@@ -1158,6 +1195,9 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+
+
+<span class="c1"># sorted(aqlist, reverse = True)[0]</span>
 </pre></div>
 </div>
 </div>
@@ -1181,10 +1221,22 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Use a list to store all PM2.5 value</span>
 
+<span class="n">aqlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="n">aqlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span>
+
+
+
 
 
         
 <span class="c1">## sort the list by sorted()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 45, 65, 77, 58, 8, 18, 20, 51, 47, 34, 66]
 </pre></div>
 </div>
 </div>
@@ -1208,14 +1260,55 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [11],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">aqlist</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">aqlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
-
-<span class="ne">NameError</span>: name &#39;aqlist&#39; is not defined
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>77
+二林 66
+三義 36
+大同 39
+大里 57
+大寮 84
+小港 76
+仁武 78
+斗六 57
+左營 65
+安南 62
+朴子 67
+竹山 43
+西屯 59
+沙鹿 43
+忠明 54
+林園 68
+金門 47
+前金 67
+前鎮 65
+南投 62
+屏東 79
+美濃 67
+埔里 43
+馬公 36
+馬祖 71
+崙背 61
+麥寮 54
+善化 67
+復興 61
+新港 71
+新營 60
+楠梓 70
+嘉義 71
+彰化 58
+臺西 62
+臺南 66
+鳳山 73
+潮州 63
+線西 48
+橋頭 71
+豐原 52
+觀音 45
+彰化(員林) 65
+高雄(湖內) 77
+臺南(麻豆) 58
+臺南(學甲) 51
+屏東(枋寮) 47
+大城 66
 </pre></div>
 </div>
 </div>
@@ -1230,7 +1323,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;金門&#39;, &#39;126&#39;), (&#39;馬公&#39;, &#39;115&#39;), (&#39;馬祖&#39;, &#39;122&#39;)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;大寮&#39;, &#39;84&#39;), (&#39;仁武&#39;, &#39;78&#39;), (&#39;屏東&#39;, &#39;79&#39;)]
 </pre></div>
 </div>
 </div>
@@ -1252,7 +1345,12 @@ title="Print to PDF"
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">8</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
@@ -1261,7 +1359,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqlist</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="n">site_list</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span><span class="n">x</span>
     <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ND&quot;</span><span class="p">:</span>
         <span class="n">aqlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]))</span>
         <span class="n">site_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">])</span>
@@ -1272,6 +1370,14 @@ title="Print to PDF"
             <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ND&quot;</span><span class="p">:</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unexpected indent
 </pre></div>
 </div>
 </div>
@@ -2468,10 +2574,10 @@ title="Print to PDF"
             <p class="prev-next-title">P04 For-if applications</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="P05_read_csv_json.html" title="next page">
+    <a class='right-next' id="next-link" href="P04_2p_twitter_users.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">P05 READ Files</p>
+        <p class="prev-next-title">Counting</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

@@ -17,19 +17,25 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-print(sorted(aqlist, reverse=True)[3])
-for site in aqdata:
-    if int(site['AQI']) >= aqlist[2]:
-        print(site['SiteName'], site['AQI'])
+aqlist = []
+site_list = []
+for site in aqdata:x
+    if site['AQI'] != "" or site['AQI'] != "ND":
+        aqlist.append(int(site['AQI']))
+        site_list.append(site['SiteName'])
+        
+for i in range(len(aqlist)):
+    for j in range(i+1, len(aqlist)):
+        if aqlist[i] < aqlist[j]:
+            aqlist[i], aqlist[j] = aqlist[j], aqlist[i]
+
+print(aqlist)
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Input [0;32mIn [11][0m, in [0;36m<cell line: 1>[0;34m()[0m
-[0;32m----> 1[0m [38;5;28mprint[39m([38;5;28msorted[39m([43maqlist[49m, reverse[38;5;241m=[39m[38;5;28;01mTrue[39;00m)[[38;5;241m3[39m])
-[1;32m      2[0m [38;5;28;01mfor[39;00m site [38;5;129;01min[39;00m aqdata:
-[1;32m      3[0m     [38;5;28;01mif[39;00m [38;5;28mint[39m(site[[38;5;124m'[39m[38;5;124mAQI[39m[38;5;124m'[39m]) [38;5;241m>[39m[38;5;241m=[39m aqlist[[38;5;241m2[39m]:
+[0;36m  Input [0;32mIn [19][0;36m[0m
+[0;31m    if site['AQI'] != "" or site['AQI'] != "ND":[0m
+[0m    ^[0m
+[0;31mIndentationError[0m[0;31m:[0m unexpected indent
 
-[0;31mNameError[0m: name 'aqlist' is not defined
-NameError: name 'aqlist' is not defined
+IndentationError: unexpected indent (1132883714.py, line 4)
 

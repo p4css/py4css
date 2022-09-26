@@ -195,6 +195,11 @@ const thebe_selector_output = ".output, .cell_output"
      P04-blank For-if applications
     </a>
    </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2p_twitter_users.html">
+     Counting
+    </a>
+   </li>
   </ul>
  </li>
 </ul>
@@ -563,8 +568,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-range-to-traverse-list-by-index">
-     (Alternative)
+    <a class="reference internal nav-link" href="#range-to-traverse-list-by-index">
      <code class="docutils literal notranslate">
       <span class="pre">
        range()
@@ -574,14 +578,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-enumerate-to-access-index-and-data-simultaneously">
-     (Alternative)
+    <a class="reference internal nav-link" href="#enumerate-to-access-index-and-item-simultaneously">
      <code class="docutils literal notranslate">
       <span class="pre">
        enumerate()
       </span>
      </code>
-     to access index and data simultaneously
+     to access index and item simultaneously
     </a>
    </li>
   </ul>
@@ -752,8 +755,7 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-range-to-traverse-list-by-index">
-     (Alternative)
+    <a class="reference internal nav-link" href="#range-to-traverse-list-by-index">
      <code class="docutils literal notranslate">
       <span class="pre">
        range()
@@ -763,14 +765,13 @@ title="Print to PDF"
     </a>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#alternative-enumerate-to-access-index-and-data-simultaneously">
-     (Alternative)
+    <a class="reference internal nav-link" href="#enumerate-to-access-index-and-item-simultaneously">
      <code class="docutils literal notranslate">
       <span class="pre">
        enumerate()
       </span>
      </code>
-     to access index and data simultaneously
+     to access index and item simultaneously
     </a>
    </li>
   </ul>
@@ -948,59 +949,14 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/20%2011:00&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/26%2011:00&quot;</span>
 <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:910,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">910</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">911</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/20%2011:00&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:917,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">915</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">917</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
-
-<span class="ne">JSONDecodeError</span>: [Errno Expecting value] : 0
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -1026,7 +982,7 @@ title="Print to PDF"
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;1&#39;,
  &#39;SiteName&#39;: &#39;二林&#39;,
- &#39;AQI&#39;: &#39;79&#39;,
+ &#39;AQI&#39;: &#39;66&#39;,
  &#39;ViewName&#39;: &#39;二林&#39;,
  &#39;AreaName&#39;: &#39;中部空品區&#39;,
  &#39;AreaID&#39;: &#39;3&#39;,
@@ -1037,8 +993,7 @@ title="Print to PDF"
  &#39;TWD97_Lat&#39;: 23.925175,
  &#39;SiteType&#39;: &#39;一般站&#39;,
  &#39;SiteType2&#39;: &#39;中央政府&#39;,
- &#39;siteowner&#39;: &#39;行政院環境保護署&#39;,
- &#39;Quality&#39;: &#39;yellow&#39;}
+ &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
@@ -1056,7 +1011,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;list&#39;&gt;
 Length of: 86
-The first item of: {&#39;SiteID&#39;: &#39;1&#39;, &#39;SiteName&#39;: &#39;二林&#39;, &#39;AQI&#39;: &#39;79&#39;, &#39;ViewName&#39;: &#39;二林&#39;, &#39;AreaName&#39;: &#39;中部空品區&#39;, &#39;AreaID&#39;: &#39;3&#39;, &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;, &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;, &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;, &#39;TWD97_Lon&#39;: 120.409653, &#39;TWD97_Lat&#39;: 23.925175, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+The first item of: {&#39;SiteID&#39;: &#39;1&#39;, &#39;SiteName&#39;: &#39;二林&#39;, &#39;AQI&#39;: &#39;66&#39;, &#39;ViewName&#39;: &#39;二林&#39;, &#39;AreaName&#39;: &#39;中部空品區&#39;, &#39;AreaID&#39;: &#39;3&#39;, &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;, &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;, &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;, &#39;TWD97_Lon&#39;: 120.409653, &#39;TWD97_Lat&#39;: 23.925175, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 &lt;class &#39;dict&#39;&gt;
 dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#39;, &#39;AreaName&#39;, &#39;AreaID&#39;, &#39;COUNTY_Eng&#39;, &#39;POLLUTANT&#39;, &#39;SiteAddres&#39;, &#39;TWD97_Lon&#39;, &#39;TWD97_Lat&#39;, &#39;SiteType&#39;, &#39;SiteType2&#39;, &#39;siteowner&#39;])
 </pre></div>
@@ -1075,105 +1030,106 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林	79	細懸浮微粒
-三重	58	細懸浮微粒
-三義	57	細懸浮微粒
-土城	51	懸浮微粒
-士林	57	細懸浮微粒
-大同	65	細懸浮微粒
-大里	75	細懸浮微粒
-大園	61	懸浮微粒
-大寮	76	細懸浮微粒
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林	66	細懸浮微粒
+三重	28	
+三義	36	
+土城	13	
+士林	20	
+大同	39	
+大里	57	細懸浮微粒
+大園	23	
+大寮	84	細懸浮微粒
 小港	76	細懸浮微粒
-中山	54	懸浮微粒
-中壢	65	細懸浮微粒
-仁武	76	細懸浮微粒
-斗六	92	細懸浮微粒
-冬山	58	細懸浮微粒
-古亭	62	細懸浮微粒
-左營	80	細懸浮微粒
-平鎮	56	細懸浮微粒
-永和	60	細懸浮微粒
-安南	98	細懸浮微粒
-朴子	95	細懸浮微粒
-汐止	55	細懸浮微粒
-竹山	82	細懸浮微粒
-竹東	71	臭氧八小時
-西屯	70	細懸浮微粒
-沙鹿	65	細懸浮微粒
-宜蘭	56	細懸浮微粒
-忠明	69	細懸浮微粒
-松山	54	懸浮微粒
-板橋	57	細懸浮微粒
-林口	53	細懸浮微粒
-林園	64	細懸浮微粒
-花蓮	85	細懸浮微粒
-金門	126	臭氧八小時
-前金	83	細懸浮微粒
-前鎮	76	細懸浮微粒
-南投	85	細懸浮微粒
-屏東	66	細懸浮微粒
-恆春	77	臭氧八小時
-美濃	59	細懸浮微粒
-苗栗	67	臭氧八小時
-埔里	80	細懸浮微粒
-桃園	62	細懸浮微粒
-馬公	115	臭氧八小時
-馬祖	122	臭氧八小時
-基隆	57	細懸浮微粒
-崙背	85	細懸浮微粒
-淡水	57	懸浮微粒
-麥寮	81	細懸浮微粒
-善化	72	細懸浮微粒
-復興	80	細懸浮微粒
-湖口	62	細懸浮微粒
-菜寮	58	細懸浮微粒
-陽明	47	
-新竹	54	臭氧八小時
-新店	57	細懸浮微粒
-新莊	58	細懸浮微粒
-新港	97	細懸浮微粒
-新營	87	細懸浮微粒
-楠梓	75	細懸浮微粒
-萬里	103	懸浮微粒
-萬華	56	細懸浮微粒
-嘉義	84	細懸浮微粒
-彰化	69	細懸浮微粒
-臺西	74	懸浮微粒
-臺東	53	細懸浮微粒
-臺南	89	細懸浮微粒
-鳳山	79	細懸浮微粒
-潮州	67	細懸浮微粒
-線西	71	細懸浮微粒
-橋頭	82	細懸浮微粒
-頭份	80	臭氧八小時
-龍潭	54	臭氧八小時
-豐原	70	細懸浮微粒
-關山	61	細懸浮微粒
-觀音	65	懸浮微粒
-彰化(員林)	82	細懸浮微粒
-高雄(湖內)	102	細懸浮微粒
-臺南(麻豆)	70	細懸浮微粒
-屏東(琉球)	77	細懸浮微粒
-桃園(三民)	61	細懸浮微粒
-新北(樹林)	61	細懸浮微粒
-臺南(學甲)	90	細懸浮微粒
-屏東(枋寮)	57	細懸浮微粒
-富貴角	80	懸浮微粒
-大城	84	細懸浮微粒
+中山	18	
+中壢	20	
+仁武	78	細懸浮微粒
+斗六	57	細懸浮微粒
+冬山	13	
+古亭	14	
+左營	65	細懸浮微粒
+平鎮	15	
+永和	19	
+安南	62	細懸浮微粒
+朴子	67	細懸浮微粒
+汐止	13	
+竹山	43	
+竹東	29	
+西屯	59	細懸浮微粒
+沙鹿	43	
+宜蘭	13	
+忠明	54	細懸浮微粒
+松山	14	
+板橋	22	
+林口	13	
+林園	68	細懸浮微粒
+花蓮	16	
+金門	47	
+前金	67	細懸浮微粒
+前鎮	65	細懸浮微粒
+南投	62	細懸浮微粒
+屏東	79	細懸浮微粒
+恆春	10	
+美濃	67	細懸浮微粒
+苗栗	21	
+埔里	43	
+桃園	19	
+馬公	36	
+馬祖	71	臭氧八小時
+基隆	17	
+崙背	61	細懸浮微粒
+淡水	17	
+麥寮	54	細懸浮微粒
+善化	67	細懸浮微粒
+復興	61	細懸浮微粒
+湖口	30	
+菜寮	20	
+陽明	18	
+新竹	19	
+新店	12	
+新莊	21	
+新港	71	細懸浮微粒
+新營	60	細懸浮微粒
+楠梓	70	細懸浮微粒
+萬里	29	
+萬華	12	
+嘉義	71	細懸浮微粒
+彰化	58	細懸浮微粒
+臺西	62	細懸浮微粒
+臺東	9	
+臺南	66	細懸浮微粒
+鳳山	73	細懸浮微粒
+潮州	63	細懸浮微粒
+線西	48	
+橋頭	71	細懸浮微粒
+頭份	13	
+龍潭	13	
+豐原	52	細懸浮微粒
+關山	7	
+觀音	45	
+彰化(員林)	65	細懸浮微粒
+高雄(湖內)	77	細懸浮微粒
+臺南(麻豆)	58	細懸浮微粒
+屏東(琉球)	8	
+桃園(三民)	18	
+新北(樹林)	20	
+臺南(學甲)	51	細懸浮微粒
+屏東(枋寮)	47	
+富貴角	34	
+大城	66	細懸浮微粒
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="alternative-range-to-traverse-list-by-index">
-<h3>(Alternative) <code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#alternative-range-to-traverse-list-by-index" title="Permalink to this headline">#</a></h3>
+<section id="range-to-traverse-list-by-index">
+<h3><code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#range-to-traverse-list-by-index" title="Permalink to this headline">#</a></h3>
 <ol class="simple">
 <li><p>因為<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>是一個list，也可以透過index去access<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>中第0個、第1個、第2個dict的內容。<br>但此時你就要去用index存取<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>內的值，你的程式碼會稍微長一點點。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">range(n)</span></code>函式，相當於<code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">n)</span></code>，可以產生<code class="docutils literal notranslate"><span class="pre">0</span></code>至<code class="docutils literal notranslate"><span class="pre">n-1</span></code>的list。<br>用<code class="docutils literal notranslate"><span class="pre">list()</span></code>轉換後（例如<code class="docutils literal notranslate"><span class="pre">list(range(10))</span></code>)便會顯示出其內容。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t)</span></code>表從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t,</span> <span class="pre">u)</span></code>表示從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>，每間隔<code class="docutils literal notranslate"><span class="pre">u</span></code>，如果<code class="docutils literal notranslate"><span class="pre">u</span></code>等於2的話，就等於隔一個數字。所以<code class="docutils literal notranslate"><span class="pre">range(3,</span> <span class="pre">10,</span> <span class="pre">2)</span></code>會是<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></code>。</p></li>
 </ol>
+<p>Question: 什麼時候會用到？取樣的時候，例如多加一個if判斷式，來取出偶數位置的樣本。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
@@ -1205,23 +1161,23 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林	79	細懸浮微粒
-三重	58	細懸浮微粒
-三義	57	細懸浮微粒
-土城	51	懸浮微粒
-士林	57	細懸浮微粒
-大同	65	細懸浮微粒
-大里	75	細懸浮微粒
-大園	61	懸浮微粒
-大寮	76	細懸浮微粒
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林	66	細懸浮微粒
+三重	28	
+三義	36	
+土城	13	
+士林	20	
+大同	39	
+大里	57	細懸浮微粒
+大園	23	
+大寮	84	細懸浮微粒
 小港	76	細懸浮微粒
 </pre></div>
 </div>
 </div>
 </div>
 </section>
-<section id="alternative-enumerate-to-access-index-and-data-simultaneously">
-<h3>(Alternative) <code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and data simultaneously<a class="headerlink" href="#alternative-enumerate-to-access-index-and-data-simultaneously" title="Permalink to this headline">#</a></h3>
+<section id="enumerate-to-access-index-and-item-simultaneously">
+<h3><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and item simultaneously<a class="headerlink" href="#enumerate-to-access-index-and-item-simultaneously" title="Permalink to this headline">#</a></h3>
 <p>前面我們介紹到兩個版本，</p>
 <ol class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">site</span> <span class="pre">in</span> <span class="pre">aqdata[&quot;Data&quot;]:</span></code>是用<code class="docutils literal notranslate"><span class="pre">site</span></code>作為臨時變數以在for-loop中存取所有的資料項目。</p></li>
@@ -1237,22 +1193,22 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)))</span>
 
 <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">site</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[:</span><span class="mi">10</span><span class="p">]):</span>
-    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">aqdata</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
     
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;enumerate&#39;&gt;
-0	二林	79	細懸浮微粒
-1	三重	58	細懸浮微粒
-2	三義	57	細懸浮微粒
-3	土城	51	懸浮微粒
-4	士林	57	細懸浮微粒
-5	大同	65	細懸浮微粒
-6	大里	75	細懸浮微粒
-7	大園	61	懸浮微粒
-8	大寮	76	細懸浮微粒
+0	二林	66	細懸浮微粒
+1	三重	28	
+2	三義	36	
+3	土城	13	
+4	士林	20	
+5	大同	39	
+6	大里	57	細懸浮微粒
+7	大園	23	
+8	大寮	84	細懸浮微粒
 9	小港	76	細懸浮微粒
 </pre></div>
 </div>
@@ -1273,14 +1229,32 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 <p>就把所有資料用for-loop走訪一遍，如果站台名稱等於所欲查詢的站台的話，那就把他列印出來。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;三重&quot;</span><span class="p">:</span>
-        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">]))</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;三重&quot;</span>
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">]</span> <span class="o">==</span> <span class="n">query</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>三重	58	細懸浮微粒
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;三重&quot;</span><span class="p">,</span> <span class="s2">&quot;萬里&quot;</span><span class="p">,</span> <span class="s2">&quot;萬華&quot;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">]</span> <span class="ow">in</span> <span class="n">queries</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;61&#39;, &#39;SiteName&#39;: &#39;萬里&#39;, &#39;AQI&#39;: &#39;29&#39;, &#39;ViewName&#39;: &#39;萬里&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市萬里區瑪鋉路221號&#39;, &#39;TWD97_Lon&#39;: 121.689881, &#39;TWD97_Lat&#39;: 25.179667, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;62&#39;, &#39;SiteName&#39;: &#39;萬華&#39;, &#39;AQI&#39;: &#39;12&#39;, &#39;ViewName&#39;: &#39;萬華&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Taipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;臺北市萬華區中華路1段66號&#39;, &#39;TWD97_Lon&#39;: 121.507972, &#39;TWD97_Lat&#39;: 25.046503, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
@@ -1306,12 +1280,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;,
  &#39;SiteName&#39;: &#39;三重&#39;,
- &#39;AQI&#39;: &#39;58&#39;,
+ &#39;AQI&#39;: &#39;28&#39;,
  &#39;ViewName&#39;: &#39;三重&#39;,
  &#39;AreaName&#39;: &#39;北部空品區&#39;,
  &#39;AreaID&#39;: &#39;1&#39;,
  &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;,
- &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;,
+ &#39;POLLUTANT&#39;: &#39;&#39;,
  &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;,
  &#39;TWD97_Lon&#39;: 121.493806,
  &#39;TWD97_Lat&#39;: 25.072611,
@@ -1339,19 +1313,24 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 <h2>Rescale AQI index<a class="headerlink" href="#rescale-aqi-index" title="Permalink to this headline">#</a></h2>
 <p>前面說到一般大眾其實不了解AQI數值的意義，也不知道最大最小值是多少，所以在對外作呈現的時候，呈現AQI數值是沒意義的。大眾比較容易了解的是「現在嚴不嚴重」。因此，我們可以依照環保署對於空氣品質的等級劃分方法來將所有站台區分成幾個等級，相當於是按照數值做統計上的分層，將數值轉為factor的操作。</p>
 <p>而程式邏輯上要做的事情是，用if-elif-else來設計好不同的區間判斷，然後用for-loop把所有AQI的值走訪過一遍，看每個站台落入哪個區間。</p>
-<p><img alt="image.png" src="PSS/attachment:daeaaaf2-20f5-4cb7-8cd3-47cd280e4e25.png" /></p>
+<p><img alt="image.png" src="PSS/attachment:1eb25276-a30d-4a56-bf21-c9d1c230c010.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
     <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">]</span> <span class="o">==</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
         <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Unknown&quot;</span>
     <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">50</span><span class="p">:</span>
-        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Green&quot;</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;良好&quot;</span>
     <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">100</span> <span class="p">:</span>
-        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;yellow&quot;</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;普通&quot;</span>
+    <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">150</span> <span class="p">:</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;對敏感族群不健康&quot;</span>
+    <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">200</span> <span class="p">:</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;對所有族群不健康&quot;</span>
+    <span class="k">elif</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="mi">300</span> <span class="p">:</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;非常不健康&quot;</span>
     <span class="k">else</span><span class="p">:</span>
-        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;Brown&quot;</span>
-    <span class="c1">## add more role here</span>
+        <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;危害&quot;</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">],</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">])</span>
@@ -1359,92 +1338,92 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 	 79 	 細懸浮微粒 	 yellow
-三重 	 58 	 細懸浮微粒 	 yellow
-三義 	 57 	 細懸浮微粒 	 yellow
-土城 	 51 	 懸浮微粒 	 yellow
-士林 	 57 	 細懸浮微粒 	 yellow
-大同 	 65 	 細懸浮微粒 	 yellow
-大里 	 75 	 細懸浮微粒 	 yellow
-大園 	 61 	 懸浮微粒 	 yellow
-大寮 	 76 	 細懸浮微粒 	 yellow
-小港 	 76 	 細懸浮微粒 	 yellow
-中山 	 54 	 懸浮微粒 	 yellow
-中壢 	 65 	 細懸浮微粒 	 yellow
-仁武 	 76 	 細懸浮微粒 	 yellow
-斗六 	 92 	 細懸浮微粒 	 yellow
-冬山 	 58 	 細懸浮微粒 	 yellow
-古亭 	 62 	 細懸浮微粒 	 yellow
-左營 	 80 	 細懸浮微粒 	 yellow
-平鎮 	 56 	 細懸浮微粒 	 yellow
-永和 	 60 	 細懸浮微粒 	 yellow
-安南 	 98 	 細懸浮微粒 	 yellow
-朴子 	 95 	 細懸浮微粒 	 yellow
-汐止 	 55 	 細懸浮微粒 	 yellow
-竹山 	 82 	 細懸浮微粒 	 yellow
-竹東 	 71 	 臭氧八小時 	 yellow
-西屯 	 70 	 細懸浮微粒 	 yellow
-沙鹿 	 65 	 細懸浮微粒 	 yellow
-宜蘭 	 56 	 細懸浮微粒 	 yellow
-忠明 	 69 	 細懸浮微粒 	 yellow
-松山 	 54 	 懸浮微粒 	 yellow
-板橋 	 57 	 細懸浮微粒 	 yellow
-林口 	 53 	 細懸浮微粒 	 yellow
-林園 	 64 	 細懸浮微粒 	 yellow
-花蓮 	 85 	 細懸浮微粒 	 yellow
-金門 	 126 	 臭氧八小時 	 Brown
-前金 	 83 	 細懸浮微粒 	 yellow
-前鎮 	 76 	 細懸浮微粒 	 yellow
-南投 	 85 	 細懸浮微粒 	 yellow
-屏東 	 66 	 細懸浮微粒 	 yellow
-恆春 	 77 	 臭氧八小時 	 yellow
-美濃 	 59 	 細懸浮微粒 	 yellow
-苗栗 	 67 	 臭氧八小時 	 yellow
-埔里 	 80 	 細懸浮微粒 	 yellow
-桃園 	 62 	 細懸浮微粒 	 yellow
-馬公 	 115 	 臭氧八小時 	 Brown
-馬祖 	 122 	 臭氧八小時 	 Brown
-基隆 	 57 	 細懸浮微粒 	 yellow
-崙背 	 85 	 細懸浮微粒 	 yellow
-淡水 	 57 	 懸浮微粒 	 yellow
-麥寮 	 81 	 細懸浮微粒 	 yellow
-善化 	 72 	 細懸浮微粒 	 yellow
-復興 	 80 	 細懸浮微粒 	 yellow
-湖口 	 62 	 細懸浮微粒 	 yellow
-菜寮 	 58 	 細懸浮微粒 	 yellow
-陽明 	 47 	  	 Green
-新竹 	 54 	 臭氧八小時 	 yellow
-新店 	 57 	 細懸浮微粒 	 yellow
-新莊 	 58 	 細懸浮微粒 	 yellow
-新港 	 97 	 細懸浮微粒 	 yellow
-新營 	 87 	 細懸浮微粒 	 yellow
-楠梓 	 75 	 細懸浮微粒 	 yellow
-萬里 	 103 	 懸浮微粒 	 Brown
-萬華 	 56 	 細懸浮微粒 	 yellow
-嘉義 	 84 	 細懸浮微粒 	 yellow
-彰化 	 69 	 細懸浮微粒 	 yellow
-臺西 	 74 	 懸浮微粒 	 yellow
-臺東 	 53 	 細懸浮微粒 	 yellow
-臺南 	 89 	 細懸浮微粒 	 yellow
-鳳山 	 79 	 細懸浮微粒 	 yellow
-潮州 	 67 	 細懸浮微粒 	 yellow
-線西 	 71 	 細懸浮微粒 	 yellow
-橋頭 	 82 	 細懸浮微粒 	 yellow
-頭份 	 80 	 臭氧八小時 	 yellow
-龍潭 	 54 	 臭氧八小時 	 yellow
-豐原 	 70 	 細懸浮微粒 	 yellow
-關山 	 61 	 細懸浮微粒 	 yellow
-觀音 	 65 	 懸浮微粒 	 yellow
-彰化(員林) 	 82 	 細懸浮微粒 	 yellow
-高雄(湖內) 	 102 	 細懸浮微粒 	 Brown
-臺南(麻豆) 	 70 	 細懸浮微粒 	 yellow
-屏東(琉球) 	 77 	 細懸浮微粒 	 yellow
-桃園(三民) 	 61 	 細懸浮微粒 	 yellow
-新北(樹林) 	 61 	 細懸浮微粒 	 yellow
-臺南(學甲) 	 90 	 細懸浮微粒 	 yellow
-屏東(枋寮) 	 57 	 細懸浮微粒 	 yellow
-富貴角 	 80 	 懸浮微粒 	 yellow
-大城 	 84 	 細懸浮微粒 	 yellow
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 	 66 	 細懸浮微粒 	 普通
+三重 	 28 	  	 良好
+三義 	 36 	  	 良好
+土城 	 13 	  	 良好
+士林 	 20 	  	 良好
+大同 	 39 	  	 良好
+大里 	 57 	 細懸浮微粒 	 普通
+大園 	 23 	  	 良好
+大寮 	 84 	 細懸浮微粒 	 普通
+小港 	 76 	 細懸浮微粒 	 普通
+中山 	 18 	  	 良好
+中壢 	 20 	  	 良好
+仁武 	 78 	 細懸浮微粒 	 普通
+斗六 	 57 	 細懸浮微粒 	 普通
+冬山 	 13 	  	 良好
+古亭 	 14 	  	 良好
+左營 	 65 	 細懸浮微粒 	 普通
+平鎮 	 15 	  	 良好
+永和 	 19 	  	 良好
+安南 	 62 	 細懸浮微粒 	 普通
+朴子 	 67 	 細懸浮微粒 	 普通
+汐止 	 13 	  	 良好
+竹山 	 43 	  	 良好
+竹東 	 29 	  	 良好
+西屯 	 59 	 細懸浮微粒 	 普通
+沙鹿 	 43 	  	 良好
+宜蘭 	 13 	  	 良好
+忠明 	 54 	 細懸浮微粒 	 普通
+松山 	 14 	  	 良好
+板橋 	 22 	  	 良好
+林口 	 13 	  	 良好
+林園 	 68 	 細懸浮微粒 	 普通
+花蓮 	 16 	  	 良好
+金門 	 47 	  	 良好
+前金 	 67 	 細懸浮微粒 	 普通
+前鎮 	 65 	 細懸浮微粒 	 普通
+南投 	 62 	 細懸浮微粒 	 普通
+屏東 	 79 	 細懸浮微粒 	 普通
+恆春 	 10 	  	 良好
+美濃 	 67 	 細懸浮微粒 	 普通
+苗栗 	 21 	  	 良好
+埔里 	 43 	  	 良好
+桃園 	 19 	  	 良好
+馬公 	 36 	  	 良好
+馬祖 	 71 	 臭氧八小時 	 普通
+基隆 	 17 	  	 良好
+崙背 	 61 	 細懸浮微粒 	 普通
+淡水 	 17 	  	 良好
+麥寮 	 54 	 細懸浮微粒 	 普通
+善化 	 67 	 細懸浮微粒 	 普通
+復興 	 61 	 細懸浮微粒 	 普通
+湖口 	 30 	  	 良好
+菜寮 	 20 	  	 良好
+陽明 	 18 	  	 良好
+新竹 	 19 	  	 良好
+新店 	 12 	  	 良好
+新莊 	 21 	  	 良好
+新港 	 71 	 細懸浮微粒 	 普通
+新營 	 60 	 細懸浮微粒 	 普通
+楠梓 	 70 	 細懸浮微粒 	 普通
+萬里 	 29 	  	 良好
+萬華 	 12 	  	 良好
+嘉義 	 71 	 細懸浮微粒 	 普通
+彰化 	 58 	 細懸浮微粒 	 普通
+臺西 	 62 	 細懸浮微粒 	 普通
+臺東 	 9 	  	 良好
+臺南 	 66 	 細懸浮微粒 	 普通
+鳳山 	 73 	 細懸浮微粒 	 普通
+潮州 	 63 	 細懸浮微粒 	 普通
+線西 	 48 	  	 良好
+橋頭 	 71 	 細懸浮微粒 	 普通
+頭份 	 13 	  	 良好
+龍潭 	 13 	  	 良好
+豐原 	 52 	 細懸浮微粒 	 普通
+關山 	 7 	  	 良好
+觀音 	 45 	  	 良好
+彰化(員林) 	 65 	 細懸浮微粒 	 普通
+高雄(湖內) 	 77 	 細懸浮微粒 	 普通
+臺南(麻豆) 	 58 	 細懸浮微粒 	 普通
+屏東(琉球) 	 8 	  	 良好
+桃園(三民) 	 18 	  	 良好
+新北(樹林) 	 20 	  	 良好
+臺南(學甲) 	 51 	 細懸浮微粒 	 普通
+屏東(枋寮) 	 47 	  	 良好
+富貴角 	 34 	  	 良好
+大城 	 66 	 細懸浮微粒 	 普通
 </pre></div>
 </div>
 </div>
@@ -1452,136 +1431,221 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 <section id="option-rescale-better">
 <h3>(Option) Rescale better<a class="headerlink" href="#option-rescale-better" title="Permalink to this headline">#</a></h3>
 <p>為了避免過多的if-elif-else或者switch的使用，可以先把scale和category寫成兩個List，然後用多一層for-loop來trace該value會落在List的哪個區間。</p>
-<p>AQI by epa’s standard</p>
-<table class="colwidths-auto table">
-<thead>
-<tr class="row-odd"><th class="head"><p>Label</p></th>
-<th class="head"><p>Range</p></th>
-</tr>
-</thead>
-<tbody>
-<tr class="row-even"><td><p>Good</p></td>
-<td><p>0~50</p></td>
-</tr>
-<tr class="row-odd"><td><p>Moderate</p></td>
-<td><p>51~100</p></td>
-</tr>
-<tr class="row-even"><td><p>Unhealthy for Sensitive Groups</p></td>
-<td><p>101~150</p></td>
-</tr>
-<tr class="row-odd"><td><p>Unhealthy</p></td>
-<td><p>151~200</p></td>
-</tr>
-<tr class="row-even"><td><p>Very Unhealthy</p></td>
-<td><p>201~300</p></td>
-</tr>
-<tr class="row-odd"><td><p>Hazardous</p></td>
-<td><p>301~500</p></td>
-</tr>
-</tbody>
-</table>
+<p><img alt="image.png" src="PSS/attachment:c4b59bc9-9325-4757-8750-0bd0fe1ecb76.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;Good&#39;</span><span class="p">,</span> <span class="s1">&#39;Moderate&#39;</span><span class="p">,</span> <span class="s1">&#39;Unhealthy for Sensitive Groups&#39;</span><span class="p">,</span> <span class="s1">&#39;Unhealthy&#39;</span><span class="p">,</span> <span class="s1">&#39;Very Unhealthy&#39;</span><span class="p">,</span> <span class="s1">&#39;Hazardous&#39;</span><span class="p">]</span>
-<span class="n">scaler</span> <span class="o">=</span> <span class="p">[</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">500</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;良好&quot;</span><span class="p">,</span> <span class="s2">&quot;普通&quot;</span><span class="p">,</span> <span class="s2">&quot;對敏感族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;對所有族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;非常不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;危害&quot;</span><span class="p">]</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
 
 <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
-    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
-        <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scaler</span><span class="p">):</span>
-            <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;</span> <span class="n">n</span><span class="p">:</span>
-                <span class="n">d</span> <span class="o">=</span> <span class="n">i</span>
-                <span class="k">break</span>     
-        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]),</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;POLLUTANT&quot;</span><span class="p">],</span> <span class="n">d</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="n">degree</span><span class="p">[</span><span class="n">d</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">scaler</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">site</span><span class="p">[</span><span class="s1">&#39;Quality2&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">degree</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="k">break</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality2&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 79 細懸浮微粒 2 Moderate
-三重 58 細懸浮微粒 2 Moderate
-三義 57 細懸浮微粒 2 Moderate
-土城 51 懸浮微粒 2 Moderate
-士林 57 細懸浮微粒 2 Moderate
-大同 65 細懸浮微粒 2 Moderate
-大里 75 細懸浮微粒 2 Moderate
-大園 61 懸浮微粒 2 Moderate
-大寮 76 細懸浮微粒 2 Moderate
-小港 76 細懸浮微粒 2 Moderate
-中山 54 懸浮微粒 2 Moderate
-中壢 65 細懸浮微粒 2 Moderate
-仁武 76 細懸浮微粒 2 Moderate
-斗六 92 細懸浮微粒 2 Moderate
-冬山 58 細懸浮微粒 2 Moderate
-古亭 62 細懸浮微粒 2 Moderate
-左營 80 細懸浮微粒 2 Moderate
-平鎮 56 細懸浮微粒 2 Moderate
-永和 60 細懸浮微粒 2 Moderate
-安南 98 細懸浮微粒 2 Moderate
-朴子 95 細懸浮微粒 2 Moderate
-汐止 55 細懸浮微粒 2 Moderate
-竹山 82 細懸浮微粒 2 Moderate
-竹東 71 臭氧八小時 2 Moderate
-西屯 70 細懸浮微粒 2 Moderate
-沙鹿 65 細懸浮微粒 2 Moderate
-宜蘭 56 細懸浮微粒 2 Moderate
-忠明 69 細懸浮微粒 2 Moderate
-松山 54 懸浮微粒 2 Moderate
-板橋 57 細懸浮微粒 2 Moderate
-林口 53 細懸浮微粒 2 Moderate
-林園 64 細懸浮微粒 2 Moderate
-花蓮 85 細懸浮微粒 2 Moderate
-金門 126 臭氧八小時 3 Unhealthy for Sensitive Groups
-前金 83 細懸浮微粒 2 Moderate
-前鎮 76 細懸浮微粒 2 Moderate
-南投 85 細懸浮微粒 2 Moderate
-屏東 66 細懸浮微粒 2 Moderate
-恆春 77 臭氧八小時 2 Moderate
-美濃 59 細懸浮微粒 2 Moderate
-苗栗 67 臭氧八小時 2 Moderate
-埔里 80 細懸浮微粒 2 Moderate
-桃園 62 細懸浮微粒 2 Moderate
-馬公 115 臭氧八小時 3 Unhealthy for Sensitive Groups
-馬祖 122 臭氧八小時 3 Unhealthy for Sensitive Groups
-基隆 57 細懸浮微粒 2 Moderate
-崙背 85 細懸浮微粒 2 Moderate
-淡水 57 懸浮微粒 2 Moderate
-麥寮 81 細懸浮微粒 2 Moderate
-善化 72 細懸浮微粒 2 Moderate
-復興 80 細懸浮微粒 2 Moderate
-湖口 62 細懸浮微粒 2 Moderate
-菜寮 58 細懸浮微粒 2 Moderate
-陽明 47  1 Good
-新竹 54 臭氧八小時 2 Moderate
-新店 57 細懸浮微粒 2 Moderate
-新莊 58 細懸浮微粒 2 Moderate
-新港 97 細懸浮微粒 2 Moderate
-新營 87 細懸浮微粒 2 Moderate
-楠梓 75 細懸浮微粒 2 Moderate
-萬里 103 懸浮微粒 3 Unhealthy for Sensitive Groups
-萬華 56 細懸浮微粒 2 Moderate
-嘉義 84 細懸浮微粒 2 Moderate
-彰化 69 細懸浮微粒 2 Moderate
-臺西 74 懸浮微粒 2 Moderate
-臺東 53 細懸浮微粒 2 Moderate
-臺南 89 細懸浮微粒 2 Moderate
-鳳山 79 細懸浮微粒 2 Moderate
-潮州 67 細懸浮微粒 2 Moderate
-線西 71 細懸浮微粒 2 Moderate
-橋頭 82 細懸浮微粒 2 Moderate
-頭份 80 臭氧八小時 2 Moderate
-龍潭 54 臭氧八小時 2 Moderate
-豐原 70 細懸浮微粒 2 Moderate
-關山 61 細懸浮微粒 2 Moderate
-觀音 65 懸浮微粒 2 Moderate
-彰化(員林) 82 細懸浮微粒 2 Moderate
-高雄(湖內) 102 細懸浮微粒 3 Unhealthy for Sensitive Groups
-臺南(麻豆) 70 細懸浮微粒 2 Moderate
-屏東(琉球) 77 細懸浮微粒 2 Moderate
-桃園(三民) 61 細懸浮微粒 2 Moderate
-新北(樹林) 61 細懸浮微粒 2 Moderate
-臺南(學甲) 90 細懸浮微粒 2 Moderate
-屏東(枋寮) 57 細懸浮微粒 2 Moderate
-富貴角 80 懸浮微粒 2 Moderate
-大城 84 細懸浮微粒 2 Moderate
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 66 普通
+三重 28 良好
+三義 36 良好
+土城 13 良好
+士林 20 良好
+大同 39 良好
+大里 57 普通
+大園 23 良好
+大寮 84 普通
+小港 76 普通
+中山 18 良好
+中壢 20 良好
+仁武 78 普通
+斗六 57 普通
+冬山 13 良好
+古亭 14 良好
+左營 65 普通
+平鎮 15 良好
+永和 19 良好
+安南 62 普通
+朴子 67 普通
+汐止 13 良好
+竹山 43 良好
+竹東 29 良好
+西屯 59 普通
+沙鹿 43 良好
+宜蘭 13 良好
+忠明 54 普通
+松山 14 良好
+板橋 22 良好
+林口 13 良好
+林園 68 普通
+花蓮 16 良好
+金門 47 良好
+前金 67 普通
+前鎮 65 普通
+南投 62 普通
+屏東 79 普通
+恆春 10 良好
+美濃 67 普通
+苗栗 21 良好
+埔里 43 良好
+桃園 19 良好
+馬公 36 良好
+馬祖 71 普通
+基隆 17 良好
+崙背 61 普通
+淡水 17 良好
+麥寮 54 普通
+善化 67 普通
+復興 61 普通
+湖口 30 良好
+菜寮 20 良好
+陽明 18 良好
+新竹 19 良好
+新店 12 良好
+新莊 21 良好
+新港 71 普通
+新營 60 普通
+楠梓 70 普通
+萬里 29 良好
+萬華 12 良好
+嘉義 71 普通
+彰化 58 普通
+臺西 62 普通
+臺東 9 良好
+臺南 66 普通
+鳳山 73 普通
+潮州 63 普通
+線西 48 良好
+橋頭 71 普通
+頭份 13 良好
+龍潭 13 良好
+豐原 52 普通
+關山 7 良好
+觀音 45 良好
+彰化(員林) 65 普通
+高雄(湖內) 77 普通
+臺南(麻豆) 58 普通
+屏東(琉球) 8 良好
+桃園(三民) 18 良好
+新北(樹林) 20 良好
+臺南(學甲) 51 普通
+屏東(枋寮) 47 良好
+富貴角 34 良好
+大城 66 普通
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;良好&quot;</span><span class="p">,</span> <span class="s2">&quot;普通&quot;</span><span class="p">,</span> <span class="s2">&quot;對敏感族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;對所有族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;非常不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;危害&quot;</span><span class="p">]</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">sdict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">degree</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sdict</span><span class="p">)</span>
+
+<span class="c1"># scaler = {-1:&quot;Unknown&quot;, 50:&quot;良好&quot;, 100:&quot;普通&quot;, 150:&quot;對敏感族群不健康&quot;, 200:&quot;對所有族群不健康&quot;, 300:&quot;非常不健康&quot;, 1000:&quot;危害&quot;}</span>
+
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">sdict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">])</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
+            <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality2&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">sdict</span><span class="p">[</span><span class="n">n</span><span class="p">]</span>
+            <span class="k">break</span>
+
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;SiteName&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality2&quot;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s2">&quot;Quality&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{-1: &#39;Unknown&#39;, 50: &#39;良好&#39;, 100: &#39;普通&#39;, 150: &#39;對敏感族群不健康&#39;, 200: &#39;對所有族群不健康&#39;, 300: &#39;非常不健康&#39;, 1000: &#39;危害&#39;}
+二林 66 普通 普通
+三重 28 良好 良好
+三義 36 良好 良好
+土城 13 良好 良好
+士林 20 良好 良好
+大同 39 良好 良好
+大里 57 普通 普通
+大園 23 良好 良好
+大寮 84 普通 普通
+小港 76 普通 普通
+中山 18 良好 良好
+中壢 20 良好 良好
+仁武 78 普通 普通
+斗六 57 普通 普通
+冬山 13 良好 良好
+古亭 14 良好 良好
+左營 65 普通 普通
+平鎮 15 良好 良好
+永和 19 良好 良好
+安南 62 普通 普通
+朴子 67 普通 普通
+汐止 13 良好 良好
+竹山 43 良好 良好
+竹東 29 良好 良好
+西屯 59 普通 普通
+沙鹿 43 良好 良好
+宜蘭 13 良好 良好
+忠明 54 普通 普通
+松山 14 良好 良好
+板橋 22 良好 良好
+林口 13 良好 良好
+林園 68 普通 普通
+花蓮 16 良好 良好
+金門 47 良好 良好
+前金 67 普通 普通
+前鎮 65 普通 普通
+南投 62 普通 普通
+屏東 79 普通 普通
+恆春 10 良好 良好
+美濃 67 普通 普通
+苗栗 21 良好 良好
+埔里 43 良好 良好
+桃園 19 良好 良好
+馬公 36 良好 良好
+馬祖 71 普通 普通
+基隆 17 良好 良好
+崙背 61 普通 普通
+淡水 17 良好 良好
+麥寮 54 普通 普通
+善化 67 普通 普通
+復興 61 普通 普通
+湖口 30 良好 良好
+菜寮 20 良好 良好
+陽明 18 良好 良好
+新竹 19 良好 良好
+新店 12 良好 良好
+新莊 21 良好 良好
+新港 71 普通 普通
+新營 60 普通 普通
+楠梓 70 普通 普通
+萬里 29 良好 良好
+萬華 12 良好 良好
+嘉義 71 普通 普通
+彰化 58 普通 普通
+臺西 62 普通 普通
+臺東 9 良好 良好
+臺南 66 普通 普通
+鳳山 73 普通 普通
+潮州 63 普通 普通
+線西 48 良好 良好
+橋頭 71 普通 普通
+頭份 13 良好 良好
+龍潭 13 良好 良好
+豐原 52 普通 普通
+關山 7 良好 良好
+觀音 45 良好 良好
+彰化(員林) 65 普通 普通
+高雄(湖內) 77 普通 普通
+臺南(麻豆) 58 普通 普通
+屏東(琉球) 8 良好 良好
+桃園(三民) 18 良好 良好
+新北(樹林) 20 良好 良好
+臺南(學甲) 51 普通 普通
+屏東(枋寮) 47 良好 良好
+富貴角 34 良好 良好
+大城 66 普通 普通
 </pre></div>
 </div>
 </div>
@@ -1617,8 +1681,8 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>陽明 47
-金門 126
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>關山 7
+大寮 84
 </pre></div>
 </div>
 </div>
@@ -1666,7 +1730,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[126, 122, 115, 103, 102, 98, 97, 95, 92, 90, 89, 87, 85, 85, 85, 84, 84, 83, 82, 82, 82, 81, 80, 80, 80, 80, 80, 79, 79, 77, 77, 76, 76, 76, 76, 75, 75, 74, 72, 71, 71, 70, 70, 70, 69, 69, 67, 67, 66, 65, 65, 65, 65, 64, 62, 62, 62, 61, 61, 61, 61, 60, 59, 58, 58, 58, 58, 57, 57, 57, 57, 57, 57, 57, 56, 56, 56, 55, 54, 54, 54, 54, 53, 53, 51, 47]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84, 79, 78, 77, 76, 73, 71, 71, 71, 71, 70, 68, 67, 67, 67, 67, 66, 66, 66, 65, 65, 65, 63, 62, 62, 62, 61, 61, 60, 59, 58, 58, 57, 57, 54, 54, 52, 51, 48, 47, 47, 45, 43, 43, 43, 39, 36, 36, 34, 30, 29, 29, 28, 23, 22, 21, 21, 20, 20, 20, 20, 19, 19, 19, 18, 18, 18, 17, 17, 16, 15, 14, 14, 13, 13, 13, 13, 13, 13, 13, 12, 12, 10, 9, 8, 7]
 </pre></div>
 </div>
 </div>
@@ -1687,29 +1751,29 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81
-斗六 92
-安南 98
-朴子 95
-竹山 82
-花蓮 85
-金門 126
-前金 83
-南投 85
-馬公 115
-馬祖 122
-崙背 85
-麥寮 81
-新港 97
-新營 87
-萬里 103
-嘉義 84
-臺南 89
-橋頭 82
-彰化(員林) 82
-高雄(湖內) 102
-臺南(學甲) 90
-大城 84
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>65
+二林 66
+大寮 84
+小港 76
+仁武 78
+左營 65
+朴子 67
+林園 68
+前金 67
+前鎮 65
+屏東 79
+美濃 67
+馬祖 71
+善化 67
+新港 71
+楠梓 70
+嘉義 71
+臺南 66
+鳳山 73
+橋頭 71
+彰化(員林) 65
+高雄(湖內) 77
+大城 66
 </pre></div>
 </div>
 </div>
@@ -1728,10 +1792,10 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103
-金門 126
-馬公 115
-馬祖 122
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>77
+大寮 84
+仁武 78
+屏東 79
 </pre></div>
 </div>
 </div>
@@ -1746,7 +1810,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;金門&#39;, &#39;126&#39;), (&#39;馬公&#39;, &#39;115&#39;), (&#39;馬祖&#39;, &#39;122&#39;)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;大寮&#39;, &#39;84&#39;), (&#39;仁武&#39;, &#39;78&#39;), (&#39;屏東&#39;, &#39;79&#39;)]
 </pre></div>
 </div>
 </div>
@@ -1792,7 +1856,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[126, 122, 115, 103, 102, 98, 97, 95, 92, 90, 89, 87, 85, 85, 85, 84, 84, 83, 82, 82, 82, 81, 80, 80, 80, 80, 80, 79, 79, 77, 77, 76, 76, 76, 76, 75, 75, 74, 72, 71, 71, 70, 70, 70, 69, 69, 67, 67, 66, 65, 65, 65, 65, 64, 62, 62, 62, 61, 61, 61, 61, 60, 59, 58, 58, 58, 58, 57, 57, 57, 57, 57, 57, 57, 56, 56, 56, 55, 54, 54, 54, 54, 53, 53, 51, 47]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84, 79, 78, 77, 76, 73, 71, 71, 71, 71, 70, 68, 67, 67, 67, 67, 66, 66, 66, 65, 65, 65, 63, 62, 62, 62, 61, 61, 60, 59, 58, 58, 57, 57, 54, 54, 52, 51, 48, 47, 47, 45, 43, 43, 43, 39, 36, 36, 34, 30, 29, 29, 28, 23, 22, 21, 21, 20, 20, 20, 20, 19, 19, 19, 18, 18, 18, 17, 17, 16, 15, 14, 14, 13, 13, 13, 13, 13, 13, 13, 12, 12, 10, 9, 8, 7]
 </pre></div>
 </div>
 </div>
@@ -1809,7 +1873,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/20%2011:00&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/25%2011:00&quot;</span>
 <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)</span>
 </pre></div>
@@ -1855,12 +1919,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>0</th>
       <td>1</td>
       <td>二林</td>
-      <td>79</td>
+      <td>41</td>
       <td>二林</td>
       <td>中部空品區</td>
       <td>3</td>
       <td>Changhua</td>
-      <td>細懸浮微粒</td>
+      <td></td>
       <td>彰化縣二林鎮萬合里江山巷1號</td>
       <td>120.409653</td>
       <td>23.925175</td>
@@ -1872,12 +1936,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>1</th>
       <td>2</td>
       <td>三重</td>
-      <td>58</td>
+      <td>35</td>
       <td>三重</td>
       <td>北部空品區</td>
       <td>1</td>
       <td>Newtaipei</td>
-      <td>細懸浮微粒</td>
+      <td></td>
       <td>新北市三重區三和路重陽路交口</td>
       <td>121.493806</td>
       <td>25.072611</td>
@@ -1889,12 +1953,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>2</th>
       <td>3</td>
       <td>三義</td>
-      <td>57</td>
+      <td>34</td>
       <td>三義</td>
       <td>竹苗空品區</td>
       <td>2</td>
       <td>Miaoli</td>
-      <td>細懸浮微粒</td>
+      <td></td>
       <td>苗栗縣三義鄉西湖村上湖61-1號</td>
       <td>120.758833</td>
       <td>24.382942</td>
@@ -1906,12 +1970,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>3</th>
       <td>4</td>
       <td>土城</td>
-      <td>51</td>
+      <td>30</td>
       <td>土城</td>
       <td>北部空品區</td>
       <td>1</td>
       <td>Newtaipei</td>
-      <td>懸浮微粒</td>
+      <td></td>
       <td>新北市土城區學府路一段241號</td>
       <td>121.451861</td>
       <td>24.982528</td>
@@ -1923,12 +1987,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>4</th>
       <td>5</td>
       <td>士林</td>
-      <td>57</td>
+      <td>34</td>
       <td>士林</td>
       <td>北部空品區</td>
       <td>1</td>
       <td>Taipei</td>
-      <td>細懸浮微粒</td>
+      <td></td>
       <td>臺北市北投區文林北路77號</td>
       <td>121.516664</td>
       <td>25.103340</td>
@@ -1957,12 +2021,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>81</th>
       <td>91</td>
       <td>新北(樹林)</td>
-      <td>61</td>
+      <td>29</td>
       <td>新北(樹林)</td>
       <td>北部空品區</td>
       <td>1</td>
       <td>Newtaipei</td>
-      <td>細懸浮微粒</td>
+      <td></td>
       <td>新北市樹林區學勤路555號</td>
       <td>121.383528</td>
       <td>24.949028</td>
@@ -1974,7 +2038,7 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>82</th>
       <td>92</td>
       <td>臺南(學甲)</td>
-      <td>90</td>
+      <td>57</td>
       <td>臺南(學甲)</td>
       <td>雲嘉南空品區</td>
       <td>4</td>
@@ -2008,12 +2072,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>84</th>
       <td>96</td>
       <td>富貴角</td>
-      <td>80</td>
+      <td>46</td>
       <td>富貴角</td>
       <td>北部空品區</td>
       <td>1</td>
       <td>Newtaipei</td>
-      <td>懸浮微粒</td>
+      <td></td>
       <td></td>
       <td>121.547380</td>
       <td>25.292280</td>
@@ -2025,12 +2089,12 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <th>85</th>
       <td>136</td>
       <td>大城</td>
-      <td>84</td>
+      <td>36</td>
       <td>大城</td>
       <td>中部空品區</td>
       <td>3</td>
       <td>Changhua</td>
-      <td>細懸浮微粒</td>
+      <td></td>
       <td>彰化縣大城鄉西厝路98號</td>
       <td>120.269642</td>
       <td>23.854931</td>
@@ -2070,11 +2134,11 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;18&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220922130941&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;65&#39;, &#39;act&#39;: &#39;1&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220926222925&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;84&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;6&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220922130917&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;10&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;1&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220926222918&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;15&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
-{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;10&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220922130936&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;22&#39;, &#39;act&#39;: &#39;1&#39;}
+{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;20&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220926222943&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;12&#39;, &#39;act&#39;: &#39;1&#39;}
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -2129,16 +2193,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
       <td>88</td>
-      <td>18</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20220922130941</td>
+      <td>20220926222925</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>65</td>
+      <td>84</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2146,16 +2210,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
       <td>16</td>
-      <td>6</td>
+      <td>1</td>
       <td>大安區</td>
-      <td>20220922130917</td>
+      <td>20220926222918</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>10</td>
+      <td>15</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2163,16 +2227,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0004</td>
       <td>市民廣場</td>
       <td>32</td>
-      <td>10</td>
+      <td>20</td>
       <td>信義區</td>
-      <td>20220922130936</td>
+      <td>20220926222943</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>22</td>
+      <td>12</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2180,16 +2244,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0005</td>
       <td>興雅國中</td>
       <td>32</td>
-      <td>18</td>
+      <td>1</td>
       <td>信義區</td>
-      <td>20220922130935</td>
+      <td>20220926222942</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>14</td>
+      <td>31</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2197,16 +2261,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0006</td>
       <td>臺北南山廣場</td>
       <td>54</td>
-      <td>24</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20220922130929</td>
+      <td>20220926222940</td>
       <td>25.034047</td>
       <td>121.565973</td>
       <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>NAN SHAN PLAZA</td>
       <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
-      <td>30</td>
+      <td>54</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2231,16 +2295,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0401</td>
       <td>南京新生路口</td>
       <td>16</td>
-      <td>13</td>
+      <td>15</td>
       <td>中山區</td>
-      <td>20220922130915</td>
+      <td>20220926222932</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>3</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2248,16 +2312,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0402</td>
       <td>下灣公園</td>
       <td>12</td>
-      <td>1</td>
+      <td>4</td>
       <td>內湖區</td>
-      <td>20220922130933</td>
+      <td>20220926222927</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
       <td>Neihu Dist.</td>
       <td>Siawan Park</td>
       <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
-      <td>11</td>
+      <td>8</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2265,16 +2329,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
       <td>10</td>
-      <td>4</td>
+      <td>0</td>
       <td>內湖區</td>
-      <td>20220922130932</td>
+      <td>20220926222936</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>6</td>
+      <td>10</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2282,16 +2346,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0404</td>
       <td>民族延平路口</td>
       <td>10</td>
-      <td>1</td>
+      <td>7</td>
       <td>大同區</td>
-      <td>20220922130944</td>
+      <td>20220926222929</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
       <td>Datong Dist.</td>
       <td>Minzu &amp; Yanping Intersection</td>
       <td>No.310, Minzu W. Rd.</td>
-      <td>9</td>
+      <td>3</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2299,16 +2363,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
       <td>46</td>
-      <td>0</td>
+      <td>6</td>
       <td>大安區</td>
-      <td>20220922130932</td>
+      <td>20220926222939</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>43</td>
+      <td>37</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -2446,27 +2510,27 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
     </tr>
     <tr>
       <th>sbi</th>
-      <td>18</td>
-      <td>6</td>
+      <td>0</td>
+      <td>1</td>
+      <td>20</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19</td>
+      <td>28</td>
       <td>10</td>
-      <td>18</td>
-      <td>24</td>
-      <td>14</td>
-      <td>5</td>
-      <td>14</td>
-      <td>2</td>
-      <td>0</td>
       <td>...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>0</td>
+      <td>10</td>
+      <td>6</td>
+      <td>6</td>
+      <td>7</td>
+      <td>2</td>
+      <td>15</td>
       <td>4</td>
       <td>0</td>
-      <td>13</td>
-      <td>1</td>
-      <td>4</td>
-      <td>1</td>
-      <td>0</td>
+      <td>7</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>sarea</th>
@@ -2494,27 +2558,27 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
     </tr>
     <tr>
       <th>mday</th>
-      <td>20220922130941</td>
-      <td>20220922130917</td>
-      <td>20220922130936</td>
-      <td>20220922130935</td>
-      <td>20220922130929</td>
-      <td>20220922130921</td>
-      <td>20220922130925</td>
-      <td>20220922130943</td>
-      <td>20220922130930</td>
-      <td>20220922130939</td>
+      <td>20220926222925</td>
+      <td>20220926222918</td>
+      <td>20220926222943</td>
+      <td>20220926222942</td>
+      <td>20220926222940</td>
+      <td>20220926222941</td>
+      <td>20220926222915</td>
+      <td>20220926222925</td>
+      <td>20220926222916</td>
+      <td>20220926222932</td>
       <td>...</td>
-      <td>20220922130844</td>
-      <td>20220922130927</td>
-      <td>20220922130940</td>
-      <td>20220922130943</td>
-      <td>20220922130916</td>
-      <td>20220922130915</td>
-      <td>20220922130933</td>
-      <td>20220922130932</td>
-      <td>20220922130944</td>
-      <td>20220922130932</td>
+      <td>20220926222943</td>
+      <td>20220926222919</td>
+      <td>20220926222843</td>
+      <td>20220926222941</td>
+      <td>20220926222933</td>
+      <td>20220926222932</td>
+      <td>20220926222927</td>
+      <td>20220926222936</td>
+      <td>20220926222929</td>
+      <td>20220926222939</td>
     </tr>
     <tr>
       <th>lat</th>
@@ -2662,27 +2726,27 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
     </tr>
     <tr>
       <th>bemp</th>
-      <td>65</td>
-      <td>10</td>
-      <td>22</td>
-      <td>14</td>
-      <td>30</td>
-      <td>26</td>
-      <td>37</td>
-      <td>6</td>
-      <td>28</td>
-      <td>14</td>
-      <td>...</td>
-      <td>9</td>
-      <td>11</td>
-      <td>24</td>
-      <td>19</td>
+      <td>84</td>
+      <td>15</td>
       <td>12</td>
-      <td>3</td>
-      <td>11</td>
+      <td>31</td>
+      <td>54</td>
+      <td>39</td>
+      <td>41</td>
+      <td>1</td>
+      <td>2</td>
       <td>6</td>
-      <td>9</td>
-      <td>43</td>
+      <td>...</td>
+      <td>0</td>
+      <td>6</td>
+      <td>18</td>
+      <td>16</td>
+      <td>10</td>
+      <td>1</td>
+      <td>8</td>
+      <td>10</td>
+      <td>3</td>
+      <td>37</td>
     </tr>
     <tr>
       <th>act</th>
@@ -2763,16 +2827,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
       <td>88</td>
-      <td>18</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20220922130941</td>
+      <td>20220926222925</td>
       <td>25.0408578889</td>
       <td>121.567904444</td>
       <td>忠孝東路/松仁路(東南側)</td>
       <td>Xinyi Dist.</td>
       <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
       <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
-      <td>65</td>
+      <td>84</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2780,16 +2844,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
       <td>16</td>
-      <td>6</td>
+      <td>1</td>
       <td>大安區</td>
-      <td>20220922130917</td>
+      <td>20220926222918</td>
       <td>25.041254</td>
       <td>121.55742</td>
       <td>忠孝東路四段/光復南路口(西南側)</td>
       <td>Daan Dist.</td>
       <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
       <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
-      <td>10</td>
+      <td>15</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2797,16 +2861,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0004</td>
       <td>市民廣場</td>
       <td>32</td>
-      <td>10</td>
+      <td>20</td>
       <td>信義區</td>
-      <td>20220922130936</td>
+      <td>20220926222943</td>
       <td>25.0360361111</td>
       <td>121.562325</td>
       <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
       <td>Xinyi Dist.</td>
       <td>Citizen Square</td>
       <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
-      <td>22</td>
+      <td>12</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2814,16 +2878,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0005</td>
       <td>興雅國中</td>
       <td>32</td>
-      <td>18</td>
+      <td>1</td>
       <td>信義區</td>
-      <td>20220922130935</td>
+      <td>20220926222942</td>
       <td>25.0365638889</td>
       <td>121.5686639</td>
       <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>Xingya Jr. High School</td>
       <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
-      <td>14</td>
+      <td>31</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2831,16 +2895,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0006</td>
       <td>臺北南山廣場</td>
       <td>54</td>
-      <td>24</td>
+      <td>0</td>
       <td>信義區</td>
-      <td>20220922130929</td>
+      <td>20220926222940</td>
       <td>25.034047</td>
       <td>121.565973</td>
       <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
       <td>Xinyi Dist.</td>
       <td>NAN SHAN PLAZA</td>
       <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
-      <td>30</td>
+      <td>54</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2865,16 +2929,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0401</td>
       <td>南京新生路口</td>
       <td>16</td>
-      <td>13</td>
+      <td>15</td>
       <td>中山區</td>
-      <td>20220922130915</td>
+      <td>20220926222932</td>
       <td>25.051944</td>
       <td>121.527661</td>
       <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
       <td>Zhongshan Dist.</td>
       <td>Nanjing &amp; Xinsheng Intersection</td>
       <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
-      <td>3</td>
+      <td>1</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2882,16 +2946,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0402</td>
       <td>下灣公園</td>
       <td>12</td>
-      <td>1</td>
+      <td>4</td>
       <td>內湖區</td>
-      <td>20220922130933</td>
+      <td>20220926222927</td>
       <td>25.065159</td>
       <td>121.595611</td>
       <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
       <td>Neihu Dist.</td>
       <td>Siawan Park</td>
       <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
-      <td>11</td>
+      <td>8</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2899,16 +2963,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0403</td>
       <td>捷運內湖站(1號出口)</td>
       <td>10</td>
-      <td>4</td>
+      <td>0</td>
       <td>內湖區</td>
-      <td>20220922130932</td>
+      <td>20220926222936</td>
       <td>25.083868</td>
       <td>121.593929</td>
       <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
       <td>Neihu Dist.</td>
       <td>MRT Neihu Sta.1(Exit.1)</td>
       <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
-      <td>6</td>
+      <td>10</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2916,16 +2980,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0404</td>
       <td>民族延平路口</td>
       <td>10</td>
-      <td>1</td>
+      <td>7</td>
       <td>大同區</td>
-      <td>20220922130944</td>
+      <td>20220926222929</td>
       <td>25.068653</td>
       <td>121.510569</td>
       <td>民族西路 310 號前方</td>
       <td>Datong Dist.</td>
       <td>Minzu &amp; Yanping Intersection</td>
       <td>No.310, Minzu W. Rd.</td>
-      <td>9</td>
+      <td>3</td>
       <td>1</td>
     </tr>
     <tr>
@@ -2933,16 +2997,16 @@ dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#3
       <td>0405</td>
       <td>捷運科技大樓站(台北教育大學)</td>
       <td>46</td>
-      <td>0</td>
+      <td>6</td>
       <td>大安區</td>
-      <td>20220922130932</td>
+      <td>20220926222939</td>
       <td>25.024685</td>
       <td>121.544156</td>
       <td>和平東路二段134號(前方)</td>
       <td>Daan Dist.</td>
       <td>MRT Technology Building Station</td>
       <td>No. 134, Heping E. Rd. (front)</td>
-      <td>43</td>
+      <td>37</td>
       <td>1</td>
     </tr>
   </tbody>
