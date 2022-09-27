@@ -1,0 +1,2055 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Read open marriage stat data &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Logic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P01_counting.html">
+   P01-Counting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P02_basic.html">
+   P02-Python Basic
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P02b_basic.html">
+     P02-blank-Python Basic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P03b_list_dictionary.html">
+     P03-blank-List &amp; Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P04_1_for.html">
+   P04 For-loop
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P04_1p.html">
+     P04_1p Practice for-loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P04_2_for_if.html">
+   P04 For-if applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P04_2b_for_if.html">
+     P04_2-blank For-if applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P04_2p_twitter_users.html">
+     P04_2p Study Twitter Problematic Users
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P05_read_csv_json.html">
+   P05 READ Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P05_read_other_format.html">
+     Read more formats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P06_pandas.html">
+   P06 Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P06a_pandas_tricks.html">
+     Pandas Tricks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PSS/P07_visualization.html">
+   P07 Visualization with Pandas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PSS/P08_3_cases.html">
+   P08-3 Scraping cases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM01_tokenization.html">
+   Tokenization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="AS01_basic.html">
+   AS01 for Python Basic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="AS02_list_dict_for_if.html">
+   AS02 List-dict-for-if
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/video_list.html">
+   Python教學影片
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/IDEs.html">
+   Python開發環境
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/AS/AS03_ans_Reading and Summarizing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/AS/AS03_ans_Reading and Summarizing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS03_ans_Reading and Summarizing.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/AS/AS03_ans_Reading and Summarizing.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-description">
+   1. Data Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarize-single-variable">
+   2. Summarize single variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarize-two-variable-hirarchically">
+   3. Summarize two variable hirarchically
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-groupby-result-to-dataframe">
+   4. Convert groupby result to dataframe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spread-marriage-type-to-wide-form">
+   5. Spread marriage_type to wide form
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-reset-index-to-convert-index-to-normal-column-variable">
+   6. Using reset_index() to convert index to normal column(variable)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rename-variable-names">
+   7. Rename variable names
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutate-new-variable">
+   8. Mutate new variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting">
+   9. Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-by-hand">
+   10. Summarizing by hand
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Read open marriage stat data</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-description">
+   1. Data Description
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarize-single-variable">
+   2. Summarize single variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarize-two-variable-hirarchically">
+   3. Summarize two variable hirarchically
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#convert-groupby-result-to-dataframe">
+   4. Convert groupby result to dataframe
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#spread-marriage-type-to-wide-form">
+   5. Spread marriage_type to wide form
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-reset-index-to-convert-index-to-normal-column-variable">
+   6. Using reset_index() to convert index to normal column(variable)
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#rename-variable-names">
+   7. Rename variable names
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#mutate-new-variable">
+   8. Mutate new variable
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#sorting">
+   9. Sorting
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#summarizing-by-hand">
+   10. Summarizing by hand
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="read-open-marriage-stat-data">
+<h1>Read open marriage stat data<a class="headerlink" href="#read-open-marriage-stat-data" title="Permalink to this headline">#</a></h1>
+<p>到內政部開放資料平台上或開放資料平台（<a class="reference external" href="https://data.gov.tw/%EF%BC%89">https://data.gov.tw/）</a> 下載「結婚對數按婚姻類型、性別及年齡分(按發生)」資料（CSV）並讀取。或者在Google Drive老師所分享的<a class="reference external" href="https://drive.google.com/drive/folders/1MQB4Vhq9UbX3_MyaqHyuzgFGduFe-c9g?usp=sharing">PSS1092資料夾</a>中下載。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from google.colab import drive</span>
+<span class="c1"># drive.mount(&#39;/content/drive&#39;)</span>
+<span class="c1"># gdrive_path = &quot;/content/drive/My Drive/Colab Notebooks/PSS1092/data/opendata108m040.csv&quot; </span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>注意觀察資料，這個資料是，某鄉鎮市區（<code class="docutils literal notranslate"><span class="pre">site_id</span></code>）的某一種結婚型態（<code class="docutils literal notranslate"><span class="pre">marriage_type</span></code>）的雙方年齡組（<code class="docutils literal notranslate"><span class="pre">female_age_or_spouse1</span></code>, <code class="docutils literal notranslate"><span class="pre">male_age_or_spouse2</span></code>）有幾對（<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>）。如果把<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>全部相加，就會是當年度婚姻的總對數。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print out the head of data</span>
+<span class="n">pc_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/opendata108m040.csv&quot;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pc_path</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0p/7xy1_dzx0_s5rnf06c0b316w0000gn/T/ipykernel_47116/3979776360.py:3: FutureWarning: The error_bad_lines argument has been deprecated and will be removed in a future version. Use on_bad_lines in the future.
+
+
+  df = pd.read_csv(pc_path, error_bad_lines=False, skiprows = [1])
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># print out the head of data</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">pc_path</span> <span class="o">=</span> <span class="s2">&quot;../../data/opendata108m040.csv&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">pc_path</span><span class="p">,</span> <span class="n">error_bad_lines</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span> <span class="n">skiprows</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:575,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">575</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:933,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">933</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1217,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span> <span class="c1"># error: No overload variant of &quot;get_handle&quot; matches argument types</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span> <span class="c1"># &quot;Union[str, PathLike[str], ReadCsvBuffer[bytes], ReadCsvBuffer[str]]&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1216</span> <span class="c1"># , &quot;str&quot;, &quot;bool&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1217</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>  <span class="c1"># type: ignore[call-overload]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1219</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1220</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1221</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1223</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1224</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:789,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">784</span> <span class="k">elif</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="nb">str</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="c1"># Check whether the filename is to be opened in binary mode.</span>
+<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="c1"># Binary mode does not support &#39;encoding&#39; and &#39;newline&#39;.</span>
+<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="k">if</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span> <span class="ow">and</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">788</span>         <span class="c1"># Encoding</span>
+<span class="ne">--&gt; </span><span class="mi">789</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">790</span>             <span class="n">handle</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">791</span>             <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">792</span>             <span class="n">encoding</span><span class="o">=</span><span class="n">ioargs</span><span class="o">.</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">793</span>             <span class="n">errors</span><span class="o">=</span><span class="n">errors</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">794</span>             <span class="n">newline</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">795</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">797</span>         <span class="c1"># Binary mode</span>
+<span class="g g-Whitespace">    </span><span class="mi">798</span>         <span class="n">handle</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="n">handle</span><span class="p">,</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">mode</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../../data/opendata108m040.csv&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="data-description">
+<h2>1. Data Description<a class="headerlink" href="#data-description" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列印出所有變數</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">columns</span><span class="p">)</span>
+
+<span class="c1"># 列印出所有變項的變數型態</span>
+<span class="n">df</span><span class="o">.</span><span class="n">dtypes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;,
+       &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>statistic_yyy             int64
+according                object
+site_id                  object
+marriage_type            object
+female_age_or_spouse1    object
+male_age_or_spouse2      object
+marry_pair                int64
+dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列印出marriage_type有哪幾種種類的值</span>
+<span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">marriage_type</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;不同性別&#39;, &#39;相同性別_女性&#39;, &#39;相同性別_男性&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summarize-single-variable">
+<h2>2. Summarize single variable<a class="headerlink" href="#summarize-single-variable" title="Permalink to this headline">#</a></h2>
+<p>計算男同、女同、異性婚姻各有幾對。預期結果如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">marriage_type</span>
+<span class="n">不同性別</span>       <span class="mi">131585</span>
+<span class="n">相同性別_女性</span>      <span class="mi">2011</span>
+<span class="n">相同性別_男性</span>       <span class="mi">928</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">marry_pair</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;marriage_type&#39;</span><span class="p">)[</span><span class="s1">&#39;marry_pair&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>marriage_type
+不同性別       131585
+相同性別_女性      2011
+相同性別_男性       928
+Name: marry_pair, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="summarize-two-variable-hirarchically">
+<h2>3. Summarize two variable hirarchically<a class="headerlink" href="#summarize-two-variable-hirarchically" title="Permalink to this headline">#</a></h2>
+<p>計算每個鄉鎮市區的男同、女同、異性婚姻人數各有幾對. 你可能會需要謹慎觀看影片或者上網查詢「groupby two variables」。預期結果如下：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">site_id</span>  <span class="n">marriage_type</span>
+<span class="n">南投縣中寮鄉</span>   <span class="n">不同性別</span>              <span class="mi">59</span>
+         <span class="n">相同性別_女性</span>            <span class="mi">0</span>
+         <span class="n">相同性別_男性</span>            <span class="mi">0</span>
+<span class="n">南投縣仁愛鄉</span>   <span class="n">不同性別</span>              <span class="mi">84</span>
+         <span class="n">相同性別_女性</span>            <span class="mi">1</span>
+                         <span class="o">...</span> 
+<span class="n">高雄市鹽埕區</span>   <span class="n">相同性別_女性</span>            <span class="mi">1</span>
+         <span class="n">相同性別_男性</span>            <span class="mi">4</span>
+<span class="n">高雄市鼓山區</span>   <span class="n">不同性別</span>             <span class="mi">716</span>
+         <span class="n">相同性別_女性</span>           <span class="mi">19</span>
+         <span class="n">相同性別_男性</span>           <span class="mi">12</span>
+<span class="n">Name</span><span class="p">:</span> <span class="n">marry_pair</span><span class="p">,</span> <span class="n">Length</span><span class="p">:</span> <span class="mi">1104</span><span class="p">,</span> <span class="n">dtype</span><span class="p">:</span> <span class="n">int64</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;site_id&#39;</span><span class="p">,</span> <span class="s1">&#39;marriage_type&#39;</span><span class="p">])[</span><span class="s1">&#39;marry_pair&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>site_id  marriage_type
+南投縣中寮鄉   不同性別              59
+         相同性別_女性            0
+         相同性別_男性            0
+南投縣仁愛鄉   不同性別              84
+         相同性別_女性            1
+                         ... 
+高雄市鹽埕區   相同性別_女性            1
+         相同性別_男性            4
+高雄市鼓山區   不同性別             716
+         相同性別_女性           19
+         相同性別_男性           12
+Name: marry_pair, Length: 1104, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-groupby-result-to-dataframe">
+<h2>4. Convert groupby result to dataframe<a class="headerlink" href="#convert-groupby-result-to-dataframe" title="Permalink to this headline">#</a></h2>
+<p>上述groupby的結果會變為series型態，請上網查詢如何把groupby的結果轉為dataframe。並把轉出來的dataframe指給變數<code class="docutils literal notranslate"><span class="pre">mstat</span></code>。預期輸出：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	site_id	marriage_type	marry_pair
+0	南投縣中寮鄉	不同性別	59
+1	南投縣中寮鄉	相同性別_女性	0
+2	南投縣中寮鄉	相同性別_男性	0
+3	南投縣仁愛鄉	不同性別	84
+4	南投縣仁愛鄉	相同性別_女性	1
+...	...	...	...
+1099	高雄市鹽埕區	相同性別_女性	1
+1100	高雄市鹽埕區	相同性別_男性	4
+1101	高雄市鼓山區	不同性別	716
+1102	高雄市鼓山區	相同性別_女性	19
+1103	高雄市鼓山區	相同性別_男性	12
+1104 rows × 3 columns
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mstat</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s1">&#39;site_id&#39;</span><span class="p">,</span> <span class="s1">&#39;marriage_type&#39;</span><span class="p">])[</span><span class="s1">&#39;marry_pair&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span><span class="o">.</span><span class="n">to_frame</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">mstat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>site_id</th>
+      <th>marriage_type</th>
+      <th>marry_pair</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>南投縣中寮鄉</td>
+      <td>不同性別</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>南投縣中寮鄉</td>
+      <td>相同性別_女性</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>南投縣中寮鄉</td>
+      <td>相同性別_男性</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>南投縣仁愛鄉</td>
+      <td>不同性別</td>
+      <td>84</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>南投縣仁愛鄉</td>
+      <td>相同性別_女性</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1099</th>
+      <td>高雄市鹽埕區</td>
+      <td>相同性別_女性</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1100</th>
+      <td>高雄市鹽埕區</td>
+      <td>相同性別_男性</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>1101</th>
+      <td>高雄市鼓山區</td>
+      <td>不同性別</td>
+      <td>716</td>
+    </tr>
+    <tr>
+      <th>1102</th>
+      <td>高雄市鼓山區</td>
+      <td>相同性別_女性</td>
+      <td>19</td>
+    </tr>
+    <tr>
+      <th>1103</th>
+      <td>高雄市鼓山區</td>
+      <td>相同性別_男性</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+<p>1104 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="spread-marriage-type-to-wide-form">
+<h2>5. Spread marriage_type to wide form<a class="headerlink" href="#spread-marriage-type-to-wide-form" title="Permalink to this headline">#</a></h2>
+<p>Take a look at <a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>marriage_type	不同性別	相同性別_女性	相同性別_男性
+site_id			
+南投縣中寮鄉	59	0	0
+南投縣仁愛鄉	84	1	0
+南投縣信義鄉	97	0	0
+南投縣南投市	551	4	1
+南投縣名間鄉	200	0	0
+...	...	...	...
+高雄市阿蓮區	156	2	0
+高雄市鳥松區	280	2	1
+高雄市鳳山區	2078	36	24
+高雄市鹽埕區	126	1	4
+高雄市鼓山區	716	19	12
+368 rows × 3 columns
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mstat_wide</span> <span class="o">=</span> <span class="n">mstat</span><span class="o">.</span><span class="n">pivot</span><span class="p">(</span><span class="n">index</span> <span class="o">=</span> <span class="s2">&quot;site_id&quot;</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="s1">&#39;marriage_type&#39;</span><span class="p">,</span> <span class="n">values</span><span class="o">=</span><span class="s1">&#39;marry_pair&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">mstat_wide</span><span class="p">))</span>
+<span class="n">mstat_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>marriage_type</th>
+      <th>不同性別</th>
+      <th>相同性別_女性</th>
+      <th>相同性別_男性</th>
+    </tr>
+    <tr>
+      <th>site_id</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>南投縣中寮鄉</th>
+      <td>59</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>南投縣仁愛鄉</th>
+      <td>84</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>南投縣信義鄉</th>
+      <td>97</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>南投縣南投市</th>
+      <td>551</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>南投縣名間鄉</th>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>高雄市阿蓮區</th>
+      <td>156</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>高雄市鳥松區</th>
+      <td>280</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>高雄市鳳山區</th>
+      <td>2078</td>
+      <td>36</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>高雄市鹽埕區</th>
+      <td>126</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>高雄市鼓山區</th>
+      <td>716</td>
+      <td>19</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+<p>368 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="using-reset-index-to-convert-index-to-normal-column-variable">
+<h2>6. Using reset_index() to convert index to normal column(variable)<a class="headerlink" href="#using-reset-index-to-convert-index-to-normal-column-variable" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://datatofish.com/index-to-column-pandas-dataframe/">https://datatofish.com/index-to-column-pandas-dataframe/</a></p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">marriage_type</span>	<span class="n">site_id</span>	<span class="n">不同性別</span>	<span class="n">相同性別_女性</span>	<span class="n">相同性別_男性</span>
+<span class="mi">0</span>	<span class="n">南投縣中寮鄉</span>	<span class="mi">59</span>	<span class="mi">0</span>	<span class="mi">0</span>
+<span class="mi">1</span>	<span class="n">南投縣仁愛鄉</span>	<span class="mi">84</span>	<span class="mi">1</span>	<span class="mi">0</span>
+<span class="mi">2</span>	<span class="n">南投縣信義鄉</span>	<span class="mi">97</span>	<span class="mi">0</span>	<span class="mi">0</span>
+<span class="mi">3</span>	<span class="n">南投縣南投市</span>	<span class="mi">551</span>	<span class="mi">4</span>	<span class="mi">1</span>
+<span class="mi">4</span>	<span class="n">南投縣名間鄉</span>	<span class="mi">200</span>	<span class="mi">0</span>	<span class="mi">0</span>
+<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>
+<span class="mi">363</span>	<span class="n">高雄市阿蓮區</span>	<span class="mi">156</span>	<span class="mi">2</span>	<span class="mi">0</span>
+<span class="mi">364</span>	<span class="n">高雄市鳥松區</span>	<span class="mi">280</span>	<span class="mi">2</span>	<span class="mi">1</span>
+<span class="mi">365</span>	<span class="n">高雄市鳳山區</span>	<span class="mi">2078</span>	<span class="mi">36</span>	<span class="mi">24</span>
+<span class="mi">366</span>	<span class="n">高雄市鹽埕區</span>	<span class="mi">126</span>	<span class="mi">1</span>	<span class="mi">4</span>
+<span class="mi">367</span>	<span class="n">高雄市鼓山區</span>	<span class="mi">716</span>	<span class="mi">19</span>	<span class="mi">12</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mstat_wide</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">mstat_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th>marriage_type</th>
+      <th>site_id</th>
+      <th>不同性別</th>
+      <th>相同性別_女性</th>
+      <th>相同性別_男性</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>南投縣中寮鄉</td>
+      <td>59</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>南投縣仁愛鄉</td>
+      <td>84</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>南投縣信義鄉</td>
+      <td>97</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>南投縣南投市</td>
+      <td>551</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>南投縣名間鄉</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>363</th>
+      <td>高雄市阿蓮區</td>
+      <td>156</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>高雄市鳥松區</td>
+      <td>280</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>365</th>
+      <td>高雄市鳳山區</td>
+      <td>2078</td>
+      <td>36</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>高雄市鹽埕區</td>
+      <td>126</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>高雄市鼓山區</td>
+      <td>716</td>
+      <td>19</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+<p>368 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="rename-variable-names">
+<h2>7. Rename variable names<a class="headerlink" href="#rename-variable-names" title="Permalink to this headline">#</a></h2>
+<p>to <code class="docutils literal notranslate"><span class="pre">side_id</span></code>, <code class="docutils literal notranslate"><span class="pre">hetero</span></code>, <code class="docutils literal notranslate"><span class="pre">homoF</span></code>, <code class="docutils literal notranslate"><span class="pre">homoM</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mstat_wide</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;side_id&#39;</span><span class="p">,</span> <span class="s1">&#39;hetero&#39;</span><span class="p">,</span> <span class="s1">&#39;homoF&#39;</span><span class="p">,</span> <span class="s1">&#39;homoM&#39;</span><span class="p">]</span>
+<span class="n">mstat_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>side_id</th>
+      <th>hetero</th>
+      <th>homoF</th>
+      <th>homoM</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>南投縣中寮鄉</td>
+      <td>59</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>南投縣仁愛鄉</td>
+      <td>84</td>
+      <td>1</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>南投縣信義鄉</td>
+      <td>97</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>南投縣南投市</td>
+      <td>551</td>
+      <td>4</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>南投縣名間鄉</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>363</th>
+      <td>高雄市阿蓮區</td>
+      <td>156</td>
+      <td>2</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>高雄市鳥松區</td>
+      <td>280</td>
+      <td>2</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>365</th>
+      <td>高雄市鳳山區</td>
+      <td>2078</td>
+      <td>36</td>
+      <td>24</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>高雄市鹽埕區</td>
+      <td>126</td>
+      <td>1</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>高雄市鼓山區</td>
+      <td>716</td>
+      <td>19</td>
+      <td>12</td>
+    </tr>
+  </tbody>
+</table>
+<p>368 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="mutate-new-variable">
+<h2>8. Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this headline">#</a></h2>
+<p>產生每個鄉鎮的結婚總對數（tot）、同婚總對數（homotot）、同婚總對數所佔比例（homoratio）</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">side_id</span>	<span class="n">hetero</span>	<span class="n">homoF</span>	<span class="n">homoM</span>	<span class="n">homotot</span>	<span class="n">tot</span>	<span class="n">homoratio</span>
+<span class="mi">0</span>	<span class="n">南投縣中寮鄉</span>	<span class="mi">59</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">59</span>	<span class="mf">0.000000</span>
+<span class="mi">1</span>	<span class="n">南投縣仁愛鄉</span>	<span class="mi">84</span>	<span class="mi">1</span>	<span class="mi">0</span>	<span class="mi">1</span>	<span class="mi">85</span>	<span class="mf">0.011765</span>
+<span class="mi">2</span>	<span class="n">南投縣信義鄉</span>	<span class="mi">97</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">97</span>	<span class="mf">0.000000</span>
+<span class="mi">3</span>	<span class="n">南投縣南投市</span>	<span class="mi">551</span>	<span class="mi">4</span>	<span class="mi">1</span>	<span class="mi">5</span>	<span class="mi">556</span>	<span class="mf">0.008993</span>
+<span class="mi">4</span>	<span class="n">南投縣名間鄉</span>	<span class="mi">200</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">200</span>	<span class="mf">0.000000</span>
+<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>	<span class="o">...</span>
+<span class="mi">363</span>	<span class="n">高雄市阿蓮區</span>	<span class="mi">156</span>	<span class="mi">2</span>	<span class="mi">0</span>	<span class="mi">2</span>	<span class="mi">158</span>	<span class="mf">0.012658</span>
+<span class="mi">364</span>	<span class="n">高雄市鳥松區</span>	<span class="mi">280</span>	<span class="mi">2</span>	<span class="mi">1</span>	<span class="mi">3</span>	<span class="mi">283</span>	<span class="mf">0.010601</span>
+<span class="mi">365</span>	<span class="n">高雄市鳳山區</span>	<span class="mi">2078</span>	<span class="mi">36</span>	<span class="mi">24</span>	<span class="mi">60</span>	<span class="mi">2138</span>	<span class="mf">0.028064</span>
+<span class="mi">366</span>	<span class="n">高雄市鹽埕區</span>	<span class="mi">126</span>	<span class="mi">1</span>	<span class="mi">4</span>	<span class="mi">5</span>	<span class="mi">131</span>	<span class="mf">0.038168</span>
+<span class="mi">367</span>	<span class="n">高雄市鼓山區</span>	<span class="mi">716</span>	<span class="mi">19</span>	<span class="mi">12</span>	<span class="mi">31</span>	<span class="mi">747</span>	<span class="mf">0.041499</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mstat_wide</span> <span class="o">=</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">homotot</span> <span class="o">=</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">homoF</span> <span class="o">+</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">homoM</span><span class="p">,</span>
+                               <span class="n">tot</span> <span class="o">=</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">homoF</span> <span class="o">+</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">homoM</span> <span class="o">+</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">hetero</span><span class="p">)</span>
+<span class="n">mstat_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>side_id</th>
+      <th>hetero</th>
+      <th>homoF</th>
+      <th>homoM</th>
+      <th>homotot</th>
+      <th>tot</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>南投縣中寮鄉</td>
+      <td>59</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>59</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>南投縣仁愛鄉</td>
+      <td>84</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>85</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>南投縣信義鄉</td>
+      <td>97</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>97</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>南投縣南投市</td>
+      <td>551</td>
+      <td>4</td>
+      <td>1</td>
+      <td>5</td>
+      <td>556</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>南投縣名間鄉</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>200</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>363</th>
+      <td>高雄市阿蓮區</td>
+      <td>156</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>158</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>高雄市鳥松區</td>
+      <td>280</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>283</td>
+    </tr>
+    <tr>
+      <th>365</th>
+      <td>高雄市鳳山區</td>
+      <td>2078</td>
+      <td>36</td>
+      <td>24</td>
+      <td>60</td>
+      <td>2138</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>高雄市鹽埕區</td>
+      <td>126</td>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+      <td>131</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>高雄市鼓山區</td>
+      <td>716</td>
+      <td>19</td>
+      <td>12</td>
+      <td>31</td>
+      <td>747</td>
+    </tr>
+  </tbody>
+</table>
+<p>368 rows × 6 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mstat_wide</span> <span class="o">=</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">homoratio</span> <span class="o">=</span> <span class="n">mstat_wide</span><span class="o">.</span><span class="n">homotot</span><span class="o">/</span><span class="n">mstat_wide</span><span class="o">.</span><span class="n">tot</span><span class="p">)</span>
+<span class="n">mstat_wide</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>side_id</th>
+      <th>hetero</th>
+      <th>homoF</th>
+      <th>homoM</th>
+      <th>homotot</th>
+      <th>tot</th>
+      <th>homoratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>南投縣中寮鄉</td>
+      <td>59</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>59</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>南投縣仁愛鄉</td>
+      <td>84</td>
+      <td>1</td>
+      <td>0</td>
+      <td>1</td>
+      <td>85</td>
+      <td>0.011765</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>南投縣信義鄉</td>
+      <td>97</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>97</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>南投縣南投市</td>
+      <td>551</td>
+      <td>4</td>
+      <td>1</td>
+      <td>5</td>
+      <td>556</td>
+      <td>0.008993</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>南投縣名間鄉</td>
+      <td>200</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>200</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>363</th>
+      <td>高雄市阿蓮區</td>
+      <td>156</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>158</td>
+      <td>0.012658</td>
+    </tr>
+    <tr>
+      <th>364</th>
+      <td>高雄市鳥松區</td>
+      <td>280</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>283</td>
+      <td>0.010601</td>
+    </tr>
+    <tr>
+      <th>365</th>
+      <td>高雄市鳳山區</td>
+      <td>2078</td>
+      <td>36</td>
+      <td>24</td>
+      <td>60</td>
+      <td>2138</td>
+      <td>0.028064</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>高雄市鹽埕區</td>
+      <td>126</td>
+      <td>1</td>
+      <td>4</td>
+      <td>5</td>
+      <td>131</td>
+      <td>0.038168</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>高雄市鼓山區</td>
+      <td>716</td>
+      <td>19</td>
+      <td>12</td>
+      <td>31</td>
+      <td>747</td>
+      <td>0.041499</td>
+    </tr>
+  </tbody>
+</table>
+<p>368 rows × 7 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="sorting">
+<h2>9. Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">#</a></h2>
+<p>列印出同婚對數相較於總對數的比例最高的10個鄉鎮市區</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">side_id</span>	<span class="n">hetero</span>	<span class="n">homoF</span>	<span class="n">homoM</span>	<span class="n">homotot</span>	<span class="n">tot</span>	<span class="n">homoratio</span>
+<span class="mi">72</span>	<span class="n">屏東縣獅子鄉</span>	<span class="mi">31</span>	<span class="mi">3</span>	<span class="mi">0</span>	<span class="mi">3</span>	<span class="mi">34</span>	<span class="mf">0.088235</span>
+<span class="mi">74</span>	<span class="n">屏東縣瑪家鄉</span>	<span class="mi">51</span>	<span class="mi">3</span>	<span class="mi">1</span>	<span class="mi">4</span>	<span class="mi">55</span>	<span class="mf">0.072727</span>
+<span class="mi">274</span>	<span class="n">花蓮縣新城鄉</span>	<span class="mi">101</span>	<span class="mi">5</span>	<span class="mi">2</span>	<span class="mi">7</span>	<span class="mi">108</span>	<span class="mf">0.064815</span>
+<span class="mi">78</span>	<span class="n">屏東縣車城鄉</span>	<span class="mi">31</span>	<span class="mi">1</span>	<span class="mi">1</span>	<span class="mi">2</span>	<span class="mi">33</span>	<span class="mf">0.060606</span>
+<span class="mi">68</span>	<span class="n">屏東縣泰武鄉</span>	<span class="mi">33</span>	<span class="mi">2</span>	<span class="mi">0</span>	<span class="mi">2</span>	<span class="mi">35</span>	<span class="mf">0.057143</span>
+<span class="mi">272</span>	<span class="n">花蓮縣壽豐鄉</span>	<span class="mi">83</span>	<span class="mi">5</span>	<span class="mi">0</span>	<span class="mi">5</span>	<span class="mi">88</span>	<span class="mf">0.056818</span>
+<span class="mi">346</span>	<span class="n">高雄市杉林區</span>	<span class="mi">53</span>	<span class="mi">2</span>	<span class="mi">1</span>	<span class="mi">3</span>	<span class="mi">56</span>	<span class="mf">0.053571</span>
+<span class="mi">130</span>	<span class="n">新北市烏來區</span>	<span class="mi">53</span>	<span class="mi">3</span>	<span class="mi">0</span>	<span class="mi">3</span>	<span class="mi">56</span>	<span class="mf">0.053571</span>
+<span class="mi">341</span>	<span class="n">高雄市左營區</span>	<span class="mi">993</span>	<span class="mi">27</span>	<span class="mi">25</span>	<span class="mi">52</span>	<span class="mi">1045</span>	<span class="mf">0.049761</span>
+<span class="mi">277</span>	<span class="n">花蓮縣秀林鄉</span>	<span class="mi">136</span>	<span class="mi">5</span>	<span class="mi">2</span>	<span class="mi">7</span>	<span class="mi">143</span>	<span class="mf">0.048951</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mstat_wide</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;homoratio&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>side_id</th>
+      <th>hetero</th>
+      <th>homoF</th>
+      <th>homoM</th>
+      <th>homotot</th>
+      <th>tot</th>
+      <th>homoratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>72</th>
+      <td>屏東縣獅子鄉</td>
+      <td>31</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>34</td>
+      <td>0.088235</td>
+    </tr>
+    <tr>
+      <th>74</th>
+      <td>屏東縣瑪家鄉</td>
+      <td>51</td>
+      <td>3</td>
+      <td>1</td>
+      <td>4</td>
+      <td>55</td>
+      <td>0.072727</td>
+    </tr>
+    <tr>
+      <th>274</th>
+      <td>花蓮縣新城鄉</td>
+      <td>101</td>
+      <td>5</td>
+      <td>2</td>
+      <td>7</td>
+      <td>108</td>
+      <td>0.064815</td>
+    </tr>
+    <tr>
+      <th>78</th>
+      <td>屏東縣車城鄉</td>
+      <td>31</td>
+      <td>1</td>
+      <td>1</td>
+      <td>2</td>
+      <td>33</td>
+      <td>0.060606</td>
+    </tr>
+    <tr>
+      <th>68</th>
+      <td>屏東縣泰武鄉</td>
+      <td>33</td>
+      <td>2</td>
+      <td>0</td>
+      <td>2</td>
+      <td>35</td>
+      <td>0.057143</td>
+    </tr>
+    <tr>
+      <th>272</th>
+      <td>花蓮縣壽豐鄉</td>
+      <td>83</td>
+      <td>5</td>
+      <td>0</td>
+      <td>5</td>
+      <td>88</td>
+      <td>0.056818</td>
+    </tr>
+    <tr>
+      <th>346</th>
+      <td>高雄市杉林區</td>
+      <td>53</td>
+      <td>2</td>
+      <td>1</td>
+      <td>3</td>
+      <td>56</td>
+      <td>0.053571</td>
+    </tr>
+    <tr>
+      <th>130</th>
+      <td>新北市烏來區</td>
+      <td>53</td>
+      <td>3</td>
+      <td>0</td>
+      <td>3</td>
+      <td>56</td>
+      <td>0.053571</td>
+    </tr>
+    <tr>
+      <th>341</th>
+      <td>高雄市左營區</td>
+      <td>993</td>
+      <td>27</td>
+      <td>25</td>
+      <td>52</td>
+      <td>1045</td>
+      <td>0.049761</td>
+    </tr>
+    <tr>
+      <th>277</th>
+      <td>花蓮縣秀林鄉</td>
+      <td>136</td>
+      <td>5</td>
+      <td>2</td>
+      <td>7</td>
+      <td>143</td>
+      <td>0.048951</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="summarizing-by-hand">
+<h2>10. Summarizing by hand<a class="headerlink" href="#summarizing-by-hand" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pc_path</span> <span class="o">=</span> <span class="s2">&quot;data/opendata108m040.csv&quot;</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">pc_path</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">raw</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
+[&#39;統計年度&#39;, &#39;按照別&#39;, &#39;區域別&#39;, &#39;婚姻類型&#39;, &#39;女方年齡或配偶一方年齡&#39;, &#39;男方年齡或配偶另一方年齡&#39;, &#39;結婚對數&#39;]
+[&#39;108&#39;, &#39;按登記日期分&#39;, &#39;新北市板橋區&#39;, &#39;不同性別&#39;, &#39;未滿15歲&#39;, &#39;15歲&#39;, &#39;0&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alldata</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">2</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">]):</span>
+    <span class="n">tdict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">row</span><span class="p">))</span>
+    <span class="k">try</span><span class="p">:</span>
+        <span class="n">tdict</span><span class="p">[</span><span class="s1">&#39;age_group&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tdict</span><span class="p">[</span><span class="s1">&#39;female_age_or_spouse1&#39;</span><span class="p">]</span> <span class="o">+</span> <span class="s2">&quot;__&quot;</span> <span class="o">+</span> <span class="n">tdict</span><span class="p">[</span><span class="s1">&#39;male_age_or_spouse2&#39;</span><span class="p">]</span>
+    <span class="k">except</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tdict</span><span class="p">)</span>
+    <span class="n">keys_to_remove</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;according&#39;</span><span class="p">,</span> <span class="s1">&#39;statistic_yyy&#39;</span><span class="p">,</span> <span class="s1">&#39;female_age_or_spouse1&#39;</span><span class="p">,</span> <span class="s1">&#39;male_age_or_spouse2&#39;</span><span class="p">]</span>
+    <span class="n">tdict</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tdict</span><span class="p">[</span><span class="s1">&#39;site_id&#39;</span><span class="p">][:</span><span class="mi">3</span><span class="p">]</span>
+    <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">keys_to_remove</span><span class="p">:</span>
+        <span class="n">tdict</span><span class="o">.</span><span class="n">pop</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+    <span class="n">alldata</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tdict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alldata</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
+[{&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__未滿15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__16歲&#39;, &#39;county&#39;: &#39;新北市&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<p>建立兩層的dict來累計每個county有多少個不同marriage_type的婚姻案例。內層為marriage_type，外層為county。預期結果如下。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;新北市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">23448</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">214</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">400</span><span class="p">},</span> <span class="s1">&#39;臺北市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">14350</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">187</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">297</span><span class="p">},</span> <span class="s1">&#39;桃園市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">13783</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">87</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">203</span><span class="p">},</span> <span class="s1">&#39;臺中市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">16755</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">86</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">262</span><span class="p">},</span> <span class="s1">&#39;臺南市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">10188</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">43</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">146</span><span class="p">},</span> <span class="s1">&#39;高雄市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">14939</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">148</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">248</span><span class="p">},</span> <span class="s1">&#39;宜蘭縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">2509</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">37</span><span class="p">},</span> <span class="s1">&#39;新竹縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">3279</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">19</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">48</span><span class="p">},</span> <span class="s1">&#39;苗栗縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">2835</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">11</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">40</span><span class="p">},</span> <span class="s1">&#39;彰化縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">6659</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">},</span> <span class="s1">&#39;南投縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">2544</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">8</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">19</span><span class="p">},</span> <span class="s1">&#39;雲林縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">3396</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">},</span> <span class="s1">&#39;嘉義縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">2372</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">},</span> <span class="s1">&#39;屏東縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">4218</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">22</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">67</span><span class="p">},</span> <span class="s1">&#39;臺東縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">1180</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">15</span><span class="p">},</span> <span class="s1">&#39;花蓮縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">1906</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">21</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">45</span><span class="p">},</span> <span class="s1">&#39;澎湖縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">613</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">},</span> <span class="s1">&#39;基隆市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">1977</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">13</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">28</span><span class="p">},</span> <span class="s1">&#39;新竹市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">2544</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">16</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">56</span><span class="p">},</span> <span class="s1">&#39;嘉義市&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">1363</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">14</span><span class="p">},</span> <span class="s1">&#39;金門縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">658</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">5</span><span class="p">},</span> <span class="s1">&#39;連江縣&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;不同性別&#39;</span><span class="p">:</span> <span class="mi">69</span><span class="p">,</span> <span class="s1">&#39;相同性別_男性&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">,</span> <span class="s1">&#39;相同性別_女性&#39;</span><span class="p">:</span> <span class="mi">0</span><span class="p">}}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mdict</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">alldata</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mdict</span><span class="p">:</span>
+        <span class="n">mdict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="p">{}</span>
+    <span class="k">if</span> <span class="n">row</span><span class="p">[</span><span class="s1">&#39;marriage_type&#39;</span><span class="p">]</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mdict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]]:</span>
+        <span class="n">mdict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]][</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;marriage_type&#39;</span><span class="p">]]</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="n">mdict</span><span class="p">[</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;county&#39;</span><span class="p">]][</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;marriage_type&#39;</span><span class="p">]]</span> <span class="o">+=</span> <span class="nb">int</span><span class="p">(</span><span class="n">row</span><span class="p">[</span><span class="s1">&#39;marry_pair&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mdict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;新北市&#39;: {&#39;不同性別&#39;: 23448, &#39;相同性別_男性&#39;: 214, &#39;相同性別_女性&#39;: 400}, &#39;臺北市&#39;: {&#39;不同性別&#39;: 14350, &#39;相同性別_男性&#39;: 187, &#39;相同性別_女性&#39;: 297}, &#39;桃園市&#39;: {&#39;不同性別&#39;: 13783, &#39;相同性別_男性&#39;: 87, &#39;相同性別_女性&#39;: 203}, &#39;臺中市&#39;: {&#39;不同性別&#39;: 16755, &#39;相同性別_男性&#39;: 86, &#39;相同性別_女性&#39;: 262}, &#39;臺南市&#39;: {&#39;不同性別&#39;: 10188, &#39;相同性別_男性&#39;: 43, &#39;相同性別_女性&#39;: 146}, &#39;高雄市&#39;: {&#39;不同性別&#39;: 14939, &#39;相同性別_男性&#39;: 148, &#39;相同性別_女性&#39;: 248}, &#39;宜蘭縣&#39;: {&#39;不同性別&#39;: 2509, &#39;相同性別_男性&#39;: 13, &#39;相同性別_女性&#39;: 37}, &#39;新竹縣&#39;: {&#39;不同性別&#39;: 3279, &#39;相同性別_男性&#39;: 19, &#39;相同性別_女性&#39;: 48}, &#39;苗栗縣&#39;: {&#39;不同性別&#39;: 2835, &#39;相同性別_男性&#39;: 11, &#39;相同性別_女性&#39;: 40}, &#39;彰化縣&#39;: {&#39;不同性別&#39;: 6659, &#39;相同性別_男性&#39;: 15, &#39;相同性別_女性&#39;: 33}, &#39;南投縣&#39;: {&#39;不同性別&#39;: 2544, &#39;相同性別_男性&#39;: 8, &#39;相同性別_女性&#39;: 19}, &#39;雲林縣&#39;: {&#39;不同性別&#39;: 3396, &#39;相同性別_男性&#39;: 6, &#39;相同性別_女性&#39;: 21}, &#39;嘉義縣&#39;: {&#39;不同性別&#39;: 2372, &#39;相同性別_男性&#39;: 4, &#39;相同性別_女性&#39;: 21}, &#39;屏東縣&#39;: {&#39;不同性別&#39;: 4218, &#39;相同性別_男性&#39;: 22, &#39;相同性別_女性&#39;: 67}, &#39;臺東縣&#39;: {&#39;不同性別&#39;: 1180, &#39;相同性別_男性&#39;: 6, &#39;相同性別_女性&#39;: 15}, &#39;花蓮縣&#39;: {&#39;不同性別&#39;: 1906, &#39;相同性別_男性&#39;: 21, &#39;相同性別_女性&#39;: 45}, &#39;澎湖縣&#39;: {&#39;不同性別&#39;: 613, &#39;相同性別_男性&#39;: 2, &#39;相同性別_女性&#39;: 6}, &#39;基隆市&#39;: {&#39;不同性別&#39;: 1977, &#39;相同性別_男性&#39;: 13, &#39;相同性別_女性&#39;: 28}, &#39;新竹市&#39;: {&#39;不同性別&#39;: 2544, &#39;相同性別_男性&#39;: 16, &#39;相同性別_女性&#39;: 56}, &#39;嘉義市&#39;: {&#39;不同性別&#39;: 1363, &#39;相同性別_男性&#39;: 5, &#39;相同性別_女性&#39;: 14}, &#39;金門縣&#39;: {&#39;不同性別&#39;: 658, &#39;相同性別_男性&#39;: 2, &#39;相同性別_女性&#39;: 5}, &#39;連江縣&#39;: {&#39;不同性別&#39;: 69, &#39;相同性別_男性&#39;: 0, &#39;相同性別_女性&#39;: 0}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;county</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">mdict</span><span class="p">[</span><span class="s1">&#39;新北市&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())))</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">mdict</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;不同性別&#39;</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;相同性別_男性&#39;</span><span class="p">],</span> <span class="n">v</span><span class="p">[</span><span class="s1">&#39;相同性別_女性&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>county	不同性別	相同性別_男性	相同性別_女性
+新北市	23448	214	400
+臺北市	14350	187	297
+桃園市	13783	87	203
+臺中市	16755	86	262
+臺南市	10188	43	146
+高雄市	14939	148	248
+宜蘭縣	2509	13	37
+新竹縣	3279	19	48
+苗栗縣	2835	11	40
+彰化縣	6659	15	33
+南投縣	2544	8	19
+雲林縣	3396	6	21
+嘉義縣	2372	4	21
+屏東縣	4218	22	67
+臺東縣	1180	6	15
+花蓮縣	1906	21	45
+澎湖縣	613	2	6
+基隆市	1977	13	28
+新竹市	2544	16	56
+嘉義市	1363	5	14
+金門縣	658	2	5
+連江縣	69	0	0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./AS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

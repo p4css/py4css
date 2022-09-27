@@ -53,7 +53,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="P05 READ Files" href="P05_read_csv_json.html" />
-    <link rel="prev" title="P04-blank For-if applications" href="P04_2b_for_if.html" />
+    <link rel="prev" title="P04_2-blank For-if applications" href="P04_2b_for_if.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -175,24 +175,36 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
   </ul>
  </li>
- <li class="toctree-l1">
+ <li class="toctree-l1 has-children">
   <a class="reference internal" href="P04_1_for.html">
-   P04-For-if-else
+   P04 For-loop
   </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_1p.html">
+     P04_1p Practice for-loop
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="P04_2_for_if.html">
    P04 For-if applications
   </a>
-  <input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
-  <label for="toctree-checkbox-4">
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
    <i class="fas fa-chevron-down">
    </i>
   </label>
   <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="P04_2b_for_if.html">
-     P04-blank For-if applications
+     P04_2-blank For-if applications
     </a>
    </li>
    <li class="toctree-l2 current active">
@@ -213,8 +225,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="P05_read_csv_json.html">
    P05 READ Files
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
-  <label for="toctree-checkbox-5">
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -230,8 +242,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="P06_pandas.html">
    P06 Pandas
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
-  <label for="toctree-checkbox-6">
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -310,8 +322,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../notebooks.html">
    Content with notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
-  <label for="toctree-checkbox-7">
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -725,8 +737,9 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Colab or Jupyterlab</span>
-<span class="o">!</span>wget https://raw.githubusercontent.com/p4css/py4css/main/data/twitter_user1_hashed.csv -o twitter_user1_hashed.csv
-<span class="n">fpath</span> <span class="o">=</span> <span class="s2">&quot;twitter_user1_hashed.csv&quot;</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="o">!</span>wget https://raw.githubusercontent.com/p4css/py4css/main/data/twitter_user1_hashed.csv -O twitter_user1_hashed.csv
+<span class="n">fpath</span> <span class="o">=</span> <span class="s2">&quot;twitter_user1_hashed.csv&quot;</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="n">fpath</span><span class="p">,</span> <span class="n">on_bad_lines</span><span class="o">=</span><span class="s1">&#39;skip&#39;</span><span class="p">)</span> 
 <span class="n">users</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">users</span><span class="p">)</span>
@@ -734,10 +747,29 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">1</span><span class="p">]</span>
-    <span class="n">fpath</span> <span class="o">=</span> <span class="s2">&quot;twitter_user1_hashed.csv&quot;</span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-                                      <span class="o">^</span>
-<span class="ne">SyntaxError</span>: invalid syntax
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-09-27 09:59:22--  https://raw.githubusercontent.com/p4css/py4css/main/data/twitter_user1_hashed.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+Length: 98747 (96K) [text/plain]
+Saving to: &#39;twitter_user1_hashed.csv&#39;
+
+
+twitter_user1_hashe   0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>twitter_user1_hashe 100%[===================&gt;]  96.43K  --.-KB/s    in 0.05s   
+
+2022-09-27 09:59:22 (2.06 MB/s) - &#39;twitter_user1_hashed.csv&#39; saved [98747/98747]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -1045,7 +1077,7 @@ en-gb	1
         <i class="fas fa-angle-left"></i>
         <div class="prev-next-info">
             <p class="prev-next-subtitle">previous</p>
-            <p class="prev-next-title">P04-blank For-if applications</p>
+            <p class="prev-next-title">P04_2-blank For-if applications</p>
         </div>
     </a>
     <a class='right-next' id="next-link" href="P05_read_csv_json.html" title="next page">
