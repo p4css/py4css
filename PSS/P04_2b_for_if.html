@@ -975,6 +975,55 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:910,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">910</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">911</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span> <span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/26%2011:00&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:917,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">915</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">917</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="ne">JSONDecodeError</span>: [Errno Expecting value] : 0
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="traverse-aqi-content">
@@ -993,12 +1042,35 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;1&#39;,
+ &#39;SiteName&#39;: &#39;二林&#39;,
+ &#39;AQI&#39;: &#39;66&#39;,
+ &#39;ViewName&#39;: &#39;二林&#39;,
+ &#39;AreaName&#39;: &#39;中部空品區&#39;,
+ &#39;AreaID&#39;: &#39;3&#39;,
+ &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;,
+ &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;,
+ &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;,
+ &#39;TWD97_Lon&#39;: 120.409653,
+ &#39;TWD97_Lat&#39;: 23.925175,
+ &#39;SiteType&#39;: &#39;一般站&#39;,
+ &#39;SiteType2&#39;: &#39;中央政府&#39;,
+ &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the length of the data</span>
 
 <span class="c1"># Print all keys of one data entry</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;SiteID&#39;, &#39;SiteName&#39;, &#39;AQI&#39;, &#39;ViewName&#39;, &#39;AreaName&#39;, &#39;AreaID&#39;, &#39;COUNTY_Eng&#39;, &#39;POLLUTANT&#39;, &#39;SiteAddres&#39;, &#39;TWD97_Lon&#39;, &#39;TWD97_Lat&#39;, &#39;SiteType&#39;, &#39;SiteType2&#39;, &#39;siteowner&#39;])
 </pre></div>
 </div>
 </div>
@@ -1021,6 +1093,96 @@ title="Print to PDF"
 <span class="c1">#     print(&quot;{}\t{}\t{}&quot;.format(site[&#39;SiteName&#39;], site[&#39;AQI&#39;], site[&#39;POLLUTANT&#39;]))</span>
     
 <span class="c1"># Print AQI and POLLUTANT of the first 10 sites</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林	66	細懸浮微粒
+三重	28	
+三義	36	
+土城	13	
+士林	20	
+大同	39	
+大里	57	細懸浮微粒
+大園	23	
+大寮	84	細懸浮微粒
+小港	76	細懸浮微粒
+中山	18	
+中壢	20	
+仁武	78	細懸浮微粒
+斗六	57	細懸浮微粒
+冬山	13	
+古亭	14	
+左營	65	細懸浮微粒
+平鎮	15	
+永和	19	
+安南	62	細懸浮微粒
+朴子	67	細懸浮微粒
+汐止	13	
+竹山	43	
+竹東	29	
+西屯	59	細懸浮微粒
+沙鹿	43	
+宜蘭	13	
+忠明	54	細懸浮微粒
+松山	14	
+板橋	22	
+林口	13	
+林園	68	細懸浮微粒
+花蓮	16	
+金門	47	
+前金	67	細懸浮微粒
+前鎮	65	細懸浮微粒
+南投	62	細懸浮微粒
+屏東	79	細懸浮微粒
+恆春	10	
+美濃	67	細懸浮微粒
+苗栗	21	
+埔里	43	
+桃園	19	
+馬公	36	
+馬祖	71	臭氧八小時
+基隆	17	
+崙背	61	細懸浮微粒
+淡水	17	
+麥寮	54	細懸浮微粒
+善化	67	細懸浮微粒
+復興	61	細懸浮微粒
+湖口	30	
+菜寮	20	
+陽明	18	
+新竹	19	
+新店	12	
+新莊	21	
+新港	71	細懸浮微粒
+新營	60	細懸浮微粒
+楠梓	70	細懸浮微粒
+萬里	29	
+萬華	12	
+嘉義	71	細懸浮微粒
+彰化	58	細懸浮微粒
+臺西	62	細懸浮微粒
+臺東	9	
+臺南	66	細懸浮微粒
+鳳山	73	細懸浮微粒
+潮州	63	細懸浮微粒
+線西	48	
+橋頭	71	細懸浮微粒
+頭份	13	
+龍潭	13	
+豐原	52	細懸浮微粒
+關山	7	
+觀音	54	細懸浮微粒
+彰化(員林)	65	細懸浮微粒
+高雄(湖內)	77	細懸浮微粒
+臺南(麻豆)	58	細懸浮微粒
+屏東(琉球)	-1	
+桃園(三民)	18	
+新北(樹林)	20	
+臺南(學甲)	51	細懸浮微粒
+屏東(枋寮)	47	
+富貴角	34	
+大城	66	細懸浮微粒
 </pre></div>
 </div>
 </div>
@@ -1082,6 +1244,92 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;enumerate&#39;&gt;
+0 二林 66 細懸浮微粒
+1 三重 28 
+2 三義 36 
+3 土城 13 
+4 士林 20 
+5 大同 39 
+6 大里 57 細懸浮微粒
+7 大園 23 
+8 大寮 84 細懸浮微粒
+9 小港 76 細懸浮微粒
+10 中山 18 
+11 中壢 20 
+12 仁武 78 細懸浮微粒
+13 斗六 57 細懸浮微粒
+14 冬山 13 
+15 古亭 14 
+16 左營 65 細懸浮微粒
+17 平鎮 15 
+18 永和 19 
+19 安南 62 細懸浮微粒
+20 朴子 67 細懸浮微粒
+21 汐止 13 
+22 竹山 43 
+23 竹東 29 
+24 西屯 59 細懸浮微粒
+25 沙鹿 43 
+26 宜蘭 13 
+27 忠明 54 細懸浮微粒
+28 松山 14 
+29 板橋 22 
+30 林口 13 
+31 林園 68 細懸浮微粒
+32 花蓮 16 
+33 金門 47 
+34 前金 67 細懸浮微粒
+35 前鎮 65 細懸浮微粒
+36 南投 62 細懸浮微粒
+37 屏東 79 細懸浮微粒
+38 恆春 10 
+39 美濃 67 細懸浮微粒
+40 苗栗 21 
+41 埔里 43 
+42 桃園 19 
+43 馬公 36 
+44 馬祖 71 臭氧八小時
+45 基隆 17 
+46 崙背 61 細懸浮微粒
+47 淡水 17 
+48 麥寮 54 細懸浮微粒
+49 善化 67 細懸浮微粒
+50 復興 61 細懸浮微粒
+51 湖口 30 
+52 菜寮 20 
+53 陽明 18 
+54 新竹 19 
+55 新店 12 
+56 新莊 21 
+57 新港 71 細懸浮微粒
+58 新營 60 細懸浮微粒
+59 楠梓 70 細懸浮微粒
+60 萬里 29 
+61 萬華 12 
+62 嘉義 71 細懸浮微粒
+63 彰化 58 細懸浮微粒
+64 臺西 62 細懸浮微粒
+65 臺東 9 
+66 臺南 66 細懸浮微粒
+67 鳳山 73 細懸浮微粒
+68 潮州 63 細懸浮微粒
+69 線西 48 
+70 橋頭 71 細懸浮微粒
+71 頭份 13 
+72 龍潭 13 
+73 豐原 52 細懸浮微粒
+74 關山 7 
+75 觀音 54 細懸浮微粒
+76 彰化(員林) 65 細懸浮微粒
+77 高雄(湖內) 77 細懸浮微粒
+78 臺南(麻豆) 58 細懸浮微粒
+79 屏東(琉球) -1 
+80 桃園(三民) 18 
+81 新北(樹林) 20 
+82 臺南(學甲) 51 細懸浮微粒
+83 屏東(枋寮) 47 
+84 富貴角 34 
+85 大城 66 細懸浮微粒
 </pre></div>
 </div>
 </div>
@@ -1105,10 +1353,22 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;三重&quot;</span><span class="p">,</span> <span class="s2">&quot;萬里&quot;</span><span class="p">,</span> <span class="s2">&quot;萬華&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;61&#39;, &#39;SiteName&#39;: &#39;萬里&#39;, &#39;AQI&#39;: &#39;29&#39;, &#39;ViewName&#39;: &#39;萬里&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市萬里區瑪鋉路221號&#39;, &#39;TWD97_Lon&#39;: 121.689881, &#39;TWD97_Lat&#39;: 25.179667, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;62&#39;, &#39;SiteName&#39;: &#39;萬華&#39;, &#39;AQI&#39;: &#39;12&#39;, &#39;ViewName&#39;: &#39;萬華&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Taipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;臺北市萬華區中華路1段66號&#39;, &#39;TWD97_Lon&#39;: 121.507972, &#39;TWD97_Lat&#39;: 25.046503, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
@@ -1123,6 +1383,13 @@ title="Print to PDF"
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqdict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Initialize a new dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;61&#39;, &#39;SiteName&#39;: &#39;萬里&#39;, &#39;AQI&#39;: &#39;29&#39;, &#39;ViewName&#39;: &#39;萬里&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市萬里區瑪鋉路221號&#39;, &#39;TWD97_Lon&#39;: 121.689881, &#39;TWD97_Lat&#39;: 25.179667, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;62&#39;, &#39;SiteName&#39;: &#39;萬華&#39;, &#39;AQI&#39;: &#39;12&#39;, &#39;ViewName&#39;: &#39;萬華&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Taipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;臺北市萬華區中華路1段66號&#39;, &#39;TWD97_Lon&#39;: 121.507972, &#39;TWD97_Lat&#39;: 25.046503, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
@@ -1161,6 +1428,96 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 66 普通
+三重 28 良好
+三義 36 良好
+土城 13 良好
+士林 20 良好
+大同 39 良好
+大里 57 普通
+大園 23 良好
+大寮 84 普通
+小港 76 普通
+中山 18 良好
+中壢 20 良好
+仁武 78 普通
+斗六 57 普通
+冬山 13 良好
+古亭 14 良好
+左營 65 普通
+平鎮 15 良好
+永和 19 良好
+安南 62 普通
+朴子 67 普通
+汐止 13 良好
+竹山 43 良好
+竹東 29 良好
+西屯 59 普通
+沙鹿 43 良好
+宜蘭 13 良好
+忠明 54 普通
+松山 14 良好
+板橋 22 良好
+林口 13 良好
+林園 68 普通
+花蓮 16 良好
+金門 47 良好
+前金 67 普通
+前鎮 65 普通
+南投 62 普通
+屏東 79 普通
+恆春 10 良好
+美濃 67 普通
+苗栗 21 良好
+埔里 43 良好
+桃園 19 良好
+馬公 36 良好
+馬祖 71 普通
+基隆 17 良好
+崙背 61 普通
+淡水 17 良好
+麥寮 54 普通
+善化 67 普通
+復興 61 普通
+湖口 30 良好
+菜寮 20 良好
+陽明 18 良好
+新竹 19 良好
+新店 12 良好
+新莊 21 良好
+新港 71 普通
+新營 60 普通
+楠梓 70 普通
+萬里 29 良好
+萬華 12 良好
+嘉義 71 普通
+彰化 58 普通
+臺西 62 普通
+臺東 9 良好
+臺南 66 普通
+鳳山 73 普通
+潮州 63 普通
+線西 48 良好
+橋頭 71 普通
+頭份 13 良好
+龍潭 13 良好
+豐原 52 普通
+關山 7 良好
+觀音 54 普通
+彰化(員林) 65 普通
+高雄(湖內) 77 普通
+臺南(麻豆) 58 普通
+屏東(琉球) -1 Unknown
+桃園(三民) 18 良好
+新北(樹林) 20 良好
+臺南(學甲) 51 普通
+屏東(枋寮) 47 良好
+富貴角 34 良好
+大城 66 普通
+</pre></div>
+</div>
+</div>
 </div>
 <section id="option-rescale-better">
 <h3>(Option) Rescale better<a class="headerlink" href="#option-rescale-better" title="Permalink to this headline">#</a></h3>
@@ -1180,6 +1537,92 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{-1: &#39;Unknown&#39;, 50: &#39;良好&#39;, 100: &#39;普通&#39;, 150: &#39;對敏感族群不健康&#39;, 200: &#39;對所有族群不健康&#39;, 300: &#39;非常不健康&#39;, 1000: &#39;危害&#39;}
+二林 66 普通 普通
+三重 28 良好 良好
+三義 36 良好 良好
+土城 13 良好 良好
+士林 20 良好 良好
+大同 39 良好 良好
+大里 57 普通 普通
+大園 23 良好 良好
+大寮 84 普通 普通
+小港 76 普通 普通
+中山 18 良好 良好
+中壢 20 良好 良好
+仁武 78 普通 普通
+斗六 57 普通 普通
+冬山 13 良好 良好
+古亭 14 良好 良好
+左營 65 普通 普通
+平鎮 15 良好 良好
+永和 19 良好 良好
+安南 62 普通 普通
+朴子 67 普通 普通
+汐止 13 良好 良好
+竹山 43 良好 良好
+竹東 29 良好 良好
+西屯 59 普通 普通
+沙鹿 43 良好 良好
+宜蘭 13 良好 良好
+忠明 54 普通 普通
+松山 14 良好 良好
+板橋 22 良好 良好
+林口 13 良好 良好
+林園 68 普通 普通
+花蓮 16 良好 良好
+金門 47 良好 良好
+前金 67 普通 普通
+前鎮 65 普通 普通
+南投 62 普通 普通
+屏東 79 普通 普通
+恆春 10 良好 良好
+美濃 67 普通 普通
+苗栗 21 良好 良好
+埔里 43 良好 良好
+桃園 19 良好 良好
+馬公 36 良好 良好
+馬祖 71 普通 普通
+基隆 17 良好 良好
+崙背 61 普通 普通
+淡水 17 良好 良好
+麥寮 54 普通 普通
+善化 67 普通 普通
+復興 61 普通 普通
+湖口 30 良好 良好
+菜寮 20 良好 良好
+陽明 18 良好 良好
+新竹 19 良好 良好
+新店 12 良好 良好
+新莊 21 良好 良好
+新港 71 普通 普通
+新營 60 普通 普通
+楠梓 70 普通 普通
+萬里 29 良好 良好
+萬華 12 良好 良好
+嘉義 71 普通 普通
+彰化 58 普通 普通
+臺西 62 普通 普通
+臺東 9 良好 良好
+臺南 66 普通 普通
+鳳山 73 普通 普通
+潮州 63 普通 普通
+線西 48 良好 良好
+橋頭 71 普通 普通
+頭份 13 良好 良好
+龍潭 13 良好 良好
+豐原 52 普通 普通
+關山 7 良好 良好
+觀音 54 普通 普通
+彰化(員林) 65 普通 普通
+高雄(湖內) 77 普通 普通
+臺南(麻豆) 58 普通 普通
+屏東(琉球) -1 Unknown Unknown
+桃園(三民) 18 良好 良好
+新北(樹林) 20 良好 良好
+臺南(學甲) 51 普通 普通
+屏東(枋寮) 47 良好 良好
+富貴角 34 良好 良好
+大城 66 普通 普通
 </pre></div>
 </div>
 </div>
@@ -1208,6 +1651,12 @@ title="Print to PDF"
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>大寮 84
+屏東(琉球) -1
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="use-built-in-functions">
@@ -1225,6 +1674,11 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 82 197 13 15.153846153846153
+[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 54, 65, 77, 58, -1, 18, 20, 51, 47, 34, 66]
+大寮 84
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84
 </pre></div>
 </div>
 </div>
@@ -1258,7 +1712,12 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 45, 65, 77, 58, 8, 18, 20, 51, 47, 34, 66]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 54, 65, 77, 58, -1, 18, 20, 51, 47, 34, 66]
+大寮 84
+小港 76
+仁武 78
+屏東 79
+高雄(湖內) 77
 </pre></div>
 </div>
 </div>
@@ -1282,55 +1741,10 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>77
-二林 66
-三義 36
-大同 39
-大里 57
-大寮 84
-小港 76
-仁武 78
-斗六 57
-左營 65
-安南 62
-朴子 67
-竹山 43
-西屯 59
-沙鹿 43
-忠明 54
-林園 68
-金門 47
-前金 67
-前鎮 65
-南投 62
-屏東 79
-美濃 67
-埔里 43
-馬公 36
-馬祖 71
-崙背 61
-麥寮 54
-善化 67
-復興 61
-新港 71
-新營 60
-楠梓 70
-嘉義 71
-彰化 58
-臺西 62
-臺南 66
-鳳山 73
-潮州 63
-線西 48
-橋頭 71
-豐原 52
-觀音 45
-彰化(員林) 65
-高雄(湖內) 77
-臺南(麻豆) 58
-臺南(學甲) 51
-屏東(枋寮) 47
-大城 66
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103
+金門 126
+馬公 115
+馬祖 122
 </pre></div>
 </div>
 </div>
@@ -1396,10 +1810,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]</span>
-    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ND&quot;</span><span class="p">:</span>
-    <span class="o">^</span>
-<span class="ne">IndentationError</span>: unexpected indent
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84, 79, 78, 77, 76, 73, 71, 71, 71, 71, 70, 68, 67, 67, 67, 67, 66, 66, 66, 65, 65, 65, 63, 62, 62, 62, 61, 61, 60, 59, 58, 58, 57, 57, 54, 54, 54, 52, 51, 48, 47, 47, 43, 43, 43, 39, 36, 36, 34, 30, 29, 29, 28, 23, 22, 21, 21, 20, 20, 20, 20, 19, 19, 19, 18, 18, 18, 17, 17, 16, 15, 14, 14, 13, 13, 13, 13, 13, 13, 13, 12, 12, 10, 9, 7, -1]
 </pre></div>
 </div>
 </div>
