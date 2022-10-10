@@ -2823,6 +2823,21 @@ Name: account_creation_date, Length: 744, dtype: datetime64[ns]
 <section id="plot-with-chinese-font">
 <h4>Plot with Chinese font<a class="headerlink" href="#plot-with-chinese-font" title="Permalink to this headline">#</a></h4>
 <p><a class="reference external" href="https://colab.research.google.com/github/willismax/matplotlib_show_chinese_in_colab/blob/master/matplotlib_show_chinese_in_colab.ipynb">https://colab.research.google.com/github/willismax/matplotlib_show_chinese_in_colab/blob/master/matplotlib_show_chinese_in_colab.ipynb</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Colab 進行matplotlib繪圖時顯示繁體中文
+# 下載台北思源黑體並命名taipei_sans_tc_beta.ttf，移至指定路徑
+!wget -O TaipeiSansTCBeta-Regular.ttf https://drive.google.com/uc?id=1eGAsTN1HBpJAkeVM57_C7ccp7hbgSz3_&amp;export=download
+
+import matplotlib as mpl
+import matplotlib.pyplot as plt 
+from matplotlib.font_manager import fontManager
+
+# 改style要在改font之前
+# plt.style.use(&#39;seaborn&#39;)  
+
+fontManager.addfont(&#39;TaipeiSansTCBeta-Regular.ttf&#39;)
+mpl.rc(&#39;font&#39;, family=&#39;Taipei Sans TC Beta&#39;)
+</pre></div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib</span>
@@ -3160,34 +3175,34 @@ Name: account_creation_date, Length: 744, dtype: datetime64[ns]
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.435015</td>
-      <td>0.093338</td>
-      <td>0.348671</td>
-      <td>0.146821</td>
+      <td>0.290819</td>
+      <td>0.555985</td>
+      <td>0.192211</td>
+      <td>0.006599</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.789829</td>
-      <td>0.433830</td>
-      <td>0.401405</td>
-      <td>0.845208</td>
+      <td>0.279408</td>
+      <td>0.574047</td>
+      <td>0.810338</td>
+      <td>0.212697</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.427958</td>
-      <td>0.633161</td>
-      <td>0.484814</td>
-      <td>0.187154</td>
+      <td>0.164325</td>
+      <td>0.353751</td>
+      <td>0.558562</td>
+      <td>0.835319</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.125870</td>
-      <td>0.194198</td>
-      <td>0.982795</td>
-      <td>0.810197</td>
+      <td>0.566265</td>
+      <td>0.497106</td>
+      <td>0.246790</td>
+      <td>0.266281</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -3251,19 +3266,19 @@ Name: account_creation_date, Length: 744, dtype: datetime64[ns]
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.224844</td>
-      <td>0.789829</td>
-      <td>0.263584</td>
-      <td>0.750077</td>
-      <td>0.698386</td>
+      <td>0.570226</td>
+      <td>0.290819</td>
+      <td>0.565016</td>
+      <td>1.002549</td>
+      <td>0.206098</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.553828</td>
-      <td>0.427958</td>
-      <td>0.413679</td>
-      <td>1.467609</td>
-      <td>0.623043</td>
+      <td>0.730589</td>
+      <td>0.566265</td>
+      <td>0.425428</td>
+      <td>0.805352</td>
+      <td>0.569039</td>
     </tr>
   </tbody>
 </table>
