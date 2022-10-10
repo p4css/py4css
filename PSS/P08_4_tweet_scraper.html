@@ -266,6 +266,11 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
+  <a class="reference internal" href="P08_get_web_json.html">
+   Scraping with Web API
+  </a>
+ </li>
+ <li class="toctree-l1">
   <a class="reference internal" href="P08_3_cases.html">
    P08-3 Scraping cases
   </a>
@@ -687,18 +692,18 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># pip install tweepy</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># API 1.0?</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">tweepy</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuth1UserHandler</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>    <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span>
+<span class="ne">----&gt; </span><span class="mi">8</span>    <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tweepy&#39;
+<span class="ne">NameError</span>: name &#39;consumer_key&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -723,7 +728,7 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
 
-<span class="n">client</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="p">)</span>
+<span class="n">client</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="s2">&quot;AAAAAAAAAAAAAAAAAAAAALXhhAEAAAAAL0PecvetxlytIdaoTYkkc5vZ14k%3Dh7EpA9gzwEieZQy5EqbOBvV3OuZ9epUEInYFL5O3FZGGsVmz8l&quot;</span><span class="p">)</span>
 <span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">client</span><span class="p">)</span>
 </pre></div>
 </div>
@@ -750,9 +755,166 @@ title="Print to PDF"
 </div>
 </div>
 </div>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.tweepy.org/en/stable/client.html#tweepy.Client.search_all_tweets">https://docs.tweepy.org/en/stable/client.html#tweepy.Client.search_all_tweets</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/an-extensive-guide-to-collecting-tweets-from-twitter-api-v2-for-academic-research-using-python-3-518fcb71df2a">https://towardsdatascience.com/an-extensive-guide-to-collecting-tweets-from-twitter-api-v2-for-academic-research-using-python-3-518fcb71df2a</a></p></li>
+<li><p>Very Useful! <a class="reference external" href="https://dev.to/twitterdev/a-comprehensive-guide-for-using-the-twitter-api-v2-using-tweepy-in-python-15d9">https://dev.to/twitterdev/a-comprehensive-guide-for-using-the-twitter-api-v2-using-tweepy-in-python-15d9</a></p></li>
+</ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search_recent_tweets</span><span class="p">(</span><span class="s2">&quot;taiwan&quot;</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search_all_tweets</span><span class="p">(</span><span class="s2">&quot;pelosi&quot;</span><span class="p">,</span> 
+                                  <span class="n">start_time</span> <span class="o">=</span> <span class="s2">&quot;2022-07-10T00:00:00Z&quot;</span><span class="p">,</span> 
+                                  <span class="n">end_time</span><span class="o">=</span><span class="s2">&quot;2022-08-10T00:00:00Z&quot;</span><span class="p">,</span> 
+                                  <span class="c1"># tweet_fields=[&#39;context_annotations&#39;, &#39;created_at&#39;],</span>
+                                  <span class="n">tweet_fields</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_user_id&#39;</span><span class="p">,</span><span class="s1">&#39;geo&#39;</span><span class="p">,</span>
+                                                 <span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;lang&#39;</span><span class="p">,</span><span class="s1">&#39;public_metrics&#39;</span><span class="p">,</span><span class="s1">&#39;referenced_tweets&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">],</span>
+                                  <span class="n">user_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;username&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;public_metrics&#39;</span><span class="p">],</span>
+                                  <span class="c1"># user_fields=[&#39;profile_image_url&#39;],</span>
+                                  <span class="n">expansions</span><span class="o">=</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span>
+                                  <span class="n">max_results</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">tweets</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;newest_id&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tweets</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;oldest_id&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tweets</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;result_count&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tweets</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s1">&#39;next_token&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1557154759597068288
+1557154741037178883
+10
+b26v89c19zqg8o3fpz5n27ue2y7rfzkw43nlwi8w09ev1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(tweets.data[1].text)</span>
+<span class="n">tweets</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">created_at</span>
+<span class="n">tweets</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="o">.</span><span class="n">public_metrics</span>
+<span class="nb">dict</span><span class="p">(</span><span class="n">tweets</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;edit_history_tweet_ids&#39;: [&#39;1557154758816940037&#39;],
+ &#39;id&#39;: 1557154758816940037,
+ &#39;lang&#39;: &#39;en&#39;,
+ &#39;text&#39;: &#39;RT @llanier67: Pelosi took her son, Paul Jr. on this last trip to Asia &amp;amp; to Ukraine. Turns out Paul Jr is on the boards of 2 lithium compan…&#39;,
+ &#39;author_id&#39;: 1289616453407109120,
+ &#39;conversation_id&#39;: 1557154758816940037,
+ &#39;referenced_tweets&#39;: [&lt;ReferencedTweet id=1556779434836992002 type=retweeted],
+ &#39;source&#39;: &#39;Twitter for iPhone&#39;,
+ &#39;created_at&#39;: datetime.datetime(2022, 8, 9, 23, 59, 59, tzinfo=datetime.timezone.utc),
+ &#39;public_metrics&#39;: {&#39;retweet_count&#39;: 13622,
+  &#39;reply_count&#39;: 0,
+  &#39;like_count&#39;: 0,
+  &#39;quote_count&#39;: 0}}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Replace with your own search query</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;covid -is:retweet&#39;</span>
+
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search_all_tweets</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> 
+                                  <span class="n">tweet_fields</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_user_id&#39;</span><span class="p">,</span><span class="s1">&#39;geo&#39;</span><span class="p">,</span>
+                                                 <span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;lang&#39;</span><span class="p">,</span><span class="s1">&#39;public_metrics&#39;</span><span class="p">,</span><span class="s1">&#39;referenced_tweets&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">],</span>
+                                  <span class="n">user_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;username&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;public_metrics&#39;</span><span class="p">,</span> <span class="s1">&#39;profile_image_url&#39;</span><span class="p">],</span>
+                                  <span class="n">expansions</span><span class="o">=</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="n">max_results</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Get users list from the includes object</span>
+<span class="n">users</span> <span class="o">=</span> <span class="p">{</span><span class="n">u</span><span class="p">[</span><span class="s2">&quot;id&quot;</span><span class="p">]:</span> <span class="n">u</span> <span class="k">for</span> <span class="n">u</span> <span class="ow">in</span> <span class="n">tweets</span><span class="o">.</span><span class="n">includes</span><span class="p">[</span><span class="s1">&#39;users&#39;</span><span class="p">]}</span>
+
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">users</span><span class="p">[</span><span class="n">tweet</span><span class="o">.</span><span class="n">author_id</span><span class="p">]:</span>
+        <span class="n">user</span> <span class="o">=</span> <span class="n">users</span><span class="p">[</span><span class="n">tweet</span><span class="o">.</span><span class="n">author_id</span><span class="p">]</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">username</span><span class="p">)</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">user</span><span class="o">.</span><span class="n">profile_image_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>fosfene
+https://pbs.twimg.com/profile_images/1061893008298311680/xUnwYXru_normal.jpg
+LinasTrudi
+https://pbs.twimg.com/profile_images/1384615146975203344/ALYGon5h_normal.jpg
+Doobyscoo1234
+https://pbs.twimg.com/profile_images/1396593401378709504/XL9gWmQc_normal.jpg
+checktothepower
+https://pbs.twimg.com/profile_images/896185668732243968/sBCGrsYt_normal.jpg
+pasture2000
+https://pbs.twimg.com/profile_images/1421846189281001476/L6eiy0dq_normal.jpg
+mikekh2365
+https://pbs.twimg.com/profile_images/1553711147634884608/q7pyEs04_normal.jpg
+AlphaSomega2012
+https://pbs.twimg.com/profile_images/1287363110257516545/9_nsqw4A_normal.jpg
+SantaBarbara007
+https://pbs.twimg.com/profile_images/1253134618792022016/qeE3kfXS_normal.jpg
+big_AZ76
+https://pbs.twimg.com/profile_images/1578889495545528322/7PZtZjMj_normal.jpg
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="o">.</span><span class="n">includes</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;users&#39;: [&lt;User id=1584410269 name=hounds of love (she/they, elle/iel) username=fosfene&gt;,
+  &lt;User id=1251645502979862528 name=trudi linas username=LinasTrudi&gt;,
+  &lt;User id=928121235678089217 name=Scott C username=Doobyscoo1234&gt;,
+  &lt;User id=53678140 name=~~manonthestreet~~ username=checktothepower&gt;,
+  &lt;User id=1421845850846900226 name=HeartFixerRN username=pasture2000&gt;,
+  &lt;User id=1256957185428459521 name=Kate username=mikekh2365&gt;,
+  &lt;User id=911156318 name=Alpha Somega username=AlphaSomega2012&gt;,
+  &lt;User id=1253134190700355584 name=Santa Barbara username=SantaBarbara007&gt;,
+  &lt;User id=1391496914005151744 name=Blue 22, break! 🇺🇸🌵🗳🌊🤜🏼✨ username=big_AZ76&gt;]}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">tweepy</span>
+
+<span class="n">client</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">bearer_token</span><span class="o">=</span><span class="s1">&#39;AAAAAAAAAAAAAAAAAAAAALXhhAEAAAAAL0PecvetxlytIdaoTYkkc5vZ14k%3Dh7EpA9gzwEieZQy5EqbOBvV3OuZ9epUEInYFL5O3FZGGsVmz8l&#39;</span><span class="p">)</span>
+
+<span class="c1"># Replace with your own search query</span>
+<span class="n">query</span> <span class="o">=</span> <span class="s1">&#39;covid -is:retweet has:media&#39;</span>
+
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search_recent_tweets</span><span class="p">(</span><span class="n">query</span><span class="o">=</span><span class="n">query</span><span class="p">,</span> <span class="n">tweet_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;context_annotations&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">],</span>
+                                     <span class="n">media_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;preview_image_url&#39;</span><span class="p">],</span> <span class="n">expansions</span><span class="o">=</span><span class="s1">&#39;attachments.media_keys&#39;</span><span class="p">,</span>
+                                     <span class="n">max_results</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+
+<span class="c1"># Get list of media from the includes object</span>
+<span class="n">media</span> <span class="o">=</span> <span class="p">{</span><span class="n">m</span><span class="p">[</span><span class="s2">&quot;media_key&quot;</span><span class="p">]:</span> <span class="n">m</span> <span class="k">for</span> <span class="n">m</span> <span class="ow">in</span> <span class="n">tweets</span><span class="o">.</span><span class="n">includes</span><span class="p">[</span><span class="s1">&#39;media&#39;</span><span class="p">]}</span>
+
+<span class="k">for</span> <span class="n">tweet</span> <span class="ow">in</span> <span class="n">tweets</span><span class="o">.</span><span class="n">data</span><span class="p">:</span>
+    
+    <span class="n">attachments</span> <span class="o">=</span> <span class="n">tweet</span><span class="o">.</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;attachments&#39;</span><span class="p">]</span>
+    <span class="n">media_keys</span> <span class="o">=</span> <span class="n">attachments</span><span class="p">[</span><span class="s1">&#39;media_keys&#39;</span><span class="p">]</span>
+    <span class="c1"># print(tweet.text)</span>
+    <span class="k">if</span> <span class="n">media</span><span class="p">[</span><span class="n">media_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">preview_image_url</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">media</span><span class="p">[</span><span class="n">media_keys</span><span class="p">[</span><span class="mi">0</span><span class="p">]]</span><span class="o">.</span><span class="n">preview_image_url</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>https://pbs.twimg.com/ext_tw_video_thumb/1579140923472379906/pu/img/OMtm-HNM2WYh5jS1.jpg
+https://pbs.twimg.com/ext_tw_video_thumb/1579140867524263936/pu/img/hPDWCezXR3N_S0Dn.jpg
 </pre></div>
 </div>
 </div>
@@ -767,23 +929,29 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>We are headed for Dual #Supplychain. One led by Europe &amp;amp; the US, and the other by China &amp;amp; Russia, following #Ukraine &amp;amp; #Taiwan. 
-Is it beneficial for the Globe? 
-#Ukraine is not the end in itself nor for that matter,  #Taiwan. https://t.co/C73aQC6kym https://t.co/0KGmLPSGTL
-6.6-Magnitude Earthquake Hits Taiwan’s East Coast https://t.co/m2cmlgRidn
-RT @foreignersinTW: Cat map of Taiwan https://t.co/Ey0kf4BYQf
-RT @twbf1988: The Fairy Pitta - a migratory bird that went from relative obscurity in Taiwan to the face of an environmental movement.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>@RepSwalwell Your sleeping with the enemy 
+When is the FBI raiding Hillary Clinton’s house?
 
-Als…
-Andy Vermaut shares:6.6-Magnitude Earthquake Hits Taiwan&#39;s East Coast: A 6.6-magnitude earthquake struck off the east coast of Taiwan today, the US Geological Survey said. https://t.co/xNU0WFzGnA Thank you. https://t.co/ZCsDnIUNDp
-6.4-magnitude earthquake strikes off east coast of Taiwan https://t.co/0EpRdMO5LZ
-6.6-Magnitude Earthquake Hits Taiwan’s East Coast https://t.co/hsGLQhKRTg
-RT @disclosetv: JUST IN - 6.6 magnitude earthquake hits Taiwan — USGS
-RT @AZmilitary1: ⚠️🇨🇳 🇹🇼 🇺🇸 China has threatened to sever relations with the United States over the Taiwan issue if Washington passes 2022…
-RT @eew_p: Automatically Plotted Shakemaps:
-* 2022-09-17 21:42:20 (UTC+08:00, Taipei)
-* Evt. 20220917214120, 60s after trig.
-* Total 669 tr…
+When is the FBI raiding Hunter Biden’s house? &amp;amp; Joe Biden
+
+When is the FBI raiding Obama house? 
+
+When is the FBI raiding Eric Swalwell’s house?
+
+When is the FBI raiding Nancy Pelosi’s house?
+RT @llanier67: Pelosi took her son, Paul Jr. on this last trip to Asia &amp;amp; to Ukraine. Turns out Paul Jr is on the boards of 2 lithium compan…
+@StocksAllUp @scrowder Grifters? You guys are done @StocksAllUp Paul Pelosi and Nancy are grifters!
+RT @BretWeinstein: It’s really interesting to hear Nancy Pelosi assert that no one is above the law.
+RT @NickAdamsinUSA: No one is above the law except Hillary Clinton, Hunter Biden, Paul Pelosi, Eric Holder, Ilhan Omar, and countless other…
+@TheInsiderPaper Hahahaha right after Pelosi compliments China
+RT @sayitnspinit: Pelosi, who tore up President Trumps State Of The Union Address  says &quot;Presidential documents must be preserved for histo…
+@SpeakerPelosi When hell is full that Satan leaves its ugliest demon on Earth until there is more room...Pelosi like &quot;hold my dentures&quot;
+RT @NickAdamsinUSA: No one is above the law except Hillary Clinton, Hunter Biden, Paul Pelosi, Eric Holder, Ilhan Omar, and countless other…
+RT @realCCrump: Unless their name is Paul Pelosi.
+
+Or Hunter Biden.
+
+Or Hillary Clinton. https://t.co/Iq0E6znyZS
 </pre></div>
 </div>
 </div>
@@ -802,7 +970,7 @@ RT @eew_p: Automatically Plotted Shakemaps:
 
 <span class="c1"># To set your environment variables in your terminal run the following line:</span>
 <span class="c1"># export &#39;BEARER_TOKEN&#39;=&#39;&lt;your_bearer_token&gt;&#39;</span>
-<span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;AAAAAAAAAAAAAAAAAAAAALW%2BhAEAAAAA%2BcmN%2BODfzcWe1dlk7Ho8F%2BSCYmY%3DbgYizorcMfgzuomVL3iTTVRmsx47pzwFT6pPLSjudfYWRf9vfP&quot;</span>
 
 <span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent&quot;</span>
 
@@ -839,60 +1007,90 @@ RT @eew_p: Automatically Plotted Shakemaps:
 {
     &quot;data&quot;: [
         {
-            &quot;author_id&quot;: &quot;915192618&quot;,
-            &quot;id&quot;: &quot;1571197586186407936&quot;,
-            &quot;text&quot;: &quot;RT @EpochTimesChina: #Taiwan\u2019s government accused #China of exerting pressure on #Malaysian technology event organizers to block a Taiwanes\u2026&quot;
+            &quot;author_id&quot;: &quot;3098355318&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127591537025025&quot;
+            ],
+            &quot;id&quot;: &quot;1579127591537025025&quot;,
+            &quot;text&quot;: &quot;RT @MOFA_Taiwan: @JohnBricenoBZE Thank you @JohnBricenoBZE for sharing the great news &amp;amp; your National Day message. The government &amp;amp; people\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;21637092&quot;,
-            &quot;id&quot;: &quot;1571197582361370624&quot;,
-            &quot;text&quot;: &quot;Pelosi In Taiwan, is War with China Imminent..? \u2013 #PELOSI #CHINA #TAIWAN https://t.co/rt9Bf4ptlt https://t.co/lwF1dho36W&quot;
+            &quot;author_id&quot;: &quot;810354116689948672&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127581495812096&quot;
+            ],
+            &quot;id&quot;: &quot;1579127581495812096&quot;,
+            &quot;text&quot;: &quot;RT @Terror_Alarm: \ud83d\udea8\ud83c\udde8\ud83c\uddf3Chinese FM: \&quot;On the premise of ensuring national sovereignty &amp;amp; development, #Taiwan island can enjoy a high degree of\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;206797546&quot;,
-            &quot;id&quot;: &quot;1571197565374287873&quot;,
-            &quot;text&quot;: &quot;Public schools lead in the final national exams\nhttps://t.co/fL60XZzdhH\nRep of #Somaliland #Djibouti #Taiwan #UK #USA #Kenya #Ethiopia #Somalia #Africa #World https://t.co/yU0BrCF2jE&quot;
+            &quot;author_id&quot;: &quot;1266145259718955010&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127577972985857&quot;
+            ],
+            &quot;id&quot;: &quot;1579127577972985857&quot;,
+            &quot;text&quot;: &quot;RT @MOFA_Taiwan: @JohnBricenoBZE Thank you @JohnBricenoBZE for sharing the great news &amp;amp; your National Day message. The government &amp;amp; people\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;730412904&quot;,
-            &quot;id&quot;: &quot;1571197555509428225&quot;,
-            &quot;text&quot;: &quot;RT @iingwen: A pleasure to celebrate the 201st anniversary of Central American independence with #Honduras &amp;amp; #Guatemala. #Taiwan will conti\u2026&quot;
+            &quot;author_id&quot;: &quot;976995099170062338&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127555830841345&quot;
+            ],
+            &quot;id&quot;: &quot;1579127555830841345&quot;,
+            &quot;text&quot;: &quot;@JohnBricenoBZE Thank you @JohnBricenoBZE for sharing the great news &amp;amp; your National Day message. The government &amp;amp; people of #Taiwan\ud83c\uddf9\ud83c\uddfc cherish the friendship &amp;amp; support of #CentralAmerica ally #Belize\ud83c\udde7\ud83c\uddff.&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1032843521663885312&quot;,
-            &quot;id&quot;: &quot;1571197552799715332&quot;,
-            &quot;text&quot;: &quot;RT @TreasChest: Report: \ud83d\udc40\n\nSome unverified visual from the earthquake affected Kaohsiung Cheng Yi, 24th Floor Swimming Pool\n\nKaohsiung City\u2026&quot;
+            &quot;author_id&quot;: &quot;418631019&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127545081266179&quot;
+            ],
+            &quot;id&quot;: &quot;1579127545081266179&quot;,
+            &quot;text&quot;: &quot;RT @michaelcaster: Elon Musk willing to throw #Taiwan under the bus to appease his business relations in #China, think what concessions he&#39;\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;79708099&quot;,
-            &quot;id&quot;: &quot;1571197551113834497&quot;,
-            &quot;text&quot;: &quot;RT @TaiwanInNewYork: #Taiwan continues to be excluded from the United Nations system despite being one of the world&#39;s freest countries and\u2026&quot;
+            &quot;author_id&quot;: &quot;1095912717955682304&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127496565395457&quot;
+            ],
+            &quot;id&quot;: &quot;1579127496565395457&quot;,
+            &quot;text&quot;: &quot;The Sweet Golden Tea Room \u751c\u871c\u7684\u9ec3\u91d1\u8336\u5ba4\n\n\u5409\u7167\u6545\u91cc\u8336\u9053\u9662 / \u6a4b\u982d\u7cd6\u5ee0\u5bbf\u820d\n-\n@kayunitaoh \n#taiwan #kaohsiung #takao #ciaotou #kyoutou #ciaotousugarrefinery #cyashitsu #kannon #guanyin #\u81fa\u7063 #\u53f0\u6e7e #\u6a4b\u982d #\u6a4b\u982d\u7cd6\u5ee0 #\u5409\u7167\u6545\u91cc #\u8336\u5ba4 #\u89c0\u97f3 #\u89b3\u97f3 https://t.co/cp37J8JmE3&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1394765014616068096&quot;,
-            &quot;id&quot;: &quot;1571197521070034951&quot;,
-            &quot;text&quot;: &quot;RT @iingwen: A pleasure to celebrate the 201st anniversary of Central American independence with #Honduras &amp;amp; #Guatemala. #Taiwan will conti\u2026&quot;
+            &quot;author_id&quot;: &quot;1162044230337884160&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127491889082375&quot;
+            ],
+            &quot;id&quot;: &quot;1579127491889082375&quot;,
+            &quot;text&quot;: &quot;RT @benedictrogers: Good grief.\n\nFirst he wants to surrender #Ukraine to #VladimirPutin\n\nNow he wants to give #Taiwan to #CCP #China \n\nThe\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1414561711680417804&quot;,
-            &quot;id&quot;: &quot;1571197510835896320&quot;,
-            &quot;text&quot;: &quot;\u5e9c\u524d\u8857\u4e00\u4e01\u76ee National Taiwan University Library Collection https://t.co/3HyMDjLxXf #taiwanhistory #taiwanphoto #taiwan https://t.co/UlYmKjpmeu&quot;
+            &quot;author_id&quot;: &quot;1086489007465418752&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127414390550528&quot;
+            ],
+            &quot;id&quot;: &quot;1579127414390550528&quot;,
+            &quot;text&quot;: &quot;RT @eleconomista: Con el prop\u00f3sito de fomentar y avanzar en la relaci\u00f3n bilateral, #Taiw\u00e1n busca que el gobierno de #M\u00e9xico elimine el requ\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1368280167274151937&quot;,
-            &quot;id&quot;: &quot;1571197477168074756&quot;,
-            &quot;text&quot;: &quot;RT @TaiwanFreedom89: Taiwan is all our friends.\n#Taiwan #Ukraine #MilkTeaAlliance https://t.co/whob6dcgkQ&quot;
+            &quot;author_id&quot;: &quot;1561267492827172864&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127334124539904&quot;
+            ],
+            &quot;id&quot;: &quot;1579127334124539904&quot;,
+            &quot;text&quot;: &quot;RT @EconomicTimes: The Financial Times published a profile on Friday in which Musk proposed his own solution for the tensions between China\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1480487265935708163&quot;,
-            &quot;id&quot;: &quot;1571197342220419072&quot;,
-            &quot;text&quot;: &quot;#China #NewsUpdate (20220917)\nhttps://t.co/6FWym6FtEg\n#realReason #US #Sanctions #Taiwan #Pelosi #TaiwanTrip #Intentionally\n#PearlHarbor #Oahu #Hawaii #ChineseIntelligence #PLA #TaoHuang\n#Queen\n\n#CCP #WW3 #WorldWarIII #TheDeepState #Playbook #ExposeCorruptPoliticians #HunterBiden https://t.co/hMHaLLWdA0&quot;
+            &quot;author_id&quot;: &quot;812112985548320768&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127303363514370&quot;
+            ],
+            &quot;id&quot;: &quot;1579127303363514370&quot;,
+            &quot;text&quot;: &quot;RT @lamuss_sexxx: Acabo dentro de mam\u00e1 \ud83d\udca6\n#incestomadre #IncestoFamiliar #incestomama #incestoconmam\u00e0 #taboosister #incesto #tabooadventures\u2026&quot;
         }
     ],
     &quot;meta&quot;: {
-        &quot;newest_id&quot;: &quot;1571197586186407936&quot;,
-        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzbk32abzaefcnj20p7xkuk4o6q9p&quot;,
-        &quot;oldest_id&quot;: &quot;1571197342220419072&quot;,
+        &quot;newest_id&quot;: &quot;1579127591537025025&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzbngb3rsqrnosra0wv5s8ltda071&quot;,
+        &quot;oldest_id&quot;: &quot;1579127303363514370&quot;,
         &quot;result_count&quot;: 10
     }
 }
@@ -909,6 +1107,16 @@ RT @eew_p: Automatically Plotted Shakemaps:
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;next_token&#39;</span><span class="p">:</span> <span class="s1">&#39;b26v89c19zqg8o3fpzbk32abzaefcnj20p7xkuk4o6q9p&#39;</span><span class="p">}</span>
 <span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+{
+    &quot;meta&quot;: {
+        &quot;result_count&quot;: 0
+    }
+}
 </pre></div>
 </div>
 </div>
@@ -978,70 +1186,100 @@ RT @eew_p: Automatically Plotted Shakemaps:
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{
     &quot;data&quot;: [
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:22.000Z&quot;,
-            &quot;id&quot;: &quot;1571349890462273540&quot;,
-            &quot;lang&quot;: &quot;qme&quot;,
-            &quot;text&quot;: &quot;https://t.co/CDKgnH92pG\n\n#taiwan&quot;
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:39.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127709435035649&quot;
+            ],
+            &quot;id&quot;: &quot;1579127709435035649&quot;,
+            &quot;lang&quot;: &quot;tr&quot;,
+            &quot;text&quot;: &quot;RT @Kuzzat_Altay: \u00c7in\u2019in Taiwan\u2019\u0131 almak istemesindeki b\u00fcy\u00fck nedenlerin bir tanesi Taiwan\u2019\u0131n d\u00fcnya \u00e7ip devi TSMC i\u00e7in oldu\u011fu g\u00f6r\u00fc\u015fleri var.\u2026&quot;
         },
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:17.000Z&quot;,
-            &quot;id&quot;: &quot;1571349867821420544&quot;,
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:38.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127704980705281&quot;
+            ],
+            &quot;id&quot;: &quot;1579127704980705281&quot;,
+            &quot;lang&quot;: &quot;zh&quot;,
+            &quot;text&quot;: &quot;RT @kjj_2721: \u8ddf\u4ed6\u8aaaCome from Taiwan \u99ac\u4e0a\u56de\u4f60\u597d\u3160\u3160\u3160\u3160\u3160\u3160\nThis is for u and bright \u7136\u5f8c\u4ed6\u5c31\u7d66\u8acbP&#39;eed\u63a5\u4e86\ud83d\ude2d\ud83d\ude2d\ud83d\ude2d\ud83d\ude2d\n\u65e9\u4e0a\u56db\u9ede\u8d77\u4f86\u7b49\u7684\u51b7\u5f97\u8981\u6b7b\u8d85\u503c\u5f97\u3160\u3160\u3160\u3160\u3160\u3160\n#winmetawin https://t.co/vic\u2026&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:37.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127701595881472&quot;
+            ],
+            &quot;id&quot;: &quot;1579127701595881472&quot;,
             &quot;lang&quot;: &quot;en&quot;,
-            &quot;text&quot;: &quot;@mrbcyber Nobody&#39;ll be able to take Taiwan which is such a prosperous &amp;amp; beautiful independent country  !\n\nYes, Taiwan&#39;s an exemplary country in the family of nations that deserves UNO membership finally again !\n\nPeace &amp;amp; Justice will prevail globally, well stated in https://t.co/mE3PEq919Y&quot;
+            &quot;text&quot;: &quot;@scoiattoliviola @michaeljburry For China is important because they want to take control of the most advance microchip facility in the world. Taiwan Semiconductor. That\u2019s why they want to reunite.&quot;
         },
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:16.000Z&quot;,
-            &quot;id&quot;: &quot;1571349863551406080&quot;,
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:36.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127697380638721&quot;
+            ],
+            &quot;id&quot;: &quot;1579127697380638721&quot;,
             &quot;lang&quot;: &quot;en&quot;,
-            &quot;text&quot;: &quot;RT @ChartsJJK: Left and Right\n\nShazam Top 200\n\n#99 Worldwide (-1)\n\n#4 Malaysia (=)\n#9 Singapore (+1)\n#13 Thailand (-1)\n#14 Indonesia (+1)\n#\u2026&quot;
+            &quot;text&quot;: &quot;RT @AmbQinGang: I would like to thank @elonmusk for his call for peace across the Taiwan Strait and his idea about establishing a special a\u2026&quot;
         },
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:14.000Z&quot;,
-            &quot;id&quot;: &quot;1571349855276269570&quot;,
-            &quot;lang&quot;: &quot;und&quot;,
-            &quot;text&quot;: &quot;#taiwan 4 https://t.co/pwL7of6CVE&quot;
-        },
-        {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:13.000Z&quot;,
-            &quot;id&quot;: &quot;1571349853384413184&quot;,
-            &quot;lang&quot;: &quot;es&quot;,
-            &quot;text&quot;: &quot;RT @SismoMundial: R\u00e9plicas en Taiw\u00e1n luego del temblor de magnitud 6.5 de este s\u00e1bado: M5.1, M5.5 y 4.7 a las 14:35, 14:45 y 15:00 UTC, res\u2026&quot;
-        },
-        {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:12.000Z&quot;,
-            &quot;id&quot;: &quot;1571349848984809473&quot;,
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:35.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127693638967296&quot;
+            ],
+            &quot;id&quot;: &quot;1579127693638967296&quot;,
             &quot;lang&quot;: &quot;en&quot;,
-            &quot;text&quot;: &quot;I urge Tsai ing Wen&#39;s government to surrender as soon as possible, no matter sooner or later, the sooner the more initiative\uff01\nhttps://t.co/oAPzNajYeP\n#taiwan\n#\u8521\u82f1\u6587\n#\u6566\u4fc3\u8521\u82f1\u6587\u53ca\u5176\u8ecd\u653f\u9996\u8166\u6295\u964d\u66f8&quot;
+            &quot;text&quot;: &quot;@bankofbaroda @AmritMahotsav HIGH TECH MANUFACTURING \ud83d\udc69\u200d\ud83c\udfed  \ud83d\udc49 \ud83d\udc69\u200d\ud83c\udfed SILICON CHIPS_2_SILICON SAND! Taiwan \ud83c\uddf9\ud83c\uddfc + South Korea \ud83c\uddf0\ud83c\uddf7 + JAPAN \ud83c\uddef\ud83c\uddf5~USA \ud83c\uddfa\ud83c\uddf8~CANADA \ud83c\udde8\ud83c\udde6 + UK \ud83c\uddec\ud83c\udde7~France \ud83c\uddeb\ud83c\uddf7 + GERMANY \ud83c\udde9\ud83c\uddea R\ud83d\udc49Seeking_2_Invest in India \ud83c\uddee\ud83c\uddf3\ud83d\udc49Make in India \ud83c\uddee\ud83c\uddf3 Industrial \ud83c\udfed Revolution!Starts with BANK \ud83c\udfe6 OF BARODA!(Purushottam Mistry) https://t.co/gCybtab5iN&quot;
         },
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:07.000Z&quot;,
-            &quot;id&quot;: &quot;1571349825563623425&quot;,
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:34.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127689364979712&quot;
+            ],
+            &quot;id&quot;: &quot;1579127689364979712&quot;,
             &quot;lang&quot;: &quot;en&quot;,
-            &quot;text&quot;: &quot;Covid Coverups, Taiwan Tensions &amp;amp; Coming Capitulation  https://t.co/6L8xwOTn6j&quot;
+            &quot;text&quot;: &quot;RT @TaiwanNews886: China deems Musk&#39;s Taiwan comments &#39;inappropriate&#39;\nhttps://t.co/d2IZsI8R1U https://t.co/63QWqrexkw&quot;
         },
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:06.000Z&quot;,
-            &quot;id&quot;: &quot;1571349823995117568&quot;,
-            &quot;lang&quot;: &quot;en&quot;,
-            &quot;text&quot;: &quot;I urge Tsai ing Wen&#39;s government to surrender as soon as possible, no matter sooner or later, the sooner the more initiative\uff01\nhttps://t.co/nZHaIEAnp5\n#taiwan\n#\u8521\u82f1\u6587\n#\u6566\u4fc3\u8521\u82f1\u6587\u53ca\u5176\u8ecd\u653f\u9996\u8166\u6295\u964d\u66f8&quot;
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:33.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127683103195136&quot;
+            ],
+            &quot;id&quot;: &quot;1579127683103195136&quot;,
+            &quot;lang&quot;: &quot;zh&quot;,
+            &quot;text&quot;: &quot;@MOFA_Taiwan @RepEBJ @HouseScience @HouseDemocrats @TECRO_USA @TECO_HTX @bikhim \u5927\u5bb6\u64cd\u5fc3\u81ea\u5df1\u7684\u751f\u8a08\u90fd\u4f86\u4e0d\u53ca\u5566 \u9084\u7ba1\u9019\u4e9b&quot;
         },
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:04.000Z&quot;,
-            &quot;id&quot;: &quot;1571349815681769472&quot;,
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:30.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127672982372353&quot;
+            ],
+            &quot;id&quot;: &quot;1579127672982372353&quot;,
             &quot;lang&quot;: &quot;en&quot;,
-            &quot;text&quot;: &quot;6.4-magnitude earthquake strikes off east coast of Taiwan  https://t.co/AxXk57d0ci&quot;
+            &quot;text&quot;: &quot;\u2665\ufe0f Boosted raid\n\u2665\ufe0f 37.7864,-122.4054\n\u2665\ufe0f \ud83c\uddfa\ud83c\uddf8San Francisco, CA, USA\n\u2665\ufe0f Color: \u2665\ufe0f\n\u2665\ufe0f Boss: \u2728\ud835\udd4f\ud835\udd56\ud835\udd63\ud835\udd5f\ud835\udd56\ud835\udd52\ud835\udd64\u2728\n\u2665\ufe0f Weather: \u2601\ufe0f\n\u23f0 Time: Taiwan 23:18\n\ud83c\udfaf \ud83d\udcaf\u2781\u2786\u24ff\u2780\n\n\u2765 &#39;\ua03f\u00aa\u1d56\u1d56\u1d5e \ud835\ude9d\ud835\ude92\ud835\ude96\ud835\ude8e \u00b0 \u2323\u0308\u2018\u2019\ud83e\udd42\n\u2665\ufe0f Dragon Wing \u029a AL \u025e \u270e\n#ExRaids&quot;
         },
         {
-            &quot;created_at&quot;: &quot;2022-09-18T04:06:04.000Z&quot;,
-            &quot;id&quot;: &quot;1571349814599880704&quot;,
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:30.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127672953008130&quot;
+            ],
+            &quot;id&quot;: &quot;1579127672953008130&quot;,
             &quot;lang&quot;: &quot;en&quot;,
-            &quot;text&quot;: &quot;RT @swimming971010: \ud835\ude3e\ud835\ude64\ud835\ude63\ud835\ude5c\ud835\ude67\ud835\ude56\ud835\ude69\ud835\ude6a\ud835\ude61\ud835\ude56\ud835\ude69\ud835\ude5e\ud835\ude64\ud835\ude63\ud835\ude68 \ud835\ude69\ud835\ude64 @seng_wichai \ud835\ude64\ud835\ude63 \ud835\ude69\ud835\ude5d\ud835\ude5a \ud835\ude5b\ud835\ude5e\ud835\ude69\ud835\ude69\ud835\ude5e\ud835\ude63\ud835\ude5c \ud835\ude59\ud835\ude56\ud835\ude6e \ud835\ude64\ud835\ude5b \ud835\ude69\ud835\ude5d\ud835\ude5a \ud835\ude63\ud835\ude5a\ud835\ude6c \ud835\ude62\ud835\ude64\ud835\ude6b\ud835\ude5e\ud835\ude5a.\n\ud835\udd4a\ud835\udd61\ud835\udd56\ud835\udd54\ud835\udd5a\ud835\udd52\ud835\udd5d \ud835\udd4b\ud835\udd59\ud835\udd52\ud835\udd5f\ud835\udd5c\ud835\udd64 \ud83e\udef0\n @ planb.thaisupport (Ins)&amp;amp; @alie\u2026&quot;
+            &quot;text&quot;: &quot;\u2665\ufe0f Boosted raid\n\u2665\ufe0f 37.7864,-122.4054\n\u2665\ufe0f \ud83c\uddfa\ud83c\uddf8San Francisco, CA, USA\n\u2665\ufe0f Color: \u2665\ufe0f\n\u2665\ufe0f Boss: \u2728\ud835\udd4f\ud835\udd56\ud835\udd63\ud835\udd5f\ud835\udd56\ud835\udd52\ud835\udd64\u2728\n\u2665\ufe0f Weather: \u2601\ufe0f\n\u23f0 Time: Taiwan 23:18\n\ud83c\udfaf \ud83d\udcaf\u2781\u2786\u24ff\u2780\n\n\u2765 &#39;\ua03f\u00aa\u1d56\u1d56\u1d5e \ud835\ude9d\ud835\ude92\ud835\ude96\ud835\ude8e \u00b0 \u2323\u0308\u2018\u2019\ud83e\udd42\n\u2665\ufe0f Dragon Wing \u029a AL \u025e \u270e\n#ExRaids&quot;
+        },
+        {
+            &quot;created_at&quot;: &quot;2022-10-09T15:12:27.000Z&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1579127658621075456&quot;
+            ],
+            &quot;id&quot;: &quot;1579127658621075456&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;text&quot;: &quot;RT @MattGertz: Since this tweet:\n\n*Kanye rants about \u201cJEWISH PEOPLE.\u201d\n\n*Elon endorses Chinese government takeover of Taiwan.\n\n*NYT reports\u2026&quot;
         }
     ],
     &quot;meta&quot;: {
-        &quot;newest_id&quot;: &quot;1571349890462273540&quot;,
-        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzbk36iaevra5ljynz5v927nq8ol9&quot;,
-        &quot;oldest_id&quot;: &quot;1571349814599880704&quot;,
+        &quot;newest_id&quot;: &quot;1579127709435035649&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzbngb3rsreuovjyyw0jnx4fjzbzx&quot;,
+        &quot;oldest_id&quot;: &quot;1579127658621075456&quot;,
         &quot;result_count&quot;: 10
     }
 }

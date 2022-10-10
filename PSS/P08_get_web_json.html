@@ -1,0 +1,2834 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Scraping with Web API &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P08-3 Scraping cases" href="P08_3_cases.html" />
+    <link rel="prev" title="P07 Visualization with Pandas" href="P07_visualization.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Logic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P01_counting.html">
+   P01-Counting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P02_basic.html">
+   P02-Python Basic
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P02b_basic.html">
+     P02-blank-Python Basic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03b_list_dictionary.html">
+     P03-blank-List &amp; Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P04_1_for.html">
+   P04 For-loop
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_1p.html">
+     P04_1p Practice for-loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 For-if applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2b_for_if.html">
+     P04_2-blank For-if applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2p_twitter_users.html">
+     P04_2p Study Twitter Problematic Users
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P05_read_csv_json.html">
+   P05 READ Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P05_read_other_format.html">
+     Read more formats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P06_pandas.html">
+   P06 Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P06a_pandas_tricks.html">
+     Pandas Tricks
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P07_visualization.html">
+   P07 Visualization with Pandas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Scraping with Web API
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="P08_3_cases.html">
+   P08-3 Scraping cases
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM01_tokenization.html">
+   Tokenization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS01_basic.html">
+   AS01 for Python Basic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS02_list_dict_for_if.html">
+   AS02 List-dict-for-if
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/video_list.html">
+   Python教學影片
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/IDEs.html">
+   Python開發環境
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/PSS/P08_get_web_json.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P08_get_web_json.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P08_get_web_json.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/PSS/P08_get_web_json.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-requests-library-to-send-web-requests">
+   Using requests library to send web requests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-find-out-and-traverse-data-behind-urls">
+     Practice: Find out and traverse data behind urls
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#canyes">
+       Canyes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pchome-24h-product-search">
+       PChome 24h product search
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dcard">
+       Dcard
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#option-write-a-function-to-load-json-data">
+     (Option) Write a function to load json data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scraping-104-com">
+   Scraping 104.com
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-first-page-but-fails">
+     1. Get the first page, but fails
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#option-write-html-to-file">
+       (Option) Write html to file
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#practice-observing-youbike-data-headers">
+       (Practice) Observing youbike data headers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-referer-to-get-back-104-data">
+     2. Add referer to get back 104 data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-data-to-get-the-data-block">
+     3. Traverse data to get the data block
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-next-page-get-the-2nd-1st-3rd-page-urls">
+     4. Get next page: get the 2nd, 1st, 3rd, …, page urls
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detect-ending-condition">
+     5. detect ending condition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-dataframe">
+     6. convert to dataframe
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dump-files-for-backup">
+   Dump files for backup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m1-dump-one-variable-to-json-by-json-library">
+     M1. Dump one variable to json by json library
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m2-dump-and-load-json-by-pandas-library">
+     M2. Dump and load json by pandas library
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m3-dump-multiple-variables-to-pickle">
+     M3. Dump multiple variables to pickle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-multiple-variables-back-to-objects">
+     Load multiple variables back to objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-timestamp-as-file-name">
+   Using timestamp as file name
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clean-version-104">
+   Clean version. 104
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Scraping with Web API</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-requests-library-to-send-web-requests">
+   Using requests library to send web requests
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#practice-find-out-and-traverse-data-behind-urls">
+     Practice: Find out and traverse data behind urls
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#canyes">
+       Canyes
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#pchome-24h-product-search">
+       PChome 24h product search
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#dcard">
+       Dcard
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#option-write-a-function-to-load-json-data">
+     (Option) Write a function to load json data
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#scraping-104-com">
+   Scraping 104.com
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-the-first-page-but-fails">
+     1. Get the first page, but fails
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#option-write-html-to-file">
+       (Option) Write html to file
+      </a>
+     </li>
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#practice-observing-youbike-data-headers">
+       (Practice) Observing youbike data headers
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-referer-to-get-back-104-data">
+     2. Add referer to get back 104 data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#traverse-data-to-get-the-data-block">
+     3. Traverse data to get the data block
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-next-page-get-the-2nd-1st-3rd-page-urls">
+     4. Get next page: get the 2nd, 1st, 3rd, …, page urls
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#detect-ending-condition">
+     5. detect ending condition
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-to-dataframe">
+     6. convert to dataframe
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#dump-files-for-backup">
+   Dump files for backup
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m1-dump-one-variable-to-json-by-json-library">
+     M1. Dump one variable to json by json library
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m2-dump-and-load-json-by-pandas-library">
+     M2. Dump and load json by pandas library
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#m3-dump-multiple-variables-to-pickle">
+     M3. Dump multiple variables to pickle
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-multiple-variables-back-to-objects">
+     Load multiple variables back to objects
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-timestamp-as-file-name">
+   Using timestamp as file name
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#clean-version-104">
+   Clean version. 104
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="scraping-with-web-api">
+<h1>Scraping with Web API<a class="headerlink" href="#scraping-with-web-api" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.google.com/presentation/d/1gn4d5gzXzgyEAIz_AOdM3pmJ0-6iiN7EbTjKqCQlgPo/edit?usp=sharing">slide</a> for getting json data online</p></li>
+<li><p>Finding data url</p></li>
+<li><p>Scraping <a class="reference external" href="http://104.com">104.com</a> job info</p></li>
+<li><p>Understanding how to send request and get back response</p></li>
+<li><p>Send request with Cookie, payload, Referer…</p></li>
+</ul>
+<section id="using-requests-library-to-send-web-requests">
+<h2>Using requests library to send web requests<a class="headerlink" href="#using-requests-library-to-send-web-requests" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Document: <a class="reference external" href="http://docs.python-requests.org/en/master/">http://docs.python-requests.org/en/master/</a></p></li>
+<li><p>Quickstart <a class="reference external" href="http://docs.python-requests.org/en/master/user/quickstart/">http://docs.python-requests.org/en/master/user/quickstart/</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+</pre></div>
+</div>
+</div>
+</div>
+<section id="practice-find-out-and-traverse-data-behind-urls">
+<h3>Practice: Find out and traverse data behind urls<a class="headerlink" href="#practice-find-out-and-traverse-data-behind-urls" title="Permalink to this headline">#</a></h3>
+<p>逐一測試過每一個link是否都讀得到資料，以獲得對這些資料概略了解。</p>
+<ul class="simple">
+<li><p>(hint) Using <code class="docutils literal notranslate"><span class="pre">requests.get(url,</span> <span class="pre">timeout=(x,</span> <span class="pre">y))</span></code> to set the limitation of waiting time</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">timeout=(x,</span> <span class="pre">y)</span></code>: Max x seconds to connect to server and max y seconds to wait on response</p></li>
+<li><p><a class="reference external" href="https://data.moi.gov.tw/moiod/System/Principle.aspx?Sample=2">https://data.moi.gov.tw/moiod/System/Principle.aspx?Sample=2</a></p></li>
+</ul>
+<section id="canyes">
+<h4>Canyes<a class="headerlink" href="#canyes" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_cnyes</span> <span class="o">=</span> <span class="s2">&quot;https://news.cnyes.com/api/v3/news/category/headline?startAt=1588262400&amp;endAt=1589212799&amp;limit=30&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_cnyes</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+dict_keys([&#39;items&#39;, &#39;message&#39;, &#39;statusCode&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="pchome-24h-product-search">
+<h4>PChome 24h product search<a class="headerlink" href="#pchome-24h-product-search" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_pchome</span> <span class="o">=</span> <span class="s2">&quot;https://ecshweb.pchome.com.tw/search/v3.3/all/results?q=iphone&amp;page=1&amp;sort=sale/dc&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_pchome</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+dict_keys([&#39;QTime&#39;, &#39;totalRows&#39;, &#39;totalPage&#39;, &#39;range&#39;, &#39;cateName&#39;, &#39;q&#39;, &#39;subq&#39;, &#39;token&#39;, &#39;isMust&#39;, &#39;prods&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dcard">
+<h4>Dcard<a class="headerlink" href="#dcard" title="Permalink to this headline">#</a></h4>
+<p>Dcard API最近又做了改版，用以下的Code應該沒辦法順利撈回，但你也可以測試看看，可以看到什麼樣的錯誤訊息。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_dcard</span> <span class="o">=</span> <span class="s2">&quot;https://www.dcard.tw/service/api/v2/forums/relationship/posts?limit=50&quot;</span>
+<span class="n">user_agent_dcard</span> <span class="o">=</span> <span class="s2">&quot;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.34&quot;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="n">user_agent_dcard</span><span class="p">}</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_dcard</span><span class="p">,</span> <span class="n">headers</span> <span class="o">=</span> <span class="n">headers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [403]&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="option-write-a-function-to-load-json-data">
+<h3>(Option) Write a function to load json data<a class="headerlink" href="#option-write-a-function-to-load-json-data" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">get_web_json</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">),</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Response Code:&quot;</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">response</span><span class="o">.</span><span class="n">ok</span><span class="p">:</span>
+        <span class="k">return</span> <span class="kc">None</span>
+    <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="k">return</span> <span class="n">data</span>
+
+<span class="c1"># get_web_json(url_pchome)</span>
+<span class="c1"># get_web_json(url_cnyes)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="scraping-104-com">
+<h2>Scraping <a class="reference external" href="http://104.com">104.com</a><a class="headerlink" href="#scraping-104-com" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Slide: <a class="reference external" href="https://docs.google.com/presentation/d/e/2PACX-1vRW84XoB5sFRT1Eg-GrK4smX23qoNkFffz_h8oRU4AIvJAgrrxBn8059_0UeHv_pFBks_Z37vNbLGai/pub?start=false&amp;loop=false&amp;delayms=3000">https://docs.google.com/presentation/d/e/2PACX-1vRW84XoB5sFRT1Eg-GrK4smX23qoNkFffz_h8oRU4AIvJAgrrxBn8059_0UeHv_pFBks_Z37vNbLGai/pub?start=false&amp;loop=false&amp;delayms=3000</a></p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc
+</pre></div>
+</div>
+<section id="get-the-first-page-but-fails">
+<h3>1. Get the first page, but fails<a class="headerlink" href="#get-the-first-page-but-fails" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>嘗試獲取104.com的搜尋結果的第一頁資料網址，結果應該會傳回來一個空的HTML無法傳回資料。這是因為通常服務提供方會嘗試要求提出拜訪要求的瀏覽器需要提供一些簡單的驗證機制，例如是用什麼瀏覽器連上去的（Dcard要求這樣的資訊）、是從哪一個頁面跳過去的（104.com要求）。</p></li>
+<li><p>撰寫爬蟲時必須「模仿」瀏覽器的機制，如果對方希望提供瀏覽器提供這樣的資訊，那撰寫爬蟲時也就要提供這樣的資訊。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+&lt;html xmlns=&quot;http://www.w3.org/1999/xhtml&quot;&gt;&lt;head&gt;&lt;META HTTP-EQUIV=&quot;CONTENT-TYPE&quot; CONTENT=&quot;TEXT/HTML; CHARSET=utf-8&quot;/&gt;&lt;title&gt;&lt;/title&gt;&lt;/head&gt;
+&lt;body&gt;
+&lt;SCRIPT LANGUAGE=&quot;JavaScript&quot;&gt;
+window.location=&quot;https://www.104.com.tw/jobs/main/syserr?eid=6129352555613884688&quot;;
+&lt;/script&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+{&#39;Cache-Control&#39;: &#39;no-cache&#39;, &#39;Connection&#39;: &#39;close&#39;, &#39;Pragma&#39;: &#39;no-cache&#39;, &#39;Content-Type&#39;: &#39;text/html; charset=utf-8&#39;, &#39;Content-Length&#39;: &#39;292&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="option-write-html-to-file">
+<h4>(Option) Write html to file<a class="headerlink" href="#option-write-html-to-file" title="Permalink to this headline">#</a></h4>
+<p>當明明知道他是一個json，卻一直無法順利用<code class="docutils literal notranslate"><span class="pre">.json()</span></code>將其拆且為<code class="docutils literal notranslate"><span class="pre">list</span></code> or <code class="docutils literal notranslate"><span class="pre">dict</span></code>的型態時，最有可能的問題是，該網址設了一些檢核機制讓我們不能那麼粗暴草率地拿到資料，導致它傳回來給我們的是一個用html編寫成的錯誤訊息，例如stuatus code: 403。這時候我要怎麼知道發生錯誤？一種方式是把status code印出來看看；另一種方式是，他可能也是傳給你status code:200，但實際上就是傳回一個告知你不能存取的html。這時候我們可以採取的作法就是把該HTML，也就是回傳的結果寫入到.html檔，然後用瀏覽器開啟看看他究竟傳回來什麼錯誤訊息。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;temp_output.html&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+    <span class="n">fout</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+
+<span class="c1"># webbrowser cannot work, but why?</span>
+<span class="kn">import</span> <span class="nn">webbrowser</span>
+<span class="n">webbrowser</span><span class="o">.</span><span class="n">open_new_tab</span><span class="p">(</span><span class="s1">&#39;temp_output.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="practice-observing-youbike-data-headers">
+<h4>(Practice) Observing youbike data headers<a class="headerlink" href="#practice-observing-youbike-data-headers" title="Permalink to this headline">#</a></h4>
+<p>Is is differnt from <a class="reference external" href="http://104.com">104.com</a>’s?觀察看看，是否youbike也有類似的問題，或者youbike data headers是什麼？務必觀察看看，因為如果我們要很會寫爬蟲，一定要會觀察header，而這只是最簡單的一種情形。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span> <span class="c1"># &lt;class &#39;requests.models.Response&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">))</span> <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
+200
+&lt;class &#39;requests.models.Response&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Content-Length&#39;: &#39;30301&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;LXI5QAf3D+8dt4RHdq9Xmw==&#39;, &#39;Last-Modified&#39;: &#39;Mon, 10 Oct 2022 04:37:54 GMT&#39;, &#39;ETag&#39;: &#39;0x8DAAA7932C6663D&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;f99b6fb7-201e-002c-3662-dc78ee000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Mon, 10 Oct 2022 04:38:03 GMT&#39;}
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                        0
+Content-Length                                                      30301
+Content-Type                                     application/octet-stream
+Content-Encoding                                                     gzip
+Content-MD5                                      LXI5QAf3D+8dt4RHdq9Xmw==
+Last-Modified                               Mon, 10 Oct 2022 04:37:54 GMT
+ETag                                                    0x8DAAA7932C6663D
+Server                       Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
+x-ms-request-id                      f99b6fb7-201e-002c-3662-dc78ee000000
+x-ms-version                                                   2009-09-19
+x-ms-lease-status                                                unlocked
+x-ms-blob-type                                                  BlockBlob
+Access-Control-Allow-Origin                                             *
+Date                                        Mon, 10 Oct 2022 04:38:03 GMT
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="add-referer-to-get-back-104-data">
+<h3>2. Add referer to get back 104 data<a class="headerlink" href="#add-referer-to-get-back-104-data" title="Permalink to this headline">#</a></h3>
+<p>現在我們來加入一些對方伺服器可能會要求我們發出request的時候提供的東西，最常見的有以下的資訊。但，實際上我們得一個一個測試看看，才會知道對方要求什麼。通常會從User-agent測起，再來Referer、再來Cookie。但有經驗的人多半一看就猜得到。</p>
+<ul class="simple">
+<li><p>User-Agent: 你用什麼瀏覽器或系統</p></li>
+<li><p>Referer: 你從哪個頁面點選、跳轉過來</p></li>
+<li><p>Cookies: 經過與伺服器建立連結後，他給了你什麼資訊好讓你持續可以待在這個頁面。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="traverse-data-to-get-the-data-block">
+<h3>3. Traverse data to get the data block<a class="headerlink" href="#traverse-data-to-get-the-data-block" title="Permalink to this headline">#</a></h3>
+<p>觀察一下資料的概況，並把他轉為pandas來觀察它。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;status&#39;, &#39;action&#39;, &#39;data&#39;, &#39;statusMsg&#39;, &#39;errorMsg&#39;])
+&lt;class &#39;dict&#39;&gt;
+dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list&#39;, &#39;count&#39;, &#39;pageNo&#39;, &#39;totalPage&#39;, &#39;totalCount&#39;])
+&lt;class &#39;list&#39;&gt;
+&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>jobType</th>
+      <th>jobNo</th>
+      <th>jobName</th>
+      <th>jobNameSnippet</th>
+      <th>jobRole</th>
+      <th>jobRo</th>
+      <th>jobAddrNo</th>
+      <th>jobAddrNoDesc</th>
+      <th>jobAddress</th>
+      <th>description</th>
+      <th>...</th>
+      <th>tags</th>
+      <th>landmark</th>
+      <th>link</th>
+      <th>jobsource</th>
+      <th>jobNameRaw</th>
+      <th>custNameRaw</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>remoteWorkType</th>
+      <th>major</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>10589685</td>
+      <td>Data Scientist 資料科學家_數據分析師 | CBU_21_13</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002020</td>
+      <td>新北市三重區</td>
+      <td>三和路四段111之32號7樓</td>
+      <td>分群、推薦、迴歸預測等演算法理論基礎，並有實作經驗\r\n2. 熟悉程式與分析應用，如 Py...</td>
+      <td>...</td>
+      <td>[員工300人]</td>
+      <td>距捷運三和國中站110公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Scientist 資料科學家_數據分析師 | CBU_21_13</td>
+      <td>伊雲谷數位科技股份有限公司</td>
+      <td>121.4856118</td>
+      <td>25.0774577</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>10856947</td>
+      <td>數據科學家 Data Scientist</td>
+      <td>&lt;em class='b-txt--highlight'&gt;數據科學家&lt;/em&gt; &lt;em cl...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001007</td>
+      <td>台北市信義區</td>
+      <td>松仁路100號10樓</td>
+      <td>Isobar作為數位轉型與數位創新的領導品牌，領先市場佈局打造專業的CR-Marketing...</td>
+      <td>...</td>
+      <td>[員工120人]</td>
+      <td>距捷運象山站290公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>數據科學家 Data Scientist</td>
+      <td>安索帕股份有限公司</td>
+      <td>121.5678798</td>
+      <td>25.0344547</td>
+      <td>0</td>
+      <td>[統計學相關, 一般商業學類, 資訊管理相關]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>12988717</td>
+      <td>16A-T-0015 Data Scientist 資料科學家</td>
+      <td>16A-T-0015 &lt;em class='b-txt--highlight'&gt;Data&lt;/...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001016007</td>
+      <td>高雄市前鎮區</td>
+      <td>中六路一號</td>
+      <td>【工作內容】\n1. 跨部門合作，透過數據挖掘可能的應用。\n2. 統計分析、機器/深度學習...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工19000人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>16A-T-0015 Data Scientist 資料科學家</td>
+      <td>瑞儀光電股份有限公司</td>
+      <td>120.2906511</td>
+      <td>22.5994751</td>
+      <td>0</td>
+      <td>[應用數學相關, 統計學相關]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>12844505</td>
+      <td>Data Scientist資料科學家(遠端工作)-T05P</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001003</td>
+      <td>台北市中山區</td>
+      <td></td>
+      <td>•\tDesign, develop, and launch extremely effic...</td>
+      <td>...</td>
+      <td>[外商公司, 員工200人, 遠端工作]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Scientist資料科學家(遠端工作)-T05P</td>
+      <td>Tata Consultancy Services Limited Taiwan Branc...</td>
+      <td>121.5427093</td>
+      <td>25.0792018</td>
+      <td>2</td>
+      <td>[資訊工程相關, 數理統計相關, 資訊管理相關]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>2</td>
+      <td>12909698</td>
+      <td>Python Data Scientist</td>
+      <td>Python &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; ...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001016005</td>
+      <td>高雄市鼓山區</td>
+      <td>中華一路828號13樓</td>
+      <td>\n\n職務需求：\n\nPython [[[Data]]] [[[Scientist]]]...</td>
+      <td>...</td>
+      <td>[員工45人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Python Data Scientist</td>
+      <td>BigGo_樂方股份有限公司</td>
+      <td>120.2921244</td>
+      <td>22.6604715</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>0</td>
+      <td>12348710</td>
+      <td>【AI Team】資料科學家 Data Scientist</td>
+      <td>【AI Team】&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/e...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001007</td>
+      <td>台北市信義區</td>
+      <td>東興路41號10樓</td>
+      <td>【Responsibilities】　\n1. Lead the team to drive...</td>
+      <td>...</td>
+      <td>[員工150人, 遠端工作]</td>
+      <td>距捷運南京三民站470公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>【AI Team】資料科學家 Data Scientist</td>
+      <td>愛卡拉互動媒體股份有限公司</td>
+      <td>121.5666564</td>
+      <td>25.0480733</td>
+      <td>2</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>0</td>
+      <td>12504693</td>
+      <td>Data Scientist - Analytics (Product) / 資料科學家 -...</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001002</td>
+      <td>台北市大同區</td>
+      <td>承德路</td>
+      <td>be based under Product division and will be p...</td>
+      <td>...</td>
+      <td>[員工180人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Scientist - Analytics (Product) / 資料科學家 -...</td>
+      <td>Pinkoi_香港商果翼科技股份有限公司台灣分公司</td>
+      <td>121.5169834</td>
+      <td>25.0504544</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>11774964</td>
+      <td>Python programmer/data scientist for quantitat...</td>
+      <td>Python programmer/&lt;em class='b-txt--highlight'...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001010</td>
+      <td>台北市內湖區</td>
+      <td>港墘路200號5樓</td>
+      <td>Python programmer/[[[data]]] [[[scientist]]] f...</td>
+      <td>...</td>
+      <td>[員工95人]</td>
+      <td>距捷運港墘站470公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Python programmer/data scientist for quantitat...</td>
+      <td>中塑油品股份有限公司</td>
+      <td>121.5743267</td>
+      <td>25.0759802</td>
+      <td>0</td>
+      <td>[數理統計相關, 其他數學及電算機科學相關, 財稅金融相關]</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2</td>
+      <td>12689367</td>
+      <td>Data Scientist / 資料科學家_11060</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001009</td>
+      <td>台北市北投區</td>
+      <td>立功街96號</td>
+      <td>learning / deep learning papers, and have the...</td>
+      <td>...</td>
+      <td>[員工6000人]</td>
+      <td>距捷運關渡站410公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Scientist / 資料科學家_11060</td>
+      <td>和碩集團_和碩聯合科技股份有限公司</td>
+      <td>121.4712373</td>
+      <td>25.124796</td>
+      <td>0</td>
+      <td>[資訊工程相關, 統計學相關]</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2</td>
+      <td>12110712</td>
+      <td>Data Scientist (士林)</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001008</td>
+      <td>台北市士林區</td>
+      <td>承德路四段166號</td>
+      <td>[[[Data]]]-Centric AI.\n\nThe organization re...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工4000人]</td>
+      <td>距捷運劍潭站240公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Scientist (士林)</td>
+      <td>Inventec_英業達股份有限公司</td>
+      <td>121.5230712</td>
+      <td>25.0857408</td>
+      <td>0</td>
+      <td>[數學及電算機科學學科類, 統計學相關, 電機電子工程相關]</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>2</td>
+      <td>12602344</td>
+      <td>[AD RD] Sr. Data Scientist</td>
+      <td>[AD RD] Sr. &lt;em class='b-txt--highlight'&gt;Data&lt;...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001004</td>
+      <td>台北市松山區</td>
+      <td>復興北路337號7樓</td>
+      <td>numerical techniques, algorithms and ML model...</td>
+      <td>...</td>
+      <td>[外商公司, 員工150人]</td>
+      <td>距捷運中山國中站70公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>[AD RD] Sr. Data Scientist</td>
+      <td>威朋大數據股份有限公司</td>
+      <td>121.5446271</td>
+      <td>25.060227</td>
+      <td>0</td>
+      <td>[數學及電算機科學學科類, 物理學相關, 統計學相關]</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>12839921</td>
+      <td>【IT】Data Scientist</td>
+      <td>【IT】&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002004</td>
+      <td>新北市汐止區</td>
+      <td>新台五路一段88號8樓(221)</td>
+      <td>recommendations to facilitate [[[data]]]-driv...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工7500人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>【IT】Data Scientist</td>
+      <td>宏碁股份有限公司</td>
+      <td>121.647472</td>
+      <td>25.0605179</td>
+      <td>0</td>
+      <td>[資訊工程相關, 數理統計相關]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>2</td>
+      <td>12304173</td>
+      <td>RD20163 Data Scientist (資料科學家)</td>
+      <td>RD20163 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt;...</td>
+      <td>4</td>
+      <td>1</td>
+      <td>6001001009</td>
+      <td>台北市北投區</td>
+      <td></td>
+      <td>stakeholders to gain new insights from [[[dat...</td>
+      <td>...</td>
+      <td>[上市上櫃]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>RD20163 Data Scientist (資料科學家)</td>
+      <td>華碩電腦股份有限公司</td>
+      <td>121.515018</td>
+      <td>25.1151759</td>
+      <td>0</td>
+      <td>[資訊工程相關, 資訊管理相關, 電機電子工程相關]</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2</td>
+      <td>10917374</td>
+      <td>AI人工智能資料科學家 (Data Scientist)</td>
+      <td>AI人工智能&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt; ...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001011</td>
+      <td>台北市南港區</td>
+      <td>三重路19-9號5樓</td>
+      <td>1.建立端對端(End-to-End) AI分析流程「數據收集-數據處理-特徵工程-模型訓練...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工2500人]</td>
+      <td>距捷運南港展覽館站270公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>AI人工智能資料科學家 (Data Scientist)</td>
+      <td>東元電機股份有限公司</td>
+      <td>121.6137637</td>
+      <td>25.05764</td>
+      <td>0</td>
+      <td>[數學及電算機科學學科類, 資訊工程相關, 工程學科類]</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>2</td>
+      <td>12463827</td>
+      <td>PD0751 資料科學家Data Scientist(內湖)</td>
+      <td>PD0751 &lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001010</td>
+      <td>台北市內湖區</td>
+      <td>瑞光路581號(114)</td>
+      <td>仁寶電腦集團全球化運營與永續經營，持續追求成長與創新，積極進行數位化與AI人工智能轉型，延攬...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工6500人]</td>
+      <td>距捷運西湖站270公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>PD0751 資料科學家Data Scientist(內湖)</td>
+      <td>仁寶電腦工業股份有限公司</td>
+      <td>121.5681287</td>
+      <td>25.0799209</td>
+      <td>0</td>
+      <td>[資訊工程相關, 資訊管理相關, 電機電子工程相關]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>12385530</td>
+      <td>56957_Research Scientist / Data Scientist (Hsi...</td>
+      <td>56957_Research &lt;em class='b-txt--highlight'&gt;Sc...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001006009</td>
+      <td>新竹縣竹東鎮</td>
+      <td></td>
+      <td>projects and activities focusing on ML/DL to ...</td>
+      <td>...</td>
+      <td>[外商公司]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>56957_Research Scientist / Data Scientist (Hsi...</td>
+      <td>台灣康寧顯示玻璃股份有限公司</td>
+      <td>121.0449768</td>
+      <td>24.774922</td>
+      <td>0</td>
+      <td>[數學及電算機科學學科類, 工程學科類, 資訊管理相關]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0</td>
+      <td>12672283</td>
+      <td>Data Scientist, Analytics</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001007</td>
+      <td>台北市信義區</td>
+      <td>松仁路123號6樓</td>
+      <td>\n\n\nAbout the role\n\nWe are looking for [[[...</td>
+      <td>...</td>
+      <td>[員工500人]</td>
+      <td>距捷運象山站190公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Scientist, Analytics</td>
+      <td>沛星互動科技股份有限公司</td>
+      <td>121.5692094</td>
+      <td>25.0342822</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0</td>
+      <td>12267410</td>
+      <td>Quantitative Trader/ Data Scientist/ ML Engineer</td>
+      <td>Quantitative Trader/ &lt;em class='b-txt--highlig...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001005</td>
+      <td>台北市大安區</td>
+      <td>敦化南路二段</td>
+      <td>our operations to Shenzhen, China. We are act...</td>
+      <td>...</td>
+      <td>[員工25人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Quantitative Trader/ Data Scientist/ ML Engineer</td>
+      <td>泰錸科技有限公司</td>
+      <td>121.5489794</td>
+      <td>25.0270855</td>
+      <td>0</td>
+      <td>[數理統計相關, 資訊工程相關, 其他數學及電算機科學相關]</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>0</td>
+      <td>12239109</td>
+      <td>資料工程師 Data Scientist</td>
+      <td>資料工程師 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001004</td>
+      <td>台北市松山區</td>
+      <td>復興北路369號14樓之2（中山國中捷運站附近）</td>
+      <td>熟悉語言要求：Python\n\n必備相關能力\n- 願意學習新語言(Python/SQL/...</td>
+      <td>...</td>
+      <td>[員工50人, 遠端工作]</td>
+      <td>距捷運中山國中站220公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>資料工程師 Data Scientist</td>
+      <td>類神經網路股份有限公司</td>
+      <td>121.5447579</td>
+      <td>25.0626001</td>
+      <td>2</td>
+      <td>[統計學相關, 資訊工程相關, 工業工程相關]</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>0</td>
+      <td>12716606</td>
+      <td>Data Scientist數據工程師-T03P</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001006001</td>
+      <td>新竹市</td>
+      <td></td>
+      <td>the expected outcome\n•\tIdentify and select ...</td>
+      <td>...</td>
+      <td>[外商公司, 員工200人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Scientist數據工程師-T03P</td>
+      <td>Tata Consultancy Services Limited Taiwan Branc...</td>
+      <td>120.9674798</td>
+      <td>24.8138287</td>
+      <td>0</td>
+      <td>[資訊工程相關, 數理統計相關, 資訊管理相關]</td>
+    </tr>
+  </tbody>
+</table>
+<p>20 rows × 40 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="get-next-page-get-the-2nd-1st-3rd-page-urls">
+<h3>4. Get next page: get the 2nd, 1st, 3rd, …, page urls<a class="headerlink" href="#get-next-page-get-the-2nd-1st-3rd-page-urls" title="Permalink to this headline">#</a></h3>
+<p>接下來要從Chrome Development Tools來觀察，下二頁、三頁、四頁的網址為何（例如以下網址）。然後要去觀察這些網址的變化，應該不難觀察在page=1, page=2, page=3的數字上有所變化。通常這種網址的變化都是有規律性的。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc
+
+https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc
+
+https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>20
+</pre></div>
+</div>
+</div>
+</div>
+<p>除了列印出來以外，用<code class="docutils literal notranslate"><span class="pre">all_data</span></code>這個變項儲存資料，並在for-loop中把每一頁的資料用<code class="docutils literal notranslate"><span class="pre">extend()</span></code>附加到<code class="docutils literal notranslate"><span class="pre">all_data</span></code>中。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>50
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>70
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>90
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>110
+</pre></div>
+</div>
+</div>
+</div>
+<p>最後我們把整筆資料轉為pandas比較好觀察。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">jobNo</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(110, 40)
+110
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="detect-ending-condition">
+<h3>5. detect ending condition<a class="headerlink" href="#detect-ending-condition" title="Permalink to this headline">#</a></h3>
+<p>前面的步驟中我們知道要如何一步一步抓取每一頁的資料，最後還有一個問題就是，抓到什麼時候才要停？通常程式設計師也得留一個線索，才知道要如何在網頁上自動化呈現最後一頁（如同你看網頁時所看到的最後一頁的頁碼）。所以我們得去揣測程式設計師的邏輯，看他是怎麼設計最後一頁的停止機制的。</p>
+<p>通常最主要有兩種：</p>
+<ol class="simple">
+<li><p>直接顯示最後一頁是多少：那就寫一個爬蟲，直接去偵測這個最後一頁是多少，然後把他當成ending condition。如104.com的例子是有總資料筆數的，除以頁數就可以知道總頁數。</p></li>
+<li><p>不直接顯示最後一頁是多少（e.g. PCHOME），就設一個夠大的迴圈，讓爬蟲抓抓抓抓到當掉，或者抓到資料沒再新增了，我們就偵測如果抓到的資料是零筆，就讓他跳出迴圈。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;pageNo&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalPage&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalCount&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;status&#39;, &#39;action&#39;, &#39;data&#39;, &#39;statusMsg&#39;, &#39;errorMsg&#39;])
+&lt;class &#39;dict&#39;&gt;
+dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list&#39;, &#39;count&#39;, &#39;pageNo&#39;, &#39;totalPage&#39;, &#39;totalCount&#39;])
+5
+150
+[&#39;7926&#39;, &#39;7638&#39;, &#39;146&#39;, &#39;29&#39;, &#39;113&#39;, &#39;0&#39;, &#39;0&#39;]
+7926
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totalPage</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalPage&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">totalPage</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>130
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>170
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>190
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>210
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>230
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>250
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>270
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>290
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>310
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>330
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>350
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>370
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>390
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>410
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>430
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>450
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>470
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>490
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>510
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>530
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>550
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>570
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>590
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>610
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>630
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>650
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>670
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>690
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>710
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>730
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>750
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>770
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>790
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>810
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>830
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>850
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>870
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>890
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>910
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>930
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>950
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>970
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>990
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1010
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1030
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1050
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1070
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1090
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1110
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1130
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1150
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1170
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1190
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1210
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1230
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1250
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1270
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1290
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1310
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1330
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1350
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1370
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1390
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1410
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">))</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/api.py:75,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">64</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="g g-Whitespace">     </span><span class="mi">65</span>     <span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
+<span class="g g-Whitespace">     </span><span class="mi">66</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">67</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">72</span><span class="sd">     :rtype: requests.Response</span>
+<span class="g g-Whitespace">     </span><span class="mi">73</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">75</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s1">&#39;get&#39;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/api.py:61,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># By using the &#39;with&#39; statement we are sure the session is closed, thus we</span>
+<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="c1"># avoid leaving sockets open which can trigger a ResourceWarning in some</span>
+<span class="g g-Whitespace">     </span><span class="mi">59</span> <span class="c1"># cases, and look like a memory leak in others.</span>
+<span class="g g-Whitespace">     </span><span class="mi">60</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">61</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/sessions.py:529,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span>     <span class="s1">&#39;timeout&#39;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">526</span>     <span class="s1">&#39;allow_redirects&#39;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="p">}</span>
+<span class="g g-Whitespace">    </span><span class="mi">528</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">529</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">531</span> <span class="k">return</span> <span class="n">resp</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/sessions.py:645,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">644</span> <span class="c1"># Send the request</span>
+<span class="ne">--&gt; </span><span class="mi">645</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">647</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
+<span class="g g-Whitespace">    </span><span class="mi">648</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/adapters.py:440,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
+<span class="g g-Whitespace">    </span><span class="mi">438</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">439</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">chunked</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">440</span>         <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span>             <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>             <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>             <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>             <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>             <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>             <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>             <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>             <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span>             <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span>             <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span>         <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">453</span>     <span class="c1"># Send the request.</span>
+<span class="g g-Whitespace">    </span><span class="mi">454</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">455</span>         <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="n">conn</span><span class="p">,</span> <span class="s1">&#39;proxy_pool&#39;</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:703,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">700</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_prepare_proxy</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Make the request on the httplib connection object.</span>
+<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">httplib_response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">704</span>     <span class="n">conn</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="n">method</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span>     <span class="n">url</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">707</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">709</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">710</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">711</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">713</span> <span class="c1"># If we&#39;re going to release the connection in ``finally:``, then</span>
+<span class="g g-Whitespace">    </span><span class="mi">714</span> <span class="c1"># the response doesn&#39;t need to know about the connection. Otherwise</span>
+<span class="g g-Whitespace">    </span><span class="mi">715</span> <span class="c1"># it will also try to release it and we&#39;ll have a double-release</span>
+<span class="g g-Whitespace">    </span><span class="mi">716</span> <span class="c1"># mess.</span>
+<span class="g g-Whitespace">    </span><span class="mi">717</span> <span class="n">response_conn</span> <span class="o">=</span> <span class="n">conn</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">release_conn</span> <span class="k">else</span> <span class="kc">None</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:449,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">444</span>             <span class="n">httplib_response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>         <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>             <span class="c1"># Remove the TypeError from the exception chain in</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>             <span class="c1"># Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>             <span class="c1"># Otherwise it looks like a bug in the code.</span>
+<span class="ne">--&gt; </span><span class="mi">449</span>             <span class="n">six</span><span class="o">.</span><span class="n">raise_from</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">450</span> <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">,</span> <span class="n">SocketError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">451</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_raise_timeout</span><span class="p">(</span><span class="n">err</span><span class="o">=</span><span class="n">e</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout_value</span><span class="o">=</span><span class="n">read_timeout</span><span class="p">)</span>
+
+<span class="nn">File &lt;string&gt;:3,</span> in <span class="ni">raise_from</span><span class="nt">(value, from_value)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:444,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, timeout, chunked, **httplib_request_kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">441</span> <span class="k">except</span> <span class="ne">TypeError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">442</span>     <span class="c1"># Python 3</span>
+<span class="g g-Whitespace">    </span><span class="mi">443</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">444</span>         <span class="n">httplib_response</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">getresponse</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">445</span>     <span class="k">except</span> <span class="ne">BaseException</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">446</span>         <span class="c1"># Remove the TypeError from the exception chain in</span>
+<span class="g g-Whitespace">    </span><span class="mi">447</span>         <span class="c1"># Python 3 (including for exceptions like SystemExit).</span>
+<span class="g g-Whitespace">    </span><span class="mi">448</span>         <span class="c1"># Otherwise it looks like a bug in the code.</span>
+<span class="g g-Whitespace">    </span><span class="mi">449</span>         <span class="n">six</span><span class="o">.</span><span class="n">raise_from</span><span class="p">(</span><span class="n">e</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/http/client.py:1377,</span> in <span class="ni">HTTPConnection.getresponse</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1375</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1376</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1377</span>         <span class="n">response</span><span class="o">.</span><span class="n">begin</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1378</span>     <span class="k">except</span> <span class="ne">ConnectionError</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1379</span>         <span class="bp">self</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/http/client.py:320,</span> in <span class="ni">HTTPResponse.begin</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">318</span> <span class="c1"># read until we get a non-100 response</span>
+<span class="g g-Whitespace">    </span><span class="mi">319</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">320</span>     <span class="n">version</span><span class="p">,</span> <span class="n">status</span><span class="p">,</span> <span class="n">reason</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_read_status</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">321</span>     <span class="k">if</span> <span class="n">status</span> <span class="o">!=</span> <span class="n">CONTINUE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">322</span>         <span class="k">break</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/http/client.py:281,</span> in <span class="ni">HTTPResponse._read_status</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span> <span class="k">def</span> <span class="nf">_read_status</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">281</span>     <span class="n">line</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">readline</span><span class="p">(</span><span class="n">_MAXLINE</span> <span class="o">+</span> <span class="mi">1</span><span class="p">),</span> <span class="s2">&quot;iso-8859-1&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">282</span>     <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">line</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">_MAXLINE</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">283</span>         <span class="k">raise</span> <span class="n">LineTooLong</span><span class="p">(</span><span class="s2">&quot;status line&quot;</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/socket.py:704,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
+<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">703</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">704</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/ssl.py:1241,</span> in <span class="ni">SSLSocket.recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1237</span>     <span class="k">if</span> <span class="n">flags</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1238</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">1239</span>           <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
+<span class="g g-Whitespace">   </span><span class="mi">1240</span>           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1241</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1242</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1243</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/ssl.py:1099,</span> in <span class="ni">SSLSocket.read</span><span class="nt">(self, len, buffer)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1097</span> <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span>     <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">-&gt; </span><span class="mi">1099</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1101</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
+
+<span class="ne">KeyboardInterrupt</span>: 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-to-dataframe">
+<h3>6. convert to dataframe<a class="headerlink" href="#convert-to-dataframe" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1250, 40)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>jobType</th>
+      <th>jobNo</th>
+      <th>jobName</th>
+      <th>jobNameSnippet</th>
+      <th>jobRole</th>
+      <th>jobRo</th>
+      <th>jobAddrNo</th>
+      <th>jobAddrNoDesc</th>
+      <th>jobAddress</th>
+      <th>description</th>
+      <th>...</th>
+      <th>tags</th>
+      <th>landmark</th>
+      <th>link</th>
+      <th>jobsource</th>
+      <th>jobNameRaw</th>
+      <th>custNameRaw</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>remoteWorkType</th>
+      <th>major</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>12901787</td>
+      <td>日班倉管員(週休二日免排班)</td>
+      <td>日班倉管員(週休二日免排班)</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001005012</td>
+      <td>桃園市大園區</td>
+      <td></td>
+      <td>1.倉儲貨品管理及貨品環境維護 \n2.物流倉儲各項改包進貨及出貨作業,熟悉倉庫生態佳 \n...</td>
+      <td>...</td>
+      <td>[外商公司, 員工650人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>日班倉管員(週休二日免排班)</td>
+      <td>香港商台灣利豐物流有限公司台灣分公司_LF LOGISTICS (TAIWAN) LIMITED</td>
+      <td>121.193945</td>
+      <td>25.0492632</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>11726918</td>
+      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
+      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001008004</td>
+      <td>台中市西區</td>
+      <td></td>
+      <td>百貨公司專櫃儲備幹部及店長職務\r\n1.負責介紹及銷售商品。 \r\n2.提供顧客之接待與...</td>
+      <td>...</td>
+      <td>[外商公司, 員工190人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
+      <td>香港商施華洛世奇有限公司台灣分公司</td>
+      <td>120.6631289</td>
+      <td>24.1430604</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>8422468</td>
+      <td>(Human Resources) Learning and Development Tea...</td>
+      <td>(Human Resources) Learning and Development Tea...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002011</td>
+      <td>新北市新店區</td>
+      <td></td>
+      <td>About HTC\n\nHTC built a vision of the future ...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工2000人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>(Human Resources) Learning and Development Tea...</td>
+      <td>宏達電 HTC Corporation_宏達國際電子股份有限公司</td>
+      <td>121.5394822</td>
+      <td>24.978282</td>
+      <td>0</td>
+      <td>[心理學相關, 人力資源相關]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>12388507</td>
+      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
+      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002015</td>
+      <td>新北市中和區</td>
+      <td>興南路一段142號</td>
+      <td>▋ 關於德州儀器\n德州儀器(TI)是位居類比晶片世界領導地位的半導體設計與製造公司，持續提...</td>
+      <td>...</td>
+      <td>[外商公司, 員工2000人]</td>
+      <td>距捷運南勢角站320公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
+      <td>德州儀器工業股份有限公司</td>
+      <td>121.5083777</td>
+      <td>24.9871002</td>
+      <td>0</td>
+      <td>[工程學科類]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>12781781</td>
+      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
+      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001004</td>
+      <td>台北市松山區</td>
+      <td>敦化北路88號13樓</td>
+      <td>Planning and Budgeting\n- Assist in the prepar...</td>
+      <td>...</td>
+      <td>[外商公司, 員工250人]</td>
+      <td>距捷運台北小巨蛋站340公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>【外商】財務分析副理 Finance Planning &amp; Analysis Assista...</td>
+      <td>馬來西亞商白蘭氏三得利股份有限公司台灣分公司</td>
+      <td>121.5484798</td>
+      <td>25.0513338</td>
+      <td>0</td>
+      <td>[財稅金融相關, 會計學相關, 企業管理相關]</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1245</th>
+      <td>0</td>
+      <td>12916587</td>
+      <td>Scientist of Biology Group</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Scientist&lt;/em&gt; of...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001007</td>
+      <td>台北市信義區</td>
+      <td>基隆路一段333號20樓2013室</td>
+      <td>Insilico Medicine Taiwan is seeking to hire a ...</td>
+      <td>...</td>
+      <td>[員工13人]</td>
+      <td>距捷運台北101/世貿站220公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Scientist of Biology Group</td>
+      <td>英科智能有限公司</td>
+      <td>121.5611792</td>
+      <td>25.0343865</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1246</th>
+      <td>0</td>
+      <td>12850348</td>
+      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) Scientist</td>
+      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) &lt;em class...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002025</td>
+      <td>新北市五股區</td>
+      <td>五工六路25號</td>
+      <td>Position Summary:\nPharmacology Discovery Serv...</td>
+      <td>...</td>
+      <td>[員工130人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) Scientist</td>
+      <td>汎球生物科技股份有限公司</td>
+      <td>121.4485193</td>
+      <td>25.0627591</td>
+      <td>0</td>
+      <td>[生物學相關, 醫學技術及檢驗相關, 藥學相關]</td>
+    </tr>
+    <tr>
+      <th>1247</th>
+      <td>2</td>
+      <td>12823438</td>
+      <td>資料工程師 Data Engineer</td>
+      <td>資料工程師 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; E...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001005</td>
+      <td>台北市大安區</td>
+      <td>近忠孝復興捷運站</td>
+      <td>與PM/UI/UX、前後端、資料、演算法工程師一同合作，開發與維護產品。\n   2. 負...</td>
+      <td>...</td>
+      <td>[員工650人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>資料工程師 Data Engineer</td>
+      <td>東森新媒體控股股份有限公司</td>
+      <td>121.5425991</td>
+      <td>25.0418146</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1248</th>
+      <td>0</td>
+      <td>13029724</td>
+      <td>Data Engineer 數據工程師</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; Enginee...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001016015</td>
+      <td>高雄市路竹區</td>
+      <td></td>
+      <td>do we manage the complexities of our manufact...</td>
+      <td>...</td>
+      <td>[員工260人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>Data Engineer 數據工程師</td>
+      <td>德商默克在台集團_美商慧盛先進科技有限公司台灣分公司</td>
+      <td>120.2628111</td>
+      <td>22.8494042</td>
+      <td>0</td>
+      <td>[自然科學學科類, 數學及電算機科學學科類]</td>
+    </tr>
+    <tr>
+      <th>1249</th>
+      <td>0</td>
+      <td>12096096</td>
+      <td>資料科學家</td>
+      <td>&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001001</td>
+      <td>台北市中正區</td>
+      <td>羅斯福路一段七號六樓</td>
+      <td>1.建構數據分析環境。\n2.以機器、深度學習與統計分析等最佳化研究與開發。\n3.規劃數據...</td>
+      <td>...</td>
+      <td>[員工80人]</td>
+      <td>距捷運中正紀念堂站100公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_c_relevance</td>
+      <td>資料科學家</td>
+      <td>財團法人台灣地理資訊中心</td>
+      <td>121.5180143</td>
+      <td>25.0334886</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+  </tbody>
+</table>
+<p>1250 rows × 40 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="dump-files-for-backup">
+<h2>Dump files for backup<a class="headerlink" href="#dump-files-for-backup" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>因為抓取資料很久很辛苦，所以通常會把它寫到後端的檔案、資料庫，或者雲端的資料庫中。在此，我們選擇把他寫到pandas或者<code class="docutils literal notranslate"><span class="pre">.json()</span></code>比較好讀的json檔。通常不會寫到CSV，因為CSV是以逗點分隔為辨識基礎，但文本中可能也會有逗點，會比較容易出錯。</p></li>
+<li><p>建議若設計了寫入，就立刻讀出來看看，省得不小心寫入錯誤，屆時程式關閉了，資料就取不回來了。</p></li>
+<li><p>還有另外一種檔案是python的pickle檔。pickle是一種暫存檔，也就是我們現在如果有一個變數是pandas dataframe，寫到pickle再讀出來，他還會是一個pandas dataframe，而且資料型態都不會變。這點其實非常好用，因為如果你把一個dataframe轉為json，你要特別注意那些datetime欄位或multiindex的東西被轉成什麼，又是否能夠讀得回來。也就是如果時間物件要寫入到json檔時，理應要先轉成string，然後讀取回來要做分析時，也要再轉回來datetime。但如果你轉為pickle檔，存進去是什麼樣子，拿出來就是什麼樣子。那pickle檔有缺點嗎？有！就和其他的程式例如R或網頁程式無法通用，也無法直接寫到雲端資料庫。</p></li>
+</ul>
+<section id="m1-dump-one-variable-to-json-by-json-library">
+<h3>M1. Dump one variable to json by json library<a class="headerlink" href="#m1-dump-one-variable-to-json-by-json-library" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.python.org/3/library/json.html">https://docs.python.org/3/library/json.html</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;104_list.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">outfile</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">all_data</span><span class="p">,</span> <span class="n">outfile</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="m2-dump-and-load-json-by-pandas-library">
+<h3>M2. Dump and load json by pandas library<a class="headerlink" href="#m2-dump-and-load-json-by-pandas-library" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;104_df.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">f</span><span class="o">.</span><span class="n">write</span><span class="p">(</span><span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;104_df.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">data2</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+<span class="n">data2</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>jobType</th>
+      <th>jobNo</th>
+      <th>jobName</th>
+      <th>jobNameSnippet</th>
+      <th>jobRole</th>
+      <th>jobRo</th>
+      <th>jobAddrNo</th>
+      <th>jobAddrNoDesc</th>
+      <th>jobAddress</th>
+      <th>description</th>
+      <th>...</th>
+      <th>tags</th>
+      <th>landmark</th>
+      <th>link</th>
+      <th>jobsource</th>
+      <th>jobNameRaw</th>
+      <th>custNameRaw</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>remoteWorkType</th>
+      <th>major</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>12901787</td>
+      <td>日班倉管員(週休二日免排班)</td>
+      <td>日班倉管員(週休二日免排班)</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001005012</td>
+      <td>桃園市大園區</td>
+      <td></td>
+      <td>1.倉儲貨品管理及貨品環境維護 \n2.物流倉儲各項改包進貨及出貨作業,熟悉倉庫生態佳 \n...</td>
+      <td>...</td>
+      <td>[外商公司, 員工650人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>日班倉管員(週休二日免排班)</td>
+      <td>香港商台灣利豐物流有限公司台灣分公司_LF LOGISTICS (TAIWAN) LIMITED</td>
+      <td>121.193945</td>
+      <td>25.049263</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1</td>
+      <td>11726918</td>
+      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
+      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001008004</td>
+      <td>台中市西區</td>
+      <td></td>
+      <td>百貨公司專櫃儲備幹部及店長職務\r\n1.負責介紹及銷售商品。 \r\n2.提供顧客之接待與...</td>
+      <td>...</td>
+      <td>[外商公司, 員工190人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
+      <td>香港商施華洛世奇有限公司台灣分公司</td>
+      <td>120.663129</td>
+      <td>24.143060</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1</td>
+      <td>8422468</td>
+      <td>(Human Resources) Learning and Development Tea...</td>
+      <td>(Human Resources) Learning and Development Tea...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002011</td>
+      <td>新北市新店區</td>
+      <td></td>
+      <td>About HTC\n\nHTC built a vision of the future ...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工2000人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>(Human Resources) Learning and Development Tea...</td>
+      <td>宏達電 HTC Corporation_宏達國際電子股份有限公司</td>
+      <td>121.539482</td>
+      <td>24.978282</td>
+      <td>0</td>
+      <td>[心理學相關, 人力資源相關]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1</td>
+      <td>12388507</td>
+      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
+      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002015</td>
+      <td>新北市中和區</td>
+      <td>興南路一段142號</td>
+      <td>▋ 關於德州儀器\n德州儀器(TI)是位居類比晶片世界領導地位的半導體設計與製造公司，持續提...</td>
+      <td>...</td>
+      <td>[外商公司, 員工2000人]</td>
+      <td>距捷運南勢角站320公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
+      <td>德州儀器工業股份有限公司</td>
+      <td>121.508378</td>
+      <td>24.987100</td>
+      <td>0</td>
+      <td>[工程學科類]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>12781781</td>
+      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
+      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001004</td>
+      <td>台北市松山區</td>
+      <td>敦化北路88號13樓</td>
+      <td>Planning and Budgeting\n- Assist in the prepar...</td>
+      <td>...</td>
+      <td>[外商公司, 員工250人]</td>
+      <td>距捷運台北小巨蛋站340公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>hotjob_chr</td>
+      <td>【外商】財務分析副理 Finance Planning &amp; Analysis Assista...</td>
+      <td>馬來西亞商白蘭氏三得利股份有限公司台灣分公司</td>
+      <td>121.548480</td>
+      <td>25.051334</td>
+      <td>0</td>
+      <td>[財稅金融相關, 會計學相關, 企業管理相關]</td>
+    </tr>
+  </tbody>
+</table>
+<p>5 rows × 40 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="m3-dump-multiple-variables-to-pickle">
+<h3>M3. Dump multiple variables to pickle<a class="headerlink" href="#m3-dump-multiple-variables-to-pickle" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;104.pkl&#39;</span><span class="p">,</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>  <span class="c1"># Python 3: open(..., &#39;wb&#39;)</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">([</span><span class="n">all_data</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">fout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="load-multiple-variables-back-to-objects">
+<h3>Load multiple variables back to objects<a class="headerlink" href="#load-multiple-variables-back-to-objects" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;104.pkl&#39;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>  <span class="c1"># Python 3: open(..., &#39;rb&#39;)</span>
+    <span class="n">test</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">test</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;list&#39;&gt;
+&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">test</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;jobType&#39;, &#39;jobNo&#39;, &#39;jobName&#39;, &#39;jobNameSnippet&#39;, &#39;jobRole&#39;, &#39;jobRo&#39;, &#39;jobAddrNo&#39;, &#39;jobAddrNoDesc&#39;, &#39;jobAddress&#39;, &#39;description&#39;, &#39;optionEdu&#39;, &#39;period&#39;, &#39;periodDesc&#39;, &#39;applyCnt&#39;, &#39;applyDesc&#39;, &#39;custNo&#39;, &#39;custName&#39;, &#39;coIndustry&#39;, &#39;coIndustryDesc&#39;, &#39;salaryLow&#39;, &#39;salaryHigh&#39;, &#39;salaryDesc&#39;, &#39;s10&#39;, &#39;appearDate&#39;, &#39;appearDateDesc&#39;, &#39;optionZone&#39;, &#39;isApply&#39;, &#39;applyDate&#39;, &#39;isSave&#39;, &#39;descSnippet&#39;, &#39;tags&#39;, &#39;landmark&#39;, &#39;link&#39;, &#39;jobsource&#39;, &#39;jobNameRaw&#39;, &#39;custNameRaw&#39;, &#39;lon&#39;, &#39;lat&#39;, &#39;remoteWorkType&#39;, &#39;major&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="using-timestamp-as-file-name">
+<h2>Using timestamp as file name<a class="headerlink" href="#using-timestamp-as-file-name" title="Permalink to this headline">#</a></h2>
+<p>因為我們抓取資料的for-loop如果有幾千或幾萬個iterations，勢必很怕抓到一半斷掉或當機，卻又得重抓。所以最好的方式就是，每抓個幾百筆或幾千筆，就留一份檔案。但要如何區分這些檔案的先後順序？通常會用撈取的時間加上資料筆數的先後來作為檔名的一部分，這樣之後就可以觀看這些檔名來知道，究竟資料有沒有抓完，或者當在哪裡。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">%H%M%S&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current Time =&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;104_</span><span class="si">%s</span><span class="s1">.pkl&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">now</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>  <span class="c1"># Python 3: open(..., &#39;wb&#39;)</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">([</span><span class="n">all_data</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">fout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Current Time = 20221010120556
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="clean-version-104">
+<h2>Clean version. 104<a class="headerlink" href="#clean-version-104" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+<span class="n">search_str</span> <span class="o">=</span> <span class="s1">&#39;數據分析&#39;</span>
+
+<span class="c1"># Detecting totalPage</span>
+<span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=&#39;</span> <span class="o">+</span> <span class="n">search_str</span> <span class="o">+</span> <span class="s1">&#39;&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">totalPage</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalPage&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">totalPage</span><span class="p">)</span>
+
+<span class="c1"># Getting data by loop</span>
+<span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">totalPage</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=&#39;</span> <span class="o">+</span> <span class="n">search_str</span> <span class="o">+</span> <span class="s1">&#39;&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+    <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">()</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
+
+
+<span class="c1"># Saving and Backing up data</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
+
+<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">%H%M%S&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current Time =&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;104_</span><span class="si">%s</span><span class="s1">_</span><span class="si">%s</span><span class="s1">.pkl&#39;</span><span class="o">%</span><span class="p">(</span><span class="n">search_str</span><span class="p">,</span> <span class="n">now</span><span class="p">),</span> <span class="s1">&#39;wb&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>  <span class="c1"># Python 3: open(..., &#39;wb&#39;)</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">([</span><span class="n">all_data</span><span class="p">,</span> <span class="n">df</span><span class="p">],</span> <span class="n">fout</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150
+30 50 70 90 110 130 150 170 190 210 230 250 270 290 310 330 350 370 390 410 430 450 470 490 510 530 550 570 590 610 630 650 670 690 710 730 750 770 790 810 830 850 870 890 910 930 950 970 990 1010 1030 1050 1070 1090 1110 1130 1150 1170 1190 1210 1230 1250 1270 1290 1310 1330 1350 1370 1390 1410 1430 1450 1470 1490 1510 1530 1550 1570 1590 1610 1630 1650 1670 1690 1710 1730 1750 1770 1790 1810 1830 1850 1870 1890 1910 1930 1950 1970 1990 2010 2030 2050 2070 2090 2110 2130 2150 2170 2190 2210 2230 2250 2270 2290 2310 2330 2350 2370 2390 2410 2430 2450 2470 2490 2510 2530 2550 2570 2590 2610 2630 2650 2670 2690 2710 2730 2750 2770 2790 2810 2830 2850 2870 2890 2910 2930 2950 2970 2990 
+Current Time = 20210325125357
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P07_visualization.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">P07 Visualization with Pandas</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="P08_3_cases.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P08-3 Scraping cases</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
