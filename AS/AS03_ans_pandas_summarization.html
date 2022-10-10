@@ -247,8 +247,13 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../PSS/P06_2_pandas_tricks.html">
-     Pandas Tricks
+    <a class="reference internal" href="../PSS/P06_pandas_filter_select_datetime.html">
+     Pandas: filter, select, and timeline process
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P06_pandas_plotting.html">
+     Pandas: Plotting with
     </a>
    </li>
   </ul>
@@ -2177,12 +2182,9 @@ site_id
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-10 21:54:53--  https://raw.githubusercontent.com/p4css/py4css/main/data/opendata110m043.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185.199.108.133, 185.199.110.133, 185.199.109.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-11 02:20:54--  https://raw.githubusercontent.com/p4css/py4css/main/data/opendata110m043.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
@@ -2199,33 +2201,30 @@ Saving to: &#39;opendata110m043.csv&#39;
 opendata110m043.csv   0%[                    ]       0  --.-KB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv   0%[                    ] 288.74K  1.34MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv   0%[                    ] 551.17K  2.67MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv   4%[                    ]   2.17M  5.29MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  11%[=&gt;                  ]   6.38M  15.9MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  15%[==&gt;                 ]   8.38M  13.7MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  26%[====&gt;               ]  14.40M  23.8MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  26%[====&gt;               ]  14.27M  17.4MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  43%[=======&gt;            ]  23.60M  29.3MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  42%[=======&gt;            ]  22.84M  22.4MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  54%[=========&gt;          ]  29.62M  29.3MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  58%[==========&gt;         ]  31.84M  26.0MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  73%[=============&gt;      ]  39.90M  32.9MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  75%[==============&gt;     ]  40.97M  28.7MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  94%[=================&gt;  ]  51.09M  36.2MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  90%[=================&gt;  ]  48.83M  29.7MB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv 100%[===================&gt;]  54.14M  30.8MB/s    in 1.8s    
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv 100%[===================&gt;]  54.14M  37.1MB/s    in 1.5s    
 
-2022-10-10 21:54:59 (30.8 MB/s) - &#39;opendata110m043.csv&#39; saved [56768523/56768523]
+2022-10-11 02:21:00 (37.1 MB/s) - &#39;opendata110m043.csv&#39; saved [56768523/56768523]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
