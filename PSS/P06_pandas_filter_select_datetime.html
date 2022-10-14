@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Pandas: Plotting with" href="P06_pandas_plotting.html" />
+    <link rel="next" title="P07 Making Charts" href="P07_plotting_pandas.html" />
     <link rel="prev" title="P06 Pandas" href="P06_pandas.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -253,17 +253,24 @@ const thebe_selector_output = ".output, .cell_output"
      Pandas: filter, select, and timeline process
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P07_plotting_pandas.html">
+   P07 Making Charts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="P06_pandas_plotting.html">
-     Pandas: Plotting with
+    <a class="reference internal" href="P07_1_bokeh.html">
+     Bokeh
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="P07_visualization.html">
-   P07 Visualization with Pandas
-  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -337,8 +344,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../notebooks.html">
    Content with notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -602,8 +609,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#user-productivity">
-   User Productivity
+  <a class="reference internal nav-link" href="#twitter-user-productivity">
+   Twitter User Productivity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -611,6 +618,11 @@ title="Print to PDF"
    Filter rows by column value
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-data-drug-ill-ad">
+     Load data (drug ill-ad)
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#by-contains">
      By contains
@@ -733,8 +745,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#user-productivity">
-   User Productivity
+  <a class="reference internal nav-link" href="#twitter-user-productivity">
+   Twitter User Productivity
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
@@ -742,6 +754,11 @@ title="Print to PDF"
    Filter rows by column value
   </a>
   <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#load-data-drug-ill-ad">
+     Load data (drug ill-ad)
+    </a>
+   </li>
    <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#by-contains">
      By contains
@@ -1808,8 +1825,8 @@ Name: account_creation_date, Length: 744, dtype: datetime64[ns]
 </div>
 </section>
 </section>
-<section id="user-productivity">
-<h2>User Productivity<a class="headerlink" href="#user-productivity" title="Permalink to this headline">#</a></h2>
+<section id="twitter-user-productivity">
+<h2>Twitter User Productivity<a class="headerlink" href="#twitter-user-productivity" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lang_count</span> <span class="o">=</span> <span class="n">user_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;account_language&#39;</span><span class="p">)[</span><span class="s2">&quot;userid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1843,13 +1860,8 @@ Name: account_creation_date, Length: 744, dtype: datetime64[ns]
 </section>
 <section id="filter-rows-by-column-value">
 <h2>Filter rows by column value<a class="headerlink" href="#filter-rows-by-column-value" title="Permalink to this headline">#</a></h2>
-<section id="by-contains">
-<h3>By contains<a class="headerlink" href="#by-contains" title="Permalink to this headline">#</a></h3>
-<p><a class="reference external" href="https://www.geeksforgeeks.org/python-pandas-series-str-contains/">Python | Pandas Series.str.contains() - GeeksforGeeks</a></p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pat</span> <span class="o">=</span> <span class="s1">&#39;假[\s\S]{0,6}新聞|假[\s\S]{0,6}消息|不實[\s\S]{0,6}新聞|不實[\s\S]{0,6}消息|假[\s\S]{0,6}訊息|不實[\s\S]{0,6}訊息&#39;</span>
-<span class="n">filtered_comment</span> <span class="o">=</span> <span class="n">comment</span><span class="p">[</span><span class="n">comment</span><span class="p">[</span><span class="s1">&#39;ccontent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="o">=</span><span class="n">pat</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
-</pre></div>
-</div>
+<section id="load-data-drug-ill-ad">
+<h3>Load data (drug ill-ad)<a class="headerlink" href="#load-data-drug-ill-ad" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -2052,6 +2064,14 @@ Name: account_creation_date, Length: 744, dtype: datetime64[ns]
 </table>
 <p>2972 rows × 10 columns</p>
 </div></div></div>
+</div>
+</section>
+<section id="by-contains">
+<h3>By contains<a class="headerlink" href="#by-contains" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://www.geeksforgeeks.org/python-pandas-series-str-contains/">Python | Pandas Series.str.contains() - GeeksforGeeks</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pat</span> <span class="o">=</span> <span class="s1">&#39;假[\s\S]{0,6}新聞|假[\s\S]{0,6}消息|不實[\s\S]{0,6}新聞|不實[\s\S]{0,6}消息|假[\s\S]{0,6}訊息|不實[\s\S]{0,6}訊息&#39;</span>
+<span class="n">filtered_comment</span> <span class="o">=</span> <span class="n">comment</span><span class="p">[</span><span class="n">comment</span><span class="p">[</span><span class="s1">&#39;ccontent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="o">=</span><span class="n">pat</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
+</pre></div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2860,7 +2880,7 @@ mpl.rc(&#39;font&#39;, family=&#39;Taipei Sans TC Beta&#39;)
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/P06_pandas_filter_select_datetime_37_0.png" src="../_images/P06_pandas_filter_select_datetime_37_0.png" />
+<img alt="../_images/P06_pandas_filter_select_datetime_38_0.png" src="../_images/P06_pandas_filter_select_datetime_38_0.png" />
 </div>
 </div>
 </section>
@@ -3184,34 +3204,34 @@ mpl.rc(&#39;font&#39;, family=&#39;Taipei Sans TC Beta&#39;)
   <tbody>
     <tr>
       <th>0</th>
-      <td>0.468810</td>
-      <td>0.772236</td>
-      <td>0.407825</td>
-      <td>0.996187</td>
+      <td>0.833560</td>
+      <td>0.587068</td>
+      <td>0.560042</td>
+      <td>0.765477</td>
       <td>0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.590611</td>
-      <td>0.288677</td>
-      <td>0.993498</td>
-      <td>0.347373</td>
+      <td>0.240474</td>
+      <td>0.199032</td>
+      <td>0.361969</td>
+      <td>0.824091</td>
       <td>0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>0.721819</td>
-      <td>0.947783</td>
-      <td>0.117945</td>
-      <td>0.534646</td>
+      <td>0.148319</td>
+      <td>0.893416</td>
+      <td>0.828260</td>
+      <td>0.939116</td>
       <td>1</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.016097</td>
-      <td>0.249927</td>
-      <td>0.493222</td>
-      <td>0.307728</td>
+      <td>0.081204</td>
+      <td>0.808416</td>
+      <td>0.377892</td>
+      <td>0.562523</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -3275,19 +3295,19 @@ mpl.rc(&#39;font&#39;, family=&#39;Taipei Sans TC Beta&#39;)
   <tbody>
     <tr>
       <th>0</th>
-      <td>1.059421</td>
-      <td>0.590611</td>
-      <td>0.530456</td>
-      <td>1.401323</td>
-      <td>0.648814</td>
+      <td>1.074034</td>
+      <td>0.833560</td>
+      <td>0.393050</td>
+      <td>0.922011</td>
+      <td>0.058613</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0.737916</td>
-      <td>0.721819</td>
-      <td>0.598855</td>
-      <td>0.611167</td>
-      <td>0.226919</td>
+      <td>0.229523</td>
+      <td>0.148319</td>
+      <td>0.850916</td>
+      <td>1.206152</td>
+      <td>0.376593</td>
     </tr>
   </tbody>
 </table>
@@ -3330,10 +3350,10 @@ mpl.rc(&#39;font&#39;, family=&#39;Taipei Sans TC Beta&#39;)
             <p class="prev-next-title">P06 Pandas</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="P06_pandas_plotting.html" title="next page">
+    <a class='right-next' id="next-link" href="P07_plotting_pandas.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Pandas: Plotting with</p>
+        <p class="prev-next-title">P07 Making Charts</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>

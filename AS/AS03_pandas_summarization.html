@@ -253,17 +253,24 @@ const thebe_selector_output = ".output, .cell_output"
      Pandas: filter, select, and timeline process
     </a>
    </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P07_plotting_pandas.html">
+   P07 Making Charts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../PSS/P06_pandas_plotting.html">
-     Pandas: Plotting with
+    <a class="reference internal" href="../PSS/P07_1_bokeh.html">
+     Bokeh
     </a>
    </li>
   </ul>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../PSS/P07_visualization.html">
-   P07 Visualization with Pandas
-  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -337,8 +344,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../notebooks.html">
    Content with notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
-  <label for="toctree-checkbox-8">
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -806,148 +813,54 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<pre class="output traceback literal-block">---------------------------------------------------------------------------
+JSONDecodeError                           Traceback (most recent call last)
+File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:910, in Response.json(self, **kwargs)
+    909 try:
+--&gt; 910     return complexjson.loads(self.text, **kwargs)
+    911 except JSONDecodeError as e:
+    912     # Catch JSON-related errors and raise as requests.JSONDecodeError
+    913     # This aliases json.JSONDecodeError and simplejson.JSONDecodeError
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+File ~/opt/anaconda3/lib/python3.9/json/__init__.py:346, in loads(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)
+    343 if (cls is None and object_hook is None and
+    344         parse_int is None and parse_float is None and
+    345         parse_constant is None and object_pairs_hook is None and not kw):
+--&gt; 346     return _default_decoder.decode(s)
+    347 if cls is None:
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>statistic_yyy</th>
-      <th>according</th>
-      <th>site_id</th>
-      <th>marriage_type</th>
-      <th>female_age_or_spouse1</th>
-      <th>male_age_or_spouse2</th>
-      <th>marry_pair</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>1</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>不同性別</td>
-      <td>未滿15歲</td>
-      <td>未滿15歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>不同性別</td>
-      <td>未滿15歲</td>
-      <td>15歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>不同性別</td>
-      <td>未滿15歲</td>
-      <td>16歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>不同性別</td>
-      <td>未滿15歲</td>
-      <td>17歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>5</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>不同性別</td>
-      <td>未滿15歲</td>
-      <td>18歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1995</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>相同性別_女性</td>
-      <td>55～64歲</td>
-      <td>32歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1996</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>相同性別_女性</td>
-      <td>55～64歲</td>
-      <td>33歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1997</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>相同性別_女性</td>
-      <td>55～64歲</td>
-      <td>34歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1998</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>相同性別_女性</td>
-      <td>55～64歲</td>
-      <td>35～39歲</td>
-      <td>0</td>
-    </tr>
-    <tr>
-      <th>1999</th>
-      <td>110</td>
-      <td>按發生日期分</td>
-      <td>新北市板橋區</td>
-      <td>相同性別_女性</td>
-      <td>55～64歲</td>
-      <td>40～44歲</td>
-      <td>0</td>
-    </tr>
-  </tbody>
-</table>
-<p>1999 rows × 7 columns</p>
-</div></div></div>
+File ~/opt/anaconda3/lib/python3.9/json/decoder.py:337, in JSONDecoder.decode(self, s, _w)
+    333 &quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance
+    334 containing a JSON document).
+    335 
+    336 &quot;&quot;&quot;
+--&gt; 337 obj, end = self.raw_decode(s, idx=_w(s, 0).end())
+    338 end = _w(s, end).end()
+
+File ~/opt/anaconda3/lib/python3.9/json/decoder.py:355, in JSONDecoder.raw_decode(self, s, idx)
+    354 except StopIteration as err:
+--&gt; 355     raise JSONDecodeError(&quot;Expecting value&quot;, s, err.value) from None
+    356 return obj, end
+
+JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+
+During handling of the above exception, another exception occurred:
+
+JSONDecodeError                           Traceback (most recent call last)
+Input In [1], in &lt;cell line: 6&gt;()
+      3 import pandas as pd
+      5 url = &quot;https://od.moi.gov.tw/api/v1/rest/datastore/301000000A-001660-015&quot;
+----&gt; 6 res = requests.get(url).json()
+      7 # print(res)
+      8 df = pd.DataFrame(res['result']['records'])
+
+File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:917, in Response.json(self, **kwargs)
+    915     raise RequestsJSONDecodeError(e.message)
+    916 else:
+--&gt; 917     raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
+
+JSONDecodeError: [Errno Expecting value] : 0</pre>
+</div>
 </div>
 <p>注意觀察資料，這個資料是，某鄉鎮市區（<code class="docutils literal notranslate"><span class="pre">site_id</span></code>）的某一種結婚型態（<code class="docutils literal notranslate"><span class="pre">marriage_type</span></code>）的雙方年齡組（<code class="docutils literal notranslate"><span class="pre">female_age_or_spouse1</span></code>, <code class="docutils literal notranslate"><span class="pre">male_age_or_spouse2</span></code>）有幾對（<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>）。如果把<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>全部相加，就會是當年度婚姻的總對數。</p>
 </section>
@@ -1080,6 +993,11 @@ title="Print to PDF"
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列印出marriage_type有哪幾種種類的值</span>
 
 <span class="c1"># YOUR CODE SHOULD BE HERE</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;不同性別&#39;, &#39;相同性別_女性&#39;, &#39;相同性別_男性&#39;}
 </pre></div>
 </div>
 </div>
@@ -1330,50 +1248,18 @@ site_id
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-11 02:21:14--  https://raw.githubusercontent.com/p4css/py4css/main/data/opendata110m043.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.111.133, 185.199.109.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-10 16:06:30--  https://raw.githubusercontent.com/p4css/py4css/main/data/opendata110m043.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
+HTTP request sent, awaiting response... 200 OK
 Length: 56768523 (54M) [text/plain]
 Saving to: &#39;opendata110m043.csv&#39;
 
+opendata110m043.csv 100%[===================&gt;]  54.14M  41.6MB/s    in 1.3s    
 
-opendata110m043.csv   0%[                    ]       0  --.-KB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv   1%[                    ] 663.17K  3.21MB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  11%[=&gt;                  ]   6.35M  15.8MB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  31%[=====&gt;              ]  16.88M  28.0MB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  51%[=========&gt;          ]  27.84M  34.7MB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  67%[============&gt;       ]  36.44M  36.3MB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  83%[===============&gt;    ]  45.41M  37.8MB/s               
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  98%[==================&gt; ]  53.26M  38.0MB/s               
-opendata110m043.csv 100%[===================&gt;]  54.14M  38.2MB/s    in 1.4s    
+2022-10-10 16:06:34 (41.6 MB/s) - &#39;opendata110m043.csv&#39; saved [56768523/56768523]
 
-2022-10-11 02:21:15 (38.2 MB/s) - &#39;opendata110m043.csv&#39; saved [56768523/56768523]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
+[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
 [&#39;統計年度&#39;, &#39;按照別&#39;, &#39;區域別&#39;, &#39;婚姻類型&#39;, &#39;女方年齡或配偶一方年齡&#39;, &#39;男方年齡或配偶另一方年齡&#39;, &#39;結婚對數&#39;]
 [&#39;110&#39;, &#39;按發生日期分&#39;, &#39;新北市板橋區&#39;, &#39;不同性別&#39;, &#39;未滿15歲&#39;, &#39;15歲&#39;, &#39;0&#39;]
 </pre></div>
@@ -1410,9 +1296,7 @@ opendata110m043.csv 100%[===================&gt;]  54.14M  38.2MB/s    in 1.4s
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__未滿15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__16歲&#39;, &#39;county&#39;: &#39;新北市&#39;}]
+[{&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__未滿15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__16歲&#39;, &#39;county&#39;: &#39;新北市&#39;}]
 </pre></div>
 </div>
 </div>
