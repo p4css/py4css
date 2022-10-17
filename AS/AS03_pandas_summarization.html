@@ -256,7 +256,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../PSS/P07_plotting_pandas.html">
+  <a class="reference internal" href="../PSS/P07_1_plot_pandas.html">
    P07 Making Charts
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
@@ -266,7 +266,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="../PSS/P07_1_bokeh.html">
+    <a class="reference internal" href="../PSS/P07_2_bokeh.html">
      Bokeh
     </a>
    </li>
@@ -279,15 +279,27 @@ const thebe_selector_output = ".output, .cell_output"
  </span>
 </p>
 <ul class="nav bd-sidenav">
- <li class="toctree-l1">
-  <a class="reference internal" href="../PSS/P08_get_web_json.html">
-   Scraping with Web API
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P08_1_web_json.html">
+   P08 Scraping with Web API
   </a>
- </li>
- <li class="toctree-l1">
-  <a class="reference internal" href="../PSS/P08_3_cases.html">
-   P08-3 Scraping cases
-  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P08_2_twitter_api_norun.html">
+     P08 Web API (Twitter)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P08_5_cases.html">
+     Scraping cases
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -344,8 +356,8 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../notebooks.html">
    Content with notebooks
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
-  <label for="toctree-checkbox-9">
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
    <i class="fas fa-chevron-down">
    </i>
   </label>
@@ -813,54 +825,148 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<pre class="output traceback literal-block">---------------------------------------------------------------------------
-JSONDecodeError                           Traceback (most recent call last)
-File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:910, in Response.json(self, **kwargs)
-    909 try:
---&gt; 910     return complexjson.loads(self.text, **kwargs)
-    911 except JSONDecodeError as e:
-    912     # Catch JSON-related errors and raise as requests.JSONDecodeError
-    913     # This aliases json.JSONDecodeError and simplejson.JSONDecodeError
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
 
-File ~/opt/anaconda3/lib/python3.9/json/__init__.py:346, in loads(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)
-    343 if (cls is None and object_hook is None and
-    344         parse_int is None and parse_float is None and
-    345         parse_constant is None and object_pairs_hook is None and not kw):
---&gt; 346     return _default_decoder.decode(s)
-    347 if cls is None:
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
 
-File ~/opt/anaconda3/lib/python3.9/json/decoder.py:337, in JSONDecoder.decode(self, s, _w)
-    333 &quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance
-    334 containing a JSON document).
-    335 
-    336 &quot;&quot;&quot;
---&gt; 337 obj, end = self.raw_decode(s, idx=_w(s, 0).end())
-    338 end = _w(s, end).end()
-
-File ~/opt/anaconda3/lib/python3.9/json/decoder.py:355, in JSONDecoder.raw_decode(self, s, idx)
-    354 except StopIteration as err:
---&gt; 355     raise JSONDecodeError(&quot;Expecting value&quot;, s, err.value) from None
-    356 return obj, end
-
-JSONDecodeError: Expecting value: line 1 column 1 (char 0)
-
-During handling of the above exception, another exception occurred:
-
-JSONDecodeError                           Traceback (most recent call last)
-Input In [1], in &lt;cell line: 6&gt;()
-      3 import pandas as pd
-      5 url = &quot;https://od.moi.gov.tw/api/v1/rest/datastore/301000000A-001660-015&quot;
-----&gt; 6 res = requests.get(url).json()
-      7 # print(res)
-      8 df = pd.DataFrame(res['result']['records'])
-
-File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:917, in Response.json(self, **kwargs)
-    915     raise RequestsJSONDecodeError(e.message)
-    916 else:
---&gt; 917     raise RequestsJSONDecodeError(e.msg, e.doc, e.pos)
-
-JSONDecodeError: [Errno Expecting value] : 0</pre>
-</div>
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>statistic_yyy</th>
+      <th>according</th>
+      <th>site_id</th>
+      <th>marriage_type</th>
+      <th>female_age_or_spouse1</th>
+      <th>male_age_or_spouse2</th>
+      <th>marry_pair</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>1</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>不同性別</td>
+      <td>未滿15歲</td>
+      <td>未滿15歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>不同性別</td>
+      <td>未滿15歲</td>
+      <td>15歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>不同性別</td>
+      <td>未滿15歲</td>
+      <td>16歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>不同性別</td>
+      <td>未滿15歲</td>
+      <td>17歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>不同性別</td>
+      <td>未滿15歲</td>
+      <td>18歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1995</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>相同性別_女性</td>
+      <td>55～64歲</td>
+      <td>32歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1996</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>相同性別_女性</td>
+      <td>55～64歲</td>
+      <td>33歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1997</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>相同性別_女性</td>
+      <td>55～64歲</td>
+      <td>34歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1998</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>相同性別_女性</td>
+      <td>55～64歲</td>
+      <td>35～39歲</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1999</th>
+      <td>110</td>
+      <td>按發生日期分</td>
+      <td>新北市板橋區</td>
+      <td>相同性別_女性</td>
+      <td>55～64歲</td>
+      <td>40～44歲</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+<p>1999 rows × 7 columns</p>
+</div></div></div>
 </div>
 <p>注意觀察資料，這個資料是，某鄉鎮市區（<code class="docutils literal notranslate"><span class="pre">site_id</span></code>）的某一種結婚型態（<code class="docutils literal notranslate"><span class="pre">marriage_type</span></code>）的雙方年齡組（<code class="docutils literal notranslate"><span class="pre">female_age_or_spouse1</span></code>, <code class="docutils literal notranslate"><span class="pre">male_age_or_spouse2</span></code>）有幾對（<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>）。如果把<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>全部相加，就會是當年度婚姻的總對數。</p>
 </section>
@@ -993,11 +1099,6 @@ JSONDecodeError: [Errno Expecting value] : 0</pre>
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列印出marriage_type有哪幾種種類的值</span>
 
 <span class="c1"># YOUR CODE SHOULD BE HERE</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;不同性別&#39;, &#39;相同性別_女性&#39;, &#39;相同性別_男性&#39;}
 </pre></div>
 </div>
 </div>
@@ -1248,18 +1349,158 @@ site_id
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-10 16:06:30--  https://raw.githubusercontent.com/p4css/py4css/main/data/opendata110m043.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... connected.
-HTTP request sent, awaiting response... 200 OK
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-10-17 13:01:06--  https://raw.githubusercontent.com/p4css/py4css/main/data/opendata110m043.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
 Length: 56768523 (54M) [text/plain]
 Saving to: &#39;opendata110m043.csv&#39;
 
-opendata110m043.csv 100%[===================&gt;]  54.14M  41.6MB/s    in 1.3s    
 
-2022-10-10 16:06:34 (41.6 MB/s) - &#39;opendata110m043.csv&#39; saved [56768523/56768523]
+opendata110m043.csv   0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv   1%[                    ] 936.00K  4.55MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv   5%[&gt;                   ]   3.24M  8.08MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv   8%[&gt;                   ]   4.85M  8.04MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  12%[=&gt;                  ]   6.52M  8.11MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  15%[==&gt;                 ]   8.30M  8.25MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  18%[==&gt;                 ]  10.07M  8.34MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  21%[===&gt;                ]  11.82M  8.39MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  24%[===&gt;                ]  13.07M  8.11MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  25%[====&gt;               ]  14.05M  7.75MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  27%[====&gt;               ]  15.02M  7.45MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  29%[====&gt;               ]  16.01M  7.22MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  31%[=====&gt;              ]  17.02M  7.03MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  33%[=====&gt;              ]  18.05M  6.89MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  35%[======&gt;             ]  19.10M  6.77MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  37%[======&gt;             ]  20.18M  6.67MB/s    eta 5s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  39%[======&gt;             ]  21.29M  6.67MB/s    eta 5s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  41%[=======&gt;            ]  22.40M  6.51MB/s    eta 5s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  43%[=======&gt;            ]  23.52M  6.26MB/s    eta 5s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  45%[========&gt;           ]  24.68M  6.03MB/s    eta 5s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  47%[========&gt;           ]  25.85M  5.90MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  50%[=========&gt;          ]  27.07M  5.77MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  52%[=========&gt;          ]  28.29M  5.65MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  54%[=========&gt;          ]  29.57M  5.54MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  56%[==========&gt;         ]  30.85M  5.59MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  58%[==========&gt;         ]  31.90M  5.58MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  60%[===========&gt;        ]  33.01M  5.61MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  63%[===========&gt;        ]  34.37M  5.72MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  65%[============&gt;       ]  35.43M  5.72MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  67%[============&gt;       ]  36.40M  5.72MB/s    eta 4s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  69%[============&gt;       ]  37.45M  5.70MB/s    eta 3s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  71%[=============&gt;      ]  38.54M  5.70MB/s    eta 3s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  73%[=============&gt;      ]  39.59M  5.70MB/s    eta 3s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  75%[==============&gt;     ]  40.76M  5.70MB/s    eta 3s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  77%[==============&gt;     ]  41.96M  5.72MB/s    eta 3s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  79%[==============&gt;     ]  43.18M  5.72MB/s    eta 2s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  81%[===============&gt;    ]  44.37M  5.72MB/s    eta 2s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  84%[===============&gt;    ]  45.55M  5.71MB/s    eta 2s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  86%[================&gt;   ]  46.85M  5.71MB/s    eta 2s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  88%[================&gt;   ]  48.15M  5.73MB/s    eta 2s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  91%[=================&gt;  ]  49.48M  5.75MB/s    eta 1s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  93%[=================&gt;  ]  50.82M  5.90MB/s    eta 1s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  96%[==================&gt; ]  52.18M  5.92MB/s    eta 1s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv  98%[==================&gt; ]  53.48M  6.00MB/s    eta 1s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>opendata110m043.csv 100%[===================&gt;]  54.14M  6.01MB/s    in 8.8s    
 
-[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
+2022-10-17 13:01:15 (6.18 MB/s) - &#39;opendata110m043.csv&#39; saved [56768523/56768523]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
 [&#39;統計年度&#39;, &#39;按照別&#39;, &#39;區域別&#39;, &#39;婚姻類型&#39;, &#39;女方年齡或配偶一方年齡&#39;, &#39;男方年齡或配偶另一方年齡&#39;, &#39;結婚對數&#39;]
 [&#39;110&#39;, &#39;按發生日期分&#39;, &#39;新北市板橋區&#39;, &#39;不同性別&#39;, &#39;未滿15歲&#39;, &#39;15歲&#39;, &#39;0&#39;]
 </pre></div>
@@ -1296,7 +1537,9 @@ opendata110m043.csv 100%[===================&gt;]  54.14M  41.6MB/s    in 1.3s
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;statistic_yyy&#39;, &#39;according&#39;, &#39;site_id&#39;, &#39;marriage_type&#39;, &#39;female_age_or_spouse1&#39;, &#39;male_age_or_spouse2&#39;, &#39;marry_pair&#39;]
-[{&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__未滿15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__16歲&#39;, &#39;county&#39;: &#39;新北市&#39;}]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__未滿15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__15歲&#39;, &#39;county&#39;: &#39;新北市&#39;}, {&#39;site_id&#39;: &#39;新北市板橋區&#39;, &#39;marriage_type&#39;: &#39;不同性別&#39;, &#39;marry_pair&#39;: &#39;0&#39;, &#39;age_group&#39;: &#39;未滿15歲__16歲&#39;, &#39;county&#39;: &#39;新北市&#39;}]
 </pre></div>
 </div>
 </div>

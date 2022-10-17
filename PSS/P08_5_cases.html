@@ -1,0 +1,1378 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Scraping cases &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tokenization" href="../TM/TM01_tokenization.html" />
+    <link rel="prev" title="P08 Web API (Twitter)" href="P08_2_twitter_api_norun.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Logic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P01_counting.html">
+   P01-Counting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P02_basic.html">
+   P02-Python Basic
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P02b_basic.html">
+     P02-blank-Python Basic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03b_list_dictionary.html">
+     P03-blank-List &amp; Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P04_1_for.html">
+   P04 For-loop
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_1p.html">
+     P04_1p Practice for-loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 For-if applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2b_for_if.html">
+     P04_2-blank For-if applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2p_twitter_users.html">
+     P04_2p Study Twitter Problematic Users
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P05_read_csv_json.html">
+   P05 READ Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P05_read_other_format.html">
+     Read more formats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P06_pandas.html">
+   P06 Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P06_pandas_filter_select_datetime.html">
+     Pandas: filter, select, and timeline process
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P07_1_plot_pandas.html">
+   P07 Making Charts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P07_2_bokeh.html">
+     Bokeh
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="P08_1_web_json.html">
+   P08 Scraping with Web API
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2">
+    <a class="reference internal" href="P08_2_twitter_api_norun.html">
+     P08 Web API (Twitter)
+    </a>
+   </li>
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     Scraping cases
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM01_tokenization.html">
+   Tokenization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS01_basic.html">
+   AS01 for Python Basic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS02_list_dict_for_if.html">
+   AS02 List-dict-for-if
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS03_pandas_summarization.html">
+   AS03 Summarize data with Pandas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/video_list.html">
+   Python教學影片
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/IDEs.html">
+   Python開發環境
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/PSS/P08_5_cases.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P08_5_cases.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P08_5_cases.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/PSS/P08_5_cases.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#youbike-data">
+   Youbike Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taipei-bus">
+   Taipei Bus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cnyes">
+   Cnyes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#com">
+   104.com
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Taipei Bus
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Scraping cases</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#youbike-data">
+   Youbike Data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#taipei-bus">
+   Taipei Bus
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#cnyes">
+   Cnyes
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#com">
+   104.com
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#id1">
+   Taipei Bus
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="scraping-cases">
+<h1>Scraping cases<a class="headerlink" href="#scraping-cases" title="Permalink to this headline">#</a></h1>
+<section id="youbike-data">
+<h2>Youbike Data<a class="headerlink" href="#youbike-data" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span> <span class="c1"># &lt;class &#39;requests.models.Response&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">))</span> <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
+200
+{&#39;Content-Length&#39;: &#39;30247&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;CsgoIcLPfdOAiM9dLZK19w==&#39;, &#39;Last-Modified&#39;: &#39;Mon, 17 Oct 2022 05:02:52 GMT&#39;, &#39;ETag&#39;: &#39;0x8DAAFFCD8A64698&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;97ffea75-a01e-0110-4fe5-e18a60000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Mon, 17 Oct 2022 05:03:23 GMT&#39;}
+&lt;class &#39;requests.models.Response&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="taipei-bus">
+<h2>Taipei Bus<a class="headerlink" href="#taipei-bus" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://pda.5284.gov.taipei/MQS/RouteDyna?routeid=11763&amp;nocache=1633009377839&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">route</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="cnyes">
+<h2>Cnyes<a class="headerlink" href="#cnyes" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">url_cnyes</span> <span class="o">=</span> <span class="s2">&quot;https://news.cnyes.com/api/v3/news/category/headline?startAt=1588262400&amp;endAt=1589212799&amp;limit=30&quot;</span>
+<span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_cnyes</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">res</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="com">
+<h2><a class="reference external" href="http://104.com">104.com</a><a class="headerlink" href="#com" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+<span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;status&#39;, &#39;action&#39;, &#39;data&#39;, &#39;statusMsg&#39;, &#39;errorMsg&#39;])
+&lt;class &#39;dict&#39;&gt;
+dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list&#39;, &#39;count&#39;, &#39;pageNo&#39;, &#39;totalPage&#39;, &#39;totalCount&#39;])
+&lt;class &#39;list&#39;&gt;
+&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>jobType</th>
+      <th>jobNo</th>
+      <th>jobName</th>
+      <th>jobNameSnippet</th>
+      <th>jobRole</th>
+      <th>jobRo</th>
+      <th>jobAddrNo</th>
+      <th>jobAddrNoDesc</th>
+      <th>jobAddress</th>
+      <th>description</th>
+      <th>...</th>
+      <th>tags</th>
+      <th>landmark</th>
+      <th>link</th>
+      <th>jobsource</th>
+      <th>jobNameRaw</th>
+      <th>custNameRaw</th>
+      <th>lon</th>
+      <th>lat</th>
+      <th>remoteWorkType</th>
+      <th>major</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>12954216</td>
+      <td>Data Scientist</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002003</td>
+      <td>新北市板橋區</td>
+      <td>遠東路3號6樓</td>
+      <td>【Job Content】\n1. Work closely with security e...</td>
+      <td>...</td>
+      <td>[員工65人]</td>
+      <td>距捷運亞東醫院站450公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist</td>
+      <td>奧義智慧科技股份有限公司</td>
+      <td>121.4570002</td>
+      <td>24.9986661</td>
+      <td>0</td>
+      <td>[電機電子工程相關, 資訊工程相關, 數理統計相關]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>10507560</td>
+      <td>【採線上面談】Senior Data Scientist 資深資料科學家 - Annual ...</td>
+      <td>【採線上面談】Senior &lt;em class='b-txt--highlight'&gt;Dat...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001011</td>
+      <td>台北市南港區</td>
+      <td>台北市南港區園區街3之1號11樓之1（南港軟體園區G棟）</td>
+      <td>【What a [[[Data]]] [[[Scientist]]] does in Tit...</td>
+      <td>...</td>
+      <td>[外商公司, 員工300人]</td>
+      <td>距捷運南港展覽館站400公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>【採線上面談】Senior Data Scientist 資深資料科學家 - Annual ...</td>
+      <td>新加坡商鈦坦科技股份有限公司台灣分公司</td>
+      <td>121.6123229</td>
+      <td>25.0574363</td>
+      <td>0</td>
+      <td>[資訊管理相關, 資訊工程相關, 數理統計相關]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>2</td>
+      <td>12304173</td>
+      <td>RD20163 Data Scientist (資料科學家)</td>
+      <td>RD20163 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt;...</td>
+      <td>4</td>
+      <td>1</td>
+      <td>6001001009</td>
+      <td>台北市北投區</td>
+      <td></td>
+      <td>stakeholders to gain new insights from [[[dat...</td>
+      <td>...</td>
+      <td>[上市上櫃]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>RD20163 Data Scientist (資料科學家)</td>
+      <td>華碩電腦股份有限公司</td>
+      <td>121.515018</td>
+      <td>25.1151759</td>
+      <td>0</td>
+      <td>[資訊工程相關, 資訊管理相關, 電機電子工程相關]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>12909698</td>
+      <td>Python Data Scientist</td>
+      <td>Python &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; ...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001016005</td>
+      <td>高雄市鼓山區</td>
+      <td>中華一路828號13樓</td>
+      <td>\n\n職務需求：\n\nPython [[[Data]]] [[[Scientist]]]...</td>
+      <td>...</td>
+      <td>[員工45人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Python Data Scientist</td>
+      <td>BigGo_樂方股份有限公司</td>
+      <td>120.2921244</td>
+      <td>22.6604715</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0</td>
+      <td>12504693</td>
+      <td>Data Scientist - Analytics (Product) / 資料科學家 -...</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001002</td>
+      <td>台北市大同區</td>
+      <td>承德路</td>
+      <td>be based under Product division and will be p...</td>
+      <td>...</td>
+      <td>[員工180人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist - Analytics (Product) / 資料科學家 -...</td>
+      <td>Pinkoi_香港商果翼科技股份有限公司台灣分公司</td>
+      <td>121.5169834</td>
+      <td>25.0504544</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>2</td>
+      <td>12463827</td>
+      <td>PD0751 資料科學家Data Scientist(內湖)</td>
+      <td>PD0751 &lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001010</td>
+      <td>台北市內湖區</td>
+      <td>瑞光路581號(114)</td>
+      <td>仁寶電腦集團全球化運營與永續經營，持續追求成長與創新，積極進行數位化與AI人工智能轉型，延攬...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工6500人]</td>
+      <td>距捷運西湖站270公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>PD0751 資料科學家Data Scientist(內湖)</td>
+      <td>仁寶電腦工業股份有限公司</td>
+      <td>121.5681287</td>
+      <td>25.0799209</td>
+      <td>0</td>
+      <td>[資訊工程相關, 資訊管理相關, 電機電子工程相關]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>2</td>
+      <td>11496984</td>
+      <td>派遣至LINE_Insight planner (data scientist、資料科學家、...</td>
+      <td>派遣至LINE_Insight planner (&lt;em class='b-txt--hig...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001010</td>
+      <td>台北市內湖區</td>
+      <td></td>
+      <td>[Team/Position Description]\nInsight planner u...</td>
+      <td>...</td>
+      <td>[]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>派遣至LINE_Insight planner (data scientist、資料科學家、...</td>
+      <td>萬寶華企業管理顧問股份有限公司</td>
+      <td>121.5909027</td>
+      <td>25.0689422</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>0</td>
+      <td>10589685</td>
+      <td>Data Scientist 資料科學家_數據分析師 | CBU_21_13</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002020</td>
+      <td>新北市三重區</td>
+      <td>三和路四段111之32號7樓</td>
+      <td>分群、推薦、迴歸預測等演算法理論基礎，並有實作經驗\r\n2. 熟悉程式與分析應用，如 Py...</td>
+      <td>...</td>
+      <td>[員工300人]</td>
+      <td>距捷運三和國中站110公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist 資料科學家_數據分析師 | CBU_21_13</td>
+      <td>伊雲谷數位科技股份有限公司</td>
+      <td>121.4856118</td>
+      <td>25.0774577</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>2</td>
+      <td>13020045</td>
+      <td>Data Scientist</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001005013</td>
+      <td>桃園市蘆竹區</td>
+      <td>六福路36號</td>
+      <td>Job Overview\nSHL Medical is seeking an experi...</td>
+      <td>...</td>
+      <td>[員工4800人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist</td>
+      <td>瑞健股份有限公司</td>
+      <td>121.2925872</td>
+      <td>25.0576213</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>2</td>
+      <td>12384061</td>
+      <td>經營資訊應用中心－資料科學家 Data Scientist</td>
+      <td>經營資訊應用中心－&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/e...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001007</td>
+      <td>台北市信義區</td>
+      <td>松智路1號25樓</td>
+      <td>發現『大家都在看，卻沒有人看到』的東西\n\n1. 你來問，我來答：擔任數據分析萬事通，無論...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工6500人]</td>
+      <td>距捷運市政府站260公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>經營資訊應用中心－資料科學家 Data Scientist</td>
+      <td>華新麗華股份有限公司</td>
+      <td>121.5662595</td>
+      <td>25.0387588</td>
+      <td>0</td>
+      <td>[統計學相關, 資訊工程相關, 資訊管理相關]</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>0</td>
+      <td>11774964</td>
+      <td>Python programmer/data scientist for quantitat...</td>
+      <td>Python programmer/&lt;em class='b-txt--highlight'...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001010</td>
+      <td>台北市內湖區</td>
+      <td>港墘路200號5樓</td>
+      <td>Python programmer/[[[data]]] [[[scientist]]] f...</td>
+      <td>...</td>
+      <td>[員工95人]</td>
+      <td>距捷運港墘站470公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Python programmer/data scientist for quantitat...</td>
+      <td>中塑油品股份有限公司</td>
+      <td>121.5743267</td>
+      <td>25.0759802</td>
+      <td>0</td>
+      <td>[數理統計相關, 其他數學及電算機科學相關, 財稅金融相關]</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>12657040</td>
+      <td>[Data Sci] Chief Data Scientist</td>
+      <td>&lt;em class='b-txt--highlight'&gt;[Data&lt;/em&gt; Sci] C...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001004</td>
+      <td>台北市松山區</td>
+      <td>復興北路337號7樓</td>
+      <td>[About The Job]\n* Lead the ML Team to build t...</td>
+      <td>...</td>
+      <td>[外商公司, 員工150人]</td>
+      <td>距捷運中山國中站70公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>[Data Sci] Chief Data Scientist</td>
+      <td>威朋大數據股份有限公司</td>
+      <td>121.5446271</td>
+      <td>25.060227</td>
+      <td>0</td>
+      <td>[數學及電算機科學學科類, 統計學相關]</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>0</td>
+      <td>12348710</td>
+      <td>【AI Team】資料科學家 Data Scientist</td>
+      <td>【AI Team】&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/e...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001007</td>
+      <td>台北市信義區</td>
+      <td>東興路41號10樓</td>
+      <td>【Responsibilities】　\n1. Lead the team to drive...</td>
+      <td>...</td>
+      <td>[員工150人, 遠端工作]</td>
+      <td>距捷運南京三民站470公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>【AI Team】資料科學家 Data Scientist</td>
+      <td>愛卡拉互動媒體股份有限公司</td>
+      <td>121.5666564</td>
+      <td>25.0480733</td>
+      <td>2</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>2</td>
+      <td>12839921</td>
+      <td>【IT】Data Scientist</td>
+      <td>【IT】&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001002004</td>
+      <td>新北市汐止區</td>
+      <td>新台五路一段88號8樓(221)</td>
+      <td>recommendations to facilitate [[[data]]]-driv...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工7500人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>【IT】Data Scientist</td>
+      <td>宏碁股份有限公司</td>
+      <td>121.647472</td>
+      <td>25.0605179</td>
+      <td>0</td>
+      <td>[資訊工程相關, 數理統計相關]</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>0</td>
+      <td>12672283</td>
+      <td>Data Scientist, Analytics</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001007</td>
+      <td>台北市信義區</td>
+      <td>松仁路123號6樓</td>
+      <td>\n\n\nAbout the role\n\nWe are looking for [[[...</td>
+      <td>...</td>
+      <td>[員工500人]</td>
+      <td>距捷運象山站190公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist, Analytics</td>
+      <td>沛星互動科技股份有限公司</td>
+      <td>121.5692094</td>
+      <td>25.0342822</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>2</td>
+      <td>12110712</td>
+      <td>Data Scientist (士林)</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001008</td>
+      <td>台北市士林區</td>
+      <td>承德路四段166號</td>
+      <td>[[[Data]]]-Centric AI.\n\nThe organization re...</td>
+      <td>...</td>
+      <td>[上市上櫃, 員工4000人]</td>
+      <td>距捷運劍潭站240公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist (士林)</td>
+      <td>Inventec_英業達股份有限公司</td>
+      <td>121.5230712</td>
+      <td>25.0857408</td>
+      <td>0</td>
+      <td>[數學及電算機科學學科類, 統計學相關, 電機電子工程相關]</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>0</td>
+      <td>12267410</td>
+      <td>Quantitative Trader/ Data Scientist/ ML Engineer</td>
+      <td>Quantitative Trader/ &lt;em class='b-txt--highlig...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001005</td>
+      <td>台北市大安區</td>
+      <td>敦化南路二段</td>
+      <td>our operations to Shenzhen, China. We are act...</td>
+      <td>...</td>
+      <td>[員工25人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Quantitative Trader/ Data Scientist/ ML Engineer</td>
+      <td>泰錸科技有限公司</td>
+      <td>121.5489794</td>
+      <td>25.0270855</td>
+      <td>0</td>
+      <td>[數理統計相關, 資訊工程相關, 其他數學及電算機科學相關]</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>2</td>
+      <td>12689367</td>
+      <td>Data Scientist / 資料科學家_11060</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001009</td>
+      <td>台北市北投區</td>
+      <td>立功街96號</td>
+      <td>learning / deep learning papers, and have the...</td>
+      <td>...</td>
+      <td>[員工6000人]</td>
+      <td>距捷運關渡站410公尺</td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist / 資料科學家_11060</td>
+      <td>和碩集團_和碩聯合科技股份有限公司</td>
+      <td>121.4712373</td>
+      <td>25.124796</td>
+      <td>0</td>
+      <td>[資訊工程相關, 統計學相關]</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>2</td>
+      <td>12248144</td>
+      <td>資料科學家(高雄/桃園)</td>
+      <td>&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;(高雄/桃園)</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001016007</td>
+      <td>高雄市前鎮區</td>
+      <td>成功二路25號</td>
+      <td>Job Summary:\n    The Statistician/[[[Data]]] ...</td>
+      <td>...</td>
+      <td>[上市上櫃]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>資料科學家(高雄/桃園)</td>
+      <td>鴻海精密工業股份有限公司</td>
+      <td>120.3003288</td>
+      <td>22.6053131</td>
+      <td>0</td>
+      <td>[應用數學相關, 統計學相關, 資訊管理相關]</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>2</td>
+      <td>13040347</td>
+      <td>Data Scientist</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6003001001</td>
+      <td>日本</td>
+      <td>東京都港區六本木1-9-10 仙石山森Tower 29樓</td>
+      <td>Vivid Army, Queen&amp;#039;s Blade, and more.\n\n...</td>
+      <td>...</td>
+      <td>[員工160人]</td>
+      <td></td>
+      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
+      <td>jolist_d_relevance</td>
+      <td>Data Scientist</td>
+      <td>CTW株式会社</td>
+      <td>139.7417982</td>
+      <td>35.6633131</td>
+      <td>0</td>
+      <td>[]</td>
+    </tr>
+  </tbody>
+</table>
+<p>20 rows × 40 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="id1">
+<h2>Taipei Bus<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P08_2_twitter_api_norun.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">P08 Web API (Twitter)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../TM/TM01_tokenization.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tokenization</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>
