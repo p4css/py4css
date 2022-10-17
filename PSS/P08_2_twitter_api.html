@@ -1,0 +1,1600 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P08 Web API (Twitter) &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scraping cases" href="P08_5_cases.html" />
+    <link rel="prev" title="P08 Scraping with Web API" href="P08_1_web_json.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Logic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P01_counting.html">
+   P01-Counting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P02_basic.html">
+   P02-Python Basic
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P02b_basic.html">
+     P02-blank-Python Basic
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03b_list_dictionary.html">
+     P03-blank-List &amp; Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P04_1_for.html">
+   P04 For-loop
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_1p.html">
+     P04_1p Practice for-loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P04_2_for_if.html">
+   P04 For-if applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2b_for_if.html">
+     P04_2-blank For-if applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P04_2p_twitter_users.html">
+     P04_2p Study Twitter Problematic Users
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P05_read_csv_json.html">
+   P05 READ Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P05_read_other_format.html">
+     Read more formats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P06_pandas.html">
+   P06 Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P06_pandas_filter_select_datetime.html">
+     Pandas: filter, select, and timeline process
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="P07_1_plot_pandas.html">
+   P07 Making Charts
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P07_2_bokeh.html">
+     Bokeh
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
+  <a class="reference internal" href="P08_1_web_json.html">
+   P08 Scraping with Web API
+  </a>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul class="current">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
+     P08 Web API (Twitter)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P08_5_cases.html">
+     Scraping cases
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM01_tokenization.html">
+   Tokenization
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS01_basic.html">
+   AS01 for Python Basic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS02_list_dict_for_if.html">
+   AS02 List-dict-for-if
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS03_pandas_summarization.html">
+   AS03 Summarize data with Pandas
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/video_list.html">
+   Python教學影片
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/IDEs.html">
+   Python開發環境
+  </a>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../notebooks.html">
+   Content with notebooks
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../markdown-notebooks.html">
+     Notebooks with MyST Markdown
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/PSS/P08_2_twitter_api.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P08_2_twitter_api.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P08_2_twitter_api.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/PSS/P08_2_twitter_api.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-tweets-data">
+   Overview of tweets data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-twitter-api-2-0">
+   Using Twitter API 2.0
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apply-and-get-bearer-token">
+     Apply and get bearer_token
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-tweets-data">
+     Get tweets data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#send-query">
+     Send query
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-data-from-next-token-pagination">
+     Get data from next token (Pagination)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#query-with-next-token">
+       query with next token
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-for-loop-and-combine-data">
+     Add for-loop and combine data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#verify-data-uniqueness">
+       Verify data uniqueness
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewed-by-pandas">
+     Viewed by pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#twitter-api-documents">
+   Twitter API Documents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-fields">
+     Data fields
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-formation">
+     Query formation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-fields">
+     More fields
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>P08 Web API (Twitter)</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overview-of-tweets-data">
+   Overview of tweets data
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#using-twitter-api-2-0">
+   Using Twitter API 2.0
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#apply-and-get-bearer-token">
+     Apply and get bearer_token
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-tweets-data">
+     Get tweets data
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#send-query">
+     Send query
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-data-from-next-token-pagination">
+     Get data from next token (Pagination)
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#query-with-next-token">
+       query with next token
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#add-for-loop-and-combine-data">
+     Add for-loop and combine data
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h4 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#verify-data-uniqueness">
+       Verify data uniqueness
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#viewed-by-pandas">
+     Viewed by pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#twitter-api-documents">
+   Twitter API Documents
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-fields">
+     Data fields
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-formation">
+     Query formation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-fields">
+     More fields
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section class="tex2jax_ignore mathjax_ignore" id="p08-web-api-twitter">
+<h1>P08 Web API (Twitter)<a class="headerlink" href="#p08-web-api-twitter" title="Permalink to this headline">#</a></h1>
+<ol class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/en/docs/tutorials/step-by-step-guide-to-making-your-first-request-to-the-twitter-api-v2">Sign-up twitter developter account</a></p></li>
+<li><p>Create a project and an application</p></li>
+<li><p>Applying and copying Bear token</p></li>
+</ol>
+<section id="overview-of-tweets-data">
+<h2>Overview of tweets data<a class="headerlink" href="#overview-of-tweets-data" title="Permalink to this headline">#</a></h2>
+<p>以下所載入的DataFrame為tweets資料，這是Twitter Transparency Center所公布的資料擷取2019/03/15至2019/07/25間的片段。載入的目的是希望能先觀察一下，像Twitter所釋出的資料包含哪些欄位？如果自己運用Twitter所釋出的API來爬取資料，能不能爬到這些資料。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/p4css/py4css/main/data/tweets20190315.csv&quot;</span><span class="p">)</span>
+<span class="n">tweets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tweetid</th>
+      <th>userid</th>
+      <th>user_display_name</th>
+      <th>user_screen_name</th>
+      <th>user_reported_location</th>
+      <th>user_profile_description</th>
+      <th>user_profile_url</th>
+      <th>follower_count</th>
+      <th>following_count</th>
+      <th>account_creation_date</th>
+      <th>...</th>
+      <th>latitude</th>
+      <th>longitude</th>
+      <th>quote_count</th>
+      <th>reply_count</th>
+      <th>like_count</th>
+      <th>retweet_count</th>
+      <th>hashtags</th>
+      <th>urls</th>
+      <th>user_mentions</th>
+      <th>poll_choices</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1.118690e+18</td>
+      <td>828817384827875330</td>
+      <td>vdfxvgcvd8</td>
+      <td>vdfxvgcvd8</td>
+      <td>Nasushiobara-shi, Tochigi</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>11401</td>
+      <td>11807</td>
+      <td>2017-02-07</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1.107433e+18</td>
+      <td>769790067183190016</td>
+      <td>阿丽木琴</td>
+      <td>SamanthxBerg</td>
+      <td>NaN</td>
+      <td>我是一个小小的石头</td>
+      <td>NaN</td>
+      <td>13468</td>
+      <td>14606</td>
+      <td>2016-08-28</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1.145785e+18</td>
+      <td>103804719</td>
+      <td>摩天轮约炮平台微信xdmtlove765</td>
+      <td>ronetaper</td>
+      <td>USA</td>
+      <td>Ronetaper</td>
+      <td>NaN</td>
+      <td>13268</td>
+      <td>61</td>
+      <td>2010-01-11</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>['约炮', '护士', '国内交友', '二次元', '萝莉', '上海约炮', '北京约...</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1.120716e+18</td>
+      <td>769790067183190016</td>
+      <td>阿丽木琴</td>
+      <td>SamanthxBerg</td>
+      <td>NaN</td>
+      <td>我是一个小小的石头</td>
+      <td>NaN</td>
+      <td>13468</td>
+      <td>14606</td>
+      <td>2016-08-28</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1.114176e+18</td>
+      <td>769790067183190016</td>
+      <td>阿丽木琴</td>
+      <td>SamanthxBerg</td>
+      <td>NaN</td>
+      <td>我是一个小小的石头</td>
+      <td>NaN</td>
+      <td>13468</td>
+      <td>14606</td>
+      <td>2016-08-28</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>15574</th>
+      <td>1.145352e+18</td>
+      <td>2993185258</td>
+      <td>HK時政直擊</td>
+      <td>HKpoliticalnew</td>
+      <td>Tsuen Wan District, Hong Kong</td>
+      <td>Love Hong Kong, love China.We should pay atten...</td>
+      <td>https://t.co/5u2Qw5PaKt</td>
+      <td>22551</td>
+      <td>66</td>
+      <td>2015-01-22</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>[]</td>
+      <td>['https://news.rthk.hk/rthk/en/component/k2/14...</td>
+      <td>[213559194]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15575</th>
+      <td>1.144128e+18</td>
+      <td>2993185258</td>
+      <td>HK時政直擊</td>
+      <td>HKpoliticalnew</td>
+      <td>Tsuen Wan District, Hong Kong</td>
+      <td>Love Hong Kong, love China.We should pay atten...</td>
+      <td>https://t.co/5u2Qw5PaKt</td>
+      <td>22551</td>
+      <td>66</td>
+      <td>2015-01-22</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>['HongKong', 'ExtraditionBill']</td>
+      <td>[]</td>
+      <td>[213559194]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15576</th>
+      <td>1.137938e+18</td>
+      <td>2993185258</td>
+      <td>HK時政直擊</td>
+      <td>HKpoliticalnew</td>
+      <td>Tsuen Wan District, Hong Kong</td>
+      <td>Love Hong Kong, love China.We should pay atten...</td>
+      <td>https://t.co/5u2Qw5PaKt</td>
+      <td>22551</td>
+      <td>66</td>
+      <td>2015-01-22</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>[]</td>
+      <td>[]</td>
+      <td>[213559194]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15577</th>
+      <td>1.139751e+18</td>
+      <td>2993185258</td>
+      <td>HK時政直擊</td>
+      <td>HKpoliticalnew</td>
+      <td>Tsuen Wan District, Hong Kong</td>
+      <td>Love Hong Kong, love China.We should pay atten...</td>
+      <td>https://t.co/5u2Qw5PaKt</td>
+      <td>22551</td>
+      <td>66</td>
+      <td>2015-01-22</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>['反送中', '香港']</td>
+      <td>[]</td>
+      <td>[427607419]</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>15578</th>
+      <td>1.143855e+18</td>
+      <td>2993185258</td>
+      <td>HK時政直擊</td>
+      <td>HKpoliticalnew</td>
+      <td>Tsuen Wan District, Hong Kong</td>
+      <td>Love Hong Kong, love China.We should pay atten...</td>
+      <td>https://t.co/5u2Qw5PaKt</td>
+      <td>22551</td>
+      <td>66</td>
+      <td>2015-01-22</td>
+      <td>...</td>
+      <td>absent</td>
+      <td>absent</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>[]</td>
+      <td>['https://m.facebook.com/story.php?story_fbid=...</td>
+      <td>[2609395315]</td>
+      <td>NaN</td>
+    </tr>
+  </tbody>
+</table>
+<p>15579 rows × 31 columns</p>
+</div></div></div>
+</div>
+<p>欄位資訊相當豐富，包含：</p>
+<ol class="simple">
+<li><p>跟tweet本身相關的包含<code class="docutils literal notranslate"><span class="pre">'tweetid',</span> <span class="pre">'userid',</span> <span class="pre">'tweet_language',</span> <span class="pre">'tweet_text',</span> <span class="pre">'tweet_time',</span> <span class="pre">'tweet_client_name',</span> <span class="pre">'in_reply_to_userid',</span> <span class="pre">'in_reply_to_tweetid',</span> <span class="pre">'quoted_tweet_tweetid',</span> <span class="pre">'is_retweet',</span> <span class="pre">'retweet_userid',</span> <span class="pre">'retweet_tweetid',</span> <span class="pre">'latitude',</span> <span class="pre">'longitude',</span> <span class="pre">'quote_count',</span> <span class="pre">'reply_count',</span> <span class="pre">'like_count',</span> <span class="pre">'retweet_count',</span> <span class="pre">'urls'</span></code></p></li>
+<li><p>有些似乎是跟發文者比較相關的，包含<code class="docutils literal notranslate"><span class="pre">'userid',</span> <span class="pre">'user_display_name',</span> <span class="pre">'user_screen_name',</span> <span class="pre">'user_reported_location',</span> <span class="pre">'user_profile_description',</span> <span class="pre">'user_profile_url',</span> <span class="pre">'follower_count',</span> <span class="pre">'following_count',</span> <span class="pre">'account_creation_date',</span> <span class="pre">'account_language'</span></code></p></li>
+<li><p>有些則看起來不見得是Twitter API中原本會附的欄位，如<code class="docutils literal notranslate"><span class="pre">'hashtags',</span> <span class="pre">'user_mentions'</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;tweetid&#39;, &#39;userid&#39;, &#39;user_display_name&#39;, &#39;user_screen_name&#39;,
+       &#39;user_reported_location&#39;, &#39;user_profile_description&#39;,
+       &#39;user_profile_url&#39;, &#39;follower_count&#39;, &#39;following_count&#39;,
+       &#39;account_creation_date&#39;, &#39;account_language&#39;, &#39;tweet_language&#39;,
+       &#39;tweet_text&#39;, &#39;tweet_time&#39;, &#39;tweet_client_name&#39;, &#39;in_reply_to_userid&#39;,
+       &#39;in_reply_to_tweetid&#39;, &#39;quoted_tweet_tweetid&#39;, &#39;is_retweet&#39;,
+       &#39;retweet_userid&#39;, &#39;retweet_tweetid&#39;, &#39;latitude&#39;, &#39;longitude&#39;,
+       &#39;quote_count&#39;, &#39;reply_count&#39;, &#39;like_count&#39;, &#39;retweet_count&#39;, &#39;hashtags&#39;,
+       &#39;urls&#39;, &#39;user_mentions&#39;, &#39;poll_choices&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 15579 entries, 0 to 15578
+Data columns (total 31 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   tweetid                   15579 non-null  float64
+ 1   userid                    15579 non-null  object 
+ 2   user_display_name         15579 non-null  object 
+ 3   user_screen_name          15579 non-null  object 
+ 4   user_reported_location    12406 non-null  object 
+ 5   user_profile_description  12585 non-null  object 
+ 6   user_profile_url          658 non-null    object 
+ 7   follower_count            15579 non-null  int64  
+ 8   following_count           15579 non-null  int64  
+ 9   account_creation_date     15579 non-null  object 
+ 10  account_language          15579 non-null  object 
+ 11  tweet_language            15579 non-null  object 
+ 12  tweet_text                15579 non-null  object 
+ 13  tweet_time                15579 non-null  object 
+ 14  tweet_client_name         15579 non-null  object 
+ 15  in_reply_to_userid        1096 non-null   object 
+ 16  in_reply_to_tweetid       1071 non-null   float64
+ 17  quoted_tweet_tweetid      1138 non-null   float64
+ 18  is_retweet                15579 non-null  bool   
+ 19  retweet_userid            5184 non-null   object 
+ 20  retweet_tweetid           5184 non-null   float64
+ 21  latitude                  15579 non-null  object 
+ 22  longitude                 15579 non-null  object 
+ 23  quote_count               15536 non-null  float64
+ 24  reply_count               15536 non-null  float64
+ 25  like_count                15536 non-null  float64
+ 26  retweet_count             15536 non-null  float64
+ 27  hashtags                  15579 non-null  object 
+ 28  urls                      15579 non-null  object 
+ 29  user_mentions             15579 non-null  object 
+ 30  poll_choices              0 non-null      float64
+dtypes: bool(1), float64(9), int64(2), object(19)
+memory usage: 3.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-twitter-api-2-0">
+<h2>Using Twitter API 2.0<a class="headerlink" href="#using-twitter-api-2-0" title="Permalink to this headline">#</a></h2>
+<p>何謂API？可以看這一段Twitter API的描述「The Twitter API enables programmatic access to Twitter in unique and advanced ways. Tap into core elements of Twitter like: Tweets, Direct Messages, Spaces, Lists, users, and more.」。簡單地說，網站伺服器（例如社群網站）提供一個存取資料的方式，讓使用者可以用這套方式，合理地向伺服器提出資料要求。一來，現在社群網站都很大，一般用暴力法寫程式也很難將資料撈完，或者找到所需資料在哪；而來，服務提供方也不希望其他使用者亂撈他們資料而影響到服務本身。</p>
+<p>Youtube、DCard、Twitter、Steam、Spotify、Facebook都有API，幾乎大部分中大型線上服務都有API。當然，服務方也不希望被誣陷質的撈取而去做賺錢工作（例如之前被告的Cambridge Analytica即是收集Facebook資料來做服務），所以便會謹慎地審核申請者的資格、規劃合理權限和合理的可撈取數量。</p>
+<p>現在Twitter API 2.0主要分成三種存取權限（<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api">Access levels</a>），通常剛註冊的人給的就是Essentials，學者有機會可以申請到Academic Research，可以獲得更多的Tweets。</p>
+<section id="apply-and-get-bearer-token">
+<h3>Apply and get bearer_token<a class="headerlink" href="#apply-and-get-bearer-token" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BEARER_TOKEN&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="get-tweets-data">
+<h3>Get tweets data<a class="headerlink" href="#get-tweets-data" title="Permalink to this headline">#</a></h3>
+<p>Twitter也有提供大量的範例可以讓使用者學習，例如這個範例<a class="reference external" href="https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Recent-Search/recent_search.py">recent_search.py</a>程式碼就教你怎麼搜尋最近某個關鍵字的相關Tweets。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># To set your environment variables in your terminal run the following line:</span>
+<span class="c1"># export &#39;BEARER_TOKEN&#39;=&#39;&lt;your_bearer_token&gt;&#39;</span>
+<span class="c1"># bearer_token = &quot;YOUR_BEARER_TOKEN&quot;</span>
+
+<span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent&quot;</span>
+
+<span class="c1"># Optional params: start_time,end_time,since_id,until_id,max_results,next_token,</span>
+<span class="c1"># expansions,tweet.fields,media.fields,poll.fields,place.fields,user.fields</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">bearer_oauth</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Authorization&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">bearer_token</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;v2RecentSearchPython&quot;</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="k">def</span> <span class="nf">connect_to_endpoint</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">bearer_oauth</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="send-query">
+<h3>Send query<a class="headerlink" href="#send-query" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>200
+{
+    &quot;data&quot;: [
+        {
+            &quot;author_id&quot;: &quot;39702114&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581622153291538432&quot;],
+            &quot;id&quot;: &quot;1581622153291538432&quot;,
+            &quot;text&quot;: &quot;RT @WelterPatrick: Die Vereinigten Staaten versuchen, China von Mikrochips der Hochleistungsklasse abzuschneiden. Der Weltwirtschaft droht\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1498806254357168132&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581622003508793344&quot;],
+            &quot;id&quot;: &quot;1581622003508793344&quot;,
+            &quot;text&quot;: &quot;RT @lukedepulford: Xi seized #HongKong. Got away with it. Now boasting about it. \n\nPerpetrated #Uyghur genocide. Got away with it. \n\nWe\u2019ve\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;711273903625277441&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581621965366104064&quot;],
+            &quot;id&quot;: &quot;1581621965366104064&quot;,
+            &quot;text&quot;: &quot;RT @Michael_Leh: FAZ: \&quot;Besonders langen Applaus bekam #Xi Jinping f\u00fcr seine \u00c4u\u00dferungen \u00fcber #Taiwan (...) wir werden niemals versprechen, a\u2026&quot;
+        },
+        ...
+        ,
+        {
+            &quot;author_id&quot;: &quot;3237453390&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581621739460493312&quot;],
+            &quot;id&quot;: &quot;1581621739460493312&quot;,
+            &quot;text&quot;: &quot;\u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0b95 \u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \ud83d\udc49 https://t.co/wiTe7k8soB \n\n1/2 kg #BlackForestCake \n\u20b9410 Only! \n\nBUY NOW (Chennai Only)\n\ud83d\udc47\ud83d\udc47\ud83d\udc47\nhttps://t.co/n6V58bzwgf\n\n# | #Back | #Taiwan | #Responds https://t.co/LxKXCXlsMb&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;newest_id&quot;: &quot;1581622153291538432&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzejv8x203j69hebwpbc6a92ocayl&quot;,
+        &quot;oldest_id&quot;: &quot;1581621739460493312&quot;,
+        &quot;result_count&quot;: 10
+    }
+}
+</pre></div>
+</div>
+</section>
+<section id="get-data-from-next-token-pagination">
+<h3>Get data from next token (Pagination)<a class="headerlink" href="#get-data-from-next-token-pagination" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate">https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;b26v89c19zqg8o3fpzejv8x21kvodvznrobqym6fpxoql&#39;</span>
+</pre></div>
+</div>
+<section id="query-with-next-token">
+<h4>query with next token<a class="headerlink" href="#query-with-next-token" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;next_token&#39;</span><span class="p">:</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]}</span>
+<span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>200
+{
+    &quot;data&quot;: [
+        {
+            &quot;author_id&quot;: &quot;3097153036&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581621108302057474&quot;
+            ],
+            &quot;id&quot;: &quot;1581621108302057474&quot;,
+            &quot;text&quot;: &quot;RT @lukedepulford: Xi seized #HongKong. Got away with it. Now boasting about it. \n\nPerpetrated #Uyghur genocide. Got away with it. \n\nWe\u2019ve\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1369249624700030982&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581621092078080000&quot;
+            ],
+            &quot;id&quot;: &quot;1581621092078080000&quot;,
+            &quot;text&quot;: &quot;RT @ptcnews: Full control over Hong Kong achieved, determined on Taiwan: Xi Jinping\n\n#HongKong #XiJinping #Taiwan #China #latestnews\n\nhttps\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1391299076&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581621076815417344&quot;
+            ],
+            &quot;id&quot;: &quot;1581621076815417344&quot;,
+            &quot;text&quot;: &quot;RT @iingwen: Today marks 1000 days since our Central Epidemic Command Center was set up. I am deeply grateful to everyone who has contribut\u2026&quot;
+        },
+...,
+        {
+            &quot;author_id&quot;: &quot;1092479930301075456&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581620902483341313&quot;
+            ],
+            &quot;id&quot;: &quot;1581620902483341313&quot;,
+            &quot;text&quot;: &quot;RT @StockmoneyL: #Bitcoin and #DXY hand in hand\ud83d\ude4c\n\nA strong U.S. dollar (#DXY) was followed by a decline when drivers start to disapear. \n\nI\u2026&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;newest_id&quot;: &quot;1581621108302057474&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzejv8x1ylc17m7a4xeji3mij99j1&quot;,
+        &quot;oldest_id&quot;: &quot;1581620902483341313&quot;,
+        &quot;result_count&quot;: 10
+    }
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="add-for-loop-and-combine-data">
+<h3>Add for-loop and combine data<a class="headerlink" href="#add-for-loop-and-combine-data" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># get the first block of data</span>
+<span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<span class="n">tweets_all</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+
+<span class="c1"># get next data block with next token</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> 
+                    <span class="s1">&#39;next_token&#39;</span><span class="p">:</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]}</span>
+    <span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+    <span class="n">tweets_all</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">json_response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">))</span>
+
+</pre></div>
+</div>
+<section id="verify-data-uniqueness">
+<h4>Verify data uniqueness<a class="headerlink" href="#verify-data-uniqueness" title="Permalink to this headline">#</a></h4>
+<p>有時候複製貼上錯誤變數時，會不小心重複撈第一筆資料。通常至少會稍微驗證一下，是否抓回來的每份資料都是新的資料。那要如何驗證自己上述爬取過程沒有錯誤？最簡單的方法就是把Tweets這份資料獨一無二的編號給掉出來看看是否有重複，在這個例子中就是tweets id。所以先將所有的id給存在一個list中，然後用<code class="docutils literal notranslate"><span class="pre">set()</span></code>來取得該list中的唯一值，如果長度是相等的，那代表抓回來的資料都是非重複資料。</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">))</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tweets_all</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="viewed-by-pandas">
+<h3>Viewed by pandas<a class="headerlink" href="#viewed-by-pandas" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="twitter-api-documents">
+<h2>Twitter API Documents<a class="headerlink" href="#twitter-api-documents" title="Permalink to this headline">#</a></h2>
+<section id="data-fields">
+<h3>Data fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">#</a></h3>
+<p>如果不知道有哪些欄位可以查詢，可以參考Twitter所提供的API Tools去建構。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/apitools/api">https://developer.twitter.com/apitools/api</a></p></li>
+<li><p>Choose endpoints <strong>GET /2/tweets/counts/recent</strong> (Returns Tweet Counts from the last 7 days that match a search query)</p></li>
+</ul>
+<p>有一個非常有趣的fields是<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/annotations/overview">entities annotations</a>，他會去標註在每一則Tweet中有哪些命名實體。例如在這則Tweeet中「<em>【出張TAIWAN PLUS 2022&#64;expo】
+『#pppppins 』は台湾デザイナーAlice Wangにより設立されたブランド。陽気、皮肉、そして文化的なモチーフのピンズはビジュアルを生き生きとさせるカラフルな色使いで、柔らかいエナメルを施した真鍮製です。🍧⛰🌵🦕#TAIWANPLUS2022</em>」就有「台湾」和「Alice Wang」兩個NER被標註出來，除了位置之外，還有辨識為人名、機構、地區的機率（probability）與類別（type）。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;entities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u53f0\u6e7e&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6719</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice Wang&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7319</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># url = &quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&quot;</span>
+<span class="c1"># url = &quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=created_at,geo,id,lang,conversation_id&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="query-formation">
+<h3>Query formation<a class="headerlink" href="#query-formation" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query">https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query</a></p>
+<blockquote>
+<div><p>Reviewing the sentiment of a conversation
+The next rule could be used to better understand the sentiment of the conversation developing around the hashtag, #nowplaying, but scoped to just Tweets published within North America. Here is what the two different queries, one for positive and one for negative, would look like without the HTTP encoding:</p>
+</div></blockquote>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">#nowplaying</span> <span class="pre">(happy</span> <span class="pre">OR</span> <span class="pre">exciting</span> <span class="pre">OR</span> <span class="pre">excited</span> <span class="pre">OR</span> <span class="pre">favorite</span> <span class="pre">OR</span> <span class="pre">fav</span> <span class="pre">OR</span> <span class="pre">amazing</span> <span class="pre">OR</span> <span class="pre">lovely</span> <span class="pre">OR</span> <span class="pre">incredible)</span> <span class="pre">(place_country:US</span> <span class="pre">OR</span> <span class="pre">place_country:MX</span> <span class="pre">OR</span> <span class="pre">place_country:CA)</span> <span class="pre">-horrible</span> <span class="pre">-worst</span> <span class="pre">-sucks</span> <span class="pre">-bad</span> <span class="pre">-disappointing</span></code></p>
+</div></blockquote>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">#nowplaying</span> <span class="pre">(horrible</span> <span class="pre">OR</span> <span class="pre">worst</span> <span class="pre">OR</span> <span class="pre">sucks</span> <span class="pre">OR</span> <span class="pre">bad</span> <span class="pre">OR</span> <span class="pre">disappointing)</span> <span class="pre">(place_country:US</span> <span class="pre">OR</span> <span class="pre">place_country:MX</span> <span class="pre">OR</span> <span class="pre">place_country:CA)</span> <span class="pre">-happy</span> <span class="pre">-exciting</span> <span class="pre">-excited</span> <span class="pre">-favorite</span> <span class="pre">-fav</span> <span class="pre">-amazing</span> <span class="pre">-lovely</span> <span class="pre">-incredible</span></code></p>
+</div></blockquote>
+<blockquote>
+<div><p>Adding more conditional operators narrows your search results, for example  <code class="docutils literal notranslate"><span class="pre">(happy</span> <span class="pre">OR</span> <span class="pre">happiness)</span> <span class="pre">place_country:GB</span> <span class="pre">-birthday</span> <span class="pre">-is:retweet</span></code></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-fields">
+<h3>More fields<a class="headerlink" href="#more-fields" title="Permalink to this headline">#</a></h3>
+<p>Twtiter API分為五種主要類型的資料，可分別查詢，例如用user.field查詢某個tweet作者，分別為</p>
+<ul class="simple">
+<li><p>Tweet → <code class="docutils literal notranslate"><span class="pre">tweet.fields</span></code></p></li>
+<li><p>User → <code class="docutils literal notranslate"><span class="pre">user.fields</span></code></p></li>
+<li><p>Media → <code class="docutils literal notranslate"><span class="pre">media.fields</span></code></p></li>
+<li><p>Poll → <code class="docutils literal notranslate"><span class="pre">poll.fields</span></code></p></li>
+<li><p>Place → <code class="docutils literal notranslate"><span class="pre">place.fields</span></code></p></li>
+</ul>
+<p>但在研究上我可能會需要，在查找Tweet時，便把User的資料帶進來。過去可能會把所有Tweet的資料取完後，然後整理作者列表後逐一撈取。但現在可以在查詢Tweet時，便利用<code class="docutils literal notranslate"><span class="pre">expansions</span></code>連結至其他資料，例如從Tweet連至User資料，然後就可以查詢<code class="docutils literal notranslate"><span class="pre">user.fields</span></code>裡面的欄位。相當於伺服器方幫忙做了資料庫的<code class="docutils literal notranslate"><span class="pre">join</span></code>工作。例子如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=created_at,geo,id,lang,conversation_id&amp;expansions=author_id&amp;user.fields=name,username,created_at&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;author_id&quot;</span><span class="p">:</span> <span class="s2">&quot;3424647323&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627200738324480&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-10-16T12:44:44.000Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;edit_history_tweet_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;1581627200738324480&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627200738324480&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lang&quot;</span><span class="p">:</span> <span class="s2">&quot;es&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Claves del discurso de Xi jinping: taiwan, descarbonizacion: solo la har</span><span class="se">\u00e1</span><span class="s2">n cuando las energ</span><span class="se">\u00ed</span><span class="s2">as verdes puedan suplir la energ</span><span class="se">\u00ed</span><span class="s2">as sucias (o sea, nunca).</span><span class="se">\n</span><span class="s2">@amturiel @AAretxaba </span><span class="se">\n</span><span class="s2">@Sphinx_ARDE @desempleado666</span><span class="se">\n</span><span class="s2">https://t.co/pJjjbm2v7o&quot;</span>
+        <span class="p">},</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;author_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1315467418983043075&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627152146964481&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-10-16T12:44:32.000Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;edit_history_tweet_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;1581627152146964481&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627152146964481&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lang&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;24.198985,120.642056</span><span class="se">\n</span><span class="s2">PONY </span><span class="se">\ud83d\udcaf</span><span class="s2"> L3 CP126</span><span class="se">\n\ud83c\uddf9\ud83c\uddfc</span><span class="s2"> Taichung City, Taiwan</span><span class="se">\n\ud83c\udd5f\ud83c\udd5e\ud83c\udd5a\ud83c\udd54\ud83c\udd57\ud83c\udd64\ud83c\udd51\n</span><span class="s2">(https://t.co/vwjTRgW059)</span><span class="se">\n</span><span class="s2">#Hundo #PokemonGO&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;includes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-15T19:52:07.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3424647323&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alejandro Suarez&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;fatima__lpa&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-01-19T06:29:05.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1483687872083501066&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;BruteSpoon&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;BruteFork&quot;</span>
+            <span class="p">},</span>
+<span class="o">...</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-10-12T01:41:01.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1315467418983043075&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0f3a</span><span class="s2"> CHIEF </span><span class="se">\u0f3b</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;ChiefPokemon&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;newest_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627200738324480&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;next_token&quot;</span><span class="p">:</span> <span class="s2">&quot;b26v89c19zqg8o3fpzejv8x295zm8tig2jfxtcaebvuyl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;oldest_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627152146964481&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;result_count&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在撈Tweets順便將Users資訊帶回來，此時這些Users資訊會被列在<code class="docutils literal notranslate"><span class="pre">data</span></code>與<code class="docutils literal notranslate"><span class="pre">meta</span></code>這兩個key之外的另一個dictionary</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;includes&#39;</span><span class="p">,</span> <span class="s1">&#39;meta&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P08_1_web_json.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">P08 Scraping with Web API</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="P08_5_cases.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scraping cases</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

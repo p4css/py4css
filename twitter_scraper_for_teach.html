@@ -288,7 +288,7 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="PSS/P08_2_twitter_api_norun.html">
+    <a class="reference internal" href="PSS/P08_2_twitter_api.html">
      P08 Web API (Twitter)
     </a>
    </li>
@@ -785,18 +785,18 @@ title="Print to PDF"
 </div>
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 7&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># pip install tweepy</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> 
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># API 1.0?</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">tweepy</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="kn">import</span> <span class="nn">tweepy</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">auth</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">OAuth1UserHandler</span><span class="p">(</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span>    <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span>
+<span class="ne">----&gt; </span><span class="mi">8</span>    <span class="n">consumer_key</span><span class="p">,</span> <span class="n">consumer_secret</span><span class="p">,</span> <span class="n">access_token</span><span class="p">,</span> <span class="n">access_token_secret</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">api</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">API</span><span class="p">(</span><span class="n">auth</span><span class="p">)</span>
 
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;tweepy&#39;
+<span class="ne">NameError</span>: name &#39;consumer_key&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1082,7 +1082,7 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
 <h3>Apply and get bearer_token<a class="headerlink" href="#apply-and-get-bearer-token" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bearer_token</span> <span class="o">=</span> <span class="s1">&#39;AAAAAAAAAAAAAAAAAAAAALW%2BhAEAAAAAFDFUte1bWdfR2wiREswn0</span><span class="si">%2F</span><span class="s1">NGA84%3DiEUvIqikhmZ1Zeve6E9RHpmmFVuuZ7EMGniWCy58bYBOPppU6r&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">bearer_token</span> <span class="o">=</span> <span class="s1">&#39;AAAAAAAAAAAAAAAAAAAAALW%2BhAEAAAAA67kujCZshZWXKPnb90P95K2MKCI%3DDqBEaFxT0U6iXvFBZELoO2TebNWFoFcFWwhDZYsCaIFMDx6co2&#39;</span>
 </pre></div>
 </div>
 </div>
@@ -1099,13 +1099,18 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
 
 <span class="c1"># To set your environment variables in your terminal run the following line:</span>
 <span class="c1"># export &#39;BEARER_TOKEN&#39;=&#39;&lt;your_bearer_token&gt;&#39;</span>
-<span class="c1"># bearer_token = &quot;YOUR_BEARER_TOKEN&quot;</span>
+<span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;AAAAAAAAAAAAAAAAAAAAALW%2BhAEAAAAA67kujCZshZWXKPnb90P95K2MKCI%3DDqBEaFxT0U6iXvFBZELoO2TebNWFoFcFWwhDZYsCaIFMDx6co2&quot;</span>
 
 <span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent&quot;</span>
 
 <span class="c1"># Optional params: start_time,end_time,since_id,until_id,max_results,next_token,</span>
 <span class="c1"># expansions,tweet.fields,media.fields,poll.fields,place.fields,user.fields</span>
-<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id,conversation_id,created_at,edit_history_tweet_ids,geo,id,in_reply_to_user_id,lang,public_metrics,referenced_tweets,reply_settings,source,text,withheld&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;max_results&#39;</span><span class="p">:</span> <span class="mi">10</span><span class="p">,</span>
+                <span class="s1">&#39;expansions&#39;</span><span class="p">:</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;user.fields&#39;</span><span class="p">:</span><span class="s1">&#39;created_at,description,entities,id,location,name,pinned_tweet_id,profile_image_url,protected,public_metrics,url,username,verified,withheld&#39;</span>
+               <span class="p">}</span>
 
 
 <span class="k">def</span> <span class="nf">bearer_oauth</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
@@ -1135,90 +1140,543 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
 {
     &quot;data&quot;: [
         {
-            &quot;author_id&quot;: &quot;39702114&quot;,
+            &quot;author_id&quot;: &quot;75997763&quot;,
+            &quot;conversation_id&quot;: &quot;1581932751691083777&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:58:53.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581622153291538432&quot;
+                &quot;1581932751691083777&quot;
             ],
-            &quot;id&quot;: &quot;1581622153291538432&quot;,
-            &quot;text&quot;: &quot;RT @WelterPatrick: Die Vereinigten Staaten versuchen, China von Mikrochips der Hochleistungsklasse abzuschneiden. Der Weltwirtschaft droht\u2026&quot;
+            &quot;id&quot;: &quot;1581932751691083777&quot;,
+            &quot;lang&quot;: &quot;de&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 1
+            },
+            &quot;referenced_tweets&quot;: [
+                {
+                    &quot;id&quot;: &quot;1581925399441068032&quot;,
+                    &quot;type&quot;: &quot;retweeted&quot;
+                }
+            ],
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;TweetDeck&quot;,
+            &quot;text&quot;: &quot;RT @eurotopics: Chinas Staatschef #Xi Jinping hat den Parteitag der KP mit einer Rede er\u00f6ffnet. An der Null-Covid-Politik will er festhalte\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1498806254357168132&quot;,
+            &quot;author_id&quot;: &quot;517719416&quot;,
+            &quot;conversation_id&quot;: &quot;1581932724373585922&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:58:47.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581622003508793344&quot;
+                &quot;1581932724373585922&quot;
             ],
-            &quot;id&quot;: &quot;1581622003508793344&quot;,
-            &quot;text&quot;: &quot;RT @lukedepulford: Xi seized #HongKong. Got away with it. Now boasting about it. \n\nPerpetrated #Uyghur genocide. Got away with it. \n\nWe\u2019ve\u2026&quot;
+            &quot;id&quot;: &quot;1581932724373585922&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 112
+            },
+            &quot;referenced_tweets&quot;: [
+                {
+                    &quot;id&quot;: &quot;1581823239587647488&quot;,
+                    &quot;type&quot;: &quot;retweeted&quot;
+                }
+            ],
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter for iPhone&quot;,
+            &quot;text&quot;: &quot;RT @TaiwanSpecial: Massive #landslide yesterday caused by torrential #rains on Taiwan\u2019s Highway 7 stranding dozens of cars. No casualties #\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;711273903625277441&quot;,
+            &quot;author_id&quot;: &quot;1108306936511057921&quot;,
+            &quot;conversation_id&quot;: &quot;1581932668836777988&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:58:33.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621965366104064&quot;
+                &quot;1581932668836777988&quot;
             ],
-            &quot;id&quot;: &quot;1581621965366104064&quot;,
-            &quot;text&quot;: &quot;RT @Michael_Leh: FAZ: \&quot;Besonders langen Applaus bekam #Xi Jinping f\u00fcr seine \u00c4u\u00dferungen \u00fcber #Taiwan (...) wir werden niemals versprechen, a\u2026&quot;
+            &quot;id&quot;: &quot;1581932668836777988&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 0
+            },
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Paper.li&quot;,
+            &quot;text&quot;: &quot;Check out the latest China Technology Daily! https://t.co/Qa8yElIJHe\n#China #Technology #Chinatech #TechnologyinChina #ChinaTechDaily #china #taiwan&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1133205518657511424&quot;,
+            &quot;author_id&quot;: &quot;1557630546863276032&quot;,
+            &quot;conversation_id&quot;: &quot;1581932626490728448&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:58:23.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621923746054145&quot;
+                &quot;1581932626490728448&quot;
             ],
-            &quot;id&quot;: &quot;1581621923746054145&quot;,
-            &quot;text&quot;: &quot;RT @iingwen: Today marks 1000 days since our Central Epidemic Command Center was set up. I am deeply grateful to everyone who has contribut\u2026&quot;
+            &quot;id&quot;: &quot;1581932626490728448&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 0
+            },
+            &quot;referenced_tweets&quot;: [
+                {
+                    &quot;id&quot;: &quot;1581651162813452291&quot;,
+                    &quot;type&quot;: &quot;retweeted&quot;
+                }
+            ],
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter for Android&quot;,
+            &quot;text&quot;: &quot;RT @TaiwanEU: @kvanbrempt Thank you @kvanbrempt for your concern about the threats #Taiwan is facing! Indeed, we democratic allies must wor\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1456921240262922241&quot;,
+            &quot;author_id&quot;: &quot;1059811266322202625&quot;,
+            &quot;conversation_id&quot;: &quot;1581932618299297793&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:58:21.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621894456889344&quot;
+                &quot;1581932618299297793&quot;
             ],
-            &quot;id&quot;: &quot;1581621894456889344&quot;,
-            &quot;text&quot;: &quot;RT @htTweets: Chinese President #XiJinping hailed Hong Kong&#39;s transition from \&quot;chaos to governance\&quot; while condemning what he said was inter\u2026&quot;
+            &quot;id&quot;: &quot;1581932618299297793&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 0
+            },
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter Web App&quot;,
+            &quot;text&quot;: &quot;https://t.co/wT30rCubbi\n\nLook for #CRTM $CRTM !\n\n@Investor_Intel \n\n#Africa #DRC #DRCongo #copper #cobalt #mining #metals #Canada #USA #Russia #Ukraine #China #Taiwan #XiJingping #Truss&quot;
         },
         {
-            &quot;author_id&quot;: &quot;4360394119&quot;,
+            &quot;author_id&quot;: &quot;1786378699&quot;,
+            &quot;conversation_id&quot;: &quot;1581932530067853312&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:58:00.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621870071230464&quot;
+                &quot;1581932530067853312&quot;
             ],
-            &quot;id&quot;: &quot;1581621870071230464&quot;,
-            &quot;text&quot;: &quot;RT @Jkylebass: BREAKING: Xi Jinping says the rules-based-order must not intervene in his brutal future invasion of Taiwan \ud83c\uddf9\ud83c\uddfc. #Taiwan #Taiw\u2026&quot;
+            &quot;id&quot;: &quot;1581932530067853312&quot;,
+            &quot;lang&quot;: &quot;es&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 2
+            },
+            &quot;referenced_tweets&quot;: [
+                {
+                    &quot;id&quot;: &quot;1581932339050909697&quot;,
+                    &quot;type&quot;: &quot;retweeted&quot;
+                }
+            ],
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter for Android&quot;,
+            &quot;text&quot;: &quot;RT @chematierra: AVISO \u2614\ufe0f\nMasivo #deslizamiento de tierra en el Condado de #Yilan, en #Taiw\u00e1n \ud83c\uddf9\ud83c\uddfc por las fuertes y abundantes #lluvias.\nRep\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1369249624700030982&quot;,
+            &quot;author_id&quot;: &quot;1457912585249226753&quot;,
+            &quot;conversation_id&quot;: &quot;1581932517623357441&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:57:57.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621798734467073&quot;
+                &quot;1581932517623357441&quot;
             ],
-            &quot;id&quot;: &quot;1581621798734467073&quot;,
-            &quot;text&quot;: &quot;RT @dna: \u2018Use of force in #Taiwan, success in #HongKong\u2019: #XiJinping\u2019s bold address at #China\u2019s #CommunistPartyCongress \n\nhttps://t.co/VUdV\u2026&quot;
+            &quot;id&quot;: &quot;1581932517623357441&quot;,
+            &quot;lang&quot;: &quot;en&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 6
+            },
+            &quot;referenced_tweets&quot;: [
+                {
+                    &quot;id&quot;: &quot;1581256019115618304&quot;,
+                    &quot;type&quot;: &quot;retweeted&quot;
+                }
+            ],
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter for Android&quot;,
+            &quot;text&quot;: &quot;RT @dearseki: Got positive response on COVID but also #GENSO event in Taiwan. Attended remotely the real event over 100 people on a Game-Me\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;1170350651748048896&quot;,
+            &quot;author_id&quot;: &quot;902193349033111552&quot;,
+            &quot;conversation_id&quot;: &quot;1581932413483032577&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:57:32.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621793743286272&quot;
+                &quot;1581932413483032577&quot;
             ],
-            &quot;id&quot;: &quot;1581621793743286272&quot;,
-            &quot;text&quot;: &quot;RT @IndoPac_Info: Xi opens #CCP summit announcing full control of #HongKong has been achieved\n\nOn #Taiwan: \&quot;we have resolutely launched a m\u2026&quot;
+            &quot;id&quot;: &quot;1581932413483032577&quot;,
+            &quot;lang&quot;: &quot;pt&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 0
+            },
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter Web App&quot;,
+            &quot;text&quot;: &quot;O Partido Comunista da #China \ud83c\udde8\ud83c\uddf3(#PCCh) aplicar\u00e1 a estrat\u00e9gia geral do Partido para resolver a quest\u00e3o de #Taiwan na nova era e impulsionar\u00e1 inabalavelmente a grande causa da reunifica\u00e7\u00e3o nacional, disse Xi Jinping na sess\u00e3o de abertura do 20\u00ba #Congresso Nacional do PCCh. https://t.co/WSKrwvUfd8&quot;
         },
         {
-            &quot;author_id&quot;: &quot;4120187122&quot;,
+            &quot;author_id&quot;: &quot;1192986597475672064&quot;,
+            &quot;conversation_id&quot;: &quot;1581932349591519233&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:57:17.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621741801328640&quot;
+                &quot;1581932349591519233&quot;
             ],
-            &quot;id&quot;: &quot;1581621741801328640&quot;,
-            &quot;text&quot;: &quot;RT @mariocavolo: This is CNN lying to you\n\n#XiJinping offered his address for well over an hour &amp;amp; only spent max 2 minutes each talking abo\u2026&quot;
+            &quot;id&quot;: &quot;1581932349591519233&quot;,
+            &quot;lang&quot;: &quot;es&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 0,
+                &quot;quote_count&quot;: 0,
+                &quot;reply_count&quot;: 0,
+                &quot;retweet_count&quot;: 41
+            },
+            &quot;referenced_tweets&quot;: [
+                {
+                    &quot;id&quot;: &quot;1581496873332125696&quot;,
+                    &quot;type&quot;: &quot;retweeted&quot;
+                }
+            ],
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter for Android&quot;,
+            &quot;text&quot;: &quot;RT @javihagen: \&quot;Continuaremos buscando la reunificaci\u00f3n pac\u00edfica con #Taiw\u00e1n, pero nunca prometeremos renunciar al uso de la fuerza y nos r\u2026&quot;
         },
         {
-            &quot;author_id&quot;: &quot;3237453390&quot;,
+            &quot;author_id&quot;: &quot;136763692&quot;,
+            &quot;conversation_id&quot;: &quot;1581932339050909697&quot;,
+            &quot;created_at&quot;: &quot;2022-10-17T08:57:15.000Z&quot;,
             &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621739460493312&quot;
+                &quot;1581932339050909697&quot;
             ],
-            &quot;id&quot;: &quot;1581621739460493312&quot;,
-            &quot;text&quot;: &quot;\u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0b95 \u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \ud83d\udc49 https://t.co/wiTe7k8soB \n\n1/2 kg #BlackForestCake \n\u20b9410 Only! \n\nBUY NOW (Chennai Only)\n\ud83d\udc47\ud83d\udc47\ud83d\udc47\nhttps://t.co/n6V58bzwgf\n\n# | #Back | #Taiwan | #Responds https://t.co/LxKXCXlsMb&quot;
+            &quot;id&quot;: &quot;1581932339050909697&quot;,
+            &quot;lang&quot;: &quot;es&quot;,
+            &quot;public_metrics&quot;: {
+                &quot;like_count&quot;: 1,
+                &quot;quote_count&quot;: 1,
+                &quot;reply_count&quot;: 1,
+                &quot;retweet_count&quot;: 2
+            },
+            &quot;reply_settings&quot;: &quot;everyone&quot;,
+            &quot;source&quot;: &quot;Twitter for iPhone&quot;,
+            &quot;text&quot;: &quot;AVISO \u2614\ufe0f\nMasivo #deslizamiento de tierra en el Condado de #Yilan, en #Taiw\u00e1n \ud83c\uddf9\ud83c\uddfc por las fuertes y abundantes #lluvias.\nReportan bloqueo de carretera y cientos de autos varados.\nVia @dabowagaga https://t.co/nGWf3xdIok&quot;
         }
     ],
+    &quot;includes&quot;: {
+        &quot;users&quot;: [
+            {
+                &quot;created_at&quot;: &quot;2009-09-21T10:09:50.000Z&quot;,
+                &quot;description&quot;: &quot;Journaliste et chroniqueur au quotidien @LeTemps Int\u00e9r\u00eat pour l&#39;Europe, l&#39;Asie et les questions internationales.&quot;,
+                &quot;entities&quot;: {
+                    &quot;description&quot;: {
+                        &quot;mentions&quot;: [
+                            {
+                                &quot;end&quot;: 48,
+                                &quot;start&quot;: 40,
+                                &quot;username&quot;: &quot;LeTemps&quot;
+                            }
+                        ]
+                    },
+                    &quot;url&quot;: {
+                        &quot;urls&quot;: [
+                            {
+                                &quot;display_url&quot;: &quot;letemps.ch&quot;,
+                                &quot;end&quot;: 23,
+                                &quot;expanded_url&quot;: &quot;http://www.letemps.ch&quot;,
+                                &quot;start&quot;: 0,
+                                &quot;url&quot;: &quot;https://t.co/W459jvCHdW&quot;
+                            }
+                        ]
+                    }
+                },
+                &quot;id&quot;: &quot;75997763&quot;,
+                &quot;location&quot;: &quot;Geneva, Switzerland&quot;,
+                &quot;name&quot;: &quot;Koller Fr\u00e9d\u00e9ric&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1265659418559070208/i2wmQYXd_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 1553,
+                    &quot;following_count&quot;: 487,
+                    &quot;listed_count&quot;: 50,
+                    &quot;tweet_count&quot;: 8637
+                },
+                &quot;url&quot;: &quot;https://t.co/W459jvCHdW&quot;,
+                &quot;username&quot;: &quot;frederickoller&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2012-03-07T16:03:47.000Z&quot;,
+                &quot;description&quot;: &quot;You hurt me,I hurt you worse.&quot;,
+                &quot;id&quot;: &quot;517719416&quot;,
+                &quot;location&quot;: &quot;Malaysia&quot;,
+                &quot;name&quot;: &quot;Grimmjow&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1497886203181694979/7hiDK42v_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 251,
+                    &quot;following_count&quot;: 725,
+                    &quot;listed_count&quot;: 0,
+                    &quot;tweet_count&quot;: 7339
+                },
+                &quot;username&quot;: &quot;jaegerjaquez_94&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2019-03-20T09:58:59.000Z&quot;,
+                &quot;description&quot;: &quot;The China Tech Daily brings you latest impartial technology news affecting China .... every day! Follow us for the latest articles!\n#China #technology&quot;,
+                &quot;entities&quot;: {
+                    &quot;description&quot;: {
+                        &quot;hashtags&quot;: [
+                            {
+                                &quot;end&quot;: 138,
+                                &quot;start&quot;: 132,
+                                &quot;tag&quot;: &quot;China&quot;
+                            },
+                            {
+                                &quot;end&quot;: 150,
+                                &quot;start&quot;: 139,
+                                &quot;tag&quot;: &quot;technology&quot;
+                            }
+                        ]
+                    }
+                },
+                &quot;id&quot;: &quot;1108306936511057921&quot;,
+                &quot;location&quot;: &quot;#China&quot;,
+                &quot;name&quot;: &quot;China Tech Daily&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1128943009863802880/dB3LUasg_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 452,
+                    &quot;following_count&quot;: 709,
+                    &quot;listed_count&quot;: 11,
+                    &quot;tweet_count&quot;: 1380
+                },
+                &quot;username&quot;: &quot;China_TechDaily&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2022-08-11T07:30:52.000Z&quot;,
+                &quot;description&quot;: &quot;Love democracy and freedom&quot;,
+                &quot;id&quot;: &quot;1557630546863276032&quot;,
+                &quot;name&quot;: &quot;Goodlord&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1557633546436624386/NInBNPz9_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 21,
+                    &quot;following_count&quot;: 38,
+                    &quot;listed_count&quot;: 0,
+                    &quot;tweet_count&quot;: 1993
+                },
+                &quot;username&quot;: &quot;Goodlord5566&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2018-11-06T14:14:31.000Z&quot;,
+                &quot;description&quot;: &quot;Critical Metals is a London listed investment company investing in operators or near term production operators within the natural resources sector in Africa.&quot;,
+                &quot;entities&quot;: {
+                    &quot;url&quot;: {
+                        &quot;urls&quot;: [
+                            {
+                                &quot;display_url&quot;: &quot;criticalmetals.co.uk&quot;,
+                                &quot;end&quot;: 23,
+                                &quot;expanded_url&quot;: &quot;https://www.criticalmetals.co.uk/&quot;,
+                                &quot;start&quot;: 0,
+                                &quot;url&quot;: &quot;https://t.co/NaqREea7J2&quot;
+                            }
+                        ]
+                    }
+                },
+                &quot;id&quot;: &quot;1059811266322202625&quot;,
+                &quot;location&quot;: &quot;London, England. &quot;,
+                &quot;name&quot;: &quot;Critical Metals plc&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1317891710446350336/9RMKmPAX_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 1084,
+                    &quot;following_count&quot;: 123,
+                    &quot;listed_count&quot;: 20,
+                    &quot;tweet_count&quot;: 1677
+                },
+                &quot;url&quot;: &quot;https://t.co/NaqREea7J2&quot;,
+                &quot;username&quot;: &quot;CriticalMetals_&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2013-09-07T23:28:13.000Z&quot;,
+                &quot;description&quot;: &quot;Colonia Narvarte O y P ,  Estamos a tus ordenes, juntos logremos una mejor colonia.&quot;,
+                &quot;id&quot;: &quot;1786378699&quot;,
+                &quot;name&quot;: &quot;Colonia Narvarte&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1319423933356134401/e2lGXKv9_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 1301,
+                    &quot;following_count&quot;: 1406,
+                    &quot;listed_count&quot;: 12,
+                    &quot;tweet_count&quot;: 22993
+                },
+                &quot;username&quot;: &quot;ccnarvarteuno13&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2021-11-09T03:27:23.000Z&quot;,
+                &quot;description&quot;: &quot;Take the risk all the time\ud83d\ude80&quot;,
+                &quot;id&quot;: &quot;1457912585249226753&quot;,
+                &quot;name&quot;: &quot;Jordan Bernardino&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1464384391569080321/KSzffwn2_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 126,
+                    &quot;following_count&quot;: 407,
+                    &quot;listed_count&quot;: 1,
+                    &quot;tweet_count&quot;: 2618
+                },
+                &quot;username&quot;: &quot;LawLiet0125&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2017-08-28T15:37:11.000Z&quot;,
+                &quot;description&quot;: &quot;Conta oficial do Di\u00e1rio Chin\u00eas Para a Am\u00e9rica do Sul. Conhece a not\u00edcia Brasil-China daqui.&quot;,
+                &quot;entities&quot;: {
+                    &quot;url&quot;: {
+                        &quot;urls&quot;: [
+                            {
+                                &quot;display_url&quot;: &quot;br-cn.com&quot;,
+                                &quot;end&quot;: 23,
+                                &quot;expanded_url&quot;: &quot;http://www.br-cn.com/&quot;,
+                                &quot;start&quot;: 0,
+                                &quot;url&quot;: &quot;https://t.co/6NhUXDrZbv&quot;
+                            }
+                        ]
+                    }
+                },
+                &quot;id&quot;: &quot;902193349033111552&quot;,
+                &quot;name&quot;: &quot;NmqbChinaNews&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/902197625168023556/KeAcbgBL_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 586,
+                    &quot;following_count&quot;: 88,
+                    &quot;listed_count&quot;: 16,
+                    &quot;tweet_count&quot;: 2260
+                },
+                &quot;url&quot;: &quot;https://t.co/6NhUXDrZbv&quot;,
+                &quot;username&quot;: &quot;NmqbNews&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2019-11-09T02:06:33.000Z&quot;,
+                &quot;description&quot;: &quot;#revolucion #justiciasocial #izquierdarevolucionaria #marx #engels #lenin #marxismoleninismo #socialismocientifico #socialismo #comunismo&quot;,
+                &quot;entities&quot;: {
+                    &quot;description&quot;: {
+                        &quot;hashtags&quot;: [
+                            {
+                                &quot;end&quot;: 11,
+                                &quot;start&quot;: 0,
+                                &quot;tag&quot;: &quot;revolucion&quot;
+                            },
+                            {
+                                &quot;end&quot;: 27,
+                                &quot;start&quot;: 12,
+                                &quot;tag&quot;: &quot;justiciasocial&quot;
+                            },
+                            {
+                                &quot;end&quot;: 52,
+                                &quot;start&quot;: 28,
+                                &quot;tag&quot;: &quot;izquierdarevolucionaria&quot;
+                            },
+                            {
+                                &quot;end&quot;: 58,
+                                &quot;start&quot;: 53,
+                                &quot;tag&quot;: &quot;marx&quot;
+                            },
+                            {
+                                &quot;end&quot;: 66,
+                                &quot;start&quot;: 59,
+                                &quot;tag&quot;: &quot;engels&quot;
+                            },
+                            {
+                                &quot;end&quot;: 73,
+                                &quot;start&quot;: 67,
+                                &quot;tag&quot;: &quot;lenin&quot;
+                            },
+                            {
+                                &quot;end&quot;: 92,
+                                &quot;start&quot;: 74,
+                                &quot;tag&quot;: &quot;marxismoleninismo&quot;
+                            },
+                            {
+                                &quot;end&quot;: 114,
+                                &quot;start&quot;: 93,
+                                &quot;tag&quot;: &quot;socialismocientifico&quot;
+                            },
+                            {
+                                &quot;end&quot;: 126,
+                                &quot;start&quot;: 115,
+                                &quot;tag&quot;: &quot;socialismo&quot;
+                            },
+                            {
+                                &quot;end&quot;: 137,
+                                &quot;start&quot;: 127,
+                                &quot;tag&quot;: &quot;comunismo&quot;
+                            }
+                        ]
+                    }
+                },
+                &quot;id&quot;: &quot;1192986597475672064&quot;,
+                &quot;name&quot;: &quot;Roque Migl L\u00e1zaro&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1485616129364135943/YpvQZqN7_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 18,
+                    &quot;following_count&quot;: 75,
+                    &quot;listed_count&quot;: 0,
+                    &quot;tweet_count&quot;: 695
+                },
+                &quot;username&quot;: &quot;RokeMigLazaro&quot;,
+                &quot;verified&quot;: false
+            },
+            {
+                &quot;created_at&quot;: &quot;2010-04-24T21:23:12.000Z&quot;,
+                &quot;description&quot;: &quot;Ge\u00f3logo egresado del IPN, Premio Nacional 2003, Autor del libro Planeta Tierra, riesgos geol\u00f3gicos y desastres naturales&quot;,
+                &quot;entities&quot;: {
+                    &quot;url&quot;: {
+                        &quot;urls&quot;: [
+                            {
+                                &quot;display_url&quot;: &quot;chematierra.mx&quot;,
+                                &quot;end&quot;: 23,
+                                &quot;expanded_url&quot;: &quot;http://www.chematierra.mx&quot;,
+                                &quot;start&quot;: 0,
+                                &quot;url&quot;: &quot;https://t.co/QqldKVv5Yh&quot;
+                            }
+                        ]
+                    }
+                },
+                &quot;id&quot;: &quot;136763692&quot;,
+                &quot;location&quot;: &quot;Mexico D.F. &quot;,
+                &quot;name&quot;: &quot;Ge\u00f3l. Sergio Almaz\u00e1n&quot;,
+                &quot;pinned_tweet_id&quot;: &quot;1531286068326187008&quot;,
+                &quot;profile_image_url&quot;: &quot;https://pbs.twimg.com/profile_images/1397246898319372291/FD0v1HeI_normal.jpg&quot;,
+                &quot;protected&quot;: false,
+                &quot;public_metrics&quot;: {
+                    &quot;followers_count&quot;: 143173,
+                    &quot;following_count&quot;: 149,
+                    &quot;listed_count&quot;: 1045,
+                    &quot;tweet_count&quot;: 94430
+                },
+                &quot;url&quot;: &quot;https://t.co/QqldKVv5Yh&quot;,
+                &quot;username&quot;: &quot;chematierra&quot;,
+                &quot;verified&quot;: false
+            }
+        ]
+    },
     &quot;meta&quot;: {
-        &quot;newest_id&quot;: &quot;1581622153291538432&quot;,
-        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzejv8x203j69hebwpbc6a92ocayl&quot;,
-        &quot;oldest_id&quot;: &quot;1581621739460493312&quot;,
+        &quot;newest_id&quot;: &quot;1581932751691083777&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzejvfbja0k4wq6vowaanm9q8ahkt&quot;,
+        &quot;oldest_id&quot;: &quot;1581932339050909697&quot;,
         &quot;result_count&quot;: 10
     }
 }
@@ -1232,134 +1690,265 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
 <p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate">https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span> 
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>id</th>
+      <th>text</th>
+      <th>author_id</th>
+      <th>edit_history_tweet_ids</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1581920411813437440</td>
+      <td>RT @foreignersinTW: The craziest storm run off...</td>
+      <td>4548438085</td>
+      <td>[1581920411813437440]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1581920353982779393</td>
+      <td>RT @UStannes: #Taiwan’s #stocks continued to #...</td>
+      <td>13339612</td>
+      <td>[1581920353982779393]</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1581920343538642944</td>
+      <td>Nereye gittiğini bilmiyorsan, hangi yoldan git...</td>
+      <td>3096474555</td>
+      <td>[1581920343538642944]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1581920318733447168</td>
+      <td>RT @lukedepulford: Xi seized #HongKong. Got aw...</td>
+      <td>890651689266622464</td>
+      <td>[1581920318733447168]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1581920258214203392</td>
+      <td>RT @MarcoDreosto: Nel discorso di #XiJinping a...</td>
+      <td>1303622958401937408</td>
+      <td>[1581920258214203392]</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1581920244850794496</td>
+      <td>RT @Taiwan_Today: .@iingwen (3rd right) &amp;amp; ...</td>
+      <td>1161172094245167105</td>
+      <td>[1581920244850794496]</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>1581920106657230849</td>
+      <td>Taipei Times - All aboard\n\n#japan #hokkaido ...</td>
+      <td>1326385120174092288</td>
+      <td>[1581920106657230849]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>1581920047890853888</td>
+      <td>#Cina di #XiJinping con terzo mandato replica ...</td>
+      <td>403034488</td>
+      <td>[1581920047890853888]</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1581919960473141248</td>
+      <td>RT @Servimedia: #BuenosDías y #FelizLunes ☕️📰\...</td>
+      <td>297410907</td>
+      <td>[1581919960473141248]</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>1581919918588510208</td>
+      <td>#Taiwan entend défendre sa souveraineté et sa ...</td>
+      <td>42577820</td>
+      <td>[1581919918588510208]</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;b26v89c19zqg8o3fpzejv8x21kvodvznrobqym6fpxoql&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;b26v89c19zqg8o3fpzejvfaxztg259ucng63dzvrwjtkt&#39;
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># query_params = {&#39;query&#39;: &#39;(from:taiwan -is:retweet) OR #taiwan&#39;,</span>
+<span class="c1">#                 &#39;tweet.fields&#39;: &#39;author_id&#39;}</span>
+
+<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> 
                 <span class="s1">&#39;next_token&#39;</span><span class="p">:</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]}</span>
+
 <span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">])</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;data&quot;</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
-{
-    &quot;data&quot;: [
-        {
-            &quot;author_id&quot;: &quot;3097153036&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621108302057474&quot;
-            ],
-            &quot;id&quot;: &quot;1581621108302057474&quot;,
-            &quot;text&quot;: &quot;RT @lukedepulford: Xi seized #HongKong. Got away with it. Now boasting about it. \n\nPerpetrated #Uyghur genocide. Got away with it. \n\nWe\u2019ve\u2026&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;1369249624700030982&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621092078080000&quot;
-            ],
-            &quot;id&quot;: &quot;1581621092078080000&quot;,
-            &quot;text&quot;: &quot;RT @ptcnews: Full control over Hong Kong achieved, determined on Taiwan: Xi Jinping\n\n#HongKong #XiJinping #Taiwan #China #latestnews\n\nhttps\u2026&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;1391299076&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621076815417344&quot;
-            ],
-            &quot;id&quot;: &quot;1581621076815417344&quot;,
-            &quot;text&quot;: &quot;RT @iingwen: Today marks 1000 days since our Central Epidemic Command Center was set up. I am deeply grateful to everyone who has contribut\u2026&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;2279899741&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621028966477825&quot;
-            ],
-            &quot;id&quot;: &quot;1581621028966477825&quot;,
-            &quot;text&quot;: &quot;RT @avjiali: Xu Xiaoxin is doing a live broadcast when her step brother walks in to get his cock sucked\nFollow @AVJiali \n#Taiwan #Taiwanese\u2026&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;3070387662&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581621002173583361&quot;
-            ],
-            &quot;id&quot;: &quot;1581621002173583361&quot;,
-            &quot;text&quot;: &quot;On Taiwan, Xi Jinping warns against international \u00e2\u0080\u0098interference.\u00e2\u0080\u0099\n\n#Taiwan | #Jinping | #Against | #International\n\nFollow on Flipboard \n\ud83d\udc49 https://t.co/nM9XVNhiMQ https://t.co/sFirzlbCyh&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;58480965&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581620999740870656&quot;
-            ],
-            &quot;id&quot;: &quot;1581620999740870656&quot;,
-            &quot;text&quot;: &quot;RT @mastaccio: A detta di #XiJinping, la Cina non rinuncer\u00e0 alla possibilit\u00e0 di usare la forza per risolvere i suoi problemi con #Taiwan.\nN\u2026&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;1364466540104441860&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581620978131427331&quot;
-            ],
-            &quot;id&quot;: &quot;1581620978131427331&quot;,
-            &quot;text&quot;: &quot;RT @ChinaDaily: Resolving the #Taiwan question is a matter for the Chinese, a matter that must be resolved by the Chinese, Xi Jinping said\u2026&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;1448200799020929025&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581620975774441472&quot;
-            ],
-            &quot;id&quot;: &quot;1581620975774441472&quot;,
-            &quot;text&quot;: &quot;\u091a\u0940\u0928 \u0915\u0947 \u0930\u093e\u0937\u094d\u091f\u094d\u0930\u092a\u0924\u093f \u0936\u0940 \u091c\u093f\u0928\u092a\u093f\u0902\u0917 \u0928\u0947 \u0924\u093e\u0907\u0935\u093e\u0928 \u0915\u094b \u092f\u0942\u0902 \u0927\u092e\u0915\u093e\u092f\u093e, \u0915\u094d\u092f\u093e \u091c\u0932\u094d\u0926 \u0939\u094b \u0938\u0915\u0924\u0940 \u0939\u0948 \u0928\u0908 \u091c\u0902\u0917?\n\n#chinamilitarycoup #China #Taiwan #XiJinping \n\nhttps://t.co/f6KkGDcyrG&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;3315306025&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581620962478260224&quot;
-            ],
-            &quot;id&quot;: &quot;1581620962478260224&quot;,
-            &quot;text&quot;: &quot;RT @iingwen: Thank you to @JudySgroMP for joining us at our \ud83c\uddf9\ud83c\uddfc National Day Celebrations &amp;amp; for your consistent support for our country. I l\u2026&quot;
-        },
-        {
-            &quot;author_id&quot;: &quot;1092479930301075456&quot;,
-            &quot;edit_history_tweet_ids&quot;: [
-                &quot;1581620902483341313&quot;
-            ],
-            &quot;id&quot;: &quot;1581620902483341313&quot;,
-            &quot;text&quot;: &quot;RT @StockmoneyL: #Bitcoin and #DXY hand in hand\ud83d\ude4c\n\nA strong U.S. dollar (#DXY) was followed by a decline when drivers start to disapear. \n\nI\u2026&quot;
-        }
-    ],
-    &quot;meta&quot;: {
-        &quot;newest_id&quot;: &quot;1581621108302057474&quot;,
-        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzejv8x1ylc17m7a4xeji3mij99j1&quot;,
-        &quot;oldest_id&quot;: &quot;1581620902483341313&quot;,
-        &quot;result_count&quot;: 10
-    }
-}
+{&#39;newest_id&#39;: &#39;1581918577367879680&#39;, &#39;oldest_id&#39;: &#39;1581917800142344192&#39;, &#39;result_count&#39;: 10, &#39;next_token&#39;: &#39;b26v89c19zqg8o3fpzejvfaxwrziu2qqrkg06op160b5p&#39;}
 </pre></div>
 </div>
-</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author_id</th>
+      <th>id</th>
+      <th>edit_history_tweet_ids</th>
+      <th>text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1572455337248325632</td>
+      <td>1581918577367879680</td>
+      <td>[1581918577367879680]</td>
+      <td>Welcome !Follow for private nudes🤪\n\n#horny #...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1484657651707428871</td>
+      <td>1581918486611529729</td>
+      <td>[1581918486611529729]</td>
+      <td>RT @DilnurReyhan: Les médias ont déjà enterré ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1537074557399465985</td>
+      <td>1581918484795363329</td>
+      <td>[1581918484795363329]</td>
+      <td>RT @nOZoMuStudio_Tw: Night of Kaohsiung\n#trav...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1491285497330606085</td>
+      <td>1581918241844170752</td>
+      <td>[1581918241844170752]</td>
+      <td>RT @Lovcki0618: 10/16/2022 Майлз Гуо: Си Цзинь...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>225018166</td>
+      <td>1581918120901373954</td>
+      <td>[1581918120901373954]</td>
+      <td>By taking part in #Taiwan's National Day and t...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>1382431445063495688</td>
+      <td>1581918086508449792</td>
+      <td>[1581918086508449792]</td>
+      <td>🏴‍☠️ David Rowe on #XiJingPing #ChinaExposed #...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>528515952</td>
+      <td>1581918035669311489</td>
+      <td>[1581918035669311489]</td>
+      <td>#Taiwan "L'un des premiers objectifs de l’APL ...</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>226007356</td>
+      <td>1581917872233684994</td>
+      <td>[1581917872233684994]</td>
+      <td>தைவான் நாட்டு பெண்ணை திருமணம் செய்த தமிழர்! ஜப...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>1493204891874910212</td>
+      <td>1581917829573799938</td>
+      <td>[1581917829573799938]</td>
+      <td>RT @NFSC_HAGnews: 😈The CCP’s ruthlessly behavi...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>369733986</td>
+      <td>1581917800142344192</td>
+      <td>[1581917800142344192]</td>
+      <td>RT @TaiwanSpecial: Massive #landslide yesterda...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
 </div>
 </section>
 <section id="add-for-loop-and-combine-data">
 <h3>Add for-loop and combine data<a class="headerlink" href="#add-for-loop-and-combine-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent&quot;</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span>
+               <span class="p">}</span>
+
+<span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+
 <span class="n">tweets_all</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10
 </pre></div>
 </div>
 </div>
@@ -1408,12 +1997,17 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">))</span>
 <span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tweets_all</span><span class="p">]</span>
+
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>110
+{1, 2, 3}
 110
 </pre></div>
 </div>
@@ -1449,9 +2043,9 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
   <thead>
     <tr style="text-align: right;">
       <th></th>
+      <th>edit_history_tweet_ids</th>
       <th>id</th>
       <th>text</th>
-      <th>edit_history_tweet_ids</th>
       <th>author_id</th>
       <th>withheld</th>
     </tr>
@@ -1459,42 +2053,42 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
   <tbody>
     <tr>
       <th>0</th>
-      <td>1581664146264772614</td>
-      <td>RT @avjiali: Xu Xiaoxin is doing a live broadc...</td>
-      <td>[1581664146264772614]</td>
-      <td>1547601285355933699</td>
+      <td>[1581923986153218048]</td>
+      <td>1581923986153218048</td>
+      <td>RT @AlbertoLela: Le parole di Xi Jinping su #T...</td>
+      <td>493870947</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>1581664111985057795</td>
-      <td>RT @Jkylebass: BREAKING: Xi Jinping says the r...</td>
-      <td>[1581664111985057795]</td>
-      <td>858761155</td>
+      <td>[1581923936131899392]</td>
+      <td>1581923936131899392</td>
+      <td>RT @AlbertoLela: Le parole di Xi Jinping su #T...</td>
+      <td>2338719661</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1581664087674859520</td>
-      <td>RT @WilliamYang120: Important details from the...</td>
-      <td>[1581664087674859520]</td>
-      <td>1369249624700030982</td>
+      <td>[1581923837197058049]</td>
+      <td>1581923837197058049</td>
+      <td>RT @Arab_Storms: انهيارات ارضية في تايوان جراء...</td>
+      <td>903032005335638020</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1581664085392773120</td>
-      <td>Xi: #China jamás renunciará al uso de la fuerz...</td>
-      <td>[1581664085392773120]</td>
-      <td>144678130</td>
+      <td>[1581923676609736705]</td>
+      <td>1581923676609736705</td>
+      <td>RT @IndoPac_Info: #Taiwan is now a top priorit...</td>
+      <td>1348737055040311296</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1581664076429942785</td>
-      <td>जिनपिंग की ताजपोशी..ताइवान युद्ध की मुनादी ?\n...</td>
-      <td>[1581664076429942785]</td>
-      <td>1039759933728645120</td>
+      <td>[1581923596309434368]</td>
+      <td>1581923596309434368</td>
+      <td>RT @Wang77546750: Good night\n#Taiwan \n#台灣 \n...</td>
+      <td>1538911791396401153</td>
       <td>NaN</td>
     </tr>
     <tr>
@@ -1507,42 +2101,42 @@ Or Hillary Clinton. https://t.co/Iq0E6znyZS
     </tr>
     <tr>
       <th>105</th>
-      <td>1581659225927077888</td>
-      <td>RT @dw_espanol: 🇨🇳🇹🇼 "Nos reservamos la opción...</td>
-      <td>[1581659225927077888]</td>
-      <td>19494255</td>
+      <td>[1581916082318626817]</td>
+      <td>1581916082318626817</td>
+      <td>@Reuters not #Ukraine️ or #Taiwan will back do...</td>
+      <td>1184000832506753024</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>106</th>
-      <td>1581659203353325569</td>
-      <td>$FB 种子轮融资开启认购，共计210万枚。\n价格：1BNB=300FB\n锁仓时间：上市...</td>
-      <td>[1581659203353325569]</td>
-      <td>1525603586637303808</td>
+      <td>[1581916041755885568]</td>
+      <td>1581916041755885568</td>
+      <td>@misterpuertas Hay personas que no entienden s...</td>
+      <td>1433077512670785540</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>107</th>
-      <td>1581659160533381122</td>
-      <td>RT @sputnik_afrique: Souhaitant une réunificat...</td>
-      <td>[1581659160533381122]</td>
-      <td>318545431</td>
-      <td>{'copyright': False, 'country_codes': ['AT', '...</td>
+      <td>[1581915749450670082]</td>
+      <td>1581915749450670082</td>
+      <td>RT @SiteTaiwanInfo: Aux #USA, #Taiwan présente...</td>
+      <td>1008987247616512000</td>
+      <td>NaN</td>
     </tr>
     <tr>
       <th>108</th>
-      <td>1581659150924537856</td>
-      <td>RT @dariodangelo91: 🚨 #XiJinping su #Taiwan: "...</td>
-      <td>[1581659150924537856]</td>
-      <td>1389244782548033542</td>
+      <td>[1581915747139612672]</td>
+      <td>1581915747139612672</td>
+      <td>RT @AlbertoLela: Le parole di Xi Jinping su #T...</td>
+      <td>1358868460516896776</td>
       <td>NaN</td>
     </tr>
     <tr>
       <th>109</th>
-      <td>1581659127155417092</td>
-      <td>Get 5% Equity in our Company and receive a sal...</td>
-      <td>[1581659127155417092]</td>
-      <td>2936253764</td>
+      <td>[1581915698900582400]</td>
+      <td>1581915698900582400</td>
+      <td>RT @JiaWen680727: #TZUYU #쯔위 #子瑜 #ツウィ #트와이스 #จ...</td>
+      <td>1432276101280063492</td>
       <td>NaN</td>
     </tr>
   </tbody>
@@ -1820,7 +2414,7 @@ The next rule could be used to better understand the sentiment of the conversati
 </div></blockquote>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
 </pre></div>
 </div>
 </div>
