@@ -643,7 +643,30 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
+    <a class="reference internal nav-link" href="#view-by-pandas">
+     View by pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#twitter-api-2-0">
+   Twitter API 2.0
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-fields">
+     Data fields
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-formation">
+     Query formation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-fields">
+     More fields
     </a>
    </li>
   </ul>
@@ -717,7 +740,30 @@ title="Print to PDF"
     </ul>
    </li>
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#id1">
+    <a class="reference internal nav-link" href="#view-by-pandas">
+     View by pandas
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#twitter-api-2-0">
+   Twitter API 2.0
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#data-fields">
+     Data fields
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-formation">
+     Query formation
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#more-fields">
+     More fields
     </a>
    </li>
   </ul>
@@ -1146,20 +1192,20 @@ memory usage: 3.6+ MB
 <p>現在Twitter API 2.0主要分成三種存取權限（<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api">Access levels</a>），通常剛註冊的人給的就是Essentials，學者有機會可以申請到Academic Research，可以獲得更多的Tweets。</p>
 <section id="apply-and-get-bearer-token">
 <h3>Apply and get bearer_token<a class="headerlink" href="#apply-and-get-bearer-token" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BEARER_TOKEN&quot;</span>
-</pre></div>
-</div>
+<p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api">https://developer.twitter.com/en/docs/twitter-api</a></p>
 </section>
 <section id="get-tweets-data">
 <h3>Get tweets data<a class="headerlink" href="#get-tweets-data" title="Permalink to this headline">#</a></h3>
 <p>Twitter也有提供大量的範例可以讓使用者學習，例如這個範例<a class="reference external" href="https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Recent-Search/recent_search.py">recent_search.py</a>程式碼就教你怎麼搜尋最近某個關鍵字的相關Tweets。</p>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
 <span class="c1"># To set your environment variables in your terminal run the following line:</span>
 <span class="c1"># export &#39;BEARER_TOKEN&#39;=&#39;&lt;your_bearer_token&gt;&#39;</span>
-<span class="c1"># bearer_token = &quot;YOUR_BEARER_TOKEN&quot;</span>
+<span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BEARER_TOKEN&quot;</span>
 
 <span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent&quot;</span>
 
@@ -1181,14 +1227,15 @@ memory usage: 3.6+ MB
     <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 </div>
+</div>
+</div>
 </section>
 <section id="send-query">
 <h3>Send query<a class="headerlink" href="#send-query" title="Permalink to this headline">#</a></h3>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>json_response = connect_to_endpoint(search_url, query_params)
+print(json.dumps(json_response, indent=4, sort_keys=True))
 </pre></div>
 </div>
-<p>OUTPUT</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>200
 {
     &quot;data&quot;: [
@@ -1235,7 +1282,7 @@ memory usage: 3.6+ MB
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]</span>
 </pre></div>
 </div>
-<p>OUTPUT</p>
+<p>OUTPUT SAMPLE</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;b26v89c19zqg8o3fpzejv8x21kvodvznrobqym6fpxoql&#39;</span>
 </pre></div>
 </div>
@@ -1325,8 +1372,81 @@ memory usage: 3.6+ MB
 </div>
 </section>
 </section>
-<section id="id1">
-<h3><a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<section id="view-by-pandas">
+<h3>View by pandas<a class="headerlink" href="#view-by-pandas" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="twitter-api-2-0">
+<h2>Twitter API 2.0<a class="headerlink" href="#twitter-api-2-0" title="Permalink to this headline">#</a></h2>
+<section id="data-fields">
+<h3>Data fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">#</a></h3>
+<p>如果不知道有哪些欄位可以查詢，可以參考Twitter所提供的API Tools去建構。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/apitools/api">https://developer.twitter.com/apitools/api</a></p></li>
+<li><p>Choose endpoints <strong>GET /2/tweets/counts/recent</strong> (Returns Tweet Counts from the last 7 days that match a search query)</p></li>
+</ul>
+<p>有一個非常有趣的fields是<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/annotations/overview">entities annotations</a>，他會去標註在每一則Tweet中有哪些命名實體。例如在這則Tweeet中「<em>【出張TAIWAN PLUS 2022&#64;expo】
+『#pppppins 』は台湾デザイナーAlice Wangにより設立されたブランド。陽気、皮肉、そして文化的なモチーフのピンズはビジュアルを生き生きとさせるカラフルな色使いで、柔らかいエナメルを施した真鍮製です。🍧⛰🌵🦕#TAIWANPLUS2022</em>」就有「台湾」和「Alice Wang」兩個NER被標註出來，除了位置之外，還有辨識為人名、機構、地區的機率（probability）與類別（type）。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;entities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span><span class="w"></span>
+<span class="w">                </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u53f0\u6e7e&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6719</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">},</span><span class="w"></span>
+<span class="w">                    </span><span class="p">{</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice Wang&quot;</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7319</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span><span class="w"></span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization&quot;</span><span class="w"></span>
+<span class="w">                    </span><span class="p">}</span><span class="w"></span>
+<span class="w">                </span><span class="p">],</span><span class="w"></span>
+</pre></div>
+</div>
+</section>
+<section id="query-formation">
+<h3>Query formation<a class="headerlink" href="#query-formation" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query">https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query</a></p>
+<blockquote>
+<div><p>Reviewing the sentiment of a conversation
+The next rule could be used to better understand the sentiment of the conversation developing around the hashtag, #nowplaying, but scoped to just Tweets published within North America. Here is what the two different queries, one for positive and one for negative, would look like without the HTTP encoding:</p>
+</div></blockquote>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">#nowplaying</span> <span class="pre">(happy</span> <span class="pre">OR</span> <span class="pre">exciting</span> <span class="pre">OR</span> <span class="pre">excited</span> <span class="pre">OR</span> <span class="pre">favorite</span> <span class="pre">OR</span> <span class="pre">fav</span> <span class="pre">OR</span> <span class="pre">amazing</span> <span class="pre">OR</span> <span class="pre">lovely</span> <span class="pre">OR</span> <span class="pre">incredible)</span> <span class="pre">(place_country:US</span> <span class="pre">OR</span> <span class="pre">place_country:MX</span> <span class="pre">OR</span> <span class="pre">place_country:CA)</span> <span class="pre">-horrible</span> <span class="pre">-worst</span> <span class="pre">-sucks</span> <span class="pre">-bad</span> <span class="pre">-disappointing</span></code></p>
+</div></blockquote>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">#nowplaying</span> <span class="pre">(horrible</span> <span class="pre">OR</span> <span class="pre">worst</span> <span class="pre">OR</span> <span class="pre">sucks</span> <span class="pre">OR</span> <span class="pre">bad</span> <span class="pre">OR</span> <span class="pre">disappointing)</span> <span class="pre">(place_country:US</span> <span class="pre">OR</span> <span class="pre">place_country:MX</span> <span class="pre">OR</span> <span class="pre">place_country:CA)</span> <span class="pre">-happy</span> <span class="pre">-exciting</span> <span class="pre">-excited</span> <span class="pre">-favorite</span> <span class="pre">-fav</span> <span class="pre">-amazing</span> <span class="pre">-lovely</span> <span class="pre">-incredible</span></code></p>
+</div></blockquote>
+<blockquote>
+<div><p>Adding more conditional operators narrows your search results, for example  <code class="docutils literal notranslate"><span class="pre">(happy</span> <span class="pre">OR</span> <span class="pre">happiness)</span> <span class="pre">place_country:GB</span> <span class="pre">-birthday</span> <span class="pre">-is:retweet</span></code></p>
+</div></blockquote>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</section>
+<section id="more-fields">
+<h3>More fields<a class="headerlink" href="#more-fields" title="Permalink to this headline">#</a></h3>
+<p>Twtiter API分為五種主要類型的資料（<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/data-dictionary/introduction">Data Dictionary</a>），可分別查詢，例如用user.field查詢某個tweet作者，分別為</p>
+<ul class="simple">
+<li><p>Tweet → <code class="docutils literal notranslate"><span class="pre">tweet.fields</span></code></p></li>
+<li><p>User → <code class="docutils literal notranslate"><span class="pre">user.fields</span></code></p></li>
+<li><p>Media → <code class="docutils literal notranslate"><span class="pre">media.fields</span></code></p></li>
+<li><p>Poll → <code class="docutils literal notranslate"><span class="pre">poll.fields</span></code></p></li>
+<li><p>Place → <code class="docutils literal notranslate"><span class="pre">place.fields</span></code></p></li>
+</ul>
+<p>但在研究上我可能會需要，在查找Tweet時，便把User的資料帶進來。過去可能會把所有Tweet的資料取完後，然後整理作者列表後逐一撈取。但現在可以在查詢Tweet時，便利用<code class="docutils literal notranslate"><span class="pre">expansions</span></code>連結至其他資料，例如從Tweet連至User資料，然後就可以查詢<code class="docutils literal notranslate"><span class="pre">user.fields</span></code>裡面的欄位。相當於伺服器方幫忙做了資料庫的<code class="docutils literal notranslate"><span class="pre">join</span></code>工作。例子如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=created_at,geo,id,lang,conversation_id&amp;expansions=author_id&amp;user.fields=name,username,created_at&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
 </section>
 </section>
 </section>
