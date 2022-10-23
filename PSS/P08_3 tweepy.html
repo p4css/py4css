@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Self-Quiz: Counting departments &#8212; Programming for Social Scientists</title>
+    <title>P08_3 Tweepy for twitter scraping &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Scraping cases" href="P08_5_cases.html" />
+    <link rel="prev" title="P08 Web API (Twitter)" href="P08_2_twitter_api.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -276,24 +278,24 @@ const thebe_selector_output = ".output, .cell_output"
   Data Acquisition
  </span>
 </p>
-<ul class="nav bd-sidenav">
- <li class="toctree-l1 has-children">
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1 current active has-children">
   <a class="reference internal" href="P08_1_web_json.html">
    P08 Scraping with Web API
   </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
    <i class="fas fa-chevron-down">
    </i>
   </label>
-  <ul>
+  <ul class="current">
    <li class="toctree-l2">
     <a class="reference internal" href="P08_2_twitter_api.html">
      P08 Web API (Twitter)
     </a>
    </li>
-   <li class="toctree-l2">
-    <a class="reference internal" href="P08_3%20tweepy.html">
+   <li class="toctree-l2 current active">
+    <a class="current reference internal" href="#">
      P08_3 Tweepy for twitter scraping
     </a>
    </li>
@@ -419,7 +421,7 @@ title="Toggle navigation"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/PSS/P01p_Ans.ipynb"
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/PSS/P08_3 tweepy.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -437,7 +439,7 @@ title="Launch on Binder"
       </li>
       
       <li>
-        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P01p_Ans.ipynb"
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P08_3 tweepy.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -497,7 +499,7 @@ title="Source repository"
       </li>
       
       <li>
-        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P01p_Ans.html&body=Your%20issue%20content%20here."
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P08_3 tweepy.html&body=Your%20issue%20content%20here."
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -525,7 +527,7 @@ title="Open an issue"
   <div class="menu-dropdown__content">
     <ul>
       <li>
-        <a href="../_sources/PSS/P01p_Ans.ipynb"
+        <a href="../_sources/PSS/P08_3 tweepy.ipynb"
    class="headerbtn"
    data-toggle="tooltip"
 data-placement="left"
@@ -585,24 +587,38 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-with-for-loop">
-   Counting with for-loop
+  <a class="reference internal nav-link" href="#api-2-0-with-tweepy">
+   API 2.0 with tweepy
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insitaize-a-client">
+     Insitaize a client
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-recent-search">
+     Query: Recent search
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#print-out-all-keys-and-value">
-   Print out all keys and value()
+  <a class="reference internal nav-link" href="#expensions">
+   Expensions
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#print-out-all-pairs-by-items">
-   Print out all pairs by items()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-by-counter">
-   Counting by Counter()
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-user-info">
+     Get user info
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-media">
+     Get media
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -613,7 +629,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Self-Quiz: Counting departments</h1>
+                <h1>P08_3 Tweepy for twitter scraping</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -624,24 +640,38 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-with-for-loop">
-   Counting with for-loop
+  <a class="reference internal nav-link" href="#api-2-0-with-tweepy">
+   API 2.0 with tweepy
   </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#insitaize-a-client">
+     Insitaize a client
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#query-recent-search">
+     Query: Recent search
+    </a>
+   </li>
+  </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#print-out-all-keys-and-value">
-   Print out all keys and value()
+  <a class="reference internal nav-link" href="#expensions">
+   Expensions
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#print-out-all-pairs-by-items">
-   Print out all pairs by items()
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#counting-by-counter">
-   Counting by Counter()
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-user-info">
+     Get user info
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#get-media">
+     Get media
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -653,92 +683,57 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="self-quiz-counting-departments">
-<h1>Self-Quiz: Counting departments<a class="headerlink" href="#self-quiz-counting-departments" title="Permalink to this headline">#</a></h1>
-<p>以下的stu_list為一群修課生的科系，現在要列數每個科系有多少人修課。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stu_dict</span> <span class="o">=</span> <span class="p">{}</span>
-<span class="n">stu_list</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;soc&quot;</span><span class="p">,</span> <span class="s2">&quot;soc&quot;</span><span class="p">,</span> <span class="s2">&quot;econ&quot;</span><span class="p">,</span> <span class="s2">&quot;bio&quot;</span><span class="p">,</span> <span class="s2">&quot;psy&quot;</span><span class="p">,</span> <span class="s2">&quot;psy&quot;</span><span class="p">,</span> <span class="s2">&quot;econ&quot;</span><span class="p">,</span> <span class="s2">&quot;poli&quot;</span><span class="p">,</span> <span class="s2">&quot;econ&quot;</span><span class="p">]</span>
+  <section class="tex2jax_ignore mathjax_ignore" id="p08-3-tweepy-for-twitter-scraping">
+<h1>P08_3 Tweepy for twitter scraping<a class="headerlink" href="#p08-3-tweepy-for-twitter-scraping" title="Permalink to this headline">#</a></h1>
+<p>“An easy-to-use Python library for accessing the Twitter API”</p>
+<p>由於如果要打撈Twitter資料就必須去看懂Twitter API，有些熱心的程式設計師可能會為了自己方便並與別人分享，而設計一個第三方的函式庫，裡面有一些算好用的函式可以避免讀者必須查閱Twitter API才會知道有哪些欄位或哪些資料可以取用。而Tweepy就是Twitter API的第三方client-side函式庫。不是Twitter官方提供的，而是熱心的一群人所提供的。</p>
+<p>但好不好用見仁見智。若以「好用」的觀點來看的話，tweepy有將回傳資料的推特文和使用者打包為物件導向的資料，甚至也已經把字串型態的時間戳記給轉為Python的Datetime物件，也是可以避免掉使用者的一些麻煩的。若以「不好用」的觀點來看的話，如果很熟悉Twitter API的話，那有哪些欄位可以取用都是很清楚的，而使用Tweepy一樣要看懂有哪些欄位可以取用，反而是如果Twitter API一改，而tweepy還沒改的話，就有一些功能不能用，偏偏，這種社群網站的API為了隱私或倫理的問題，是經常更動的。而且，因為被打包為物件，所以必須要懂得tweepy把這些資料打包為什麼樣的物件，反而還要多弄懂tweepy怎麼存放資料。因此，有些人是寧可用原生Twitter API來爬取資料的。</p>
+<section id="api-2-0-with-tweepy">
+<h2>API 2.0 with tweepy<a class="headerlink" href="#api-2-0-with-tweepy" title="Permalink to this headline">#</a></h2>
+<p>以下是搭配tweepy for Twitter API 2.0的函式操作結果</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">wait_on_rate_limit</span></code>: 由於Twitter對於每個App在一段時間內（15分鐘、1個月內）能取用多少資料（<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/rate-limits">rate limit</a>），當爬取速度高於速度限制時，程式往往就會終止。但在tweepy在初始化<code class="docutils literal notranslate"><span class="pre">Client</span></code>時提供<code class="docutils literal notranslate"><span class="pre">wait_on_rate_limit</span></code>的選項，讓程式在超過速度限制而被Twitter拒絕回傳資料時，可以自動等候，而不會跳開程式執行。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">return_type</span></code>: tweepy所抓回來的結果預設為tweepy所自己設計的Response型態，但也可以透過設定<code class="docutils literal notranslate"><span class="pre">return_type</span> <span class="pre">=</span> <span class="pre">dict</span></code>要求將回傳的資料以Dictionary型態來表示。就看程式寫作者習慣用哪一種型態。如果傳回預設的Tweepy Response型態，因為Twitter API傳回來的資料有時間，就會被自動轉為Datetime物件；如果要求要傳回Dictionary型態，那自然不會自動幫忙把字面上的時間轉為Datetime型態，而是以字串的型態來紀錄。</p></li>
+</ul>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">client</span> <span class="o">=</span> <span class="n">tweepy</span><span class="o">.</span><span class="n">Client</span><span class="p">(</span><span class="n">bearer_token</span><span class="o">=</span><span class="n">bearer_token</span><span class="p">,</span> 
+                       <span class="n">consumer_key</span><span class="o">=</span><span class="n">consumer_key</span><span class="p">,</span> 
+                       <span class="n">consumer_secret</span><span class="o">=</span><span class="n">consumer_secret</span><span class="p">,</span> 
+                       <span class="n">access_token</span><span class="o">=</span><span class="n">access_token</span><span class="p">,</span> 
+                       <span class="n">access_token_secret</span><span class="o">=</span><span class="n">access_token_secret</span><span class="p">,</span> 
+                       <span class="c1"># default:Response</span>
+                       <span class="n">return_type</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">Response</span><span class="p">,</span> 
+                       <span class="c1"># return_type = dict,</span>
+                       <span class="n">wait_on_rate_limit</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 </pre></div>
 </div>
-</div>
-</div>
-<section id="counting-with-for-loop">
-<h2>Counting with for-loop<a class="headerlink" href="#counting-with-for-loop" title="Permalink to this headline">#</a></h2>
-<p>以下為其中一種可能的寫法，不盡然要照著邏輯寫，可以自己寫寫看。</p>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">stu_list</span><span class="p">:</span>
-    <span class="n">stu_dict</span><span class="p">[</span><span class="n">student</span><span class="p">]</span> <span class="o">=</span> <span class="mi">0</span>
-<span class="k">for</span> <span class="n">student</span> <span class="ow">in</span> <span class="n">stu_list</span><span class="p">:</span>
-    <span class="n">stu_dict</span><span class="p">[</span><span class="n">student</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">stu_dict</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;soc&#39;: 2, &#39;econ&#39;: 3, &#39;bio&#39;: 1, &#39;psy&#39;: 2, &#39;poli&#39;: 1}
-</pre></div>
-</div>
-</div>
-</div>
+<section id="insitaize-a-client">
+<h3>Insitaize a client<a class="headerlink" href="#insitaize-a-client" title="Permalink to this headline">#</a></h3>
 </section>
-<section id="print-out-all-keys-and-value">
-<h2>Print out all keys and value()<a class="headerlink" href="#print-out-all-keys-and-value" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stu_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">stu_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;soc&#39;, &#39;econ&#39;, &#39;bio&#39;, &#39;psy&#39;, &#39;poli&#39;])
-dict_values([2, 3, 1, 2, 1])
-</pre></div>
-</div>
-</div>
-</div>
+<section id="query-recent-search">
+<h3>Query: Recent search<a class="headerlink" href="#query-recent-search" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.tweepy.org/en/stable/client.html#tweepy.Client.search_all_tweets">https://docs.tweepy.org/en/stable/client.html#tweepy.Client.search_all_tweets</a></p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/an-extensive-guide-to-collecting-tweets-from-twitter-api-v2-for-academic-research-using-python-3-518fcb71df2a">https://towardsdatascience.com/an-extensive-guide-to-collecting-tweets-from-twitter-api-v2-for-academic-research-using-python-3-518fcb71df2a</a></p></li>
+<li><p>Very Useful! <a class="reference external" href="https://dev.to/twitterdev/a-comprehensive-guide-for-using-the-twitter-api-v2-using-tweepy-in-python-15d9">https://dev.to/twitterdev/a-comprehensive-guide-for-using-the-twitter-api-v2-using-tweepy-in-python-15d9</a></p></li>
+</ul>
+<p>Queries:</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">query</span> <span class="pre">=</span> <span class="pre">'from:BarackObama</span> <span class="pre">-is:retweet'</span></code></p></li>
+</ul>
+<p>Fields:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/fields">https://developer.twitter.com/en/docs/twitter-api/fields</a></p></li>
+</ul>
 </section>
-<section id="print-out-all-pairs-by-items">
-<h2>Print out all pairs by items()<a class="headerlink" href="#print-out-all-pairs-by-items" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">stu_dict</span><span class="o">.</span><span class="n">items</span><span class="p">())</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_items([(&#39;soc&#39;, 2), (&#39;econ&#39;, 3), (&#39;bio&#39;, 1), (&#39;psy&#39;, 2), (&#39;poli&#39;, 1)])
-</pre></div>
-</div>
-</div>
-</div>
 </section>
-<section id="counting-by-counter">
-<h2>Counting by Counter()<a class="headerlink" href="#counting-by-counter" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">stu_list</span><span class="p">))</span>
-
-<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">Counter</span><span class="p">(</span><span class="n">stu_list</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
-    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">c</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;econ&#39;: 3, &#39;soc&#39;: 2, &#39;psy&#39;: 2, &#39;bio&#39;: 1, &#39;poli&#39;: 1})
-econ 3
-soc 2
-psy 2
-bio 1
-poli 1
-</pre></div>
-</div>
-</div>
-</div>
+<section id="expensions">
+<h2>Expensions<a class="headerlink" href="#expensions" title="Permalink to this headline">#</a></h2>
+<section id="get-user-info">
+<h3>Get user info<a class="headerlink" href="#get-user-info" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="get-media">
+<h3>Get media<a class="headerlink" href="#get-media" title="Permalink to this headline">#</a></h3>
+</section>
 </section>
 </section>
 
@@ -769,6 +764,20 @@ poli 1
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="P08_2_twitter_api.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">P08 Web API (Twitter)</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="P08_5_cases.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Scraping cases</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

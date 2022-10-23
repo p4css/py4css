@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Bokeh &#8212; Programming for Social Scientists</title>
+    <title>P07-2 Using Bokeh &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -267,7 +267,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul class="current">
    <li class="toctree-l2 current active">
     <a class="current reference internal" href="#">
-     Bokeh
+     P07-2 Using Bokeh
     </a>
    </li>
   </ul>
@@ -292,6 +292,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="P08_2_twitter_api.html">
      P08 Web API (Twitter)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P08_3%20tweepy.html">
+     P08_3 Tweepy for twitter scraping
     </a>
    </li>
    <li class="toctree-l2">
@@ -356,23 +361,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../Resource/IDEs.html">
    Python開發環境
   </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks.html">
-   Content with notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../markdown-notebooks.html">
-     Notebooks with MyST Markdown
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -693,7 +681,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Bokeh</h1>
+                <h1>P07-2 Using Bokeh</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -799,8 +787,8 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="bokeh">
-<h1>Bokeh<a class="headerlink" href="#bokeh" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="p07-2-using-bokeh">
+<h1>P07-2 Using Bokeh<a class="headerlink" href="#p07-2-using-bokeh" title="Permalink to this headline">#</a></h1>
 <p>Main Reference: <a class="reference external" href="https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html">https://pandas.pydata.org/pandas-docs/stable/user_guide/visualization.html</a></p>
 <section id="load-vaccination-data">
 <h2>Load vaccination data<a class="headerlink" href="#load-vaccination-data" title="Permalink to this headline">#</a></h2>
@@ -813,6 +801,12 @@ title="Print to PDF"
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_65171/2017478004.py:2: DtypeWarning: Columns (33) have mixed types. Specify dtype option on import or set low_memory=False.
+  raw = pd.read_csv(&quot;https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv&quot;)
 </pre></div>
 </div>
 </div>
@@ -846,11 +840,11 @@ title="Print to PDF"
        &#39;new_vaccinations_smoothed_per_million&#39;,
        &#39;new_people_vaccinated_smoothed&#39;,
        &#39;new_people_vaccinated_smoothed_per_hundred&#39;, &#39;stringency_index&#39;,
-       &#39;population&#39;, &#39;population_density&#39;, &#39;median_age&#39;, &#39;aged_65_older&#39;,
-       &#39;aged_70_older&#39;, &#39;gdp_per_capita&#39;, &#39;extreme_poverty&#39;,
-       &#39;cardiovasc_death_rate&#39;, &#39;diabetes_prevalence&#39;, &#39;female_smokers&#39;,
-       &#39;male_smokers&#39;, &#39;handwashing_facilities&#39;, &#39;hospital_beds_per_thousand&#39;,
-       &#39;life_expectancy&#39;, &#39;human_development_index&#39;,
+       &#39;population_density&#39;, &#39;median_age&#39;, &#39;aged_65_older&#39;, &#39;aged_70_older&#39;,
+       &#39;gdp_per_capita&#39;, &#39;extreme_poverty&#39;, &#39;cardiovasc_death_rate&#39;,
+       &#39;diabetes_prevalence&#39;, &#39;female_smokers&#39;, &#39;male_smokers&#39;,
+       &#39;handwashing_facilities&#39;, &#39;hospital_beds_per_thousand&#39;,
+       &#39;life_expectancy&#39;, &#39;human_development_index&#39;, &#39;population&#39;,
        &#39;excess_mortality_cumulative_absolute&#39;, &#39;excess_mortality_cumulative&#39;,
        &#39;excess_mortality&#39;, &#39;excess_mortality_cumulative_per_million&#39;],
       dtype=&#39;object&#39;)
@@ -866,15 +860,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{nan, &#39;North America&#39;, &#39;South America&#39;, &#39;Africa&#39;, &#39;Europe&#39;, &#39;Oceania&#39;, &#39;Asia&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{nan, &#39;Asia&#39;, &#39;Africa&#39;, &#39;Oceania&#39;, &#39;North America&#39;, &#39;South America&#39;, &#39;Europe&#39;}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Africa           51793
-Europe           48452
-Asia             48251
-North America    34463
-Oceania          15967
-South America    12442
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Europe           52556
+Africa           52123
+Asia             48545
+North America    34667
+Oceania          16075
+South America    12520
 Name: continent, dtype: int64
 </pre></div>
 </div>
@@ -987,12 +981,12 @@ Name: continent, dtype: int64
       <th>new_deaths</th>
       <th>new_deaths_smoothed</th>
       <th>...</th>
-      <th>female_smokers</th>
       <th>male_smokers</th>
       <th>handwashing_facilities</th>
       <th>hospital_beds_per_thousand</th>
       <th>life_expectancy</th>
       <th>human_development_index</th>
+      <th>population</th>
       <th>excess_mortality_cumulative_absolute</th>
       <th>excess_mortality_cumulative</th>
       <th>excess_mortality</th>
@@ -1001,7 +995,7 @@ Name: continent, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>195920</th>
+      <th>200002</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1016,16 +1010,16 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>195921</th>
+      <th>200003</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1040,16 +1034,16 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>195922</th>
+      <th>200004</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1064,16 +1058,16 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>195923</th>
+      <th>200005</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1088,16 +1082,16 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>195924</th>
+      <th>200006</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1112,9 +1106,9 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
-      <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1145,120 +1139,120 @@ Name: continent, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>196920</th>
+      <th>201008</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-10-12</td>
-      <td>6997376.0</td>
-      <td>52358.0</td>
-      <td>44551.429</td>
-      <td>11657.0</td>
-      <td>37.0</td>
-      <td>53.857</td>
+      <td>2022-10-18</td>
+      <td>7257592.0</td>
+      <td>44854.0</td>
+      <td>44653.429</td>
+      <td>11994.0</td>
+      <td>33.0</td>
+      <td>53.429</td>
       <td>...</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>196921</th>
+      <th>201009</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-10-13</td>
-      <td>7050750.0</td>
-      <td>53374.0</td>
-      <td>45544.429</td>
-      <td>11686.0</td>
-      <td>29.0</td>
-      <td>49.857</td>
+      <td>2022-10-19</td>
+      <td>7302188.0</td>
+      <td>44596.0</td>
+      <td>43544.571</td>
+      <td>12036.0</td>
+      <td>42.0</td>
+      <td>54.143</td>
       <td>...</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>196922</th>
+      <th>201010</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-10-14</td>
-      <td>7098970.0</td>
-      <td>48220.0</td>
-      <td>45186.571</td>
-      <td>11766.0</td>
-      <td>80.0</td>
-      <td>53.857</td>
+      <td>2022-10-20</td>
+      <td>7341966.0</td>
+      <td>39778.0</td>
+      <td>41602.286</td>
+      <td>12128.0</td>
+      <td>92.0</td>
+      <td>63.143</td>
       <td>...</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>196923</th>
+      <th>201011</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-10-15</td>
-      <td>7142418.0</td>
-      <td>43448.0</td>
-      <td>45061.286</td>
-      <td>11843.0</td>
-      <td>77.0</td>
-      <td>54.000</td>
+      <td>2022-10-21</td>
+      <td>7379205.0</td>
+      <td>37239.0</td>
+      <td>40033.571</td>
+      <td>12206.0</td>
+      <td>78.0</td>
+      <td>62.857</td>
       <td>...</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>196924</th>
+      <th>201012</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-10-16</td>
-      <td>7183912.0</td>
-      <td>41494.0</td>
-      <td>44624.857</td>
-      <td>11908.0</td>
-      <td>65.0</td>
-      <td>54.429</td>
+      <td>2022-10-22</td>
+      <td>7414829.0</td>
+      <td>35624.0</td>
+      <td>38915.857</td>
+      <td>12258.0</td>
+      <td>52.0</td>
+      <td>59.286</td>
       <td>...</td>
-      <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
+      <td>23859912.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1266,7 +1260,7 @@ Name: continent, dtype: int64
     </tr>
   </tbody>
 </table>
-<p>1005 rows × 67 columns</p>
+<p>1011 rows × 67 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1282,7 +1276,7 @@ location                                    object
 date                                        object
 total_cases                                float64
                                             ...   
-human_development_index                    float64
+population                                 float64
 excess_mortality_cumulative_absolute       float64
 excess_mortality_cumulative                float64
 excess_mortality                           float64
@@ -1317,7 +1311,7 @@ Length: 67, dtype: object
 object
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_35449/1279775022.py:8: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_65171/1279775022.py:8: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -1489,53 +1483,53 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-10-12</th>
-      <td>45505.0</td>
-      <td>52358.0</td>
-      <td>21639209.0</td>
-      <td>6997376.0</td>
-      <td>261.97</td>
+      <th>2022-10-18</th>
+      <td>42294.0</td>
+      <td>44854.0</td>
+      <td>21843970.0</td>
+      <td>7257592.0</td>
+      <td>263.17</td>
+      <td>262.40</td>
+    </tr>
+    <tr>
+      <th>2022-10-19</th>
+      <td>43555.0</td>
+      <td>44596.0</td>
+      <td>21887525.0</td>
+      <td>7302188.0</td>
+      <td>263.30</td>
+      <td>262.65</td>
+    </tr>
+    <tr>
+      <th>2022-10-20</th>
+      <td>36110.0</td>
+      <td>39778.0</td>
+      <td>21923635.0</td>
+      <td>7341966.0</td>
+      <td>263.39</td>
+      <td>262.91</td>
+    </tr>
+    <tr>
+      <th>2022-10-21</th>
+      <td>31593.0</td>
+      <td>37239.0</td>
+      <td>21955228.0</td>
+      <td>7379205.0</td>
       <td>NaN</td>
+      <td>263.20</td>
     </tr>
     <tr>
-      <th>2022-10-13</th>
-      <td>45690.0</td>
-      <td>53374.0</td>
-      <td>21684899.0</td>
-      <td>7050750.0</td>
-      <td>262.07</td>
-      <td>261.22</td>
-    </tr>
-    <tr>
-      <th>2022-10-14</th>
-      <td>36605.0</td>
-      <td>48220.0</td>
-      <td>21721504.0</td>
-      <td>7098970.0</td>
-      <td>262.24</td>
-      <td>261.54</td>
-    </tr>
-    <tr>
-      <th>2022-10-15</th>
-      <td>35138.0</td>
-      <td>43448.0</td>
-      <td>21756642.0</td>
-      <td>7142418.0</td>
-      <td>262.44</td>
+      <th>2022-10-22</th>
+      <td>34173.0</td>
+      <td>35624.0</td>
+      <td>21989401.0</td>
+      <td>7414829.0</td>
       <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2022-10-16</th>
-      <td>29662.0</td>
-      <td>41494.0</td>
-      <td>21786304.0</td>
-      <td>7183912.0</td>
-      <td>262.50</td>
-      <td>261.90</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>1005 rows × 6 columns</p>
+<p>1011 rows × 6 columns</p>
 </div></div></div>
 </div>
 <section id="reset-index">
@@ -1646,58 +1640,58 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>1000</th>
-      <td>2022-10-12</td>
-      <td>45505.0</td>
-      <td>52358.0</td>
-      <td>21639209.0</td>
-      <td>6997376.0</td>
-      <td>261.97</td>
+      <th>1006</th>
+      <td>2022-10-18</td>
+      <td>42294.0</td>
+      <td>44854.0</td>
+      <td>21843970.0</td>
+      <td>7257592.0</td>
+      <td>263.17</td>
+      <td>262.40</td>
+    </tr>
+    <tr>
+      <th>1007</th>
+      <td>2022-10-19</td>
+      <td>43555.0</td>
+      <td>44596.0</td>
+      <td>21887525.0</td>
+      <td>7302188.0</td>
+      <td>263.30</td>
+      <td>262.65</td>
+    </tr>
+    <tr>
+      <th>1008</th>
+      <td>2022-10-20</td>
+      <td>36110.0</td>
+      <td>39778.0</td>
+      <td>21923635.0</td>
+      <td>7341966.0</td>
+      <td>263.39</td>
+      <td>262.91</td>
+    </tr>
+    <tr>
+      <th>1009</th>
+      <td>2022-10-21</td>
+      <td>31593.0</td>
+      <td>37239.0</td>
+      <td>21955228.0</td>
+      <td>7379205.0</td>
       <td>NaN</td>
+      <td>263.20</td>
     </tr>
     <tr>
-      <th>1001</th>
-      <td>2022-10-13</td>
-      <td>45690.0</td>
-      <td>53374.0</td>
-      <td>21684899.0</td>
-      <td>7050750.0</td>
-      <td>262.07</td>
-      <td>261.22</td>
-    </tr>
-    <tr>
-      <th>1002</th>
-      <td>2022-10-14</td>
-      <td>36605.0</td>
-      <td>48220.0</td>
-      <td>21721504.0</td>
-      <td>7098970.0</td>
-      <td>262.24</td>
-      <td>261.54</td>
-    </tr>
-    <tr>
-      <th>1003</th>
-      <td>2022-10-15</td>
-      <td>35138.0</td>
-      <td>43448.0</td>
-      <td>21756642.0</td>
-      <td>7142418.0</td>
-      <td>262.44</td>
+      <th>1010</th>
+      <td>2022-10-22</td>
+      <td>34173.0</td>
+      <td>35624.0</td>
+      <td>21989401.0</td>
+      <td>7414829.0</td>
       <td>NaN</td>
-    </tr>
-    <tr>
-      <th>1004</th>
-      <td>2022-10-16</td>
-      <td>29662.0</td>
-      <td>41494.0</td>
-      <td>21786304.0</td>
-      <td>7183912.0</td>
-      <td>262.50</td>
-      <td>261.90</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>1005 rows × 7 columns</p>
+<p>1011 rows × 7 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -1754,12 +1748,12 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 3           0.0
 4           0.0
          ...   
-1000    52358.0
-1001    53374.0
-1002    48220.0
-1003    43448.0
-1004    41494.0
-Name: Taiwan, Length: 1005, dtype: float64
+1006    44854.0
+1007    44596.0
+1008    39778.0
+1009    37239.0
+1010    35624.0
+Name: Taiwan, Length: 1011, dtype: float64
 </pre></div>
 </div>
 </div>

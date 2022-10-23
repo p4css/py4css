@@ -267,7 +267,7 @@ const thebe_selector_output = ".output, .cell_output"
   <ul>
    <li class="toctree-l2">
     <a class="reference internal" href="P07_2_bokeh.html">
-     Bokeh
+     P07-2 Using Bokeh
     </a>
    </li>
   </ul>
@@ -292,6 +292,11 @@ const thebe_selector_output = ".output, .cell_output"
    <li class="toctree-l2">
     <a class="reference internal" href="P08_2_twitter_api.html">
      P08 Web API (Twitter)
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P08_3%20tweepy.html">
+     P08_3 Tweepy for twitter scraping
     </a>
    </li>
    <li class="toctree-l2">
@@ -356,23 +361,6 @@ const thebe_selector_output = ".output, .cell_output"
   <a class="reference internal" href="../Resource/IDEs.html">
    Python開發環境
   </a>
- </li>
- <li class="toctree-l1 has-children">
-  <a class="reference internal" href="../notebooks.html">
-   Content with notebooks
-  </a>
-  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
-  <label for="toctree-checkbox-10">
-   <i class="fas fa-chevron-down">
-   </i>
-  </label>
-  <ul>
-   <li class="toctree-l2">
-    <a class="reference internal" href="../markdown-notebooks.html">
-     Notebooks with MyST Markdown
-    </a>
-   </li>
-  </ul>
  </li>
 </ul>
 
@@ -1455,7 +1443,7 @@ grape 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;grape&#39;: 1, &#39;banana&#39;: 3, &#39;apple&#39;: 4}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
 </pre></div>
 </div>
 </div>
@@ -1472,7 +1460,7 @@ grape 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;grape&#39;: 1, &#39;banana&#39;: 3, &#39;apple&#39;: 4}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
 </pre></div>
 </div>
 </div>
@@ -1542,13 +1530,13 @@ grape 	 1
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wikipedia in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (1.4.0)
 Requirement already satisfied: beautifulsoup4 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (4.11.1)
 Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (2.27.1)
-Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.26.9)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.3)
+Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2022.5.18.1)
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2022.5.18.1)
-Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
 </pre></div>
 </div>
 </div>
@@ -1743,8 +1731,8 @@ Counter({1: 158, 2: 26, 3: 5, 4: 5, 8: 2, 23: 1, 9: 1, 5: 1, 15: 1, 11: 1})
 (&#39;and&#39;, 15)
 (&#39;of&#39;, 11)
 (&#39;to&#39;, 9)
-(&#39;the&#39;, 8)
 (&#39;big&#39;, 8)
+(&#39;the&#39;, 8)
 </pre></div>
 </div>
 </div>
@@ -1769,7 +1757,7 @@ Counter({1: 158, 2: 26, 3: 5, 4: 5, 8: 2, 23: 1, 9: 1, 5: 1, 15: 1, 11: 1})
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of:  75
-Grades:  80 62 54 89 85 37 48 69 50 83 87 72 86 63 36 84 41 95 39 42 49 54 45 89 55 88 35 88 57 84 61 92 66 85 69 83 52 54 77 88 66 63 50 66 58 84 75 84 80 56 62 93 35 91 81 50 72 68 58 94 51 75 97 64 52 85 35 95 86 86 80 50 74 64 78
+Grades:  92 96 92 59 61 56 59 81 48 71 60 78 73 93 53 92 96 66 49 36 64 99 85 91 39 64 53 67 71 45 79 88 80 77 81 61 52 88 63 43 71 80 84 83 61 91 55 57 86 35 63 72 75 43 37 68 73 67 93 75 61 79 63 62 87 91 43 62 51 37 39 74 71 43 41
 </pre></div>
 </div>
 </div>
@@ -1797,7 +1785,7 @@ Grades:  80 62 54 89 85 37 48 69 50 83 87 72 86 63 36 84 41 95 39 42 49 54 45 89
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 26, &#39;C&#39;: 13, &#39;B&#39;: 7, &#39;A&#39;: 29}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 23, &#39;C&#39;: 20, &#39;B&#39;: 10, &#39;A&#39;: 22}
 </pre></div>
 </div>
 </div>
