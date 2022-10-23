@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>&lt;no title&gt; &#8212; Programming for Social Scientists</title>
+    <title>P10 Network Analysis &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -237,7 +237,7 @@ const thebe_selector_output = ".output, .cell_output"
   </ul>
  </li>
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="P06_pandas.html">
+  <a class="reference internal" href="P06_0_pandas.html">
    P06 Pandas
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
@@ -247,7 +247,12 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
-    <a class="reference internal" href="P06_pandas_filter_select_datetime.html">
+    <a class="reference internal" href="P06_1_summarizing.html">
+     Pandas: Counting and Summarizing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="P06_2_filter_select_datetime.html">
      Pandas: filter, select, and timeline process
     </a>
    </li>
@@ -278,8 +283,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1 has-children">
-  <a class="reference internal" href="P08_1_web_json.html">
-   P08 Scraping with Web API
+  <a class="reference internal" href="P08_0_scraper.html">
+   P08 Web Crawler
   </a>
   <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
   <label for="toctree-checkbox-9">
@@ -288,13 +293,18 @@ const thebe_selector_output = ".output, .cell_output"
   </label>
   <ul>
    <li class="toctree-l2">
+    <a class="reference internal" href="P08_1_web_json.html">
+     Web API: cnyes &amp; 104.com
+    </a>
+   </li>
+   <li class="toctree-l2">
     <a class="reference internal" href="P08_2_twitter_api.html">
-     P08 Web API (Twitter)
+     Twitter API
     </a>
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="P08_3%20tweepy.html">
-     P08_3 Tweepy for twitter scraping
+     Tweepy for twitter API 2.0
     </a>
    </li>
    <li class="toctree-l2">
@@ -583,7 +593,24 @@ title="Print to PDF"
         <i class="fas fa-list"></i> Contents
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
-        <ul class="simple visible nav section-nav flex-column">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-to-network">
+   Data to network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-pandas-to-network">
+     from Pandas to network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-dict-to-network">
+     from dict to network
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
     </nav>
@@ -593,7 +620,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1><no title></h1>
+                <h1>P10 Network Analysis</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -602,7 +629,24 @@ title="Print to PDF"
                             <h2> Contents </h2>
                         </div>
                         <nav aria-label="Page">
-                            <ul class="simple visible nav section-nav flex-column">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#data-to-network">
+   Data to network
+  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-pandas-to-network">
+     from Pandas to network
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#from-dict-to-network">
+     from dict to network
+    </a>
+   </li>
+  </ul>
+ </li>
 </ul>
 
                         </nav>
@@ -613,7 +657,19 @@ title="Print to PDF"
                 
               <div>
                 
-  <div class="cell docutils container">
+  <section class="tex2jax_ignore mathjax_ignore" id="p10-network-analysis">
+<h1>P10 Network Analysis<a class="headerlink" href="#p10-network-analysis" title="Permalink to this headline">#</a></h1>
+<p>Resource</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://networkx.org/documentation/stable/tutorial.html">Networkx Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://trenton3983.github.io/files/projects/2020-05-21_intro_to_network_analysis_in_python/2020-05-21_intro_to_network_analysis_in_python.html">Intro to network analysis in python</a> by Trenton McKinney (Recommended!)</p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/applied-network-analysis-using-python-25021633a702">Applied Graphical Network Analysis using Python</a></p></li>
+<li><p><a class="reference external" href="https://www.cl.cam.ac.uk/teaching/1415/L109/l109-tutorial_2015.pdf">NetworkX:Network Analysis with Python</a></p></li>
+<li><p><a class="reference external" href="https://alvinntnu.github.io/python-notes/statistical-analyses/network-analysis.html">Network analysis for liquistics</a> by AlvinChen (Good!)</p></li>
+<li><p><a class="reference external" href="https://alvinntnu.github.io/python-notes/statistical-analyses/network-analysis-igraph.html">igraph with python</a> by Alvin Chen (Good!)</p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/text-network-analysis-generate-beautiful-network-visualisations-a373dbe183ca">Text network analysis</a> towarddatascience (Good!)</p></li>
+</ul>
+<div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;../_build/html/data/tweets20190315.csv&quot;</span><span class="p">)</span>
@@ -933,6 +989,539 @@ title="Print to PDF"
 <p>15579 rows × 31 columns</p>
 </div></div></div>
 </div>
+<section id="data-to-network">
+<h2>Data to network<a class="headerlink" href="#data-to-network" title="Permalink to this headline">#</a></h2>
+<section id="from-pandas-to-network">
+<h3>from Pandas to network<a class="headerlink" href="#from-pandas-to-network" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[[</span><span class="s2">&quot;userid&quot;</span><span class="p">,</span> <span class="s2">&quot;user_mentions&quot;</span><span class="p">]]</span>
+<span class="n">mentions</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+<span class="n">df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(15579, 2)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span><span class="n">mention_len</span> <span class="o">=</span> <span class="k">lambda</span> <span class="n">df</span><span class="p">:</span><span class="n">df</span><span class="o">.</span><span class="n">user_mentions</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;\]|\[&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">len</span><span class="p">())</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="n">df</span><span class="o">.</span><span class="n">mention_len</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userid</th>
+      <th>user_mentions</th>
+      <th>mention_len</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>828817384827875330</td>
+      <td>[10228272]</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>828817384827875330</td>
+      <td>[10228272]</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>579</th>
+      <td>903061563132616704</td>
+      <td>[10228272]</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>601</th>
+      <td>1050020807798415365</td>
+      <td>[10228272]</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>661</th>
+      <td>903061563132616704</td>
+      <td>[10228272]</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>15574</th>
+      <td>2993185258</td>
+      <td>[213559194]</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15575</th>
+      <td>2993185258</td>
+      <td>[213559194]</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15576</th>
+      <td>2993185258</td>
+      <td>[213559194]</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15577</th>
+      <td>2993185258</td>
+      <td>[427607419]</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15578</th>
+      <td>2993185258</td>
+      <td>[2609395315]</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+<p>6256 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">user_mentions</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">user_mentions</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;\]|\[&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">regex</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>userid</th>
+      <th>user_mentions</th>
+      <th>mention_len</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>10</th>
+      <td>828817384827875330</td>
+      <td>10228272</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>438</th>
+      <td>828817384827875330</td>
+      <td>10228272</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>579</th>
+      <td>903061563132616704</td>
+      <td>10228272</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>601</th>
+      <td>1050020807798415365</td>
+      <td>10228272</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>661</th>
+      <td>903061563132616704</td>
+      <td>10228272</td>
+      <td>8</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>15574</th>
+      <td>2993185258</td>
+      <td>213559194</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15575</th>
+      <td>2993185258</td>
+      <td>213559194</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15576</th>
+      <td>2993185258</td>
+      <td>213559194</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15577</th>
+      <td>2993185258</td>
+      <td>427607419</td>
+      <td>9</td>
+    </tr>
+    <tr>
+      <th>15578</th>
+      <td>2993185258</td>
+      <td>2609395315</td>
+      <td>10</td>
+    </tr>
+  </tbody>
+</table>
+<p>6256 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="from-dict-to-network">
+<h3>from dict to network<a class="headerlink" href="#from-dict-to-network" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[[</span><span class="s2">&quot;userid&quot;</span><span class="p">,</span> <span class="s2">&quot;user_mentions&quot;</span><span class="p">]]</span>
+<span class="n">mentions</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_dict</span><span class="p">(</span><span class="s2">&quot;records&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mentions</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;userid&#39;, &#39;user_mentions&#39;])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="n">edges</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">relaiton</span> <span class="ow">in</span> <span class="n">mentions</span><span class="p">:</span>
+    <span class="n">start</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="n">relaiton</span><span class="o">.</span><span class="n">values</span><span class="p">()</span>
+    <span class="n">end</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;\[|\]&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span>
+    <span class="c1"># end = end.replace(&quot;[|]&quot;, &quot;&quot;)</span>
+    <span class="k">if</span> <span class="n">end</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="p">:</span>
+        <span class="k">if</span> <span class="s2">&quot;,&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">end</span><span class="p">:</span>
+            <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">end</span><span class="p">))</span>
+        <span class="k">if</span> <span class="s2">&quot;,&quot;</span> <span class="ow">in</span> <span class="n">end</span><span class="p">:</span>
+            <span class="k">for</span> <span class="n">e</span> <span class="ow">in</span> <span class="n">end</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;, &quot;</span><span class="p">):</span>
+                <span class="n">edges</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">start</span><span class="p">,</span> <span class="n">e</span><span class="p">))</span>
+<span class="n">edges</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;828817384827875330&#39;, &#39;10228272&#39;),
+ (&#39;828817384827875330&#39;, &#39;10228272&#39;),
+ (&#39;903061563132616704&#39;, &#39;10228272&#39;),
+ (&#39;1050020807798415365&#39;, &#39;10228272&#39;),
+ (&#39;903061563132616704&#39;, &#39;10228272&#39;),
+ (&#39;747289319384055808&#39;, &#39;2201187373&#39;),
+ (&#39;747274556994392064&#39;, &#39;2201187373&#39;),
+ (&#39;745784197617430528&#39;, &#39;2353105641&#39;),
+ (&#39;747289319384055808&#39;, &#39;2201187373&#39;),
+ (&#39;747289319384055808&#39;, &#39;2201187373&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">edge_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">edges</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">edge_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">edge</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;1194750901&#39;, &#39;26257166&#39;) 171
+(&#39;1368044863&#39;, &#39;1142172626&#39;) 132
+(&#39;1084444722&#39;, &#39;25319414&#39;) 126
+(&#39;1194750901&#39;, &#39;2557521&#39;) 122
+(&#39;4726278994&#39;, &#39;10228272&#39;) 88
+(&#39;1084444722&#39;, &#39;26257166&#39;) 88
+(&#39;746829685540143104&#39;, &#39;1597435105&#39;) 87
+(&#39;325103066&#39;, &#39;1597435105&#39;) 77
+(&#39;886933306599776257&#39;, &#39;10228272&#39;) 76
+(&#39;2968192342&#39;, &#39;2957991374&#39;) 72
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">weighted_edges</span> <span class="o">=</span> <span class="p">[(</span><span class="n">edge</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">edge</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">n</span><span class="p">)</span> <span class="k">for</span> <span class="n">edge</span><span class="p">,</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">edge_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
+<span class="n">edges_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">weighted_edges</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;v1&#39;</span><span class="p">,</span><span class="s1">&#39;v2&#39;</span><span class="p">,</span><span class="s1">&#39;sim&#39;</span><span class="p">])</span>
+<span class="n">edges_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+      <th>v2</th>
+      <th>sim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1194750901</td>
+      <td>26257166</td>
+      <td>171</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1368044863</td>
+      <td>1142172626</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1084444722</td>
+      <td>25319414</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1194750901</td>
+      <td>2557521</td>
+      <td>122</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4726278994</td>
+      <td>10228272</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3033</th>
+      <td>2993185258</td>
+      <td>25073877</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3034</th>
+      <td>2993185258</td>
+      <td>20845447</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3035</th>
+      <td>2993185258</td>
+      <td>1140572867882627078</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3036</th>
+      <td>2993185258</td>
+      <td>824570238154862594</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3037</th>
+      <td>2993185258</td>
+      <td>2609395315</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>3038 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">edges_df_short</span> <span class="o">=</span> <span class="n">edges_df</span><span class="o">.</span><span class="n">query</span><span class="p">(</span><span class="s1">&#39;sim &gt; 5&#39;</span><span class="p">)</span>
+<span class="n">edges_df_short</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>v1</th>
+      <th>v2</th>
+      <th>sim</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1194750901</td>
+      <td>26257166</td>
+      <td>171</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>1368044863</td>
+      <td>1142172626</td>
+      <td>132</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>1084444722</td>
+      <td>25319414</td>
+      <td>126</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>1194750901</td>
+      <td>2557521</td>
+      <td>122</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>4726278994</td>
+      <td>10228272</td>
+      <td>88</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>182</th>
+      <td>222444384</td>
+      <td>1604444052</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>183</th>
+      <td>1084444722</td>
+      <td>892761555745382402</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>222444384</td>
+      <td>148281099</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>185</th>
+      <td>1084444722</td>
+      <td>1021635608882507776</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>186</th>
+      <td>2993185258</td>
+      <td>1057237461007396864</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+<p>187 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install pyvis</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">from</span> <span class="nn">pyvis.network</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="n">G</span><span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">edges_df_short</span><span class="p">,</span> <span class="s1">&#39;v1&#39;</span><span class="p">,</span><span class="s1">&#39;v2&#39;</span><span class="p">,</span><span class="s1">&#39;sim&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
 
     <script type="text/x-thebe-config">
     {
