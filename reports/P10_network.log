@@ -17,18 +17,20 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# !pip install pandas_bokeh
-import pandas_bokeh
-pandas_bokeh.output_notebook()
+# !pip install pyvis
+import networkx as nx
+from pyvis.network import Network
+G= nx.from_pandas_edgelist(edges_df_short, 'v1','v2','sim')
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [17][0m, in [0;36m<cell line: 2>[0;34m()[0m
-[1;32m      1[0m [38;5;66;03m# !pip install pandas_bokeh[39;00m
-[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas_bokeh[39;00m
-[1;32m      3[0m pandas_bokeh[38;5;241m.[39moutput_notebook()
+Input [0;32mIn [12][0m, in [0;36m<cell line: 3>[0;34m()[0m
+[1;32m      1[0m [38;5;66;03m# !pip install pyvis[39;00m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mnetworkx[39;00m [38;5;28;01mas[39;00m [38;5;21;01mnx[39;00m
+[0;32m----> 3[0m [38;5;28;01mfrom[39;00m [38;5;21;01mpyvis[39;00m[38;5;21;01m.[39;00m[38;5;21;01mnetwork[39;00m [38;5;28;01mimport[39;00m Network
+[1;32m      4[0m G[38;5;241m=[39m nx[38;5;241m.[39mfrom_pandas_edgelist(edges_df_short, [38;5;124m'[39m[38;5;124mv1[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124mv2[39m[38;5;124m'[39m,[38;5;124m'[39m[38;5;124msim[39m[38;5;124m'[39m)
 
-[0;31mModuleNotFoundError[0m: No module named 'pandas_bokeh'
-ModuleNotFoundError: No module named 'pandas_bokeh'
+[0;31mModuleNotFoundError[0m: No module named 'pyvis'
+ModuleNotFoundError: No module named 'pyvis'
 

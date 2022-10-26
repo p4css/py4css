@@ -17,18 +17,16 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-# !pip install pandas_bokeh
-import pandas_bokeh
-pandas_bokeh.output_notebook()
+2myvar = "Hsieh" # cannot start with number
+my-var = "Hsieh" # cannot have dash
+my var = "Hsieh" # cannot have space
+my.var = "Hsieh" # cannot have dot
 ------------------
 
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Input [0;32mIn [17][0m, in [0;36m<cell line: 2>[0;34m()[0m
-[1;32m      1[0m [38;5;66;03m# !pip install pandas_bokeh[39;00m
-[0;32m----> 2[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas_bokeh[39;00m
-[1;32m      3[0m pandas_bokeh[38;5;241m.[39moutput_notebook()
+[0;36m  Input [0;32mIn [8][0;36m[0m
+[0;31m    2myvar = "Hsieh" # cannot start with number[0m
+[0m     ^[0m
+[0;31mSyntaxError[0m[0;31m:[0m invalid syntax
 
-[0;31mModuleNotFoundError[0m: No module named 'pandas_bokeh'
-ModuleNotFoundError: No module named 'pandas_bokeh'
+SyntaxError: invalid syntax (1659536403.py, line 1)
 
