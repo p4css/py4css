@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Collocation &#8212; Programming for Social Scientists</title>
+    <title>TM02 Collocation &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AS01 for Python Basic" href="../AS/AS01_basic.html" />
+    <link rel="prev" title="Chinese Processing" href="TM01_tokenization%28chi%29.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -295,7 +297,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../PSS/P07_2_bokeh.html">
-     Bokeh (Vaccinating)
+     Bokeh &amp; Seaborn(Vaccinating)
     </a>
    </li>
   </ul>
@@ -350,7 +352,7 @@ const thebe_selector_output = ".output, .cell_output"
   Text Mining
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="TM01_tokenization.html">
    TM01 Tokenization
@@ -367,6 +369,11 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TM02 Collocation
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -636,152 +643,147 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Collocation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-preparation">
    Data Preparation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#loading-data">
      Loading data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fundamental-text-processing">
      Fundamental text processing
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#most-frequent-tokens-term-frequency">
      Most Frequent Tokens: Term frequency
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#collocation">
    Collocation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conting-most-frequent-collocations">
      Conting most Frequent Collocations
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-the-content-in-word-pair-counts">
      Show the content in word_pair_counts
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alternative-way-to-get-the-contents-in-the-pair">
      Alternative way to get the contents in the pair.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#removing-stopwords">
      Removing stopwords
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#distant-collocations">
    Distant Collocations
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#most-frequent-collocations-with-a-distance-of-k">
      Most frequent collocations with a distance of k
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-an-entry-in-word-pair-distance">
      Show an entry in word_pair_distance
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering-the-collocations-with-mean-distance">
      Filtering the collocations with mean distance
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering-one-time-cases">
      Filtering one-time cases
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering-with-offset-deviation">
      Filtering with offset deviation
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#with-a-higher-supportive-threshold">
      With a higher supportive threshold
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pearson-s-chi-square-test">
    Pearson’s Chi-Square Test
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#back-to-bigrams">
      Back to bigrams
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#chi-square-function">
      Chi-Square function
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-we-can-compute-the-chi-squares">
      Now we can compute the chi-squares.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#focus-on-more-frequent-bigrams">
      Focus on more frequent bigrams
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-we-can-filtering-out-the-stopwords">
      Now we can filtering out the stopwords
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mutual-information">
    Mutual Information
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#define-a-function-for-computing-mutual-information">
      Define a function for computing mutual information
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-we-can-filtering-out-the-collocations-containing-stopwords">
      Now we can filtering out the collocations containing stopwords
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visualization">
    Visualization
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#question">
    Question
   </a>
@@ -795,7 +797,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Collocation</h1>
+                <h1>TM02 Collocation</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -805,152 +807,147 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Collocation
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#data-preparation">
    Data Preparation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#loading-data">
      Loading data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#fundamental-text-processing">
      Fundamental text processing
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#most-frequent-tokens-term-frequency">
      Most Frequent Tokens: Term frequency
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#id1">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#collocation">
    Collocation
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#conting-most-frequent-collocations">
      Conting most Frequent Collocations
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-the-content-in-word-pair-counts">
      Show the content in word_pair_counts
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#alternative-way-to-get-the-contents-in-the-pair">
      Alternative way to get the contents in the pair.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#removing-stopwords">
      Removing stopwords
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#distant-collocations">
    Distant Collocations
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#most-frequent-collocations-with-a-distance-of-k">
      Most frequent collocations with a distance of k
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-an-entry-in-word-pair-distance">
      Show an entry in word_pair_distance
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering-the-collocations-with-mean-distance">
      Filtering the collocations with mean distance
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering-one-time-cases">
      Filtering one-time cases
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filtering-with-offset-deviation">
      Filtering with offset deviation
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#with-a-higher-supportive-threshold">
      With a higher supportive threshold
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#pearson-s-chi-square-test">
    Pearson’s Chi-Square Test
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#back-to-bigrams">
      Back to bigrams
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#chi-square-function">
      Chi-Square function
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-we-can-compute-the-chi-squares">
      Now we can compute the chi-squares.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#focus-on-more-frequent-bigrams">
      Focus on more frequent bigrams
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-we-can-filtering-out-the-stopwords">
      Now we can filtering out the stopwords
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mutual-information">
    Mutual Information
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#define-a-function-for-computing-mutual-information">
      Define a function for computing mutual information
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#now-we-can-filtering-out-the-collocations-containing-stopwords">
      Now we can filtering out the collocations containing stopwords
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#visualization">
    Visualization
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#question">
    Question
   </a>
@@ -965,13 +962,12 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="collocation">
-<h1>Collocation<a class="headerlink" href="#collocation" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="data-preparation">
-<h1>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tm02-collocation">
+<h1>TM02 Collocation<a class="headerlink" href="#tm02-collocation" title="Permalink to this headline">#</a></h1>
+<section id="data-preparation">
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">#</a></h2>
 <section id="loading-data">
-<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<h3>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h3>
 <p>本單元將依照政大資科黃瀚萱老師的教材建議採用一個較長文本《共產黨宣言（The Communist Manifesto）》來介紹Collocation，並測試能否找到一些該文本的特徵。該文件可由Project Gutenberg免費電子書處下載，你也可以下載其他的英文書籍來做測試，以觀察文本間的差異。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -984,13 +980,15 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-07 17:00:39--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/corpus02.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.109.133, 185.199.110.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-08 01:55:19--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/corpus02.txt
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.108.133, 185.199.110.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
-HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
@@ -1001,9 +999,9 @@ Saving to: &#39;corpus02.txt&#39;
 corpus02.txt          0%[                    ]       0  --.-KB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>corpus02.txt        100%[===================&gt;]  73.58K  --.-KB/s    in 0.04s   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>corpus02.txt        100%[===================&gt;]  73.58K  --.-KB/s    in 0.07s   
 
-2022-11-07 17:00:39 (1.70 MB/s) - &#39;corpus02.txt&#39; saved [75348/75348]
+2022-11-08 01:55:20 (1.05 MB/s) - &#39;corpus02.txt&#39; saved [75348/75348]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of characters: 75346
@@ -1036,7 +1034,7 @@ corpus02.txt          0%[                    ]       0  --.-KB/s
 </div>
 </section>
 <section id="fundamental-text-processing">
-<h2>Fundamental text processing<a class="headerlink" href="#fundamental-text-processing" title="Permalink to this headline">#</a></h2>
+<h3>Fundamental text processing<a class="headerlink" href="#fundamental-text-processing" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
@@ -1099,7 +1097,7 @@ corpus02.txt          0%[                    ]       0  --.-KB/s
 </div>
 </section>
 <section id="most-frequent-tokens-term-frequency">
-<h2>Most Frequent Tokens: Term frequency<a class="headerlink" href="#most-frequent-tokens-term-frequency" title="Permalink to this headline">#</a></h2>
+<h3>Most Frequent Tokens: Term frequency<a class="headerlink" href="#most-frequent-tokens-term-frequency" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -1136,10 +1134,10 @@ their	80
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="id1">
-<h1>Collocation<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h1>
+<section id="collocation">
+<h2>Collocation<a class="headerlink" href="#collocation" title="Permalink to this headline">#</a></h2>
 <section id="conting-most-frequent-collocations">
-<h2>Conting most Frequent Collocations<a class="headerlink" href="#conting-most-frequent-collocations" title="Permalink to this headline">#</a></h2>
+<h3>Conting most Frequent Collocations<a class="headerlink" href="#conting-most-frequent-collocations" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1179,7 +1177,7 @@ the	communists	21
 </div>
 </section>
 <section id="show-the-content-in-word-pair-counts">
-<h2>Show the content in word_pair_counts<a class="headerlink" href="#show-the-content-in-word-pair-counts" title="Permalink to this headline">#</a></h2>
+<h3>Show the content in word_pair_counts<a class="headerlink" href="#show-the-content-in-word-pair-counts" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">word_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
@@ -1194,7 +1192,7 @@ the	communists	21
 </div>
 </section>
 <section id="alternative-way-to-get-the-contents-in-the-pair">
-<h2>Alternative way to get the contents in the pair.<a class="headerlink" href="#alternative-way-to-get-the-contents-in-the-pair" title="Permalink to this headline">#</a></h2>
+<h3>Alternative way to get the contents in the pair.<a class="headerlink" href="#alternative-way-to-get-the-contents-in-the-pair" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
@@ -1229,7 +1227,7 @@ the	communists	21
 </div>
 </section>
 <section id="removing-stopwords">
-<h2>Removing stopwords<a class="headerlink" href="#removing-stopwords" title="Permalink to this headline">#</a></h2>
+<h3>Removing stopwords<a class="headerlink" href="#removing-stopwords" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
@@ -1279,10 +1277,10 @@ bourgeois	socialism	5
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="distant-collocations">
-<h1>Distant Collocations<a class="headerlink" href="#distant-collocations" title="Permalink to this headline">#</a></h1>
+<section id="distant-collocations">
+<h2>Distant Collocations<a class="headerlink" href="#distant-collocations" title="Permalink to this headline">#</a></h2>
 <section id="most-frequent-collocations-with-a-distance-of-k">
-<h2>Most frequent collocations with a distance of k<a class="headerlink" href="#most-frequent-collocations-with-a-distance-of-k" title="Permalink to this headline">#</a></h2>
+<h3>Most frequent collocations with a distance of k<a class="headerlink" href="#most-frequent-collocations-with-a-distance-of-k" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">9</span>
@@ -1332,7 +1330,7 @@ the	bourgeoisie	1	66
 </div>
 </section>
 <section id="show-an-entry-in-word-pair-distance">
-<h2>Show an entry in word_pair_distance<a class="headerlink" href="#show-an-entry-in-word-pair-distance" title="Permalink to this headline">#</a></h2>
+<h3>Show an entry in word_pair_distance<a class="headerlink" href="#show-an-entry-in-word-pair-distance" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">1</span><span class="p">)[</span><span class="mi">0</span><span class="p">])</span>
@@ -1375,7 +1373,7 @@ Occurrences of the usage &#39;of * * the&#39;
 </div>
 </section>
 <section id="filtering-the-collocations-with-mean-distance">
-<h2>Filtering the collocations with mean distance<a class="headerlink" href="#filtering-the-collocations-with-mean-distance" title="Permalink to this headline">#</a></h2>
+<h3>Filtering the collocations with mean distance<a class="headerlink" href="#filtering-the-collocations-with-mean-distance" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_mean_distances</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1415,7 +1413,7 @@ wealth	bourgeoisie	8.000000	2
 </div>
 </section>
 <section id="filtering-one-time-cases">
-<h2>Filtering one-time cases<a class="headerlink" href="#filtering-one-time-cases" title="Permalink to this headline">#</a></h2>
+<h3>Filtering one-time cases<a class="headerlink" href="#filtering-one-time-cases" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_mean_distances</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1522,7 +1520,7 @@ but	selling	4.500000	2
 </div>
 </section>
 <section id="filtering-with-offset-deviation">
-<h2>Filtering with offset deviation<a class="headerlink" href="#filtering-with-offset-deviation" title="Permalink to this headline">#</a></h2>
+<h3>Filtering with offset deviation<a class="headerlink" href="#filtering-with-offset-deviation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1598,7 +1596,7 @@ existing	social	1.000000	0.000000	2
 </div>
 </section>
 <section id="with-a-higher-supportive-threshold">
-<h2>With a higher supportive threshold<a class="headerlink" href="#with-a-higher-supportive-threshold" title="Permalink to this headline">#</a></h2>
+<h3>With a higher supportive threshold<a class="headerlink" href="#with-a-higher-supportive-threshold" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1642,10 +1640,10 @@ ruling	class	1.000000	0.000000	11
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="pearson-s-chi-square-test">
-<h1>Pearson’s Chi-Square Test<a class="headerlink" href="#pearson-s-chi-square-test" title="Permalink to this headline">#</a></h1>
+<section id="pearson-s-chi-square-test">
+<h2>Pearson’s Chi-Square Test<a class="headerlink" href="#pearson-s-chi-square-test" title="Permalink to this headline">#</a></h2>
 <section id="back-to-bigrams">
-<h2>Back to bigrams<a class="headerlink" href="#back-to-bigrams" title="Permalink to this headline">#</a></h2>
+<h3>Back to bigrams<a class="headerlink" href="#back-to-bigrams" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1669,7 +1667,7 @@ ruling	class	1.000000	0.000000	11
 </div>
 </section>
 <section id="chi-square-function">
-<h2>Chi-Square function<a class="headerlink" href="#chi-square-function" title="Permalink to this headline">#</a></h2>
+<h3>Chi-Square function<a class="headerlink" href="#chi-square-function" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chisquare</span><span class="p">(</span><span class="n">o11</span><span class="p">,</span> <span class="n">o12</span><span class="p">,</span> <span class="n">o21</span><span class="p">,</span> <span class="n">o22</span><span class="p">):</span>
@@ -1682,7 +1680,7 @@ ruling	class	1.000000	0.000000	11
 </div>
 </section>
 <section id="now-we-can-compute-the-chi-squares">
-<h2>Now we can compute the chi-squares.<a class="headerlink" href="#now-we-can-compute-the-chi-squares" title="Permalink to this headline">#</a></h2>
+<h3>Now we can compute the chi-squares.<a class="headerlink" href="#now-we-can-compute-the-chi-squares" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_chi_squares</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1725,7 +1723,7 @@ heavenly	ecstacies	1	11780.000000
 </div>
 </section>
 <section id="focus-on-more-frequent-bigrams">
-<h2>Focus on more frequent bigrams<a class="headerlink" href="#focus-on-more-frequent-bigrams" title="Permalink to this headline">#</a></h2>
+<h3>Focus on more frequent bigrams<a class="headerlink" href="#focus-on-more-frequent-bigrams" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_chi_squares</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1801,7 +1799,7 @@ class	the	10	0.009971
 </div>
 </section>
 <section id="now-we-can-filtering-out-the-stopwords">
-<h2>Now we can filtering out the stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-stopwords" title="Permalink to this headline">#</a></h2>
+<h3>Now we can filtering out the stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-stopwords" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_chi_squares</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1876,10 +1874,10 @@ bourgeois	class	3	5.261506
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="mutual-information">
-<h1>Mutual Information<a class="headerlink" href="#mutual-information" title="Permalink to this headline">#</a></h1>
+<section id="mutual-information">
+<h2>Mutual Information<a class="headerlink" href="#mutual-information" title="Permalink to this headline">#</a></h2>
 <section id="define-a-function-for-computing-mutual-information">
-<h2>Define a function for computing mutual information<a class="headerlink" href="#define-a-function-for-computing-mutual-information" title="Permalink to this headline">#</a></h2>
+<h3>Define a function for computing mutual information<a class="headerlink" href="#define-a-function-for-computing-mutual-information" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1975,7 +1973,7 @@ class	struggle	6	5.321357
 </div>
 </section>
 <section id="now-we-can-filtering-out-the-collocations-containing-stopwords">
-<h2>Now we can filtering out the collocations containing stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-collocations-containing-stopwords" title="Permalink to this headline">#</a></h2>
+<h3>Now we can filtering out the collocations containing stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-collocations-containing-stopwords" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_unigrams</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -2036,8 +2034,8 @@ w2_only_count	 w2_prob	 window_size	 word_counts	 word_pair_counts	 word_pair_di
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="visualization">
-<h1>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h1>
+<section id="visualization">
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://towardsdatascience.com/visualizing-networks-in-python-d70f4cbeb259">Visualizing Networks in Python</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2238,8 +2236,8 @@ w2_only_count	 w2_prob	 window_size	 word_counts	 word_pair_counts	 word_pair_di
 </div></div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="question">
-<h1>Question<a class="headerlink" href="#question" title="Permalink to this headline">#</a></h1>
+<section id="question">
+<h2>Question<a class="headerlink" href="#question" title="Permalink to this headline">#</a></h2>
 <ol class="simple">
 <li><p>與Mutual Information相比，Frequency based 的缺點是什什 麼?</p></li>
 <li><p>處理理 metamorphosis_franz_kafka.txt，找出三種 collocations</p>
@@ -2254,6 +2252,7 @@ w2_only_count	 w2_prob	 window_size	 word_counts	 word_pair_counts	 word_pair_di
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot;Oh, God&quot;</span><span class="p">,</span> <span class="n">he</span> <span class="n">thought</span><span class="p">,</span> <span class="s2">&quot;what a strenuous career it is that I’ve chosen! Travelling day in and day out. Doing business like this takes much more effort than doing your own business at home, and on top of that there&#39;s the curse of travelling, worries about making train connections, bad and irregular food, contact with different people all the time so that you can never get to know anyone or become friendly with them. It can all go to Hell!&quot;</span> <span class="n">He</span> <span class="n">felt</span> <span class="n">a</span> <span class="n">slight</span> <span class="n">itch</span> <span class="n">up</span> <span class="n">on</span> <span class="n">his</span> <span class="n">belly</span><span class="p">;</span> <span class="n">pushed</span> <span class="n">himself</span> <span class="n">slowly</span> <span class="n">up</span> <span class="n">on</span> <span class="n">his</span> <span class="n">back</span> <span class="n">towards</span> <span class="n">the</span> <span class="n">headboard</span> <span class="n">so</span> <span class="n">that</span> <span class="n">he</span> <span class="n">could</span> <span class="n">lift</span> <span class="n">his</span> <span class="n">head</span> <span class="n">better</span><span class="p">;</span>
 </pre></div>
 </div>
+</section>
 </section>
 
     <script type="text/x-thebe-config">
@@ -2283,6 +2282,20 @@ w2_only_count	 w2_prob	 window_size	 word_counts	 word_pair_counts	 word_pair_di
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="TM01_tokenization%28chi%29.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">Chinese Processing</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../AS/AS01_basic.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AS01 for Python Basic</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
