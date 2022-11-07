@@ -656,8 +656,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#expensions">
-   Expensions
+  <a class="reference internal nav-link" href="#expansions">
+   Expansions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -709,8 +709,8 @@ title="Print to PDF"
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#expensions">
-   Expensions
+  <a class="reference internal nav-link" href="#expansions">
+   Expansions
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
@@ -827,27 +827,25 @@ title="Print to PDF"
 <span class="n">all_users</span> <span class="o">=</span> <span class="n">tweets</span><span class="o">.</span><span class="n">includes</span><span class="p">[</span><span class="s1">&#39;users&#39;</span><span class="p">]</span>
 </pre></div>
 </div>
-<div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Looping to gather more data
-
-
-for i in range(10):
-    tweets = client.search_recent_tweets(&quot;#pelosi is:retweet&quot;, 
-                                         tweet_fields =[&#39;id&#39;,&#39;text&#39;,&#39;author_id&#39;,&#39;in_reply_to_user_id&#39;,
-                                                        &#39;geo&#39;,&#39;conversation_id&#39;,&#39;created_at&#39;,&#39;lang&#39;,
-                                                        &#39;public_metrics&#39;,&#39;referenced_tweets&#39;,&#39;source&#39;],
-                                         user_fields=[&#39;name&#39;,&#39;username&#39;,&#39;created_at&#39;,&#39;public_metrics&#39;,&#39;profile_image_url&#39;],
-                                         expansions=&#39;author_id&#39;,
-                                         next_token=tweets.meta[&quot;next_token&quot;],
-                                         max_results=10)
-    all_tweets.extend(tweets.data)
-    all_users.extend(tweets.includes[&#39;users&#39;])
-    print(&quot;All(n={:4}) {}\t{}&quot;.format(len(all_tweets), tweets.meta[&quot;newest_id&quot;], tweets.meta[&quot;oldest_id&quot;])) ```
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">tweets</span> <span class="o">=</span> <span class="n">client</span><span class="o">.</span><span class="n">search_recent_tweets</span><span class="p">(</span><span class="s2">&quot;#pelosi is:retweet&quot;</span><span class="p">,</span> 
+                                         <span class="n">tweet_fields</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">,</span><span class="s1">&#39;text&#39;</span><span class="p">,</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span><span class="s1">&#39;in_reply_to_user_id&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;geo&#39;</span><span class="p">,</span><span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;lang&#39;</span><span class="p">,</span>
+                                                        <span class="s1">&#39;public_metrics&#39;</span><span class="p">,</span><span class="s1">&#39;referenced_tweets&#39;</span><span class="p">,</span><span class="s1">&#39;source&#39;</span><span class="p">],</span>
+                                         <span class="n">user_fields</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;name&#39;</span><span class="p">,</span><span class="s1">&#39;username&#39;</span><span class="p">,</span><span class="s1">&#39;created_at&#39;</span><span class="p">,</span><span class="s1">&#39;public_metrics&#39;</span><span class="p">,</span><span class="s1">&#39;profile_image_url&#39;</span><span class="p">],</span>
+                                         <span class="n">expansions</span><span class="o">=</span><span class="s1">&#39;author_id&#39;</span><span class="p">,</span>
+                                         <span class="n">next_token</span><span class="o">=</span><span class="n">tweets</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;next_token&quot;</span><span class="p">],</span>
+                                         <span class="n">max_results</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+    <span class="n">all_tweets</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tweets</span><span class="o">.</span><span class="n">data</span><span class="p">)</span>
+    <span class="n">all_users</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">tweets</span><span class="o">.</span><span class="n">includes</span><span class="p">[</span><span class="s1">&#39;users&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;All(n=</span><span class="si">{:4}</span><span class="s2">) </span><span class="si">{}</span><span class="se">\t</span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_tweets</span><span class="p">),</span> <span class="n">tweets</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;newest_id&quot;</span><span class="p">],</span> <span class="n">tweets</span><span class="o">.</span><span class="n">meta</span><span class="p">[</span><span class="s2">&quot;oldest_id&quot;</span><span class="p">]))</span> 
 </pre></div>
 </div>
 </section>
 </section>
-<section id="expensions">
-<h2>Expensions<a class="headerlink" href="#expensions" title="Permalink to this headline">#</a></h2>
+<section id="expansions">
+<h2>Expansions<a class="headerlink" href="#expansions" title="Permalink to this headline">#</a></h2>
 <section id="get-user-info">
 <h3>Get user info<a class="headerlink" href="#get-user-info" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">user</span> <span class="ow">in</span> <span class="n">all_users</span><span class="p">[:</span><span class="mi">10</span><span class="p">]:</span>

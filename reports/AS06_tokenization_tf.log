@@ -17,25 +17,26 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-for link in links:
-    print(link)
-    res = requests.get(link, timeout=(1, 2))
-    soup = BeautifulSoup(res.text, "html.parser")
-    metas = soup.find_all(class_='article-meta-value')
-    author = metas[0].text
-    title = metas[-2].text
-    timestamp = metas[-1].text
+from collections import Counter
+df.columns
+
+# YOUR CODE SHOULD BE HERE
+
+
+# top 3 as an example
+topVideos
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mIndexError[0m                                Traceback (most recent call last)
-Input [0;32mIn [23][0m, in [0;36m<cell line: 1>[0;34m()[0m
-[1;32m      4[0m soup [38;5;241m=[39m BeautifulSoup(res[38;5;241m.[39mtext, [38;5;124m"[39m[38;5;124mhtml.parser[39m[38;5;124m"[39m)
-[1;32m      5[0m metas [38;5;241m=[39m soup[38;5;241m.[39mfind_all(class_[38;5;241m=[39m[38;5;124m'[39m[38;5;124marticle-meta-value[39m[38;5;124m'[39m)
-[0;32m----> 6[0m author [38;5;241m=[39m [43mmetas[49m[43m[[49m[38;5;241;43m0[39;49m[43m][49m[38;5;241m.[39mtext
-[1;32m      7[0m title [38;5;241m=[39m metas[[38;5;241m-[39m[38;5;241m2[39m][38;5;241m.[39mtext
-[1;32m      8[0m timestamp [38;5;241m=[39m metas[[38;5;241m-[39m[38;5;241m1[39m][38;5;241m.[39mtext
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [4][0m, in [0;36m<cell line: 8>[0;34m()[0m
+[1;32m      2[0m df[38;5;241m.[39mcolumns
+[1;32m      4[0m [38;5;66;03m# YOUR CODE SHOULD BE HERE[39;00m
+[1;32m      5[0m 
+[1;32m      6[0m 
+[1;32m      7[0m [38;5;66;03m# top 3 as an example[39;00m
+[0;32m----> 8[0m [43mtopVideos[49m
 
-[0;31mIndexError[0m: list index out of range
-IndexError: list index out of range
+[0;31mNameError[0m: name 'topVideos' is not defined
+NameError: name 'topVideos' is not defined
 
