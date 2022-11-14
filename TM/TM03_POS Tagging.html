@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Part of Speech Tagging &#8212; Programming for Social Scientists</title>
+    <title>TM03 POS Tagging &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TM06 Clustering" href="TM06_Clustering.html" />
+    <link rel="prev" title="TM02 Collocation" href="TM02_collocation.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -295,7 +297,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../PSS/P07_2_bokeh.html">
-     Bokeh (Vaccinating)
+     Bokeh &amp; Seaborn(Vaccinating)
     </a>
    </li>
   </ul>
@@ -350,7 +352,7 @@ const thebe_selector_output = ".output, .cell_output"
   Text Mining
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="TM01_tokenization.html">
    TM01 Tokenization
@@ -367,6 +369,45 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM02_collocation.html">
+   TM02 Collocation
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TM03 POS Tagging
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM06_Clustering.html">
+   TM06 Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Compuational Social Science
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CSS/CSS01_network.html">
+   P10 Network Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CSS/CSS02_Simulation.html">
+   CSS02 Simulation
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -636,124 +677,119 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Part of Speech Tagging
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#install-nltk-pos-tagger">
    Install NLTK POS Tagger
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#test">
      Test
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#full-list-of-the-penn-pos-tags">
      Full list of the Penn POS tags
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-pos-tagging-for-all-tokens-in-the-corpus">
    Perform POS tagging for all tokens in the corpus.
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#find-the-most-frequent-nouns">
      Find the most frequent nouns
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#now-we-can-always-convert-words-into-lower-case-excepting-proper-nouns">
-     Now we can always convert words into lower case, excepting proper nouns.
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-words-into-lower-case-excepting-proper-nouns">
+     Convert words into lower case, excepting proper nouns.
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#with-lemmatization-for-better-handle-different-forms-of-verbs">
    With lemmatization for better handle different forms of verbs.
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mining-specific-distant-collocations">
    Mining Specific Distant Collocations
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#detect-all-verb-noun-collocations">
      Detect all verb-noun collocations
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compute-the-mean-distance-of-each-verb-noun-pair">
      Compute the mean distance of each verb-noun pair.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-the-longest-middle-and-shortest-pairs">
      Show the longest, middle, and shortest pairs.
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#longest-part">
        longest part
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#middle-part">
        Middle part
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#shortest-part">
-       shortest part
+       Shortest part
       </a>
      </li>
     </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find-out-the-meaningful-verb-noun-pairs-with-deviation">
    Find out the meaningful verb/noun pairs with deviation.
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filter-out-the-stopwords">
      Filter out the stopwords.
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#filtered-by-deviation-further-filter-out-the-low-frequent-pairs">
        Filtered by Deviation: Further filter out the low frequent pairs
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#general-method-for-distant-collocation-mining">
      General method for distant collocation mining.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#count-all-pairs">
      Count all pairs.
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps">
    Implememnt a better lemmatizer for handling proper nouns (NNP / NNPS).
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and-do-not-lower-the-word-in-the-main-function-anymore">
      And do not lower() the word in the main function anymore.
     </a>
@@ -769,7 +805,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Part of Speech Tagging</h1>
+                <h1>TM03 POS Tagging</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -779,124 +815,119 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Part of Speech Tagging
-  </a>
- </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#install-nltk-pos-tagger">
    Install NLTK POS Tagger
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#test">
      Test
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#full-list-of-the-penn-pos-tags">
      Full list of the Penn POS tags
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#perform-pos-tagging-for-all-tokens-in-the-corpus">
    Perform POS tagging for all tokens in the corpus.
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#find-the-most-frequent-nouns">
      Find the most frequent nouns
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#now-we-can-always-convert-words-into-lower-case-excepting-proper-nouns">
-     Now we can always convert words into lower case, excepting proper nouns.
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#convert-words-into-lower-case-excepting-proper-nouns">
+     Convert words into lower case, excepting proper nouns.
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#with-lemmatization-for-better-handle-different-forms-of-verbs">
    With lemmatization for better handle different forms of verbs.
   </a>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#mining-specific-distant-collocations">
    Mining Specific Distant Collocations
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#detect-all-verb-noun-collocations">
      Detect all verb-noun collocations
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#compute-the-mean-distance-of-each-verb-noun-pair">
      Compute the mean distance of each verb-noun pair.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#show-the-longest-middle-and-shortest-pairs">
      Show the longest, middle, and shortest pairs.
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#longest-part">
        longest part
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#middle-part">
        Middle part
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#shortest-part">
-       shortest part
+       Shortest part
       </a>
      </li>
     </ul>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#find-out-the-meaningful-verb-noun-pairs-with-deviation">
    Find out the meaningful verb/noun pairs with deviation.
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#filter-out-the-stopwords">
      Filter out the stopwords.
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#filtered-by-deviation-further-filter-out-the-low-frequent-pairs">
        Filtered by Deviation: Further filter out the low frequent pairs
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#general-method-for-distant-collocation-mining">
      General method for distant collocation mining.
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#count-all-pairs">
      Count all pairs.
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps">
    Implememnt a better lemmatizer for handling proper nouns (NNP / NNPS).
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#and-do-not-lower-the-word-in-the-main-function-anymore">
      And do not lower() the word in the main function anymore.
     </a>
@@ -913,14 +944,14 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="part-of-speech-tagging">
-<h1>Part of Speech Tagging<a class="headerlink" href="#part-of-speech-tagging" title="Permalink to this headline">#</a></h1>
-</section>
-<section class="tex2jax_ignore mathjax_ignore" id="install-nltk-pos-tagger">
-<h1>Install NLTK POS Tagger<a class="headerlink" href="#install-nltk-pos-tagger" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tm03-pos-tagging">
+<h1>TM03 POS Tagging<a class="headerlink" href="#tm03-pos-tagging" title="Permalink to this headline">#</a></h1>
+<section id="install-nltk-pos-tagger">
+<h2>Install NLTK POS Tagger<a class="headerlink" href="#install-nltk-pos-tagger" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install nltk</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
 <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;averaged_perceptron_tagger&#39;</span><span class="p">)</span>
 <span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
@@ -939,7 +970,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="test">
-<h2>Test<a class="headerlink" href="#test" title="Permalink to this headline">#</a></h2>
+<h3>Test<a class="headerlink" href="#test" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The dog eats the big hotdog.&quot;</span>
@@ -980,13 +1011,13 @@ title="Print to PDF"
 </div>
 </section>
 <section id="full-list-of-the-penn-pos-tags">
-<h2>Full list of the Penn POS tags<a class="headerlink" href="#full-list-of-the-penn-pos-tags" title="Permalink to this headline">#</a></h2>
+<h3>Full list of the Penn POS tags<a class="headerlink" href="#full-list-of-the-penn-pos-tags" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html</a>
 <img alt="image.png" src="TM/attachment:63a89cc7-a6ed-4937-a0c3-71fcb05af322.png" /></p>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="perform-pos-tagging-for-all-tokens-in-the-corpus">
-<h1>Perform POS tagging for all tokens in the corpus.<a class="headerlink" href="#perform-pos-tagging-for-all-tokens-in-the-corpus" title="Permalink to this headline">#</a></h1>
+<section id="perform-pos-tagging-for-all-tokens-in-the-corpus">
+<h2>Perform POS tagging for all tokens in the corpus.<a class="headerlink" href="#perform-pos-tagging-for-all-tokens-in-the-corpus" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/corpus01.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
@@ -1028,7 +1059,7 @@ title="Print to PDF"
 </div>
 </div>
 <section id="find-the-most-frequent-nouns">
-<h2>Find the most frequent nouns<a class="headerlink" href="#find-the-most-frequent-nouns" title="Permalink to this headline">#</a></h2>
+<h3>Find the most frequent nouns<a class="headerlink" href="#find-the-most-frequent-nouns" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -1069,8 +1100,8 @@ man 	 7
 </div>
 </div>
 </section>
-<section id="now-we-can-always-convert-words-into-lower-case-excepting-proper-nouns">
-<h2>Now we can always convert words into lower case, excepting proper nouns.<a class="headerlink" href="#now-we-can-always-convert-words-into-lower-case-excepting-proper-nouns" title="Permalink to this headline">#</a></h2>
+<section id="convert-words-into-lower-case-excepting-proper-nouns">
+<h3>Convert words into lower case, excepting proper nouns.<a class="headerlink" href="#convert-words-into-lower-case-excepting-proper-nouns" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -1146,8 +1177,8 @@ man 	 7
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="with-lemmatization-for-better-handle-different-forms-of-verbs">
-<h1>With lemmatization for better handle different forms of verbs.<a class="headerlink" href="#with-lemmatization-for-better-handle-different-forms-of-verbs" title="Permalink to this headline">#</a></h1>
+<section id="with-lemmatization-for-better-handle-different-forms-of-verbs">
+<h2>With lemmatization for better handle different forms of verbs.<a class="headerlink" href="#with-lemmatization-for-better-handle-different-forms-of-verbs" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>GOAL - 在計算出現次數前，先用<code class="docutils literal notranslate"><span class="pre">lemmatize()</span></code>將動詞或名詞恢復成原型</p></li>
 <li><p>METHOD - Load WordNet Lemmatizer provided by NTLK</p></li>
@@ -1243,8 +1274,8 @@ man 	 7
 </div>
 </div>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="mining-specific-distant-collocations">
-<h1>Mining Specific Distant Collocations<a class="headerlink" href="#mining-specific-distant-collocations" title="Permalink to this headline">#</a></h1>
+<section id="mining-specific-distant-collocations">
+<h2>Mining Specific Distant Collocations<a class="headerlink" href="#mining-specific-distant-collocations" title="Permalink to this headline">#</a></h2>
 <p>Back to last week</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1291,7 +1322,7 @@ the	the	7	39
 </div>
 </div>
 <section id="detect-all-verb-noun-collocations">
-<h2>Detect all verb-noun collocations<a class="headerlink" href="#detect-all-verb-noun-collocations" title="Permalink to this headline">#</a></h2>
+<h3>Detect all verb-noun collocations<a class="headerlink" href="#detect-all-verb-noun-collocations" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">9</span>
@@ -1334,7 +1365,7 @@ the	the	7	39
 </div>
 </section>
 <section id="compute-the-mean-distance-of-each-verb-noun-pair">
-<h2>Compute the mean distance of each verb-noun pair.<a class="headerlink" href="#compute-the-mean-distance-of-each-verb-noun-pair" title="Permalink to this headline">#</a></h2>
+<h3>Compute the mean distance of each verb-noun pair.<a class="headerlink" href="#compute-the-mean-distance-of-each-verb-noun-pair" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_mean_distances</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1348,9 +1379,9 @@ the	the	7	39
 </div>
 </section>
 <section id="show-the-longest-middle-and-shortest-pairs">
-<h2>Show the longest, middle, and shortest pairs.<a class="headerlink" href="#show-the-longest-middle-and-shortest-pairs" title="Permalink to this headline">#</a></h2>
+<h3>Show the longest, middle, and shortest pairs.<a class="headerlink" href="#show-the-longest-middle-and-shortest-pairs" title="Permalink to this headline">#</a></h3>
 <section id="longest-part">
-<h3>longest part<a class="headerlink" href="#longest-part" title="Permalink to this headline">#</a></h3>
+<h4>longest part<a class="headerlink" href="#longest-part" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### longest part</span>
@@ -1386,7 +1417,7 @@ be	existence	6.000000	3
 </div>
 </section>
 <section id="middle-part">
-<h3>Middle part<a class="headerlink" href="#middle-part" title="Permalink to this headline">#</a></h3>
+<h4>Middle part<a class="headerlink" href="#middle-part" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Middle part</span>
@@ -1444,7 +1475,7 @@ have	family	4.000000	2
 </div>
 </section>
 <section id="shortest-part">
-<h3>shortest part<a class="headerlink" href="#shortest-part" title="Permalink to this headline">#</a></h3>
+<h4>Shortest part<a class="headerlink" href="#shortest-part" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Shortest part</span>
@@ -1481,8 +1512,8 @@ rule	class	1.000000	2
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="find-out-the-meaningful-verb-noun-pairs-with-deviation">
-<h1>Find out the meaningful verb/noun pairs with deviation.<a class="headerlink" href="#find-out-the-meaningful-verb-noun-pairs-with-deviation" title="Permalink to this headline">#</a></h1>
+<section id="find-out-the-meaningful-verb-noun-pairs-with-deviation">
+<h2>Find out the meaningful verb/noun pairs with deviation.<a class="headerlink" href="#find-out-the-meaningful-verb-noun-pairs-with-deviation" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">pair_deviations.most_common()[-20:]</span></code> to filter in low deviation part</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1526,7 +1557,7 @@ rule	class	1.000000	0.000000	2
 </div>
 </div>
 <section id="filter-out-the-stopwords">
-<h2>Filter out the stopwords.<a class="headerlink" href="#filter-out-the-stopwords" title="Permalink to this headline">#</a></h2>
+<h3>Filter out the stopwords.<a class="headerlink" href="#filter-out-the-stopwords" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">pair_deviations.most_common()[-20:]</span></code> to filter in low deviation part</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1575,7 +1606,7 @@ rule	class	1.000000	0.000000	2
 </div>
 </div>
 <section id="filtered-by-deviation-further-filter-out-the-low-frequent-pairs">
-<h3>Filtered by Deviation: Further filter out the low frequent pairs<a class="headerlink" href="#filtered-by-deviation-further-filter-out-the-low-frequent-pairs" title="Permalink to this headline">#</a></h3>
+<h4>Filtered by Deviation: Further filter out the low frequent pairs<a class="headerlink" href="#filtered-by-deviation-further-filter-out-the-low-frequent-pairs" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1603,7 +1634,7 @@ rule	class	1.000000	0.000000	2
 </section>
 </section>
 <section id="general-method-for-distant-collocation-mining">
-<h2>General method for distant collocation mining.<a class="headerlink" href="#general-method-for-distant-collocation-mining" title="Permalink to this headline">#</a></h2>
+<h3>General method for distant collocation mining.<a class="headerlink" href="#general-method-for-distant-collocation-mining" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A handy lemmatizer </span>
@@ -1658,7 +1689,7 @@ rule	class	1.000000	0.000000	2
 </div>
 </section>
 <section id="count-all-pairs">
-<h2>Count all pairs.<a class="headerlink" href="#count-all-pairs" title="Permalink to this headline">#</a></h2>
+<h3>Count all pairs.<a class="headerlink" href="#count-all-pairs" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">,</span> <span class="n">min_cut</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
@@ -1793,8 +1824,8 @@ old	society	0.000000	0.000000	0
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps">
-<h1>Implememnt a better lemmatizer for handling proper nouns (NNP / NNPS).<a class="headerlink" href="#implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps" title="Permalink to this headline">#</a></h1>
+<section id="implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps">
+<h2>Implememnt a better lemmatizer for handling proper nouns (NNP / NNPS).<a class="headerlink" href="#implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
@@ -1809,7 +1840,7 @@ old	society	0.000000	0.000000	0
 </div>
 </div>
 <section id="and-do-not-lower-the-word-in-the-main-function-anymore">
-<h2>And do not lower() the word in the main function anymore.<a class="headerlink" href="#and-do-not-lower-the-word-in-the-main-function-anymore" title="Permalink to this headline">#</a></h2>
+<h3>And do not lower() the word in the main function anymore.<a class="headerlink" href="#and-do-not-lower-the-word-in-the-main-function-anymore" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">,</span> <span class="n">min_cut</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
@@ -1877,6 +1908,7 @@ old	society	0.000000	0.000000	0
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1905,6 +1937,20 @@ old	society	0.000000	0.000000	0
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="TM02_collocation.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">TM02 Collocation</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="TM06_Clustering.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TM06 Clustering</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>
