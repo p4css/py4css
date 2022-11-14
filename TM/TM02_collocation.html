@@ -380,6 +380,11 @@ const thebe_selector_output = ".output, .cell_output"
    TM03 POS Tagging
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM04_IR_search.html">
+   TM04 Feature Selection &amp; IR &amp; Search
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -434,6 +439,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../AS/AS04_vis_twitter_api.html">
    AS04 Twitter API and Pandas Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS07_collocation.html">
+   AS07 Collocation for finding enthusiastic commentors
   </a>
  </li>
 </ul>
@@ -1014,9 +1024,9 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-14 10:28:34--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/corpus02.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.111.133, 185.199.109.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... 
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-15 00:12:43--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/corpus02.txt
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
@@ -1033,9 +1043,9 @@ Saving to: &#39;corpus02.txt&#39;
 corpus02.txt          0%[                    ]       0  --.-KB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>corpus02.txt        100%[===================&gt;]  73.58K  --.-KB/s    in 0.09s   
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>corpus02.txt        100%[===================&gt;]  73.58K  --.-KB/s    in 0.07s   
 
-2022-11-14 10:28:35 (852 KB/s) - &#39;corpus02.txt&#39; saved [75348/75348]
+2022-11-15 00:12:44 (992 KB/s) - &#39;corpus02.txt&#39; saved [75348/75348]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of characters: 75346
@@ -1053,15 +1063,7 @@ corpus02.txt          0%[                    ]       0  --.-KB/s
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># github + jupyterlab</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/corpus02.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">text</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of characters: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/corpus02.txt&#39;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of characters: 75346
 </pre></div>
 </div>
 </div>
@@ -1280,11 +1282,6 @@ the	communists	21
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to
-[nltk_data]     /Users/jirlong/nltk_data...
-[nltk_data]   Unzipping corpora/stopwords.zip.
-</pre></div>
-</div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>working	class	23
 bourgeois	society	15
 class	antagonisms	11
@@ -1305,6 +1302,11 @@ petty	bourgeois	6
 existing	society	5
 one	word	5
 bourgeois	socialism	5
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to
+[nltk_data]     /Users/jirlong/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
 </pre></div>
 </div>
 </div>
@@ -2208,44 +2210,7 @@ w2_only_count	 w2_prob	 window_size	 word_counts	 word_pair_counts	 word_pair_di
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="o">&lt;</span><span class="n">ipython</span><span class="o">-</span><span class="nb">input</span><span class="o">-</span><span class="mi">51</span><span class="o">-</span><span class="mi">9</span><span class="n">a11ba033940</span><span class="o">&gt;</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">nx</span><span class="o">.</span><span class="n">draw_kamada_kawai</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># nx.draw_spring(G.to_directed())</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.7/site-packages/networkx/drawing/nx_pylab.py</span> in <span class="ni">draw_kamada_kawai</span><span class="nt">(G, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">987</span>             <span class="n">verticalalignment</span><span class="o">=</span><span class="n">verticalalignment</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">988</span>             <span class="n">transform</span><span class="o">=</span><span class="n">ax</span><span class="o">.</span><span class="n">transData</span><span class="p">,</span>
-<span class="ne">--&gt; </span><span class="mi">989</span>             <span class="n">bbox</span><span class="o">=</span><span class="n">bbox</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">990</span>             <span class="n">clip_on</span><span class="o">=</span><span class="n">clip_on</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">991</span>         <span class="p">)</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.7/site-packages/networkx/drawing/nx_pylab.py</span> in <span class="ni">draw</span><span class="nt">(G, pos, ax, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">124</span>     <span class="k">return</span>
-<span class="g g-Whitespace">    </span><span class="mi">125</span> 
-<span class="ne">--&gt; </span><span class="mi">126</span> 
-<span class="g g-Whitespace">    </span><span class="mi">127</span> <span class="k">def</span> <span class="nf">draw_networkx</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">arrows</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">with_labels</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">128</span>     <span class="sa">r</span><span class="s2">&quot;&quot;&quot;Draw the graph G using Matplotlib.</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.7/site-packages/networkx/drawing/nx_pylab.py</span> in <span class="ni">draw_networkx</span><span class="nt">(G, pos, arrows, with_labels, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span><span class="s2">         &quot;alpha&quot;,</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span><span class="s2">         &quot;cmap&quot;,</span>
-<span class="ne">--&gt; </span><span class="mi">278</span><span class="s2">         &quot;vmin&quot;,</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span><span class="s2">         &quot;vmax&quot;,</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span><span class="s2">         &quot;ax&quot;,</span>
-
-<span class="nn">~/opt/anaconda3/lib/python3.7/site-packages/networkx/drawing/nx_pylab.py</span> in <span class="ni">draw_networkx_edges</span><span class="nt">(G, pos, edgelist, width, edge_color, style, alpha, arrowstyle, arrowsize, edge_cmap, edge_vmin, edge_vmax, ax, arrows, label, node_size, nodelist, node_shape, **kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">561</span><span class="s2">         If `None`, directed graphs draw arrowheads with</span>
-<span class="g g-Whitespace">    </span><span class="mi">562</span><span class="s2">         `~matplotlib.patches.FancyArrowPatch`, while undirected graphs draw edges</span>
-<span class="ne">--&gt; </span><span class="mi">563</span><span class="s2">         via `~matplotlib.collections.LineCollection` for speed.</span>
-<span class="g g-Whitespace">    </span><span class="mi">564</span><span class="s2">         If `True`, draw arrowheads with FancyArrowPatches (bendable and stylish).</span>
-<span class="g g-Whitespace">    </span><span class="mi">565</span><span class="s2">         If `False`, draw edges using LineCollection (linear and fast).</span>
-
-<span class="ne">AttributeError</span>: module &#39;matplotlib.cbook&#39; has no attribute &#39;iterable&#39;
-</pre></div>
-</div>
-<img alt="../_images/TM02_collocation_58_1.png" src="../_images/TM02_collocation_58_1.png" />
+<img alt="../_images/TM02_collocation_58_0.png" src="../_images/TM02_collocation_58_0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2259,13 +2224,17 @@ w2_only_count	 w2_prob	 window_size	 word_counts	 word_pair_counts	 word_pair_di
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Local cdn resources have problems on chrome/safari when used in jupyter-notebook. 
+</pre></div>
+</div>
 <div class="output text_html">
 <iframe
     width="2048px"
-    height="1024px"
+    height="600px"
     src="test.html"
     frameborder="0"
     allowfullscreen
+
 ></iframe>
 </div></div>
 </div>

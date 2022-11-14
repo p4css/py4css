@@ -6,7 +6,7 @@
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
-    <title>Information retrieval and Search &#8212; Programming for Social Scientists</title>
+    <title>TM04 Feature Selection &amp; IR &amp; Search &#8212; Programming for Social Scientists</title>
     
   <!-- Loaded before other Sphinx assets -->
   <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
@@ -52,6 +52,8 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TM06 Clustering" href="TM06_Clustering.html" />
+    <link rel="prev" title="TM03 POS Tagging" href="TM03_POS%20Tagging.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
     
@@ -295,7 +297,7 @@ const thebe_selector_output = ".output, .cell_output"
    </li>
    <li class="toctree-l2">
     <a class="reference internal" href="../PSS/P07_2_bokeh.html">
-     Bokeh (Vaccinating)
+     Bokeh &amp; Seaborn(Vaccinating)
     </a>
    </li>
   </ul>
@@ -350,7 +352,7 @@ const thebe_selector_output = ".output, .cell_output"
   Text Mining
  </span>
 </p>
-<ul class="nav bd-sidenav">
+<ul class="current nav bd-sidenav">
  <li class="toctree-l1 has-children">
   <a class="reference internal" href="TM01_tokenization.html">
    TM01 Tokenization
@@ -367,6 +369,50 @@ const thebe_selector_output = ".output, .cell_output"
     </a>
    </li>
   </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM02_collocation.html">
+   TM02 Collocation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM03_POS%20Tagging.html">
+   TM03 POS Tagging
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   TM04 Feature Selection &amp; IR &amp; Search
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM06_Clustering.html">
+   TM06 Clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Compuational Social Science
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CSS/CSS01_network.html">
+   P10 Network Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CSS/CSS02_Simulation.html">
+   CSS02 Simulation
+  </a>
  </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
@@ -393,6 +439,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../AS/AS04_vis_twitter_api.html">
    AS04 Twitter API and Pandas Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS07_collocation.html">
+   AS07 Collocation for finding enthusiastic commentors
   </a>
  </li>
 </ul>
@@ -636,49 +687,49 @@ title="Print to PDF"
     </div>
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Information retrieval and Search
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search">
+   Search
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#build-data">
      Build Data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#search-for-a-single-query-term">
      Search for a single query term
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#search-for-multiple-terms-and">
      Search for multiple terms (AND)
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tf-idf">
    TF-IDF
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#testing-tf-idf">
      Testing tf-idf
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#compute-tf-and-df">
        Compute tf and df
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#compute-idf">
        Compute idf
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#testing-tfidf-for-whole-doc">
        (Testing) tfidf for whole doc
       </a>
@@ -687,36 +738,36 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-ir-model">
    Basic IR Model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#representation">
      Representation
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#sorting">
        Sorting
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bm25">
      BM25
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inverted-indexing">
    Inverted Indexing
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#build-inverted-index">
      Build inverted index
     </a>
@@ -732,7 +783,7 @@ title="Print to PDF"
         <div class="col pl-md-3 pl-lg-5 content-container">
             <!-- Table of contents that is only displayed when printing the page -->
             <div id="jb-print-docs-body" class="onlyprint">
-                <h1>Information retrieval and Search</h1>
+                <h1>TM04 Feature Selection & IR & Search</h1>
                 <!-- Table of contents -->
                 <div id="print-main-content">
                     <div id="jb-print-toc">
@@ -742,49 +793,49 @@ title="Print to PDF"
                         </div>
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
- <li class="toc-h1 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#">
-   Information retrieval and Search
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#search">
+   Search
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#build-data">
      Build Data
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#search-for-a-single-query-term">
      Search for a single query term
     </a>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#search-for-multiple-terms-and">
      Search for multiple terms (AND)
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#tf-idf">
    TF-IDF
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#testing-tf-idf">
      Testing tf-idf
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#compute-tf-and-df">
        Compute tf and df
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#compute-idf">
        Compute idf
       </a>
      </li>
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#testing-tfidf-for-whole-doc">
        (Testing) tfidf for whole doc
       </a>
@@ -793,36 +844,36 @@ title="Print to PDF"
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#basic-ir-model">
    Basic IR Model
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#representation">
      Representation
     </a>
     <ul class="nav section-nav flex-column">
-     <li class="toc-h3 nav-item toc-entry">
+     <li class="toc-h4 nav-item toc-entry">
       <a class="reference internal nav-link" href="#sorting">
        Sorting
       </a>
      </li>
     </ul>
    </li>
-   <li class="toc-h2 nav-item toc-entry">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#bm25">
      BM25
     </a>
    </li>
   </ul>
  </li>
- <li class="toc-h1 nav-item toc-entry">
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#inverted-indexing">
    Inverted Indexing
   </a>
-  <ul class="visible nav section-nav flex-column">
-   <li class="toc-h2 nav-item toc-entry">
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
     <a class="reference internal nav-link" href="#build-inverted-index">
      Build inverted index
     </a>
@@ -839,13 +890,15 @@ title="Print to PDF"
                 
               <div>
                 
-  <section class="tex2jax_ignore mathjax_ignore" id="information-retrieval-and-search">
-<h1>Information retrieval and Search<a class="headerlink" href="#information-retrieval-and-search" title="Permalink to this headline">#</a></h1>
+  <section class="tex2jax_ignore mathjax_ignore" id="tm04-feature-selection-ir-search">
+<h1>TM04 Feature Selection &amp; IR &amp; Search<a class="headerlink" href="#tm04-feature-selection-ir-search" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p>We have a lot of documents, we hope to extract their significant characteristics compared to others.</p></li>
 </ul>
+<section id="search">
+<h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">#</a></h2>
 <section id="build-data">
-<h2>Build Data<a class="headerlink" href="#build-data" title="Permalink to this headline">#</a></h2>
+<h3>Build Data<a class="headerlink" href="#build-data" title="Permalink to this headline">#</a></h3>
 <p>Each doc has been tokenzied to a word list</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -969,7 +1022,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="search-for-a-single-query-term">
-<h2>Search for a single query term<a class="headerlink" href="#search-for-a-single-query-term" title="Permalink to this headline">#</a></h2>
+<h3>Search for a single query term<a class="headerlink" href="#search-for-a-single-query-term" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">search()</span></code>: return all docs containing query term</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -997,7 +1050,7 @@ title="Print to PDF"
 </div>
 </section>
 <section id="search-for-multiple-terms-and">
-<h2>Search for multiple terms (AND)<a class="headerlink" href="#search-for-multiple-terms-and" title="Permalink to this headline">#</a></h2>
+<h3>Search for multiple terms (AND)<a class="headerlink" href="#search-for-multiple-terms-and" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># match if all query terms appears in the doc</span>
@@ -1046,15 +1099,15 @@ EC AGREES TRADE DEAL WITH ARGENTINA
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="tf-idf">
-<h1>TF-IDF<a class="headerlink" href="#tf-idf" title="Permalink to this headline">#</a></h1>
+<section id="tf-idf">
+<h2>TF-IDF<a class="headerlink" href="#tf-idf" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><strong>tf</strong>: The occurrences of a term in a document. <em>tf(t, d)</em></p></li>
 <li><p><strong>df</strong>: document frequency: Number of docs where a word appreared</p></li>
 <li><p><strong>tf-idf</strong>: term-frequency and inverted document frequency</p></li>
 </ul>
 <section id="testing-tf-idf">
-<h2>Testing tf-idf<a class="headerlink" href="#testing-tf-idf" title="Permalink to this headline">#</a></h2>
+<h3>Testing tf-idf<a class="headerlink" href="#testing-tf-idf" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_tfidf</span><span class="p">(</span><span class="n">td</span><span class="p">,</span> <span class="n">ndoc</span><span class="p">,</span> <span class="n">ntd</span><span class="p">):</span>
@@ -1106,7 +1159,7 @@ n(t, d)=40	 ndoc=100	 ndoc_term=40	 idf=0.916291	 tfidf=36.651629
 </div>
 </div>
 <section id="compute-tf-and-df">
-<h3>Compute tf and df<a class="headerlink" href="#compute-tf-and-df" title="Permalink to this headline">#</a></h3>
+<h4>Compute tf and df<a class="headerlink" href="#compute-tf-and-df" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -1230,7 +1283,7 @@ n(t, d)=40	 ndoc=100	 ndoc_term=40	 idf=0.916291	 tfidf=36.651629
 </div>
 </section>
 <section id="compute-idf">
-<h3>Compute idf<a class="headerlink" href="#compute-idf" title="Permalink to this headline">#</a></h3>
+<h4>Compute idf<a class="headerlink" href="#compute-idf" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1382,7 +1435,7 @@ finns and canadians to study mtbe production plant
 </div>
 </section>
 <section id="testing-tfidf-for-whole-doc">
-<h3>(Testing) tfidf for whole doc<a class="headerlink" href="#testing-tfidf-for-whole-doc" title="Permalink to this headline">#</a></h3>
+<h4>(Testing) tfidf for whole doc<a class="headerlink" href="#testing-tfidf-for-whole-doc" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1466,11 +1519,11 @@ Terms with the highest TFIDF:
 </section>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="basic-ir-model">
-<h1>Basic IR Model<a class="headerlink" href="#basic-ir-model" title="Permalink to this headline">#</a></h1>
+<section id="basic-ir-model">
+<h2>Basic IR Model<a class="headerlink" href="#basic-ir-model" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">https://en.wikipedia.org/wiki/Tf–idf</a></p>
 <section id="representation">
-<h2>Representation<a class="headerlink" href="#representation" title="Permalink to this headline">#</a></h2>
+<h3>Representation<a class="headerlink" href="#representation" title="Permalink to this headline">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>doc -&gt; `[(&#39;u&#39;, 18), (&#39;said&#39;, 16), (&#39;trade&#39;, 15), (&#39;japan&#39;, 12), (&#39;dlrs&#39;, 6), (&#39;exports&#39;, 6), (&#39;imports&#39;, 5), (&#39;tariffs&#39;, 5), (&#39;japanese&#39;, 5), (&#39;billion&#39;, 5), (&#39;businessmen&#39;, 4), (&#39;might&#39;, 4), (&#39;electronics&#39;, 4), (&#39;taiwan&#39;, 4), (&#39;also&#39;, 4), (&#39;last&#39;, 4), (&#39;year&#39;, 4), (&#39;hong&#39;, 4), (&#39;kong&#39;, 4), (&#39;products&#39;, 3)]`
 </pre></div>
 </div>
@@ -1600,7 +1653,7 @@ u . s . takes tough stand on gatt farm issues 	 9.935118
 </div>
 </div>
 <section id="sorting">
-<h3>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">#</a></h3>
+<h4>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
@@ -1645,7 +1698,7 @@ u . s . takes tough stand on gatt farm issues 	 9.935118
 </section>
 </section>
 <section id="bm25">
-<h2>BM25<a class="headerlink" href="#bm25" title="Permalink to this headline">#</a></h2>
+<h3>BM25<a class="headerlink" href="#bm25" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://en.wikipedia.org/wiki/Okapi_BM25">https://en.wikipedia.org/wiki/Okapi_BM25</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1715,10 +1768,10 @@ u . s . takes tough stand on gatt farm issues 	 0.027802
 </div>
 </section>
 </section>
-<section class="tex2jax_ignore mathjax_ignore" id="inverted-indexing">
-<h1>Inverted Indexing<a class="headerlink" href="#inverted-indexing" title="Permalink to this headline">#</a></h1>
+<section id="inverted-indexing">
+<h2>Inverted Indexing<a class="headerlink" href="#inverted-indexing" title="Permalink to this headline">#</a></h2>
 <section id="build-inverted-index">
-<h2>Build inverted index<a class="headerlink" href="#build-inverted-index" title="Permalink to this headline">#</a></h2>
+<h3>Build inverted index<a class="headerlink" href="#build-inverted-index" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inverted_index</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1913,6 +1966,7 @@ BALDRIGE WARNS OF WORLD TRADE WAR DANGER U . S . 9.134887
 </div>
 </section>
 </section>
+</section>
 
     <script type="text/x-thebe-config">
     {
@@ -1941,6 +1995,20 @@ BALDRIGE WARNS OF WORLD TRADE WAR DANGER U . S . 9.134887
                 
     <!-- Previous / next buttons -->
 <div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="TM03_POS%20Tagging.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">TM03 POS Tagging</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="TM06_Clustering.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TM06 Clustering</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
 </div>
             </footer>
         </div>

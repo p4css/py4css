@@ -380,6 +380,11 @@ const thebe_selector_output = ".output, .cell_output"
    TM03 POS Tagging
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM04_IR_search.html">
+   TM04 Feature Selection &amp; IR &amp; Search
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -434,6 +439,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../AS/AS04_vis_twitter_api.html">
    AS04 Twitter API and Pandas Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS07_collocation.html">
+   AS07 Collocation for finding enthusiastic commentors
   </a>
  </li>
 </ul>
@@ -1534,7 +1544,7 @@ grape 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banana&#39;: 3, &#39;apple&#39;: 4, &#39;grape&#39;: 1}
 </pre></div>
 </div>
 </div>
@@ -1551,7 +1561,7 @@ grape 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;banana&#39;: 3, &#39;apple&#39;: 4, &#39;grape&#39;: 1}
 </pre></div>
 </div>
 </div>
@@ -1619,12 +1629,14 @@ grape 	 1
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wikipedia in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (1.4.0)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (2.27.1)
 Requirement already satisfied: beautifulsoup4 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (4.11.1)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (2.27.1)
 Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.3)
-Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.26.9)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2022.5.18.1)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.26.9)
 Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
 </pre></div>
 </div>
@@ -1846,7 +1858,7 @@ Counter({1: 158, 2: 26, 3: 5, 4: 5, 8: 2, 23: 1, 9: 1, 5: 1, 15: 1, 11: 1})
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of:  75
-Grades:  40 36 53 86 38 48 35 87 41 38 73 69 92 54 46 94 68 68 91 59 63 88 67 42 77 71 72 83 44 44 47 99 48 89 46 93 57 73 66 69 58 78 54 45 38 66 76 70 96 51 68 78 84 76 79 57 61 94 87 45 91 61 88 43 72 76 64 80 76 91 92 46 57 82 40
+Grades:  69 42 72 36 71 36 53 96 100 89 93 95 80 85 100 79 40 81 48 59 84 72 39 53 83 100 52 87 60 51 60 80 90 100 86 100 38 44 37 58 76 65 94 37 78 49 75 85 94 41 57 39 93 67 50 66 41 43 59 70 55 46 39 61 85 70 72 75 65 46 72 40 81 53 67
 </pre></div>
 </div>
 </div>
@@ -1874,7 +1886,7 @@ Grades:  40 36 53 86 38 48 35 87 41 38 73 69 92 54 46 94 68 68 91 59 63 88 67 42
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 29, &#39;C&#39;: 14, &#39;B&#39;: 12, &#39;A&#39;: 20}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 30, &#39;C&#39;: 12, &#39;B&#39;: 9, &#39;A&#39;: 24}
 </pre></div>
 </div>
 </div>
