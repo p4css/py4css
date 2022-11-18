@@ -405,8 +405,8 @@ const thebe_selector_output = ".output, .cell_output"
 </p>
 <ul class="nav bd-sidenav">
  <li class="toctree-l1">
-  <a class="reference internal" href="../CSS/CSS01_network.html">
-   P10 Network Analysis
+  <a class="reference internal" href="../CSS/CSS01_network_analysis.html">
+   CSS01 Network Analysis
   </a>
  </li>
  <li class="toctree-l1">
@@ -688,46 +688,43 @@ title="Print to PDF"
     <nav id="bd-toc-nav" aria-label="Page">
         <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-data">
-   Loading data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#collocation-as-cooccurrence">
-   1. Collocation as Cooccurrence
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-mi">
-   2. Using MI
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooccurrence-with-distance">
-   3. Cooccurrence with distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawing-collocation-network">
-   4. Drawing collocation network
+  <a class="reference internal nav-link" href="#convert-collocation-as-network">
+   Convert Collocation as Network
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer">
-     ANSWER:
+    <a class="reference internal nav-link" href="#collocation-as-cooccurrence">
+     1. Collocation as Cooccurrence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-mi">
+     2. Using MI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cooccurrence-with-distance">
+     3. Cooccurrence with distance
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pyvis-network">
-   也可使用pyvis.network畫畫看
+  <a class="reference internal nav-link" href="#drawing-collocation-network">
+   Drawing collocation network
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#thinking">
-   4. Thinking
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construct-edgelist-dataframe">
+     Construct edgelist dataframe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-high-frequency-pairs">
+     Filter high frequency pairs
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -749,46 +746,43 @@ title="Print to PDF"
                         <nav aria-label="Page">
                             <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#loading-data">
-   Loading data
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#collocation-as-cooccurrence">
-   1. Collocation as Cooccurrence
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#using-mi">
-   2. Using MI
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#cooccurrence-with-distance">
-   3. Cooccurrence with distance
-  </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#drawing-collocation-network">
-   4. Drawing collocation network
+  <a class="reference internal nav-link" href="#convert-collocation-as-network">
+   Convert Collocation as Network
   </a>
   <ul class="nav section-nav flex-column">
    <li class="toc-h3 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#answer">
-     ANSWER:
+    <a class="reference internal nav-link" href="#collocation-as-cooccurrence">
+     1. Collocation as Cooccurrence
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#using-mi">
+     2. Using MI
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#cooccurrence-with-distance">
+     3. Cooccurrence with distance
     </a>
    </li>
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#pyvis-network">
-   也可使用pyvis.network畫畫看
+  <a class="reference internal nav-link" href="#drawing-collocation-network">
+   Drawing collocation network
   </a>
- </li>
- <li class="toc-h2 nav-item toc-entry">
-  <a class="reference internal nav-link" href="#thinking">
-   4. Thinking
-  </a>
+  <ul class="nav section-nav flex-column">
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#construct-edgelist-dataframe">
+     Construct edgelist dataframe
+    </a>
+   </li>
+   <li class="toc-h3 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#filter-high-frequency-pairs">
+     Filter high frequency pairs
+    </a>
+   </li>
+  </ul>
  </li>
 </ul>
 
@@ -803,8 +797,8 @@ title="Print to PDF"
   <section class="tex2jax_ignore mathjax_ignore" id="as07-collocation-for-finding-enthusiastic-commentors">
 <h1>AS07 Collocation for finding enthusiastic commentors<a class="headerlink" href="#as07-collocation-for-finding-enthusiastic-commentors" title="Permalink to this headline">#</a></h1>
 <p>在文字探勘的第二單元我們介紹了Collocation來找出significant word pair。同樣的方法，我也可以把他改造來找出，在討論板上哪兩個人老是一起出現。你可以想像說在一個討論板中，某一主題一出來，某些人就會突然冒出來開始Comment。並且A下了Comment後，很快的B也會跟著下Comment。我們可以用Collocation的概念來找出這些總是一起出現的Commentors。但社會科學會把這樣的關係稱為Cooccurrence（共現）。</p>
-<section id="loading-data">
-<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<section id="convert-collocation-as-network">
+<h2>Convert Collocation as Network<a class="headerlink" href="#convert-collocation-as-network" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># colab</span>
@@ -816,7 +810,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-15 00:10:49--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-18 21:56:14--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
 Resolving github.com (github.com)... 
 </pre></div>
 </div>
@@ -832,8 +826,8 @@ Connecting to github.com (github.com)|20.27.177.113|:443...
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
 Location: https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat [following]
---2022-11-15 00:10:50--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+--2022-11-18 21:56:14--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
 Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
 </pre></div>
 </div>
@@ -844,19 +838,61 @@ Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
-Length: 992132 (969K) [application/octet-stream]
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length: 992132 (969K) [application/octet-stream]
 Saving to: &#39;pttpost_20210509_n178.dat&#39;
 
 
           pttpost_2   0%[                    ]       0  --.-KB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         pttpost_20  48%[========&gt;           ] 465.81K  2.26MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         pttpost_20  41%[=======&gt;            ] 400.56K  1.93MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pttpost_20210509_n1 100%[===================&gt;] 968.88K  3.43MB/s    in 0.3s    
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pttpost_20210509_n1 100%[===================&gt;] 968.88K  2.43MB/s    in 0.4s    
 
-2022-11-15 00:10:50 (3.43 MB/s) - &#39;pttpost_20210509_n178.dat&#39; saved [992132/992132]
+2022-11-18 21:56:16 (2.43 MB/s) - &#39;pttpost_20210509_n178.dat&#39; saved [992132/992132]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">all_post</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_post</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;comments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">])</span>
+<span class="n">all_post</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;author&#39;, &#39;authorid&#39;, &#39;nickname&#39;, &#39;link&#39;, &#39;title&#39;, &#39;timestamp&#39;, &#39;content&#39;, &#39;comments&#39;])
+{&#39;tag&#39;: &#39;推 &#39;, &#39;userid&#39;: &#39;shiriri&#39;, &#39;content&#39;: &#39;: 有很多了 黑人跟拉丁裔比較高 亞裔跟白人差不多&#39;, &#39;timestamp&#39;: &#39; 05/09 10:59\n&#39;}
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;author&#39;: &#39;s72005ming (QQ)&#39;,
+ &#39;authorid&#39;: &#39;s72005ming&#39;,
+ &#39;nickname&#39;: &#39;QQ&#39;,
+ &#39;link&#39;: &#39;https://www.ptt.cc/bbs/Gossiping/M.1620528765.A.DBD.html&#39;,
+ &#39;title&#39;: &#39;[問卦] 美國會研究因武漢肺炎死亡的人種嗎？&#39;,
+ &#39;timestamp&#39;: &#39;Sun May  9 10:52:43 2021&#39;,
+ &#39;content&#39;: &#39;美國是民族大熔爐\n\n全世界各種人種都有\n\n但是依照各個人種做研究又有歧視的問題\n\n以美國這麼重視人權和觀感的國家\n\n會有研究因武漢肺炎死亡人種的論文嗎？\n\n\n好奇如果有哪一個人種死亡數最少\n\n我猜是華裔就是了！\n\n聽說疫情發生後一堆華裔老人連出門剪頭髮都不敢！--&#39;,
+ &#39;comments&#39;: [{&#39;tag&#39;: &#39;推 &#39;,
+   &#39;userid&#39;: &#39;shiriri&#39;,
+   &#39;content&#39;: &#39;: 有很多了 黑人跟拉丁裔比較高 亞裔跟白人差不多&#39;,
+   &#39;timestamp&#39;: &#39; 05/09 10:59\n&#39;},
+  {&#39;tag&#39;: &#39;→ &#39;,
+   &#39;userid&#39;: &#39;HELLDIVER&#39;,
+   &#39;content&#39;: &#39;: 有趣的是 剛開始大爆發時 還說亞洲人比較會得武漢病毒&#39;,
+   &#39;timestamp&#39;: &#39; 05/09 11:01\n&#39;},
+  {&#39;tag&#39;: &#39;噓 &#39;,
+   &#39;userid&#39;: &#39;redsa12&#39;,
+   &#39;content&#39;: &#39;: 網路即時數據就都有按人種按年齡區分的數據了...&#39;,
+   &#39;timestamp&#39;: &#39; 05/09 11:06\n&#39;},
+  {&#39;tag&#39;: &#39;→ &#39;,
+   &#39;userid&#39;: &#39;redsa12&#39;,
+   &#39;content&#39;: &#39;: 問之前先估狗好嗎 加油好嗎&#39;,
+   &#39;timestamp&#39;: &#39; 05/09 11:06\n&#39;}]}
 </pre></div>
 </div>
 </div>
@@ -864,22 +900,9 @@ Saving to: &#39;pttpost_20210509_n178.dat&#39;
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># jupyterlab</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
-    <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># jupyterlab</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pickle</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../data/pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
-
-<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../data/pttpost_20210509_n178.dat&#39;
+<span class="c1"># import pickle</span>
+<span class="c1"># # with open(&quot;../data/pttpost_20210509_n178.dat&quot;, &quot;rb&quot;) as fin:</span>
+<span class="c1">#     all_post = pickle.load(fin)</span>
 </pre></div>
 </div>
 </div>
@@ -913,9 +936,8 @@ Saving to: &#39;pttpost_20210509_n178.dat&#39;
 </div>
 </div>
 </div>
-</section>
 <section id="collocation-as-cooccurrence">
-<h2>1. Collocation as Cooccurrence<a class="headerlink" href="#collocation-as-cooccurrence" title="Permalink to this headline">#</a></h2>
+<h3>1. Collocation as Cooccurrence<a class="headerlink" href="#collocation-as-cooccurrence" title="Permalink to this headline">#</a></h3>
 <p>只要在同一則貼文的comments內，我們把任兩個commentor視為有co-comment，也就是Cooccurrence（共現）的關係。請計算出共現於本資料集中，頻率最高的前20對commentor（必須印出Collocation times作為參考）。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s72005ming</span>	<span class="n">sl11pman</span>	<span class="mi">450</span>
 <span class="n">loham</span>	<span class="n">sl11pman</span>	<span class="mi">450</span>
@@ -939,9 +961,16 @@ Saving to: &#39;pttpost_20210509_n178.dat&#39;
 <span class="n">userlance</span>	<span class="n">sl11pman</span>	<span class="mi">180</span>
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE SHOULD BE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="using-mi">
-<h2>2. Using MI<a class="headerlink" href="#using-mi" title="Permalink to this headline">#</a></h2>
+<h3>2. Using MI<a class="headerlink" href="#using-mi" title="Permalink to this headline">#</a></h3>
 <p>MI的計算方式主要是為了要標準化任一字的出現次數和任兩個字的出現次數的影響。請用MI的方式計算出哪兩個人特別常一起出現在同一則貼文的comments中。請用<code class="docutils literal notranslate"><span class="pre">most_common()</span></code>印出M前20大MI的Pairs（必須印出MI值作為參考）。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loham</span> <span class="n">sl11pman</span> <span class="mi">450</span> <span class="mf">5.535381</span>
 <span class="n">sl11pman</span> <span class="n">loham</span> <span class="mi">450</span> <span class="mf">5.535381</span>
@@ -966,9 +995,16 @@ Saving to: &#39;pttpost_20210509_n178.dat&#39;
 
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE SHOULD BE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
 </section>
 <section id="cooccurrence-with-distance">
-<h2>3. Cooccurrence with distance<a class="headerlink" href="#cooccurrence-with-distance" title="Permalink to this headline">#</a></h2>
+<h3>3. Cooccurrence with distance<a class="headerlink" href="#cooccurrence-with-distance" title="Permalink to this headline">#</a></h3>
 <p>就上述的資料集，我想定義的人與人的關係是「這兩個人老是一前一後出現」，所以我規劃僅計算前後5則以內的comments，也就是說，在同一貼文中，如果A是第一則comment，B是第六則comment，C是第七則，那我不列計A和C的關係，但列計A和B的關係。請用collocation with distance的觀念，計算任兩個comment間的平均距離，並用<code class="docutils literal notranslate"><span class="pre">most_comment()</span></code>列印出平均距離最短的前二十對commentors。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chen0625</span><span class="o">-</span><span class="n">Qinsect</span>	<span class="mf">1.500000</span>	<span class="mi">2</span>
 <span class="n">kenryu</span><span class="o">-</span><span class="n">bar1005</span>	<span class="mf">1.500000</span>	<span class="mi">2</span>
@@ -992,19 +1028,74 @@ Saving to: &#39;pttpost_20210509_n178.dat&#39;
 <span class="n">lazarus1121</span><span class="o">-</span><span class="n">tenka92417</span>	<span class="mf">1.000000</span>	<span class="mi">2</span>
 </pre></div>
 </div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE SHOULD BE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="drawing-collocation-network">
-<h2>4. Drawing collocation network<a class="headerlink" href="#drawing-collocation-network" title="Permalink to this headline">#</a></h2>
+<h2>Drawing collocation network<a class="headerlink" href="#drawing-collocation-network" title="Permalink to this headline">#</a></h2>
 <p>以下已經提供給你部分不同網絡的視覺化方法和參數調整方法。如果你要看懂每個函式有可能要查閱Networkx的Document，不過這是為了push你去查閱document來理解這些程式碼。</p>
 <p>列印出mi值或count值前500大、前1000大、前2000大（會有點吃力）的pairs of user，並觀察該圖型。基於co-commentor的網絡視覺化，你認為這群co-commenter有什麼特性？請多列印幾種版本，並將你的看法寫在以下的ANSWER後：</p>
-<section id="answer">
-<h3>ANSWER:<a class="headerlink" href="#answer" title="Permalink to this headline">#</a></h3>
-<p>YOUR ANSWER SHOULD BE HERE</p>
+<section id="construct-edgelist-dataframe">
+<h3>Construct edgelist dataframe<a class="headerlink" href="#construct-edgelist-dataframe" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">user_pair_counts</span><span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">)],</span> <span class="n">mi</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">mi</span> <span class="ow">in</span> <span class="n">pmi_scores</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">user_pair_counts</span><span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">)],</span> <span class="n">mi</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">mi</span> <span class="ow">in</span> <span class="n">pmi_scores</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span>
+
+<span class="ne">NameError</span>: name &#39;pmi_scores&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="filter-high-frequency-pairs">
+<h3>Filter high frequency pairs<a class="headerlink" href="#filter-high-frequency-pairs" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span>
+
+<span class="ne">NameError</span>: name &#39;user_pair_counts&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">mi</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">mi</span> <span class="ow">in</span> <span class="n">pair_mutual_information_scores</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
+<span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_count</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">mi</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">mi</span> <span class="ow">in</span> <span class="n">pmi</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;w1&#39;</span><span class="p">,</span> <span class="s1">&#39;w2&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">])</span>
 
 <span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
@@ -1044,38 +1135,8 @@ Saving to: &#39;pttpost_20210509_n178.dat&#39;
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<img alt="../_images/AS07_collocation_12_0.png" src="../_images/AS07_collocation_12_0.png" />
-</div>
 </div>
 </section>
-</section>
-<section id="pyvis-network">
-<h2>也可使用pyvis.network畫畫看<a class="headerlink" href="#pyvis-network" title="Permalink to this headline">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyvis.network</span> <span class="kn">import</span> <span class="n">Network</span>
-<span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="s1">&#39;1024px&#39;</span><span class="p">,</span> <span class="s1">&#39;2048px&#39;</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">net</span><span class="o">.</span><span class="n">from_nx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
-<span class="n">net</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;test.html&quot;</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_html">
-<iframe
-    width="2048px"
-    height="1024px"
-    src="test.html"
-    frameborder="0"
-    allowfullscreen
-></iframe>
-</div></div>
-</div>
-</section>
-<section id="thinking">
-<h2>4. Thinking<a class="headerlink" href="#thinking" title="Permalink to this headline">#</a></h2>
-<p>這樣的做法是否有助於察覺特定網軍的協同合作？</p>
 </section>
 </section>
 
