@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CSS01 Network Analysis" href="../CSS/CSS01_network_analysis.html" />
+    <link rel="next" title="TM07 embedding and clustering" href="TM07_embedding_clustering.html" />
     <link rel="prev" title="TM04 Feature Selection &amp; IR &amp; Search" href="TM04_IR_search.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -395,6 +395,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    TM06 Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM07_embedding_clustering.html">
+   TM07 embedding and clustering
   </a>
  </li>
 </ul>
@@ -1218,7 +1223,7 @@ title="Print to PDF"
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.301 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.302 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -1765,6 +1770,19 @@ title="Print to PDF"
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;6388x11860 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
+	with 34416 stored elements in Compressed Sparse Row format&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
 </pre></div>
 </div>
@@ -1800,7 +1818,7 @@ title="Print to PDF"
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/TM06_Clustering_36_0.png" src="../_images/TM06_Clustering_36_0.png" />
+<img alt="../_images/TM06_Clustering_37_0.png" src="../_images/TM06_Clustering_37_0.png" />
 </div>
 </div>
 </section>
@@ -2570,14 +2588,14 @@ Counter({2: 2910, 13: 1075, 9: 664, 16: 272, -1: 181, 11: 179, 21: 170, 6: 126, 
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">IndexError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [29],</span> in <span class="ni">&lt;cell line: 8&gt;</span><span class="nt">()</span>
+<span class="nn">Input In [30],</span> in <span class="ni">&lt;cell line: 8&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Magma</span><span class="p">,</span> <span class="n">Inferno</span><span class="p">,</span> <span class="n">Plasma</span><span class="p">,</span> <span class="n">Viridis</span><span class="p">,</span> <span class="n">Cividis</span><span class="p">,</span> <span class="n">d3</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">palletes</span> <span class="o">=</span> <span class="n">d3</span><span class="p">[</span><span class="s1">&#39;Category20&#39;</span><span class="p">][</span><span class="n">true_k</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">palletes</span><span class="p">[</span><span class="n">clu</span><span class="p">]</span> <span class="k">for</span> <span class="n">clu</span> <span class="ow">in</span> <span class="n">df_merge</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]]</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="c1"># print(colors)</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="n">p</span><span class="o">.</span><span class="n">circle</span><span class="p">(</span><span class="n">df_merge</span><span class="p">[</span><span class="s2">&quot;x&quot;</span><span class="p">],</span> <span class="n">df_merge</span><span class="p">[</span><span class="s2">&quot;y&quot;</span><span class="p">],</span> <span class="n">color</span> <span class="o">=</span> <span class="n">colors</span><span class="p">,</span> <span class="n">fill_alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span> <span class="n">size</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
-<span class="nn">Input In [29],</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="nn">Input In [30],</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">bokeh.palettes</span> <span class="kn">import</span> <span class="n">Magma</span><span class="p">,</span> <span class="n">Inferno</span><span class="p">,</span> <span class="n">Plasma</span><span class="p">,</span> <span class="n">Viridis</span><span class="p">,</span> <span class="n">Cividis</span><span class="p">,</span> <span class="n">d3</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">palletes</span> <span class="o">=</span> <span class="n">d3</span><span class="p">[</span><span class="s1">&#39;Category20&#39;</span><span class="p">][</span><span class="n">true_k</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">8</span> <span class="n">colors</span> <span class="o">=</span> <span class="p">[</span><span class="n">palletes</span><span class="p">[</span><span class="n">clu</span><span class="p">]</span> <span class="k">for</span> <span class="n">clu</span> <span class="ow">in</span> <span class="n">df_merge</span><span class="p">[</span><span class="s1">&#39;cluster&#39;</span><span class="p">]]</span>
@@ -2731,14 +2749,14 @@ Counter({2: 2910, 13: 1075, 9: 664, 16: 272, -1: 181, 11: 179, 21: 170, 6: 126, 
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/TM06_Clustering_61_0.png" src="../_images/TM06_Clustering_61_0.png" />
-<img alt="../_images/TM06_Clustering_61_1.png" src="../_images/TM06_Clustering_61_1.png" />
-<img alt="../_images/TM06_Clustering_61_2.png" src="../_images/TM06_Clustering_61_2.png" />
-<img alt="../_images/TM06_Clustering_61_3.png" src="../_images/TM06_Clustering_61_3.png" />
-<img alt="../_images/TM06_Clustering_61_4.png" src="../_images/TM06_Clustering_61_4.png" />
-<img alt="../_images/TM06_Clustering_61_5.png" src="../_images/TM06_Clustering_61_5.png" />
-<img alt="../_images/TM06_Clustering_61_6.png" src="../_images/TM06_Clustering_61_6.png" />
-<img alt="../_images/TM06_Clustering_61_7.png" src="../_images/TM06_Clustering_61_7.png" />
+<img alt="../_images/TM06_Clustering_62_0.png" src="../_images/TM06_Clustering_62_0.png" />
+<img alt="../_images/TM06_Clustering_62_1.png" src="../_images/TM06_Clustering_62_1.png" />
+<img alt="../_images/TM06_Clustering_62_2.png" src="../_images/TM06_Clustering_62_2.png" />
+<img alt="../_images/TM06_Clustering_62_3.png" src="../_images/TM06_Clustering_62_3.png" />
+<img alt="../_images/TM06_Clustering_62_4.png" src="../_images/TM06_Clustering_62_4.png" />
+<img alt="../_images/TM06_Clustering_62_5.png" src="../_images/TM06_Clustering_62_5.png" />
+<img alt="../_images/TM06_Clustering_62_6.png" src="../_images/TM06_Clustering_62_6.png" />
+<img alt="../_images/TM06_Clustering_62_7.png" src="../_images/TM06_Clustering_62_7.png" />
 </div>
 </div>
 </section>
@@ -2831,10 +2849,10 @@ Counter({2: 2910, 13: 1075, 9: 664, 16: 272, -1: 181, 11: 179, 21: 170, 6: 126, 
             <p class="prev-next-title">TM04 Feature Selection &amp; IR &amp; Search</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../CSS/CSS01_network_analysis.html" title="next page">
+    <a class='right-next' id="next-link" href="TM07_embedding_clustering.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CSS01 Network Analysis</p>
+        <p class="prev-next-title">TM07 embedding and clustering</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
