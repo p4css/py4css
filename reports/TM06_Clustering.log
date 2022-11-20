@@ -1,4 +1,15 @@
 Traceback (most recent call last):
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
+    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
+    result = await obj
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
+    raise Empty
+_queue.Empty
+
+During handling of the above exception, another exception occurred:
+
+Traceback (most recent call last):
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 51, in single_nb_execution
     executenb(
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
@@ -11,41 +22,19 @@ Traceback (most recent call last):
     return future.result()
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
-    await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
-    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
-nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
-------------------
-p = figure(title = "doc clustering")
-
-
-colors = df_merge['cluster'].apply(lambda x:generate_color(x, true_k))
-
-from bokeh.palettes import Magma, Inferno, Plasma, Viridis, Cividis, d3
-palletes = d3['Category20'][true_k]
-colors = [palletes[clu] for clu in df_merge['cluster']]
-# print(colors)
-p.circle(df_merge["x"], df_merge["y"], color = colors, fill_alpha=0.2, size=10)
-show(p)
-------------------
-
-[0;31m---------------------------------------------------------------------------[0m
-[0;31mIndexError[0m                                Traceback (most recent call last)
-Input [0;32mIn [30][0m, in [0;36m<cell line: 8>[0;34m()[0m
-[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mbokeh[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpalettes[39;00m [38;5;28;01mimport[39;00m Magma, Inferno, Plasma, Viridis, Cividis, d3
-[1;32m      7[0m palletes [38;5;241m=[39m d3[[38;5;124m'[39m[38;5;124mCategory20[39m[38;5;124m'[39m][true_k]
-[0;32m----> 8[0m colors [38;5;241m=[39m [palletes[clu] [38;5;28;01mfor[39;00m clu [38;5;129;01min[39;00m df_merge[[38;5;124m'[39m[38;5;124mcluster[39m[38;5;124m'[39m]]
-[1;32m      9[0m [38;5;66;03m# print(colors)[39;00m
-[1;32m     10[0m p[38;5;241m.[39mcircle(df_merge[[38;5;124m"[39m[38;5;124mx[39m[38;5;124m"[39m], df_merge[[38;5;124m"[39m[38;5;124my[39m[38;5;124m"[39m], color [38;5;241m=[39m colors, fill_alpha[38;5;241m=[39m[38;5;241m0.2[39m, size[38;5;241m=[39m[38;5;241m10[39m)
-
-Input [0;32mIn [30][0m, in [0;36m<listcomp>[0;34m(.0)[0m
-[1;32m      6[0m [38;5;28;01mfrom[39;00m [38;5;21;01mbokeh[39;00m[38;5;21;01m.[39;00m[38;5;21;01mpalettes[39;00m [38;5;28;01mimport[39;00m Magma, Inferno, Plasma, Viridis, Cividis, d3
-[1;32m      7[0m palletes [38;5;241m=[39m d3[[38;5;124m'[39m[38;5;124mCategory20[39m[38;5;124m'[39m][true_k]
-[0;32m----> 8[0m colors [38;5;241m=[39m [[43mpalletes[49m[43m[[49m[43mclu[49m[43m][49m [38;5;28;01mfor[39;00m clu [38;5;129;01min[39;00m df_merge[[38;5;124m'[39m[38;5;124mcluster[39m[38;5;124m'[39m]]
-[1;32m      9[0m [38;5;66;03m# print(colors)[39;00m
-[1;32m     10[0m p[38;5;241m.[39mcircle(df_merge[[38;5;124m"[39m[38;5;124mx[39m[38;5;124m"[39m], df_merge[[38;5;124m"[39m[38;5;124my[39m[38;5;124m"[39m], color [38;5;241m=[39m colors, fill_alpha[38;5;241m=[39m[38;5;241m0.2[39m, size[38;5;241m=[39m[38;5;241m10[39m)
-
-[0;31mIndexError[0m: tuple index out of range
-IndexError: tuple index out of range
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
+    exec_reply = await self.task_poll_for_reply
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
+    await self._async_handle_timeout(timeout, cell)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
+    raise CellTimeoutError.error_from_timeout_and_cell(
+nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
+The message was: Cell execution timed out.
+Here is a preview of the cell contents:
+-------------------
+import umap
+points = umap.UMAP(n_neighbors = 50, 
+                            n_components = 2, 
+                            metric='cosine').fit_transform(X)
+-------------------
 
