@@ -385,6 +385,11 @@ const thebe_selector_output = ".output, .cell_output"
    TM04 Feature Selection &amp; IR &amp; Search
   </a>
  </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM05_sentiment.html">
+   TM05 Sentiment analysis
+  </a>
+ </li>
 </ul>
 <p aria-level="2" class="caption" role="heading">
  <span class="caption-text">
@@ -400,6 +405,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1">
   <a class="reference internal" href="../TM/TM07_embedding_clustering.html">
    TM07 embedding and clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../TM/TM07_2_doc2vec.html">
+   TM07 word2vec vs doc2vec
   </a>
  </li>
 </ul>
@@ -823,7 +833,7 @@ title="Print to PDF"
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
 200
-{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;5e58ed3d-701e-00f8-3c9c-fc31ce000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Sun, 20 Nov 2022 04:58:22 GMT&#39;}
+{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;70184504-001e-0056-2aa3-fc12a3000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Sun, 20 Nov 2022 05:43:32 GMT&#39;}
 &lt;class &#39;requests.models.Response&#39;&gt;
 &lt;class &#39;str&#39;&gt;
 </pre></div>
@@ -1000,30 +1010,6 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
     <tr>
       <th>2</th>
       <td>2</td>
-      <td>13130083</td>
-      <td>Data Scientist / 資料科學家_11871</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001009</td>
-      <td>台北市北投區</td>
-      <td>立功街96號</td>
-      <td>learning / deep learning papers, and have the...</td>
-      <td>...</td>
-      <td>Data Scientist / 資料科學家_11871</td>
-      <td>和碩集團_和碩聯合科技股份有限公司</td>
-      <td>121.4712373</td>
-      <td>25.124796</td>
-      <td>0</td>
-      <td>[資訊工程相關, 統計學相關]</td>
-      <td></td>
-      <td>0.41</td>
-      <td>99001002025</td>
-      <td>捷運關渡站</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2</td>
       <td>12463827</td>
       <td>PD0751 資料科學家Data Scientist(內湖)</td>
       <td>PD0751 &lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;...</td>
@@ -1044,6 +1030,30 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
       <td>0.27</td>
       <td>99001001016</td>
       <td>捷運西湖站</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>2</td>
+      <td>13130083</td>
+      <td>Data Scientist / 資料科學家_11871</td>
+      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001009</td>
+      <td>台北市北投區</td>
+      <td>立功街96號</td>
+      <td>learning / deep learning papers, and have the...</td>
+      <td>...</td>
+      <td>Data Scientist / 資料科學家_11871</td>
+      <td>和碩集團_和碩聯合科技股份有限公司</td>
+      <td>121.4712373</td>
+      <td>25.124796</td>
+      <td>0</td>
+      <td>[資訊工程相關, 統計學相關]</td>
+      <td></td>
+      <td>0.41</td>
+      <td>99001002025</td>
+      <td>捷運關渡站</td>
     </tr>
     <tr>
       <th>4</th>
