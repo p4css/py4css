@@ -1,0 +1,2293 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Classification &#8212; Programming for Social Scientists</title>
+    
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=1999514e3f237ded88cf" rel="stylesheet">
+
+    
+  <link rel="stylesheet"
+    href="../_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="../_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=5115cc725059bd94278eecd172e13a965bf8f5a9" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.b7bb847fb20b106c3d81b95245e65545.min.css" />
+    
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf">
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=9c920249402e914e316237a7dbc6769907cce411"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CSS01 Network Analysis" href="../CSS/CSS01_network_analysis.html" />
+    <link rel="prev" title="TM07 word2vec vs doc2vec" href="TM07_2_doc2vec.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="None">
+    
+
+    <!-- Google Analytics -->
+    
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="60">
+<!-- Checkboxes to toggle the left sidebar -->
+<input type="checkbox" class="sidebar-toggle" name="__navigation" id="__navigation" aria-label="Toggle navigation sidebar">
+<label class="overlay overlay-navbar" for="__navigation">
+    <div class="visually-hidden">Toggle navigation sidebar</div>
+</label>
+<!-- Checkboxes to toggle the in-page toc -->
+<input type="checkbox" class="sidebar-toggle" name="__page-toc" id="__page-toc" aria-label="Toggle in-page Table of Contents">
+<label class="overlay overlay-pagetoc" for="__page-toc">
+    <div class="visually-hidden">Toggle in-page Table of Contents</div>
+</label>
+<!-- Headers at the top -->
+<div class="announcement header-item noprint"></div>
+<div class="header header-item noprint"></div>
+
+    
+    <div class="container-fluid" id="banner"></div>
+
+    
+
+    <div class="container-xl">
+      <div class="row">
+          
+<!-- Sidebar -->
+<div class="bd-sidebar noprint" id="site-navigation">
+    <div class="bd-sidebar__content">
+        <div class="bd-sidebar__top"><div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="../index.html">
+      
+        <!-- `logo` is deprecated in Sphinx 4.0, so remove this when we stop supporting 3 -->
+        
+      
+      
+      <img src="../_static/logo.png" class="logo" alt="logo">
+      
+      
+      <h1 class="site-logo" id="site-title">Programming for Social Scientists</h1>
+      
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="../search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Welcome to your Jupyter Book
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Basic Logic
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P01_counting.html">
+   P01-Counting
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/>
+  <label for="toctree-checkbox-1">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P01p_counting.html">
+     P01-Practice
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P01p_Ans.html">
+     Self-Quiz: Counting departments
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P02_0_basic.html">
+   P02-Python Basic
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/>
+  <label for="toctree-checkbox-2">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P02_0b_basic.html">
+     P02-blank-Python Basic
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P02_2_exceptions.html">
+     Exceptions(Errors) Handling
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P03_list_dictionary.html">
+   P03-List and Dictionary
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/>
+  <label for="toctree-checkbox-3">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P03b_list_dictionary.html">
+     P03-blank-List &amp; Dictionary
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P03p.html">
+     P03-Practice List &amp; Dict
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P03p_ans.html">
+     P03p_1: Counting ubike site number of each area
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P04_1_for.html">
+   P04 For-loop
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/>
+  <label for="toctree-checkbox-4">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P04_1p.html">
+     P04_1p Practice for-loop
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P04_1p_ans.html">
+     P04_1p Practice for-loop
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P04_2_for_if.html">
+   P04 For-if applications
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/>
+  <label for="toctree-checkbox-5">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P04_2b_for_if.html">
+     P04_2-blank For-if applications
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P04_2p_twitter_users.html">
+     P04_2p Study Twitter Problematic Users
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Exploration
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P05_read_csv_json.html">
+   P05 READ Files
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/>
+  <label for="toctree-checkbox-6">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P05_read_other_format.html">
+     Read more formats
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P06_0_pandas.html">
+   P06 Pandas
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/>
+  <label for="toctree-checkbox-7">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P06_1_summarizing.html">
+     Pandas: Counting and Summarizing
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P06_2_filter_select_datetime.html">
+     Pandas: filter, select, and timeline process
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P07_0_visualization.html">
+   P07 Visualization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/>
+  <label for="toctree-checkbox-8">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P07_1_plot_pandas.html">
+     Making Charts with Pandas
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P07_2_bokeh.html">
+     Bokeh &amp; Seaborn(Vaccinating)
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Data Acquisition
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="../PSS/P08_0_scraper.html">
+   P08 Web Crawler
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/>
+  <label for="toctree-checkbox-9">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P08_1_web_json.html">
+     Web API: cnyes &amp; 104.com
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P08_2_twitter_api.html">
+     Twitter API
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P08_3%20tweepy.html">
+     Tweepy for twitter API 2.0
+    </a>
+   </li>
+   <li class="toctree-l2">
+    <a class="reference internal" href="../PSS/P08_5_cases.html">
+     Scraping cases
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">
+   P08 HTML Parsing
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Text Mining
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1 has-children">
+  <a class="reference internal" href="TM01_tokenization.html">
+   TM01 Tokenization
+  </a>
+  <input class="toctree-checkbox" id="toctree-checkbox-10" name="toctree-checkbox-10" type="checkbox"/>
+  <label for="toctree-checkbox-10">
+   <i class="fas fa-chevron-down">
+   </i>
+  </label>
+  <ul>
+   <li class="toctree-l2">
+    <a class="reference internal" href="TM01_tokenization%28chi%29.html">
+     Chinese Processing
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM02_collocation.html">
+   TM02 Collocation
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM03_POS%20Tagging.html">
+   TM03 POS Tagging
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM04_IR_search.html">
+   TM04 Feature Selection &amp; IR &amp; Search
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM05_sentiment.html">
+   TM05 Sentiment analysis
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Machine Learning
+ </span>
+</p>
+<ul class="current nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM06_Clustering.html">
+   TM06 Clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM07_embedding_clustering.html">
+   TM07 embedding and clustering
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM07_2_doc2vec.html">
+   TM07 word2vec vs doc2vec
+  </a>
+ </li>
+ <li class="toctree-l1 current active">
+  <a class="current reference internal" href="#">
+   Classification
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Using deep learning
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">
+   Transformer-Clusteirng
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">
+   Transformer-Classification
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Compuational Social Science
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CSS/CSS01_network_analysis.html">
+   CSS01 Network Analysis
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../CSS/CSS02_Simulation.html">
+   CSS02 Simulation
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Assignments
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS01_basic.html">
+   AS01 for Python Basic
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS02_list_dict_for_if.html">
+   AS02 List-dict-for-if
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS03_pandas_summarization.html">
+   AS03 Summarize data with Pandas
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS04_vis_twitter_api.html">
+   AS04 Twitter API and Pandas Visualization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS05_scraping_youtube.html">
+   AS05 Scraping youtube
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">
+   AS06 Tokenization
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS07_collocation.html">
+   AS07 Collocation for finding enthusiastic commentors
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">
+   AS08 Youtube comment clustering
+  </a>
+ </li>
+</ul>
+<p aria-level="2" class="caption" role="heading">
+ <span class="caption-text">
+  Resources
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/video_list.html">
+   Python教學影片
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="../Resource/IDEs.html">
+   Python開發環境
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav></div>
+        <div class="bd-sidebar__bottom">
+             <!-- To handle the deprecated key -->
+            
+            <div class="navbar_extra_footer">
+            Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+            </div>
+            
+        </div>
+    </div>
+    <div id="rtd-footer-container"></div>
+</div>
+
+
+          
+
+
+          
+<!-- A tiny helper pixel to detect if we've scrolled -->
+<div class="sbt-scroll-pixel-helper"></div>
+<!-- Main content -->
+<div class="col py-0 content-container">
+    
+    <div class="header-article row sticky-top noprint">
+        
+
+
+
+<div class="col py-1 d-flex header-article-main">
+    <div class="header-article__left">
+        
+        <label for="__navigation"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="right"
+title="Toggle navigation"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-bars"></i>
+  </span>
+
+</label>
+
+        
+    </div>
+    <div class="header-article__right">
+<div class="menu-dropdown menu-dropdown-launch-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Launch interactive content">
+      <i class="fas fa-rocket"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://mybinder.org/v2/gh/p4css/py4css/master?urlpath=tree/_sources/TM/TM08_doc_classification.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Binder"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_binder.svg">
+  </span>
+<span class="headerbtn__text-container">Binder</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/TM/TM08_doc_classification.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Launch on Colab"
+>
+  
+
+<span class="headerbtn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="headerbtn__text-container">Colab</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<button onclick="toggleFullScreen()"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="bottom"
+title="Fullscreen mode"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+<div class="menu-dropdown menu-dropdown-repository-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Source repositories">
+      <i class="fab fa-github"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="https://github.com/p4css/py4css"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Source repository"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="headerbtn__text-container">repository</span>
+</a>
+
+      </li>
+      
+      <li>
+        <a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM08_doc_classification.html&body=Your%20issue%20content%20here."
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Open an issue"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="headerbtn__text-container">open issue</span>
+</a>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+
+<div class="menu-dropdown menu-dropdown-download-buttons">
+  <button class="headerbtn menu-dropdown__trigger"
+      aria-label="Download this page">
+      <i class="fas fa-download"></i>
+  </button>
+  <div class="menu-dropdown__content">
+    <ul>
+      <li>
+        <a href="../_sources/TM/TM08_doc_classification.ipynb"
+   class="headerbtn"
+   data-toggle="tooltip"
+data-placement="left"
+title="Download source file"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="headerbtn__text-container">.ipynb</span>
+</a>
+
+      </li>
+      
+      <li>
+        
+<button onclick="printPdf(this)"
+  class="headerbtn"
+  data-toggle="tooltip"
+data-placement="left"
+title="Print to PDF"
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="headerbtn__text-container">.pdf</span>
+</button>
+
+      </li>
+      
+    </ul>
+  </div>
+</div>
+<label for="__page-toc"
+  class="headerbtn headerbtn-page-toc"
+  
+>
+  
+
+<span class="headerbtn__icon-container">
+  <i class="fas fa-list"></i>
+  </span>
+
+</label>
+
+    </div>
+</div>
+
+<!-- Table of contents -->
+<div class="col-md-3 bd-toc show noprint">
+    <div class="tocsection onthispage pt-5 pb-3">
+        <i class="fas fa-list"></i> Contents
+    </div>
+    <nav id="bd-toc-nav" aria-label="Page">
+        <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Classification
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparing-data">
+   Preparing data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-punctuation">
+     Removing Punctuation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection">
+   Feature selection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tfidf-vectorization">
+     tfidf vectorization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#doc2vec">
+     doc2vec
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chi-square-feature-selector">
+     Chi.square feature selector
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-test-split">
+   train_test_split()
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling">
+   Modeling
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-bayes">
+     Naive Bayes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xgboost">
+     XGBoost
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree">
+   Decision Tree
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prediction">
+   Prediction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation">
+   Evaluation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explaining-classification-report">
+   Explaining classification_report
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notes-precision-and-recall">
+     Notes: precision and recall
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overall-evaluating">
+   Overall Evaluating
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roc-receiver-operating-characteristic-curve">
+   ROC Receiver Operating Characteristic Curve
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     Confusion matrix
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-plot-roc-curve">
+     by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plot_roc_curve()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roc-curve-by-nb">
+     roc_curve by NB
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practic">
+   Practic
+  </a>
+ </li>
+</ul>
+
+    </nav>
+</div>
+    </div>
+    <div class="article row">
+        <div class="col pl-md-3 pl-lg-5 content-container">
+            <!-- Table of contents that is only displayed when printing the page -->
+            <div id="jb-print-docs-body" class="onlyprint">
+                <h1>Classification</h1>
+                <!-- Table of contents -->
+                <div id="print-main-content">
+                    <div id="jb-print-toc">
+                        
+                        <div>
+                            <h2> Contents </h2>
+                        </div>
+                        <nav aria-label="Page">
+                            <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Classification
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#preparing-data">
+   Preparing data
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#removing-punctuation">
+     Removing Punctuation
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#feature-selection">
+   Feature selection
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tfidf-vectorization">
+     tfidf vectorization
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#doc2vec">
+     doc2vec
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#chi-square-feature-selector">
+     Chi.square feature selector
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#train-test-split">
+   train_test_split()
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#modeling">
+   Modeling
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#naive-bayes">
+     Naive Bayes
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#xgboost">
+     XGBoost
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#decision-tree">
+   Decision Tree
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#prediction">
+   Prediction
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#evaluation">
+   Evaluation
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#explaining-classification-report">
+   Explaining classification_report
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#notes-precision-and-recall">
+     Notes: precision and recall
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#overall-evaluating">
+   Overall Evaluating
+  </a>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#roc-receiver-operating-characteristic-curve">
+   ROC Receiver Operating Characteristic Curve
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#confusion-matrix">
+     Confusion matrix
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#by-plot-roc-curve">
+     by
+     <code class="docutils literal notranslate">
+      <span class="pre">
+       plot_roc_curve()
+      </span>
+     </code>
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#roc-curve-by-nb">
+     roc_curve by NB
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#practic">
+   Practic
+  </a>
+ </li>
+</ul>
+
+                        </nav>
+                    </div>
+                </div>
+            </div>
+            <main id="main-content" role="main">
+                
+              <div>
+                
+  <section id="classification">
+<h1>Classification<a class="headerlink" href="#classification" title="Permalink to this headline">#</a></h1>
+</section>
+<section id="preparing-data">
+<h1>Preparing data<a class="headerlink" href="#preparing-data" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/sentiment.csv&#39;</span><span class="p">)</span>
+
+<span class="kn">import</span> <span class="nn">jieba</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;token_text&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span><span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+<span class="n">df</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.302 seconds.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tag</th>
+      <th>text</th>
+      <th>token_text</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>P</td>
+      <td>店家很給力，快遞也是相當快，第三次光顧啦</td>
+      <td>[店家, 很, 給力, ，, 快遞, 也, 是, 相當快, ，, 第三次, 光顧, 啦]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N</td>
+      <td>這樣的配置用Vista系統還是有點卡。 指紋收集器。 沒送原裝滑鼠還需要自己買，不太好。</td>
+      <td>[這樣, 的, 配置, 用, Vista, 系統, 還是, 有點, 卡, 。,  , 指紋,...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>P</td>
+      <td>不錯，在同等檔次酒店中應該是值得推薦的！</td>
+      <td>[不錯, ，, 在, 同等, 檔次, 酒店, 中應, 該, 是, 值得, 推薦, 的, ！]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N</td>
+      <td>哎！ 不會是蒙牛乾的吧 嚴懲真凶！</td>
+      <td>[哎, ！,  , 不會, 是, 蒙牛, 乾, 的, 吧,  , 嚴懲, 真凶, ！]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N</td>
+      <td>空尤其是三立電視臺女主播做的序尤其無趣像是硬湊那麼多字</td>
+      <td>[空, 尤其, 是, 三立, 電視, 臺, 女主播, 做, 的, 序, 尤其, 無趣, 像是...</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>N</td>
+      <td>明明買了6本書，只到了3本，也沒有說是什麼原因，以後怎麼信的過？？？？？？？？？？？</td>
+      <td>[明明, 買, 了, 6, 本書, ，, 只到, 了, 3, 本, ，, 也, 沒, 有, ...</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>P</td>
+      <td>看了一下感覺還可以</td>
+      <td>[看, 了, 一下, 感覺還, 可以]</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>P</td>
+      <td>散熱還不錯，玩遊戲cpu溫度和硬碟溫度都在56以下，     速度很好，顯示卡也不錯</td>
+      <td>[散熱, 還不錯, ，, 玩遊戲, cpu, 溫度, 和, 硬碟, 溫度, 都, 在, 56...</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>P</td>
+      <td>外觀好看，白色的自己貼紙也方便，vista執行起來速度也還不錯.屬於主流配置了。一般用用可以的</td>
+      <td>[外觀, 好看, ，, 白色, 的, 自己, 貼紙, 也, 方便, ，, vista, 執行...</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>N</td>
+      <td>水超級小 用的時候還要先修理一下花灑 售後還說是水壓問題 說本來標配都是這樣還要自己重新換一個</td>
+      <td>[水超級, 小,  , 用, 的, 時候, 還要, 先, 修理, 一下, 花灑,  , 售後...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<section id="removing-punctuation">
+<h2>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span> <span class="c1"># for removing Chinese puctuation</span>
+<span class="k">def</span> <span class="nf">remove_punc_by_unicode</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">):</span>
+            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">out</span>
+<span class="n">df</span><span class="p">[</span><span class="s1">&#39;cleaned&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;token_text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="n">remove_punc_by_unicode</span><span class="p">)</span>
+<span class="c1"># df[&#39;cleaned&#39;] = df[&#39;clean&#39;].apply(remove_stopWords)</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>tag</th>
+      <th>text</th>
+      <th>token_text</th>
+      <th>cleaned</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>P</td>
+      <td>店家很給力，快遞也是相當快，第三次光顧啦</td>
+      <td>[店家, 很, 給力, ，, 快遞, 也, 是, 相當快, ，, 第三次, 光顧, 啦]</td>
+      <td>[店家, 很, 給力, 快遞, 也, 是, 相當快, 第三次, 光顧, 啦]</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>N</td>
+      <td>這樣的配置用Vista系統還是有點卡。 指紋收集器。 沒送原裝滑鼠還需要自己買，不太好。</td>
+      <td>[這樣, 的, 配置, 用, Vista, 系統, 還是, 有點, 卡, 。,  , 指紋,...</td>
+      <td>[這樣, 的, 配置, 用, Vista, 系統, 還是, 有點, 卡, 指紋, 收集器, ...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>P</td>
+      <td>不錯，在同等檔次酒店中應該是值得推薦的！</td>
+      <td>[不錯, ，, 在, 同等, 檔次, 酒店, 中應, 該, 是, 值得, 推薦, 的, ！]</td>
+      <td>[不錯, 在, 同等, 檔次, 酒店, 中應, 該, 是, 值得, 推薦, 的]</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>N</td>
+      <td>哎！ 不會是蒙牛乾的吧 嚴懲真凶！</td>
+      <td>[哎, ！,  , 不會, 是, 蒙牛, 乾, 的, 吧,  , 嚴懲, 真凶, ！]</td>
+      <td>[哎, 不會, 是, 蒙牛, 乾, 的, 吧, 嚴懲, 真凶]</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>N</td>
+      <td>空尤其是三立電視臺女主播做的序尤其無趣像是硬湊那麼多字</td>
+      <td>[空, 尤其, 是, 三立, 電視, 臺, 女主播, 做, 的, 序, 尤其, 無趣, 像是...</td>
+      <td>[空, 尤其, 是, 三立, 電視, 臺, 女主播, 做, 的, 序, 尤其, 無趣, 像是...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>6383</th>
+      <td>P</td>
+      <td>價效比高、記憶體大、功能全，螢幕超清晰</td>
+      <td>[價效, 比高, 、, 記憶體, 大, 、, 功能, 全, ，, 螢幕超, 清晰]</td>
+      <td>[價效, 比高, 記憶體, 大, 功能, 全, 螢幕超, 清晰]</td>
+    </tr>
+    <tr>
+      <th>6384</th>
+      <td>N</td>
+      <td>你太狠了… 告訴你他們不會喧譁的人，肯定是蒙牛喝多了</td>
+      <td>[你, 太狠, 了, …,  , 告訴, 你, 他們, 不會, 喧, 譁, 的, 人, ，,...</td>
+      <td>[你, 太狠, 了, 告訴, 你, 他們, 不會, 喧, 譁, 的, 人, 肯定, 是, 蒙...</td>
+    </tr>
+    <tr>
+      <th>6385</th>
+      <td>N</td>
+      <td>醫生居然買了蒙牛，我是喝呢還是不喝呢還是不喝呢？</td>
+      <td>[ , 醫生, 居然, 買, 了, 蒙牛, ，, 我, 是, 喝, 呢, 還是, 不, 喝,...</td>
+      <td>[醫生, 居然, 買, 了, 蒙牛, 我, 是, 喝, 呢, 還是, 不, 喝, 呢, 還是...</td>
+    </tr>
+    <tr>
+      <th>6386</th>
+      <td>N</td>
+      <td>我只想說 夾蒙牛是不對的 販賣毒品是犯罪行為</td>
+      <td>[我, 只, 想, 說,  , 夾, 蒙牛, 是, 不, 對, 的,  , 販賣, 毒品, ...</td>
+      <td>[我, 只, 想, 說, 夾, 蒙牛, 是, 不, 對, 的, 販賣, 毒品, 是, 犯罪,...</td>
+    </tr>
+    <tr>
+      <th>6387</th>
+      <td>P</td>
+      <td>蒙牛便宜</td>
+      <td>[蒙牛, 便宜]</td>
+      <td>[蒙牛, 便宜]</td>
+    </tr>
+  </tbody>
+</table>
+<p>6388 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="feature-selection">
+<h1>Feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">documents</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cleaned&#39;</span><span class="p">]]</span>
+<span class="n">documents</span><span class="p">[:</span><span class="mi">10</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;店家 很 給力 快遞 也 是 相當快 第三次 光顧 啦&#39;,
+ &#39;這樣 的 配置 用 Vista 系統 還是 有點 卡 指紋 收集器 沒送 原裝 滑鼠 還 需要 自己 買 不太好&#39;,
+ &#39;不錯 在 同等 檔次 酒店 中應 該 是 值得 推薦 的&#39;,
+ &#39;哎 不會 是 蒙牛 乾 的 吧 嚴懲 真凶&#39;,
+ &#39;空 尤其 是 三立 電視 臺 女主播 做 的 序 尤其 無趣 像是 硬 湊 那麼 多字&#39;,
+ &#39;明明 買 了 6 本書 只到 了 3 本 也 沒 有 說 是 什麼 原因 以後怎麼 信的過&#39;,
+ &#39;看 了 一下 感覺還 可以&#39;,
+ &#39;散熱 還不錯 玩遊戲 cpu 溫度 和 硬碟 溫度 都 在 56 以下 速度 很 好 顯示 卡 也 不錯&#39;,
+ &#39;外觀 好看 白色 的 自己 貼紙 也 方便 vista 執行 起來 速度 也 還不錯 屬 於 主流 配置 了 一般 用 用 可以 的&#39;,
+ &#39;水超級 小 用 的 時候 還要 先 修理 一下 花灑 售後還 說 是 水壓 問題 說 本來 標配 都 是 這樣 還要 自己 重新 換一個&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<section id="tfidf-vectorization">
+<h2>tfidf vectorization<a class="headerlink" href="#tfidf-vectorization" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://towardsdatascience.com/clustering-documents-with-python-97314ad6a78d">https://towardsdatascience.com/clustering-documents-with-python-97314ad6a78d</a></p></li>
+<li><p><a class="reference external" href="https://blog.csdn.net/blmoistawinde/article/details/80816179">https://blog.csdn.net/blmoistawinde/article/details/80816179</a></p></li>
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html">https://scikit-learn.org/stable/modules/generated/sklearn.feature_extraction.text.TfidfVectorizer.html</a></p></li>
+</ul>
+<p><strong>Parameters</strong></p>
+<ul class="simple">
+<li><p><strong>lowercasebool</strong>, default=True: Convert all characters to lowercase before tokenizing.</p></li>
+<li><p><strong>analyzer{‘word’, ‘char’, ‘char_wb’}</strong> or callable, default=’word’ Whether the feature should be made of word or character n-grams. Option ‘char_wb’ creates character n-grams only from text inside word boundaries; n-grams at the edges of words are padded with space.</p></li>
+<li><p><strong>stop_words{‘english’}</strong>, list, default=None</p></li>
+<li><p><strong>token_pattern</strong>, str, default=r”(?u)\b\w\w+\b”: the default setting limits on at least 2 characters</p></li>
+<li><p><strong>ngram_range</strong>, tuple (min_n, max_n), default=(1, 1): (1, 2) means unigrams and bigrams, and (2, 2) means only bigrams.</p></li>
+<li><p><strong>max_df(min_df)</strong> float or int, default=1.0: When building the vocabulary ignore terms that have a document frequency strictly higher(lower for min_df) than the given threshold (corpus-specific stop words). If float in range [0.0, 1.0], the parameter represents a proportion of documents, integer absolute counts. This parameter is ignored if vocabulary is not None.</p></li>
+<li><p><strong>max_features</strong>, int, default=None: If not None, build a vocabulary that only consider the top max_features ordered by term frequency across the corpus.</p></li>
+<li><p><strong>use_idf</strong>, default=True: Enable inverse-document-frequency reweighting.</p></li>
+<li><p><strong>smooth_idf</strong>, default=True: Smooth idf weights by adding one to document frequencies, as if an extra document was seen containing every term in the collection exactly once. Prevents zero divisions.</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/stopwords_zh-tw.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">stopwords</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">TfidfVectorizer</span>
+
+<span class="c1"># fit(doc)</span>
+<span class="n">model_tfidf</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span><span class="n">max_df</span><span class="o">=</span><span class="mf">0.05</span><span class="p">,</span>
+                              <span class="c1"># token_pattern=r&quot;(?u)\b\w+\b&quot;, </span>
+                              <span class="c1"># max_features = 2000,</span>
+                              <span class="n">stop_words</span><span class="o">=</span><span class="n">stopwords</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+
+
+<span class="c1"># transform(doc) to document-term matrix</span>
+<span class="c1"># X: Documnet-term matrix (rows, colomns)</span>
+
+<span class="n">X_tfidf</span> <span class="o">=</span> <span class="n">model_tfidf</span><span class="o">.</span><span class="n">transform</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_tfidf</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+
+
+<span class="c1"># Show transform(X_tfidf) result</span>
+<span class="n">model_tfidf</span><span class="o">.</span><span class="n">inverse_transform</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">)[:</span><span class="mi">20</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;scipy.sparse.csr.csr_matrix&#39;&gt;
+(6388, 11959)
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[array([&#39;給力&#39;, &#39;第三次&#39;, &#39;相當快&#39;, &#39;快遞&#39;, &#39;店家&#39;, &#39;光顧&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;需要&#39;, &#39;配置&#39;, &#39;系統&#39;, &#39;滑鼠&#39;, &#39;沒送&#39;, &#39;有點&#39;, &#39;收集器&#39;, &#39;指紋&#39;, &#39;原裝&#39;, &#39;不太好&#39;,
+        &#39;vista&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;檔次&#39;, &#39;推薦&#39;, &#39;同等&#39;, &#39;值得&#39;, &#39;中應&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;真凶&#39;, &#39;嚴懲&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;電視&#39;, &#39;無趣&#39;, &#39;尤其&#39;, &#39;女主播&#39;, &#39;多字&#39;, &#39;像是&#39;, &#39;三立&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;本書&#39;, &#39;明明&#39;, &#39;只到&#39;, &#39;原因&#39;, &#39;信的過&#39;, &#39;以後怎麼&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;感覺還&#39;, &#39;一下&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;顯示&#39;, &#39;還不錯&#39;, &#39;速度&#39;, &#39;硬碟&#39;, &#39;玩遊戲&#39;, &#39;溫度&#39;, &#39;散熱&#39;, &#39;以下&#39;, &#39;cpu&#39;, &#39;56&#39;],
+       dtype=&#39;&lt;U24&#39;),
+ array([&#39;配置&#39;, &#39;還不錯&#39;, &#39;速度&#39;, &#39;貼紙&#39;, &#39;白色&#39;, &#39;方便&#39;, &#39;好看&#39;, &#39;外觀&#39;, &#39;執行&#39;, &#39;主流&#39;,
+        &#39;vista&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;重新&#39;, &#39;還要&#39;, &#39;花灑&#39;, &#39;水超級&#39;, &#39;水壓&#39;, &#39;標配&#39;, &#39;本來&#39;, &#39;換一個&#39;, &#39;問題&#39;, &#39;售後還&#39;,
+        &#39;修理&#39;, &#39;一下&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;還非&#39;, &#39;結帳&#39;, &#39;知道&#39;, &#39;每首&#39;, &#39;房間點&#39;, &#39;懶得&#39;, &#39;廢話&#39;, &#39;太差&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;霸氣&#39;, &#39;覺得&#39;, &#39;特倫蘇&#39;, &#39;牛奶&#39;, &#39;外露&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;系統&#39;, &#39;真難裝&#39;, &#39;版本&#39;, &#39;根本&#39;, &#39;外觀&#39;, &#39;剛買&#39;, &#39;xp&#39;, &#39;linux&#39;, &#39;ghost&#39;, &#39;100&#39;],
+       dtype=&#39;&lt;U24&#39;),
+ array([&#39;配置&#39;, &#39;用剛&#39;, &#39;檔次&#39;, &#39;有紅色&#39;, &#39;很漂亮&#39;, &#39;實惠&#39;, &#39;女生&#39;, &#39;外觀&#39;, &#39;同價位&#39;],
+       dtype=&#39;&lt;U24&#39;),
+ array([&#39;棒子&#39;, &#39;有樂趣&#39;, &#39;我用&#39;, &#39;大果&#39;, &#39;喜歡&#39;, &#39;吸馬桶&#39;, &#39;吸著&#39;, &#39;今天&#39;, &#39;一個&#39;],
+       dtype=&#39;&lt;U24&#39;),
+ array([&#39;頭腦&#39;, &#39;關注&#39;, &#39;鑑別&#39;, &#39;這本書會&#39;, &#39;認真&#39;, &#39;清醒&#39;, &#39;毒人&#39;, &#39;明白&#39;, &#39;保持&#39;, &#39;一直&#39;],
+       dtype=&#39;&lt;U24&#39;),
+ array([&#39;鍵盤&#39;, &#39;輕便&#39;, &#39;軟體&#39;, &#39;視訊&#39;, &#39;螢幕&#39;, &#39;舒服&#39;, &#39;自帶&#39;, &#39;現實&#39;, &#39;比不錯&#39;, &#39;效果&#39;, &#39;小巧&#39;,
+        &#39;價效&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;系統&#39;, &#39;硬碟&#39;, &#39;正版&#39;, &#39;收到&#39;, &#39;原來&#39;, &#39;vista&#39;, &#39;dos&#39;, &#39;320g&#39;, &#39;250g&#39;],
+       dtype=&#39;&lt;U24&#39;),
+ array([&#39;這本書&#39;, &#39;覺得&#39;, &#39;看過&#39;, &#39;巴豆&#39;, &#39;嘟嘟&#39;], dtype=&#39;&lt;U24&#39;),
+ array([&#39;系統&#39;, &#39;硬碟&#39;, &#39;正版&#39;, &#39;收到&#39;, &#39;原來&#39;, &#39;vista&#39;, &#39;dos&#39;, &#39;320g&#39;, &#39;250g&#39;],
+       dtype=&#39;&lt;U24&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="doc2vec">
+<h2>doc2vec<a class="headerlink" href="#doc2vec" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">common_texts</span>
+<span class="kn">from</span> <span class="nn">gensim.models.doc2vec</span> <span class="kn">import</span> <span class="n">Doc2Vec</span><span class="p">,</span> <span class="n">TaggedDocument</span>
+
+<span class="n">tagged_documents</span> <span class="o">=</span> <span class="p">[</span><span class="n">TaggedDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">documents</span><span class="p">)]</span>
+<span class="n">model</span> <span class="o">=</span> <span class="n">Doc2Vec</span><span class="p">(</span><span class="n">tagged_documents</span><span class="p">,</span> <span class="n">vector_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">scipy</span>
+<span class="n">doc_vector</span> <span class="o">=</span> <span class="p">[</span><span class="n">model</span><span class="o">.</span><span class="n">infer_vector</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cleaned&#39;</span><span class="p">]]</span>
+<span class="n">X_w2v</span> <span class="o">=</span> <span class="n">scipy</span><span class="o">.</span><span class="n">sparse</span><span class="o">.</span><span class="n">csr_matrix</span><span class="p">(</span><span class="n">doc_vector</span><span class="p">)</span>
+<span class="n">X_w2v</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6388, 100)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chi-square-feature-selector">
+<h2>Chi.square feature selector<a class="headerlink" href="#chi-square-feature-selector" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://towardsdatascience.com/using-the-chi-squared-test-for-feature-selection-with-implementation-b15a4dad93f1">https://towardsdatascience.com/using-the-chi-squared-test-for-feature-selection-with-implementation-b15a4dad93f1</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">chi2</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_selection</span> <span class="kn">import</span> <span class="n">SelectKBest</span>
+<span class="n">selector</span> <span class="o">=</span> <span class="n">SelectKBest</span><span class="p">(</span><span class="n">score_func</span><span class="o">=</span><span class="n">chi2</span><span class="p">,</span> <span class="n">k</span><span class="o">=</span><span class="mi">1000</span><span class="p">)</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="n">fit</span> <span class="o">=</span> <span class="n">selector</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">fit</span><span class="o">.</span><span class="n">scores_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.15789817, 0.01763186, 0.45339518, ..., 0.32014909, 0.00125132,
+       0.33394599])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X_chi2</span><span class="o">=</span><span class="n">selector</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X_tfidf</span><span class="p">,</span> <span class="n">y</span><span class="p">)</span>
+<span class="n">X_chi2</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;6388x1000 sparse matrix of type &#39;&lt;class &#39;numpy.float64&#39;&gt;&#39;
+	with 20500 stored elements in Compressed Sparse Row format&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="train-test-split">
+<h1>train_test_split()<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html</a></p></li>
+<li><p>Params</p>
+<ul>
+<li><p><strong>test_size float or int, default=None</strong>: If float, should be between 0.0 and 1.0 and represent the proportion of the dataset to include in the test split. If int, represents the absolute number of test samples. If None, the value is set to the complement of the train size. If train_size is also None, it will be set to 0.25.</p></li>
+<li><p><strong>train_size float or int, default=None</strong>: If float, should be between 0.0 and 1.0 and represent the proportion of the dataset to include in the train split. If int, represents the absolute number of train samples. If None, the value is automatically set to the complement of the test size.</p></li>
+<li><p><strong>random_stateint, RandomState instance or None, default=None</strong>: Controls the shuffling applied to the data before applying the split. Pass an int for reproducible output across multiple function calls. See Glossary.</p></li>
+<li><p><strong>shufflebool, default=True</strong>: Whether or not to shuffle the data before splitting. If shuffle=False then stratify must be None.</p></li>
+<li><p><strong>stratifyarray-like, default=None</strong>: If not None, data is split in a stratified fashion, using this as the class labels. Read more in the User Guide.</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Restoring label y</span>
+<span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+
+<span class="c1"># split train and test data</span>
+<span class="kn">from</span> <span class="nn">sklearn.model_selection</span> <span class="kn">import</span> <span class="n">train_test_split</span>
+<span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">X_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_tfidf</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">X_w2v_train</span><span class="p">,</span> <span class="n">X_w2v_test</span><span class="p">,</span> <span class="n">y_w2v_train</span><span class="p">,</span> <span class="n">y_w2v_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_w2v</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+<span class="n">X_chi2_train</span><span class="p">,</span> <span class="n">X_chi2_test</span><span class="p">,</span> <span class="n">y_chi2_train</span><span class="p">,</span> <span class="n">y_chi2_test</span> <span class="o">=</span> <span class="n">train_test_split</span><span class="p">(</span><span class="n">X_chi2</span><span class="o">.</span><span class="n">toarray</span><span class="p">(),</span> <span class="n">y</span><span class="p">,</span> <span class="n">test_size</span><span class="o">=</span><span class="mf">0.3</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_w2v_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">X_chi2_train</span><span class="o">.</span><span class="n">shape</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       P
+1       N
+2       P
+3       N
+4       N
+       ..
+6383    P
+6384    N
+6385    N
+6386    N
+6387    P
+Name: tag, Length: 6388, dtype: object
+(4471, 11959)
+(4471, 100)
+(4471, 1000)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="modeling">
+<h1>Modeling<a class="headerlink" href="#modeling" title="Permalink to this headline">#</a></h1>
+<section id="naive-bayes">
+<h2>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Naive Bayes </span>
+<span class="c1"># X.toarray() is to avoid sparse matrix</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span>
+<span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GaussianNB()
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">((</span><span class="mi">3</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">5</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">8</span><span class="o">+</span><span class="mi">6</span><span class="p">))</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">14</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">1</span><span class="o">/</span><span class="mi">14</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">1</span><span class="o">/</span><span class="mi">4</span><span class="p">)</span><span class="o">*</span><span class="p">((</span><span class="mi">1</span><span class="o">+</span><span class="mi">1</span><span class="p">)</span><span class="o">/</span><span class="p">(</span><span class="mi">3</span><span class="o">+</span><span class="mi">6</span><span class="p">))</span><span class="o">**</span><span class="mi">3</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span><span class="p">)</span><span class="o">*</span><span class="p">(</span><span class="mi">2</span><span class="o">/</span><span class="mi">9</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.00030121377997263036
+0.00013548070246744223
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="xgboost">
+<h2>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
+                                 <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="decision-tree">
+<h1>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">#</a></h1>
+<p><img alt="image.png" src="TM/attachment:c6b0c041-df92-4d96-8855-0eb146fcd458.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">def</span> <span class="nf">entropy</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">):</span>
+    <span class="n">n</span> <span class="o">=</span> <span class="n">a</span> <span class="o">+</span> <span class="n">b</span>
+    <span class="k">return</span><span class="p">(</span><span class="o">-</span><span class="p">((</span><span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="n">n</span><span class="p">)</span> <span class="o">+</span> <span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">n</span><span class="p">)</span><span class="o">*</span><span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">b</span><span class="o">/</span><span class="n">n</span><span class="p">)))</span>
+
+<span class="c1"># entropy(20, 35)</span>
+<span class="c1"># Gain = </span>
+<span class="nb">print</span><span class="p">(</span><span class="n">entropy</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">60</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">entropy</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">40</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">entropy</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">30</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">entropy</span><span class="p">(</span><span class="mi">60</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">55</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">entropy</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">35</span><span class="p">)</span> <span class="o">-</span> <span class="p">(</span><span class="mi">45</span><span class="o">/</span><span class="mi">100</span><span class="p">)</span><span class="o">*</span><span class="n">entropy</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">5</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.25642589168200297
+0.22437117627527592
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="prediction">
+<h1>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_tfidf_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_tfidf_test</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;y_tfidf_pred&#39;</span><span class="p">:</span><span class="n">y_tfidf_pred</span><span class="p">,</span>
+             <span class="s1">&#39;y_tfidf_test&#39;</span><span class="p">:</span><span class="n">y_tfidf_test</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y_tfidf_pred</th>
+      <th>y_tfidf_test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>5580</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>847</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>3260</th>
+      <td>N</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <th>5578</th>
+      <td>P</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>830</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>3572</th>
+      <td>N</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <th>1664</th>
+      <td>N</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <th>1448</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>5204</th>
+      <td>P</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <th>1938</th>
+      <td>N</td>
+      <td>P</td>
+    </tr>
+  </tbody>
+</table>
+<p>1917 rows × 2 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="evaluation">
+<h1>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
+<span class="n">cr</span> <span class="o">=</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
+<span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cm</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">cr</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7569118414188837
+[[884 119]
+ [347 567]]
+              precision    recall  f1-score   support
+
+           N       0.72      0.88      0.79      1003
+           P       0.83      0.62      0.71       914
+
+    accuracy                           0.76      1917
+   macro avg       0.77      0.75      0.75      1917
+weighted avg       0.77      0.76      0.75      1917
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="explaining-classification-report">
+<h1>Explaining classification_report<a class="headerlink" href="#explaining-classification-report" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://datascience.stackexchange.com/questions/64441/how-to-interpret-classification-report-of-scikit-learn">https://datascience.stackexchange.com/questions/64441/how-to-interpret-classification-report-of-scikit-learn</a></p></li>
+<li><p>The <strong>recall</strong> means “how many of this class you find over the whole number of element of this class”</p></li>
+<li><p>The <strong>precision</strong> will be “how many are correctly classified among that class”</p></li>
+<li><p>The <strong>f1-score</strong> is the harmonic mean between precision &amp; recall</p></li>
+<li><p>The <strong>support</strong> is the number of occurence of the given class in your dataset (so the case has 1004 of class N and 913 of class P, which is a almost balanced dataset.</p></li>
+</ul>
+<section id="notes-precision-and-recall">
+<h2>Notes: precision and recall<a class="headerlink" href="#notes-precision-and-recall" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Precision and recall is highly used for imbalanced dataset because in an highly imbalanced dataset, a 99% accuracy can be meaningless.</p></li>
+<li><p>We should not compare the precision and the recall over two classes. This only means the classifier is better to find class 0 over class 1.</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="c1"># ---------------------------------------------------------</span>
+<span class="c1">#               precision    recall  f1-score   support</span>
+<span class="c1">#            N       0.80      0.92      0.85      1004</span>
+<span class="c1">#            P       0.89      0.74      0.81       913</span>
+<span class="c1">#     accuracy                           0.84      1917</span>
+<span class="c1">#    macro avg       0.85      0.83      0.83      1917</span>
+<span class="c1"># weighted avg       0.84      0.84      0.83      1917</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="overall-evaluating">
+<h1>Overall Evaluating<a class="headerlink" href="#overall-evaluating" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span><span class="p">,</span> <span class="n">RandomForestClassifier</span>
+<span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="kn">from</span> <span class="nn">sklearn.linear_model</span> <span class="kn">import</span> <span class="n">LogisticRegression</span>
+
+<span class="k">def</span> <span class="nf">train_model</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">train</span><span class="p">,</span> <span class="n">train_label</span><span class="p">,</span> <span class="n">test</span><span class="p">,</span> <span class="n">test_label</span><span class="p">):</span>
+    <span class="n">classifier</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">train</span><span class="p">,</span> <span class="n">train_label</span><span class="p">)</span>
+    <span class="n">pred_label</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">test</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">classification_report</span><span class="p">(</span><span class="n">test_label</span><span class="p">,</span> <span class="n">pred_label</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Time-consumed</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_model</span><span class="p">(</span><span class="n">RandomForestClassifier</span><span class="p">(),</span> <span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">,</span> <span class="n">X_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_test</span><span class="p">))</span>
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="c1">#               precision    recall  f1-score   support</span>
+<span class="c1">#            N       0.82      0.83      0.83      1004</span>
+<span class="c1">#            P       0.81      0.80      0.81       913</span>
+<span class="c1">#     accuracy                           0.82      1917</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">train_model</span><span class="p">(</span><span class="n">RandomForestClassifier</span><span class="p">(),</span> <span class="n">X_w2v_train</span><span class="p">,</span> <span class="n">y_w2v_train</span><span class="p">,</span> <span class="n">X_w2v_test</span><span class="p">,</span> <span class="n">y_w2v_test</span><span class="p">))</span>
+
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="c1">#               precision    recall  f1-score   support</span>
+<span class="c1">#            N       0.60      0.76      0.67       951</span>
+<span class="c1">#            P       0.68      0.50      0.58       966</span>
+<span class="c1">#     accuracy                           0.63      1917</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           N       0.83      0.78      0.80      1003
+           P       0.77      0.82      0.80       914
+
+    accuracy                           0.80      1917
+   macro avg       0.80      0.80      0.80      1917
+weighted avg       0.80      0.80      0.80      1917
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           N       0.64      0.73      0.68       990
+           P       0.66      0.57      0.61       927
+
+    accuracy                           0.65      1917
+   macro avg       0.65      0.65      0.65      1917
+weighted avg       0.65      0.65      0.65      1917
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## time-consumed VERY!!</span>
+<span class="c1"># print(train_model(GradientBoostingClassifier(), X_tfidf_train, y_tfidf_train, X_tfidf_test, y_tfidf_test))</span>
+
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="c1">#               precision    recall  f1-score   support</span>
+<span class="c1">#            N       0.69      0.92      0.79      1004</span>
+<span class="c1">#            P       0.86      0.55      0.67       913</span>
+<span class="c1">#     accuracy                           0.74      1917</span>
+<span class="c1">#    macro avg       0.78      0.74      0.73      1917</span>
+<span class="c1"># weighted avg       0.77      0.74      0.73      1917</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn</span> <span class="kn">import</span> <span class="n">svm</span>
+<span class="c1"># print(train_model(svm.SVC(), X_tfidf_train, y_tfidf_train, X_tfidf_test, y_tfidf_test))</span>
+
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="c1">#               precision    recall  f1-score   support</span>
+<span class="c1">#            N       0.80      0.92      0.85      1004</span>
+<span class="c1">#            P       0.89      0.74      0.81       913</span>
+<span class="c1">#     accuracy                           0.84      1917</span>
+<span class="c1">#    macro avg       0.85      0.83      0.83      1917</span>
+<span class="c1"># weighted avg       0.84      0.84      0.83      1917</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># with original tfidf</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_model</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(),</span> <span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">,</span> <span class="n">X_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_test</span><span class="p">))</span>
+
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="c1">#               precision    recall  f1-score   support</span>
+<span class="c1">#            N       0.80      0.91      0.85       998</span>
+<span class="c1">#            P       0.89      0.75      0.81       919</span>
+<span class="c1">#     accuracy                           0.83      1917</span>
+<span class="c1">#    macro avg       0.84      0.83      0.83      1917</span>
+<span class="c1"># weighted avg       0.84      0.83      0.83      1917</span>
+
+<span class="c1"># tfidf + chi2 feature selection</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">train_model</span><span class="p">(</span><span class="n">LogisticRegression</span><span class="p">(),</span> <span class="n">X_chi2_train</span><span class="p">,</span> <span class="n">y_chi2_train</span><span class="p">,</span> <span class="n">X_chi2_test</span><span class="p">,</span> <span class="n">y_chi2_test</span><span class="p">))</span>
+
+<span class="c1"># ---------------------------------------------------------</span>
+<span class="c1">#               precision    recall  f1-score   support</span>
+
+<span class="c1">#            N       0.82      0.90      0.86      1027</span>
+<span class="c1">#            P       0.87      0.78      0.82       890</span>
+
+<span class="c1">#     accuracy                           0.84      1917</span>
+<span class="c1">#    macro avg       0.85      0.84      0.84      1917</span>
+<span class="c1"># weighted avg       0.85      0.84      0.84      1917</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           N       0.80      0.90      0.85      1003
+           P       0.88      0.76      0.81       914
+
+    accuracy                           0.83      1917
+   macro avg       0.84      0.83      0.83      1917
+weighted avg       0.84      0.83      0.83      1917
+
+              precision    recall  f1-score   support
+
+           N       0.80      0.90      0.84       993
+           P       0.87      0.76      0.81       924
+
+    accuracy                           0.83      1917
+   macro avg       0.83      0.83      0.83      1917
+weighted avg       0.83      0.83      0.83      1917
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="roc-receiver-operating-characteristic-curve">
+<h1>ROC Receiver Operating Characteristic Curve<a class="headerlink" href="#roc-receiver-operating-characteristic-curve" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://www.dezyre.com/recipes/plot-roc-curve-in-python">https://www.dezyre.com/recipes/plot-roc-curve-in-python</a></p></li>
+<li><p>Scikit-learn: ROC <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html">https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html</a></p></li>
+</ul>
+<blockquote>
+<div><p>ROC curves typically feature true positive rate on the Y axis, and false positive rate on the X axis. This means that the top left corner of the plot is the “ideal” point - a false positive rate of zero, and a true positive rate of one. This is not very realistic, but it does mean that a larger area under the curve (AUC) is usually better.</p>
+</div></blockquote>
+<ul class="simple">
+<li><p>(* See more from wikipedia: Sensitivity and specificity <a class="reference external" href="https://en.wikipedia.org/wiki/Sensitivity_and_specificity">https://en.wikipedia.org/wiki/Sensitivity_and_specificity</a>)</p></li>
+<li><p>(* See more from Confusion matrix: <a class="reference external" href="https://en.wikipedia.org/wiki/Confusion_matrix">https://en.wikipedia.org/wiki/Confusion_matrix</a>)</p></li>
+</ul>
+<p>ROC Curve Notes</p>
+<ul class="simple">
+<li><p>X axis: False-positive rate (FPR) = FP / (FP + TN): <a class="reference external" href="https://en.wikipedia.org/wiki/False_positive_rate">https://en.wikipedia.org/wiki/False_positive_rate</a></p></li>
+<li><p>Y axis: True-positive rate (TPR) = TP/(TP+FN) 在所有Positive裏面，TRUE-Positive偵測出多少。
+由於classifier 實際上的輸出結果都是一個機率，那這個機率要以多少為臨界點就變得非常重要。所以，ROC Curve的畫法是，就把跑出來的機率由小排到大，取任何一個機率當臨界點。當臨界點不同，FP和TP也會不同。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
+<span class="n">y_score</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict_proba</span><span class="p">(</span><span class="n">X_tfidf_test</span><span class="p">)[:,</span><span class="mi">1</span><span class="p">]</span>
+<span class="n">y_score</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.39547034, 0.25683292, 0.50068014, ..., 0.28097328, 0.7945652 ,
+       0.47305626])
+</pre></div>
+</div>
+</div>
+</div>
+<section id="confusion-matrix">
+<h2>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">#</a></h2>
+<p><img alt="image.png" src="TM/attachment:b7a0a5e8-c79d-460e-b254-530e978970a0.png" /></p>
+<ul class="simple">
+<li><p>X: FPR = FP/(FP + TN);</p></li>
+<li><p>Y: TPR = TP/(TP + FN)</p></li>
+<li><p>當threshold為1時，那就全部predict為0。這個時候沒有任何的predicted positive。所以TP和FP都是0。那麼FPR和TPR都會是0。</p></li>
+<li><p>當threshold為0時，那就全部predict為1。這時候沒有任何的predicted negative。所以分母的TN和FN都是0，所以FPR和TPR都會是1。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_test</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span> <span class="k">if</span> <span class="n">y</span> <span class="o">==</span> <span class="s2">&quot;N&quot;</span> <span class="k">else</span> <span class="mi">1</span> <span class="k">for</span> <span class="n">y</span> <span class="ow">in</span> <span class="n">y_tfidf_test</span><span class="p">]</span>
+<span class="n">ydf</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;y_score&#39;</span><span class="p">:</span> <span class="n">y_score</span><span class="p">,</span> <span class="s1">&#39;y_test&#39;</span><span class="p">:</span> <span class="n">y_test</span><span class="p">})</span>
+<span class="n">ydf</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="n">by</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;y_score&#39;</span><span class="p">])</span>
+<span class="c1"># print(ydf.sort_values(by=[&#39;y_score&#39;]).to_string())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>y_score</th>
+      <th>y_test</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>161</th>
+      <td>0.015029</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>1479</th>
+      <td>0.040903</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>25</th>
+      <td>0.049436</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>407</th>
+      <td>0.049436</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>581</th>
+      <td>0.049436</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>889</th>
+      <td>0.965713</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1577</th>
+      <td>0.977034</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1463</th>
+      <td>0.981820</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>281</th>
+      <td>0.982304</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>654</th>
+      <td>0.988772</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>1917 rows × 2 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">roc_curve</span><span class="p">,</span> <span class="n">auc</span>
+<span class="n">false_positive_rate1</span><span class="p">,</span> <span class="n">true_positive_rate1</span><span class="p">,</span> <span class="n">threshold1</span> <span class="o">=</span> <span class="n">roc_curve</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score</span><span class="p">)</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">({</span><span class="s1">&#39;FPR&#39;</span><span class="p">:</span> <span class="n">false_positive_rate1</span><span class="p">,</span> <span class="s1">&#39;TPR&#39;</span><span class="p">:</span> <span class="n">true_positive_rate1</span><span class="p">,</span> <span class="s1">&#39;threshold&#39;</span><span class="p">:</span><span class="n">threshold1</span><span class="p">})</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>FPR</th>
+      <th>TPR</th>
+      <th>threshold</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0.000000</td>
+      <td>0.000000</td>
+      <td>1.988772</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0.000000</td>
+      <td>0.001094</td>
+      <td>0.988772</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0.000000</td>
+      <td>0.041575</td>
+      <td>0.926605</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0.000000</td>
+      <td>0.043764</td>
+      <td>0.924097</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0.000000</td>
+      <td>0.047046</td>
+      <td>0.922168</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>409</th>
+      <td>0.978066</td>
+      <td>0.998906</td>
+      <td>0.076215</td>
+    </tr>
+    <tr>
+      <th>410</th>
+      <td>0.978066</td>
+      <td>1.000000</td>
+      <td>0.075054</td>
+    </tr>
+    <tr>
+      <th>411</th>
+      <td>0.995015</td>
+      <td>1.000000</td>
+      <td>0.053387</td>
+    </tr>
+    <tr>
+      <th>412</th>
+      <td>0.998006</td>
+      <td>1.000000</td>
+      <td>0.049436</td>
+    </tr>
+    <tr>
+      <th>413</th>
+      <td>1.000000</td>
+      <td>1.000000</td>
+      <td>0.015029</td>
+    </tr>
+  </tbody>
+</table>
+<p>414 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s1">&#39;roc_auc_score for DecisionTree: &#39;</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [24],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="nb">print</span><span class="p">(</span><span class="s1">&#39;roc_auc_score for DecisionTree: &#39;</span><span class="p">,</span> <span class="n">roc_auc_score</span><span class="p">(</span><span class="n">y_test</span><span class="p">,</span> <span class="n">y_score</span><span class="p">))</span>
+
+<span class="ne">NameError</span>: name &#39;roc_auc_score&#39; is not defined
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span><span class="mi">10</span><span class="p">))</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Receiver Operating Characteristic - LogisticRegressoin&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">false_positive_rate1</span><span class="p">,</span> <span class="n">true_positive_rate1</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">],</span> <span class="n">ls</span><span class="o">=</span><span class="s2">&quot;--&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">],</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span> <span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;.7&quot;</span><span class="p">),</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span> <span class="p">,</span> <span class="n">c</span><span class="o">=</span><span class="s2">&quot;.7&quot;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;True Positive Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;False Positive Rate&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/TM08_doc_classification_42_0.png" src="../_images/TM08_doc_classification_42_0.png" />
+</div>
+</div>
+</section>
+<section id="by-plot-roc-curve">
+<h2>by <code class="docutils literal notranslate"><span class="pre">plot_roc_curve()</span></code><a class="headerlink" href="#by-plot-roc-curve" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">plot_roc_curve()</span></code>: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_roc_curve.html">https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_roc_curve.html</a></p></li>
+<li><p>plot roc curve with cross-validation: <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py">https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">sklearn.metrics</span> <span class="k">as</span> <span class="nn">metrics</span>
+<span class="n">metrics</span><span class="o">.</span><span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_test</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_roc_curve is deprecated; Function :func:`plot_roc_curve` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: :meth:`sklearn.metric.RocCurveDisplay.from_predictions` or :meth:`sklearn.metric.RocCurveDisplay.from_estimator`.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<img alt="../_images/TM08_doc_classification_44_1.png" src="../_images/TM08_doc_classification_44_1.png" />
+</div>
+</div>
+</section>
+<section id="roc-curve-by-nb">
+<h2>roc_curve by NB<a class="headerlink" href="#roc-curve-by-nb" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
+<span class="n">classifier</span> <span class="o">=</span> <span class="n">GaussianNB</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
+<span class="n">metrics</span><span class="o">.</span><span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_test</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_roc_curve is deprecated; Function :func:`plot_roc_curve` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: :meth:`sklearn.metric.RocCurveDisplay.from_predictions` or :meth:`sklearn.metric.RocCurveDisplay.from_estimator`.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<img alt="../_images/TM08_doc_classification_46_1.png" src="../_images/TM08_doc_classification_46_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># classifier = svm.SVC().fit(X_tfidf_train, y_tfidf_train)</span>
+<span class="c1"># metrics.plot_roc_curve(classifier, X_tfidf_test, y_tfidf_test)  </span>
+<span class="c1"># plt.show()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_roc_curve is deprecated; Function :func:`plot_roc_curve` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: :meth:`sklearn.metric.RocCurveDisplay.from_predictions` or :meth:`sklearn.metric.RocCurveDisplay.from_estimator`.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<img alt="../_images/TM08_doc_classification_47_1.png" src="../_images/TM08_doc_classification_47_1.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">classifier</span> <span class="o">=</span> <span class="n">LogisticRegression</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
+<span class="n">metrics</span><span class="o">.</span><span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_test</span><span class="p">)</span>  
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_roc_curve is deprecated; Function :func:`plot_roc_curve` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: :meth:`sklearn.metric.RocCurveDisplay.from_predictions` or :meth:`sklearn.metric.RocCurveDisplay.from_estimator`.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<img alt="../_images/TM08_doc_classification_48_1.png" src="../_images/TM08_doc_classification_48_1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="practic">
+<h1>Practic<a class="headerlink" href="#practic" title="Permalink to this headline">#</a></h1>
+<p>Comparing chi2 k=500, k=1000, k=2000 with models RandomForest, LogisticRegression, and SVC</p>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./TM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+              
+            </main>
+            <footer class="footer-article noprint">
+                
+    <!-- Previous / next buttons -->
+<div class='prev-next-area'>
+    <a class='left-prev' id="prev-link" href="TM07_2_doc2vec.html" title="previous page">
+        <i class="fas fa-angle-left"></i>
+        <div class="prev-next-info">
+            <p class="prev-next-subtitle">previous</p>
+            <p class="prev-next-title">TM07 word2vec vs doc2vec</p>
+        </div>
+    </a>
+    <a class='right-next' id="next-link" href="../CSS/CSS01_network_analysis.html" title="next page">
+    <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CSS01 Network Analysis</p>
+    </div>
+    <i class="fas fa-angle-right"></i>
+    </a>
+</div>
+            </footer>
+        </div>
+    </div>
+    <div class="footer-content row">
+        <footer class="col footer"><p>
+  
+    By JILUNG<br/>
+  
+      &copy; Copyright 2022.<br/>
+</p>
+        </footer>
+    </div>
+    
+</div>
+
+
+      </div>
+    </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/pydata-sphinx-theme.js?digest=1999514e3f237ded88cf"></script>
+
+
+  </body>
+</html>

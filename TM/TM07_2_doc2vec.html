@@ -52,7 +52,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script async="async" src="../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="CSS01 Network Analysis" href="../CSS/CSS01_network_analysis.html" />
+    <link rel="next" title="Classification" href="TM08_doc_classification.html" />
     <link rel="prev" title="TM07 embedding and clustering" href="TM07_embedding_clustering.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="None">
@@ -410,6 +410,11 @@ const thebe_selector_output = ".output, .cell_output"
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
    TM07 word2vec vs doc2vec
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="TM08_doc_classification.html">
+   Classification
   </a>
  </li>
 </ul>
@@ -917,7 +922,7 @@ title="Print to PDF"
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: ./data: File exists
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-20 13:45:07--  https://github.com/p4css/py4css/raw/main/data/sentiment.csv
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2022-11-26 23:30:06--  https://github.com/p4css/py4css/raw/main/data/sentiment.csv
 Resolving github.com (github.com)... 
 </pre></div>
 </div>
@@ -933,9 +938,9 @@ Connecting to github.com (github.com)|20.27.177.113|:443...
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
 Location: https://raw.githubusercontent.com/p4css/py4css/main/data/sentiment.csv [following]
---2022-11-20 13:45:07--  https://raw.githubusercontent.com/p4css/py4css/main/data/sentiment.csv
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
+--2022-11-26 23:30:06--  https://raw.githubusercontent.com/p4css/py4css/main/data/sentiment.csv
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... 
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
@@ -952,13 +957,13 @@ Saving to: &#39;./data/sentiment.csv&#39;
 sentiment.csv         0%[                    ]       0  --.-KB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sentiment.csv        54%[=========&gt;          ] 295.17K  1.39MB/s               
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sentiment.csv        64%[===========&gt;        ] 351.17K  1.60MB/s               
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sentiment.csv       100%[===================&gt;] 545.88K  2.18MB/s    in 0.2s    
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sentiment.csv       100%[===================&gt;] 545.88K  2.27MB/s    in 0.2s    
 
 Last-modified header missing -- time-stamps turned off.
-2022-11-20 13:45:08 (2.18 MB/s) - &#39;./data/sentiment.csv&#39; saved [558978/558978]
+2022-11-26 23:30:07 (2.27 MB/s) - &#39;./data/sentiment.csv&#39; saved [558978/558978]
 </pre></div>
 </div>
 </div>
@@ -1041,7 +1046,7 @@ Last-modified header missing -- time-stamps turned off.
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.298 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.303 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -1150,7 +1155,8 @@ Last-modified header missing -- time-stamps turned off.
 <h3>Represented by TaggedDocument<a class="headerlink" href="#represented-by-taggeddocument" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tagged</span> <span class="o">=</span> <span class="p">[</span><span class="n">TaggedDocument</span><span class="p">(</span><span class="n">words</span><span class="o">=</span><span class="n">tokens</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tokens</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;token_text&quot;</span><span class="p">])]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tagged</span> <span class="o">=</span> <span class="p">[</span><span class="n">TaggedDocument</span><span class="p">(</span><span class="n">words</span><span class="o">=</span><span class="n">tokens</span><span class="p">,</span> <span class="n">tags</span><span class="o">=</span><span class="p">[</span><span class="n">i</span><span class="p">])</span> 
+          <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">tokens</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s2">&quot;token_text&quot;</span><span class="p">])]</span>
 </pre></div>
 </div>
 </div>
@@ -1182,6 +1188,18 @@ Last-modified header missing -- time-stamps turned off.
     <span class="n">all_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">d2v</span><span class="o">.</span><span class="n">infer_vector</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
     
 <span class="n">X</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">all_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">X</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6388, 100)
 </pre></div>
 </div>
 </div>
@@ -1224,7 +1242,7 @@ Last-modified header missing -- time-stamps turned off.
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;tag&#39;, &#39;text&#39;, &#39;token_text&#39;, &#39;cluster&#39;], dtype=&#39;object&#39;)
-Counter({1: 5791, 0: 575, -1: 22})
+Counter({-1: 3970, 13: 402, 10: 380, 2: 328, 3: 255, 11: 183, 12: 157, 7: 128, 1: 116, 14: 96, 0: 68, 9: 67, 8: 66, 6: 60, 5: 58, 4: 54})
 </pre></div>
 </div>
 </div>
@@ -1250,10 +1268,10 @@ Counter({1: 5791, 0: 575, -1: 22})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x175f8c2b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;matplotlib.colorbar.Colorbar at 0x28aad0fa0&gt;
 </pre></div>
 </div>
-<img alt="../_images/TM07_2_doc2vec_24_1.png" src="../_images/TM07_2_doc2vec_24_1.png" />
+<img alt="../_images/TM07_2_doc2vec_25_1.png" src="../_images/TM07_2_doc2vec_25_1.png" />
 </div>
 </div>
 </section>
@@ -1294,10 +1312,10 @@ Counter({1: 5791, 0: 575, -1: 22})
             <p class="prev-next-title">TM07 embedding and clustering</p>
         </div>
     </a>
-    <a class='right-next' id="next-link" href="../CSS/CSS01_network_analysis.html" title="next page">
+    <a class='right-next' id="next-link" href="TM08_doc_classification.html" title="next page">
     <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">CSS01 Network Analysis</p>
+        <p class="prev-next-title">Classification</p>
     </div>
     <i class="fas fa-angle-right"></i>
     </a>
