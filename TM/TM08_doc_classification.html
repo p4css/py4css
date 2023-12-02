@@ -563,7 +563,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.316 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.288 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -992,7 +992,9 @@ document.write(`
 6386    N
 6387    P
 Name: tag, Length: 6388, dtype: object
-(4471, 11959)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4471, 11959)
 (4471, 100)
 (4471, 1000)
 </pre></div>
@@ -1047,100 +1049,6 @@ Name: tag, Length: 6388, dtype: object
 
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                                  <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">classifier</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span>                                  <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/ensemble/_gb.py:586,</span> in <span class="ni">BaseGradientBoosting.fit</span><span class="nt">(self, X, y, sample_weight, monitor)</span>
-<span class="g g-Whitespace">    </span><span class="mi">583</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_resize_state</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span> <span class="c1"># fit the boosting stages</span>
-<span class="ne">--&gt; </span><span class="mi">586</span> <span class="n">n_stages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_stages</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span>     <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">589</span>     <span class="n">raw_predictions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">590</span>     <span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_rng</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">592</span>     <span class="n">X_val</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">593</span>     <span class="n">y_val</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">594</span>     <span class="n">sample_weight_val</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">595</span>     <span class="n">begin_at_stage</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">596</span>     <span class="n">monitor</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">597</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">599</span> <span class="c1"># change shape of arrays after fit (early-stopping or additional ests)</span>
-<span class="g g-Whitespace">    </span><span class="mi">600</span> <span class="k">if</span> <span class="n">n_stages</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/ensemble/_gb.py:663,</span> in <span class="ni">BaseGradientBoosting._fit_stages</span><span class="nt">(self, X, y, raw_predictions, sample_weight, random_state, X_val, y_val, sample_weight_val, begin_at_stage, monitor)</span>
-<span class="g g-Whitespace">    </span><span class="mi">656</span>     <span class="n">old_oob_score</span> <span class="o">=</span> <span class="n">loss_</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">657</span>         <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">sample_mask</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">658</span>         <span class="n">raw_predictions</span><span class="p">[</span><span class="o">~</span><span class="n">sample_mask</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span>         <span class="n">sample_weight</span><span class="p">[</span><span class="o">~</span><span class="n">sample_mask</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">662</span> <span class="c1"># fit next stage of trees</span>
-<span class="ne">--&gt; </span><span class="mi">663</span> <span class="n">raw_predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_stage</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">664</span>     <span class="n">i</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">665</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">raw_predictions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">668</span>     <span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">669</span>     <span class="n">sample_mask</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">670</span>     <span class="n">random_state</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">671</span>     <span class="n">X_csc</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">672</span>     <span class="n">X_csr</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">673</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">675</span> <span class="c1"># track deviance (= loss)</span>
-<span class="g g-Whitespace">    </span><span class="mi">676</span> <span class="k">if</span> <span class="n">do_oob</span><span class="p">:</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/ensemble/_gb.py:246,</span> in <span class="ni">BaseGradientBoosting._fit_stage</span><span class="nt">(self, i, X, y, raw_predictions, sample_weight, sample_mask, random_state, X_csc, X_csr)</span>
-<span class="g g-Whitespace">    </span><span class="mi">243</span>     <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">sample_weight</span> <span class="o">*</span> <span class="n">sample_mask</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">245</span> <span class="n">X</span> <span class="o">=</span> <span class="n">X_csr</span> <span class="k">if</span> <span class="n">X_csr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">X</span>
-<span class="ne">--&gt; </span><span class="mi">246</span> <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">residual</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">check_input</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">248</span> <span class="c1"># update tree leaves</span>
-<span class="g g-Whitespace">    </span><span class="mi">249</span> <span class="n">loss</span><span class="o">.</span><span class="n">update_terminal_regions</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">250</span>     <span class="n">tree</span><span class="o">.</span><span class="n">tree_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">251</span>     <span class="n">X</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">258</span>     <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/tree/_classes.py:1315,</span> in <span class="ni">DecisionTreeRegressor.fit</span><span class="nt">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1278</span> <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1279</span>     <span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check_input</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">X_idx_sorted</span><span class="o">=</span><span class="s2">&quot;deprecated&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1280</span> <span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1281</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Build a decision tree regressor from the training set (X, y).</span>
-<span class="g g-Whitespace">   </span><span class="mi">1282</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1283</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1312</span><span class="sd">         Fitted estimator.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1313</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1315</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1316</span>         <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1317</span>         <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1318</span>         <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1319</span>         <span class="n">check_input</span><span class="o">=</span><span class="n">check_input</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1320</span>         <span class="n">X_idx_sorted</span><span class="o">=</span><span class="n">X_idx_sorted</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1321</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1322</span>     <span class="k">return</span> <span class="bp">self</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/sklearn/tree/_classes.py:420,</span> in <span class="ni">BaseDecisionTree.fit</span><span class="nt">(self, X, y, sample_weight, check_input, X_idx_sorted)</span>
-<span class="g g-Whitespace">    </span><span class="mi">409</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">410</span>     <span class="n">builder</span> <span class="o">=</span> <span class="n">BestFirstTreeBuilder</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">411</span>         <span class="n">splitter</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">412</span>         <span class="n">min_samples_split</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">417</span>         <span class="bp">self</span><span class="o">.</span><span class="n">min_impurity_decrease</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">418</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">420</span> <span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree_</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">422</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_outputs_</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">is_classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">423</span>     <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>
@@ -1207,27 +1115,27 @@ Name: tag, Length: 6388, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>3528</th>
+      <th>2849</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>3977</th>
-      <td>P</td>
-      <td>P</td>
-    </tr>
-    <tr>
-      <th>5972</th>
+      <th>191</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>345</th>
+      <th>3026</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>1809</th>
+      <th>4384</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>5178</th>
       <td>N</td>
       <td>N</td>
     </tr>
@@ -1237,28 +1145,28 @@ Name: tag, Length: 6388, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>3327</th>
-      <td>N</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>3840</th>
+      <th>3645</th>
       <td>N</td>
       <td>P</td>
     </tr>
     <tr>
-      <th>3637</th>
-      <td>N</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>529</th>
-      <td>N</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>2944</th>
+      <th>5189</th>
       <td>P</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <th>2003</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>2039</th>
+      <td>N</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <th>1666</th>
+      <td>N</td>
       <td>N</td>
     </tr>
   </tbody>
@@ -1285,15 +1193,17 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
-<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.755868544600939
+[[883 102]
+ [366 566]]
+              precision    recall  f1-score   support
 
-<span class="ne">NameError</span>: name &#39;y_tfidf_test&#39; is not defined
+           N       0.71      0.90      0.79       985
+           P       0.85      0.61      0.71       932
+
+    accuracy                           0.76      1917
+   macro avg       0.78      0.75      0.75      1917
+weighted avg       0.78      0.76      0.75      1917
 </pre></div>
 </div>
 </div>
@@ -1366,21 +1276,22 @@ Name: tag, Length: 6388, dtype: object
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.81      0.79      0.80       987
-           P       0.78      0.81      0.79       930
+           N       0.81      0.82      0.81       985
+           P       0.81      0.80      0.80       932
 
-    accuracy                           0.80      1917
-   macro avg       0.80      0.80      0.80      1917
-weighted avg       0.80      0.80      0.80      1917
+    accuracy                           0.81      1917
+   macro avg       0.81      0.81      0.81      1917
+weighted avg       0.81      0.81      0.81      1917
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-              precision    recall  f1-score   support
+           N       0.64      0.75      0.69       983
+           P       0.68      0.56      0.62       934
 
-           N       0.68      0.74      0.71      1038
-           P       0.66      0.58      0.62       879
-
-    accuracy                           0.67      1917
-   macro avg       0.67      0.66      0.66      1917
-weighted avg       0.67      0.67      0.67      1917
+    accuracy                           0.66      1917
+   macro avg       0.66      0.65      0.65      1917
+weighted avg       0.66      0.66      0.65      1917
 </pre></div>
 </div>
 </div>
@@ -1416,18 +1327,6 @@ weighted avg       0.67      0.67      0.67      1917
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
-
-           N       0.79      0.91      0.84       987
-           P       0.88      0.74      0.81       930
-
-    accuracy                           0.83      1917
-   macro avg       0.84      0.83      0.83      1917
-weighted avg       0.84      0.83      0.83      1917
-</pre></div>
-</div>
-</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1460,21 +1359,21 @@ weighted avg       0.84      0.83      0.83      1917
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.79      0.91      0.84       987
-           P       0.88      0.74      0.80       930
+           N       0.79      0.90      0.84       985
+           P       0.88      0.75      0.81       932
 
     accuracy                           0.83      1917
-   macro avg       0.83      0.82      0.82      1917
-weighted avg       0.83      0.83      0.82      1917
+   macro avg       0.84      0.83      0.83      1917
+weighted avg       0.84      0.83      0.83      1917
 
               precision    recall  f1-score   support
 
-           N       0.80      0.91      0.85      1011
-           P       0.88      0.75      0.81       906
+           N       0.80      0.89      0.84      1015
+           P       0.85      0.75      0.80       902
 
-    accuracy                           0.84      1917
-   macro avg       0.84      0.83      0.83      1917
-weighted avg       0.84      0.84      0.83      1917
+    accuracy                           0.82      1917
+   macro avg       0.83      0.82      0.82      1917
+weighted avg       0.83      0.82      0.82      1917
 </pre></div>
 </div>
 </div>
@@ -1507,8 +1406,8 @@ weighted avg       0.84      0.84      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.36521659, 0.5253291 , 0.57791509, ..., 0.92233505, 0.53882655,
-       0.4744045 ])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.25127819, 0.44107036, 0.15359845, ..., 0.30740652, 0.6482188 ,
+       0.22235635])
 </pre></div>
 </div>
 </div>
@@ -1557,28 +1456,28 @@ weighted avg       0.84      0.84      0.83      1917
   </thead>
   <tbody>
     <tr>
-      <th>1553</th>
-      <td>0.040226</td>
+      <th>1265</th>
+      <td>0.042665</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>103</th>
-      <td>0.043580</td>
+      <th>874</th>
+      <td>0.046987</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>233</th>
-      <td>0.045870</td>
+      <th>1380</th>
+      <td>0.051168</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>575</th>
-      <td>0.046373</td>
+      <th>1702</th>
+      <td>0.055608</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>964</th>
-      <td>0.046484</td>
+      <th>1407</th>
+      <td>0.062845</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1587,28 +1486,28 @@ weighted avg       0.84      0.84      0.83      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>1869</th>
-      <td>0.974932</td>
+      <th>854</th>
+      <td>0.971355</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>474</th>
-      <td>0.977466</td>
+      <th>401</th>
+      <td>0.974187</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1781</th>
-      <td>0.978268</td>
+      <th>615</th>
+      <td>0.981200</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1714</th>
-      <td>0.982856</td>
+      <th>171</th>
+      <td>0.985165</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>454</th>
-      <td>0.994109</td>
+      <th>1307</th>
+      <td>0.994705</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1653,31 +1552,31 @@ weighted avg       0.84      0.84      0.83      1917
       <th>0</th>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.994109</td>
+      <td>1.994705</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.000000</td>
-      <td>0.001028</td>
-      <td>0.994109</td>
+      <td>0.001073</td>
+      <td>0.994705</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0.000000</td>
-      <td>0.008222</td>
-      <td>0.969941</td>
+      <td>0.046137</td>
+      <td>0.924928</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001059</td>
-      <td>0.008222</td>
-      <td>0.969613</td>
+      <td>0.001015</td>
+      <td>0.046137</td>
+      <td>0.923506</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001059</td>
-      <td>0.044193</td>
-      <td>0.923721</td>
+      <td>0.001015</td>
+      <td>0.099785</td>
+      <td>0.884656</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1686,38 +1585,38 @@ weighted avg       0.84      0.84      0.83      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>418</th>
-      <td>0.980932</td>
-      <td>0.998972</td>
-      <td>0.069844</td>
+      <th>439</th>
+      <td>0.922843</td>
+      <td>1.000000</td>
+      <td>0.129917</td>
     </tr>
     <tr>
-      <th>419</th>
-      <td>0.980932</td>
+      <th>440</th>
+      <td>0.924873</td>
       <td>1.000000</td>
-      <td>0.069067</td>
+      <td>0.129441</td>
     </tr>
     <tr>
-      <th>420</th>
-      <td>0.988347</td>
+      <th>441</th>
+      <td>0.987817</td>
       <td>1.000000</td>
-      <td>0.057836</td>
+      <td>0.064530</td>
     </tr>
     <tr>
-      <th>421</th>
-      <td>0.994703</td>
+      <th>442</th>
+      <td>0.994924</td>
       <td>1.000000</td>
-      <td>0.051924</td>
+      <td>0.063033</td>
     </tr>
     <tr>
-      <th>422</th>
+      <th>443</th>
       <td>1.000000</td>
       <td>1.000000</td>
-      <td>0.040226</td>
+      <td>0.042665</td>
     </tr>
   </tbody>
 </table>
-<p>423 rows × 3 columns</p>
+<p>444 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1728,7 +1627,7 @@ weighted avg       0.84      0.84      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9145204417579738
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9152404087056927
 </pre></div>
 </div>
 </div>
@@ -1748,7 +1647,7 @@ weighted avg       0.84      0.84      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0d5febe039d65a30652c537c65b1e727c4f2b2363268849de5fa1e583cf67199.png" src="../_images/0d5febe039d65a30652c537c65b1e727c4f2b2363268849de5fa1e583cf67199.png" />
+<img alt="../_images/08c32e42557e6489ffc548ae066b70f838523f94cbf7df2cdd544674589bbed0.png" src="../_images/08c32e42557e6489ffc548ae066b70f838523f94cbf7df2cdd544674589bbed0.png" />
 </div>
 </div>
 </section>
@@ -1771,7 +1670,7 @@ weighted avg       0.84      0.84      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/c1c62fc1f21aeee767d7784e9598c02d8440f1cceb3df081ec28f9122fd25878.png" src="../_images/c1c62fc1f21aeee767d7784e9598c02d8440f1cceb3df081ec28f9122fd25878.png" />
+<img alt="../_images/ef075008b93cf72ba7111ad0499c09e34b3d6041b12c828dfcbb0c1f19619778.png" src="../_images/ef075008b93cf72ba7111ad0499c09e34b3d6041b12c828dfcbb0c1f19619778.png" />
 </div>
 </div>
 <section id="roc-curve-by-nb">
@@ -1790,7 +1689,7 @@ weighted avg       0.84      0.84      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/d9e72a5a65abda7f5a9095a1c3fdd7b47b4641705762b0e5b57a27dd187fc0ad.png" src="../_images/d9e72a5a65abda7f5a9095a1c3fdd7b47b4641705762b0e5b57a27dd187fc0ad.png" />
+<img alt="../_images/96cc81a7ba38332bda00bce23e689d2efab201f17f2b426ff3ed7dde686c58d5.png" src="../_images/96cc81a7ba38332bda00bce23e689d2efab201f17f2b426ff3ed7dde686c58d5.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1800,13 +1699,6 @@ weighted avg       0.84      0.84      0.83      1917
 <span class="c1"># plt.show()</span>
 </pre></div>
 </div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_roc_curve is deprecated; Function :func:`plot_roc_curve` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: :meth:`sklearn.metric.RocCurveDisplay.from_predictions` or :meth:`sklearn.metric.RocCurveDisplay.from_estimator`.
-  warnings.warn(msg, category=FutureWarning)
-</pre></div>
-</div>
-<img alt="../_images/44115e18d299a251b95a80089669971169710ec4d3e9c487c72a02f67f8c0fa6.png" src="../_images/44115e18d299a251b95a80089669971169710ec4d3e9c487c72a02f67f8c0fa6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1822,7 +1714,7 @@ weighted avg       0.84      0.84      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/cc6d1dd8698a5e1d76534435a3833c525154fe9e763f4e56c818d5153d8c9cec.png" src="../_images/cc6d1dd8698a5e1d76534435a3833c525154fe9e763f4e56c818d5153d8c9cec.png" />
+<img alt="../_images/ef075008b93cf72ba7111ad0499c09e34b3d6041b12c828dfcbb0c1f19619778.png" src="../_images/ef075008b93cf72ba7111ad0499c09e34b3d6041b12c828dfcbb0c1f19619778.png" />
 </div>
 </div>
 </section>
