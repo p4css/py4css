@@ -1,0 +1,798 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P05-2 Load and dump ubike json data &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P05p2_read_json';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Read more formats" href="P05p3_read_other_format.html" />
+    <link rel="prev" title="P05-1 Read CSV" href="P05p1_read_csv.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P05p2_read_json.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P05p2_read_json.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P05p2_read_json.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P05-2 Load and dump ubike json data</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-write-json">Read and Write JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-requests-to-get-data-from-internet">Step 1. Requests to get data from internet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-convert-json-text-to-python-objects">Step 2. Convert json text to python objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-save-data-to-json">Step 3. Save data to json</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dump-pickle">Load/Dump Pickle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-to-pickle">Dump to Pickle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-pickle-data">Load Pickle data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-csv-to-json">Convert CSV to JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-read-csv-to-list-of-list">Step 1: Read CSV to list of list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-convert-list-of-list-to-list-of-dict">Step 2: Convert list of list to list of dict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-dump-to-json">Step 3: Dump to json</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p05-2-load-and-dump-ubike-json-data">
+<h1>P05-2 Load and dump ubike json data<a class="headerlink" href="#p05-2-load-and-dump-ubike-json-data" title="Permalink to this headline">#</a></h1>
+<p>這個例子載入了台北市ubike的即時資料，該資料以JSON格式儲存，但他並非List of dict(s)的型態，而是Dict of dict(s)的型態，在最外面亦多一層Dictionary包裹著資料和回傳是否傳輸成功的確認碼。因此，和一般的例子比較起來，這個例子必須要找到資料的節點，在解出為Python的物件時，也要考慮如何處理資料中兩層的Dictionary。</p>
+<section id="read-and-write-json">
+<h2>Read and Write JSON<a class="headerlink" href="#read-and-write-json" title="Permalink to this headline">#</a></h2>
+<section id="step-1-requests-to-get-data-from-internet">
+<h3>Step 1. Requests to get data from internet<a class="headerlink" href="#step-1-requests-to-get-data-from-internet" title="Permalink to this headline">#</a></h3>
+<p>在以下的程式碼中，我用<code class="docutils literal notranslate"><span class="pre">requests</span></code>這個套件發出一個<code class="docutils literal notranslate"><span class="pre">get()</span></code>要求，然後我嘗試列印出一些該要求的回傳資料，以確認我成功地獲得我要求的資料。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">headers</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span> <span class="c1"># &lt;class &#39;requests.models.Response&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">))</span> <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
+200
+{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;d3747082-d01e-00fe-5a50-f4c6b6000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Sun, 01 Oct 2023 10:18:55 GMT&#39;}
+&lt;class &#39;requests.models.Response&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<p>把前500個字元印出來可以看到這裡面只有大括號，而且在資料（<code class="docutils literal notranslate"><span class="pre">retVal</span></code>所對應到的那個大括號）外面還有一層，也就是<code class="docutils literal notranslate"><span class="pre">retCode</span></code>和<code class="docutils literal notranslate"><span class="pre">retVal</span></code>所在的那一層大括號。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">[:</span><span class="mi">500</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;{&quot;retCode&quot;:1,&quot;retVal&quot;:{&quot;0001&quot;:{&quot;sno&quot;: &quot;0001&quot;, &quot;sna&quot;: &quot;捷運市政府站(3號出口)&quot;, &quot;tot&quot;: &quot;84&quot;, &quot;sbi&quot;: &quot;74&quot;, &quot;sarea&quot;: &quot;信義區&quot;, &quot;mday&quot;: &quot;20221030185227&quot;, &quot;lat&quot;: &quot;25.0408578889&quot;, &quot;lng&quot;: &quot;121.567904444&quot;, &quot;ar&quot;: &quot;忠孝東路/松仁路(東南側)&quot;, &quot;sareaen&quot;: &quot;Xinyi Dist.&quot;, &quot;snaen&quot;: &quot;MRT Taipei City Hall Stataion(Exit 3)-2&quot;, &quot;aren&quot;: &quot;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&quot;, &quot;bemp&quot;: &quot;10&quot;, &quot;act&quot;: &quot;1&quot;},&quot;0002&quot;:{&quot;sno&quot;: &quot;0002&quot;, &quot;sna&quot;: &quot;捷運國父紀念館站(2號出口)&quot;, &quot;tot&quot;: &quot;16&quot;, &quot;sbi&quot;: &quot;4&quot;, &quot;sarea&quot;: &quot;大安區&quot;, &quot;mday&quot;: &quot;20221030185231&quot;, &quot;l&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-convert-json-text-to-python-objects">
+<h3>Step 2. Convert json text to python objects<a class="headerlink" href="#step-2-convert-json-text-to-python-objects" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">json_obj</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">json_obj</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">json_obj</span><span class="p">[</span><span class="s2">&quot;retCode&quot;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">json_obj</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+&lt;class &#39;dict&#39;&gt;
+&lt;class &#39;int&#39;&gt;
+369
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-3-save-data-to-json">
+<h3>Step 3. Save data to json<a class="headerlink" href="#step-3-save-data-to-json" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_obj</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ubike.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="load-dump-pickle">
+<h2>Load/Dump Pickle<a class="headerlink" href="#load-dump-pickle" title="Permalink to this headline">#</a></h2>
+<p>Pickle有點類似暫存檔，把什麼東西dump-out，當load-in回來時就會是原本的樣子。不用再重新Parsing。甚至如果原本資料型態</p>
+<section id="dump-to-pickle">
+<h3>Dump to Pickle<a class="headerlink" href="#dump-to-pickle" title="Permalink to this headline">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+    <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_obj</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="load-pickle-data">
+<h3>Load Pickle data<a class="headerlink" href="#load-pickle-data" title="Permalink to this headline">#</a></h3>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.p&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">ubike_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="convert-csv-to-json">
+<h2>Convert CSV to JSON<a class="headerlink" href="#convert-csv-to-json" title="Permalink to this headline">#</a></h2>
+<p>現在我想做的是，假設我有一個檔案是CSV檔，但我希望用手動方式把它改為JSON檔，要怎麼做？做法其實就是先把CSV第一列取出來儲存為Key，然後把這個Key一一和每一列的值給對應起來結合成一個又一個的Dictionary，最後把每列所產生的Dictionary用<code class="docutils literal notranslate"><span class="pre">append()</span></code>加入一個List中，就會是一個List of dictionaries結構的JSON格式。</p>
+<section id="step-1-read-csv-to-list-of-list">
+<h3>Step 1: Read CSV to list of list<a class="headerlink" href="#step-1-read-csv-to-list-of-list" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;drug_156_2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
+        <span class="n">row</span> <span class="o">=</span> <span class="n">line</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;,&quot;</span><span class="p">)</span>
+        <span class="n">all_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+<span class="c1">#         print(len(row))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_list</span><span class="p">[</span><span class="mi">1</span><span class="p">][</span><span class="o">-</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">all_list</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">keys</span> <span class="o">=</span> <span class="n">all_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="step-2-convert-list-of-list-to-list-of-dict">
+<h3>Step 2: Convert list of list to list of dict<a class="headerlink" href="#step-2-convert-list-of-list-to-list-of-dict" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">all_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
+    <span class="n">temp_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">row</span><span class="p">))</span>
+    <span class="n">json_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">temp_dict</span><span class="p">)</span>
+<span class="n">json_list</span><span class="p">[:</span><span class="mi">3</span><span class="p">]</span>
+</pre></div>
+</div>
+</section>
+<section id="step-3-dump-to-json">
+<h3>Step 3: Dump to json<a class="headerlink" href="#step-3-dump-to-json" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_obj</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ubike.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P05p1_read_csv.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P05-1 Read CSV</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P05p3_read_other_format.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Read more formats</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-and-write-json">Read and Write JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-requests-to-get-data-from-internet">Step 1. Requests to get data from internet</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-convert-json-text-to-python-objects">Step 2. Convert json text to python objects</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-save-data-to-json">Step 3. Save data to json</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#load-dump-pickle">Load/Dump Pickle</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-to-pickle">Dump to Pickle</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-pickle-data">Load Pickle data</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-csv-to-json">Convert CSV to JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-read-csv-to-list-of-list">Step 1: Read CSV to list of list</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-convert-list-of-list-to-list-of-dict">Step 2: Convert list of list to list of dict</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-dump-to-json">Step 3: Dump to json</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

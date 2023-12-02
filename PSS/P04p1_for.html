@@ -1,0 +1,986 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P04 Practice01: for loop &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P04p1_for';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P04 Practice02 Search &amp; Maximum" href="P04p2_search_maximum.html" />
+    <link rel="prev" title="P04 Flow Control" href="P04_for.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P04p1_for.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P04p1_for.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P04p1_for.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P04 Practice01: for loop</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-sum-up-values-in-a-list">Q1. Sum-up values in a list</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-sum">Q1.1 使用<code class="docutils literal notranslate"><span class="pre">sum()</span></code>函數</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-dictionaryvalue">Q1.2 加總在一個Dictionary中的所有value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-3-youbike">Q1.3 加總全台北市Youbike的腳踏車總數</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-for-loop">Q2. For-loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-printing-a-tree">Q2.1. Printing a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-print-a-tree-like">Q2.2 Print a tree like</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-fibonacci-number">Q3. Fibonacci Number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-finding-prime-number">Q4. Finding Prime Number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-generating-pi">Q5. Generating Pi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-assign-continue-values-into-equal-length-brackets">Q6. Assign continue values into equal length brackets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-by-matplotlib-s-hist-function">Q6.1 by <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s <code class="docutils literal notranslate"><span class="pre">hist()</span></code> function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-2-counting-then-plotting-by-bar">Q6.2 Counting then plotting by <code class="docutils literal notranslate"><span class="pre">bar()</span></code></a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p04-practice01-for-loop">
+<h1>P04 Practice01: for loop<a class="headerlink" href="#p04-practice01-for-loop" title="Permalink to this headline">#</a></h1>
+<section id="q1-sum-up-values-in-a-list">
+<h2>Q1. Sum-up values in a list<a class="headerlink" href="#q1-sum-up-values-in-a-list" title="Permalink to this headline">#</a></h2>
+<p>在數據處理和分析中，計算一組數據（或列表）中所有數值的總和是一個常見的操作。這個練習題要求使用Python程式碼來計算一個列表中所有數值的總和。</p>
+<p>程式碼要求：</p>
+<ol class="arabic simple">
+<li><p>定義一個列表，其中包含一組數值（整數或浮點數）。</p></li>
+<li><p>使用迴圈（例如 <code class="docutils literal notranslate"><span class="pre">for</span></code> 迴圈）來遍歷列表中的每一個數值。</p></li>
+<li><p>在迴圈中，將每一個數值加到一個累計變數（例如 <code class="docutils literal notranslate"><span class="pre">sum</span></code>）上。</p></li>
+<li><p>在迴圈結束後，輸出或返回這個累計變數的值，即列表中所有數值的總和。</p></li>
+</ol>
+<p>題目目的：</p>
+<ol class="arabic simple">
+<li><p>練習使用迴圈來遍歷列表。</p></li>
+<li><p>練習使用累計變數來計算總和。</p></li>
+<li><p>理解如何使用基本的Python語法來解決實際問題。</p></li>
+</ol>
+<p>提示：</p>
+<ul class="simple">
+<li><p>注意初始化累計變數（通常為0）。</p></li>
+<li><p>注意如何在迴圈中更新累計變數的值。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="q1-1-sum">
+<h3>Q1.1 使用<code class="docutils literal notranslate"><span class="pre">sum()</span></code>函數<a class="headerlink" href="#q1-1-sum" title="Permalink to this headline">#</a></h3>
+<p>試著用<code class="docutils literal notranslate"><span class="pre">sum()</span></code>函數來解決這個問題。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q1-2-dictionaryvalue">
+<h3>Q1.2 加總在一個Dictionary中的所有value<a class="headerlink" href="#q1-2-dictionaryvalue" title="Permalink to this headline">#</a></h3>
+<p>如果你的資料在一個Dictionary中，你要想辦法將所有key所對應到的value加總起來。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q1-3-youbike">
+<h3>Q1.3 加總全台北市Youbike的腳踏車總數<a class="headerlink" href="#q1-3-youbike" title="Permalink to this headline">#</a></h3>
+<p>計算讀到的資料中，目前共有多少個ubike停駐位、又有多少ubike目前正停駐在車格上</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="p">))</span> <span class="c1"># &lt;class &#39;requests.models.Response&#39;&gt;</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">))</span> <span class="c1"># &lt;class &#39;str&#39;&gt;</span>
+<span class="n">bike_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;requests.models.Response&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="q2-for-loop">
+<h2>Q2. For-loop<a class="headerlink" href="#q2-for-loop" title="Permalink to this headline">#</a></h2>
+<section id="q2-1-printing-a-tree">
+<h3>Q2.1. Printing a tree<a class="headerlink" href="#q2-1-printing-a-tree" title="Permalink to this headline">#</a></h3>
+<p>使用Python程式語言撰寫一個程式，印出如下所示的樹形圖案：</p>
+<p>練習目的：</p>
+<ul class="simple">
+<li><p>這個練習的目的是讓學生熟悉使用迴圈控制結構，特別是<code class="docutils literal notranslate"><span class="pre">for</span></code>迴圈，來生成特定模式的輸出。同時，這個練習也有助於學生理解如何控制行數和印出的星號數目。</p></li>
+</ul>
+<p>提示：</p>
+<ol class="arabic simple">
+<li><p>您可以使用嵌套的<code class="docutils literal notranslate"><span class="pre">for</span></code>迴圈來處理這個任務，一個迴圈用於控制行數，另一個用於印出星號。</p></li>
+<li><p>在第一行，只印出一個星號。</p></li>
+<li><p>在每一行，星號的數目比上一行多一個。</p></li>
+<li><p>您可以使用<code class="docutils literal notranslate"><span class="pre">print</span></code>函數來印出星號，並使用<code class="docutils literal notranslate"><span class="pre">end=&quot;&quot;</span></code>來避免換行，使星號在同一行上印出。</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>
+<span class="o">*</span>
+<span class="o">**</span>
+<span class="o">***</span>
+<span class="o">****</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q2-2-print-a-tree-like">
+<h3>Q2.2 Print a tree like<a class="headerlink" href="#q2-2-print-a-tree-like" title="Permalink to this headline">#</a></h3>
+<p>說明：</p>
+<ul class="simple">
+<li><p>首先，在第一行印出一個星號，並在星號前面添加4個空格，使星號位於行中央。</p></li>
+<li><p>在第二行，印出三個星號，並在星號前面添加3個空格，以實現對齊效果。</p></li>
+<li><p>以此類推，每一行印出的星號數目比上一行多兩個，同時在開頭添加更多的空格，以實現樹形效果。</p></li>
+</ul>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>     <span class="o">*</span>
+    <span class="o">***</span>
+   <span class="o">*****</span>
+  <span class="o">*******</span>
+ <span class="o">*********</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="q3-fibonacci-number">
+<h2>Q3. Fibonacci Number<a class="headerlink" href="#q3-fibonacci-number" title="Permalink to this headline">#</a></h2>
+<p>費氏數列是一個數學中非常著名的數列。在這個數列中，第一項是0，第二項是1，從第三項開始，每一項都是前兩項的和。本次練習的目的是使用 for-loop 來生成費氏數列，並找出第10項的值。</p>
+<p>提示：</p>
+<ol class="arabic simple">
+<li><p>初始化兩個變數，一個用於儲存當前項（初始值為0），另一個用於儲存前一項（初始值為1）。</p>
+<ol class="arabic simple">
+<li><p>f(1) = 0</p></li>
+<li><p>f(2) = 1</p></li>
+</ol>
+</li>
+<li><p>使用 for-loop 從第3項開始，計算到第10項。</p></li>
+<li><p>在每次迴圈中，將當前項和前一項相加以得到新的當前項，然後更新前一項的值。f(n+1) = f(n) + f(n-1)</p></li>
+</ol>
+<p>要求：</p>
+<ol class="arabic simple">
+<li><p>使用 for-loop 來計算費氏數列。</p></li>
+<li><p>計算並輸出第10項的值。</p></li>
+<li><p>將你的輸出格式化為以下模樣：</p></li>
+</ol>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> 	 <span class="mi">0</span>
+<span class="mi">2</span> 	 <span class="mi">1</span>
+<span class="mi">3</span> 	 <span class="mi">2</span>
+<span class="mi">4</span> 	 <span class="mi">3</span>
+<span class="mi">5</span> 	 <span class="mi">5</span>
+<span class="mi">6</span> 	 <span class="mi">8</span>
+<span class="mi">7</span> 	 <span class="mi">13</span>
+<span class="mi">8</span> 	 <span class="mi">21</span>
+<span class="mi">9</span> 	 <span class="mi">34</span>
+<span class="mi">10</span> 	 <span class="mi">55</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">0</span> <span class="c1"># f(1)</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">1</span> <span class="c1"># f(2)</span>
+<span class="n">n</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q4-finding-prime-number">
+<h2>Q4. Finding Prime Number<a class="headerlink" href="#q4-finding-prime-number" title="Permalink to this headline">#</a></h2>
+<p>請使用 <code class="docutils literal notranslate"><span class="pre">for-loop</span></code> 寫一個 Python 程式，用來判斷輸入的整數（n）是否為一個質數。</p>
+<p>程式需求：</p>
+<ol class="arabic simple">
+<li><p>使用者輸入一個正整數，例如：<code class="docutils literal notranslate"><span class="pre">n=29</span></code></p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">for-loop</span></code> 從<code class="docutils literal notranslate"><span class="pre">2</span></code>到 <code class="docutils literal notranslate"><span class="pre">n-1</span></code>，檢查<code class="docutils literal notranslate"><span class="pre">n</span></code>是否有其他數字可以整除。</p></li>
+<li><p>如果<code class="docutils literal notranslate"><span class="pre">n</span></code>可以被其他數字整除，則輸出<code class="docutils literal notranslate"><span class="pre">n</span></code>不是質數。</p></li>
+<li><p>如果<code class="docutils literal notranslate"><span class="pre">n</span></code>不能被任何數字（除了 1 和自己）整除，則輸出<code class="docutils literal notranslate"><span class="pre">n</span></code>是質數。</p></li>
+</ol>
+<p>輸出範例：</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>29 是一個質數。
+</pre></div>
+</div>
+<p>提示：</p>
+<ol class="arabic simple">
+<li><p>用 <code class="docutils literal notranslate"><span class="pre">for-loop</span></code> 從 2 迭代到<code class="docutils literal notranslate"><span class="pre">n-1</span></code>，用 <code class="docutils literal notranslate"><span class="pre">if</span></code> 判斷<code class="docutils literal notranslate"><span class="pre">n</span></code>是否能被當前的數字整除。</p></li>
+<li><p>若能，則立即跳出迴圈，並判斷<code class="docutils literal notranslate"><span class="pre">n</span></code>不是質數。</p></li>
+<li><p>若迴圈完成，則<code class="docutils literal notranslate"><span class="pre">n</span></code>是質數。</p></li>
+</ol>
+<p>加分：</p>
+<ol class="arabic simple">
+<li><p>其實不用跑到<code class="docutils literal notranslate"><span class="pre">n-1</span></code>就可以知道他是不是質數了，請嘗試使用不同的方法來優化你的程式，例如提前結束迴圈等。</p></li>
+<li><p>問ChatGPT有沒有更好的寫法？有沒有自訂函數的寫法？有沒有更好的演算法？</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">n</span> <span class="o">=</span> <span class="mi">29</span>
+<span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q5-generating-pi">
+<h2>Q5. Generating Pi<a class="headerlink" href="#q5-generating-pi" title="Permalink to this headline">#</a></h2>
+<p>格雷戈里（Gregory）和萊布尼茲（Leibniz）發現了一個用於計算π（圓周率）的無窮級數公式。這個公式可以用來逼近π的值，並且是數學中一個非常重要的發現（<a class="reference external" href="https://mathworld.wolfram.com/PiFormulas.html%EF%BC%89%E3%80%82%E9%80%99%E5%80%8B%E5%85%AC%E5%BC%8F%E7%9A%84%E5%BD%A2%E5%BC%8F%E5%A6%82%E4%B8%8B%EF%BC%9A">https://mathworld.wolfram.com/PiFormulas.html）。這個公式的形式如下：</a></p>
+<p>Gregory and Leibniz found Pi/4 = 1 - 1/3 + 1/5 - 1/7 + 1/9…</p>
+<p>在這個練習中，我們將使用 for-loop 來計算這個公式的前100項，並且計算出π的近似值。</p>
+<p>要求：</p>
+<ol class="arabic simple">
+<li><p>使用程式碼來實現這個無窮級數。</p></li>
+<li><p>計算並輸出逼近π的值。</p></li>
+<li><p>考慮如何提高計算的精確度。</p></li>
+</ol>
+<p>提示：</p>
+<ol class="arabic simple">
+<li><p>初始化一個變數來儲存逼近π的值（初始值為1，因為第一項是1）。</p></li>
+<li><p>使用迴圈（例如 for-loop 或 while-loop）來計算後續的項。</p></li>
+<li><p>注意正負號的變化。</p></li>
+<li><p>考慮如何確定迴圈的終止條件，以達到所需的精確度。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q6-assign-continue-values-into-equal-length-brackets">
+<h2>Q6. Assign continue values into equal length brackets<a class="headerlink" href="#q6-assign-continue-values-into-equal-length-brackets" title="Permalink to this headline">#</a></h2>
+<p>之前在做Counting時，每個項目是離散的，但今天我如果要把成績的百分制等分均分至數個區間後（0-10, 10-20, …, 90-100, 100），分別計算每個區間有多少人要怎麼做？</p>
+<section id="q6-1-by-matplotlib-s-hist-function">
+<h3>Q6.1 by <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s <code class="docutils literal notranslate"><span class="pre">hist()</span></code> function<a class="headerlink" href="#q6-1-by-matplotlib-s-hist-function" title="Permalink to this headline">#</a></h3>
+<p>一個有趣的視覺化做法是利用<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>的<code class="docutils literal notranslate"><span class="pre">hist()</span></code>函式，可以將資料分成數個區間，並計算每個區間的頻率，然後畫出長條圖。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">grades</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="n">facecolor</span><span class="o">=</span><span class="s1">&#39;green&#39;</span><span class="p">,</span> <span class="n">alpha</span><span class="o">=</span><span class="mf">0.5</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([9., 7., 3., 8., 5., 3., 7., 4., 8., 6.]),
+ array([ 0. ,  9.9, 19.8, 29.7, 39.6, 49.5, 59.4, 69.3, 79.2, 89.1, 99. ]),
+ &lt;BarContainer object of 10 artists&gt;)
+</pre></div>
+</div>
+<img alt="../_images/ef2acab522ef6500a99f00ca6f66526f1e09c3284f1bd81391a2bcb031849c42.png" src="../_images/ef2acab522ef6500a99f00ca6f66526f1e09c3284f1bd81391a2bcb031849c42.png" />
+</div>
+</div>
+</section>
+<section id="q6-2-counting-then-plotting-by-bar">
+<h3>Q6.2 Counting then plotting by <code class="docutils literal notranslate"><span class="pre">bar()</span></code><a class="headerlink" href="#q6-2-counting-then-plotting-by-bar" title="Permalink to this headline">#</a></h3>
+<p>在這個新版本的Python程式中，我們用了一個名為<code class="docutils literal notranslate"><span class="pre">glist</span></code>的列表來儲存每10分一個區段（也就是每個”bracket”）的學生數量。這個列表初始為11個0（從0到100分，共11個區段）。我們還使用了<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>來視覺化這些數據。</p>
+<p>構想</p>
+<ol class="arabic simple">
+<li><p><strong>使用列表</strong>: 利用列表<code class="docutils literal notranslate"><span class="pre">glist</span></code>的索引值來表示分數的區段（0-9, 10-19, …, 90-99, 100）是非常巧妙的。這避免了使用多個<code class="docutils literal notranslate"><span class="pre">if-else</span></code>語句來判斷分數落在哪一個區段。</p></li>
+<li><p><strong>整數索引</strong>: 通過<code class="docutils literal notranslate"><span class="pre">int(g/10)</span></code>，我們可以把任何分數直接映射到相應的區段。例如，分數72（72/10=7.2）會被映射到<code class="docutils literal notranslate"><span class="pre">glist[7]</span></code>。</p></li>
+<li><p><strong>數據視覺化</strong>: 使用<code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>的<code class="docutils literal notranslate"><span class="pre">bar</span></code>函數，我們可以直觀地看到不同區段的學生數量。</p></li>
+</ol>
+<p>提示</p>
+<ol class="arabic simple">
+<li><p><strong>列表初始化</strong>: 確保<code class="docutils literal notranslate"><span class="pre">glist</span></code>有足夠的元素（在這裡是11個）來代表所有可能的分數區段。</p></li>
+<li><p><strong>資料驗證</strong>: 確保所有學生成績都在0到100之間，這樣<code class="docutils literal notranslate"><span class="pre">int(g/10)</span></code>不會超出<code class="docutils literal notranslate"><span class="pre">glist</span></code>的索引範圍。</p></li>
+<li><p><strong>視覺化選項</strong>: 在<code class="docutils literal notranslate"><span class="pre">plt.bar()</span></code>函數中，<code class="docutils literal notranslate"><span class="pre">width=10</span></code>表示每個柱子的寬度為10。你可以調整這個數值以達到不同的視覺效果。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">60</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">90</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">73</span><span class="p">]</span>
+<span class="n">glist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+
+<span class="o">%</span><span class="k">matplotlib</span> inline
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">glist</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="n">glist</span><span class="p">[</span><span class="nb">int</span><span class="p">(</span><span class="n">g</span><span class="o">/</span><span class="mi">10</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">glist</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">bar</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">101</span><span class="p">,</span> <span class="mi">10</span><span class="p">)),</span> <span class="n">glist</span><span class="p">,</span> <span class="n">width</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>11
+[0, 10, 20, 30, 40, 50, 60, 70, 80, 90, 100]
+[0, 0, 0, 0, 0, 0, 6, 3, 0, 2, 1]
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;BarContainer object of 11 artists&gt;
+</pre></div>
+</div>
+<img alt="../_images/cc66635501463464b0366948f2c1b13a45b932fd058e950831feb5d3a95c9381.png" src="../_images/cc66635501463464b0366948f2c1b13a45b932fd058e950831feb5d3a95c9381.png" />
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P04_for.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P04 Flow Control</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P04p2_search_maximum.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P04 Practice02 Search &amp; Maximum</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-sum-up-values-in-a-list">Q1. Sum-up values in a list</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-1-sum">Q1.1 使用<code class="docutils literal notranslate"><span class="pre">sum()</span></code>函數</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-2-dictionaryvalue">Q1.2 加總在一個Dictionary中的所有value</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-3-youbike">Q1.3 加總全台北市Youbike的腳踏車總數</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-for-loop">Q2. For-loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-1-printing-a-tree">Q2.1. Printing a tree</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-2-print-a-tree-like">Q2.2 Print a tree like</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-fibonacci-number">Q3. Fibonacci Number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-finding-prime-number">Q4. Finding Prime Number</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-generating-pi">Q5. Generating Pi</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-assign-continue-values-into-equal-length-brackets">Q6. Assign continue values into equal length brackets</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-1-by-matplotlib-s-hist-function">Q6.1 by <code class="docutils literal notranslate"><span class="pre">matplotlib</span></code>’s <code class="docutils literal notranslate"><span class="pre">hist()</span></code> function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q6-2-counting-then-plotting-by-bar">Q6.2 Counting then plotting by <code class="docutils literal notranslate"><span class="pre">bar()</span></code></a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

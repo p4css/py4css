@@ -1,0 +1,1920 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>TM03 POS Tagging &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TM/TM03_POS Tagging';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TM04 Feature Selection &amp; IR &amp; Search" href="TM04_IR_search.html" />
+    <link rel="prev" title="TM02 Collocation" href="TM02_collocation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/TM/TM03_POS Tagging.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM03_POS Tagging.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/TM/TM03_POS Tagging.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TM03 POS Tagging</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-nltk-pos-tagger">Install NLTK POS Tagger</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test">Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-list-of-the-penn-pos-tags">Full list of the Penn POS tags</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-pos-tagging-for-all-tokens-in-the-corpus">Perform POS tagging for all tokens in the corpus.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-most-frequent-nouns">Find the most frequent nouns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-words-into-lower-case-excepting-proper-nouns">Convert words into lower case, excepting proper nouns.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-lemmatization-for-better-handle-different-forms-of-verbs">With lemmatization for better handle different forms of verbs.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mining-specific-distant-collocations">Mining Specific Distant Collocations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-all-verb-noun-collocations">Detect all verb-noun collocations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-mean-distance-of-each-verb-noun-pair">Compute the mean distance of each verb-noun pair.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#show-the-longest-middle-and-shortest-pairs">Show the longest, middle, and shortest pairs.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#longest-part">longest part</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#middle-part">Middle part</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-part">Shortest part</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-the-meaningful-verb-noun-pairs-with-deviation">Find out the meaningful verb/noun pairs with deviation.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-out-the-stopwords">Filter out the stopwords.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtered-by-deviation-further-filter-out-the-low-frequent-pairs">Filtered by Deviation: Further filter out the low frequent pairs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-method-for-distant-collocation-mining">General method for distant collocation mining.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-all-pairs">Count all pairs.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps">Implememnt a better lemmatizer for handling proper nouns (NNP / NNPS).</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#and-do-not-lower-the-word-in-the-main-function-anymore">And do not lower() the word in the main function anymore.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-chatgpt">Try chatGPT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-pattern-with-pos">Detecting pattern with POS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-multiple-patterns">Detecting multiple patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pos">With POS</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tm03-pos-tagging">
+<h1>TM03 POS Tagging<a class="headerlink" href="#tm03-pos-tagging" title="Permalink to this headline">#</a></h1>
+<section id="install-nltk-pos-tagger">
+<h2>Install NLTK POS Tagger<a class="headerlink" href="#install-nltk-pos-tagger" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install nltk</span>
+<span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;averaged_perceptron_tagger&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /Users/jirlong/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+[nltk_data] Downloading package averaged_perceptron_tagger to
+[nltk_data]     /Users/jirlong/nltk_data...
+[nltk_data]   Package averaged_perceptron_tagger is already up-to-
+[nltk_data]       date!
+</pre></div>
+</div>
+</div>
+</div>
+<section id="test">
+<h3>Test<a class="headerlink" href="#test" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span> <span class="o">=</span> <span class="s2">&quot;The dog eats the big hotdog.&quot;</span>
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;The&#39;, &#39;DT&#39;), (&#39;dog&#39;, &#39;NN&#39;), (&#39;eats&#39;, &#39;VBZ&#39;), (&#39;the&#39;, &#39;DT&#39;), (&#39;big&#39;, &#39;JJ&#39;), (&#39;hotdog&#39;, &#39;NN&#39;), (&#39;.&#39;, &#39;.&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">(</span><span class="s2">&quot;The book is written by my father.&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;The&#39;, &#39;DT&#39;), (&#39;book&#39;, &#39;NN&#39;), (&#39;is&#39;, &#39;VBZ&#39;), (&#39;written&#39;, &#39;VBN&#39;), (&#39;by&#39;, &#39;IN&#39;), (&#39;my&#39;, &#39;PRP$&#39;), (&#39;father&#39;, &#39;NN&#39;), (&#39;.&#39;, &#39;.&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">nltk</span><span class="o">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">(</span><span class="s2">&quot;My father has written more than ten books.&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;My&#39;, &#39;PRP$&#39;), (&#39;father&#39;, &#39;NN&#39;), (&#39;has&#39;, &#39;VBZ&#39;), (&#39;written&#39;, &#39;VBN&#39;), (&#39;more&#39;, &#39;JJR&#39;), (&#39;than&#39;, &#39;IN&#39;), (&#39;ten&#39;, &#39;JJ&#39;), (&#39;books&#39;, &#39;NNS&#39;), (&#39;.&#39;, &#39;.&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="full-list-of-the-penn-pos-tags">
+<h3>Full list of the Penn POS tags<a class="headerlink" href="#full-list-of-the-penn-pos-tags" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html">https://www.ling.upenn.edu/courses/Fall_2003/ling001/penn_treebank_pos.html</a>
+<img alt="image.png" src="TM/attachment:63a89cc7-a6ed-4937-a0c3-71fcb05af322.png" /></p>
+</section>
+</section>
+<section id="perform-pos-tagging-for-all-tokens-in-the-corpus">
+<h2>Perform POS tagging for all tokens in the corpus.<a class="headerlink" href="#perform-pos-tagging-for-all-tokens-in-the-corpus" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/corpus02.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of characters: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of characters: 75346
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">tokens_with_tag</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">pos_tag</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="find-the-most-frequent-nouns">
+<h3>Find the most frequent nouns<a class="headerlink" href="#find-the-most-frequent-nouns" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;NN&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="n">v</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>class 	 104
+bourgeoisie 	 89
+society 	 72
+bourgeois 	 69
+proletariat 	 62
+property 	 55
+production 	 52
+labor 	 30
+existence 	 30
+development 	 28
+industry 	 27
+capital 	 22
+form 	 21
+movement 	 19
+struggle 	 17
+character 	 17
+country 	 15
+abolition 	 15
+time 	 14
+man 	 14
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-words-into-lower-case-excepting-proper-nouns">
+<h3>Convert words into lower case, excepting proper nouns.<a class="headerlink" href="#convert-words-into-lower-case-excepting-proper-nouns" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;NN&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;class&#39;, 104), (&#39;bourgeoisie&#39;, 89), (&#39;society&#39;, 73), (&#39;bourgeois&#39;, 69), (&#39;proletariat&#39;, 62), (&#39;property&#39;, 56), (&#39;production&#39;, 52), (&#39;labor&#39;, 30), (&#39;existence&#39;, 30), (&#39;development&#39;, 28), (&#39;industry&#39;, 27), (&#39;capital&#39;, 24), (&#39;form&#39;, 21), (&#39;abolition&#39;, 20), (&#39;movement&#39;, 19), (&#39;struggle&#39;, 17), (&#39;character&#39;, 17), (&#39;country&#39;, 15), (&#39;time&#39;, 14), (&#39;man&#39;, 14)]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Explore other kinds of part of speech tags</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;VB&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;be&#39;, 41), (&#39;have&#39;, 8), (&#39;do&#39;, 8), (&#39;introduce&#39;, 5), (&#39;increase&#39;, 5), (&#39;lose&#39;, 5), (&#39;thus&#39;, 4), (&#39;attain&#39;, 4), (&#39;let&#39;, 4), (&#39;bring&#39;, 3), (&#39;become&#39;, 3), (&#39;use&#39;, 3), (&#39;form&#39;, 3), (&#39;abolish&#39;, 3), (&#39;acquire&#39;, 3), (&#39;vanish&#39;, 3), (&#39;take&#39;, 3), (&#39;pass&#39;, 2), (&#39;work&#39;, 2), (&#39;say&#39;, 2)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;NNP&#39;</span> <span class="ow">or</span> <span class="n">tag</span> <span class="o">==</span> <span class="s1">&#39;NNPS&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;Communists&#39;, 23), (&#39;Socialism&#39;, 21), (&#39;Germany&#39;, 13), (&#39;Communism&#39;, 12), (&#39;France&#39;, 12), (&#39;State&#39;, 11), (&#39;England&#39;, 9), (&#39;Communist&#39;, 7), (&#39;Socialist&#39;, 6), (&#39;America&#39;, 5), (&#39;_i.e._&#39;, 5), (&#39;AND&#39;, 4), (&#39;THE&#39;, 3), (&#39;II&#39;, 3), (&#39;I.&#39;, 3), (&#39;Modern&#39;, 3), (&#39;Hence&#39;, 3), (&#39;Communistic&#39;, 3), (&#39;Bourgeois&#39;, 3), (&#39;SOCIALISM&#39;, 3)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">+=</span> <span class="mi">1</span>
+        
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;is&#39;, 138), (&#39;has&#39;, 68), (&#39;are&#39;, 59), (&#39;have&#39;, 45), (&#39;be&#39;, 41), (&#39;was&#39;, 29), (&#39;been&#39;, 18), (&#39;do&#39;, 18), (&#39;existing&#39;, 15), (&#39;were&#39;, 14), (&#39;had&#39;, 12), (&#39;being&#39;, 11), (&#39;working&#39;, 10), (&#39;become&#39;, 9), (&#39;does&#39;, 9), (&#39;made&#39;, 8), (&#39;developed&#39;, 7), (&#39;see&#39;, 7), (&#39;becomes&#39;, 7), (&#39;created&#39;, 7)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="with-lemmatization-for-better-handle-different-forms-of-verbs">
+<h2>With lemmatization for better handle different forms of verbs.<a class="headerlink" href="#with-lemmatization-for-better-handle-different-forms-of-verbs" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>GOAL - 在計算出現次數前，先用<code class="docutils literal notranslate"><span class="pre">lemmatize()</span></code>將動詞或名詞恢復成原型</p></li>
+<li><p>METHOD - Load WordNet Lemmatizer provided by NTLK</p></li>
+<li><p>EXAMPLE</p>
+<ul>
+<li><p>‘is’, ‘are’, ‘were’ -&gt; ‘be’</p></li>
+<li><p>‘has’, ‘have’ -&gt; ‘have’</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
+<span class="n">wordnet_lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="c1"># nltk.download(&#39;wordnet&#39;)</span>
+<span class="c1"># nltk.download(&#39;omw-1.4&#39;)</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="s1">&#39;v&#39;</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># ADJ (a), ADJ_SAT (s), ADV (r), NOUN (n) or VERB (v)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;be&#39;, 310), (&#39;have&#39;, 128), (&#39;do&#39;, 31), (&#39;become&#39;, 21), (&#39;exist&#39;, 20), (&#39;take&#39;, 17), (&#39;work&#39;, 14), (&#39;develop&#39;, 13), (&#39;create&#39;, 13), (&#39;make&#39;, 13), (&#39;see&#39;, 12), (&#39;find&#39;, 11), (&#39;lose&#39;, 10), (&#39;give&#39;, 9), (&#39;increase&#39;, 9), (&#39;destroy&#39;, 9), (&#39;go&#39;, 9), (&#39;abolish&#39;, 9), (&#39;carry&#39;, 8), (&#39;compel&#39;, 8)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="s1">&#39;n&#39;</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># ADJ (a), ADJ_SAT (s), ADV (r), NOUN (n) or VERB (v)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;class&#39;, 124), (&#39;bourgeoisie&#39;, 91), (&#39;society&#39;, 76), (&#39;bourgeois&#39;, 75), (&#39;proletariat&#39;, 64), (&#39;condition&#39;, 59), (&#39;property&#39;, 56), (&#39;production&#39;, 53), (&#39;industry&#39;, 35), (&#39;communist&#39;, 34), (&#39;relation&#39;, 32), (&#39;mean&#39;, 30), (&#39;labor&#39;, 30), (&#39;existence&#39;, 30), (&#39;form&#39;, 28), (&#39;development&#39;, 28), (&#39;country&#39;, 28), (&#39;socialism&#39;, 28), (&#39;capital&#39;, 24), (&#39;state&#39;, 24)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># ADJ (a), ADJ_SAT (s), ADV (r), NOUN (n) or VERB (v)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;not&#39;, 55), (&#39;more&#39;, 32), (&#39;only&#39;, 29), (&#39;so&#39;, 27), (&#39;up&#39;, 25), (&#39;therefore&#39;, 21), (&#39;most&#39;, 17), (&#39;away&#39;, 13), (&#39;also&#39;, 13), (&#39;longer&#39;, 12), (&#39;then&#39;, 11), (&#39;no&#39;, 10), (&#39;even&#39;, 10), (&#39;now&#39;, 9), (&#39;everywhere&#39;, 9), (&#39;generally&#39;, 9), (&#39;ever&#39;, 9), (&#39;just&#39;, 9), (&#39;out&#39;, 9), (&#39;already&#39;, 8)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">noun_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">tag</span> <span class="ow">in</span> <span class="n">tokens_with_tag</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">tag</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
+        <span class="n">noun_counts</span><span class="p">[</span><span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="s1">&#39;r&#39;</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+        <span class="c1"># ADJ (a), ADJ_SAT (s), ADV (r), NOUN (n) or VERB (v)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">noun_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;not&#39;, 55), (&#39;more&#39;, 32), (&#39;only&#39;, 29), (&#39;so&#39;, 27), (&#39;up&#39;, 25), (&#39;therefore&#39;, 21), (&#39;most&#39;, 17), (&#39;away&#39;, 13), (&#39;also&#39;, 13), (&#39;longer&#39;, 12), (&#39;far&#39;, 11), (&#39;then&#39;, 11), (&#39;no&#39;, 10), (&#39;even&#39;, 10), (&#39;now&#39;, 9), (&#39;everywhere&#39;, 9), (&#39;generally&#39;, 9), (&#39;ever&#39;, 9), (&#39;just&#39;, 9), (&#39;out&#39;, 9)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="mining-specific-distant-collocations">
+<h2>Mining Specific Distant Collocations<a class="headerlink" href="#mining-specific-distant-collocations" title="Permalink to this headline">#</a></h2>
+<p>Back to last week</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">word_pair_distance_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">distance</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+            <span class="n">w1</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+            <span class="n">w2</span> <span class="o">=</span> <span class="n">tokens</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">distance</span><span class="p">]</span>
+            <span class="n">word_pair_distance_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the	of	2	279
+of	the	1	242
+the	the	3	154
+,	the	2	118
+,	and	1	111
+,	,	2	109
+the	of	3	105
+the	,	5	101
+.	The	1	100
+,	,	7	98
+,	,	4	97
+of	,	3	97
+the	the	7	95
+the	,	8	94
+the	the	6	92
+,	,	6	92
+the	the	4	92
+,	the	4	92
+of	,	2	91
+the	,	2	91
+</pre></div>
+</div>
+</div>
+</div>
+<section id="detect-all-verb-noun-collocations">
+<h3>Detect all verb-noun collocations<a class="headerlink" href="#detect-all-verb-noun-collocations" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">9</span>
+
+<span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">word_pair_distance_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+    <span class="n">w1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">tokens_with_tag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">t1</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="n">w1</span> <span class="o">=</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
+        
+    <span class="k">for</span> <span class="n">distance</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">):</span>
+            <span class="n">w2</span><span class="p">,</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">tokens_with_tag</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">distance</span><span class="p">]</span>
+            <span class="k">if</span> <span class="n">t2</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span>
+                <span class="n">w2</span> <span class="o">=</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+                <span class="n">word_pair_distance_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>work	class	1	10
+be	class	4	6
+exist	society	1	5
+be	class	6	5
+be	class	7	4
+rule	class	1	4
+be	class	3	4
+be	society	5	4
+work	party	2	4
+be	struggle	5	3
+have	society	6	3
+pave	way	2	3
+put	end	2	3
+be	bourgeoisie	8	3
+lose	character	3	3
+be	bourgeois	5	3
+be	hand	4	3
+be	condition	6	3
+fight	bourgeoisie	3	3
+have	nothing	1	3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="compute-the-mean-distance-of-each-verb-noun-pair">
+<h3>Compute the mean distance of each verb-noun pair.<a class="headerlink" href="#compute-the-mean-distance-of-each-verb-noun-pair" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_mean_distances</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">distance</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="show-the-longest-middle-and-shortest-pairs">
+<h3>Show the longest, middle, and shortest pairs.<a class="headerlink" href="#show-the-longest-middle-and-shortest-pairs" title="Permalink to this headline">#</a></h3>
+<section id="longest-part">
+<h4>longest part<a class="headerlink" href="#longest-part" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### longest part</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">distance</span> <span class="ow">in</span> <span class="n">pair_mean_distances</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>be	case	8.000000	2
+introduce	bourgeoisie	8.000000	2
+be	communism	7.500000	2
+have	communism	7.500000	2
+do	population	7.500000	2
+have	force	7.500000	2
+have	master	7.500000	2
+have	ruling	7.500000	2
+be	interest	7.500000	2
+be	order	7.500000	2
+be	moment	7.500000	2
+have	man	7.000000	2
+have	industry	7.000000	2
+see	proletariat	7.000000	2
+have	dissolution	7.000000	2
+be	relation	7.000000	3
+be	action	7.000000	2
+be	modern	7.000000	2
+leave	man	7.000000	2
+see	production	7.000000	2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="middle-part">
+<h4>Middle part<a class="headerlink" href="#middle-part" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Middle part</span>
+<span class="n">num_pairs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pair_mean_distances</span><span class="p">)</span>
+<span class="n">mid</span> <span class="o">=</span> <span class="n">num_pairs</span> <span class="o">//</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">distance</span> <span class="ow">in</span> <span class="n">pair_mean_distances</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="n">mid</span><span class="o">-</span><span class="mi">20</span><span class="p">:</span><span class="n">mid</span><span class="o">+</span><span class="mi">20</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>be	mean	5.333333	6
+have	feudal	5.333333	3
+have	character	5.333333	3
+be	laborer	5.333333	3
+be	property	5.333333	9
+be	capitalist	5.333333	3
+be	class	5.238095	21
+be	capital	5.166667	6
+be	struggle	5.166667	6
+be	condition	5.100000	10
+be	hand	5.000000	4
+have	part	5.000000	2
+compel	proletariat	5.000000	2
+be	time	5.000000	5
+do	property	5.000000	5
+be	advance	5.000000	2
+have	population	5.000000	3
+have	dependent	5.000000	2
+be	way	5.000000	3
+be	slave	5.000000	2
+see	antagonism	5.000000	2
+be	bare	5.000000	2
+be	idea	5.000000	4
+abolish	property	5.000000	3
+create	property	5.000000	2
+convert	property	5.000000	2
+keep	laborer	5.000000	2
+increase	labor	5.000000	2
+be	family	5.000000	2
+exist	bourgeoisie	5.000000	2
+replace	education	5.000000	2
+do	history	5.000000	2
+deaden	class	5.000000	2
+be	man	4.750000	4
+have	mean	4.750000	4
+be	character	4.750000	4
+have	hand	4.600000	5
+be	party	4.500000	2
+create	force	4.500000	2
+abolish	appropriation	4.500000	2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="shortest-part">
+<h4>Shortest part<a class="headerlink" href="#shortest-part" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">### Shortest part</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">distance</span> <span class="ow">in</span> <span class="n">pair_mean_distances</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>be	asunder	2.000000	2
+supply	proletariat	2.000000	2
+be	name	2.000000	2
+have	meaning	2.000000	2
+keep	pace	2.000000	2
+stand	face	2.000000	2
+continue	existence	2.000000	2
+exist	property	2.000000	2
+go	hand	2.000000	2
+appropriate	product	1.600000	5
+take	place	1.500000	2
+increase	capital	1.500000	2
+have	individuality	1.500000	2
+create	condition	1.500000	2
+exist	society	1.333333	6
+rule	class	1.000000	4
+rise	bourgeoisie	1.000000	2
+bourgeois	society	1.000000	2
+introduce	community	1.000000	2
+lose	sight	1.000000	2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="find-out-the-meaningful-verb-noun-pairs-with-deviation">
+<h2>Find out the meaningful verb/noun pairs with deviation.<a class="headerlink" href="#find-out-the-meaningful-verb-noun-pairs-with-deviation" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">pair_deviations.most_common()[-20:]</span></code> to filter in low deviation part</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">c</span> <span class="o">*</span> <span class="p">((</span><span class="n">distance</span> <span class="o">-</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev_tmp</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="n">s_2</span> <span class="o">=</span> <span class="n">dev_tmp</span> <span class="o">/</span> <span class="p">(</span><span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">s_2</span> <span class="o">**</span> <span class="mf">0.5</span>
+    
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>compel	proletariat	5.000000	0.000000	2
+see	proletariat	7.000000	0.000000	2
+supply	proletariat	2.000000	0.000000	2
+have	dissolution	7.000000	0.000000	2
+be	name	2.000000	0.000000	2
+be	antagonism	4.000000	0.000000	2
+base	antagonism	3.000000	0.000000	2
+transform	property	3.000000	0.000000	2
+dominate	society	6.000000	0.000000	2
+have	meaning	2.000000	0.000000	2
+determine	condition	4.000000	0.000000	2
+admit	case	3.000000	0.000000	2
+be	case	8.000000	0.000000	2
+introduce	community	1.000000	0.000000	2
+introduce	woman	3.000000	0.000000	2
+introduce	bourgeoisie	8.000000	0.000000	2
+keep	pace	2.000000	0.000000	2
+organize	class	4.000000	0.000000	2
+lose	sight	1.000000	0.000000	2
+be	action	7.000000	0.000000	2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="filter-out-the-stopwords">
+<h3>Filter out the stopwords.<a class="headerlink" href="#filter-out-the-stopwords" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">pair_deviations.most_common()[-20:]</span></code> to filter in low deviation part</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stopword_list</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+
+<span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">w1</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+        <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">c</span> <span class="o">*</span> <span class="p">((</span><span class="n">distance</span> <span class="o">-</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev_tmp</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="n">s_2</span> <span class="o">=</span> <span class="n">dev_tmp</span> <span class="o">/</span> <span class="p">(</span><span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">s_2</span> <span class="o">**</span> <span class="mf">0.5</span>
+    
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pave	way	2.000000	0.000000	3
+put	end	2.000000	0.000000	3
+lose	character	3.000000	0.000000	3
+rise	bourgeoisie	1.000000	0.000000	2
+get	hand	3.000000	0.000000	2
+bourgeois	society	1.000000	0.000000	2
+compel	proletariat	5.000000	0.000000	2
+see	proletariat	7.000000	0.000000	2
+supply	proletariat	2.000000	0.000000	2
+base	antagonism	3.000000	0.000000	2
+transform	property	3.000000	0.000000	2
+dominate	society	6.000000	0.000000	2
+determine	condition	4.000000	0.000000	2
+admit	case	3.000000	0.000000	2
+introduce	community	1.000000	0.000000	2
+introduce	woman	3.000000	0.000000	2
+introduce	bourgeoisie	8.000000	0.000000	2
+keep	pace	2.000000	0.000000	2
+organize	class	4.000000	0.000000	2
+lose	sight	1.000000	0.000000	2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="filtered-by-deviation-further-filter-out-the-low-frequent-pairs">
+<h4>Filtered by Deviation: Further filter out the low frequent pairs<a class="headerlink" href="#filtered-by-deviation-further-filter-out-the-low-frequent-pairs" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="k">if</span> <span class="n">w1</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">c</span> <span class="o">*</span> <span class="p">((</span><span class="n">distance</span> <span class="o">-</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev_tmp</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="n">s_2</span> <span class="o">=</span> <span class="n">dev_tmp</span> <span class="o">/</span> <span class="p">(</span><span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+    <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">s_2</span> <span class="o">**</span> <span class="mf">0.5</span>
+    
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>find	work	2.666667	2.886751	3
+abolish	property	5.000000	2.645751	3
+join	class	5.666667	2.516611	3
+fight	bourgeoisie	3.800000	2.387467	5
+work	class	2.000000	2.374103	12
+represent	interest	3.666667	2.081666	3
+mean	bourgeois	4.333333	2.081666	3
+exist	thing	4.000000	1.732051	3
+revolutionize	production	3.333333	1.154701	3
+intend	property	6.666667	1.154701	3
+concentrate	hand	3.666667	1.154701	3
+attain	end	3.000000	1.000000	3
+exist	society	1.333333	0.816497	6
+produce	product	3.500000	0.577350	4
+appropriate	product	1.600000	0.547723	5
+rule	class	1.000000	0.000000	4
+work	party	2.000000	0.000000	4
+pave	way	2.000000	0.000000	3
+put	end	2.000000	0.000000	3
+lose	character	3.000000	0.000000	3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="general-method-for-distant-collocation-mining">
+<h3>General method for distant collocation mining.<a class="headerlink" href="#general-method-for-distant-collocation-mining" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A handy lemmatizer </span>
+<span class="c1"># WordNet Style: ADJ (a), ADJ_SAT (s), ADV (r), NOUN (n) or VERB (v)</span>
+<span class="c1"># Penn Style: ADJ (J*), ADJ_SAT (J*), ADV (R*), NOUN (N*), or VERB (V*) </span>
+<span class="k">def</span> <span class="nf">lemmatize_verbose</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;J&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+    <span class="k">elif</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">)</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">word</span>
+    
+
+<span class="k">def</span> <span class="nf">lemmatize_shorter</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;J&#39;</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+    <span class="k">elif</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="s1">&#39;r&#39;</span>
+    <span class="k">elif</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span>
+    <span class="k">elif</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="s1">&#39;v&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">word</span>
+    <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">lemmatize_smarter</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;R&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">]:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="k">elif</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">==</span> <span class="s1">&#39;J&#39;</span><span class="p">:</span>
+        <span class="n">pos</span> <span class="o">=</span> <span class="s1">&#39;a&#39;</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">word</span>
+    <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+
+
+<span class="c1"># Recommended implementation.</span>
+<span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;J&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;v&#39;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">mapping</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">mapping</span><span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">word</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="count-all-pairs">
+<h3>Count all pairs.<a class="headerlink" href="#count-all-pairs" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">,</span> <span class="n">min_cut</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="n">word_pair_distance_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">w1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">tokens_with_tag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">t1</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pos1</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">lemmatize</span><span class="p">(</span><span class="n">w1</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">t1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">distance</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">):</span>
+                <span class="n">w2</span><span class="p">,</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">tokens_with_tag</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">distance</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">t2</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pos2</span><span class="p">):</span>
+                    <span class="n">w2</span> <span class="o">=</span> <span class="n">lemmatize</span><span class="p">(</span><span class="n">w2</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">t2</span><span class="p">)</span>
+                    <span class="n">word_pair_distance_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="n">pair_mean_distances</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">distance</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span>
+
+    <span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">w1</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">min_cut</span><span class="p">:</span>
+            <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">c</span> <span class="o">*</span> <span class="p">((</span><span class="n">distance</span> <span class="o">-</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev_tmp</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+        <span class="n">s_2</span> <span class="o">=</span> <span class="n">dev_tmp</span> <span class="o">/</span> <span class="p">(</span><span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">s_2</span> <span class="o">**</span> <span class="mf">0.5</span>
+    
+    <span class="k">return</span> <span class="n">pair_deviations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collocations</span> <span class="o">=</span> <span class="n">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">collocations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>find	work	2.666667	2.886751	3
+abolish	property	5.000000	2.645751	3
+join	class	5.666667	2.516611	3
+fight	bourgeoisie	3.800000	2.387467	5
+work	class	2.000000	2.374103	12
+represent	interest	3.666667	2.081666	3
+mean	bourgeois	4.333333	2.081666	3
+exist	thing	4.000000	1.732051	3
+revolutionize	production	3.333333	1.154701	3
+intend	property	6.666667	1.154701	3
+concentrate	hand	3.666667	1.154701	3
+attain	end	3.000000	1.000000	3
+exist	society	1.333333	0.816497	6
+produce	product	3.500000	0.577350	4
+appropriate	product	1.600000	0.547723	5
+rule	class	1.000000	0.000000	4
+work	party	2.000000	0.000000	4
+pave	way	2.000000	0.000000	3
+put	end	2.000000	0.000000	3
+lose	character	3.000000	0.000000	3
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collocations</span> <span class="o">=</span> <span class="n">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">collocations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mode	production	0.000000	0.000000	0
+socialist	communist	0.000000	0.000000	0
+division	labor	0.000000	0.000000	0
+community	woman	0.000000	0.000000	0
+world	market	0.000000	0.000000	0
+condition	life	0.000000	0.000000	0
+mean	subsistence	0.000000	0.000000	0
+form	society	0.000000	0.000000	0
+form	property	0.000000	0.000000	0
+member	society	0.000000	0.000000	0
+state	thing	0.000000	0.000000	0
+disappearance	class	0.000000	0.000000	0
+benefit	class	0.000000	0.000000	0
+relation	production	0.000000	0.000000	0
+mean	communication	0.000000	0.000000	0
+portion	bourgeoisie	0.000000	0.000000	0
+section	class	0.000000	0.000000	0
+state	society	0.000000	0.000000	0
+hand	state	0.000000	0.000000	0
+bourgeois	socialism	0.000000	0.000000	1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collocations</span> <span class="o">=</span> <span class="n">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="s1">&#39;J&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">collocations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>productive	force	0.000000	0.000000	0
+middle	age	0.000000	0.000000	0
+modern	bourgeois	0.000000	0.000000	0
+private	property	0.000000	0.000000	0
+feudal	society	0.000000	0.000000	0
+middle	class	0.000000	0.000000	0
+petty	bourgeois	0.000000	0.000000	0
+absolute	monarchy	0.000000	0.000000	0
+modern	bourgeoisie	0.000000	0.000000	0
+free	trade	0.000000	0.000000	0
+bourgeois	production	0.000000	0.000000	1
+political	bourgeoisie	0.000000	0.000000	0
+immense	majority	0.000000	0.000000	0
+french	revolution	0.000000	0.000000	0
+mere	production	0.000000	0.000000	0
+political	supremacy	0.000000	0.000000	0
+eighteenth	century	0.000000	0.000000	0
+historical	development	0.000000	0.000000	0
+eternal	truth	0.000000	0.000000	0
+undeveloped	state	0.000000	0.000000	0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collocations</span> <span class="o">=</span> <span class="n">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="s1">&#39;NNP&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">collocations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>true	socialism	0.000000	3.785939	1
+communist	party	0.000000	2.863564	0
+communist	communist	0.000000	2.645751	0
+england	france	0.000000	2.516611	0
+socialist	literature	0.000000	2.500000	0
+communist	literature	0.000000	2.500000	0
+communism	power	0.000000	1.527525	0
+germany	bourgeoisie	0.000000	0.577350	0
+socialist	communist	0.000000	0.000000	0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps">
+<h2>Implememnt a better lemmatizer for handling proper nouns (NNP / NNPS).<a class="headerlink" href="#implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">):</span>
+    <span class="k">if</span> <span class="ow">not</span> <span class="n">pos</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;NNP&#39;</span><span class="p">):</span>
+        <span class="n">word</span> <span class="o">=</span> <span class="n">word</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+    <span class="n">mapping</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;J&#39;</span><span class="p">:</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;R&#39;</span><span class="p">:</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">:</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">:</span> <span class="s1">&#39;v&#39;</span><span class="p">}</span>
+    <span class="k">if</span> <span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="ow">in</span> <span class="n">mapping</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">mapping</span><span class="p">[</span><span class="n">pos</span><span class="p">[</span><span class="mi">0</span><span class="p">]])</span>
+    <span class="k">return</span> <span class="n">word</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="and-do-not-lower-the-word-in-the-main-function-anymore">
+<h3>And do not lower() the word in the main function anymore.<a class="headerlink" href="#and-do-not-lower-the-word-in-the-main-function-anymore" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="n">pos1</span><span class="p">,</span> <span class="n">pos2</span><span class="p">,</span> <span class="n">min_cut</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">window_size</span><span class="o">=</span><span class="mi">9</span><span class="p">):</span>
+    <span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="n">word_pair_distance_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span><span class="p">):</span>
+        <span class="n">w1</span><span class="p">,</span> <span class="n">t1</span> <span class="o">=</span> <span class="n">tokens_with_tag</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">t1</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pos1</span><span class="p">):</span>
+            <span class="k">continue</span>
+        <span class="n">w1</span> <span class="o">=</span> <span class="n">lemmatize</span><span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">t1</span><span class="p">)</span>
+        <span class="k">for</span> <span class="n">distance</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">window_size</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">i</span> <span class="o">+</span> <span class="n">distance</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">):</span>
+                <span class="n">w2</span><span class="p">,</span> <span class="n">t2</span> <span class="o">=</span> <span class="n">tokens_with_tag</span><span class="p">[</span><span class="n">i</span> <span class="o">+</span> <span class="n">distance</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">t2</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="n">pos2</span><span class="p">):</span>
+                    <span class="n">w2</span> <span class="o">=</span> <span class="n">lemmatize</span><span class="p">(</span><span class="n">w2</span><span class="p">,</span> <span class="n">t2</span><span class="p">)</span>
+                    <span class="n">word_pair_distance_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+                    <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+    
+    <span class="n">pair_mean_distances</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+    <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">distance</span> <span class="o">*</span> <span class="p">(</span><span class="n">c</span> <span class="o">/</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span>
+
+    <span class="n">pair_deviations</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">distance</span><span class="p">),</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_pair_distance_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">w1</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">&gt;</span> <span class="n">min_cut</span><span class="p">:</span>
+            <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">+=</span> <span class="n">c</span> <span class="o">*</span> <span class="p">((</span><span class="n">distance</span> <span class="o">-</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)])</span> <span class="o">**</span> <span class="mi">2</span><span class="p">)</span>
+    
+    <span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev_tmp</span> <span class="ow">in</span> <span class="n">pair_deviations</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+        <span class="n">s_2</span> <span class="o">=</span> <span class="n">dev_tmp</span> <span class="o">/</span> <span class="p">(</span><span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">-</span> <span class="mi">1</span><span class="p">)</span>
+        <span class="n">pair_deviations</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]</span> <span class="o">=</span> <span class="n">s_2</span> <span class="o">**</span> <span class="mf">0.5</span>
+    
+    <span class="k">return</span> <span class="n">pair_deviations</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collocations</span> <span class="o">=</span> <span class="n">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="s1">&#39;NNP&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">collocations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Communist	literature	0.000000	2.886751	0
+Socialist	literature	0.000000	2.886751	0
+England	France	0.000000	2.516611	0
+Communism	power	0.000000	1.527525	0
+Communists	party	0.000000	1.154701	0
+Germany	bourgeoisie	0.000000	0.577350	0
+Socialist	Communist	0.000000	0.000000	0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">collocations</span> <span class="o">=</span> <span class="n">distant_collocations</span><span class="p">(</span><span class="n">tokens_with_tag</span><span class="p">,</span> <span class="s1">&#39;V&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">dev</span> <span class="ow">in</span> <span class="n">collocations</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%f</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">,</span> <span class="n">pair_mean_distances</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)],</span> <span class="n">dev</span><span class="p">,</span> <span class="n">word_pair_counts</span><span class="p">[(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">)]))</span>        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>find	work	2.666667	2.886751	3
+abolish	property	5.000000	2.645751	3
+join	class	5.666667	2.516611	3
+fight	bourgeoisie	3.800000	2.387467	5
+work	class	2.000000	2.374103	12
+represent	interest	3.666667	2.081666	3
+mean	bourgeois	4.333333	2.081666	3
+exist	thing	4.000000	1.732051	3
+revolutionize	production	3.333333	1.154701	3
+intend	property	6.666667	1.154701	3
+concentrate	hand	3.666667	1.154701	3
+attain	end	3.000000	1.000000	3
+exist	society	1.333333	0.816497	6
+produce	product	3.500000	0.577350	4
+appropriate	product	1.600000	0.547723	5
+rule	class	1.000000	0.000000	4
+work	party	2.000000	0.000000	4
+pave	way	2.000000	0.000000	3
+put	end	2.000000	0.000000	3
+lose	character	3.000000	0.000000	3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="try-chatgpt">
+<h2>Try chatGPT<a class="headerlink" href="#try-chatgpt" title="Permalink to this headline">#</a></h2>
+</section>
+<section id="detecting-pattern-with-pos">
+<h2>Detecting pattern with POS<a class="headerlink" href="#detecting-pattern-with-pos" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># 偵測模式的正則表達式</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;年輕人.+越來越.+VV&#39;</span>
+
+<span class="c1"># 輸入的資料</span>
+<span class="n">input_data</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;現在&#39;</span><span class="p">,</span> <span class="s1">&#39;NR&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;的&#39;</span><span class="p">,</span> <span class="s1">&#39;DEG&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;年輕人&#39;</span><span class="p">,</span> <span class="s1">&#39;NN&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;越來越&#39;</span><span class="p">,</span> <span class="s1">&#39;AD&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;不&#39;</span><span class="p">,</span> <span class="s1">&#39;AD&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;守禮教&#39;</span><span class="p">,</span> <span class="s1">&#39;VV&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;約束&#39;</span><span class="p">,</span> <span class="s1">&#39;NN&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;，&#39;</span><span class="p">,</span> <span class="s1">&#39;PU&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;讓&#39;</span><span class="p">,</span> <span class="s1">&#39;VV&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;長輩&#39;</span><span class="p">,</span> <span class="s1">&#39;NN&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;們&#39;</span><span class="p">,</span> <span class="s1">&#39;N&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;感到&#39;</span><span class="p">,</span> <span class="s1">&#39;VV&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;擔憂&#39;</span><span class="p">,</span> <span class="s1">&#39;NN&#39;</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;。&#39;</span><span class="p">,</span> <span class="s1">&#39;PU&#39;</span><span class="p">)]</span>
+
+<span class="c1"># 將資料轉成字串</span>
+<span class="n">input_str</span> <span class="o">=</span> <span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39;/&#39;</span> <span class="o">+</span> <span class="n">word</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span> <span class="o">+</span> <span class="s1">&#39; &#39;</span> <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">input_data</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">input_str</span><span class="p">)</span>
+
+
+<span class="c1"># 偵測是否符合pattern</span>
+<span class="k">if</span> <span class="n">re</span><span class="o">.</span><span class="n">search</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">input_str</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;符合pattern&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不符合pattern&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>現在/NR 的/DEG 年輕人/NN 越來越/AD 不/AD 守禮教/VV 約束/NN ，/PU 讓/VV 長輩/NN 們/N 感到/VV 擔憂/NN 。/PU 
+符合pattern
+</pre></div>
+</div>
+</div>
+</div>
+<section id="detecting-multiple-patterns">
+<h3>Detecting multiple patterns<a class="headerlink" href="#detecting-multiple-patterns" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">re</span>
+
+<span class="c1"># 原始資料</span>
+<span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;現在年輕人實在是越來越沒有教養&#39;</span><span class="p">,),</span> 
+        <span class="p">(</span><span class="s1">&#39;現在不少青少年在面對未來社會時愈來愈讓人覺得沒信心&#39;</span><span class="p">,)]</span>
+
+<span class="c1"># 定義正則表達式</span>
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(.*)(年輕人|青少年)(.*)(越來越|愈來愈)(.*)&#39;</span>
+
+<span class="c1"># 如果是括號內加上一個?:的話，代表是要偵測有這兩個字的，但沒有要把這兩個保留出來，所以偵測的結果會少這個字組</span>
+<span class="c1"># pattern = r&#39;(.*)(?:年輕人|青少年)(.*)(越來越|愈來愈)(.*)&#39;</span>
+
+<span class="c1"># 將資料轉換為DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+
+<span class="c1"># 使用apply運算並轉換為DataFrame</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;prefix&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;target1&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;target2&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;suffix&#39;</span><span class="p">})</span>
+
+<span class="c1"># 顯示結果</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">df</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  prefix target1    middle target2   suffix
+0     現在     年輕人       實在是     越來越     沒有教養
+1   現在不少     青少年  在面對未來社會時     愈來愈  讓人覺得沒信心
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">HTML</span>
+
+<span class="n">html_table</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">html_table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prefix</th>
+      <th>target1</th>
+      <th>middle</th>
+      <th>target2</th>
+      <th>suffix</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>現在</td>
+      <td>年輕人</td>
+      <td>實在是</td>
+      <td>越來越</td>
+      <td>沒有教養</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>現在不少</td>
+      <td>青少年</td>
+      <td>在面對未來社會時</td>
+      <td>愈來愈</td>
+      <td>讓人覺得沒信心</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+</section>
+<section id="with-pos">
+<h3>With POS<a class="headerlink" href="#with-pos" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">data</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;現在/NR 的/DEG 年輕人/NN 越來越/AD 沒有/VV 教養/NN ，/PU 讓/VV 長輩/NN 們/N 感到/VV 擔憂/NN 。/PU&#39;</span><span class="p">,),</span> 
+        <span class="p">(</span><span class="s1">&#39;現在/NR 不少/AD 青少年/NN 在/P 面對/VV 未來/NN 社會/NN 時/NT 愈來愈/AD 讓/VD 人/NN 覺得/VV 沒/VE 信心/NN /PU&#39;</span><span class="p">,)]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">,</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">])</span>
+
+<span class="n">pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s1">&#39;(.*)(年輕人|青少年)(.*)(越來越|愈來愈).*?\s+(.+?/VV)(.*)&#39;</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;text&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">apply</span><span class="p">(</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">re</span><span class="o">.</span><span class="n">findall</span><span class="p">(</span><span class="n">pattern</span><span class="p">,</span> <span class="n">x</span><span class="p">)[</span><span class="mi">0</span><span class="p">]))</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="mi">0</span><span class="p">:</span> <span class="s1">&#39;prefix&#39;</span><span class="p">,</span> <span class="mi">1</span><span class="p">:</span> <span class="s1">&#39;target1&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span> <span class="s1">&#39;middle&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">:</span><span class="s1">&#39;target2&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">:</span> <span class="s1">&#39;suffix&#39;</span><span class="p">})</span>
+<span class="n">html_table</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">to_html</span><span class="p">()</span>
+<span class="n">HTML</span><span class="p">(</span><span class="n">html_table</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>prefix</th>
+      <th>target1</th>
+      <th>middle</th>
+      <th>target2</th>
+      <th>suffix</th>
+      <th>5</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>現在/NR 的/DEG</td>
+      <td>年輕人</td>
+      <td>/NN</td>
+      <td>越來越</td>
+      <td>沒有/VV</td>
+      <td>教養/NN ，/PU 讓/VV 長輩/NN 們/N 感到/VV 擔憂/NN 。/PU</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>現在/NR 不少/AD</td>
+      <td>青少年</td>
+      <td>/NN 在/P 面對/VV 未來/NN 社會/NN 時/NT</td>
+      <td>愈來愈</td>
+      <td>讓/VD 人/NN 覺得/VV</td>
+      <td>沒/VE 信心/NN /PU</td>
+    </tr>
+  </tbody>
+</table></div></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./TM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="TM02_collocation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TM02 Collocation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TM04_IR_search.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TM04 Feature Selection &amp; IR &amp; Search</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#install-nltk-pos-tagger">Install NLTK POS Tagger</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#test">Test</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#full-list-of-the-penn-pos-tags">Full list of the Penn POS tags</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#perform-pos-tagging-for-all-tokens-in-the-corpus">Perform POS tagging for all tokens in the corpus.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-most-frequent-nouns">Find the most frequent nouns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-words-into-lower-case-excepting-proper-nouns">Convert words into lower case, excepting proper nouns.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#with-lemmatization-for-better-handle-different-forms-of-verbs">With lemmatization for better handle different forms of verbs.</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#mining-specific-distant-collocations">Mining Specific Distant Collocations</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-all-verb-noun-collocations">Detect all verb-noun collocations</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-the-mean-distance-of-each-verb-noun-pair">Compute the mean distance of each verb-noun pair.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#show-the-longest-middle-and-shortest-pairs">Show the longest, middle, and shortest pairs.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#longest-part">longest part</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#middle-part">Middle part</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#shortest-part">Shortest part</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#find-out-the-meaningful-verb-noun-pairs-with-deviation">Find out the meaningful verb/noun pairs with deviation.</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#filter-out-the-stopwords">Filter out the stopwords.</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#filtered-by-deviation-further-filter-out-the-low-frequent-pairs">Filtered by Deviation: Further filter out the low frequent pairs</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#general-method-for-distant-collocation-mining">General method for distant collocation mining.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-all-pairs">Count all pairs.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#implememnt-a-better-lemmatizer-for-handling-proper-nouns-nnp-nnps">Implememnt a better lemmatizer for handling proper nouns (NNP / NNPS).</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#and-do-not-lower-the-word-in-the-main-function-anymore">And do not lower() the word in the main function anymore.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#try-chatgpt">Try chatGPT</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-pattern-with-pos">Detecting pattern with POS</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detecting-multiple-patterns">Detecting multiple patterns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#with-pos">With POS</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,1101 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>AS01 for Python Basic &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>window.MathJax = {"options": {"processHtmlClass": "tex2jax_process|mathjax_process|math|output_area"}}</script>
+    <script defer="defer" src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'AS/AS01_basic';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="AS02 Reading PTT data" href="AS02_ptt_jsonl.html" />
+    <link rel="prev" title="CSS02 Simulation" href="../CSS/CSS02_Simulation.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/AS/AS01_basic.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS01_basic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/AS/AS01_basic.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AS01 for Python Basic</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-converting-fahrenheit-to-celsius-temperature-degree">Q1: Converting Fahrenheit to Celsius temperature degree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-swapping-values-of-two-variables">Q2: Swapping values of two variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3: 計算一元二次方程的解</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-accessing-taipei-bus-real-time-data">Q4: Accessing Taipei Bus real time data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-1-accessing-data">Q3.1 Accessing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2-number-of-bus">Q3.2: Number of bus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-3">Q3_3: 該線公車在該時間點共有幾個停靠站？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-4-print-out-bus-id">Q3_4: Print out bus id</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-string-as-list">Q5: String as list</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-1-character-frequency-counting">Q4_1 Character frequency counting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-2-print-out-top-3-characters">Q4_2 Print out top 3 characters</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="as01-for-python-basic">
+<h1>AS01 for Python Basic<a class="headerlink" href="#as01-for-python-basic" title="Permalink to this headline">#</a></h1>
+<section id="q1-converting-fahrenheit-to-celsius-temperature-degree">
+<h2>Q1: Converting Fahrenheit to Celsius temperature degree<a class="headerlink" href="#q1-converting-fahrenheit-to-celsius-temperature-degree" title="Permalink to this headline">#</a></h2>
+<p>課程<code class="docutils literal notranslate"><span class="pre">P02_basic.ipynb</span></code>中以華氏溫度轉攝氏溫度為例子示範加減乘除。<br>請你寫出轉換攝氏溫度為華氏溫度的Code。並輸出為以下型態（攝氏<code class="docutils literal notranslate"><span class="pre">tc</span></code>溫度等於華氏<code class="docutils literal notranslate"><span class="pre">tf</span></code>溫度減<code class="docutils literal notranslate"><span class="pre">32</span></code>後乘以<code class="docutils literal notranslate"><span class="pre">5/9</span></code>，那反過來呢？）。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Sample</span> <span class="n">output</span><span class="p">:</span> 
+    <span class="n">tc</span><span class="p">:</span>  <span class="mi">10</span> 	<span class="n">tf</span><span class="p">:</span>  <span class="mf">50.0</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tc</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="c1"># Your code should be here</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q2-swapping-values-of-two-variables">
+<h2>Q2: Swapping values of two variables<a class="headerlink" href="#q2-swapping-values-of-two-variables" title="Permalink to this headline">#</a></h2>
+<p>Python有一個非常方便的地方是他可以同時Assign兩個Variables。<br>
+例如我若要把兩個variables所儲存的values調換的話，我可以像下面這麼做。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="n">b</span><span class="p">,</span> <span class="n">a</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>這個動作稱為<strong>SWAP</strong>，所得到的結果如下。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">1</span> <span class="mi">3</span>     <span class="c1"># Before swapping</span>
+<span class="mi">3</span> <span class="mi">1</span>     <span class="c1"># After swapping</span>
+</pre></div>
+</div>
+<p>但我現在希望，Assign符號左側只能有一個variable，請問這樣要如何<strong>SWAP</strong>以下<code class="docutils literal notranslate"><span class="pre">a</span></code>與<code class="docutils literal notranslate"><span class="pre">b</span></code>的變數內容。提示：你可能需要另一個變數來暫存<code class="docutils literal notranslate"><span class="pre">a</span></code>或<code class="docutils literal notranslate"><span class="pre">b</span></code>的值。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">10</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="c1"># your code should be here</span>
+
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>10 30
+10 30
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q3">
+<h2>Q3: 計算一元二次方程的解<a class="headerlink" href="#q3" title="Permalink to this headline">#</a></h2>
+<p><strong>題目描述</strong>：已知一個一元二次方程 (ax^2 + bx + c = 0)，其中 (a = 1, b = -3, c = 2)，請寫一個 Python 程式計算它的兩個解。</p>
+<p>解的公式（注意應該會有兩個答案）： $<span class="math notranslate nohighlight">\(x = \frac{-b \pm \sqrt{b^2 - 4ac}}{2a}\)</span>$</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="c1"># 已知 a, b, c</span>
+<span class="n">a</span> <span class="o">=</span> <span class="mi">1</span>
+<span class="n">b</span> <span class="o">=</span> <span class="o">-</span><span class="mi">3</span>
+<span class="n">c</span> <span class="o">=</span> <span class="mi">2</span>
+
+<span class="c1"># 在這裡寫程式碼計算解</span>
+
+<span class="c1"># 在這裡輸出解</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q4-accessing-taipei-bus-real-time-data">
+<h2>Q4: Accessing Taipei Bus real time data<a class="headerlink" href="#q4-accessing-taipei-bus-real-time-data" title="Permalink to this headline">#</a></h2>
+<p>以下是台北市某線公車的即時資料。資料中主要分為兩大塊，包含該線公車的停靠站以及正在路上跑的公車（通常不只一台）及其位置。請觀察該資料並回答以下問題。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://pda.5284.gov.taipei/MQS/RouteDyna?routeid=11763&amp;nocache=1633009377839&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
+<span class="n">route</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">route</span><span class="p">))</span>
+
+<span class="n">route</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;UpdateTime&#39;: &#39;2023-12-02 15&amp;#x3a;46&amp;#x3a;43&#39;,
+ &#39;Stop&#39;: [{&#39;id&#39;: 204939,
+   &#39;n1&#39;: &#39;N1,204939,11763,-1,,,,-1,,2,2,231202153750,00273533,231202153750,52796579&#39;},
+  {&#39;id&#39;: 204940,
+   &#39;n1&#39;: &#39;N1,204940,11763,-1,,,,-1,,2,2,231202154053,07588091,231202154053,53038876&#39;},
+  {&#39;id&#39;: 204941,
+   &#39;n1&#39;: &#39;N1,204941,11763,-1,,,,-1,,2,2,231202154125,07595569,231202154125,53074903&#39;},
+  {&#39;id&#39;: 15341,
+   &#39;n1&#39;: &#39;N1,15341,11763,-1,,,,-1,,2,2,231202154413,07622749,231202154413,53269865&#39;},
+  {&#39;id&#39;: 15342,
+   &#39;n1&#39;: &#39;N1,15342,11763,-1,,,,-1,,2,2,231202154444,07632606,231202154445,53310813&#39;},
+  {&#39;id&#39;: 15343,
+   &#39;n1&#39;: &#39;N1,15343,11763,-1,,,,-1,,2,2,231202154525,07641309,231202154525,53351817&#39;},
+  {&#39;id&#39;: 15344,
+   &#39;n1&#39;: &#39;N1,15344,11763,222239783,15344,15376,0,0,0,0,2,231202154621,07652648,231202154621,53419596&#39;},
+  {&#39;id&#39;: 130134,
+   &#39;n1&#39;: &#39;N1,130134,11763,222239783,15344,15376,0,44,1,0,2,231202154621,07652649,231202154621,53419597&#39;},
+  {&#39;id&#39;: 15345,
+   &#39;n1&#39;: &#39;N1,15345,11763,222239783,15344,15376,0,63,2,0,2,231202154621,07652650,231202154621,53419598&#39;},
+  {&#39;id&#39;: 134736,
+   &#39;n1&#39;: &#39;N1,134736,11763,222239783,15344,15376,0,169,3,0,2,231202154621,07652651,231202154621,53419599&#39;},
+  {&#39;id&#39;: 15346,
+   &#39;n1&#39;: &#39;N1,15346,11763,222239783,15344,15376,0,208,4,0,2,231202154621,07652652,231202154621,53419600&#39;},
+  {&#39;id&#39;: 15347,
+   &#39;n1&#39;: &#39;N1,15347,11763,222239783,15344,15376,0,251,5,0,2,231202154621,07652653,231202154621,53419601&#39;},
+  {&#39;id&#39;: 15348,
+   &#39;n1&#39;: &#39;N1,15348,11763,222239783,15344,15376,0,351,6,0,2,231202154621,07652654,231202154621,53419602&#39;},
+  {&#39;id&#39;: 15349,
+   &#39;n1&#39;: &#39;N1,15349,11763,222239783,15344,15376,0,439,7,0,2,231202154621,07652655,231202154621,53419604&#39;},
+  {&#39;id&#39;: 15350,
+   &#39;n1&#39;: &#39;N1,15350,11763,222239783,15344,15376,0,522,8,0,2,231202154621,07652656,231202154621,53419605&#39;},
+  {&#39;id&#39;: 15351,
+   &#39;n1&#39;: &#39;N1,15351,11763,222239783,15344,15376,0,582,9,0,2,231202154621,07652657,231202154621,53419606&#39;},
+  {&#39;id&#39;: 15352,
+   &#39;n1&#39;: &#39;N1,15352,11763,222239783,15344,15376,0,657,10,0,2,231202154621,07652658,231202154621,53419609&#39;},
+  {&#39;id&#39;: 134750,
+   &#39;n1&#39;: &#39;N1,134750,11763,222239783,15344,15376,0,711,11,0,2,231202154621,07652659,231202154621,53419612&#39;},
+  {&#39;id&#39;: 15354,
+   &#39;n1&#39;: &#39;N1,15354,11763,222239783,15344,15376,0,820,12,0,2,231202154621,07652660,231202154621,53419614&#39;},
+  {&#39;id&#39;: 15355,
+   &#39;n1&#39;: &#39;N1,15355,11763,222239783,15344,15376,0,899,13,0,2,231202154621,07652661,231202154621,53419615&#39;},
+  {&#39;id&#39;: 15356,
+   &#39;n1&#39;: &#39;N1,15356,11763,222239783,15344,15376,0,948,14,0,2,231202154621,07652662,231202154621,53419616&#39;},
+  {&#39;id&#39;: 15357,
+   &#39;n1&#39;: &#39;N1,15357,11763,222239783,15344,15376,0,1048,15,0,2,231202154621,07652663,231202154621,53419617&#39;},
+  {&#39;id&#39;: 15358,
+   &#39;n1&#39;: &#39;N1,15358,11763,222239783,15344,15376,0,1176,16,0,2,231202154621,07652664,231202154621,53419618&#39;},
+  {&#39;id&#39;: 15359,
+   &#39;n1&#39;: &#39;N1,15359,11763,222239780,15358,15376,0,169,1,0,2,231202154553,07644958,231202154553,53387037&#39;},
+  {&#39;id&#39;: 15360,
+   &#39;n1&#39;: &#39;N1,15360,11763,222239780,15358,15376,0,198,2,0,2,231202154553,07644959,231202154553,53387038&#39;},
+  {&#39;id&#39;: 15361,
+   &#39;n1&#39;: &#39;N1,15361,11763,222239780,15358,15376,0,234,3,0,2,231202154553,07644960,231202154553,53387039&#39;},
+  {&#39;id&#39;: 134745,
+   &#39;n1&#39;: &#39;N1,134745,11763,222239780,15358,15376,0,262,4,0,2,231202154553,07644961,231202154553,53387040&#39;},
+  {&#39;id&#39;: 15362,
+   &#39;n1&#39;: &#39;N1,15362,11763,222239780,15358,15376,0,320,5,0,2,231202154553,07644962,231202154553,53387043&#39;},
+  {&#39;id&#39;: 15363,
+   &#39;n1&#39;: &#39;N1,15363,11763,222239780,15358,15376,0,376,6,0,2,231202154553,07644963,231202154553,53387047&#39;},
+  {&#39;id&#39;: 15364,
+   &#39;n1&#39;: &#39;N1,15364,11763,222239780,15358,15376,0,398,7,0,2,231202154553,07644964,231202154553,53387050&#39;},
+  {&#39;id&#39;: 15365,
+   &#39;n1&#39;: &#39;N1,15365,11763,222239780,15358,15376,0,477,8,0,2,231202154553,07644965,231202154553,53387053&#39;},
+  {&#39;id&#39;: 15366,
+   &#39;n1&#39;: &#39;N1,15366,11763,222239780,15358,15376,0,526,9,0,2,231202154553,07644966,231202154553,53387055&#39;},
+  {&#39;id&#39;: 15367,
+   &#39;n1&#39;: &#39;N1,15367,11763,222239780,15358,15376,0,610,10,0,2,231202154553,07644967,231202154553,53387059&#39;},
+  {&#39;id&#39;: 15368,
+   &#39;n1&#39;: &#39;N1,15368,11763,222239780,15358,15376,0,708,11,0,2,231202154553,07644968,231202154553,53387061&#39;},
+  {&#39;id&#39;: 185809,
+   &#39;n1&#39;: &#39;N1,185809,11763,222239780,15358,15376,0,749,12,0,2,231202154553,07644969,231202154553,53387063&#39;},
+  {&#39;id&#39;: 15370,
+   &#39;n1&#39;: &#39;N1,15370,11763,222239780,15358,15376,0,805,13,0,2,231202154553,07644970,231202154553,53387067&#39;},
+  {&#39;id&#39;: 15371,
+   &#39;n1&#39;: &#39;N1,15371,11763,222239780,15358,15376,0,878,14,0,2,231202154553,07644971,231202154553,53387069&#39;},
+  {&#39;id&#39;: 15372,
+   &#39;n1&#39;: &#39;N1,15372,11763,222239780,15358,15376,0,922,15,0,2,231202154553,07644972,231202154553,53387072&#39;},
+  {&#39;id&#39;: 15373,
+   &#39;n1&#39;: &#39;N1,15373,11763,222239780,15358,15376,0,1015,16,0,2,231202154553,07644973,231202154553,53387074&#39;},
+  {&#39;id&#39;: 15374,
+   &#39;n1&#39;: &#39;N1,15374,11763,222239780,15358,15376,0,1131,17,0,2,231202154553,07644974,231202154553,53387076&#39;},
+  {&#39;id&#39;: 15375,
+   &#39;n1&#39;: &#39;N1,15375,11763,222240410,15374,15376,0,7,1,0,2,231202154638,07654740,231202154639,53435872&#39;},
+  {&#39;id&#39;: 15376,
+   &#39;n1&#39;: &#39;N1,15376,11763,222240410,15374,15376,0,194,2,0,2,231202154638,07654741,231202154639,53435874&#39;},
+  {&#39;id&#39;: 15377,
+   &#39;n1&#39;: &#39;N1,15377,11763,222240410,15374,15376,0,298,3,0,2,231202154638,07654742,231202154639,53435877&#39;},
+  {&#39;id&#39;: 15378,
+   &#39;n1&#39;: &#39;N1,15378,11763,222240410,15374,15376,0,368,4,0,2,231202154638,07654743,231202154639,53435879&#39;},
+  {&#39;id&#39;: 15379,
+   &#39;n1&#39;: &#39;N1,15379,11763,222240410,15374,15376,0,489,5,0,2,231202154638,07654744,231202154639,53435881&#39;},
+  {&#39;id&#39;: 15380,
+   &#39;n1&#39;: &#39;N1,15380,11763,222240410,15374,15376,0,597,6,0,2,231202154638,07654745,231202154639,53435883&#39;},
+  {&#39;id&#39;: 15381,
+   &#39;n1&#39;: &#39;N1,15381,11763,222240410,15374,15376,0,741,7,0,2,231202154638,07654746,231202154639,53435885&#39;},
+  {&#39;id&#39;: 15563,
+   &#39;n1&#39;: &#39;N1,15563,11763,222240410,15374,15376,0,786,8,0,2,231202154638,07654747,231202154639,53435887&#39;},
+  {&#39;id&#39;: 15695,
+   &#39;n1&#39;: &#39;N1,15695,11763,222240410,15374,15376,0,865,9,0,2,231202154638,07654748,231202154639,53435890&#39;},
+  {&#39;id&#39;: 15939,
+   &#39;n1&#39;: &#39;N1,15939,11763,222240410,15374,15376,0,987,10,0,2,231202154638,07654749,231202154639,53435892&#39;},
+  {&#39;id&#39;: 16129,
+   &#39;n1&#39;: &#39;N1,16129,11763,222240410,15374,15376,0,1033,11,0,2,231202154638,07654750,231202154639,53435894&#39;},
+  {&#39;id&#39;: 16277,
+   &#39;n1&#39;: &#39;N1,16277,11763,222240410,15374,15376,0,1079,12,0,2,231202154638,07654751,231202154639,53435896&#39;},
+  {&#39;id&#39;: 16391,
+   &#39;n1&#39;: &#39;N1,16391,11763,222240410,15374,15376,0,1163,13,0,2,231202154638,07654752,231202154639,53435898&#39;},
+  {&#39;id&#39;: 16561,
+   &#39;n1&#39;: &#39;N1,16561,11763,222240410,15374,15376,0,1265,14,0,2,231202154638,07654753,231202154639,53435900&#39;},
+  {&#39;id&#39;: 16613,
+   &#39;n1&#39;: &#39;N1,16613,11763,222240410,15374,15376,0,1346,15,0,2,231202154638,07654754,231202154639,53435903&#39;},
+  {&#39;id&#39;: 151309,
+   &#39;n1&#39;: &#39;N1,151309,11763,222240410,15374,15376,0,1396,16,0,2,231202154638,07654755,231202154639,53435905&#39;},
+  {&#39;id&#39;: 16615,
+   &#39;n1&#39;: &#39;N1,16615,11763,222240410,15374,15376,0,1438,17,0,2,231202154638,07654756,231202154639,53435907&#39;},
+  {&#39;id&#39;: 16655,
+   &#39;n1&#39;: &#39;N1,16655,11763,222240410,15374,15376,0,1455,18,0,2,231202154638,07654757,231202154639,53435909&#39;},
+  {&#39;id&#39;: 16657,
+   &#39;n1&#39;: &#39;N1,16657,11763,222240410,15374,15376,0,1503,19,0,2,231202154638,07654758,231202154639,53435912&#39;},
+  {&#39;id&#39;: 16673,
+   &#39;n1&#39;: &#39;N1,16673,11763,222240410,15374,15376,0,1534,20,0,2,231202154638,07654759,231202154639,53435914&#39;},
+  {&#39;id&#39;: 16791,
+   &#39;n1&#39;: &#39;N1,16791,11763,222240411,16673,204944,0,86,1,1,2,231202154618,07652407,231202154619,53418230&#39;},
+  {&#39;id&#39;: 17009,
+   &#39;n1&#39;: &#39;N1,17009,11763,222240411,16673,204944,0,182,2,1,2,231202154618,07652408,231202154619,53418231&#39;},
+  {&#39;id&#39;: 17011,
+   &#39;n1&#39;: &#39;N1,17011,11763,222240411,16673,204944,0,259,3,1,2,231202154618,07652409,231202154619,53418233&#39;},
+  {&#39;id&#39;: 17013,
+   &#39;n1&#39;: &#39;N1,17013,11763,222240411,16673,204944,0,385,4,1,2,231202154618,07652410,231202154619,53418234&#39;},
+  {&#39;id&#39;: 130094,
+   &#39;n1&#39;: &#39;N1,130094,11763,222240411,16673,204944,0,471,5,1,2,231202154618,07652411,231202154619,53418236&#39;},
+  {&#39;id&#39;: 17015,
+   &#39;n1&#39;: &#39;N1,17015,11763,222240411,16673,204944,0,564,6,1,2,231202154618,07652412,231202154619,53418237&#39;},
+  {&#39;id&#39;: 134751,
+   &#39;n1&#39;: &#39;N1,134751,11763,222240411,16673,204944,0,620,7,1,2,231202154618,07652413,231202154619,53418239&#39;},
+  {&#39;id&#39;: 17017,
+   &#39;n1&#39;: &#39;N1,17017,11763,222240411,16673,204944,0,651,8,1,2,231202154618,07652414,231202154619,53418240&#39;},
+  {&#39;id&#39;: 17019,
+   &#39;n1&#39;: &#39;N1,17019,11763,222240411,16673,204944,0,707,9,1,2,231202154618,07652415,231202154619,53418241&#39;},
+  {&#39;id&#39;: 17089,
+   &#39;n1&#39;: &#39;N1,17089,11763,222240411,16673,204944,0,779,10,1,2,231202154618,07652416,231202154619,53418242&#39;},
+  {&#39;id&#39;: 17201,
+   &#39;n1&#39;: &#39;N1,17201,11763,222240411,16673,204944,0,817,11,1,2,231202154618,07652417,231202154619,53418243&#39;},
+  {&#39;id&#39;: 17234,
+   &#39;n1&#39;: &#39;N1,17234,11763,222239772,17201,204944,0,60,1,1,2,231202154555,07645108,231202154555,53391165&#39;},
+  {&#39;id&#39;: 17400,
+   &#39;n1&#39;: &#39;N1,17400,11763,222239772,17201,204944,0,116,2,1,2,231202154555,07645109,231202154555,53391168&#39;},
+  {&#39;id&#39;: 17402,
+   &#39;n1&#39;: &#39;N1,17402,11763,222239772,17201,204944,0,270,3,1,2,231202154555,07645110,231202154555,53391172&#39;},
+  {&#39;id&#39;: 17404,
+   &#39;n1&#39;: &#39;N1,17404,11763,222239772,17201,204944,0,322,4,1,2,231202154555,07645111,231202154555,53391176&#39;},
+  {&#39;id&#39;: 134737,
+   &#39;n1&#39;: &#39;N1,134737,11763,222239772,17201,204944,0,347,5,1,2,231202154555,07645112,231202154555,53391180&#39;},
+  {&#39;id&#39;: 17406,
+   &#39;n1&#39;: &#39;N1,17406,11763,222239772,17201,204944,0,436,6,1,2,231202154555,07645113,231202154555,53391183&#39;},
+  {&#39;id&#39;: 130135,
+   &#39;n1&#39;: &#39;N1,130135,11763,222239772,17201,204944,0,477,7,1,2,231202154555,07645114,231202154555,53391187&#39;},
+  {&#39;id&#39;: 17408,
+   &#39;n1&#39;: &#39;N1,17408,11763,222239772,17201,204944,0,524,8,1,2,231202154555,07645115,231202154555,53391191&#39;},
+  {&#39;id&#39;: 17410,
+   &#39;n1&#39;: &#39;N1,17410,11763,222239772,17201,204944,0,584,9,1,2,231202154555,07645116,231202154555,53391195&#39;},
+  {&#39;id&#39;: 17412,
+   &#39;n1&#39;: &#39;N1,17412,11763,222239772,17201,204944,0,681,10,1,2,231202154555,07645117,231202154555,53391199&#39;},
+  {&#39;id&#39;: 17414,
+   &#39;n1&#39;: &#39;N1,17414,11763,222239772,17201,204944,0,713,11,1,2,231202154555,07645118,231202154555,53391201&#39;},
+  {&#39;id&#39;: 204942,
+   &#39;n1&#39;: &#39;N1,204942,11763,222239772,17201,204944,0,898,12,1,2,231202154555,07645119,231202154555,53391204&#39;},
+  {&#39;id&#39;: 204943,
+   &#39;n1&#39;: &#39;N1,204943,11763,222239772,17201,204944,0,928,13,1,2,231202154555,07645120,231202154555,53391206&#39;},
+  {&#39;id&#39;: 204944,
+   &#39;n1&#39;: &#39;N1,204944,11763,222239772,17201,204944,0,1048,14,1,2,231202154555,07645121,231202154555,53391208&#39;}],
+ &#39;Bus&#39;: [{&#39;id&#39;: 222240410,
+   &#39;num&#39;: &#39;EAL-1061&#39;,
+   &#39;type&#39;: &#39;1&#39;,
+   &#39;a1&#39;: &#39;A1,10710,222240410,1,0,11763,0,121.532563,25.016525,36,318,154632,1,231202154632,59506466,231202154632,53429133&#39;,
+   &#39;a2&#39;: &#39;A2,10710,222240410,1,0,11763,0,15374,0,154601,2,231202154602,03863947,231202154602,53398557&#39;,
+   &#39;a3&#39;: None},
+  {&#39;id&#39;: 222239780,
+   &#39;num&#39;: &#39;EAL-0103&#39;,
+   &#39;type&#39;: &#39;1&#39;,
+   &#39;a1&#39;: &#39;A1,10710,222239780,1,0,11763,0,121.562165,24.988933,12,261,154640,1,231202154640,59506764,231202154640,53439279&#39;,
+   &#39;a2&#39;: &#39;A2,10710,222239780,1,0,11763,0,15358,0,154637,2,231202154637,03864337,231202154637,53433666&#39;,
+   &#39;a3&#39;: None},
+  {&#39;id&#39;: 222239772,
+   &#39;num&#39;: &#39;EAL-0105&#39;,
+   &#39;type&#39;: &#39;1&#39;,
+   &#39;a1&#39;: &#39;A1,10710,222239772,1,0,11763,1,121.574212,24.994963,38,033,154634,1,231202154635,59506559,231202154635,53431225&#39;,
+   &#39;a2&#39;: &#39;A2,10710,222239772,1,0,11763,1,17201,0,154616,2,231202154616,03864107,231202154616,53416144&#39;,
+   &#39;a3&#39;: None},
+  {&#39;id&#39;: 222239783,
+   &#39;num&#39;: &#39;EAL-0102&#39;,
+   &#39;type&#39;: &#39;1&#39;,
+   &#39;a1&#39;: &#39;A1,10710,222239783,1,0,11763,0,121.598362,25.004687,0,000,154639,1,231202154639,59506708,231202154639,53434240&#39;,
+   &#39;a2&#39;: &#39;A2,10710,222239783,1,0,11763,0,15344,1,154621,2,231202154621,03864153,231202154621,53419584&#39;,
+   &#39;a3&#39;: None},
+  {&#39;id&#39;: 222238799,
+   &#39;num&#39;: &#39;EAL-0013&#39;,
+   &#39;type&#39;: &#39;1&#39;,
+   &#39;a1&#39;: &#39;A1,10740,222238799,0,0,11763,1,121.615577,24.999590,0,000,150858,1,231202150857,59411234,231202150857,50724630&#39;,
+   &#39;a2&#39;: &#39;A2,10740,222238799,2,92,11763,1,204944,1,155933,2,231201160813,03229129,231201160813,62846194&#39;,
+   &#39;a3&#39;: None},
+  {&#39;id&#39;: 222240411,
+   &#39;num&#39;: &#39;EAL-1062&#39;,
+   &#39;type&#39;: &#39;1&#39;,
+   &#39;a1&#39;: &#39;A1,10710,222240411,1,0,11763,1,121.559978,24.989200,1,146,154639,1,231202154640,59506790,231202154640,53440110&#39;,
+   &#39;a2&#39;: &#39;A2,10710,222240411,1,0,11763,1,16673,0,154636,2,231202154639,03864343,231202154639,53434061&#39;,
+   &#39;a3&#39;: None}]}
+</pre></div>
+</div>
+</div>
+</div>
+<section id="q3-1-accessing-data">
+<h3>Q3.1 Accessing data<a class="headerlink" href="#q3-1-accessing-data" title="Permalink to this headline">#</a></h3>
+<p>請列印出你所抓到的資料時間。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">sample</span><span class="p">:</span>
+    <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">10</span> <span class="mi">14</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">09</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q3-2-number-of-bus">
+<h3>Q3.2: Number of bus<a class="headerlink" href="#q3-2-number-of-bus" title="Permalink to this headline">#</a></h3>
+<p>請問在你所抓的時間點共有幾台公車？提示：你抓的時間和老師抓的時間可能不同，所以答案可能不同，公車數量可能會不同。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">sample</span><span class="p">:</span> 
+    <span class="mi">2023</span><span class="o">-</span><span class="mi">09</span><span class="o">-</span><span class="mi">10</span> <span class="mi">14</span><span class="p">:</span><span class="mi">03</span><span class="p">:</span><span class="mi">09</span> <span class="n">There</span> <span class="n">are</span>  <span class="mi">5</span> <span class="n">buses</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q3-3">
+<h3>Q3_3: 該線公車在該時間點共有幾個停靠站？<a class="headerlink" href="#q3-3" title="Permalink to this headline">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">Sample</span><span class="p">:</span> 
+    <span class="n">Number</span> <span class="n">of</span> <span class="n">stop</span><span class="p">:</span>  <span class="mi">85</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># YOUR CODE HERE  </span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q3-4-print-out-bus-id">
+<h3>Q3_4: Print out bus id<a class="headerlink" href="#q3-4-print-out-bus-id" title="Permalink to this headline">#</a></h3>
+<p>印出資料抓取時間點的所有公車車牌號碼。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">sample</span><span class="p">:</span> 
+    <span class="mi">563</span><span class="o">-</span><span class="n">FZ</span>
+    <span class="n">EAL</span><span class="o">-</span><span class="mi">0102</span>
+    <span class="mi">380</span><span class="o">-</span><span class="n">U8</span>
+    <span class="n">KKA</span><span class="o">-</span><span class="mi">0668</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">bus</span> <span class="ow">in</span> <span class="n">route</span><span class="p">[</span><span class="s1">&#39;Bus&#39;</span><span class="p">]:</span>
+    <span class="c1"># YOUR CODE HERE</span>
+    
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">8</span><span class="p">]</span>
+    
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: expected an indented block
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="q5-string-as-list">
+<h2>Q5: String as list<a class="headerlink" href="#q5-string-as-list" title="Permalink to this headline">#</a></h2>
+<p>在Python中，string字串也可以用list的方式來存取。如</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Pneumonoultramicroscopicsilicovolcanoconiosis&quot;</span> <span class="c1"># 實際上存在的單字</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">3</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>u
+</pre></div>
+</div>
+</div>
+</div>
+<section id="q4-1-character-frequency-counting">
+<h3>Q4_1 Character frequency counting<a class="headerlink" href="#q4-1-character-frequency-counting" title="Permalink to this headline">#</a></h3>
+<p>請用dictionary計算該字串中每個字元出現過幾次。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span><span class="p">:</span> 
+    <span class="p">{</span><span class="s1">&#39;P&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;e&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;u&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;o&#39;</span><span class="p">:</span> <span class="mi">9</span><span class="p">,</span> <span class="s1">&#39;l&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;t&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;i&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">:</span> <span class="mi">6</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;p&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;v&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">}</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word</span> <span class="o">=</span> <span class="s2">&quot;Pneumonoultramicroscopicsilicovolcanoconiosis&quot;</span>
+
+<span class="c1"># YOUR CODE SHOULD BE HERE</span>
+
+
+
+<span class="nb">print</span><span class="p">(</span><span class="n">cdict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="q4-2-print-out-top-3-characters">
+<h3>Q4_2 Print out top 3 characters<a class="headerlink" href="#q4-2-print-out-top-3-characters" title="Permalink to this headline">#</a></h3>
+<p>觀察<code class="docutils literal notranslate"><span class="pre">P01_countting</span></code>的sorting程式碼，列印出出現次數最高的三個字。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Output</span> <span class="n">sample</span><span class="p">:</span> 
+    <span class="p">(</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="mi">9</span><span class="p">)</span>
+    <span class="p">(</span><span class="s1">&#39;i&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+    <span class="p">(</span><span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="mi">6</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## YOUR CODE SHOULD BE HERE</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./AS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../CSS/CSS02_Simulation.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">CSS02 Simulation</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="AS02_ptt_jsonl.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">AS02 Reading PTT data</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q1-converting-fahrenheit-to-celsius-temperature-degree">Q1: Converting Fahrenheit to Celsius temperature degree</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q2-swapping-values-of-two-variables">Q2: Swapping values of two variables</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q3">Q3: 計算一元二次方程的解</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-accessing-taipei-bus-real-time-data">Q4: Accessing Taipei Bus real time data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-1-accessing-data">Q3.1 Accessing data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-2-number-of-bus">Q3.2: Number of bus</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-3">Q3_3: 該線公車在該時間點共有幾個停靠站？</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q3-4-print-out-bus-id">Q3_4: Print out bus id</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#q5-string-as-list">Q5: String as list</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-1-character-frequency-counting">Q4_1 Character frequency counting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#q4-2-print-out-top-3-characters">Q4_2 Print out top 3 characters</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

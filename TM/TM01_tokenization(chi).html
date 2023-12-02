@@ -1,0 +1,1451 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Chinese Processing &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TM/TM01_tokenization(chi)';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TM02 Collocation" href="TM02_collocation.html" />
+    <link rel="prev" title="TM01 Tokenization" href="TM01_tokenization.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="TM01_tokenization.html">TM01 Tokenization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/TM/TM01_tokenization(chi).ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM01_tokenization(chi).html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/TM/TM01_tokenization(chi).ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Chinese Processing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chinese Processing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setence-segment">Setence segment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chinese-word-segmentation">Chinese word Segmentation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-simlified-and-traditional-chinese-word-segmentation">Comparing Simlified and Traditional Chinese Word Segmentation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converstion-between-simplified-and-traditional-chinese">Converstion between Simplified and Traditional Chinese</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-comparision-between-traditional-and-simplified-chinese">Segmentation comparision between traditional and simplified Chinese</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-traditional-cutted-by-simplified-index">Solution 1: Traditional cutted by Simplified index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2-traditional-by-simplified-index">Solution 2: traditional by simplified index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-comparing-traditional-cutted-by-simplfied-chinese">(Tool) Comparing Traditional cutted by simplfied Chinese</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-userdict">Loading userdict</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pos-tagging-with-jieba">POS Tagging with Jieba</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#top-words-mining">Top Words Mining</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-word-removal">Stop word removal</a></li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="chinese-processing">
+<h1>Chinese Processing<a class="headerlink" href="#chinese-processing" title="Permalink to this headline">#</a></h1>
+<section id="loading-data">
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<p>Load the fiction “Blessing” written by Lu Xun</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-N<span class="w"> </span>https://raw.githubusercontent.com/P4CSS/PSS/master/data/blessing.txt
+<span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-02 15:48:59--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/blessing.txt
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404 Not Found
+2023-12-02 15:49:00 ERROR 404: Not Found.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TM00.ipynb                             TM08_doc_classification.ipynb
+TM01_tokenization(chi).ipynb           TM08_doc_classification_pipeline.ipynb
+TM01_tokenization.ipynb                TM09_re.ipynb
+TM02_collocation.ipynb                 TM0X Using CKIPtagger.ipynb
+TM03_2_pos_sentiment_chi.ipynb         blessing.txt
+<span class=" -Color -Color-Red">TM03_POS Tagging.ipynb</span>                 <span class=" -Color -Color-Blue">data</span>
+<span class=" -Color -Color-Red">TM04_IR_search.ipynb</span>                   hindu.txt
+TM05_sentiment.ipynb                   <span class=" -Color -Color-Blue">img</span>
+TM06_Clustering.ipynb                  stopwords_zh-tw.txt
+<span class=" -Color -Color-Red">TM07_1_embeddings.ipynb</span>                test.html
+TM07_2_doc2vec.ipynb                   userdict.txt
+TM07_embedding_clustering.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;blessing.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">fin</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of characters: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">[:</span><span class="nb">int</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">)</span><span class="o">/</span><span class="mi">10</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;_io.TextIOWrapper&#39;&gt;
+&lt;class &#39;str&#39;&gt;
+Number of characters: 9618
+　　舊曆的年底畢竟最像年底，村鎮上不必說，就在天空中也顯出將到新年的氣象來。灰白色的沉重的晚雲中間時時發出閃光，接著一聲鈍響，是送竈的爆竹；近處燃放的可就更強烈了，震耳的大音還沒有息，空氣裏已經散滿了幽微的火藥香。我是正在這一夜回到我的故鄉魯鎮的。雖說故鄉，然而已沒有家，所以只得暫寓在魯四老爺的宅子裏。他是我的本家，比我長一輩，應該稱之曰「四叔」，是一個講理學的老監生。他比先前並沒有甚麽大改變，單是老了些，但也還未留鬍子，一見面是寒暄，寒暄之後說我「胖了」，說我「胖了」之後即大罵其新黨。但我知道，這並非借題在罵我：因為他所罵的還是康有為。但是，談話是總不投機的了，於是不多久，我便一個人剩在書房裏。
+
+　　第二天我起得很遲，午飯之後，出去看了幾個本家和朋友；第三天也照樣。他們也都沒有甚麽大改變，單是老了些；家中卻一律忙，都在準備著「祝福」。這是魯鎮年終的大典，致敬盡禮，迎接福神，拜求來年一年中的好運氣的。殺雞，宰鵝，買豬肉，用心細細的洗，女人的臂膊都在水裏浸得通紅，有的還帶著絞絲銀鐲子。煮熟之後，橫七豎八的插些筷子在這類東西上，可就稱為「福禮」了，五更天陳列起來，並且點上香燭，恭請福神們來享用，拜的卻只限於男人，拜完自然仍然是放爆竹。年年如此，家家如此，——只要買得起福禮和爆竹之類的——今年自然也如此。天色愈陰暗了，下午竟下起雪來，雪花大的有梅花那麽大，滿天飛舞，夾著煙靄和忙碌的氣色，將魯鎮亂成一團糟。我回到四叔的書房裏時，瓦楞上已經雪白，房裏也映得較光明，極分明的顯出壁上掛著的朱拓的大「壽」字，陳摶老祖寫的，一邊的對聯已經脫落，鬆鬆的卷了放在長桌上，一邊的還在，道是「事理通達心氣和平」。我又無聊賴的到窗下的案頭去一翻，只見一堆似乎未必完全的《康熙字典》，一部《近思錄集註》和一部《四書襯》。無論如何、我明天決計要走了。
+
+　　況且，一直到昨天遇見祥林嫂的事，也就使我不能安住。那是下午，我到鎮的東頭訪過一個朋友，走出來，就在河邊遇見她；而且見她瞪著的眼睛的視線，就知道明明是向我走來的。我這回在魯鎮所見的人們中，改變之大，可以說無過於她的了：五年前的花白的頭髮，即今已經全白，會不像四十上下的人；臉上瘦削不堪，黃中帶黑，而且消盡了先前悲哀的神色，仿佛是木刻似的；只有那眼珠間或一輪，還可以表示她是一
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="setence-segment">
+<h2>Setence segment<a class="headerlink" href="#setence-segment" title="Permalink to this headline">#</a></h2>
+<p>After Removing the fullspace and newline symbols</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text_refined</span> <span class="o">=</span> <span class="n">text</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;　&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">replace</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">,</span> <span class="s2">&quot;&quot;</span><span class="p">)</span>
+
+<span class="n">sentences</span> <span class="o">=</span> <span class="n">text_refined</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;。&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentences</span><span class="p">[:</span><span class="mi">20</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of sentences: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">sentences</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;舊曆的年底畢竟最像年底，村鎮上不必說，就在天空中也顯出將到新年的氣象來&#39;, &#39;灰白色的沉重的晚雲中間時時發出閃光，接著一聲鈍響，是送竈的爆竹；近處燃放的可就更強烈了，震耳的大音還沒有息，空氣裏已經散滿了幽微的火藥香&#39;, &#39;我是正在這一夜回到我的故鄉魯鎮的&#39;, &#39;雖說故鄉，然而已沒有家，所以只得暫寓在魯四老爺的宅子裏&#39;, &#39;他是我的本家，比我長一輩，應該稱之曰「四叔」，是一個講理學的老監生&#39;, &#39;他比先前並沒有甚麽大改變，單是老了些，但也還未留鬍子，一見面是寒暄，寒暄之後說我「胖了」，說我「胖了」之後即大罵其新黨&#39;, &#39;但我知道，這並非借題在罵我：因為他所罵的還是康有為&#39;, &#39;但是，談話是總不投機的了，於是不多久，我便一個人剩在書房裏&#39;, &#39;第二天我起得很遲，午飯之後，出去看了幾個本家和朋友；第三天也照樣&#39;, &#39;他們也都沒有甚麽大改變，單是老了些；家中卻一律忙，都在準備著「祝福」&#39;, &#39;這是魯鎮年終的大典，致敬盡禮，迎接福神，拜求來年一年中的好運氣的&#39;, &#39;殺雞，宰鵝，買豬肉，用心細細的洗，女人的臂膊都在水裏浸得通紅，有的還帶著絞絲銀鐲子&#39;, &#39;煮熟之後，橫七豎八的插些筷子在這類東西上，可就稱為「福禮」了，五更天陳列起來，並且點上香燭，恭請福神們來享用，拜的卻只限於男人，拜完自然仍然是放爆竹&#39;, &#39;年年如此，家家如此，——只要買得起福禮和爆竹之類的——今年自然也如此&#39;, &#39;天色愈陰暗了，下午竟下起雪來，雪花大的有梅花那麽大，滿天飛舞，夾著煙靄和忙碌的氣色，將魯鎮亂成一團糟&#39;, &#39;我回到四叔的書房裏時，瓦楞上已經雪白，房裏也映得較光明，極分明的顯出壁上掛著的朱拓的大「壽」字，陳摶老祖寫的，一邊的對聯已經脫落，鬆鬆的卷了放在長桌上，一邊的還在，道是「事理通達心氣和平」&#39;, &#39;我又無聊賴的到窗下的案頭去一翻，只見一堆似乎未必完全的《康熙字典》，一部《近思錄集註》和一部《四書襯》&#39;, &#39;無論如何、我明天決計要走了&#39;, &#39;況且，一直到昨天遇見祥林嫂的事，也就使我不能安住&#39;, &#39;那是下午，我到鎮的東頭訪過一個朋友，走出來，就在河邊遇見她；而且見她瞪著的眼睛的視線，就知道明明是向我走來的&#39;]
+Number of sentences: 273
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="chinese-word-segmentation">
+<h2>Chinese word Segmentation<a class="headerlink" href="#chinese-word-segmentation" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install jieba</span>
+<span class="kn">import</span> <span class="nn">jieba</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>舊曆的年底畢竟最像年底，村鎮上不必說，就在天空中也顯出將到新年的氣象來
+&lt;generator object Tokenizer.cut at 0x1085a8350&gt;
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.319 seconds.
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;舊&#39;, &#39;曆&#39;, &#39;的&#39;, &#39;年底&#39;, &#39;畢竟&#39;, &#39;最&#39;, &#39;像&#39;, &#39;年底&#39;, &#39;，&#39;, &#39;村鎮&#39;, &#39;上&#39;, &#39;不必&#39;, &#39;說&#39;, &#39;，&#39;, &#39;就&#39;, &#39;在&#39;, &#39;天空&#39;, &#39;中&#39;, &#39;也&#39;, &#39;顯出&#39;, &#39;將到&#39;, &#39;新年&#39;, &#39;的&#39;, &#39;氣象&#39;, &#39;來&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jieba</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="s2">&quot;台北市長柯文哲&quot;</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>舊 / 曆 / 的 / 年底 / 畢竟 / 最 / 像 / 年底 / ， / 村鎮 / 上 / 不必 / 說 / ， / 就 / 在 / 天空 / 中 / 也 / 顯出 / 將到 / 新年 / 的 / 氣象 / 來
+台北市 / 長 / 柯文 / 哲
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="comparing-simlified-and-traditional-chinese-word-segmentation">
+<h1>Comparing Simlified and Traditional Chinese Word Segmentation<a class="headerlink" href="#comparing-simlified-and-traditional-chinese-word-segmentation" title="Permalink to this headline">#</a></h1>
+<section id="converstion-between-simplified-and-traditional-chinese">
+<h2>Converstion between Simplified and Traditional Chinese<a class="headerlink" href="#converstion-between-simplified-and-traditional-chinese" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>hanziconv
+<span class="kn">from</span> <span class="nn">hanziconv</span> <span class="kn">import</span> <span class="n">HanziConv</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="s1">&#39;臺北市長柯文哲&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+
+<span class="n">tra</span> <span class="o">=</span> <span class="n">HanziConv</span><span class="o">.</span><span class="n">toTraditional</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tra</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: hanziconv in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (0.3.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>台北市长柯文哲
+颱北市長柯文哲
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="s1">&#39;第二天我起得很遲，午飯之後，出去看了幾個本家和朋友&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+
+<span class="n">tra</span> <span class="o">=</span> <span class="n">HanziConv</span><span class="o">.</span><span class="n">toTraditional</span><span class="p">(</span><span class="n">sim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tra</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>第二天我起得很迟，午饭之后，出去看了几个本家和朋友
+第二天我起得很遲，午飯之後，齣去看瞭幾個本傢和朋友
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="segmentation-comparision-between-traditional-and-simplified-chinese">
+<h2>Segmentation comparision between traditional and simplified Chinese<a class="headerlink" href="#segmentation-comparision-between-traditional-and-simplified-chinese" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tra</span> <span class="o">=</span> <span class="s1">&#39;台北市長柯文哲&#39;</span>
+<span class="n">sim</span> <span class="o">=</span> <span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">tra</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">tra</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sim</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>台北市 / 長 / 柯文 / 哲
+台北 / 市长 / 柯文 / 哲
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sim</span> <span class="o">=</span> <span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="n">sim_cutted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+<span class="n">sim_cutted_to_tra</span> <span class="o">=</span> <span class="p">[</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toTraditional</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">sim_cutted</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sim_cutted_to_tra</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sim</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>舊曆 / 的 / 年底 / 畢竟 / 最像 / 年底 / ， / 村鎮 / 上 / 不必 / 說 / ， / 就 / 在 / 天空 / 中 / 也 / 顯齣 / 將 / 到 / 新年 / 的 / 氣象 / 來
+旧历 / 的 / 年底 / 毕竟 / 最像 / 年底 / ， / 村镇 / 上 / 不必 / 说 / ， / 就 / 在 / 天空 / 中 / 也 / 显出 / 将 / 到 / 新年 / 的 / 气象 / 来
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tra</span> <span class="o">=</span> <span class="s2">&quot;國民黨高雄市長候選人韓國瑜今天晚上開直播，針對最近引起爭議的一些事說明，強調他並沒有消費愛心菜販陳樹菊，全力支持「館長」做公益，所謂高雄三鳳宮靈籤可能是「新型態選舉詐騙」；至於為強調招商引資說出「陪睡」遭批，他以後不會說這麼有張力的用語，畢竟是市長候選人。&quot;</span>
+
+<span class="n">sim</span> <span class="o">=</span> <span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">tra</span><span class="p">)</span>
+<span class="n">sim_cutted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sim</span><span class="p">))</span>
+<span class="n">sim_cutted_tra</span> <span class="o">=</span> <span class="p">[</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toTraditional</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">sim_cutted</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">tra</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">sim_cutted_tra</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sim</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>國民黨 / 高雄市 / 長 / 候選人 / 韓國瑜 / 今天 / 晚上 / 開 / 直播 / ， / 針對 / 最近 / 引起 / 爭議 / 的 / 一些 / 事 / 說明 / ， / 強調 / 他 / 並沒有 / 消費 / 愛心 / 菜 / 販陳樹菊 / ， / 全力支持 / 「 / 館長 / 」 / 做 / 公益 / ， / 所謂 / 高雄 / 三鳳 / 宮靈 / 籤 / 可能 / 是 / 「 / 新型 / 態選舉 / 詐騙 / 」 / ； / 至於 / 為 / 強調 / 招商 / 引資 / 說 / 出 / 「 / 陪 / 睡 / 」 / 遭批 / ， / 他 / 以後不會 / 說 / 這麼 / 有 / 張力 / 的 / 用語 / ， / 畢 / 竟是 / 市長 / 候選人 / 。
+國民黨 / 高雄市 / 長 / 候選人 / 韓國 / 瑜 / 今天 / 晚上 / 開 / 直播 / ， / 針對 / 最近 / 引起爭議 / 的 / 一些 / 事 / 說明 / ， / 強調 / 他 / 並 / 沒有 / 消費 / 愛心 / 菜販 / 陳樹菊 / ， / 全力支持 / 「 / 館長 / 」 / 做 / 公益 / ， / 所謂 / 高雄 / 三鳳宮 / 靈簽 / 可能 / 是 / 「 / 新型 / 態 / 選舉 / 詐騙 / 」 / ； / 至於 / 為 / 強調 / 招商引資 / 說齣 / 「 / 陪 / 睡 / 」 / 遭批 / ， / 他 / 以後 / 不會 / 說 / 這麼 / 有 / 張力 / 的 / 用語 / ， / 畢竟 / 是 / 市長 / 候選人 / 。
+国民党 / 高雄市 / 长 / 候选人 / 韩国 / 瑜 / 今天 / 晚上 / 开 / 直播 / ， / 针对 / 最近 / 引起争议 / 的 / 一些 / 事 / 说明 / ， / 强调 / 他 / 并 / 没有 / 消费 / 爱心 / 菜贩 / 陈树菊 / ， / 全力支持 / 「 / 馆长 / 」 / 做 / 公益 / ， / 所谓 / 高雄 / 三凤宫 / 灵签 / 可能 / 是 / 「 / 新型 / 态 / 选举 / 诈骗 / 」 / ； / 至于 / 为 / 强调 / 招商引资 / 说出 / 「 / 陪 / 睡 / 」 / 遭批 / ， / 他 / 以后 / 不会 / 说 / 这么 / 有 / 张力 / 的 / 用语 / ， / 毕竟 / 是 / 市长 / 候选人 / 。
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-1-traditional-cutted-by-simplified-index">
+<h2>Solution 1: Traditional cutted by Simplified index<a class="headerlink" href="#solution-1-traditional-cutted-by-simplified-index" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="n">numpy</span><span class="o">.</span><span class="n">cumsum</span><span class="p">([</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([ 1,  3,  6, 10, 15])
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>
+
+<span class="k">def</span> <span class="nf">tra_cutted_by_sim</span><span class="p">(</span><span class="n">tra</span><span class="p">):</span>
+    <span class="n">sim_cutted</span> <span class="o">=</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">tra</span><span class="p">))</span>
+    <span class="n">term_len</span> <span class="o">=</span> <span class="p">[</span><span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="nb">list</span><span class="p">(</span><span class="n">sim_cutted</span><span class="p">)]</span>
+    <span class="n">term_index</span> <span class="o">=</span> <span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">+</span> <span class="nb">list</span><span class="p">(</span><span class="n">numpy</span><span class="o">.</span><span class="n">cumsum</span><span class="p">(</span><span class="n">term_len</span><span class="p">)[:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+    <span class="n">term_dict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">term_index</span><span class="p">,</span> <span class="n">term_len</span><span class="p">)}</span>
+    <span class="n">tra_cutted</span>  <span class="o">=</span> <span class="p">[</span><span class="n">tra</span><span class="p">[</span><span class="n">k</span><span class="p">:</span><span class="n">k</span><span class="o">+</span><span class="n">v</span><span class="p">]</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">term_dict</span><span class="o">.</span><span class="n">items</span><span class="p">()]</span>
+    <span class="k">return</span> <span class="n">tra_cutted</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">tra_cutted_by_sim</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+<span class="n">sim_cutted</span> <span class="o">=</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">sim_cutted_to_tra</span> <span class="o">=</span> <span class="p">[</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toTraditional</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">sim_cutted</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">sim_cutted_to_tra</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>舊曆的年底畢竟最像年底，村鎮上不必說，就在天空中也顯出將到新年的氣象來
+[&#39;舊曆&#39;, &#39;的&#39;, &#39;年底&#39;, &#39;畢竟&#39;, &#39;最像&#39;, &#39;年底&#39;, &#39;，&#39;, &#39;村鎮&#39;, &#39;上&#39;, &#39;不必&#39;, &#39;說&#39;, &#39;，&#39;, &#39;就&#39;, &#39;在&#39;, &#39;天空&#39;, &#39;中&#39;, &#39;也&#39;, &#39;顯出&#39;, &#39;將&#39;, &#39;到&#39;, &#39;新年&#39;, &#39;的&#39;, &#39;氣象&#39;, &#39;來&#39;]
+[&#39;舊曆&#39;, &#39;的&#39;, &#39;年底&#39;, &#39;畢竟&#39;, &#39;最像&#39;, &#39;年底&#39;, &#39;，&#39;, &#39;村鎮&#39;, &#39;上&#39;, &#39;不必&#39;, &#39;說&#39;, &#39;，&#39;, &#39;就&#39;, &#39;在&#39;, &#39;天空&#39;, &#39;中&#39;, &#39;也&#39;, &#39;顯齣&#39;, &#39;將&#39;, &#39;到&#39;, &#39;新年&#39;, &#39;的&#39;, &#39;氣象&#39;, &#39;來&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-2-traditional-by-simplified-index">
+<h2>Solution 2: traditional by simplified index<a class="headerlink" href="#solution-2-traditional-by-simplified-index" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">restore</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">toks</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">offset</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">toks</span><span class="p">:</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">text</span><span class="p">[</span><span class="n">offset</span><span class="p">:</span><span class="n">offset</span> <span class="o">+</span> <span class="nb">len</span><span class="p">(</span><span class="n">tok</span><span class="p">)])</span>
+        <span class="n">offset</span> <span class="o">+=</span> <span class="nb">len</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">restore</span><span class="p">(</span><span class="n">tra</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">tra</span><span class="p">)))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;國民黨&#39;, &#39;高雄市&#39;, &#39;長&#39;, &#39;候選人&#39;, &#39;韓國&#39;, &#39;瑜&#39;, &#39;今天&#39;, &#39;晚上&#39;, &#39;開&#39;, &#39;直播&#39;, &#39;，&#39;, &#39;針對&#39;, &#39;最近&#39;, &#39;引起爭議&#39;, &#39;的&#39;, &#39;一些&#39;, &#39;事&#39;, &#39;說明&#39;, &#39;，&#39;, &#39;強調&#39;, &#39;他&#39;, &#39;並&#39;, &#39;沒有&#39;, &#39;消費&#39;, &#39;愛心&#39;, &#39;菜販&#39;, &#39;陳樹菊&#39;, &#39;，&#39;, &#39;全力支持&#39;, &#39;「&#39;, &#39;館長&#39;, &#39;」&#39;, &#39;做&#39;, &#39;公益&#39;, &#39;，&#39;, &#39;所謂&#39;, &#39;高雄&#39;, &#39;三鳳宮&#39;, &#39;靈籤&#39;, &#39;可能&#39;, &#39;是&#39;, &#39;「&#39;, &#39;新型&#39;, &#39;態&#39;, &#39;選舉&#39;, &#39;詐騙&#39;, &#39;」&#39;, &#39;；&#39;, &#39;至於&#39;, &#39;為&#39;, &#39;強調&#39;, &#39;招商引資&#39;, &#39;說出&#39;, &#39;「&#39;, &#39;陪&#39;, &#39;睡&#39;, &#39;」&#39;, &#39;遭批&#39;, &#39;，&#39;, &#39;他&#39;, &#39;以後&#39;, &#39;不會&#39;, &#39;說&#39;, &#39;這麼&#39;, &#39;有&#39;, &#39;張力&#39;, &#39;的&#39;, &#39;用語&#39;, &#39;，&#39;, &#39;畢竟&#39;, &#39;是&#39;, &#39;市長&#39;, &#39;候選人&#39;, &#39;。&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>Handle OOV with an external dictionary</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Segmenting traditional Chinese directly</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="s2">&quot;國民黨高雄市長候選人韓國瑜今天晚上開直播，針對最近引起爭議的一些事說明，強調他並沒有消費愛心菜販陳樹菊，全力支持「館長」做公益，所謂高雄三鳳宮靈籤可能是「新型態選舉詐騙」；至於為強調招商引資說出「陪睡」遭批，他以後不會說這麼有張力的用語，畢竟是市長候選人。&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sample</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>國民黨 / 高雄市 / 長 / 候選人 / 韓國瑜 / 今天 / 晚上 / 開 / 直播 / ， / 針對 / 最近 / 引起 / 爭議 / 的 / 一些 / 事 / 說明 / ， / 強調 / 他 / 並沒有 / 消費 / 愛心 / 菜 / 販陳樹菊 / ， / 全力支持 / 「 / 館長 / 」 / 做 / 公益 / ， / 所謂 / 高雄 / 三鳳 / 宮靈 / 籤 / 可能 / 是 / 「 / 新型 / 態選舉 / 詐騙 / 」 / ； / 至於 / 為 / 強調 / 招商 / 引資 / 說 / 出 / 「 / 陪 / 睡 / 」 / 遭批 / ， / 他 / 以後不會 / 說 / 這麼 / 有 / 張力 / 的 / 用語 / ， / 畢 / 竟是 / 市長 / 候選人 / 。
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># cutting traditional-to-simplified Chinese</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">sample</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>国民党 / 高雄市 / 长 / 候选人 / 韩国 / 瑜 / 今天 / 晚上 / 开 / 直播 / ， / 针对 / 最近 / 引起争议 / 的 / 一些 / 事 / 说明 / ， / 强调 / 他 / 并 / 没有 / 消费 / 爱心 / 菜贩 / 陈树菊 / ， / 全力支持 / 「 / 馆长 / 」 / 做 / 公益 / ， / 所谓 / 高雄 / 三凤宫 / 灵签 / 可能 / 是 / 「 / 新型 / 态 / 选举 / 诈骗 / 」 / ； / 至于 / 为 / 强调 / 招商引资 / 说出 / 「 / 陪 / 睡 / 」 / 遭批 / ， / 他 / 以后 / 不会 / 说 / 这么 / 有 / 张力 / 的 / 用语 / ， / 毕竟 / 是 / 市长 / 候选人 / 。
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Segmenting traditional Chinese directly</span>
+<span class="n">sample</span> <span class="o">=</span> <span class="s2">&quot;國民黨高雄市長候選人韓國瑜今天晚上開直播，針對最近引起爭議的一些事說明，強調他並沒有消費愛心菜販陳樹菊，全力支持「館長」做公益，所謂高雄三鳳宮靈籤可能是「新型態選舉詐騙」；至於為強調招商引資說出「陪睡」遭批，他以後不會說這麼有張力的用語，畢竟是市長候選人。&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sample</span><span class="p">)))</span>
+<span class="c1"># Segmenting traditional Chinese by cutted simplified index</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;/ &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">restore</span><span class="p">(</span><span class="n">sample</span><span class="p">,</span> <span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">HanziConv</span><span class="o">.</span><span class="n">toSimplified</span><span class="p">(</span><span class="n">sample</span><span class="p">))))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>國民黨 / 高雄市 / 長 / 候選人 / 韓國瑜 / 今天 / 晚上 / 開 / 直播 / ， / 針對 / 最近 / 引起 / 爭議 / 的 / 一些 / 事 / 說明 / ， / 強調 / 他 / 並沒有 / 消費 / 愛心 / 菜 / 販陳樹菊 / ， / 全力支持 / 「 / 館長 / 」 / 做 / 公益 / ， / 所謂 / 高雄 / 三鳳 / 宮靈 / 籤 / 可能 / 是 / 「 / 新型 / 態選舉 / 詐騙 / 」 / ； / 至於 / 為 / 強調 / 招商 / 引資 / 說 / 出 / 「 / 陪 / 睡 / 」 / 遭批 / ， / 他 / 以後不會 / 說 / 這麼 / 有 / 張力 / 的 / 用語 / ， / 畢 / 竟是 / 市長 / 候選人 / 。
+國民黨/ 高雄市/ 長/ 候選人/ 韓國/ 瑜/ 今天/ 晚上/ 開/ 直播/ ，/ 針對/ 最近/ 引起爭議/ 的/ 一些/ 事/ 說明/ ，/ 強調/ 他/ 並/ 沒有/ 消費/ 愛心/ 菜販/ 陳樹菊/ ，/ 全力支持/ 「/ 館長/ 」/ 做/ 公益/ ，/ 所謂/ 高雄/ 三鳳宮/ 靈籤/ 可能/ 是/ 「/ 新型/ 態/ 選舉/ 詐騙/ 」/ ；/ 至於/ 為/ 強調/ 招商引資/ 說出/ 「/ 陪/ 睡/ 」/ 遭批/ ，/ 他/ 以後/ 不會/ 說/ 這麼/ 有/ 張力/ 的/ 用語/ ，/ 畢竟/ 是/ 市長/ 候選人/ 。
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="tool-comparing-traditional-cutted-by-simplfied-chinese">
+<h2>(Tool) Comparing Traditional cutted by simplfied Chinese<a class="headerlink" href="#tool-comparing-traditional-cutted-by-simplfied-chinese" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tra_cutted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
+<span class="n">cut_by_sim</span> <span class="o">=</span> <span class="n">tra_cutted_by_sim</span><span class="p">(</span><span class="n">sample</span><span class="p">)</span>
+<span class="n">i</span><span class="p">,</span> <span class="n">j</span>  <span class="o">=</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cutted tra directly:&quot;</span><span class="p">,</span> <span class="n">tra_cutted</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Cutted by sim:&quot;</span><span class="p">,</span> <span class="n">cut_by_sim</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tra_cutted</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">cut_by_sim</span><span class="p">))</span>
+
+
+<span class="k">while</span> <span class="n">i</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">tra_cutted</span><span class="p">)</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="n">cut_by_sim</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">tra_cutted</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">==</span> <span class="n">cut_by_sim</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;[</span><span class="si">%d</span><span class="s2">]</span><span class="si">%s</span><span class="se">\t</span><span class="s2">[</span><span class="si">%d</span><span class="s2">]</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">tra_cutted</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">j</span><span class="p">,</span> <span class="n">cut_by_sim</span><span class="p">[</span><span class="n">j</span><span class="p">]))</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="mi">1</span>            
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">ei</span><span class="p">,</span> <span class="n">ej</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">1</span>
+            <span class="n">listi</span><span class="p">,</span> <span class="n">listj</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">[]</span>
+            <span class="n">listi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tra_cutted</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+            <span class="n">listj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cut_by_sim</span><span class="p">[</span><span class="n">j</span><span class="p">])</span>
+            <span class="k">while</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">listi</span><span class="p">)</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">listj</span><span class="p">):</span>
+                <span class="k">if</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">listi</span><span class="p">))</span> <span class="o">&lt;</span> <span class="nb">len</span><span class="p">(</span><span class="s2">&quot;&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">listj</span><span class="p">))):</span>
+                    <span class="n">listi</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tra_cutted</span><span class="p">[</span><span class="n">i</span><span class="o">+</span><span class="n">ei</span><span class="p">])</span>
+                    <span class="n">ei</span> <span class="o">+=</span> <span class="mi">1</span>
+                <span class="k">else</span><span class="p">:</span>
+                    <span class="n">listj</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">cut_by_sim</span><span class="p">[</span><span class="n">j</span><span class="o">+</span><span class="n">ej</span><span class="p">])</span>
+                    <span class="n">ej</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="s2">[</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">]</span><span class="si">%s</span><span class="se">\t</span><span class="s2">[</span><span class="si">%d</span><span class="s2">_</span><span class="si">%d</span><span class="s2">]</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">ei</span><span class="p">,</span> <span class="n">listi</span><span class="p">,</span> <span class="n">j</span><span class="p">,</span> <span class="n">ej</span><span class="p">,</span> <span class="n">listj</span><span class="p">))</span>
+            <span class="n">i</span> <span class="o">+=</span> <span class="n">ei</span>
+            <span class="n">j</span> <span class="o">+=</span> <span class="n">ej</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Cutted tra directly: [&#39;國民黨&#39;, &#39;高雄市&#39;, &#39;長&#39;, &#39;候選人&#39;, &#39;韓國瑜&#39;, &#39;今天&#39;, &#39;晚上&#39;, &#39;開&#39;, &#39;直播&#39;, &#39;，&#39;, &#39;針對&#39;, &#39;最近&#39;, &#39;引起&#39;, &#39;爭議&#39;, &#39;的&#39;, &#39;一些&#39;, &#39;事&#39;, &#39;說明&#39;, &#39;，&#39;, &#39;強調&#39;, &#39;他&#39;, &#39;並沒有&#39;, &#39;消費&#39;, &#39;愛心&#39;, &#39;菜&#39;, &#39;販陳樹菊&#39;, &#39;，&#39;, &#39;全力支持&#39;, &#39;「&#39;, &#39;館長&#39;, &#39;」&#39;, &#39;做&#39;, &#39;公益&#39;, &#39;，&#39;, &#39;所謂&#39;, &#39;高雄&#39;, &#39;三鳳&#39;, &#39;宮靈&#39;, &#39;籤&#39;, &#39;可能&#39;, &#39;是&#39;, &#39;「&#39;, &#39;新型&#39;, &#39;態選舉&#39;, &#39;詐騙&#39;, &#39;」&#39;, &#39;；&#39;, &#39;至於&#39;, &#39;為&#39;, &#39;強調&#39;, &#39;招商&#39;, &#39;引資&#39;, &#39;說&#39;, &#39;出&#39;, &#39;「&#39;, &#39;陪&#39;, &#39;睡&#39;, &#39;」&#39;, &#39;遭批&#39;, &#39;，&#39;, &#39;他&#39;, &#39;以後不會&#39;, &#39;說&#39;, &#39;這麼&#39;, &#39;有&#39;, &#39;張力&#39;, &#39;的&#39;, &#39;用語&#39;, &#39;，&#39;, &#39;畢&#39;, &#39;竟是&#39;, &#39;市長&#39;, &#39;候選人&#39;, &#39;。&#39;]
+Cutted by sim: [&#39;國民黨&#39;, &#39;高雄市&#39;, &#39;長&#39;, &#39;候選人&#39;, &#39;韓國&#39;, &#39;瑜&#39;, &#39;今天&#39;, &#39;晚上&#39;, &#39;開&#39;, &#39;直播&#39;, &#39;，&#39;, &#39;針對&#39;, &#39;最近&#39;, &#39;引起爭議&#39;, &#39;的&#39;, &#39;一些&#39;, &#39;事&#39;, &#39;說明&#39;, &#39;，&#39;, &#39;強調&#39;, &#39;他&#39;, &#39;並&#39;, &#39;沒有&#39;, &#39;消費&#39;, &#39;愛心&#39;, &#39;菜販&#39;, &#39;陳樹菊&#39;, &#39;，&#39;, &#39;全力支持&#39;, &#39;「&#39;, &#39;館長&#39;, &#39;」&#39;, &#39;做&#39;, &#39;公益&#39;, &#39;，&#39;, &#39;所謂&#39;, &#39;高雄&#39;, &#39;三鳳宮&#39;, &#39;靈籤&#39;, &#39;可能&#39;, &#39;是&#39;, &#39;「&#39;, &#39;新型&#39;, &#39;態&#39;, &#39;選舉&#39;, &#39;詐騙&#39;, &#39;」&#39;, &#39;；&#39;, &#39;至於&#39;, &#39;為&#39;, &#39;強調&#39;, &#39;招商引資&#39;, &#39;說出&#39;, &#39;「&#39;, &#39;陪&#39;, &#39;睡&#39;, &#39;」&#39;, &#39;遭批&#39;, &#39;，&#39;, &#39;他&#39;, &#39;以後&#39;, &#39;不會&#39;, &#39;說&#39;, &#39;這麼&#39;, &#39;有&#39;, &#39;張力&#39;, &#39;的&#39;, &#39;用語&#39;, &#39;，&#39;, &#39;畢竟&#39;, &#39;是&#39;, &#39;市長&#39;, &#39;候選人&#39;, &#39;。&#39;]
+74 74
+[0]國民黨	[0]國民黨
+[1]高雄市	[1]高雄市
+[2]長	[2]長
+[3]候選人	[3]候選人
+	[4_1][&#39;韓國瑜&#39;]	[4_2][&#39;韓國&#39;, &#39;瑜&#39;]
+[5]今天	[6]今天
+[6]晚上	[7]晚上
+[7]開	[8]開
+[8]直播	[9]直播
+[9]，	[10]，
+[10]針對	[11]針對
+[11]最近	[12]最近
+	[12_2][&#39;引起&#39;, &#39;爭議&#39;]	[13_1][&#39;引起爭議&#39;]
+[14]的	[14]的
+[15]一些	[15]一些
+[16]事	[16]事
+[17]說明	[17]說明
+[18]，	[18]，
+[19]強調	[19]強調
+[20]他	[20]他
+	[21_1][&#39;並沒有&#39;]	[21_2][&#39;並&#39;, &#39;沒有&#39;]
+[22]消費	[23]消費
+[23]愛心	[24]愛心
+	[24_2][&#39;菜&#39;, &#39;販陳樹菊&#39;]	[25_2][&#39;菜販&#39;, &#39;陳樹菊&#39;]
+[26]，	[27]，
+[27]全力支持	[28]全力支持
+[28]「	[29]「
+[29]館長	[30]館長
+[30]」	[31]」
+[31]做	[32]做
+[32]公益	[33]公益
+[33]，	[34]，
+[34]所謂	[35]所謂
+[35]高雄	[36]高雄
+	[36_3][&#39;三鳳&#39;, &#39;宮靈&#39;, &#39;籤&#39;]	[37_2][&#39;三鳳宮&#39;, &#39;靈籤&#39;]
+[39]可能	[39]可能
+[40]是	[40]是
+[41]「	[41]「
+[42]新型	[42]新型
+	[43_1][&#39;態選舉&#39;]	[43_2][&#39;態&#39;, &#39;選舉&#39;]
+[44]詐騙	[45]詐騙
+[45]」	[46]」
+[46]；	[47]；
+[47]至於	[48]至於
+[48]為	[49]為
+[49]強調	[50]強調
+	[50_2][&#39;招商&#39;, &#39;引資&#39;]	[51_1][&#39;招商引資&#39;]
+	[52_2][&#39;說&#39;, &#39;出&#39;]	[52_1][&#39;說出&#39;]
+[54]「	[53]「
+[55]陪	[54]陪
+[56]睡	[55]睡
+[57]」	[56]」
+[58]遭批	[57]遭批
+[59]，	[58]，
+[60]他	[59]他
+	[61_1][&#39;以後不會&#39;]	[60_2][&#39;以後&#39;, &#39;不會&#39;]
+[62]說	[62]說
+[63]這麼	[63]這麼
+[64]有	[64]有
+[65]張力	[65]張力
+[66]的	[66]的
+[67]用語	[67]用語
+[68]，	[68]，
+	[69_2][&#39;畢&#39;, &#39;竟是&#39;]	[69_2][&#39;畢竟&#39;, &#39;是&#39;]
+[71]市長	[71]市長
+[72]候選人	[72]候選人
+[73]。	[73]。
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="loading-userdict">
+<h1>Loading userdict<a class="headerlink" href="#loading-userdict" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-N<span class="w"> </span>https://raw.githubusercontent.com/P4CSS/PSS/master/data/userdict.txt
+<span class="o">!</span>ls
+<span class="n">jieba</span><span class="o">.</span><span class="n">load_userdict</span><span class="p">(</span><span class="s2">&quot;userdict.txt&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentences</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-02 15:49:03--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/userdict.txt
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404 Not Found
+2023-12-02 15:49:03 ERROR 404: Not Found.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TM00.ipynb                             TM08_doc_classification.ipynb
+TM01_tokenization(chi).ipynb           TM08_doc_classification_pipeline.ipynb
+TM01_tokenization.ipynb                TM09_re.ipynb
+TM02_collocation.ipynb                 TM0X Using CKIPtagger.ipynb
+TM03_2_pos_sentiment_chi.ipynb         blessing.txt
+<span class=" -Color -Color-Red">TM03_POS Tagging.ipynb</span>                 <span class=" -Color -Color-Blue">data</span>
+<span class=" -Color -Color-Red">TM04_IR_search.ipynb</span>                   hindu.txt
+TM05_sentiment.ipynb                   <span class=" -Color -Color-Blue">img</span>
+TM06_Clustering.ipynb                  stopwords_zh-tw.txt
+<span class=" -Color -Color-Red">TM07_1_embeddings.ipynb</span>                test.html
+TM07_2_doc2vec.ipynb                   userdict.txt
+TM07_embedding_clustering.ipynb
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>舊曆 / 的 / 年底 / 畢竟 / 最 / 像 / 年底 / ， / 村鎮 / 上 / 不必 / 說 / ， / 就 / 在 / 天空 / 中 / 也 / 顯出 / 將到 / 新年 / 的 / 氣象 / 來
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot; / &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sample</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>國民黨 / 高雄市 / 長 / 候選人 / 韓國瑜 / 今天 / 晚上 / 開 / 直播 / ， / 針對 / 最近 / 引起 / 爭議 / 的 / 一些 / 事 / 說明 / ， / 強調 / 他 / 並沒有 / 消費 / 愛心 / 菜販 / 陳樹菊 / ， / 全力支持 / 「 / 館長 / 」 / 做 / 公益 / ， / 所謂 / 高雄 / 三鳳宮 / 靈籤 / 可能 / 是 / 「 / 新型 / 態選舉 / 詐騙 / 」 / ； / 至於 / 為 / 強調 / 招商 / 引資 / 說 / 出 / 「 / 陪 / 睡 / 」 / 遭批 / ， / 他 / 以後不會 / 說 / 這麼 / 有 / 張力 / 的 / 用語 / ， / 畢 / 竟是 / 市長 / 候選人 / 。
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="pos-tagging-with-jieba">
+<h1>POS Tagging with Jieba<a class="headerlink" href="#pos-tagging-with-jieba" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jieba.posseg</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">((</span><span class="n">jieba</span><span class="o">.</span><span class="n">posseg</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sample</span><span class="p">))))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[pair(&#39;國民黨&#39;, &#39;nt&#39;), pair(&#39;高雄市&#39;, &#39;ns&#39;), pair(&#39;長候&#39;, &#39;n&#39;), pair(&#39;選人&#39;, &#39;n&#39;), pair(&#39;韓國瑜&#39;, &#39;x&#39;), pair(&#39;今天&#39;, &#39;t&#39;), pair(&#39;晚上&#39;, &#39;t&#39;), pair(&#39;開&#39;, &#39;zg&#39;), pair(&#39;直播&#39;, &#39;vn&#39;), pair(&#39;，&#39;, &#39;x&#39;), pair(&#39;針對&#39;, &#39;p&#39;), pair(&#39;最近&#39;, &#39;f&#39;), pair(&#39;引起&#39;, &#39;v&#39;), pair(&#39;爭議&#39;, &#39;n&#39;), pair(&#39;的&#39;, &#39;uj&#39;), pair(&#39;一些&#39;, &#39;m&#39;), pair(&#39;事&#39;, &#39;n&#39;), pair(&#39;說&#39;, &#39;v&#39;), pair(&#39;明&#39;, &#39;t&#39;), pair(&#39;，&#39;, &#39;x&#39;), pair(&#39;強調&#39;, &#39;v&#39;), pair(&#39;他&#39;, &#39;r&#39;), pair(&#39;並&#39;, &#39;c&#39;), pair(&#39;沒有&#39;, &#39;v&#39;), pair(&#39;消費&#39;, &#39;vn&#39;), pair(&#39;愛心&#39;, &#39;n&#39;), pair(&#39;菜販&#39;, &#39;n&#39;), pair(&#39;陳樹菊&#39;, &#39;x&#39;), pair(&#39;，&#39;, &#39;x&#39;), pair(&#39;全力支持&#39;, &#39;n&#39;), pair(&#39;「&#39;, &#39;x&#39;), pair(&#39;館長&#39;, &#39;n&#39;), pair(&#39;」&#39;, &#39;x&#39;), pair(&#39;做&#39;, &#39;v&#39;), pair(&#39;公益&#39;, &#39;n&#39;), pair(&#39;，&#39;, &#39;x&#39;), pair(&#39;所謂&#39;, &#39;b&#39;), pair(&#39;高雄&#39;, &#39;n&#39;), pair(&#39;三鳳宮&#39;, &#39;x&#39;), pair(&#39;靈籤&#39;, &#39;x&#39;), pair(&#39;可能&#39;, &#39;v&#39;), pair(&#39;是&#39;, &#39;v&#39;), pair(&#39;「&#39;, &#39;x&#39;), pair(&#39;新型&#39;, &#39;b&#39;), pair(&#39;態&#39;, &#39;n&#39;), pair(&#39;選舉&#39;, &#39;v&#39;), pair(&#39;詐騙&#39;, &#39;vn&#39;), pair(&#39;」&#39;, &#39;x&#39;), pair(&#39;；&#39;, &#39;x&#39;), pair(&#39;至於&#39;, &#39;i&#39;), pair(&#39;為&#39;, &#39;p&#39;), pair(&#39;強調&#39;, &#39;v&#39;), pair(&#39;招商&#39;, &#39;n&#39;), pair(&#39;引資說&#39;, &#39;l&#39;), pair(&#39;出&#39;, &#39;v&#39;), pair(&#39;「&#39;, &#39;x&#39;), pair(&#39;陪&#39;, &#39;v&#39;), pair(&#39;睡&#39;, &#39;v&#39;), pair(&#39;」&#39;, &#39;x&#39;), pair(&#39;遭批&#39;, &#39;v&#39;), pair(&#39;，&#39;, &#39;x&#39;), pair(&#39;他&#39;, &#39;r&#39;), pair(&#39;以&#39;, &#39;p&#39;), pair(&#39;後&#39;, &#39;nr&#39;), pair(&#39;不&#39;, &#39;d&#39;), pair(&#39;會&#39;, &#39;v&#39;), pair(&#39;說&#39;, &#39;v&#39;), pair(&#39;這麼&#39;, &#39;r&#39;), pair(&#39;有&#39;, &#39;v&#39;), pair(&#39;張力&#39;, &#39;nr&#39;), pair(&#39;的&#39;, &#39;uj&#39;), pair(&#39;用語&#39;, &#39;n&#39;), pair(&#39;，&#39;, &#39;x&#39;), pair(&#39;畢&#39;, &#39;zg&#39;), pair(&#39;竟是&#39;, &#39;d&#39;), pair(&#39;市長候&#39;, &#39;n&#39;), pair(&#39;選人&#39;, &#39;n&#39;), pair(&#39;。&#39;, &#39;x&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">word</span><span class="p">,</span> <span class="n">pos</span> <span class="ow">in</span> <span class="n">jieba</span><span class="o">.</span><span class="n">posseg</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sample</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>國民黨	nt
+高雄市	ns
+長候	n
+選人	n
+韓國瑜	x
+今天	t
+晚上	t
+開	zg
+直播	vn
+，	x
+針對	p
+最近	f
+引起	v
+爭議	n
+的	uj
+一些	m
+事	n
+說	v
+明	t
+，	x
+強調	v
+他	r
+並	c
+沒有	v
+消費	vn
+愛心	n
+菜販	n
+陳樹菊	x
+，	x
+全力支持	n
+「	x
+館長	n
+」	x
+做	v
+公益	n
+，	x
+所謂	b
+高雄	n
+三鳳宮	x
+靈籤	x
+可能	v
+是	v
+「	x
+新型	b
+態	n
+選舉	v
+詐騙	vn
+」	x
+；	x
+至於	i
+為	p
+強調	v
+招商	n
+引資說	l
+出	v
+「	x
+陪	v
+睡	v
+」	x
+遭批	v
+，	x
+他	r
+以	p
+後	nr
+不	d
+會	v
+說	v
+這麼	r
+有	v
+張力	nr
+的	uj
+用語	n
+，	x
+畢	zg
+竟是	d
+市長候	n
+選人	n
+。	x
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="top-words-mining">
+<h1>Top Words Mining<a class="headerlink" href="#top-words-mining" title="Permalink to this headline">#</a></h1>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+        <span class="n">word_counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;，&#39;, 693), (&#39;的&#39;, 345), (&#39;了&#39;, 197), (&#39;她&#39;, 155), (&#39;我&#39;, 88), (&#39;是&#39;, 86), (&#39;「&#39;, 83), (&#39;」&#39;, 83), (&#39;也&#39;, 77), (&#39;說&#39;, 65), (&#39;在&#39;, 61), (&#39;來&#39;, 57), (&#39;就&#39;, 56), (&#39;裏&#39;, 54), (&#39;…&#39;, 50), (&#39;？&#39;, 47), (&#39;有&#39;, 46), (&#39;麽&#39;, 45), (&#39;不&#39;, 37), (&#39;祥林嫂&#39;, 35)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">word_counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;祥林嫂&#39;, 35), (&#39;一個&#39;, 33), (&#39;知道&#39;, 26), (&#39;四叔&#39;, 21), (&#39;自己&#39;, 18), (&#39;然而&#39;, 17), (&#39;時候&#39;, 17), (&#39;已經&#39;, 16), (&#39;起來&#39;, 15), (&#39;大家&#39;, 15), (&#39;所以&#39;, 13), (&#39;他們&#39;, 12), (&#39;四嬸&#39;, 12), (&#39;女人&#39;, 11), (&#39;男人&#39;, 11), (&#39;似乎&#39;, 11), (&#39;先前&#39;, 10), (&#39;人們&#39;, 10), (&#39;阿毛&#39;, 10), (&#39;出去&#39;, 9)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>
+<span class="n">chars</span> <span class="o">=</span> <span class="s2">&quot;『「，。、標點符號&quot;</span>
+<span class="nb">print</span><span class="p">([</span><span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">ch</span><span class="p">)</span> <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">chars</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ps&#39;, &#39;Ps&#39;, &#39;Po&#39;, &#39;Po&#39;, &#39;Po&#39;, &#39;Lo&#39;, &#39;Lo&#39;, &#39;Lo&#39;, &#39;Lo&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">):</span>
+            <span class="n">word_counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;的&#39;, 345), (&#39;了&#39;, 197), (&#39;她&#39;, 155), (&#39;我&#39;, 88), (&#39;是&#39;, 86), (&#39;也&#39;, 77), (&#39;說&#39;, 65), (&#39;在&#39;, 61), (&#39;來&#39;, 57), (&#39;就&#39;, 56), (&#39;裏&#39;, 54), (&#39;有&#39;, 46), (&#39;麽&#39;, 45), (&#39;不&#39;, 37), (&#39;祥林嫂&#39;, 35), (&#39;又&#39;, 34), (&#39;一個&#39;, 33), (&#39;你&#39;, 33), (&#39;去&#39;, 32), (&#39;他&#39;, 28)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section class="tex2jax_ignore mathjax_ignore" id="stop-word-removal">
+<h1>Stop word removal<a class="headerlink" href="#stop-word-removal" title="Permalink to this headline">#</a></h1>
+<p>Manipulate a Chinese stopword list.</p>
+<p>What is “U+FEFF”?</p>
+<blockquote>
+<div><p>The Unicode character U+FEFF is the byte order mark, or BOM, and is used to tell the difference between big- and little-endian UTF-16 encoding. If you decode the web page using the right codec, Python will remove it for you. Examples:</p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">stopwords</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;的&quot;</span><span class="p">,</span> <span class="s2">&quot;了&quot;</span><span class="p">,</span> <span class="s2">&quot;是&quot;</span><span class="p">,</span> <span class="s2">&quot;也&quot;</span><span class="p">,</span> <span class="s2">&quot;在&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-N<span class="w"> </span>https://raw.githubusercontent.com/P4CSS/PSS/master/data/stopwords_zh-tw.txt
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;stopwords_zh-tw.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">stopwords</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stopwords</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stopwords</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-02 15:49:04--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/stopwords_zh-tw.txt
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404 Not Found
+2023-12-02 15:49:05 ERROR 404: Not Found.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;?&#39;, &#39;、&#39;, &#39;。&#39;, &#39;“&#39;, &#39;”&#39;, &#39;《&#39;, &#39;》&#39;, &#39;！&#39;, &#39;，&#39;, &#39;：&#39;, &#39;；&#39;, &#39;？&#39;, &#39;人民&#39;, &#39;末##末&#39;, &#39;啊&#39;, &#39;阿&#39;, &#39;哎&#39;, &#39;哎呀&#39;, &#39;哎喲&#39;, &#39;唉&#39;, &#39;我&#39;, &#39;我們&#39;, &#39;按&#39;, &#39;按照&#39;, &#39;依照&#39;, &#39;吧&#39;, &#39;吧噠&#39;, &#39;把&#39;, &#39;罷了&#39;, &#39;被&#39;, &#39;本&#39;, &#39;本著&#39;, &#39;比&#39;, &#39;比方&#39;, &#39;比如&#39;, &#39;鄙人&#39;, &#39;彼&#39;, &#39;彼此&#39;, &#39;邊&#39;, &#39;別&#39;, &#39;別的&#39;, &#39;別說&#39;, &#39;並&#39;, &#39;並且&#39;, &#39;不比&#39;, &#39;不成&#39;, &#39;不單&#39;, &#39;不但&#39;, &#39;不獨&#39;, &#39;不管&#39;, &#39;不光&#39;, &#39;不過&#39;, &#39;不僅&#39;, &#39;不拘&#39;, &#39;不論&#39;, &#39;不怕&#39;, &#39;不然&#39;, &#39;不如&#39;, &#39;不特&#39;, &#39;不惟&#39;, &#39;不問&#39;, &#39;不只&#39;, &#39;朝&#39;, &#39;朝著&#39;, &#39;趁&#39;, &#39;趁著&#39;, &#39;乘&#39;, &#39;沖&#39;, &#39;除&#39;, &#39;除此之外&#39;, &#39;除非&#39;, &#39;除了&#39;, &#39;此&#39;, &#39;此間&#39;, &#39;此外&#39;, &#39;從&#39;, &#39;從而&#39;, &#39;打&#39;, &#39;待&#39;, &#39;但&#39;, &#39;但是&#39;, &#39;當&#39;, &#39;當著&#39;, &#39;到&#39;, &#39;得&#39;, &#39;的&#39;, &#39;的話&#39;, &#39;等&#39;, &#39;等等&#39;, &#39;地&#39;, &#39;第&#39;, &#39;叮咚&#39;, &#39;對&#39;, &#39;對於&#39;, &#39;多&#39;, &#39;多少&#39;, &#39;而&#39;, &#39;而況&#39;, &#39;而且&#39;, &#39;而是&#39;, &#39;而外&#39;, &#39;而言&#39;, &#39;而已&#39;, &#39;爾後&#39;, &#39;反過來&#39;, &#39;反過來說&#39;, &#39;反之&#39;, &#39;非但&#39;, &#39;非徒&#39;, &#39;否則&#39;, &#39;嘎&#39;, &#39;嘎登&#39;, &#39;該&#39;, &#39;趕&#39;, &#39;個&#39;, &#39;各&#39;, &#39;各個&#39;, &#39;各位&#39;, &#39;各種&#39;, &#39;各自&#39;, &#39;給&#39;, &#39;根據&#39;, &#39;跟&#39;, &#39;故&#39;, &#39;故此&#39;, &#39;固然&#39;, &#39;關於&#39;, &#39;管&#39;, &#39;歸&#39;, &#39;果然&#39;, &#39;果真&#39;, &#39;過&#39;, &#39;哈&#39;, &#39;哈哈&#39;, &#39;呵&#39;, &#39;和&#39;, &#39;何&#39;, &#39;何處&#39;, &#39;何況&#39;, &#39;何時&#39;, &#39;嘿&#39;, &#39;哼&#39;, &#39;哼唷&#39;, &#39;呼哧&#39;, &#39;乎&#39;, &#39;嘩&#39;, &#39;還是&#39;, &#39;還有&#39;, &#39;換句話說&#39;, &#39;換言之&#39;, &#39;或&#39;, &#39;或是&#39;, &#39;或者&#39;, &#39;極了&#39;, &#39;及&#39;, &#39;及其&#39;, &#39;及至&#39;, &#39;即&#39;, &#39;即便&#39;, &#39;即或&#39;, &#39;即令&#39;, &#39;即若&#39;, &#39;即使&#39;, &#39;幾&#39;, &#39;幾時&#39;, &#39;己&#39;, &#39;既&#39;, &#39;既然&#39;, &#39;既是&#39;, &#39;繼而&#39;, &#39;加之&#39;, &#39;假如&#39;, &#39;假若&#39;, &#39;假使&#39;, &#39;鑒於&#39;, &#39;將&#39;, &#39;較&#39;, &#39;較之&#39;, &#39;叫&#39;, &#39;接著&#39;, &#39;結果&#39;, &#39;借&#39;, &#39;緊接著&#39;, &#39;進而&#39;, &#39;盡&#39;, &#39;儘管&#39;, &#39;經&#39;, &#39;經過&#39;, &#39;就&#39;, &#39;就是&#39;, &#39;就是說&#39;, &#39;據&#39;, &#39;具體地說&#39;, &#39;具體說來&#39;, &#39;開始&#39;, &#39;開外&#39;, &#39;靠&#39;, &#39;咳&#39;, &#39;可&#39;, &#39;可見&#39;, &#39;可是&#39;, &#39;可以&#39;, &#39;況且&#39;, &#39;啦&#39;, &#39;來&#39;, &#39;來著&#39;, &#39;離&#39;, &#39;例如&#39;, &#39;哩&#39;, &#39;連&#39;, &#39;連同&#39;, &#39;兩者&#39;, &#39;了&#39;, &#39;臨&#39;, &#39;另&#39;, &#39;另外&#39;, &#39;另一方面&#39;, &#39;論&#39;, &#39;嘛&#39;, &#39;嗎&#39;, &#39;慢說&#39;, &#39;漫說&#39;, &#39;冒&#39;, &#39;麼&#39;, &#39;每&#39;, &#39;每當&#39;, &#39;們&#39;, &#39;莫若&#39;, &#39;某&#39;, &#39;某個&#39;, &#39;某些&#39;, &#39;拿&#39;, &#39;哪&#39;, &#39;哪邊&#39;, &#39;哪兒&#39;, &#39;哪個&#39;, &#39;哪裏&#39;, &#39;哪年&#39;, &#39;哪怕&#39;, &#39;哪天&#39;, &#39;哪些&#39;, &#39;哪樣&#39;, &#39;那&#39;, &#39;那邊&#39;, &#39;那兒&#39;, &#39;那個&#39;, &#39;那會兒&#39;, &#39;那裏&#39;, &#39;那麼&#39;, &#39;那麼些&#39;, &#39;那麼樣&#39;, &#39;那時&#39;, &#39;那些&#39;, &#39;那樣&#39;, &#39;乃&#39;, &#39;乃至&#39;, &#39;呢&#39;, &#39;能&#39;, &#39;你&#39;, &#39;你們&#39;, &#39;您&#39;, &#39;寧&#39;, &#39;寧可&#39;, &#39;寧肯&#39;, &#39;寧願&#39;, &#39;哦&#39;, &#39;嘔&#39;, &#39;啪達&#39;, &#39;旁人&#39;, &#39;呸&#39;, &#39;憑&#39;, &#39;憑藉&#39;, &#39;其&#39;, &#39;其次&#39;, &#39;其二&#39;, &#39;其他&#39;, &#39;其它&#39;, &#39;其一&#39;, &#39;其餘&#39;, &#39;其中&#39;, &#39;起&#39;, &#39;起見&#39;, &#39;豈但&#39;, &#39;恰恰相反&#39;, &#39;前後&#39;, &#39;前者&#39;, &#39;且&#39;, &#39;然而&#39;, &#39;然後&#39;, &#39;然則&#39;, &#39;讓&#39;, &#39;人家&#39;, &#39;任&#39;, &#39;任何&#39;, &#39;任憑&#39;, &#39;如&#39;, &#39;如此&#39;, &#39;如果&#39;, &#39;如何&#39;, &#39;如其&#39;, &#39;如若&#39;, &#39;如上所述&#39;, &#39;若&#39;, &#39;若非&#39;, &#39;若是&#39;, &#39;啥&#39;, &#39;上下&#39;, &#39;尚且&#39;, &#39;設若&#39;, &#39;設使&#39;, &#39;甚而&#39;, &#39;甚麼&#39;, &#39;甚至&#39;, &#39;省得&#39;, &#39;時候&#39;, &#39;什麼&#39;, &#39;什麼樣&#39;, &#39;使得&#39;, &#39;是&#39;, &#39;是的&#39;, &#39;首先&#39;, &#39;誰&#39;, &#39;誰知&#39;, &#39;順&#39;, &#39;順著&#39;, &#39;似的&#39;, &#39;雖&#39;, &#39;雖然&#39;, &#39;雖說&#39;, &#39;雖則&#39;, &#39;隨&#39;, &#39;隨著&#39;, &#39;所&#39;, &#39;所以&#39;, &#39;他&#39;, &#39;他們&#39;, &#39;他人&#39;, &#39;它&#39;, &#39;它們&#39;, &#39;她&#39;, &#39;她們&#39;, &#39;倘&#39;, &#39;倘或&#39;, &#39;倘然&#39;, &#39;倘若&#39;, &#39;倘使&#39;, &#39;騰&#39;, &#39;替&#39;, &#39;通過&#39;, &#39;同&#39;, &#39;同時&#39;, &#39;哇&#39;, &#39;萬一&#39;, &#39;往&#39;, &#39;望&#39;, &#39;為&#39;, &#39;為何&#39;, &#39;為了&#39;, &#39;為什麼&#39;, &#39;為著&#39;, &#39;餵&#39;, &#39;嗡嗡&#39;, &#39;我&#39;, &#39;我們&#39;, &#39;嗚&#39;, &#39;嗚呼&#39;, &#39;烏乎&#39;, &#39;無論&#39;, &#39;無寧&#39;, &#39;毋寧&#39;, &#39;嘻&#39;, &#39;嚇&#39;, &#39;相對而言&#39;, &#39;像&#39;, &#39;向&#39;, &#39;向著&#39;, &#39;噓&#39;, &#39;呀&#39;, &#39;焉&#39;, &#39;沿&#39;, &#39;沿著&#39;, &#39;要&#39;, &#39;要不&#39;, &#39;要不然&#39;, &#39;要不是&#39;, &#39;要麼&#39;, &#39;要是&#39;, &#39;也&#39;, &#39;也罷&#39;, &#39;也好&#39;, &#39;一&#39;, &#39;一般&#39;, &#39;一旦&#39;, &#39;一方面&#39;, &#39;一來&#39;, &#39;一切&#39;, &#39;一樣&#39;, &#39;一則&#39;, &#39;依&#39;, &#39;依照&#39;, &#39;矣&#39;, &#39;以&#39;, &#39;以便&#39;, &#39;以及&#39;, &#39;以免&#39;, &#39;以至&#39;, &#39;以至於&#39;, &#39;以致&#39;, &#39;抑或&#39;, &#39;因&#39;, &#39;因此&#39;, &#39;因而&#39;, &#39;因為&#39;, &#39;喲&#39;, &#39;用&#39;, &#39;由&#39;, &#39;由此可見&#39;, &#39;由於&#39;, &#39;有&#39;, &#39;有的&#39;, &#39;有關&#39;, &#39;有些&#39;, &#39;又&#39;, &#39;於&#39;, &#39;於是&#39;, &#39;於是乎&#39;, &#39;與&#39;, &#39;與此同時&#39;, &#39;與否&#39;, &#39;與其&#39;, &#39;越是&#39;, &#39;雲雲&#39;, &#39;哉&#39;, &#39;再說&#39;, &#39;再者&#39;, &#39;在&#39;, &#39;在下&#39;, &#39;咱&#39;, &#39;咱們&#39;, &#39;則&#39;, &#39;怎&#39;, &#39;怎麼&#39;, &#39;怎麼辦&#39;, &#39;怎麼樣&#39;, &#39;怎樣&#39;, &#39;咋&#39;, &#39;照&#39;, &#39;照著&#39;, &#39;者&#39;, &#39;這&#39;, &#39;這邊&#39;, &#39;這兒&#39;, &#39;這個&#39;, &#39;這會兒&#39;, &#39;這就是說&#39;, &#39;這裏&#39;, &#39;這麼&#39;, &#39;這麼點兒&#39;, &#39;這麼些&#39;, &#39;這麼樣&#39;, &#39;這時&#39;, &#39;這些&#39;, &#39;這樣&#39;, &#39;正如&#39;, &#39;吱&#39;, &#39;之&#39;, &#39;之類&#39;, &#39;之所以&#39;, &#39;之一&#39;, &#39;只是&#39;, &#39;只限&#39;, &#39;只要&#39;, &#39;只有&#39;, &#39;至&#39;, &#39;至於&#39;, &#39;諸位&#39;, &#39;著&#39;, &#39;著呢&#39;, &#39;自&#39;, &#39;自從&#39;, &#39;自個兒&#39;, &#39;自各兒&#39;, &#39;自己&#39;, &#39;自家&#39;, &#39;自身&#39;, &#39;綜上所述&#39;, &#39;總的來看&#39;, &#39;總的來說&#39;, &#39;總的說來&#39;, &#39;總而言之&#39;, &#39;總之&#39;, &#39;縱&#39;, &#39;縱令&#39;, &#39;縱然&#39;, &#39;縱使&#39;, &#39;遵照&#39;, &#39;作為&#39;, &#39;兮&#39;, &#39;呃&#39;, &#39;唄&#39;, &#39;咚&#39;, &#39;咦&#39;, &#39;喏&#39;, &#39;啐&#39;, &#39;喔唷&#39;, &#39;嗬&#39;, &#39;嗯&#39;, &#39;噯&#39;, &#39;~&#39;, &#39;!&#39;, &#39;.&#39;, &#39;:&#39;, &#39;&quot;&#39;, &quot;&#39;&quot;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;A&#39;, &#39;白&#39;, &#39;社會主義&#39;, &#39;--&#39;, &#39;..&#39;, &#39;&gt;&gt;&#39;, &#39; [&#39;, &#39; ]&#39;, &#39;&#39;, &#39;&lt;&#39;, &#39;&gt;&#39;, &#39;/&#39;, &#39;\\&#39;, &#39;|&#39;, &#39;-&#39;, &#39;_&#39;, &#39;+&#39;, &#39;=&#39;, &#39;&amp;&#39;, &#39;^&#39;, &#39;%&#39;, &#39;#&#39;, &#39;@&#39;, &#39;`&#39;, &#39;;&#39;, &#39;$&#39;, &#39;（&#39;, &#39;）&#39;, &#39;——&#39;, &#39;—&#39;, &#39;￥&#39;, &#39;·&#39;, &#39;...&#39;, &#39;‘&#39;, &#39;’&#39;, &#39;〉&#39;, &#39;〈&#39;, &#39;…&#39;, &#39;\u3000&#39;, &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;０&#39;, &#39;１&#39;, &#39;２&#39;, &#39;３&#39;, &#39;４&#39;, &#39;５&#39;, &#39;６&#39;, &#39;７&#39;, &#39;８&#39;, &#39;９&#39;, &#39;二&#39;, &#39;三&#39;, &#39;四&#39;, &#39;五&#39;, &#39;六&#39;, &#39;七&#39;, &#39;八&#39;, &#39;九&#39;, &#39;零&#39;, &#39;＞&#39;, &#39;＜&#39;, &#39;＠&#39;, &#39;＃&#39;, &#39;＄&#39;, &#39;％&#39;, &#39;︿&#39;, &#39;＆&#39;, &#39;＊&#39;, &#39;＋&#39;, &#39;～&#39;, &#39;｜&#39;, &#39;［&#39;, &#39;］&#39;, &#39;｛&#39;, &#39;｝&#39;, &#39;啊哈&#39;, &#39;啊呀&#39;, &#39;啊喲&#39;, &#39;挨次&#39;, &#39;挨個&#39;, &#39;挨家挨戶&#39;, &#39;挨門挨戶&#39;, &#39;挨門逐戶&#39;, &#39;挨著&#39;, &#39;按理&#39;, &#39;按期&#39;, &#39;按時&#39;, &#39;按說&#39;, &#39;暗地裏&#39;, &#39;暗中&#39;, &#39;暗自&#39;, &#39;昂然&#39;, &#39;八成&#39;, &#39;白白&#39;, &#39;半&#39;, &#39;梆&#39;, &#39;保管&#39;, &#39;保險&#39;, &#39;飽&#39;, &#39;背地裏&#39;, &#39;背靠背&#39;, &#39;倍感&#39;, &#39;倍加&#39;, &#39;本人&#39;, &#39;本身&#39;, &#39;甭&#39;, &#39;比起&#39;, &#39;比如說&#39;, &#39;比照&#39;, &#39;畢竟&#39;, &#39;必&#39;, &#39;必定&#39;, &#39;必將&#39;, &#39;必須&#39;, &#39;便&#39;, &#39;別人&#39;, &#39;並非&#39;, &#39;並肩&#39;, &#39;並沒&#39;, &#39;並沒有&#39;, &#39;併排&#39;, &#39;並無&#39;, &#39;勃然&#39;, &#39;不&#39;, &#39;不必&#39;, &#39;不常&#39;, &#39;不大&#39;, &#39;不但...而且&#39;, &#39;不得&#39;, &#39;不得不&#39;, &#39;不得了&#39;, &#39;不得已&#39;, &#39;不迭&#39;, &#39;不定&#39;, &#39;不對&#39;, &#39;不妨&#39;, &#39;不管怎樣&#39;, &#39;不會&#39;, &#39;不僅...而且&#39;, &#39;不僅僅&#39;, &#39;不僅僅是&#39;, &#39;不經意&#39;, &#39;不可開交&#39;, &#39;不可抗拒&#39;, &#39;不力&#39;, &#39;不了&#39;, &#39;不料&#39;, &#39;不滿&#39;, &#39;不免&#39;, &#39;不能不&#39;, &#39;不起&#39;, &#39;不巧&#39;, &#39;不然的話&#39;, &#39;不日&#39;, &#39;不少&#39;, &#39;不勝&#39;, &#39;不時&#39;, &#39;不是&#39;, &#39;不同&#39;, &#39;不能&#39;, &#39;不要&#39;, &#39;不外&#39;, &#39;不外乎&#39;, &#39;不下&#39;, &#39;不限&#39;, &#39;不消&#39;, &#39;不已&#39;, &#39;不亦樂乎&#39;, &#39;不由得&#39;, &#39;不再&#39;, &#39;不擇手段&#39;, &#39;不怎麼&#39;, &#39;不曾&#39;, &#39;不知不覺&#39;, &#39;不止&#39;, &#39;不止一次&#39;, &#39;不至於&#39;, &#39;才&#39;, &#39;才能&#39;, &#39;策略地&#39;, &#39;差不多&#39;, &#39;差一點&#39;, &#39;常&#39;, &#39;常常&#39;, &#39;常言道&#39;, &#39;常言說&#39;, &#39;常言說得好&#39;, &#39;長此下去&#39;, &#39;長話短說&#39;, &#39;長期以來&#39;, &#39;長線&#39;, &#39;敞開兒&#39;, &#39;徹夜&#39;, &#39;陳年&#39;, &#39;趁便&#39;, &#39;趁機&#39;, &#39;趁熱&#39;, &#39;趁勢&#39;, &#39;趁早&#39;, &#39;成年&#39;, &#39;成年累月&#39;, &#39;成心&#39;, &#39;乘機&#39;, &#39;乘勝&#39;, &#39;乘勢&#39;, &#39;乘隙&#39;, &#39;乘虛&#39;, &#39;誠然&#39;, &#39;遲早&#39;, &#39;充分&#39;, &#39;充其極&#39;, &#39;充其量&#39;, &#39;抽冷子&#39;, &#39;臭&#39;, &#39;初&#39;, &#39;出&#39;, &#39;出來&#39;, &#39;出去&#39;, &#39;除此&#39;, &#39;除此而外&#39;, &#39;除此以外&#39;, &#39;除開&#39;, &#39;除去&#39;, &#39;除卻&#39;, &#39;除外&#39;, &#39;處處&#39;, &#39;川流不息&#39;, &#39;傳&#39;, &#39;傳說&#39;, &#39;傳聞&#39;, &#39;串列&#39;, &#39;純&#39;, &#39;純粹&#39;, &#39;此後&#39;, &#39;此中&#39;, &#39;次第&#39;, &#39;匆匆&#39;, &#39;從不&#39;, &#39;從此&#39;, &#39;從此以後&#39;, &#39;從古到今&#39;, &#39;從古至今&#39;, &#39;從今以後&#39;, &#39;從寬&#39;, &#39;從來&#39;, &#39;從輕&#39;, &#39;從速&#39;, &#39;從頭&#39;, &#39;從未&#39;, &#39;從無到有&#39;, &#39;從小&#39;, &#39;從新&#39;, &#39;從嚴&#39;, &#39;從優&#39;, &#39;從早到晚&#39;, &#39;從中&#39;, &#39;從重&#39;, &#39;湊巧&#39;, &#39;粗&#39;, &#39;存心&#39;, &#39;達旦&#39;, &#39;打從&#39;, &#39;打開天窗說亮話&#39;, &#39;大&#39;, &#39;大不了&#39;, &#39;大大&#39;, &#39;大抵&#39;, &#39;大都&#39;, &#39;大多&#39;, &#39;大凡&#39;, &#39;大概&#39;, &#39;大家&#39;, &#39;大舉&#39;, &#39;大略&#39;, &#39;大面兒上&#39;, &#39;大事&#39;, &#39;大體&#39;, &#39;大體上&#39;, &#39;大約&#39;, &#39;大張旗鼓&#39;, &#39;大致&#39;, &#39;呆呆地&#39;, &#39;帶&#39;, &#39;殆&#39;, &#39;待到&#39;, &#39;單&#39;, &#39;單純&#39;, &#39;單單&#39;, &#39;但願&#39;, &#39;彈指之間&#39;, &#39;當場&#39;, &#39;當兒&#39;, &#39;當即&#39;, &#39;當口兒&#39;, &#39;當然&#39;, &#39;當庭&#39;, &#39;當頭&#39;, &#39;當下&#39;, &#39;當真&#39;, &#39;當中&#39;, &#39;倒不如&#39;, &#39;倒不如說&#39;, &#39;倒是&#39;, &#39;到處&#39;, &#39;到底&#39;, &#39;到了兒&#39;, &#39;到目前為止&#39;, &#39;到頭&#39;, &#39;到頭來&#39;, &#39;得起&#39;, &#39;得天獨厚&#39;, &#39;的確&#39;, &#39;等到&#39;, &#39;叮噹&#39;, &#39;頂多&#39;, &#39;定&#39;, &#39;動不動&#39;, &#39;動輒&#39;, &#39;陡然&#39;, &#39;都&#39;, &#39;獨&#39;, &#39;獨自&#39;, &#39;斷然&#39;, &#39;頓時&#39;, &#39;多次&#39;, &#39;多多&#39;, &#39;多多少少&#39;, &#39;多多益善&#39;, &#39;多虧&#39;, &#39;多年來&#39;, &#39;多年前&#39;, &#39;而後&#39;, &#39;而論&#39;, &#39;而又&#39;, &#39;爾等&#39;, &#39;二話不說&#39;, &#39;二話沒說&#39;, &#39;反倒&#39;, &#39;反倒是&#39;, &#39;反而&#39;, &#39;反手&#39;, &#39;反之亦然&#39;, &#39;反之則&#39;, &#39;方&#39;, &#39;方才&#39;, &#39;方能&#39;, &#39;放量&#39;, &#39;非常&#39;, &#39;非得&#39;, &#39;分期&#39;, &#39;分期分批&#39;, &#39;分頭&#39;, &#39;奮勇&#39;, &#39;憤然&#39;, &#39;風雨無阻&#39;, &#39;逢&#39;, &#39;弗&#39;, &#39;甫&#39;, &#39;嘎嘎&#39;, &#39;該當&#39;, &#39;概&#39;, &#39;趕快&#39;, &#39;趕早不趕晚&#39;, &#39;敢&#39;, &#39;敢情&#39;, &#39;敢於&#39;, &#39;剛&#39;, &#39;剛才&#39;, &#39;剛好&#39;, &#39;剛巧&#39;, &#39;高低&#39;, &#39;格外&#39;, &#39;隔日&#39;, &#39;隔夜&#39;, &#39;個人&#39;, &#39;各式&#39;, &#39;更&#39;, &#39;更加&#39;, &#39;更進一步&#39;, &#39;更為&#39;, &#39;公然&#39;, &#39;共&#39;, &#39;共總&#39;, &#39;夠瞧的&#39;, &#39;姑且&#39;, &#39;古來&#39;, &#39;故而&#39;, &#39;故意&#39;, &#39;固&#39;, &#39;怪&#39;, &#39;怪不得&#39;, &#39;慣常&#39;, &#39;光&#39;, &#39;光是&#39;, &#39;歸根到底&#39;, &#39;歸根結底&#39;, &#39;過於&#39;, &#39;毫不&#39;, &#39;毫無&#39;, &#39;毫無保留地&#39;, &#39;毫無例外&#39;, &#39;好在&#39;, &#39;何必&#39;, &#39;何嘗&#39;, &#39;何妨&#39;, &#39;何苦&#39;, &#39;何樂而不為&#39;, &#39;何須&#39;, &#39;何止&#39;, &#39;很&#39;, &#39;很多&#39;, &#39;很少&#39;, &#39;轟然&#39;, &#39;後來&#39;, &#39;呼啦&#39;, &#39;忽地&#39;, &#39;忽然&#39;, &#39;互&#39;, &#39;互相&#39;, &#39;嘩啦&#39;, &#39;話說&#39;, &#39;還&#39;, &#39;恍然&#39;, &#39;會&#39;, &#39;豁然&#39;, &#39;活&#39;, &#39;夥同&#39;, &#39;或多或少&#39;, &#39;或許&#39;, &#39;基本&#39;, &#39;基本上&#39;, &#39;基於&#39;, &#39;極&#39;, &#39;極大&#39;, &#39;極度&#39;, &#39;極端&#39;, &#39;極力&#39;, &#39;極其&#39;, &#39;極為&#39;, &#39;急匆匆&#39;, &#39;即將&#39;, &#39;即刻&#39;, &#39;即是說&#39;, &#39;幾度&#39;, &#39;幾番&#39;, &#39;幾乎&#39;, &#39;幾經&#39;, &#39;既...又&#39;, &#39;繼之&#39;, &#39;加上&#39;, &#39;加以&#39;, &#39;間或&#39;, &#39;簡而言之&#39;, &#39;簡言之&#39;, &#39;簡直&#39;, &#39;見&#39;, &#39;將才&#39;, &#39;將近&#39;, &#39;將要&#39;, &#39;交口&#39;, &#39;較比&#39;, &#39;較為&#39;, &#39;接連不斷&#39;, &#39;接下來&#39;, &#39;皆可&#39;, &#39;截然&#39;, &#39;截至&#39;, &#39;藉以&#39;, &#39;藉此&#39;, &#39;藉以&#39;, &#39;屆時&#39;, &#39;僅&#39;, &#39;僅僅&#39;, &#39;謹&#39;, &#39;進來&#39;, &#39;進去&#39;, &#39;近&#39;, &#39;近幾年來&#39;, &#39;近來&#39;, &#39;近年來&#39;, &#39;儘管如此&#39;, &#39;儘可能&#39;, &#39;儘快&#39;, &#39;儘量&#39;, &#39;盡然&#39;, &#39;盡如人意&#39;, &#39;盡心竭力&#39;, &#39;盡心盡力&#39;, &#39;儘早&#39;, &#39;精光&#39;, &#39;經常&#39;, &#39;竟&#39;, &#39;竟然&#39;, &#39;究竟&#39;, &#39;就此&#39;, &#39;就地&#39;, &#39;就算&#39;, &#39;居然&#39;, &#39;局外&#39;, &#39;舉凡&#39;, &#39;據稱&#39;, &#39;據此&#39;, &#39;據實&#39;, &#39;據說&#39;, &#39;據我所知&#39;, &#39;據悉&#39;, &#39;具體來說&#39;, &#39;決不&#39;, &#39;決非&#39;, &#39;絕&#39;, &#39;絕不&#39;, &#39;絕頂&#39;, &#39;絕對&#39;, &#39;絕非&#39;, &#39;均&#39;, &#39;喀&#39;, &#39;看&#39;, &#39;看來&#39;, &#39;看起來&#39;, &#39;看上去&#39;, &#39;看樣子&#39;, &#39;可好&#39;, &#39;可能&#39;, &#39;恐怕&#39;, &#39;快&#39;, &#39;快要&#39;, &#39;來不及&#39;, &#39;來得及&#39;, &#39;來講&#39;, &#39;來看&#39;, &#39;攔腰&#39;, &#39;牢牢&#39;, &#39;老&#39;, &#39;老大&#39;, &#39;老老實實&#39;, &#39;老是&#39;, &#39;累次&#39;, &#39;累年&#39;, &#39;理當&#39;, &#39;理該&#39;, &#39;理應&#39;, &#39;歷&#39;, &#39;立&#39;, &#39;立地&#39;, &#39;立刻&#39;, &#39;立馬&#39;, &#39;立時&#39;, &#39;聯袂&#39;, &#39;連連&#39;, &#39;連日&#39;, &#39;連日來&#39;, &#39;連聲&#39;, &#39;連袂&#39;, &#39;臨到&#39;, &#39;另方面&#39;, &#39;另行&#39;, &#39;另一個&#39;, &#39;路經&#39;, &#39;屢&#39;, &#39;屢次&#39;, &#39;屢次三番&#39;, &#39;屢屢&#39;, &#39;縷縷&#39;, &#39;率爾&#39;, &#39;率然&#39;, &#39;略&#39;, &#39;略加&#39;, &#39;略微&#39;, &#39;略為&#39;, &#39;論說&#39;, &#39;馬上&#39;, &#39;蠻&#39;, &#39;滿&#39;, &#39;沒&#39;, &#39;沒有&#39;, &#39;每逢&#39;, &#39;每每&#39;, &#39;每時每刻&#39;, &#39;猛然&#39;, &#39;猛然間&#39;, &#39;莫&#39;, &#39;莫不&#39;, &#39;莫非&#39;, &#39;莫如&#39;, &#39;默默地&#39;, &#39;默然&#39;, &#39;吶&#39;, &#39;那末&#39;, &#39;奈&#39;, &#39;難道&#39;, &#39;難得&#39;, &#39;難怪&#39;, &#39;難說&#39;, &#39;內&#39;, &#39;年覆一年&#39;, &#39;凝神&#39;, &#39;偶而&#39;, &#39;偶爾&#39;, &#39;怕&#39;, &#39;砰&#39;, &#39;碰巧&#39;, &#39;譬如&#39;, &#39;偏偏&#39;, &#39;乒&#39;, &#39;平素&#39;, &#39;頗&#39;, &#39;迫於&#39;, &#39;撲通&#39;, &#39;其後&#39;, &#39;其實&#39;, &#39;奇&#39;, &#39;齊&#39;, &#39;起初&#39;, &#39;起來&#39;, &#39;起首&#39;, &#39;起頭&#39;, &#39;起先&#39;, &#39;豈&#39;, &#39;豈非&#39;, &#39;豈止&#39;, &#39;迄&#39;, &#39;恰逢&#39;, &#39;恰好&#39;, &#39;恰恰&#39;, &#39;恰巧&#39;, &#39;恰如&#39;, &#39;恰似&#39;, &#39;千&#39;, &#39;千萬&#39;, &#39;千萬千萬&#39;, &#39;切&#39;, &#39;切不可&#39;, &#39;切莫&#39;, &#39;切切&#39;, &#39;切勿&#39;, &#39;竊&#39;, &#39;親口&#39;, &#39;親身&#39;, &#39;親手&#39;, &#39;親眼&#39;, &#39;親自&#39;, &#39;頃&#39;, &#39;頃刻&#39;, &#39;頃刻間&#39;, &#39;頃刻之間&#39;, &#39;請勿&#39;, &#39;窮年累月&#39;, &#39;取道&#39;, &#39;去&#39;, &#39;權時&#39;, &#39;全都&#39;, &#39;全力&#39;, &#39;全年&#39;, &#39;全然&#39;, &#39;全身心&#39;, &#39;然&#39;, &#39;人人&#39;, &#39;仍&#39;, &#39;仍舊&#39;, &#39;仍然&#39;, &#39;日覆一日&#39;, &#39;日見&#39;, &#39;日漸&#39;, &#39;日益&#39;, &#39;日臻&#39;, &#39;如常&#39;, &#39;如此等等&#39;, &#39;如次&#39;, &#39;如今&#39;, &#39;如期&#39;, &#39;如前所述&#39;, &#39;如上&#39;, &#39;如下&#39;, &#39;汝&#39;, &#39;三番兩次&#39;, &#39;三番五次&#39;, &#39;三天兩頭&#39;, &#39;瑟瑟&#39;, &#39;沙沙&#39;, &#39;上&#39;, &#39;上來&#39;, &#39;上去&#39;]
+1208
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span>
+
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">word_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">sentence</span> <span class="ow">in</span> <span class="n">sentences</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sentence</span><span class="p">):</span>
+        <span class="k">if</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">word</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span> <span class="ow">or</span> <span class="ow">not</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">word</span><span class="p">)</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">):</span>
+            <span class="n">word_counts</span><span class="p">[</span><span class="n">word</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word_counts</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;說&#39;, 65), (&#39;裏&#39;, 54), (&#39;麽&#39;, 45), (&#39;祥林嫂&#39;, 35), (&#39;一個&#39;, 33), (&#39;知道&#39;, 26), (&#39;甚&#39;, 23), (&#39;人&#39;, 23), (&#39;話&#39;, 22), (&#39;四叔&#39;, 21), (&#39;後&#39;, 21), (&#39;聽&#39;, 18), (&#39;已經&#39;, 16), (&#39;卻&#39;, 15), (&#39;走&#39;, 14), (&#39;事&#39;, 14), (&#39;想&#39;, 13), (&#39;喫&#39;, 12), (&#39;四嬸&#39;, 12), (&#39;女人&#39;, 11)]
+1576
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./TM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="TM01_tokenization.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TM01 Tokenization</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TM02_collocation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TM02 Collocation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#">Chinese Processing</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#setence-segment">Setence segment</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#chinese-word-segmentation">Chinese word Segmentation</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#comparing-simlified-and-traditional-chinese-word-segmentation">Comparing Simlified and Traditional Chinese Word Segmentation</a><ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#converstion-between-simplified-and-traditional-chinese">Converstion between Simplified and Traditional Chinese</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#segmentation-comparision-between-traditional-and-simplified-chinese">Segmentation comparision between traditional and simplified Chinese</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-traditional-cutted-by-simplified-index">Solution 1: Traditional cutted by Simplified index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2-traditional-by-simplified-index">Solution 2: traditional by simplified index</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tool-comparing-traditional-cutted-by-simplfied-chinese">(Tool) Comparing Traditional cutted by simplfied Chinese</a></li>
+</ul>
+</li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-userdict">Loading userdict</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#pos-tagging-with-jieba">POS Tagging with Jieba</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#top-words-mining">Top Words Mining</a></li>
+<li class="toc-h1 nav-item toc-entry"><a class="reference internal nav-link" href="#stop-word-removal">Stop word removal</a></li>
+</ul>
+
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

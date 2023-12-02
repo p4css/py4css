@@ -1,0 +1,1219 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P03-List and Dictionary &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P03_list_dictionary';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P03 Practice: Accessing dict and list" href="P03p.html" />
+    <link rel="prev" title="Exceptions(Errors) Handling" href="P02_2_exceptions.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">P03-List and Dictionary</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P03_list_dictionary.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P03_list_dictionary.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P03_list_dictionary.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P03-List and Dictionary</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list">List</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-a-list">Access a List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-a-list">Slice a List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-list-append-extend-and-operator">Update List：<code class="docutils literal notranslate"><span class="pre">append()</span></code>, <code class="docutils literal notranslate"><span class="pre">extend()</span></code> and  <code class="docutils literal notranslate"><span class="pre">+</span></code>  operator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#append"><code class="docutils literal notranslate"><span class="pre">append()</span></code> 方法</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extend"><code class="docutils literal notranslate"><span class="pre">extend()</span></code> 方法</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">+</span></code> 操作符</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-nested-list">Access Nested List</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary">Dictionary（字典）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary">Accessing dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counter-and-defaultdict">Counter() and defaultdict()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#defaultdict"><code class="docutils literal notranslate"><span class="pre">defaultdict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counter"><code class="docutils literal notranslate"><span class="pre">Counter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p03-list-and-dictionary">
+<h1>P03-List and Dictionary<a class="headerlink" href="#p03-list-and-dictionary" title="Permalink to this headline">#</a></h1>
+<div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
+<p>當然，以下是中文版本的資料結構說明：</p>
+<p><strong>Objectives</strong></p>
+<p>List（串列）</p>
+<ul class="simple">
+<li><p><strong>串列的創建與定義</strong>：使用方括號 <code class="docutils literal notranslate"><span class="pre">[]</span></code> 來定義一個串列。</p>
+<ul>
+<li><p>例如：<code class="docutils literal notranslate"><span class="pre">my_list</span> <span class="pre">=</span> <span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>串列的屬性</strong>：</p>
+<ul>
+<li><p>有序（Ordered）</p></li>
+<li><p>可索引（Indexable）</p></li>
+<li><p>可變（Mutable）</p></li>
+</ul>
+</li>
+<li><p><strong>串列操作</strong>：</p>
+<ul>
+<li><p>增加元素：<code class="docutils literal notranslate"><span class="pre">append()</span></code>, <code class="docutils literal notranslate"><span class="pre">extend()</span></code>, <code class="docutils literal notranslate"><span class="pre">insert()</span></code></p></li>
+<li><p>刪除元素：<code class="docutils literal notranslate"><span class="pre">remove()</span></code>, <code class="docutils literal notranslate"><span class="pre">pop()</span></code>, <code class="docutils literal notranslate"><span class="pre">del</span></code></p></li>
+<li><p>通過索引訪問：<code class="docutils literal notranslate"><span class="pre">my_list[0]</span></code>（返回第一個元素）</p></li>
+</ul>
+</li>
+<li><p><strong>串列切片</strong>（Slicing）：</p>
+<ul>
+<li><p>例如：<code class="docutils literal notranslate"><span class="pre">my_list[1:3]</span></code>（返回索引為1和2的元素）</p></li>
+</ul>
+</li>
+<li><p><strong>巢狀串列</strong>（Nested List）：</p>
+<ul>
+<li><p>例如：<code class="docutils literal notranslate"><span class="pre">nested_list</span> <span class="pre">=</span> <span class="pre">[[1,</span> <span class="pre">2],</span> <span class="pre">[3,</span> <span class="pre">4]]</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p>Dictionary（字典）</p>
+<ul class="simple">
+<li><p><strong>字典的創建與定義</strong>：使用大括號 <code class="docutils literal notranslate"><span class="pre">{}</span></code> 來定義一個字典。</p>
+<ul>
+<li><p>例如：<code class="docutils literal notranslate"><span class="pre">my_dict</span> <span class="pre">=</span> <span class="pre">{'key1':</span> <span class="pre">'value1',</span> <span class="pre">'key2':</span> <span class="pre">'value2'}</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>字典的屬性</strong>：</p>
+<ul>
+<li><p>無序（Unordered）</p></li>
+<li><p>以鍵值對（Key-Value Pairs）的形式儲存</p></li>
+<li><p>可變（Mutable）</p></li>
+</ul>
+</li>
+<li><p><strong>巢狀字典</strong>（Nested Dict）：</p>
+<ul>
+<li><p>例如：<code class="docutils literal notranslate"><span class="pre">nested_dict</span> <span class="pre">=</span> <span class="pre">{'outer_key':</span> <span class="pre">{'inner_key':</span> <span class="pre">'value'}}</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>字典函數</strong>：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.keys()</span></code>：返回所有鍵</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.values()</span></code>：返回所有值</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.items()</span></code>：返回所有鍵值對</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.get()</span></code>：取得指定鍵的值</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.update()</span></code>：更新字典</p></li>
+</ul>
+</li>
+<li><p><strong>字典的替代方案</strong>：</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">defaultdict()</span></code>：自動創建不存在的鍵並賦予預設值</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Counter()</span></code>：計數物件的頻率</p></li>
+</ul>
+</li>
+</ul>
+<p>Practice: YouBike data</p>
+<ol class="arabic simple">
+<li><p>read data from url</p></li>
+<li><p>convert data to json format</p></li>
+<li><p>extract data from json format</p></li>
+<li><p>convert data to list and dict</p></li>
+</ol>
+</div>
+<p><strong>Link to useful data</strong></p>
+<ul class="simple">
+<li><p>Youbike <a class="reference external" href="https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz">https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz</a></p></li>
+</ul>
+<section id="list">
+<h2>List<a class="headerlink" href="#list" title="Permalink to this headline">#</a></h2>
+<p>在Python程式語言中，<strong>List（串列）</strong> 是一種有序集合（ordered collection）。List能夠容納多種不同型態的元素，包括數值、字串、其他資料結構，甚至是函式。每個元素都會被指定一個從0開始的索引（index）。</p>
+<p><strong>定義與建立</strong></p>
+<p>一個List可以通過方括號（<code class="docutils literal notranslate"><span class="pre">[]</span></code>）來定義，並可用等號（<code class="docutils literal notranslate"><span class="pre">=</span></code>）賦值給一個變數。方括號內的元素由逗號（<code class="docutils literal notranslate"><span class="pre">,</span></code>）分隔。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">empty_list</span> <span class="o">=</span> <span class="p">[]</span>  <span class="c1"># 空的List</span>
+<span class="n">number_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>  <span class="c1"># 數值型List</span>
+<span class="n">mixed_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="s2">&quot;two&quot;</span><span class="p">,</span> <span class="mf">3.0</span><span class="p">]</span>  <span class="c1"># 混合型態的List</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>List的特性</strong></p>
+<ol class="arabic simple">
+<li><p>有序性（Ordered）: List的元素有明確的順序。</p></li>
+<li><p>可索引存取（Indexed）: 可以用索引來存取List中的元素，從頭（正數索引）或尾（負數索引）。</p></li>
+<li><p>可變性（Mutable）: List的內容可以被修改，包括增加、刪除和更新元素，因而不能當成Dict（字典）的鍵（key）。</p></li>
+</ol>
+<p><strong>常用操作</strong></p>
+<ul class="simple">
+<li><p>新增元素</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.append(element)</span></code>: 在List尾部增加單一元素。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">.extend([elements])</span></code>: 在List尾部增加多個元素。</p></li>
+</ul>
+</li>
+<li><p>刪除元素</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">.pop()</span></code>: 移除並返回List尾部的元素。</p></li>
+</ul>
+</li>
+<li><p>索引存取</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">list[index]</span></code>: 存取特定索引位置的元素。</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="n">my_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">4</span><span class="p">)</span>  <span class="c1"># [1, 2, 3, 4]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="n">my_list</span><span class="o">.</span><span class="n">extend</span><span class="p">([</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">])</span>  <span class="c1"># [1, 2, 3, 4, 5, 6]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+
+<span class="n">my_list</span><span class="o">.</span><span class="n">pop</span><span class="p">()</span>  <span class="c1"># 返回 6，my_list 變成 [1, 2, 3, 4, 5]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3]
+[1, 2, 3, 4]
+[1, 2, 3, 4, 5, 6]
+[1, 2, 3, 4, 5]
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>資料型態的一致性</strong></p>
+<p>雖然List可以包含不同型態的元素，但在實際應用中，為了程式碼寫簡單和效能考量，通常會讓List內的所有元素型態保持一致。</p>
+<hr class="docutils" />
+<section id="access-a-list">
+<h3>Access a List<a class="headerlink" href="#access-a-list" title="Permalink to this headline">#</a></h3>
+<p>在Python中，List的索引（Index）是從0開始的。以<code class="docutils literal notranslate"><span class="pre">alist</span> <span class="pre">=</span> <span class="pre">[3,</span> <span class="pre">4,</span> <span class="pre">5]</span></code>為例，元素<code class="docutils literal notranslate"><span class="pre">3</span></code>位於索引<code class="docutils literal notranslate"><span class="pre">0</span></code>的位置，因此可以用<code class="docutils literal notranslate"><span class="pre">alist[0]</span></code>來存取它。同理，元素<code class="docutils literal notranslate"><span class="pre">4</span></code>位於索引<code class="docutils literal notranslate"><span class="pre">1</span></code>的位置，可用<code class="docutils literal notranslate"><span class="pre">alist[1]</span></code>來存取。以下為基本規則：</p>
+<ul class="simple">
+<li><p><strong>從頭開始索引</strong>: <br>Python List的索引從0開始計數。</p></li>
+<li><p><strong>最後元素的索引</strong>: <br>若List的長度為<code class="docutils literal notranslate"><span class="pre">n</span></code>，則最後一個元素的索引將會是<code class="docutils literal notranslate"><span class="pre">n</span> <span class="pre">-</span> <span class="pre">1</span></code>。</p></li>
+<li><p><strong>負數索引</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[-1]</span></code>可用來存取List的最後一個元素，<code class="docutils literal notranslate"><span class="pre">alist[-2]</span></code>則為倒數第二個元素，依此類推。</p></li>
+</ul>
+<p><strong>用途舉例：更新List內容</strong></p>
+<p>要修改List中特定索引的元素，您可以使用賦值運算符（<code class="docutils literal notranslate"><span class="pre">=</span></code>）來重新賦值。例如，<code class="docutils literal notranslate"><span class="pre">alist[2]</span> <span class="pre">=</span> <span class="pre">6</span></code>會將索引<code class="docutils literal notranslate"><span class="pre">2</span></code>的元素更改為<code class="docutils literal notranslate"><span class="pre">6</span></code>。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="c1"># print whole list</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+
+<span class="c1"># print the last one element</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># print the first and second elements</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">alist</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="c1"># print the length of the list by function len()</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 9, 8, 7, 6, 5, 4, 3, 2, 1]
+1
+10 9
+10
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="slice-a-list">
+<h3>Slice a List<a class="headerlink" href="#slice-a-list" title="Permalink to this headline">#</a></h3>
+<p><strong>基本操作</strong>
+在Python的List中，切片（Slicing）是一個非常實用的特性，讓我們能夠取出List中一段連續（或不連續）的元素。基本語法是<code class="docutils literal notranslate"><span class="pre">alist[start:stop:step]</span></code>，其中<code class="docutils literal notranslate"><span class="pre">start</span></code>是起始索引，<code class="docutils literal notranslate"><span class="pre">stop</span></code>是結束索引（不包括此索引），<code class="docutils literal notranslate"><span class="pre">step</span></code>是步進值。以下為基本用法：</p>
+<ul class="simple">
+<li><p><strong>從索引 1 到 2</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[1:3]</span></code> 會取得索引從1到2（不包含3）的元素，因此會取得<code class="docutils literal notranslate"><span class="pre">alist</span></code>中索引為1和2的元素。</p></li>
+<li><p><strong>倒數第三個到倒數第一個</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[-3:-1]</span></code> 會取得從倒數第三個到倒數第二個的元素（注意這裡不包含倒數第一個）。</p></li>
+<li><p><strong>前三個元素</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[:3]</span></code> 會取得<code class="docutils literal notranslate"><span class="pre">alist</span></code>中前三個元素，即索引0、1、2。</p></li>
+<li><p><strong>除了最後三個以外的所有元素</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[:-3]</span></code> 會取得直到倒數第四個元素的所有元素。</p></li>
+<li><p><strong>從第三個元素到最後</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[3:]</span></code> 會取得從索引3開始到最後的所有元素。</p></li>
+<li><p><strong>從倒數第三個元素到最後</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[-3:]</span></code> 會取得從倒數第三個元素到最後的所有元素。</p></li>
+</ul>
+<p><strong>進階用法</strong></p>
+<ul class="simple">
+<li><p><strong>每隔一個（step=2）的切片</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[::2]</span></code> 會取得索引為0、2、4…的元素。</p></li>
+<li><p><strong>反轉List</strong>: <br><code class="docutils literal notranslate"><span class="pre">alist[::-1]</span></code> 會得到一個完全反轉的新List。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the 1 to 2 elements</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">10</span><span class="p">,</span> <span class="mi">9</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">2</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="mi">2</span><span class="p">])</span>
+
+
+<span class="c1"># print the last 3 to 2 elements from the end</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="mi">3</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[:</span><span class="o">-</span><span class="mi">3</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">3</span><span class="p">:])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">3</span><span class="p">:])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[10, 9]
+[10, 9]
+[3, 2]
+[10, 9, 8]
+[10, 9, 8, 7, 6, 5, 4]
+[7, 6, 5, 4, 3, 2, 1]
+[3, 2, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="update-list-append-extend-and-operator">
+<h3>Update List：<code class="docutils literal notranslate"><span class="pre">append()</span></code>, <code class="docutils literal notranslate"><span class="pre">extend()</span></code> and  <code class="docutils literal notranslate"><span class="pre">+</span></code>  operator<a class="headerlink" href="#update-list-append-extend-and-operator" title="Permalink to this headline">#</a></h3>
+<p>在Python中，更新List的元素可以透過多種方式，其中<code class="docutils literal notranslate"><span class="pre">append()</span></code>、<code class="docutils literal notranslate"><span class="pre">extend()</span></code>和<code class="docutils literal notranslate"><span class="pre">+</span></code>操作符是常用的方法。雖然這三種操作在名稱或用法上可能相似，但它們有著不同的用途和效果。</p>
+<section id="append">
+<h4><code class="docutils literal notranslate"><span class="pre">append()</span></code> 方法<a class="headerlink" href="#append" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">append()</span></code>用於在List的末尾追加一個元素。如果您追加的是另一個List，那麼這個List會作為單一元素添加到原List的末尾。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">blist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="n">alist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span> <span class="c1"># 結果會是 [1, 2, 3, 2]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span> <span class="c1">#</span>
+
+<span class="n">alist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">blist</span><span class="p">)</span>  
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span> <span class="c1"># 結果會是 [1, 2, 3, 2, [3, 2, 1]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 2]
+[1, 2, 3, 2, [3, 2, 1]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="extend">
+<h4><code class="docutils literal notranslate"><span class="pre">extend()</span></code> 方法<a class="headerlink" href="#extend" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">append()</span></code>是把某一物件當成最後一個元素加入List的最末，但<code class="docutils literal notranslate"><span class="pre">extend()</span></code>則是用於合併兩個List，把第二個List的所有元素追加到第一個List的末尾。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">blist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+<span class="n">alist</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">blist</span><span class="p">)</span>  <span class="c1"># 結果會是 [1, 2, 3, 3, 2, 1]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+
+<span class="n">alist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">blist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 3, 2, 1]
+[1, 2, 3, 3, 2, 1, [3, 2, 1]]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id1">
+<h4><code class="docutils literal notranslate"><span class="pre">+</span></code> 操作符<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
+<p>使用<code class="docutils literal notranslate"><span class="pre">+</span></code>操作符也能達到合併List的效果，但其不像<code class="docutils literal notranslate"><span class="pre">append()</span></code>或<code class="docutils literal notranslate"><span class="pre">extend()</span></code>操作後就會更改內容，其不會更改原有的<code class="docutils literal notranslate"><span class="pre">alist</span></code>，必須要透過重新賦值給<code class="docutils literal notranslate"><span class="pre">alist</span></code>才能達到相同的效果。</p>
+<p><strong>結論</strong></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">alist.extend(blist)</span></code> 會修改原來的 <code class="docutils literal notranslate"><span class="pre">alist</span></code>，使其包括 <code class="docutils literal notranslate"><span class="pre">blist</span></code> 的所有元素。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">alist</span> <span class="pre">=</span> <span class="pre">alist</span> <span class="pre">+</span> <span class="pre">blist</span></code> 或 <code class="docutils literal notranslate"><span class="pre">alist</span> <span class="pre">+=</span> <span class="pre">blist</span></code> 會有相同的效果，也就是合併兩個List，但這需要重新賦值給 <code class="docutils literal notranslate"><span class="pre">alist</span></code>。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">blist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span> <span class="o">+</span> <span class="n">blist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+
+<span class="n">alist</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">blist</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[1, 2, 3, 3, 2, 1]
+[1, 2, 3]
+[1, 2, 3, 3, 2, 1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="access-nested-list">
+<h3>Access Nested List<a class="headerlink" href="#access-nested-list" title="Permalink to this headline">#</a></h3>
+<p>在Python中，List不僅可以存儲基本數據類型（如整數、浮點數和字符串）的元素，還可以存儲其他的資料結構，包括另一個List。當一個List內部包含另一個List時，我們稱之為「雙層List」或「嵌套（Nested）List」。</p>
+<p><strong>存取嵌套元素</strong>: 存取雙層List的元素稍微複雜一點，因為每個元素本身也可能是一個List。例如，我們有一個雙層List <code class="docutils literal notranslate"><span class="pre">nested_list</span> <span class="pre">=</span> <span class="pre">[[1,</span> <span class="pre">2,</span> <span class="pre">3],</span> <span class="pre">[4,</span> <span class="pre">5,</span> <span class="pre">6],</span> <span class="pre">[7,</span> <span class="pre">8,</span> <span class="pre">9]]</span></code>。</p>
+<ul class="simple">
+<li><p>存取第一個子List可以用 <code class="docutils literal notranslate"><span class="pre">nested_list[0]</span></code>，這會返回 <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code>。</p></li>
+<li><p>如果要存取子List中的具體一個元素，比如第一個子List中的第二個元素（也就是2），則可以使用 <code class="docutils literal notranslate"><span class="pre">nested_list[0][1]</span></code>。</p></li>
+</ul>
+<p><strong>多維索引</strong>: 在雙層或多層嵌套List中，你可以透過多維索引來存取元素。例如，<code class="docutils literal notranslate"><span class="pre">nested_list[0][1]</span></code> 中的第一個索引 <code class="docutils literal notranslate"><span class="pre">0</span></code> 是外層List的索引，第二個索引 <code class="docutils literal notranslate"><span class="pre">1</span></code> 是內層List的索引。</p>
+<p><strong>更新嵌套List</strong>: 更新雙層List的元素與單層List相似，只是你需要指定更多的索引層級。例如，如果你想將上面例子中的數字2改為20，可以這樣做：<code class="docutils literal notranslate"><span class="pre">nested_list[0][1]</span> <span class="pre">=</span> <span class="pre">20</span></code>。</p>
+<p><strong>遍歷雙層List</strong>: 雙層List也可以使用嵌套的迴圈來遍歷。例如，</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">sublist</span> <span class="ow">in</span> <span class="n">nested_list</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">element</span> <span class="ow">in</span> <span class="n">sublist</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">element</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">mlist</span> <span class="o">=</span> <span class="p">[[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">11</span><span class="p">,</span> <span class="mi">12</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">,</span> <span class="mi">15</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">17</span><span class="p">],</span>
+         <span class="p">[</span><span class="mi">21</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">24</span><span class="p">,</span> <span class="mi">25</span><span class="p">,</span> <span class="mi">26</span><span class="p">,</span> <span class="mi">27</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">mlist</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>26
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;abc&#39;</span><span class="p">,</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="s1">&#39;123.1&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span> <span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span> <span class="c1">#length len()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">7</span><span class="p">],</span> <span class="nb">type</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="mi">7</span><span class="p">]))</span>
+
+
+<span class="c1"># Access any elements in the second layers of alsit</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">alist</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">][</span><span class="mi">2</span><span class="p">])</span> <span class="c1"># Review: -1 indicates the last element in a list</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>8
+[1, 2, 3] &lt;class &#39;list&#39;&gt;
+3
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="dictionary">
+<h2>Dictionary（字典）<a class="headerlink" href="#dictionary" title="Permalink to this headline">#</a></h2>
+<p>在Python中，Dictionary（通常簡稱為dict）是一種極為靈活並廣泛使用的數據結構。dict是用於存儲鍵（key）與值（value）對應的集合。與List不同，dict的元素並不是按照順序來排列的，因此我們不能用索引（index）來存取元素，而是要用相應的鍵。</p>
+<ol class="arabic">
+<li><p><strong>基本語法</strong>: <br>例如，考慮以下的dict，在這個例子中，你可以通過鍵來存取相對應的值。<code class="docutils literal notranslate"><span class="pre">adict[1]</span></code> 會返回 <code class="docutils literal notranslate"><span class="pre">3</span></code>，而 <code class="docutils literal notranslate"><span class="pre">adict['2']</span></code> 會返回 <code class="docutils literal notranslate"><span class="pre">4</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">adict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span> <span class="mi">4</span><span class="p">}</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>鍵的不可變性（Immutable）</strong>：<br>Dict的鍵可以是多種不同的數據類型，例如整數、浮點數、字符串等。然而，有一些數據類型（如List和另一個dict）是不允許作為鍵的。這是因為這些數據類型是「可變」的，意即你可以在任何時間點修改它們的內容，這可能會導致數據不一致或錯誤。</p></li>
+<li><p><strong>值的多樣性</strong>：<br>Dict的值（value）可以是任何數據類型，包括基本類型（如整數、字符串）和其他的數據結構（如List、Tuple、另一個dict等）。</p></li>
+<li><p><strong>Nested Dictionary</strong>：<br>Dict中的值也可以是另一個dict，這種結構稱為「Nested （嵌套）Dictionary」。例如，在這個例子中，<code class="docutils literal notranslate"><span class="pre">nested_dict['key1']</span></code> 會返回一個dict：<code class="docutils literal notranslate"><span class="pre">{'subkey1':</span> <span class="pre">1,</span> <span class="pre">'subkey2':</span> <span class="pre">2}</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">nested_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;key1&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;subkey1&#39;</span><span class="p">:</span> <span class="mi">1</span><span class="p">,</span> <span class="s1">&#39;subkey2&#39;</span><span class="p">:</span> <span class="mi">2</span><span class="p">},</span> <span class="s1">&#39;key2&#39;</span><span class="p">:</span> <span class="p">{</span><span class="s1">&#39;subkey3&#39;</span><span class="p">:</span> <span class="mi">3</span><span class="p">}}</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<p><strong>其他注意事項</strong></p>
+<ul class="simple">
+<li><p>Tuple可以作為dict的鍵，因為它是不可變的（Immutable）；List不可以作為dict的鍵，因為它是可變的（Mutable）。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">.get()</span></code> 方法來存取鍵可以避免引發KeyError。例如，<code class="docutils literal notranslate"><span class="pre">adict.get('key',</span> <span class="pre">'default_value')</span></code>。但我們通常會使用 <code class="docutils literal notranslate"><span class="pre">adict['key']</span></code> 來存取鍵，因為這樣可以讓程式碼更簡潔。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.values()</span></code> 方法，你可以分別獲取dict中所有的鍵和值。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">update()</span></code> 方法可以用來合併兩個dict。例如，<code class="docutils literal notranslate"><span class="pre">adict.update(bdict)</span></code> 會將 <code class="docutils literal notranslate"><span class="pre">bdict</span></code> 中的所有鍵值對合併到 <code class="docutils literal notranslate"><span class="pre">adict</span></code> 中。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">adict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="s1">&#39;2&#39;</span><span class="p">:</span><span class="mi">4</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">adict</span><span class="p">[</span><span class="s1">&#39;2&#39;</span><span class="p">])</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="s2">&quot;a&quot;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">],</span> <span class="p">[</span><span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">]]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+
+<span class="n">adict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;3&#39;</span><span class="p">:</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="mi">4</span><span class="p">,</span> <span class="s1">&#39;3&#39;</span><span class="p">:</span><span class="mi">5</span><span class="p">,</span> <span class="s1">&#39;4&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mf">1.13</span><span class="p">:</span> <span class="s1">&#39;123&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">:</span> <span class="n">alist</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">adict</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">adict</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+
+<span class="n">bdict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">1</span><span class="p">:</span><span class="n">alist</span><span class="p">,</span> <span class="mi">2</span><span class="p">:</span><span class="n">adict</span><span class="p">}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">[</span><span class="mi">2</span><span class="p">][</span><span class="s1">&#39;a&#39;</span><span class="p">][</span><span class="mi">6</span><span class="p">][</span><span class="mi">1</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3 4
+8
+5
+&lt;class &#39;dict&#39;&gt;
+2
+2
+</pre></div>
+</div>
+</div>
+</div>
+<section id="accessing-dictionary">
+<h3>Accessing dictionary<a class="headerlink" href="#accessing-dictionary" title="Permalink to this headline">#</a></h3>
+<p>在Python中，存取Dictionary（或簡稱為dict）的元素主要是通過其對應的鍵（key）來實現。以下是一些常見的操作方式：</p>
+<ol class="arabic">
+<li><p><strong>印出整個字典</strong>：使用<code class="docutils literal notranslate"><span class="pre">print()</span></code>函數可以輸出整個字典的內容。例如以下例子會會列印出<code class="docutils literal notranslate"><span class="pre">bdict</span></code>字典中所有的鍵值對。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">)</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>使用鍵來存取值</strong>：如果你知道某個鍵（key），就可以直接用這個鍵來獲取其對應的值（value）。下例這將會打印出與鍵 <code class="docutils literal notranslate"><span class="pre">'3'</span></code> 相關聯的值。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;3&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</li>
+<li><p><strong>獲取所有鍵和值</strong>：你可以使用 <code class="docutils literal notranslate"><span class="pre">.keys()</span></code> 和 <code class="docutils literal notranslate"><span class="pre">.values()</span></code> 方法來分別獲取所有的鍵和值。下例<code class="docutils literal notranslate"><span class="pre">.keys()</span></code> 將返回一個包含所有鍵的列表，而 <code class="docutils literal notranslate"><span class="pre">.values()</span></code> 將返回一個包含所有值的列表。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+</li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># access the dictionary</span>
+
+<span class="c1"># print whole dict</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">)</span>
+
+<span class="c1"># print the value of key &#39;1&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="p">[</span><span class="s1">&#39;3&#39;</span><span class="p">])</span>
+
+<span class="c1"># print the value of key 1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+
+<span class="c1"># print the first element of the list mapped by key 4</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{1: [1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, [1, 2, 3], [4, 5, 6]], 2: {&#39;3&#39;: 5, 2: 4, &#39;4&#39;: 6, 1.13: &#39;123&#39;, &#39;a&#39;: [1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, [1, 2, 3], [4, 5, 6]]}}
+5
+dict_keys([&#39;3&#39;, 2, &#39;4&#39;, 1.13, &#39;a&#39;])
+dict_values([5, 4, 6, &#39;123&#39;, [1, 2, 3, &#39;a&#39;, &#39;b&#39;, &#39;c&#39;, [1, 2, 3], [4, 5, 6]]])
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="counter-and-defaultdict">
+<h3>Counter() and defaultdict()<a class="headerlink" href="#counter-and-defaultdict" title="Permalink to this headline">#</a></h3>
+<p>有兩個資料結構與dict非常近似，一個是 <code class="docutils literal notranslate"><span class="pre">defaultdict()</span></code>，另一個是 <code class="docutils literal notranslate"><span class="pre">Counter()</span></code>。</p>
+<section id="defaultdict">
+<h4><code class="docutils literal notranslate"><span class="pre">defaultdict()</span></code><a class="headerlink" href="#defaultdict" title="Permalink to this headline">#</a></h4>
+<p><code class="docutils literal notranslate"><span class="pre">defaultdict()</span></code> 是一個非常方便的資料結構，來自於 <code class="docutils literal notranslate"><span class="pre">collections</span></code> 模塊。它的主要優點是當你試圖存取一個不存在的鍵時，它會自動初始化這個鍵，而不會引發 <code class="docutils literal notranslate"><span class="pre">KeyError</span></code>。在創建 <code class="docutils literal notranslate"><span class="pre">defaultdict</span></code> 的時候，你可以傳入一個工廠函數，用於生成預設值。例如：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">defaultdict</span>
+
+<span class="n">adict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">list</span><span class="p">)</span>
+<span class="n">adict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+<span class="n">adict</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">2</span><span class="p">)</span>
+<span class="n">adict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">3</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">adict</span><span class="p">)</span>
+
+<span class="n">bdict</span> <span class="o">=</span> <span class="n">defaultdict</span><span class="p">(</span><span class="nb">int</span><span class="p">)</span>
+<span class="n">bdict</span><span class="p">[</span><span class="s1">&#39;a&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="n">bdict</span><span class="p">[</span><span class="s1">&#39;b&#39;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>defaultdict(&lt;class &#39;list&#39;&gt;, {&#39;a&#39;: [1, 3], &#39;b&#39;: [2]})
+defaultdict(&lt;class &#39;int&#39;&gt;, {&#39;a&#39;: 1, &#39;b&#39;: 1})
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong><code class="docutils literal notranslate"><span class="pre">defaultdict()</span></code>與 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 的比較：</strong>：使用普通的 <code class="docutils literal notranslate"><span class="pre">dict</span></code>，你需要手動檢查鍵是否存在或使用 <code class="docutils literal notranslate"><span class="pre">setdefault</span></code> 方法：</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">d</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">d</span><span class="o">.</span><span class="n">setdefault</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="p">[])</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="counter">
+<h4><code class="docutils literal notranslate"><span class="pre">Counter()</span></code><a class="headerlink" href="#counter" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">Counter</span></code> 是另一個來自於 <code class="docutils literal notranslate"><span class="pre">collections</span></code> 模塊的資料結構，專門用於計數。它非常適合於頻率計數等應用。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">Counter</span></code>可以使用 <code class="docutils literal notranslate"><span class="pre">most_common(n)</span></code> 方法來獲取出現次數最多的 <code class="docutils literal notranslate"><span class="pre">n</span></code> 個元素。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">Counter</span></code> 與 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 的比較：</strong>：<br>使用普通的 <code class="docutils literal notranslate"><span class="pre">dict</span></code> 進行計數會相對複雜，需要檢查每個鍵是否已經存在於字典中：</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">c</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">([</span><span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">c</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;a&#39;: 3, &#39;b&#39;: 2, &#39;c&#39;: 1})
+[(&#39;a&#39;, 3), (&#39;b&#39;, 2)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P02_2_exceptions.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Exceptions(Errors) Handling</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P03p.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P03 Practice: Accessing dict and list</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#list">List</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-a-list">Access a List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-a-list">Slice a List</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#update-list-append-extend-and-operator">Update List：<code class="docutils literal notranslate"><span class="pre">append()</span></code>, <code class="docutils literal notranslate"><span class="pre">extend()</span></code> and  <code class="docutils literal notranslate"><span class="pre">+</span></code>  operator</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#append"><code class="docutils literal notranslate"><span class="pre">append()</span></code> 方法</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#extend"><code class="docutils literal notranslate"><span class="pre">extend()</span></code> 方法</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id1"><code class="docutils literal notranslate"><span class="pre">+</span></code> 操作符</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-nested-list">Access Nested List</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#dictionary">Dictionary（字典）</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#accessing-dictionary">Accessing dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counter-and-defaultdict">Counter() and defaultdict()</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#defaultdict"><code class="docutils literal notranslate"><span class="pre">defaultdict()</span></code></a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#counter"><code class="docutils literal notranslate"><span class="pre">Counter()</span></code></a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

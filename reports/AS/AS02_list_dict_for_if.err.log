@@ -1,0 +1,45 @@
+Traceback (most recent call last):
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import random
+random_sites = random.sample(list(site_dict.keys()), 5)
+print(random_sites)
+
+for site in random_sites:
+    print(site_dict[site].values())
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mValueError[0m                                Traceback (most recent call last)
+Input [0;32mIn [4][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mrandom[39;00m
+[0;32m----> 2[0m random_sites [38;5;241m=[39m [43mrandom[49m[38;5;241;43m.[39;49m[43msample[49m[43m([49m[38;5;28;43mlist[39;49m[43m([49m[43msite_dict[49m[38;5;241;43m.[39;49m[43mkeys[49m[43m([49m[43m)[49m[43m)[49m[43m,[49m[43m [49m[38;5;241;43m5[39;49m[43m)[49m
+[1;32m      3[0m [38;5;28mprint[39m(random_sites)
+[1;32m      5[0m [38;5;28;01mfor[39;00m site [38;5;129;01min[39;00m random_sites:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/random.py:449[0m, in [0;36mRandom.sample[0;34m(self, population, k, counts)[0m
+[1;32m    447[0m randbelow [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39m_randbelow
+[1;32m    448[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;241m0[39m [38;5;241m<[39m[38;5;241m=[39m k [38;5;241m<[39m[38;5;241m=[39m n:
+[0;32m--> 449[0m     [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mSample larger than population or is negative[39m[38;5;124m"[39m)
+[1;32m    450[0m result [38;5;241m=[39m [[38;5;28;01mNone[39;00m] [38;5;241m*[39m k
+[1;32m    451[0m setsize [38;5;241m=[39m [38;5;241m21[39m        [38;5;66;03m# size of a small set minus size of an empty list[39;00m
+
+[0;31mValueError[0m: Sample larger than population or is negative
+ValueError: Sample larger than population or is negative
+

@@ -1,0 +1,2675 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P04 Practice02 Search &amp; Maximum &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P04p2_search_maximum';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P04 Practice03 Twitter Users" href="P04p3_twitter_users.html" />
+    <link rel="prev" title="P04 Practice01: for loop" href="P04p1_for.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P04p2_search_maximum.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P04p2_search_maximum.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P04p2_search_maximum.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P04 Practice02 Search & Maximum</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aqx">空氣品質指數（AQX）案例研究</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-aqx-data">Load AQX data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traverse-aqi-content">Traverse AQI content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-and-observe-each-data-entry">Print and observe each data entry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range-to-traverse-list-by-index"><code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-to-access-index-and-item-simultaneously"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and item simultaneously</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-data-for-search-and-query">Prepare data for search and query</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-01-search-with-for-loop">Method 01. Search with for-loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-02-convert-data-structure-hashing">Method 02. Convert data structure - hashing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-new-dict-to-json">Dump new dict to .json</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescale-aqi-index">Rescale AQI index</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-rescale-better">(Option) Rescale better</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-prominant-data">Detect prominant data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-maximum">Find the maximum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-built-in-functions">Use built-in functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-top-n">Find top n</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorted-by-sorted-function">Sorted by <code class="docutils literal notranslate"><span class="pre">sorted</span></code> function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-print-out-the-site-which-values-are-larger-than-the-first-quarter">(Practice) Print out the site which values are larger than the first quarter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-print-out-sites-with-top-3-serious-values">(Practice) Print out sites with top 3 serious values</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option-by-comperhensive-style">(Option) By comperhensive style</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-sorting-algorithm-by-hand">(Option) Sorting Algorithm by hand</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-data-to-dataframe">Convert data to dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aqx-data-to-pandas-dataframe">AQX data to pandas dataframe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#youbike-data-to-pandas-dataframe">Youbike data to pandas dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problematic-by-converting-directly">Problematic by converting directly</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-one-convert-data-structure">Solution One: Convert data structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#good-use-values-to-retrive-all-values">(Good) Use <code class="docutils literal notranslate"><span class="pre">values()</span></code> to retrive all values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p04-practice02-search-maximum">
+<h1>P04 Practice02 Search &amp; Maximum<a class="headerlink" href="#p04-practice02-search-maximum" title="Permalink to this headline">#</a></h1>
+<p><strong>for-loop + if-else: conditional operators</strong></p>
+<div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
+<ul class="simple">
+<li><p><strong>Counting</strong>: <br>把所有文字看過一遍，計算文字的出現次數。讀取一個文字字符串，使用for迴圈和if條件語句來計算每個字元或單詞出現的次數。例子: “apple” 中，’p’出現了2次。</p></li>
+<li><p><strong>Filtering</strong>: <br>透過for迴圈和if條件語句來選擇並顯示特定的youbike站台，例如只顯示滿載的站台。例子: 從10個站台中找出滿載的站台。</p></li>
+<li><p><strong>Detecting prominants</strong>: <br>透過比較來找到最大值和最小值</p>
+<ul>
+<li><p>Top value: 找出數字列表中的最大值。例子: [3, 9, 2] 中，最大值是9。</p></li>
+<li><p>Top site：從youbike站台列表中找出擁有最高評分或最多使用者的站台。例子: “站台A”, “站台B”, “站台C” 中，”站台B” 最熱門。</p></li>
+<li><p>Top 3 sites：找出前三個最熱門的站台。</p></li>
+</ul>
+</li>
+<li><p><strong>Conditional Replacing</strong>: <br>使用if條件語句來檢測AQX數據中的缺失值，並規定當缺失值出現時如何進行替換或處理。也可用於檢查輸入日期的合法性。例子: 如果AQI值為NaN，則替換為平均AQI值。</p></li>
+<li><p><strong>Sorting</strong>: <br>使用<code class="docutils literal notranslate"><span class="pre">for</span></code>迴圈來遍歷AQI數據，然後找出具有最高AQI或者前三高AQI的站台。
+例子: 從10個AQI值中找出最大的或前三大的。</p></li>
+<li><p><strong>Rescaling</strong>: <br>透過一個標準的映射表，將AQI數值轉換為五個等級：非常高、高、中、低、非常低，以便使用者更容易理解。例子: AQI 67轉換為”高”等級。</p></li>
+</ul>
+</div><section id="aqx">
+<h2>空氣品質指數（AQX）案例研究<a class="headerlink" href="#aqx" title="Permalink to this headline">#</a></h2>
+<p><strong>簡介與資料來源</strong></p>
+<p>這個案例研究旨在分析來自行政院環保署的即時空氣品質數據。這些數據可以在<a class="reference external" href="https://taqm.epa.gov.tw/taqm/tw/default.aspx">行政院環保署的空氣品質監測網站</a>上查詢，並會按照AQI值用不同顏色代表其嚴重程度。更即時的數據也可在行政院環保署的<a class="reference external" href="https://opendata.epa.gov.tw/api/v1/AQI?%24skip=0&amp;%24top=1000&amp;%24format=json">開放資料平台</a>找到。</p>
+<p><strong>分析策略</strong></p>
+<p>對於空氣品質或相似數據（如水污染、噪音、紫外線）的分析，以下是幾個主要的分析方向：</p>
+<ol class="arabic simple">
+<li><p><strong>識別突出的數據點</strong>：找出AQI值最高（最嚴重）的地區。如果有多個地區同樣嚴重，那麼所有這些地區都應該被列出。這涉及到遍歷所有的數據，並透過比較大小找出最高的AQI值。</p></li>
+<li><p><strong>排序與篩選</strong>：除了找出最嚴重的地區，我們也可能對前三、前五或前10%的地區感興趣。這通常需要對數據進行排序。</p></li>
+<li><p><strong>數據摘要</strong>：計算各種統計量，例如平均值、四分位數，以及數據的分佈型態（如常態分佈或幂律分佈）。</p></li>
+<li><p><strong>描述數據分佈</strong>：了解不同等級的空氣品質在各測站中的分佈情況。這通常涉及到「分類」和「計數」的基本操作。</p></li>
+<li><p><strong>目標觀察與比較</strong>：例如，對比大都市和非大都市的空氣品質，特別是PM2.5或O3等指標。</p></li>
+</ol>
+<p><strong>重要性與溝通</strong></p>
+<p>為何需要這樣的分析？主要是為了將複雜的數據以容易理解的方式傳達給大眾。儘管數據分析主要是由專家進行，但其目的通常是為了解釋或傳達某種特定信息給一般人。為了做到這一點，使用簡單明瞭的語言是關鍵——例如，「大部分地區」、「最嚴重地區」或「前幾名」等。有了數據和統計支持，我們就可以更自信地，也更準確地傳達這些信息。</p>
+<section id="load-aqx-data">
+<h3>Load AQX data<a class="headerlink" href="#load-aqx-data" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>本案例所使用的資料仍然是網頁上json格式的資料，因此，仍需要用<code class="docutils literal notranslate"><span class="pre">requests</span></code>函式庫將其取回，再用<code class="docutils literal notranslate"><span class="pre">json()</span></code>將json格式的文字解析為Python的dict與list。</p></li>
+<li><p>原始網頁為https://airtw.moenv.gov.tw/cht/EnvMonitoring/Central/CentralMonitoring.aspx。</p></li>
+<li><p>json資料網址為https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2023/09/17%2011:00，其中QueryTime為查詢的時間，格式為YYYY/MM/DD HH:MM，例如2023/09/17 11:00。需要改為合理且近日的日期。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2023/09/17%2011:00&quot;</span>
+<span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:910,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">910</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">911</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
+<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
+<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
+<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
+<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
+
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2023/09/17%2011:00&quot;</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:917,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">915</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">917</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+
+<span class="ne">JSONDecodeError</span>: [Errno Expecting value] : 0
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="traverse-aqi-content">
+<h3>Traverse AQI content<a class="headerlink" href="#traverse-aqi-content" title="Permalink to this headline">#</a></h3>
+<p>既然傳回來的資料看起來是個list of dict的結構，外層為一個list，不失一般性地取index為0的第一筆資料來觀察。</p>
+<ul class="simple">
+<li><p><strong>法則一：如果偵測出他是一個list</strong>，那就取出第0筆資料往下追蹤。</p></li>
+<li><p><strong>法則二：如果偵測出他是一個dict</strong>，就用<code class="docutils literal notranslate"><span class="pre">dict.keys()</span></code>將其所有的key給列印出來，然後挑你所需要的key往下追蹤。但如果<code class="docutils literal notranslate"><span class="pre">.keys()</span></code>印出來的結果是類似流水號的id（e.g., youbike data），那就代表設計者把id對應到該id的資料。此時，也是不失一般性，取第一個id作為索引來往下存取即可。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print the data type</span>
+
+
+<span class="c1"># Print the content of the first data entry</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;1&#39;,
+ &#39;SiteName&#39;: &#39;二林&#39;,
+ &#39;AQI&#39;: &#39;66&#39;,
+ &#39;ViewName&#39;: &#39;二林&#39;,
+ &#39;AreaName&#39;: &#39;中部空品區&#39;,
+ &#39;AreaID&#39;: &#39;3&#39;,
+ &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;,
+ &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;,
+ &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;,
+ &#39;TWD97_Lon&#39;: 120.409653,
+ &#39;TWD97_Lat&#39;: 23.925175,
+ &#39;SiteType&#39;: &#39;一般站&#39;,
+ &#39;SiteType2&#39;: &#39;中央政府&#39;,
+ &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print the length of the data</span>
+
+<span class="c1"># Print all keys of one data entry</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="print-and-observe-each-data-entry">
+<h3>Print and observe each data entry<a class="headerlink" href="#print-and-observe-each-data-entry" title="Permalink to this headline">#</a></h3>
+<p>列印出相關資料來做觀察，包含AQI、POLLUTANT（污染物種類）。如果資料筆數過多不易觀察的話，應該用List Slicing取出前數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[:10]</span></code>）或後數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[-3:]</span></code>）來觀察</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">二林</span>	<span class="mi">79</span>	<span class="n">細懸浮微粒</span>
+<span class="n">三重</span>	<span class="mi">58</span>	<span class="n">細懸浮微粒</span>
+<span class="n">三義</span>	<span class="mi">57</span>	<span class="n">細懸浮微粒</span>
+<span class="n">土城</span>	<span class="mi">51</span>	<span class="n">懸浮微粒</span>
+<span class="n">士林</span>	<span class="mi">57</span>	<span class="n">細懸浮微粒</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Print AQI and POLLUTANT of each site</span>
+<span class="c1"># for site in aqdata:</span>
+<span class="c1">#     print(&quot;{}\t{}\t{}&quot;.format(site[&#39;SiteName&#39;], site[&#39;AQI&#39;], site[&#39;POLLUTANT&#39;]))</span>
+    
+<span class="c1"># Print AQI and POLLUTANT of the first 10 sites</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="range-to-traverse-list-by-index">
+<h3><code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#range-to-traverse-list-by-index" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>因為<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>是一個list，也可以透過index去access<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>中第0個、第1個、第2個dict的內容。<br>但此時你就要去用index存取<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>內的值，你的程式碼會稍微長一點點。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(n)</span></code>函式，相當於<code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">n)</span></code>，可以產生<code class="docutils literal notranslate"><span class="pre">0</span></code>至<code class="docutils literal notranslate"><span class="pre">n-1</span></code>的list。<br>用<code class="docutils literal notranslate"><span class="pre">list()</span></code>轉換後（例如<code class="docutils literal notranslate"><span class="pre">list(range(10))</span></code>)便會顯示出其內容。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t)</span></code>表從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">range(s,</span> <span class="pre">t,</span> <span class="pre">u)</span></code>表示從<code class="docutils literal notranslate"><span class="pre">s</span></code>至<code class="docutils literal notranslate"><span class="pre">t-1</span></code>，每間隔<code class="docutils literal notranslate"><span class="pre">u</span></code>，如果<code class="docutils literal notranslate"><span class="pre">u</span></code>等於2的話，就等於隔一個數字。所以<code class="docutils literal notranslate"><span class="pre">range(3,</span> <span class="pre">10,</span> <span class="pre">2)</span></code>會是<code class="docutils literal notranslate"><span class="pre">[3,</span> <span class="pre">5,</span> <span class="pre">7,</span> <span class="pre">9]</span></code>。</p></li>
+</ol>
+<p>Question: 什麼時候會用到？取樣的時候，例如多加一個if判斷式，來取出偶數位置的樣本。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">)))</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">2</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[0, 1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 2, 3, 4, 5, 6, 7, 8, 9]
+[1, 3, 5, 7, 9]
+1
+3
+5
+7
+9
+</pre></div>
+</div>
+</div>
+</div>
+<p>而<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>這個list的長度為<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，其list index從0至<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，所以使用<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(aqdata)):</span></code>可以走訪整個list的內容。（註：以下的例子只列印出前10個）</p>
+</section>
+<section id="enumerate-to-access-index-and-item-simultaneously">
+<h3><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and item simultaneously<a class="headerlink" href="#enumerate-to-access-index-and-item-simultaneously" title="Permalink to this headline">#</a></h3>
+<p>前面我們介紹到兩個版本，</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">site</span> <span class="pre">in</span> <span class="pre">aqdata[&quot;Data&quot;]:</span></code>是用<code class="docutils literal notranslate"><span class="pre">site</span></code>作為臨時變數以在for-loop中存取所有的資料項目。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(aqdata[&quot;Data&quot;])):</span></code>的做法則是用<code class="docutils literal notranslate"><span class="pre">i</span></code>作為index來存取原本的<code class="docutils literal notranslate"><span class="pre">aqdata[&quot;Data&quot;]</span></code>。</p></li>
+</ol>
+<p>但其實還有第三種選擇就是用<code class="docutils literal notranslate"><span class="pre">enumerate()</span></code>來同時存取index和資料項目。<br>
+當需要存取這是第幾個項目時，那我就用index，但我如果只是要判斷一下大小，那我就可以用被取出來的資料項目。<br>寫法如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>for i, site in enumerate(aqdata):`
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="nb">enumerate</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;enumerate&#39;&gt;
+0 二林 66 細懸浮微粒
+1 三重 28 
+2 三義 36 
+3 土城 13 
+4 士林 20 
+5 大同 39 
+6 大里 57 細懸浮微粒
+7 大園 23 
+8 大寮 84 細懸浮微粒
+9 小港 76 細懸浮微粒
+10 中山 18 
+11 中壢 20 
+12 仁武 78 細懸浮微粒
+13 斗六 57 細懸浮微粒
+14 冬山 13 
+15 古亭 14 
+16 左營 65 細懸浮微粒
+17 平鎮 15 
+18 永和 19 
+19 安南 62 細懸浮微粒
+20 朴子 67 細懸浮微粒
+21 汐止 13 
+22 竹山 43 
+23 竹東 29 
+24 西屯 59 細懸浮微粒
+25 沙鹿 43 
+26 宜蘭 13 
+27 忠明 54 細懸浮微粒
+28 松山 14 
+29 板橋 22 
+30 林口 13 
+31 林園 68 細懸浮微粒
+32 花蓮 16 
+33 金門 47 
+34 前金 67 細懸浮微粒
+35 前鎮 65 細懸浮微粒
+36 南投 62 細懸浮微粒
+37 屏東 79 細懸浮微粒
+38 恆春 10 
+39 美濃 67 細懸浮微粒
+40 苗栗 21 
+41 埔里 43 
+42 桃園 19 
+43 馬公 36 
+44 馬祖 71 臭氧八小時
+45 基隆 17 
+46 崙背 61 細懸浮微粒
+47 淡水 17 
+48 麥寮 54 細懸浮微粒
+49 善化 67 細懸浮微粒
+50 復興 61 細懸浮微粒
+51 湖口 30 
+52 菜寮 20 
+53 陽明 18 
+54 新竹 19 
+55 新店 12 
+56 新莊 21 
+57 新港 71 細懸浮微粒
+58 新營 60 細懸浮微粒
+59 楠梓 70 細懸浮微粒
+60 萬里 29 
+61 萬華 12 
+62 嘉義 71 細懸浮微粒
+63 彰化 58 細懸浮微粒
+64 臺西 62 細懸浮微粒
+65 臺東 9 
+66 臺南 66 細懸浮微粒
+67 鳳山 73 細懸浮微粒
+68 潮州 63 細懸浮微粒
+69 線西 48 
+70 橋頭 71 細懸浮微粒
+71 頭份 13 
+72 龍潭 13 
+73 豐原 52 細懸浮微粒
+74 關山 7 
+75 觀音 54 細懸浮微粒
+76 彰化(員林) 65 細懸浮微粒
+77 高雄(湖內) 77 細懸浮微粒
+78 臺南(麻豆) 58 細懸浮微粒
+79 屏東(琉球) -1 
+80 桃園(三民) 18 
+81 新北(樹林) 20 
+82 臺南(學甲) 51 細懸浮微粒
+83 屏東(枋寮) 47 
+84 富貴角 34 
+85 大城 66 細懸浮微粒
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="prepare-data-for-search-and-query">
+<h2>Prepare data for search and query<a class="headerlink" href="#prepare-data-for-search-and-query" title="Permalink to this headline">#</a></h2>
+<p>顯然AQI資料是一個非常標準的JSON格式，轉換為Python的資料型態就會變成list of dict。<br>
+但我希望可以用空品站名稱來查詢空品站的指標，要怎麼做呢？有兩種方法：<br></p>
+<ol class="arabic simple">
+<li><p>我可以用for-loop把所有資料跑一遍，如果等於該空品站名稱的話，那就列印出來。</p></li>
+<li><p>我想要建立一個新的<code class="docutils literal notranslate"><span class="pre">aqdict</span></code>，希望可以用<code class="docutils literal notranslate"><span class="pre">aqdict[&quot;三重&quot;]</span></code>就直接列印出<code class="docutils literal notranslate"><span class="pre">三重</span></code>的資料。</p></li>
+</ol>
+<section id="method-01-search-with-for-loop">
+<h3>Method 01. Search with for-loop<a class="headerlink" href="#method-01-search-with-for-loop" title="Permalink to this headline">#</a></h3>
+<p>就把所有資料用for-loop走訪一遍，如果站台名稱等於所欲查詢的站台的話，那就把他列印出來。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;三重&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">queries</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;三重&quot;</span><span class="p">,</span> <span class="s2">&quot;萬里&quot;</span><span class="p">,</span> <span class="s2">&quot;萬華&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;61&#39;, &#39;SiteName&#39;: &#39;萬里&#39;, &#39;AQI&#39;: &#39;29&#39;, &#39;ViewName&#39;: &#39;萬里&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市萬里區瑪鋉路221號&#39;, &#39;TWD97_Lon&#39;: 121.689881, &#39;TWD97_Lat&#39;: 25.179667, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;62&#39;, &#39;SiteName&#39;: &#39;萬華&#39;, &#39;AQI&#39;: &#39;12&#39;, &#39;ViewName&#39;: &#39;萬華&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Taipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;臺北市萬華區中華路1段66號&#39;, &#39;TWD97_Lon&#39;: 121.507972, &#39;TWD97_Lat&#39;: 25.046503, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-02-convert-data-structure-hashing">
+<h3>Method 02. Convert data structure - hashing<a class="headerlink" href="#method-02-convert-data-structure-hashing" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>如果希望可以用<code class="docutils literal notranslate"><span class="pre">aqdict[&quot;三重&quot;]</span></code>就直接列印出三重的資料，有一個方法是重建一個新的以測站作為key的dict，這樣只需要有站名，就可以直接藉由key-to-value的對應找到該站的資料，所以要建的dict是站名對應到該空品站資料的對應。</p></li>
+<li><p>建立方法是把整個list of dict走訪過一遍，把list中每個dict assign給該dict中的測站名稱 <code class="docutils literal notranslate"><span class="pre">site[&quot;SiteName&quot;]</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqdict</span> <span class="o">=</span> <span class="p">{}</span>  <span class="c1"># Initialize a new dictionary</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;61&#39;, &#39;SiteName&#39;: &#39;萬里&#39;, &#39;AQI&#39;: &#39;29&#39;, &#39;ViewName&#39;: &#39;萬里&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市萬里區瑪鋉路221號&#39;, &#39;TWD97_Lon&#39;: 121.689881, &#39;TWD97_Lat&#39;: 25.179667, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+{&#39;SiteID&#39;: &#39;62&#39;, &#39;SiteName&#39;: &#39;萬華&#39;, &#39;AQI&#39;: &#39;12&#39;, &#39;ViewName&#39;: &#39;萬華&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Taipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;臺北市萬華區中華路1段66號&#39;, &#39;TWD97_Lon&#39;: 121.507972, &#39;TWD97_Lat&#39;: 25.046503, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="dump-new-dict-to-json">
+<h3>Dump new dict to .json<a class="headerlink" href="#dump-new-dict-to-json" title="Permalink to this headline">#</a></h3>
+<p>在Python中把資料dump成json會遠比csv來得方便，在R中則剛好相反。原因是Python的dictionary與list兩項資料結構恰好json的格式一一相符，所以非常容易就可以把資料dump出去或者read進來。如果是要dump成csv檔的話，就必須想辦法把資料整理成pandas dataframe的二維型態。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># json.dump(aqdict, open(&#39;aqi.json&#39;, &#39;w&#39;))</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="rescale-aqi-index">
+<h2>Rescale AQI index<a class="headerlink" href="#rescale-aqi-index" title="Permalink to this headline">#</a></h2>
+<p>前面說到一般大眾其實不了解AQI數值的意義，也不知道最大最小值是多少，所以在對外作呈現的時候，呈現AQI數值是沒意義的。大眾比較容易了解的是「現在嚴不嚴重」。因此，我們可以依照環保署對於空氣品質的等級劃分方法來將所有站台區分成幾個等級，相當於是按照數值做統計上的分層，將數值轉為factor的操作。</p>
+<p>而程式邏輯上要做的事情是，用if-elif-else來設計好不同的區間判斷，然後用for-loop把所有AQI的值走訪過一遍，看每個站台落入哪個區間。</p>
+<p><img alt="image.png" src="PSS/attachment:47374209-14dd-44c8-a5cc-dc60f9565867.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># for site in aqdata:</span>
+
+    
+    
+    
+    
+    
+    
+    
+    
+    <span class="c1"># print(site[&quot;SiteName&quot;], site[&quot;AQI&quot;], site[&quot;Quality&quot;])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 66 普通
+三重 28 良好
+三義 36 良好
+土城 13 良好
+士林 20 良好
+大同 39 良好
+大里 57 普通
+大園 23 良好
+大寮 84 普通
+小港 76 普通
+中山 18 良好
+中壢 20 良好
+仁武 78 普通
+斗六 57 普通
+冬山 13 良好
+古亭 14 良好
+左營 65 普通
+平鎮 15 良好
+永和 19 良好
+安南 62 普通
+朴子 67 普通
+汐止 13 良好
+竹山 43 良好
+竹東 29 良好
+西屯 59 普通
+沙鹿 43 良好
+宜蘭 13 良好
+忠明 54 普通
+松山 14 良好
+板橋 22 良好
+林口 13 良好
+林園 68 普通
+花蓮 16 良好
+金門 47 良好
+前金 67 普通
+前鎮 65 普通
+南投 62 普通
+屏東 79 普通
+恆春 10 良好
+美濃 67 普通
+苗栗 21 良好
+埔里 43 良好
+桃園 19 良好
+馬公 36 良好
+馬祖 71 普通
+基隆 17 良好
+崙背 61 普通
+淡水 17 良好
+麥寮 54 普通
+善化 67 普通
+復興 61 普通
+湖口 30 良好
+菜寮 20 良好
+陽明 18 良好
+新竹 19 良好
+新店 12 良好
+新莊 21 良好
+新港 71 普通
+新營 60 普通
+楠梓 70 普通
+萬里 29 良好
+萬華 12 良好
+嘉義 71 普通
+彰化 58 普通
+臺西 62 普通
+臺東 9 良好
+臺南 66 普通
+鳳山 73 普通
+潮州 63 普通
+線西 48 良好
+橋頭 71 普通
+頭份 13 良好
+龍潭 13 良好
+豐原 52 普通
+關山 7 良好
+觀音 54 普通
+彰化(員林) 65 普通
+高雄(湖內) 77 普通
+臺南(麻豆) 58 普通
+屏東(琉球) -1 Unknown
+桃園(三民) 18 良好
+新北(樹林) 20 良好
+臺南(學甲) 51 普通
+屏東(枋寮) 47 良好
+富貴角 34 良好
+大城 66 普通
+</pre></div>
+</div>
+</div>
+</div>
+<section id="option-rescale-better">
+<h3>(Option) Rescale better<a class="headerlink" href="#option-rescale-better" title="Permalink to this headline">#</a></h3>
+<p>為了避免過多的if-elif-else或者switch的使用，可以先把scale和category寫成兩個List，然後用多一層for-loop來trace該value會落在List的哪個區間。
+<img alt="image.png" src="PSS/attachment:636ae1de-2309-4048-9d44-46fb039807ec.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">degree</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;Unknown&quot;</span><span class="p">,</span> <span class="s2">&quot;良好&quot;</span><span class="p">,</span> <span class="s2">&quot;普通&quot;</span><span class="p">,</span> <span class="s2">&quot;對敏感族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;對所有族群不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;非常不健康&quot;</span><span class="p">,</span> <span class="s2">&quot;危害&quot;</span><span class="p">]</span>
+<span class="n">scaler</span> <span class="o">=</span> <span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">,</span> <span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">150</span><span class="p">,</span> <span class="mi">200</span><span class="p">,</span> <span class="mi">300</span><span class="p">,</span> <span class="mi">1000</span><span class="p">]</span>
+
+<span class="n">sdict</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">v</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">scaler</span><span class="p">,</span> <span class="n">degree</span><span class="p">)}</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sdict</span><span class="p">)</span>
+
+<span class="c1"># scaler = {-1:&quot;Unknown&quot;, 50:&quot;良好&quot;, 100:&quot;普通&quot;, 150:&quot;對敏感族群不健康&quot;, 200:&quot;對所有族群不健康&quot;, 300:&quot;非常不健康&quot;, 1000:&quot;危害&quot;}</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{-1: &#39;Unknown&#39;, 50: &#39;良好&#39;, 100: &#39;普通&#39;, 150: &#39;對敏感族群不健康&#39;, 200: &#39;對所有族群不健康&#39;, 300: &#39;非常不健康&#39;, 1000: &#39;危害&#39;}
+二林 66 普通 普通
+三重 28 良好 良好
+三義 36 良好 良好
+土城 13 良好 良好
+士林 20 良好 良好
+大同 39 良好 良好
+大里 57 普通 普通
+大園 23 良好 良好
+大寮 84 普通 普通
+小港 76 普通 普通
+中山 18 良好 良好
+中壢 20 良好 良好
+仁武 78 普通 普通
+斗六 57 普通 普通
+冬山 13 良好 良好
+古亭 14 良好 良好
+左營 65 普通 普通
+平鎮 15 良好 良好
+永和 19 良好 良好
+安南 62 普通 普通
+朴子 67 普通 普通
+汐止 13 良好 良好
+竹山 43 良好 良好
+竹東 29 良好 良好
+西屯 59 普通 普通
+沙鹿 43 良好 良好
+宜蘭 13 良好 良好
+忠明 54 普通 普通
+松山 14 良好 良好
+板橋 22 良好 良好
+林口 13 良好 良好
+林園 68 普通 普通
+花蓮 16 良好 良好
+金門 47 良好 良好
+前金 67 普通 普通
+前鎮 65 普通 普通
+南投 62 普通 普通
+屏東 79 普通 普通
+恆春 10 良好 良好
+美濃 67 普通 普通
+苗栗 21 良好 良好
+埔里 43 良好 良好
+桃園 19 良好 良好
+馬公 36 良好 良好
+馬祖 71 普通 普通
+基隆 17 良好 良好
+崙背 61 普通 普通
+淡水 17 良好 良好
+麥寮 54 普通 普通
+善化 67 普通 普通
+復興 61 普通 普通
+湖口 30 良好 良好
+菜寮 20 良好 良好
+陽明 18 良好 良好
+新竹 19 良好 良好
+新店 12 良好 良好
+新莊 21 良好 良好
+新港 71 普通 普通
+新營 60 普通 普通
+楠梓 70 普通 普通
+萬里 29 良好 良好
+萬華 12 良好 良好
+嘉義 71 普通 普通
+彰化 58 普通 普通
+臺西 62 普通 普通
+臺東 9 良好 良好
+臺南 66 普通 普通
+鳳山 73 普通 普通
+潮州 63 普通 普通
+線西 48 良好 良好
+橋頭 71 普通 普通
+頭份 13 良好 良好
+龍潭 13 良好 良好
+豐原 52 普通 普通
+關山 7 良好 良好
+觀音 54 普通 普通
+彰化(員林) 65 普通 普通
+高雄(湖內) 77 普通 普通
+臺南(麻豆) 58 普通 普通
+屏東(琉球) -1 Unknown Unknown
+桃園(三民) 18 良好 良好
+新北(樹林) 20 良好 良好
+臺南(學甲) 51 普通 普通
+屏東(枋寮) 47 良好 良好
+富貴角 34 良好 良好
+大城 66 普通 普通
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="detect-prominant-data">
+<h2>Detect prominant data<a class="headerlink" href="#detect-prominant-data" title="Permalink to this headline">#</a></h2>
+<p>有了這類的資料後，可以做出什麼樣的資料描述呢？通常第一個想到的分析方法就是找到最嚴重、最差、變化最劇烈的地區。以下這是個非常好的例子說明要如何運用<code class="docutils literal notranslate"><span class="pre">if</span></code>和<code class="docutils literal notranslate"><span class="pre">for</span></code>找出AQI最高的地區。在過程中，必須要注意，原本的資料的資料型態為何，甚至要注意，原本的資料是否有缺漏。</p>
+<p>這個案例企圖找出AQI最高的是哪些站台，且把該站台列印出來。注意，要列印的是AQI最高的站台，而不是最高的AQI值；此外還要注意，AQI最高的站台可能不只一個（這時候該怎麼處理？）。</p>
+<section id="find-the-maximum">
+<h3>Find the maximum<a class="headerlink" href="#find-the-maximum" title="Permalink to this headline">#</a></h3>
+<p>找到最大值或最小值的概念：就個人的邏輯思考一下，要怎麼找到一群數的最大值？解題邏輯：把第一個數先拿來當標準，之後確認過每個數，有沒有比這個數更大的，若有的話，最大值就代換成找到的那個數，沒有的話，那第一個數就是最大值。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># finding the maximum value</span>
+
+
+<span class="c1"># mina, maxa = 100, 0</span>
+
+
+
+<span class="c1">#     print maxa, a</span>
+<span class="c1"># print(max_site, maxa)</span>
+<span class="c1"># print(min_site, mina)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>大寮 84
+屏東(琉球) -1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="use-built-in-functions">
+<h3>Use built-in functions<a class="headerlink" href="#use-built-in-functions" title="Permalink to this headline">#</a></h3>
+<p>這類比較大小的簡單功能一定都有人幫忙寫好了（如以下的例子），只要記得使用它就好。但是，要記得這樣的函式其實就是透過類似上述方法來比較大小以找到最大值。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">82</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">23</span><span class="p">,</span> <span class="mi">42</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">max</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">),</span> <span class="nb">float</span><span class="p">(</span><span class="nb">sum</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">))</span>
+
+
+<span class="c1"># sorted(aqlist, reverse = True)[0]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 82 197 13 15.153846153846153
+[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 54, 65, 77, 58, -1, 18, 20, 51, 47, 34, 66]
+大寮 84
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="find-top-n">
+<h3>Find top n<a class="headerlink" href="#find-top-n" title="Permalink to this headline">#</a></h3>
+<p>前面的例子是只要找最大值，所以只需要用一個變數來存放最大值。但現在的任務如果是要找到前n大，那就必須要有n個變數來儲存。往往實用上這個n還常常開放給使用者自行輸入，必須是可變動的。那最好的解決方法就是，乾脆把所有數值由大到小排列好，放在一個List裡面，然後看看要取前n大，就用List Slicing取出前面n個數值。</p>
+<section id="sorted-by-sorted-function">
+<h4>Sorted by <code class="docutils literal notranslate"><span class="pre">sorted</span></code> function<a class="headerlink" href="#sorted-by-sorted-function" title="Permalink to this headline">#</a></h4>
+<ol class="arabic simple">
+<li><p>開一個空的List，用For將所有資料走訪一遍，把所有的AQI的值給<code class="docutils literal notranslate"><span class="pre">append()</span></code>在該List中。</p></li>
+<li><p>存起來以後，我用<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>這個函式把這些值做排序。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1">## Use a list to store all PM2.5 value</span>
+
+<span class="n">aqlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="n">aqlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s2">&quot;AQI&quot;</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span>
+
+
+
+
+
+        
+<span class="c1">## sort the list by sorted()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 54, 65, 77, 58, -1, 18, 20, 51, 47, 34, 66]
+大寮 84
+小港 76
+仁武 78
+屏東 79
+高雄(湖內) 77
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="practice-print-out-the-site-which-values-are-larger-than-the-first-quarter">
+<h3>(Practice) Print out the site which values are larger than the first quarter<a class="headerlink" href="#practice-print-out-the-site-which-values-are-larger-than-the-first-quarter" title="Permalink to this headline">#</a></h3>
+<p>有了排序後的List，就可以很方便地取一個閾值把要的資料取出來（最大值、前四分之一大的值或者是前三大的值），例如把大於該閾值的站台都給列印出來，即為所求。</p>
+</section>
+<section id="practice-print-out-sites-with-top-3-serious-values">
+<h3>(Practice) Print out sites with top 3 serious values<a class="headerlink" href="#practice-print-out-sites-with-top-3-serious-values" title="Permalink to this headline">#</a></h3>
+<p>取出Top-3的範例</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">aqlist</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">3</span><span class="p">])</span>
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span>
+    <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">aqlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103
+金門 126
+馬公 115
+馬祖 122
+</pre></div>
+</div>
+</div>
+</div>
+<section id="option-by-comperhensive-style">
+<h4>(Option) By comperhensive style<a class="headerlink" href="#option-by-comperhensive-style" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqlist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="p">[(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">],</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span> <span class="k">if</span> <span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="o">&gt;=</span> <span class="n">aqlist</span><span class="p">[</span><span class="mi">2</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;大寮&#39;, &#39;84&#39;), (&#39;仁武&#39;, &#39;78&#39;), (&#39;屏東&#39;, &#39;79&#39;)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="option-sorting-algorithm-by-hand">
+<h3>(Option) Sorting Algorithm by hand<a class="headerlink" href="#option-sorting-algorithm-by-hand" title="Permalink to this headline">#</a></h3>
+<p>前例用了一個<code class="docutils literal notranslate"><span class="pre">sorted</span></code>函式就排序了所有的AQI的值，那這類<code class="docutils literal notranslate"><span class="pre">sorted</span></code>的排序函式是怎麼寫的呢？排序邏輯可以有很多種，但最容易理解的一種可以用兩層的排序演算法來達成。觀念很簡單：</p>
+<ol class="arabic simple">
+<li><p>先抓住第一個，一一和後面比較，看看有沒有人比它大，有的話，就和後面做置換（Swap），沒有的話就不動，這樣跑過一輪，就可以保證第一個最大。</p></li>
+<li><p>接下來抓住第二個，一一和後面比較，看看有沒有人比它大，，有的話，就和後面做置換（Swap），沒有的話就不動，這樣跑過一輪，就可以保證第二個是次大的。</p></li>
+<li><p>依此類推。</p></li>
+</ol>
+<p>Reference</p>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://www.geeksforgeeks.org/bubble-sort/">https://www.geeksforgeeks.org/bubble-sort/</a></p></li>
+<li><p><a class="reference external" href="https://en.wikipedia.org/wiki/Bubble_sort">https://en.wikipedia.org/wiki/Bubble_sort</a></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">5</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">8</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqlist</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="n">site_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">:</span><span class="n">x</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ND&quot;</span><span class="p">:</span>
+        <span class="n">aqlist</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]))</span>
+        <span class="n">site_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;SiteName&#39;</span><span class="p">])</span>
+        
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)):</span>
+    <span class="k">for</span> <span class="n">j</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">i</span><span class="o">+</span><span class="mi">1</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)):</span>
+        <span class="k">if</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span> <span class="o">&lt;</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">]:</span>
+            <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">],</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">]</span> <span class="o">=</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">j</span><span class="p">],</span> <span class="n">aqlist</span><span class="p">[</span><span class="n">i</span><span class="p">]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">aqlist</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84, 79, 78, 77, 76, 73, 71, 71, 71, 71, 70, 68, 67, 67, 67, 67, 66, 66, 66, 65, 65, 65, 63, 62, 62, 62, 61, 61, 60, 59, 58, 58, 57, 57, 54, 54, 54, 52, 51, 48, 47, 47, 43, 43, 43, 39, 36, 36, 34, 30, 29, 29, 28, 23, 22, 21, 21, 20, 20, 20, 20, 19, 19, 19, 18, 18, 18, 17, 17, 16, 15, 14, 14, 13, 13, 13, 13, 13, 13, 13, 12, 12, 10, 9, 7, -1]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="convert-data-to-dataframe">
+<h2>Convert data to dataframe<a class="headerlink" href="#convert-data-to-dataframe" title="Permalink to this headline">#</a></h2>
+<p>操作開放資料的時候，經常會為了方便處理，把資料轉成未來pandas可以處理的形式。而這樣的形式通常是list of dictionary。</p>
+<section id="aqx-data-to-pandas-dataframe">
+<h3>AQX data to pandas dataframe<a class="headerlink" href="#aqx-data-to-pandas-dataframe" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2022/09/24%2012:00&quot;</span>
+<span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">aqdata</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>SiteID</th>
+      <th>SiteName</th>
+      <th>AQI</th>
+      <th>ViewName</th>
+      <th>AreaName</th>
+      <th>AreaID</th>
+      <th>COUNTY_Eng</th>
+      <th>POLLUTANT</th>
+      <th>SiteAddres</th>
+      <th>TWD97_Lon</th>
+      <th>TWD97_Lat</th>
+      <th>SiteType</th>
+      <th>SiteType2</th>
+      <th>siteowner</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>1</td>
+      <td>二林</td>
+      <td>61</td>
+      <td>二林</td>
+      <td>中部空品區</td>
+      <td>3</td>
+      <td>Changhua</td>
+      <td>臭氧八小時</td>
+      <td>彰化縣二林鎮萬合里江山巷1號</td>
+      <td>120.409653</td>
+      <td>23.925175</td>
+      <td>一般站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>2</td>
+      <td>三重</td>
+      <td>53</td>
+      <td>三重</td>
+      <td>北部空品區</td>
+      <td>1</td>
+      <td>Newtaipei</td>
+      <td>二氧化氮</td>
+      <td>新北市三重區三和路重陽路交口</td>
+      <td>121.493806</td>
+      <td>25.072611</td>
+      <td>交通站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>3</td>
+      <td>三義</td>
+      <td>61</td>
+      <td>三義</td>
+      <td>竹苗空品區</td>
+      <td>2</td>
+      <td>Miaoli</td>
+      <td>臭氧八小時</td>
+      <td>苗栗縣三義鄉西湖村上湖61-1號</td>
+      <td>120.758833</td>
+      <td>24.382942</td>
+      <td>一般站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>4</td>
+      <td>土城</td>
+      <td>46</td>
+      <td>土城</td>
+      <td>北部空品區</td>
+      <td>1</td>
+      <td>Newtaipei</td>
+      <td></td>
+      <td>新北市土城區學府路一段241號</td>
+      <td>121.451861</td>
+      <td>24.982528</td>
+      <td>一般站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>5</td>
+      <td>士林</td>
+      <td>45</td>
+      <td>士林</td>
+      <td>北部空品區</td>
+      <td>1</td>
+      <td>Taipei</td>
+      <td></td>
+      <td>臺北市北投區文林北路77號</td>
+      <td>121.516664</td>
+      <td>25.103340</td>
+      <td>一般站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>81</th>
+      <td>91</td>
+      <td>新北(樹林)</td>
+      <td>49</td>
+      <td>新北(樹林)</td>
+      <td>北部空品區</td>
+      <td>1</td>
+      <td>Newtaipei</td>
+      <td></td>
+      <td>新北市樹林區學勤路555號</td>
+      <td>121.383528</td>
+      <td>24.949028</td>
+      <td>行動站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>82</th>
+      <td>92</td>
+      <td>臺南(學甲)</td>
+      <td>47</td>
+      <td>臺南(學甲)</td>
+      <td>雲嘉南空品區</td>
+      <td>4</td>
+      <td>Tainan</td>
+      <td></td>
+      <td>726台南市學甲區華宗路540號</td>
+      <td>120.183397</td>
+      <td>23.236881</td>
+      <td>行動站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>83</th>
+      <td>93</td>
+      <td>屏東(枋寮)</td>
+      <td>34</td>
+      <td>屏東(枋寮)</td>
+      <td>高屏空品區</td>
+      <td>5</td>
+      <td>Pingtung</td>
+      <td></td>
+      <td>屏東縣枋寮鄉建興路39號</td>
+      <td>120.590369</td>
+      <td>22.384742</td>
+      <td>行動站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>84</th>
+      <td>96</td>
+      <td>富貴角</td>
+      <td>93</td>
+      <td>富貴角</td>
+      <td>北部空品區</td>
+      <td>1</td>
+      <td>Newtaipei</td>
+      <td>臭氧八小時</td>
+      <td></td>
+      <td>121.547380</td>
+      <td>25.292280</td>
+      <td>背景站</td>
+      <td>中央政府</td>
+      <td>行政院環境保護署</td>
+    </tr>
+    <tr>
+      <th>85</th>
+      <td>136</td>
+      <td>大城</td>
+      <td>64</td>
+      <td>大城</td>
+      <td>中部空品區</td>
+      <td>3</td>
+      <td>Changhua</td>
+      <td>臭氧八小時</td>
+      <td>彰化縣大城鄉西厝路98號</td>
+      <td>120.269642</td>
+      <td>23.854931</td>
+      <td>其它站</td>
+      <td>中央政府</td>
+      <td></td>
+    </tr>
+  </tbody>
+</table>
+<p>86 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="youbike-data-to-pandas-dataframe">
+<h3>Youbike data to pandas dataframe<a class="headerlink" href="#youbike-data-to-pandas-dataframe" title="Permalink to this headline">#</a></h3>
+<p>Youbike的原始資料為dict-of-dict的型態，所以需要轉為list-of-dict比較好轉成pandas的dataframe。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="problematic-by-converting-directly">
+<h4>Problematic by converting directly<a class="headerlink" href="#problematic-by-converting-directly" title="Permalink to this headline">#</a></h4>
+<ul class="simple">
+<li><p>如果直接用<code class="docutils literal notranslate"><span class="pre">pd.Dataframe</span></code>轉dict-of-dict會出現什麼狀況呢？</p></li>
+<li><p>結果是dict的key，也就是Youbike站的id，變成dataframe的欄。看似好像就是個表格，應該可以用，但實際上這違背了原本dataframe的設計。這類sheet-like的設計，無論是EXCEL、Google sheet、R、Python、Stata、SPSS的想法都一樣，資料直欄（Column)就是不同的變數，而資料橫列（Row）就是每筆資料。</p></li>
+<li><p>以Youbike資料來說，每筆資料就應該是每個站台的資料，所以應該擺在資料列，而sno、sname、tot、sbi等變數，就應該擺在資料欄。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>0001</th>
+      <th>0002</th>
+      <th>0004</th>
+      <th>0005</th>
+      <th>0006</th>
+      <th>0007</th>
+      <th>0008</th>
+      <th>0009</th>
+      <th>0010</th>
+      <th>0011</th>
+      <th>...</th>
+      <th>0395</th>
+      <th>0396</th>
+      <th>0397</th>
+      <th>0398</th>
+      <th>0400</th>
+      <th>0401</th>
+      <th>0402</th>
+      <th>0403</th>
+      <th>0404</th>
+      <th>0405</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>sno</th>
+      <td>0001</td>
+      <td>0002</td>
+      <td>0004</td>
+      <td>0005</td>
+      <td>0006</td>
+      <td>0007</td>
+      <td>0008</td>
+      <td>0009</td>
+      <td>0010</td>
+      <td>0011</td>
+      <td>...</td>
+      <td>0395</td>
+      <td>0396</td>
+      <td>0397</td>
+      <td>0398</td>
+      <td>0400</td>
+      <td>0401</td>
+      <td>0402</td>
+      <td>0403</td>
+      <td>0404</td>
+      <td>0405</td>
+    </tr>
+    <tr>
+      <th>sna</th>
+      <td>捷運市政府站(3號出口)</td>
+      <td>捷運國父紀念館站(2號出口)</td>
+      <td>市民廣場</td>
+      <td>興雅國中</td>
+      <td>臺北南山廣場</td>
+      <td>信義廣場(台北101)</td>
+      <td>世貿三館</td>
+      <td>松德站</td>
+      <td>台北市災害應變中心</td>
+      <td>三張犁</td>
+      <td>...</td>
+      <td>安強公園</td>
+      <td>新東街51巷口</td>
+      <td>劍潭海外青年活動中心</td>
+      <td>聯合醫院陽明院區</td>
+      <td>和平敦化路口</td>
+      <td>南京新生路口</td>
+      <td>下灣公園</td>
+      <td>捷運內湖站(1號出口)</td>
+      <td>民族延平路口</td>
+      <td>捷運科技大樓站(台北教育大學)</td>
+    </tr>
+    <tr>
+      <th>tot</th>
+      <td>88</td>
+      <td>16</td>
+      <td>32</td>
+      <td>32</td>
+      <td>54</td>
+      <td>40</td>
+      <td>32</td>
+      <td>20</td>
+      <td>36</td>
+      <td>16</td>
+      <td>...</td>
+      <td>10</td>
+      <td>12</td>
+      <td>26</td>
+      <td>24</td>
+      <td>12</td>
+      <td>16</td>
+      <td>12</td>
+      <td>10</td>
+      <td>10</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>sbi</th>
+      <td>0</td>
+      <td>0</td>
+      <td>20</td>
+      <td>1</td>
+      <td>0</td>
+      <td>0</td>
+      <td>0</td>
+      <td>19</td>
+      <td>30</td>
+      <td>11</td>
+      <td>...</td>
+      <td>10</td>
+      <td>6</td>
+      <td>6</td>
+      <td>7</td>
+      <td>2</td>
+      <td>15</td>
+      <td>4</td>
+      <td>0</td>
+      <td>7</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>sarea</th>
+      <td>信義區</td>
+      <td>大安區</td>
+      <td>信義區</td>
+      <td>信義區</td>
+      <td>信義區</td>
+      <td>信義區</td>
+      <td>信義區</td>
+      <td>信義區</td>
+      <td>信義區</td>
+      <td>信義區</td>
+      <td>...</td>
+      <td>信義區</td>
+      <td>松山區</td>
+      <td>士林區</td>
+      <td>士林區</td>
+      <td>大安區</td>
+      <td>中山區</td>
+      <td>內湖區</td>
+      <td>內湖區</td>
+      <td>大同區</td>
+      <td>大安區</td>
+    </tr>
+    <tr>
+      <th>mday</th>
+      <td>20220926223425</td>
+      <td>20220926223418</td>
+      <td>20220926223443</td>
+      <td>20220926223442</td>
+      <td>20220926223440</td>
+      <td>20220926223441</td>
+      <td>20220926223415</td>
+      <td>20220926223426</td>
+      <td>20220926223416</td>
+      <td>20220926223432</td>
+      <td>...</td>
+      <td>20220926223343</td>
+      <td>20220926223420</td>
+      <td>20220926223442</td>
+      <td>20220926223441</td>
+      <td>20220926223433</td>
+      <td>20220926223432</td>
+      <td>20220926223427</td>
+      <td>20220926223436</td>
+      <td>20220926223429</td>
+      <td>20220926223439</td>
+    </tr>
+    <tr>
+      <th>lat</th>
+      <td>25.0408578889</td>
+      <td>25.041254</td>
+      <td>25.0360361111</td>
+      <td>25.0365638889</td>
+      <td>25.034047</td>
+      <td>25.0330388889</td>
+      <td>25.0352138889</td>
+      <td>25.031785</td>
+      <td>25.0286611111</td>
+      <td>25.034937</td>
+      <td>...</td>
+      <td>25.036844</td>
+      <td>25.061501</td>
+      <td>25.079603</td>
+      <td>25.104546</td>
+      <td>25.024440</td>
+      <td>25.051944</td>
+      <td>25.065159</td>
+      <td>25.083868</td>
+      <td>25.068653</td>
+      <td>25.024685</td>
+    </tr>
+    <tr>
+      <th>lng</th>
+      <td>121.567904444</td>
+      <td>121.55742</td>
+      <td>121.562325</td>
+      <td>121.5686639</td>
+      <td>121.565973</td>
+      <td>121.565619444</td>
+      <td>121.563688889</td>
+      <td>121.57448</td>
+      <td>121.566116667</td>
+      <td>121.55762</td>
+      <td>...</td>
+      <td>121.575413</td>
+      <td>121.563318</td>
+      <td>121.523700</td>
+      <td>121.531949</td>
+      <td>121.549076</td>
+      <td>121.527661</td>
+      <td>121.595611</td>
+      <td>121.593929</td>
+      <td>121.510569</td>
+      <td>121.544156</td>
+    </tr>
+    <tr>
+      <th>ar</th>
+      <td>忠孝東路/松仁路(東南側)</td>
+      <td>忠孝東路四段/光復南路口(西南側)</td>
+      <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
+      <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
+      <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+      <td>松智路/信義路(東北側) (鄰近台北101)</td>
+      <td>市府路/松壽路(東南側) (鄰近台北101/台北世界貿易中心/台北探索館)</td>
+      <td>台北市信義區松德路300號</td>
+      <td>台北市信義區莊敬路391巷11弄2號</td>
+      <td>光復南路/基隆路一段364巷(鄰近大安親子館)</td>
+      <td>...</td>
+      <td>虎林街212巷58號(西南側)</td>
+      <td>三民路 / 新東街51巷口(東側)(鄰近松山親子館)</td>
+      <td>通河街 / 通河街2巷(南側)(鄰近圓山大飯店/劍潭公園)(鄰近芝山岩/芝山巖惠濟宮/芝山文...</td>
+      <td>雨聲街105號(南側)</td>
+      <td>和平東路三段 / 敦化南路二段口(東側)</td>
+      <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
+      <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
+      <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
+      <td>民族西路 310 號前方</td>
+      <td>和平東路二段134號(前方)</td>
+    </tr>
+    <tr>
+      <th>sareaen</th>
+      <td>Xinyi Dist.</td>
+      <td>Daan Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>Xinyi Dist.</td>
+      <td>...</td>
+      <td>Xinyi Dist.</td>
+      <td>Songshan Dist.</td>
+      <td>Shilin Dist.</td>
+      <td>Shilin Dist.</td>
+      <td>Daan Dist.</td>
+      <td>Zhongshan Dist.</td>
+      <td>Neihu Dist.</td>
+      <td>Neihu Dist.</td>
+      <td>Datong Dist.</td>
+      <td>Daan Dist.</td>
+    </tr>
+    <tr>
+      <th>snaen</th>
+      <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
+      <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
+      <td>Citizen Square</td>
+      <td>Xingya Jr. High School</td>
+      <td>NAN SHAN PLAZA</td>
+      <td>Xinyi Square(Taipei 101)</td>
+      <td>TWTC Exhibition Hall 3</td>
+      <td>Songde</td>
+      <td>Emergency Operations Center of Taipei City</td>
+      <td>Sanchangli</td>
+      <td>...</td>
+      <td>Anciang Park</td>
+      <td>Ln.51,Xindong St.</td>
+      <td>Chientan Overseas Youth Activity Center</td>
+      <td>Taipei City Hospital (Yangming Branch)</td>
+      <td>Heping &amp; Dunhua Intersection</td>
+      <td>Nanjing &amp; Xinsheng Intersection</td>
+      <td>Siawan Park</td>
+      <td>MRT Neihu Sta.1(Exit.1)</td>
+      <td>Minzu &amp; Yanping Intersection</td>
+      <td>MRT Technology Building Station</td>
+    </tr>
+    <tr>
+      <th>aren</th>
+      <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
+      <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
+      <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
+      <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Xinyi.</td>
+      <td>The S.E. side of Road Shifu &amp; Road Song Shou.</td>
+      <td>No.300, Songde Rd.(32)</td>
+      <td>No.2, Aly. 11, Ln. 391, Zhuangjing Rd.</td>
+      <td>The S.E. side of Road Guangfu South &amp; Ln. 346,...</td>
+      <td>...</td>
+      <td>No.58, Ln. 212, Hulin St.</td>
+      <td>Sanmin Rd. / Ln. 51, Xindong St. intersection</td>
+      <td>Tonghe St. / Ln. 2, Tonghe St. intersection</td>
+      <td>No.105, Yusheng St.</td>
+      <td>Sec. 3, Heping E. Rd. / Sec. 2, Dunhua S. Rd. ...</td>
+      <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
+      <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
+      <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
+      <td>No.310, Minzu W. Rd.</td>
+      <td>No. 134, Heping E. Rd. (front)</td>
+    </tr>
+    <tr>
+      <th>bemp</th>
+      <td>84</td>
+      <td>16</td>
+      <td>12</td>
+      <td>31</td>
+      <td>54</td>
+      <td>39</td>
+      <td>41</td>
+      <td>1</td>
+      <td>0</td>
+      <td>5</td>
+      <td>...</td>
+      <td>0</td>
+      <td>6</td>
+      <td>18</td>
+      <td>16</td>
+      <td>10</td>
+      <td>1</td>
+      <td>8</td>
+      <td>10</td>
+      <td>3</td>
+      <td>37</td>
+    </tr>
+    <tr>
+      <th>act</th>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>14 rows × 371 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="solution-one-convert-data-structure">
+<h4>Solution One: Convert data structure<a class="headerlink" href="#solution-one-convert-data-structure" title="Permalink to this headline">#</a></h4>
+<p>仿照AQX的資料結構，在讀取資料後，先開一個空的<code class="docutils literal notranslate"><span class="pre">site_list</span></code>，然後一一把讀到的每個dict用<code class="docutils literal notranslate"><span class="pre">append()</span></code>一一放到list中。
+最後在用<code class="docutils literal notranslate"><span class="pre">pd.DataFrame(list_of_dict)</span></code>來轉換成dataframe。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">site_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">site_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">site_list</span><span class="p">[:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">site</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;sno&#39;: &#39;0001&#39;, &#39;sna&#39;: &#39;捷運市政府站(3號出口)&#39;, &#39;tot&#39;: &#39;88&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220926223425&#39;, &#39;lat&#39;: &#39;25.0408578889&#39;, &#39;lng&#39;: &#39;121.567904444&#39;, &#39;ar&#39;: &#39;忠孝東路/松仁路(東南側)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;MRT Taipei City Hall Stataion(Exit 3)-2&#39;, &#39;aren&#39;: &#39;The S.W. side of Road Zhongxiao East Road &amp; Road Chung Yan.&#39;, &#39;bemp&#39;: &#39;84&#39;, &#39;act&#39;: &#39;1&#39;}
+--------------------------------------------------------------------------------
+{&#39;sno&#39;: &#39;0002&#39;, &#39;sna&#39;: &#39;捷運國父紀念館站(2號出口)&#39;, &#39;tot&#39;: &#39;16&#39;, &#39;sbi&#39;: &#39;0&#39;, &#39;sarea&#39;: &#39;大安區&#39;, &#39;mday&#39;: &#39;20220926223418&#39;, &#39;lat&#39;: &#39;25.041254&#39;, &#39;lng&#39;: &#39;121.55742&#39;, &#39;ar&#39;: &#39;忠孝東路四段/光復南路口(西南側)&#39;, &#39;sareaen&#39;: &#39;Daan Dist.&#39;, &#39;snaen&#39;: &#39;MRT S.Y.S Memorial Hall Stataion(Exit 2.)&#39;, &#39;aren&#39;: &#39;Sec,4. Zhongxiao E.Rd/GuangFu S. Rd&#39;, &#39;bemp&#39;: &#39;16&#39;, &#39;act&#39;: &#39;1&#39;}
+--------------------------------------------------------------------------------
+{&#39;sno&#39;: &#39;0004&#39;, &#39;sna&#39;: &#39;市民廣場&#39;, &#39;tot&#39;: &#39;32&#39;, &#39;sbi&#39;: &#39;20&#39;, &#39;sarea&#39;: &#39;信義區&#39;, &#39;mday&#39;: &#39;20220926223443&#39;, &#39;lat&#39;: &#39;25.0360361111&#39;, &#39;lng&#39;: &#39;121.562325&#39;, &#39;ar&#39;: &#39;市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)&#39;, &#39;sareaen&#39;: &#39;Xinyi Dist.&#39;, &#39;snaen&#39;: &#39;Citizen Square&#39;, &#39;aren&#39;: &#39;The N.W. side of Road Shifu &amp; Road Song Shou.&#39;, &#39;bemp&#39;: &#39;12&#39;, &#39;act&#39;: &#39;1&#39;}
+--------------------------------------------------------------------------------
+</pre></div>
+</div>
+</div>
+</div>
+<p>最後一個步驟就是用<code class="docutils literal notranslate"><span class="pre">pd.DataFrame()</span></code>將其轉成pandas dataframe。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">site_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>sarea</th>
+      <th>mday</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>ar</th>
+      <th>sareaen</th>
+      <th>snaen</th>
+      <th>aren</th>
+      <th>bemp</th>
+      <th>act</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>88</td>
+      <td>0</td>
+      <td>信義區</td>
+      <td>20220926223425</td>
+      <td>25.0408578889</td>
+      <td>121.567904444</td>
+      <td>忠孝東路/松仁路(東南側)</td>
+      <td>Xinyi Dist.</td>
+      <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
+      <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
+      <td>84</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0002</td>
+      <td>捷運國父紀念館站(2號出口)</td>
+      <td>16</td>
+      <td>0</td>
+      <td>大安區</td>
+      <td>20220926223418</td>
+      <td>25.041254</td>
+      <td>121.55742</td>
+      <td>忠孝東路四段/光復南路口(西南側)</td>
+      <td>Daan Dist.</td>
+      <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
+      <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
+      <td>16</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0004</td>
+      <td>市民廣場</td>
+      <td>32</td>
+      <td>20</td>
+      <td>信義區</td>
+      <td>20220926223443</td>
+      <td>25.0360361111</td>
+      <td>121.562325</td>
+      <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
+      <td>Xinyi Dist.</td>
+      <td>Citizen Square</td>
+      <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
+      <td>12</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0005</td>
+      <td>興雅國中</td>
+      <td>32</td>
+      <td>1</td>
+      <td>信義區</td>
+      <td>20220926223442</td>
+      <td>25.0365638889</td>
+      <td>121.5686639</td>
+      <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>Xingya Jr. High School</td>
+      <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
+      <td>31</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>0</td>
+      <td>信義區</td>
+      <td>20220926223440</td>
+      <td>25.034047</td>
+      <td>121.565973</td>
+      <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>NAN SHAN PLAZA</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+      <td>54</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>0401</td>
+      <td>南京新生路口</td>
+      <td>16</td>
+      <td>15</td>
+      <td>中山區</td>
+      <td>20220926223432</td>
+      <td>25.051944</td>
+      <td>121.527661</td>
+      <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
+      <td>Zhongshan Dist.</td>
+      <td>Nanjing &amp; Xinsheng Intersection</td>
+      <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>0402</td>
+      <td>下灣公園</td>
+      <td>12</td>
+      <td>4</td>
+      <td>內湖區</td>
+      <td>20220926223427</td>
+      <td>25.065159</td>
+      <td>121.595611</td>
+      <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
+      <td>Neihu Dist.</td>
+      <td>Siawan Park</td>
+      <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
+      <td>8</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>368</th>
+      <td>0403</td>
+      <td>捷運內湖站(1號出口)</td>
+      <td>10</td>
+      <td>0</td>
+      <td>內湖區</td>
+      <td>20220926223436</td>
+      <td>25.083868</td>
+      <td>121.593929</td>
+      <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
+      <td>Neihu Dist.</td>
+      <td>MRT Neihu Sta.1(Exit.1)</td>
+      <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>369</th>
+      <td>0404</td>
+      <td>民族延平路口</td>
+      <td>10</td>
+      <td>7</td>
+      <td>大同區</td>
+      <td>20220926223429</td>
+      <td>25.068653</td>
+      <td>121.510569</td>
+      <td>民族西路 310 號前方</td>
+      <td>Datong Dist.</td>
+      <td>Minzu &amp; Yanping Intersection</td>
+      <td>No.310, Minzu W. Rd.</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>370</th>
+      <td>0405</td>
+      <td>捷運科技大樓站(台北教育大學)</td>
+      <td>46</td>
+      <td>6</td>
+      <td>大安區</td>
+      <td>20220926223439</td>
+      <td>25.024685</td>
+      <td>121.544156</td>
+      <td>和平東路二段134號(前方)</td>
+      <td>Daan Dist.</td>
+      <td>MRT Technology Building Station</td>
+      <td>No. 134, Heping E. Rd. (front)</td>
+      <td>37</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>371 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="good-use-values-to-retrive-all-values">
+<h4>(Good) Use <code class="docutils literal notranslate"><span class="pre">values()</span></code> to retrive all values<a class="headerlink" href="#good-use-values-to-retrive-all-values" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>sarea</th>
+      <th>mday</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>ar</th>
+      <th>sareaen</th>
+      <th>snaen</th>
+      <th>aren</th>
+      <th>bemp</th>
+      <th>act</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>88</td>
+      <td>0</td>
+      <td>信義區</td>
+      <td>20220926223425</td>
+      <td>25.0408578889</td>
+      <td>121.567904444</td>
+      <td>忠孝東路/松仁路(東南側)</td>
+      <td>Xinyi Dist.</td>
+      <td>MRT Taipei City Hall Stataion(Exit 3)-2</td>
+      <td>The S.W. side of Road Zhongxiao East Road &amp; Ro...</td>
+      <td>84</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0002</td>
+      <td>捷運國父紀念館站(2號出口)</td>
+      <td>16</td>
+      <td>0</td>
+      <td>大安區</td>
+      <td>20220926223418</td>
+      <td>25.041254</td>
+      <td>121.55742</td>
+      <td>忠孝東路四段/光復南路口(西南側)</td>
+      <td>Daan Dist.</td>
+      <td>MRT S.Y.S Memorial Hall Stataion(Exit 2.)</td>
+      <td>Sec,4. Zhongxiao E.Rd/GuangFu S. Rd</td>
+      <td>16</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0004</td>
+      <td>市民廣場</td>
+      <td>32</td>
+      <td>20</td>
+      <td>信義區</td>
+      <td>20220926223443</td>
+      <td>25.0360361111</td>
+      <td>121.562325</td>
+      <td>市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)</td>
+      <td>Xinyi Dist.</td>
+      <td>Citizen Square</td>
+      <td>The N.W. side of Road Shifu &amp; Road Song Shou.</td>
+      <td>12</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0005</td>
+      <td>興雅國中</td>
+      <td>32</td>
+      <td>1</td>
+      <td>信義區</td>
+      <td>20220926223442</td>
+      <td>25.0365638889</td>
+      <td>121.5686639</td>
+      <td>松仁路/松仁路95巷(東南側)(鄰近信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>Xingya Jr. High School</td>
+      <td>The S.E. side of Road Songren &amp; Ln. 95, Songre...</td>
+      <td>31</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>0</td>
+      <td>信義區</td>
+      <td>20220926223440</td>
+      <td>25.034047</td>
+      <td>121.565973</td>
+      <td>松智路/松廉路(東北側) (鄰近台北101/信義商圈/台北信義威秀影城)</td>
+      <td>Xinyi Dist.</td>
+      <td>NAN SHAN PLAZA</td>
+      <td>The N.E. side of Road Song Zhi &amp; Road Song Lian.</td>
+      <td>54</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>366</th>
+      <td>0401</td>
+      <td>南京新生路口</td>
+      <td>16</td>
+      <td>15</td>
+      <td>中山區</td>
+      <td>20220926223432</td>
+      <td>25.051944</td>
+      <td>121.527661</td>
+      <td>新生北路一段 / 南京東路一段口(橋墩下方)(鄰近林森公園/康樂公園)</td>
+      <td>Zhongshan Dist.</td>
+      <td>Nanjing &amp; Xinsheng Intersection</td>
+      <td>Sec. 1, Xinsheng N. Rd. / Sec. 1, Nanjing E. Rd.</td>
+      <td>1</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>367</th>
+      <td>0402</td>
+      <td>下灣公園</td>
+      <td>12</td>
+      <td>4</td>
+      <td>內湖區</td>
+      <td>20220926223427</td>
+      <td>25.065159</td>
+      <td>121.595611</td>
+      <td>民權東路六段206巷 / 民權東路六段190巷75弄口</td>
+      <td>Neihu Dist.</td>
+      <td>Siawan Park</td>
+      <td>Ln. 206, Sec. 6, Minquan E. Rd. / Aly. 75, Ln....</td>
+      <td>8</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>368</th>
+      <td>0403</td>
+      <td>捷運內湖站(1號出口)</td>
+      <td>10</td>
+      <td>0</td>
+      <td>內湖區</td>
+      <td>20220926223436</td>
+      <td>25.083868</td>
+      <td>121.593929</td>
+      <td>成功路四段182巷 / 成功路四段182巷6弄口(東南側)</td>
+      <td>Neihu Dist.</td>
+      <td>MRT Neihu Sta.1(Exit.1)</td>
+      <td>Ln. 182, Sec. 4, Chenggong Rd. / Aly. 6, Ln. 1...</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>369</th>
+      <td>0404</td>
+      <td>民族延平路口</td>
+      <td>10</td>
+      <td>7</td>
+      <td>大同區</td>
+      <td>20220926223429</td>
+      <td>25.068653</td>
+      <td>121.510569</td>
+      <td>民族西路 310 號前方</td>
+      <td>Datong Dist.</td>
+      <td>Minzu &amp; Yanping Intersection</td>
+      <td>No.310, Minzu W. Rd.</td>
+      <td>3</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>370</th>
+      <td>0405</td>
+      <td>捷運科技大樓站(台北教育大學)</td>
+      <td>46</td>
+      <td>6</td>
+      <td>大安區</td>
+      <td>20220926223439</td>
+      <td>25.024685</td>
+      <td>121.544156</td>
+      <td>和平東路二段134號(前方)</td>
+      <td>Daan Dist.</td>
+      <td>MRT Technology Building Station</td>
+      <td>No. 134, Heping E. Rd. (front)</td>
+      <td>37</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+<p>371 rows × 14 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P04p1_for.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P04 Practice01: for loop</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P04p3_twitter_users.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P04 Practice03 Twitter Users</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#aqx">空氣品質指數（AQX）案例研究</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-aqx-data">Load AQX data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#traverse-aqi-content">Traverse AQI content</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-and-observe-each-data-entry">Print and observe each data entry</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#range-to-traverse-list-by-index"><code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#enumerate-to-access-index-and-item-simultaneously"><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and item simultaneously</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-data-for-search-and-query">Prepare data for search and query</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-01-search-with-for-loop">Method 01. Search with for-loop</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-02-convert-data-structure-hashing">Method 02. Convert data structure - hashing</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-new-dict-to-json">Dump new dict to .json</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#rescale-aqi-index">Rescale AQI index</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-rescale-better">(Option) Rescale better</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-prominant-data">Detect prominant data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-the-maximum">Find the maximum</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#use-built-in-functions">Use built-in functions</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#find-top-n">Find top n</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorted-by-sorted-function">Sorted by <code class="docutils literal notranslate"><span class="pre">sorted</span></code> function</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-print-out-the-site-which-values-are-larger-than-the-first-quarter">(Practice) Print out the site which values are larger than the first quarter</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#practice-print-out-sites-with-top-3-serious-values">(Practice) Print out sites with top 3 serious values</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#option-by-comperhensive-style">(Option) By comperhensive style</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#option-sorting-algorithm-by-hand">(Option) Sorting Algorithm by hand</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-data-to-dataframe">Convert data to dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#aqx-data-to-pandas-dataframe">AQX data to pandas dataframe</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#youbike-data-to-pandas-dataframe">Youbike data to pandas dataframe</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#problematic-by-converting-directly">Problematic by converting directly</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-one-convert-data-structure">Solution One: Convert data structure</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#good-use-values-to-retrive-all-values">(Good) Use <code class="docutils literal notranslate"><span class="pre">values()</span></code> to retrive all values</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

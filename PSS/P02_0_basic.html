@@ -1,0 +1,1280 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P02-Python Basic &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P02_0_basic';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Practices 02 for Python basic" href="P02p_basic.html" />
+    <link rel="prev" title="P01-Practice" href="P01p_counting.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">P02-Python Basic</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P02_0_basic.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P02_0_basic.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P02_0_basic.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P02-Python Basic</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print">print</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">印出字串</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">列印計算式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-multiple-terms">Print multiple terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-tab-and-newline">Print tab and newline</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable">Variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment  =</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-of-variables">Naming of variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python 內建資料型態</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string">String</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-string">Defining String</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-print-formatting">More: Print formatting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-by-assignments">Type by Assignments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-type-to-check-data-type">Using <code class="docutils literal notranslate"><span class="pre">type()</span></code> to check data type</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-data-type">Converting data type</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithemetic-operations">Arithemetic operations +, -, *, **, /, %</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p02-python-basic">
+<h1>P02-Python Basic<a class="headerlink" href="#p02-python-basic" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://docs.google.com/presentation/d/e/2PACX-1vSlofAj4mFI_gXntfgMTelq-9qKHj1XE6-36DI87vGoKdyW9vaF-jeJzZqGIT7d-kknaQQc4M4DfROx/pub?start=false&amp;loop=false&amp;delayms=3000">Slide: Py02 Basic</a></p></li>
+</ul>
+<div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
+<p><strong>Objectives:</strong></p>
+<ul class="simple">
+<li><p><strong>Print and print format</strong>: 介紹如何使用 <code class="docutils literal notranslate"><span class="pre">print()</span></code> 函數，包括格式化輸出。</p>
+<ul>
+<li><p><strong>Print multiple objects</strong>: 使用逗號在 <code class="docutils literal notranslate"><span class="pre">print()</span></code> 中輸出多個變數或物件。</p></li>
+<li><p><strong>Print with variables</strong>: 顯示變數值。</p></li>
+</ul>
+</li>
+<li><p><strong>Variables and variable types</strong>: 變數的定義和類型。</p>
+<ul>
+<li><p><strong>Naming of variable</strong>: 變數命名規則。</p></li>
+<li><p><strong>Type conversion</strong>: 數據類型轉換。</p></li>
+</ul>
+</li>
+<li><p><strong>Arithmetic operations</strong>: 四則運算和其他數學運算。</p>
+<ul>
+<li><p><strong>Example: Converting temperature format</strong>: 溫度轉換示例。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>詳細內容</strong></p>
+<ul class="simple">
+<li><p><strong>Comments</strong>: 註解的使用。</p></li>
+<li><p><strong>String</strong>: 字串的定義和操作。</p></li>
+<li><p><strong>Type by Assignments</strong>: 動態類型和賦值。</p></li>
+<li><p><strong>Using type() to check data type</strong>: 使用 <code class="docutils literal notranslate"><span class="pre">type()</span></code> 檢查數據類型。</p></li>
+<li><p><strong>Converting data type</strong>: 數據類型轉換方法。</p></li>
+<li><p>**Arithmetic operations +, -, *, <strong>, /, %</strong>: 進一步的數學運算。</p></li>
+</ul>
+</div><section id="print">
+<h2>print<a class="headerlink" href="#print" title="Permalink to this headline">#</a></h2>
+<p>語法是<code class="docutils literal notranslate"><span class="pre">print()</span></code>。</p>
+<ol class="arabic simple">
+<li><p>可用於印出字串、數字、以及變數的內容。</p></li>
+<li><p>若是一個變數的話，會印出變數的內容；</p></li>
+<li><p>若是一個「運算式」的話，會印出運算式的結果。</p></li>
+</ol>
+<section id="id1">
+<h3>印出字串<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>以下兩者是相同的，但不可以交錯使用，例如<code class="docutils literal notranslate"><span class="pre">print('hello</span> <span class="pre">world&quot;)</span></code>會產生Error。</p></li>
+<li><p>如果要印出雙引號，外部需要加上單引號；反之亦然。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;hello world&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;hello world&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;&#39;hello world&#39;&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s1">&#39;&quot;hello world&quot;&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hello world
+hello world
+&#39;hello world&#39;
+&quot;hello world&quot;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="id2">
+<h3>列印計算式<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>可以直接列印運算的結果，甚至像是<code class="docutils literal notranslate"><span class="pre">&quot;-&quot;</span></code>這種文字型態資料的也可以運算，<code class="docutils literal notranslate"><span class="pre">&quot;-&quot;*20</span></code>的意思是該符號重複20次。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="mi">1</span><span class="o">+</span><span class="mi">2</span><span class="o">+</span><span class="mi">4</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">20</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">((</span><span class="mi">3</span><span class="o">-</span><span class="mi">1</span><span class="p">)</span><span class="o">*</span><span class="mi">4</span><span class="o">+</span><span class="mi">5</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="mi">123</span><span class="o">*</span><span class="mi">345</span><span class="o">-</span><span class="p">(</span><span class="mi">188</span><span class="o">*</span><span class="mi">123</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>12
+--------------------
+13
+19311
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="print-multiple-terms">
+<h3>Print multiple terms<a class="headerlink" href="#print-multiple-terms" title="Permalink to this headline">#</a></h3>
+<p>「<code class="docutils literal notranslate"><span class="pre">,</span></code>」在<code class="docutils literal notranslate"><span class="pre">print()</span></code>中可列印數個變數或值。可以把它想像成「接下去印」的意思。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;33&quot;</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="n">c</span><span class="o">*</span><span class="mi">2</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 2 2
+33 4 6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="print-tab-and-newline">
+<h3>Print tab and newline<a class="headerlink" href="#print-tab-and-newline" title="Permalink to this headline">#</a></h3>
+<p>在程式語言中，<code class="docutils literal notranslate"><span class="pre">\t</span></code>代表一個tab，<code class="docutils literal notranslate"><span class="pre">\n</span></code>代表使用者敲Enter下去時所產生的換行符號（Newline）。這些也可以用<code class="docutils literal notranslate"><span class="pre">print()</span></code>列印出來。通常要列印<code class="docutils literal notranslate"><span class="pre">\t</span></code>或<code class="docutils literal notranslate"><span class="pre">\n</span></code>是為了使得印出更容易閱讀。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a+b = &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a*b = &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a/b = &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a%b = &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="k">b</span>)
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a**b = &quot;</span><span class="p">,</span> <span class="s2">&quot;</span><span class="se">\t</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">**</span><span class="n">b</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a+b =  	 7
+a*b =  	 10
+a/b =  	 2.5
+a%b =  	 1
+a**b =  	 25
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="comments">
+<h2>Comments<a class="headerlink" href="#comments" title="Permalink to this headline">#</a></h2>
+<p>註解（Comments）是用來讓別人或自己後續還可以看得懂自己的程式碼的。優秀的程式設計師會把註解寫得很清楚，以利團隊合作。只要是<code class="docutils literal notranslate"><span class="pre">#</span></code>開頭的程式碼便是註解，都不會被程式所執行。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># print(&quot;123&quot;)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;This is not a comment&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>This is not a comment
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="variable">
+<h2>Variable<a class="headerlink" href="#variable" title="Permalink to this headline">#</a></h2>
+<section id="assignment">
+<h3>Assignment  =<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h3>
+<p>**自右而左的Assignment：**在幾乎所有的程式語言中，<code class="docutils literal notranslate"><span class="pre">=</span></code>的記號均為assignment，意是把右方演算的結果，Assign（指）給左方的變數。<code class="docutils literal notranslate"><span class="pre">=</span></code>符號左方幾乎都是變數。且右方的資料如果是整數，Assign給左方時，左方就是個整數；如果右方資料是文字字串，Assign給左方變數，左方變數便是文字字串。</p>
+<p>**那「等於」的符號是什麼？**如果想要在程式語言中表達「相等」，通常是連續兩個等號<code class="docutils literal notranslate"><span class="pre">==</span></code>，例如<code class="docutils literal notranslate"><span class="pre">1/2</span> <span class="pre">==</span> <span class="pre">4/2</span></code>，為邏輯運算式，邏輯運算的結果會得到<code class="docutils literal notranslate"><span class="pre">true</span></code>或<code class="docutils literal notranslate"><span class="pre">false</span></code>。</p>
+<p>在Python中最特別的是，Assignment的使用可以多對多，例如<code class="docutils literal notranslate"><span class="pre">a,</span> <span class="pre">b</span> <span class="pre">=</span> <span class="pre">1,</span> <span class="pre">2</span></code></p>
+</section>
+<section id="naming-of-variables">
+<h3>Naming of variables<a class="headerlink" href="#naming-of-variables" title="Permalink to this headline">#</a></h3>
+<ul>
+<li><p>不可用數字開始，例如<code class="docutils literal notranslate"><span class="pre">123b</span> <span class="pre">=</span> <span class="pre">13a</span> <span class="pre">+</span> <span class="pre">14b</span></code>。當然也不可以是中文。</p></li>
+<li><p>中間不得有空白，例如<code class="docutils literal notranslate"><span class="pre">my</span> <span class="pre">book</span> <span class="pre">=</span> <span class="pre">13a</span> <span class="pre">+</span> <span class="pre">14b</span></code> (why?)</p></li>
+<li><p>不可使用保留字（<a class="reference external" href="https://docs.python.org/2.5/ref/keywords.html">reserved word</a>）(why?) 。因為這些保留字都是程式碼的基本語法，如果把它們拿來當變數，你的程式編輯器怎麼看得懂，這到底是一個指令，還是一個變數呢？基本保留字有這些。</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="ow">and</span>       <span class="k">del</span>       <span class="kn">from</span>      <span class="nn">not</span>       <span class="k">while</span>    
+<span class="k">as</span>        <span class="k">elif</span>      <span class="k">global</span>    <span class="ow">or</span>        <span class="k">with</span>     
+<span class="k">assert</span>    <span class="k">else</span>      <span class="k">if</span>        <span class="k">pass</span>      <span class="k">yield</span>    
+<span class="k">break</span>     <span class="k">except</span>    <span class="kn">import</span>    <span class="nn">print</span>              
+<span class="k">class</span>     <span class="nc">exec</span>      <span class="ow">in</span>        <span class="k">raise</span>              
+<span class="k">continue</span>  <span class="k">finally</span>   <span class="ow">is</span>        <span class="k">return</span>             
+<span class="k">def</span>       <span class="nf">for</span>       <span class="k">lambda</span>    <span class="k">try</span>
+</pre></div>
+</div>
+</li>
+<li><p>關於Python程式寫作的風格，可參考<a class="reference external" href="https://www.python.org/dev/peps/pep-0008/">PEP 0008</a>，其中，<a class="reference external" href="https://www.python.org/dev/peps/pep-0008/#naming-conventions">Naming conventions</a>一節有提到變數要如何命名。</p>
+<ul class="simple">
+<li><p>若全部是大寫的，多半是常數，例如最大寬度、PI的值。</p></li>
+<li><p>若是底線開頭的，應該是區域變數（Local variable，你還不用知道）</p></li>
+</ul>
+</li>
+</ul>
+<p>以下這些都是合法的（參考自<a class="reference external" href="https://www.w3schools.com/python/python_variables_names.asp">W3School: Python Varialbe Names</a>）</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">myvar</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span>
+<span class="n">my_var</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span>
+<span class="n">_my_var</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span>
+<span class="n">myVar</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span>
+<span class="n">MYVAR</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span>
+<span class="n">myvar2</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+<p>以下這些都是不合法的變數名稱，(1) 不可以是數字開頭，(2)中間可以有<code class="docutils literal notranslate"><span class="pre">_</span></code>但不可以有<code class="docutils literal notranslate"><span class="pre">-</span></code>，(3)不可以有空白，不然程式不知道，這是兩個字還是一個字，(4)不可以有dot（但R是允許有dot的）</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="mi">2</span><span class="n">myvar</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span> <span class="c1"># cannot start with number</span>
+<span class="n">my</span><span class="o">-</span><span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span> <span class="c1"># cannot have dash</span>
+<span class="n">my</span> <span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span> <span class="c1"># cannot have space</span>
+<span class="n">my</span><span class="o">.</span><span class="n">var</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span> <span class="c1"># cannot have dot</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">7</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">2</span><span class="n">myvar</span> <span class="o">=</span> <span class="s2">&quot;Hsieh&quot;</span> <span class="c1"># cannot start with number</span>
+     <span class="o">^</span>
+<span class="ne">SyntaxError</span>: invalid syntax
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="python">
+<h2>Python 內建資料型態<a class="headerlink" href="#python" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">list</span></code>, <code class="docutils literal notranslate"><span class="pre">dictionary</span></code>是python這個程式語言的內建資料型態。請參閱<a class="reference external" href="https://docs.python.org/2/library/stdtypes.html">5. Built-in Types</a>。常見的資料型態共有以下幾種</p>
+<p><strong>基本型態</strong></p>
+<ul class="simple">
+<li><p><strong>(1) 真／偽（Boolean）</strong></p>
+<ul>
+<li><p>只有 <code class="docutils literal notranslate"><span class="pre">True</span></code> 和 <code class="docutils literal notranslate"><span class="pre">False</span></code> 兩個值。</p></li>
+<li><p>常用於條件判斷和循環控制。</p></li>
+<li><p>如果<code class="docutils literal notranslate"><span class="pre">a=3</span></code>，然後用等號測試變數<code class="docutils literal notranslate"><span class="pre">a</span></code>是否等於3時，<code class="docutils literal notranslate"><span class="pre">a==3</span></code>的結果即會傳回<code class="docutils literal notranslate"><span class="pre">True</span></code>。</p></li>
+</ul>
+</li>
+<li><p><strong>(2) 數值型態（Numeric Types）</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">int</span></code>: 整數，例如 <code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">5</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">float</span></code>: 浮點數，例如 <code class="docutils literal notranslate"><span class="pre">b</span> <span class="pre">=</span> <span class="pre">5.5</span></code>，粗略地來說是有小數點的數。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">complex</span></code>: 複數，例如 <code class="docutils literal notranslate"><span class="pre">c</span> <span class="pre">=</span> <span class="pre">3</span> <span class="pre">+</span> <span class="pre">4j</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>文字型態</strong></p>
+<ul class="simple">
+<li><p><strong>(3) 字串（String）</strong></p>
+<ul>
+<li><p>包含Unicode字符的不可變序列。</p></li>
+<li><p>支持多種操作，如連接、切片和格式化。</p></li>
+<li><p>用成對的雙引號或單引號括起來的為文字。例如<code class="docutils literal notranslate"><span class="pre">&quot;test&quot;</span></code>和<code class="docutils literal notranslate"><span class="pre">'test'</span></code>其實是相同的，只是用單引號或雙引號而已，但不可以交錯使用。</p></li>
+</ul>
+</li>
+</ul>
+<p><strong>容器型態</strong></p>
+<ul class="simple">
+<li><p><strong>(4) 序列（Sequence Types）</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">list</span></code>: 有順序且可變的容器，例如 <code class="docutils literal notranslate"><span class="pre">[1,</span> <span class="pre">2,</span> <span class="pre">3]</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">tuple</span></code>: 有順序但不可變的容器，例如 <code class="docutils literal notranslate"><span class="pre">(1,</span> <span class="pre">2,</span> <span class="pre">3)</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">str</span></code>: 字串也是一種序列型態，例如 <code class="docutils literal notranslate"><span class="pre">&quot;hello&quot;</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>(5) 集合（Set Types）</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">set</span></code>: 無順序且不包含重複元素的容器，例如 <code class="docutils literal notranslate"><span class="pre">{1,</span> <span class="pre">2,</span> <span class="pre">3}</span></code></p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">frozenset</span></code>: 不可變的集合，例如 <code class="docutils literal notranslate"><span class="pre">frozenset([1,</span> <span class="pre">2,</span> <span class="pre">3])</span></code></p></li>
+</ul>
+</li>
+<li><p><strong>(6) 對應（Mapping Types）</strong></p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">dict</span></code>: 由鍵值對構成的無順序容器，例如 <code class="docutils literal notranslate"><span class="pre">{'key':</span> <span class="pre">'value'}</span></code></p></li>
+<li><p>例如<code class="docutils literal notranslate"><span class="pre">bdict</span> <span class="pre">=</span> <span class="pre">{5:2,</span> <span class="pre">'5':6,</span> <span class="pre">12:[13,</span> <span class="pre">14],</span> <span class="pre">13:{14:'15',</span> <span class="pre">'16':[17]}}</span></code></p></li>
+</ul>
+</li>
+</ul>
+<p><strong>其他</strong></p>
+<ul class="simple">
+<li><p><strong>(7) 檔案對象（File Objects）</strong></p>
+<ul>
+<li><p>用於讀寫文件。</p></li>
+<li><p>可以是二進位或文字模式。</p></li>
+</ul>
+</li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">在下例中的`bdict`，整數`5`和字串`&#39;5&#39;`分別對應到兩個不同的數值。</span>
+<span class="sd">可見是字串或文字是不可混淆的。</span>
+<span class="sd">除此之外，數字可以拿來相除，字串是不能拿來相除的。</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="kc">True</span><span class="p">,</span> <span class="kc">False</span><span class="p">,</span> <span class="mi">4</span><span class="o">/</span><span class="mi">2</span><span class="o">==</span><span class="mi">2</span><span class="p">,</span> <span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="o">==</span><span class="mf">2.5</span><span class="p">)</span>
+<span class="n">bdict</span> <span class="o">=</span> <span class="p">{</span><span class="mi">5</span><span class="p">:</span><span class="mi">2</span><span class="p">,</span> <span class="s1">&#39;5&#39;</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="mi">12</span><span class="p">:[</span><span class="mi">13</span><span class="p">,</span> <span class="mi">14</span><span class="p">],</span> <span class="mi">13</span><span class="p">:{</span><span class="mi">14</span><span class="p">:</span><span class="s1">&#39;15&#39;</span><span class="p">,</span> <span class="s1">&#39;16&#39;</span><span class="p">:[</span><span class="mi">17</span><span class="p">]}}</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">[</span><span class="mi">12</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">[</span><span class="s1">&#39;5&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">bdict</span><span class="p">[</span><span class="mi">5</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True False True True
+{5: 2, &#39;5&#39;: 6, 12: [13, 14], 13: {14: &#39;15&#39;, &#39;16&#39;: [17]}}
+[13, 14]
+6
+2
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;test&quot;</span><span class="o">==</span><span class="s1">&#39;test&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;5&quot;</span><span class="o">==</span><span class="mi">5</span><span class="p">)</span> 
+<span class="n">a</span><span class="p">,</span> <span class="n">b</span><span class="p">,</span> <span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;2&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mf">2.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;if &#39;2&#39;==2?&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">==</span><span class="n">b</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;if 2==2.0?&quot;</span><span class="p">,</span> <span class="n">b</span><span class="o">==</span><span class="n">c</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>True
+False
+if &#39;2&#39;==2? False
+if 2==2.0? True
+</pre></div>
+</div>
+</div>
+</div>
+<section id="string">
+<h3>String<a class="headerlink" href="#string" title="Permalink to this headline">#</a></h3>
+<p>字串（String）是一種基本的資料型態，在Python中常用來儲存和操作文字資料。一個字串是由一系列的字符（characters）組成，這些字符可以是字母、數字、符號或其他Unicode字符。在Python中，字串可以用單引號（’）或雙引號（”）來定義，例如 ‘hello’ 或 “world”。文字字串（<code class="docutils literal notranslate"><span class="pre">str</span></code>）也是一種序列型態。所以，如果有一個文字<code class="docutils literal notranslate"><span class="pre">word</span> <span class="pre">=</span> <span class="pre">banana</span></code>的話，<code class="docutils literal notranslate"><span class="pre">word[0]</span></code>會是<code class="docutils literal notranslate"><span class="pre">b</span></code>，而<code class="docutils literal notranslate"><span class="pre">word[1]</span></code>會是<code class="docutils literal notranslate"><span class="pre">a</span></code>，依此類推。</p>
+<p>但字串是不可變（immutable）的，意味著一旦它被創建，內部的內容不能被更改。例如下方程式碼<code class="docutils literal notranslate"><span class="pre">my_string[3]</span> <span class="pre">=</span> <span class="pre">'1'</span></code>會產生<code class="docutils literal notranslate"><span class="pre">TypeError</span></code>。然而，你可以透過各種操作來創建新的字串，例如連接（concatenation）、切片（slicing）和格式化（formatting）。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">my_string</span> <span class="o">=</span> <span class="s2">&quot;Hello, World!&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span>  <span class="c1"># 輸出 &#39;H&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 輸出 &#39;!&#39;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">12</span><span class="p">])</span> <span class="c1"># 輸出 &#39;World&#39;</span>
+<span class="n">my_string</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span> <span class="c1"># 字串不可變動 (immutability)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>H
+!
+World
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="o">/</span><span class="n">Users</span><span class="o">/</span><span class="n">jirlong</span><span class="o">/</span><span class="n">Library</span><span class="o">/</span><span class="n">CloudStorage</span><span class="o">/</span><span class="n">Dropbox</span><span class="o">/</span><span class="n">Programming</span><span class="o">/</span><span class="n">pssbook</span><span class="o">/</span><span class="n">PSS</span><span class="o">/</span><span class="n">P02_0_basic</span><span class="o">.</span><span class="n">ipynb</span> <span class="n">儲存格</span> <span class="mi">24</span> <span class="n">line</span> <span class="mi">5</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/jirlong/Library/CloudStorage/Dropbox/Programming/pssbook/PSS/P02_0_basic.ipynb#X66sZmlsZQ%3D%3D?line=2&#39;</span><span class="o">&gt;</span><span class="mi">3</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">])</span> <span class="c1"># 輸出 &#39;!&#39;</span>
+      <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/jirlong/Library/CloudStorage/Dropbox/Programming/pssbook/PSS/P02_0_basic.ipynb#X66sZmlsZQ%3D%3D?line=3&#39;</span><span class="o">&gt;</span><span class="mi">4</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="nb">print</span><span class="p">(</span><span class="n">my_string</span><span class="p">[</span><span class="mi">7</span><span class="p">:</span><span class="mi">12</span><span class="p">])</span> <span class="c1"># 輸出 &#39;World&#39;</span>
+<span class="o">----&gt;</span> <span class="o">&lt;</span><span class="n">a</span> <span class="n">href</span><span class="o">=</span><span class="s1">&#39;vscode-notebook-cell:/Users/jirlong/Library/CloudStorage/Dropbox/Programming/pssbook/PSS/P02_0_basic.ipynb#X66sZmlsZQ%3D%3D?line=4&#39;</span><span class="o">&gt;</span><span class="mi">5</span><span class="o">&lt;/</span><span class="n">a</span><span class="o">&gt;</span> <span class="n">my_string</span><span class="p">[</span><span class="mi">3</span><span class="p">]</span> <span class="o">=</span> <span class="s1">&#39;1&#39;</span> <span class="c1"># 字串不可變動 (immutability)</span>
+
+<span class="ne">TypeError</span>: &#39;str&#39; object does not support item assignment
+</pre></div>
+</div>
+</div>
+</div>
+<section id="defining-string">
+<h4>Defining String<a class="headerlink" href="#defining-string" title="Permalink to this headline">#</a></h4>
+<p>在Python中有好幾種定義字串的方式。</p>
+<ol class="arabic simple">
+<li><p>字串（String）: 這是最基本的文字型態，使用單引號（’）或雙引號（”）來表示。例如：’hello’ 或 “world”。</p></li>
+<li><p>多行字串: 你可以使用三個單引號（’’’）或三個雙引號（”””）來定義多行字串。</p></li>
+<li><p>Unicode 字串: Python 3.x 以上版本中，所有的字串都是 Unicode 字串。這意味著你可以很容易地處理非英語文字。</p></li>
+<li><p>Raw 字串: 前面加上 r 或 R，表示字串中的特殊字符將不會被轉義。</p></li>
+<li><p>格式化字串（F-strings）: 從 Python 3.6 版本開始，支援使用 F-strings 來格式化字串。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">multi_line_string</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;這是</span>
+<span class="s2">一個</span>
+<span class="s2">多行</span>
+<span class="s2">字串 &quot;&quot;&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">multi_line_string</span><span class="p">)</span>
+
+<span class="n">normal_string</span> <span class="o">=</span> <span class="s2">&quot;</span><span class="se">\n</span><span class="s2"> 這裡的 </span><span class="se">\n</span><span class="s2"> 不會被轉義&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">normal_string</span><span class="p">)</span>
+<span class="n">raw_string</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;\n 這裡的 \n 不會被轉義&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw_string</span><span class="p">)</span>
+
+<span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;John&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mi">30</span>
+<span class="n">f_string</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> is </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2"> years old.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">f_string</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>這是
+一個
+多行
+字串 
+
+ 這裡的 
+ 不會被轉義
+\n 這裡的 \n 不會被轉義
+John is 30 years old.
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="more-print-formatting">
+<h3>More: Print formatting<a class="headerlink" href="#more-print-formatting" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">name</span> <span class="o">=</span> <span class="s2">&quot;HSIEH&quot;</span>
+<span class="n">age</span> <span class="o">=</span> <span class="mf">42.0</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your name is </span><span class="si">{}</span><span class="s2"> ! Your age is </span><span class="si">{}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2"> and age </span><span class="si">{</span><span class="n">age</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Your name is </span><span class="si">{:10}</span><span class="s2"> and age </span><span class="si">{:10}</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">name</span><span class="p">,</span> <span class="n">age</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Your name is </span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2"> and age </span><span class="si">{</span><span class="n">age</span><span class="si">:</span><span class="s2">10</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Your name is HSIEH ! Your age is 42.0
+Your name is HSIEH and age 42.0
+Your name is HSIEH      and age       42.0
+Your name is HSIEH      and age       42.0
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sjoerd&#39;</span><span class="p">:</span> <span class="mi">41273</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">:</span> <span class="mi">409</span><span class="p">,</span> <span class="s1">&#39;Dcab&#39;</span><span class="p">:</span> <span class="mi">7678</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1"> ==&gt; </span><span class="si">{</span><span class="nb">id</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sjoerd     ==&gt;      41273
+Jack       ==&gt;        409
+Dcab       ==&gt;       7678
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="type-by-assignments">
+<h3>Type by Assignments<a class="headerlink" href="#type-by-assignments" title="Permalink to this headline">#</a></h3>
+<p>變數使用Assignment（指派）來讓程式知道該變數的變數型態為何。右側的運算必然會產生一個某種變數型態的值，當把這樣的變數型態assign給左側的變數時，左側的變數便會自動被設定為該型態。這種特性稱為「Dynamic Typing」。注意！一定是把右方的內容（右方可能是數值也可能是變數）指定給左方的變數。</p>
+<p>下例把<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">2</span></code>，那麼<code class="docutils literal notranslate"><span class="pre">a</span></code>就是整數的<code class="docutils literal notranslate"><span class="pre">2</span></code>；若是<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">2.0</span></code>，那麼<code class="docutils literal notranslate"><span class="pre">a</span></code>就會是浮點數（floating point，也就是有小數點的）的<code class="docutils literal notranslate"><span class="pre">a</span></code>。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span> <span class="o">=</span> <span class="mi">2</span> <span class="c1"># integer</span>
+<span class="n">b</span> <span class="o">=</span> <span class="mf">3.0</span> <span class="c1"># floating point number</span>
+<span class="n">c</span> <span class="o">=</span> <span class="s1">&#39;1.123&#39;</span> <span class="c1"># string</span>
+<span class="n">d</span> <span class="o">=</span> <span class="s2">&quot;2&quot;</span> <span class="c1"># string</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="using-type-to-check-data-type">
+<h4>Using <code class="docutils literal notranslate"><span class="pre">type()</span></code> to check data type<a class="headerlink" href="#using-type-to-check-data-type" title="Permalink to this headline">#</a></h4>
+<p>承上節，因為在Python中，Assignment後會自動將「=」右方的變數型態Assign給左方的變數，我們可以用<code class="docutils literal notranslate"><span class="pre">type()</span></code>函式來得知某個變數的變數型態。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">x</span><span class="p">,</span> <span class="n">y</span> <span class="o">=</span> <span class="s1">&#39;1.1&#39;</span><span class="p">,</span> <span class="s2">&quot;1.1&quot;</span> <span class="c1"># string</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="p">),</span> <span class="nb">type</span><span class="p">(</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">x</span><span class="o">==</span><span class="n">y</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">5</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="mi">4</span><span class="o">/</span><span class="mi">2</span><span class="p">))</span>
+
+<span class="c1"># check the type of d, e</span>
+<span class="n">z</span><span class="p">,</span> <span class="n">w</span> <span class="o">=</span> <span class="p">[],</span> <span class="p">{}</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">z</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">w</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt; &lt;class &#39;str&#39;&gt;
+&lt;class &#39;bool&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;float&#39;&gt;
+&lt;class &#39;list&#39;&gt;
+&lt;class &#39;dict&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="converting-data-type">
+<h3>Converting data type<a class="headerlink" href="#converting-data-type" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p>變數可以用<code class="docutils literal notranslate"><span class="pre">int()</span></code>、<code class="docutils literal notranslate"><span class="pre">float()</span></code>和<code class="docutils literal notranslate"><span class="pre">str()</span></code>在彼此間轉換（左側為最常用的三個）。</p></li>
+<li><p>但要注意的是，<code class="docutils literal notranslate"><span class="pre">float()</span></code>相當於是有小數點的數字，若被<code class="docutils literal notranslate"><span class="pre">int()</span></code>強制轉換，會伴隨精確度的流失。例如<code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">int(2.3)</span></code>會只剩下<code class="docutils literal notranslate"><span class="pre">2</span></code>，且沒辦法復原。</p></li>
+<li><p>如果將<code class="docutils literal notranslate"><span class="pre">integer</span></code>乘上<code class="docutils literal notranslate"><span class="pre">float</span></code>的話，整個變數會變成<code class="docutils literal notranslate"><span class="pre">float</span></code>。如下面的例子中，type將會是<code class="docutils literal notranslate"><span class="pre">float</span></code>。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># convert a to integer, then assign to b</span>
+<span class="nb">print</span><span class="p">(</span><span class="mf">2.3</span><span class="p">,</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s2">&quot;type(2.3):&quot;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="mf">2.3</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.3</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;type(int(2.3)):&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mf">2.3</span><span class="p">),</span> <span class="s1">&#39;</span><span class="se">\t</span><span class="s1">&#39;</span><span class="p">,</span> <span class="s1">&#39;type(str(2.3)):&#39;</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="mf">2.3</span><span class="p">)))</span>
+      
+<span class="n">a</span> <span class="o">=</span> <span class="mi">3</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mf">3.0</span><span class="p">,</span> <span class="nb">type</span><span class="p">(</span><span class="n">a</span><span class="o">*</span><span class="mf">3.0</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2.3 	 type(2.3): &lt;class &#39;float&#39;&gt;
+2 	 type(int(2.3)): &lt;class &#39;int&#39;&gt;
+2.3 	 type(str(2.3)): &lt;class &#39;str&#39;&gt;
+3 &lt;class &#39;int&#39;&gt;
+9.0 &lt;class &#39;float&#39;&gt;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="arithemetic-operations">
+<h2>Arithemetic operations +, -, *, **, /, %<a class="headerlink" href="#arithemetic-operations" title="Permalink to this headline">#</a></h2>
+<p>四則運算的計算方式和普遍數學的運算相同，由左而右，括號內先做，先乘除後加減。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">**</span></code> - “power of.”</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%</span></code> - “mod” e.g., <code class="docutils literal notranslate"><span class="pre">5%3==2</span></code>, <code class="docutils literal notranslate"><span class="pre">4%2==0</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">/</span></code> - “divide” varied by data type of numberator and denominator</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">a</span><span class="p">,</span> <span class="n">b</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="mi">3</span>
+
+<span class="c1"># print a and b</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a = </span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">, b = </span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># print the result of a/b and a%b</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;a/b=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="p">,</span> <span class="s2">&quot;a/b=&quot;</span><span class="p">,</span> <span class="n">a</span><span class="o">%</span><span class="k">b</span>)
+
+<span class="c1"># print a/b and a%b but formatted to integer</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a/b=</span><span class="si">{</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="si">}</span><span class="s2">, a%b=</span><span class="si">{</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+<span class="c1"># print a/b and a%b but formatted to float</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;a/b=</span><span class="si">{</span><span class="n">a</span><span class="o">/</span><span class="n">b</span><span class="si">:</span><span class="s2">f</span><span class="si">}</span><span class="s2">, a%b=</span><span class="si">{</span><span class="n">a</span><span class="o">%</span><span class="n">b</span><span class="si">:</span><span class="s2">f</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+
+<span class="c1"># a divided by float(b)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">a</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">b</span><span class="p">))</span>
+
+<span class="c1"># b divides float(a)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="p">)</span><span class="o">/</span><span class="n">b</span><span class="p">)</span>
+
+<span class="c1"># print ((a+b)**2+(a-b)**2)/float(a**2+b**2) and it result</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;((a+b)**2+(a-b)**2)/float(a**2+b**2) = &quot;</span><span class="p">,</span> <span class="p">((</span><span class="n">a</span><span class="o">+</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="p">(</span><span class="n">a</span><span class="o">-</span><span class="n">b</span><span class="p">)</span><span class="o">**</span><span class="mi">2</span><span class="p">)</span><span class="o">/</span><span class="nb">float</span><span class="p">(</span><span class="n">a</span><span class="o">**</span><span class="mi">2</span><span class="o">+</span><span class="n">b</span><span class="o">**</span><span class="mi">2</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>a = 10, b = 3
+a/b= 3.3333333333333335 a/b= 1
+a/b=3.3333333333333335, a%b=1
+a/b=3.333333, a%b=1.000000
+3.3333333333333335
+3.3333333333333335
+((a+b)**2+(a-b)**2)/float(a**2+b**2) =  2.0
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>字串除以數字</strong>：如果把字串除以整數的話會產生什麼樣的情形？字串是沒辦法除以整數的，因為沒有意義，所以會產生<em>TypeError</em>。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">tf</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="n">tc</span> <span class="o">=</span> <span class="p">(</span><span class="n">tf</span><span class="o">-</span><span class="mi">32</span><span class="p">)</span><span class="o">*</span><span class="mi">5</span><span class="o">/</span><span class="mi">9</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">tf</span><span class="si">:</span><span class="s1">5</span><span class="si">}</span><span class="s1"> ==&gt; </span><span class="si">{</span><span class="n">tc</span><span class="si">:</span><span class="s1">-8.2f</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    1 ==&gt;   -17.22
+    2 ==&gt;   -16.67
+    3 ==&gt;   -16.11
+    4 ==&gt;   -15.56
+    5 ==&gt;   -15.00
+    6 ==&gt;   -14.44
+    7 ==&gt;   -13.89
+    8 ==&gt;   -13.33
+    9 ==&gt;   -12.78
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P01p_counting.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P01-Practice</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P02p_basic.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Practices 02 for Python basic</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#print">print</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">印出字串</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">列印計算式</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-multiple-terms">Print multiple terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-tab-and-newline">Print tab and newline</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#comments">Comments</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#variable">Variable</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#assignment">Assignment  =</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#naming-of-variables">Naming of variables</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#python">Python 內建資料型態</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#string">String</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#defining-string">Defining String</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-print-formatting">More: Print formatting</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#type-by-assignments">Type by Assignments</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#using-type-to-check-data-type">Using <code class="docutils literal notranslate"><span class="pre">type()</span></code> to check data type</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#converting-data-type">Converting data type</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#arithemetic-operations">Arithemetic operations +, -, *, **, /, %</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

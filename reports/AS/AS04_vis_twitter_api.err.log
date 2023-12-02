@@ -1,0 +1,80 @@
+Traceback (most recent call last):
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+!wget https://raw.githubusercontent.com/p4css/py4css/main/data/sample_tweets.json -O sample_tweets.json
+data = json.load(open('sample_tweets.json', 'r'))
+tweets_all = data['tweets']
+users_all = data['users']
+
+print("資料中共有", len(tweets_all), "則tweets")
+print("資料中共有", len(set([t['id'] for t in tweets_all])), "則不同的tweets")
+print("資料中共有", len(users_all), "個users")
+print("資料中共有", len(set([t['id'] for t in users_all])), "個不同的users")
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mJSONDecodeError[0m                           Traceback (most recent call last)
+Input [0;32mIn [2][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      1[0m get_ipython()[38;5;241m.[39msystem([38;5;124m'[39m[38;5;124mwget https://raw.githubusercontent.com/p4css/py4css/main/data/sample_tweets.json -O sample_tweets.json[39m[38;5;124m'[39m)
+[0;32m----> 2[0m data [38;5;241m=[39m [43mjson[49m[38;5;241;43m.[39;49m[43mload[49m[43m([49m[38;5;28;43mopen[39;49m[43m([49m[38;5;124;43m'[39;49m[38;5;124;43msample_tweets.json[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[38;5;124;43m'[39;49m[38;5;124;43mr[39;49m[38;5;124;43m'[39;49m[43m)[49m[43m)[49m
+[1;32m      3[0m tweets_all [38;5;241m=[39m data[[38;5;124m'[39m[38;5;124mtweets[39m[38;5;124m'[39m]
+[1;32m      4[0m users_all [38;5;241m=[39m data[[38;5;124m'[39m[38;5;124musers[39m[38;5;124m'[39m]
+
+File [0;32m~/opt/anaconda3/lib/python3.9/json/__init__.py:293[0m, in [0;36mload[0;34m(fp, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)[0m
+[1;32m    274[0m [38;5;28;01mdef[39;00m [38;5;21mload[39m(fp, [38;5;241m*[39m, [38;5;28mcls[39m[38;5;241m=[39m[38;5;28;01mNone[39;00m, object_hook[38;5;241m=[39m[38;5;28;01mNone[39;00m, parse_float[38;5;241m=[39m[38;5;28;01mNone[39;00m,
+[1;32m    275[0m         parse_int[38;5;241m=[39m[38;5;28;01mNone[39;00m, parse_constant[38;5;241m=[39m[38;5;28;01mNone[39;00m, object_pairs_hook[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkw):
+[1;32m    276[0m [38;5;250m    [39m[38;5;124;03m"""Deserialize ``fp`` (a ``.read()``-supporting file-like object containing[39;00m
+[1;32m    277[0m [38;5;124;03m    a JSON document) to a Python object.[39;00m
+[1;32m    278[0m 
+[0;32m   (...)[0m
+[1;32m    291[0m [38;5;124;03m    kwarg; otherwise ``JSONDecoder`` is used.[39;00m
+[1;32m    292[0m [38;5;124;03m    """[39;00m
+[0;32m--> 293[0m     [38;5;28;01mreturn[39;00m [43mloads[49m[43m([49m[43mfp[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43m)[49m[43m,[49m
+[1;32m    294[0m [43m        [49m[38;5;28;43mcls[39;49m[38;5;241;43m=[39;49m[38;5;28;43mcls[39;49m[43m,[49m[43m [49m[43mobject_hook[49m[38;5;241;43m=[39;49m[43mobject_hook[49m[43m,[49m
+[1;32m    295[0m [43m        [49m[43mparse_float[49m[38;5;241;43m=[39;49m[43mparse_float[49m[43m,[49m[43m [49m[43mparse_int[49m[38;5;241;43m=[39;49m[43mparse_int[49m[43m,[49m
+[1;32m    296[0m [43m        [49m[43mparse_constant[49m[38;5;241;43m=[39;49m[43mparse_constant[49m[43m,[49m[43m [49m[43mobject_pairs_hook[49m[38;5;241;43m=[39;49m[43mobject_pairs_hook[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkw[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/json/__init__.py:346[0m, in [0;36mloads[0;34m(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)[0m
+[1;32m    341[0m     s [38;5;241m=[39m s[38;5;241m.[39mdecode(detect_encoding(s), [38;5;124m'[39m[38;5;124msurrogatepass[39m[38;5;124m'[39m)
+[1;32m    343[0m [38;5;28;01mif[39;00m ([38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m object_hook [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m
+[1;32m    344[0m         parse_int [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m parse_float [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m
+[1;32m    345[0m         parse_constant [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m object_pairs_hook [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m [38;5;129;01mand[39;00m [38;5;129;01mnot[39;00m kw):
+[0;32m--> 346[0m     [38;5;28;01mreturn[39;00m [43m_default_decoder[49m[38;5;241;43m.[39;49m[43mdecode[49m[43m([49m[43ms[49m[43m)[49m
+[1;32m    347[0m [38;5;28;01mif[39;00m [38;5;28mcls[39m [38;5;129;01mis[39;00m [38;5;28;01mNone[39;00m:
+[1;32m    348[0m     [38;5;28mcls[39m [38;5;241m=[39m JSONDecoder
+
+File [0;32m~/opt/anaconda3/lib/python3.9/json/decoder.py:337[0m, in [0;36mJSONDecoder.decode[0;34m(self, s, _w)[0m
+[1;32m    332[0m [38;5;28;01mdef[39;00m [38;5;21mdecode[39m([38;5;28mself[39m, s, _w[38;5;241m=[39mWHITESPACE[38;5;241m.[39mmatch):
+[1;32m    333[0m [38;5;250m    [39m[38;5;124;03m"""Return the Python representation of ``s`` (a ``str`` instance[39;00m
+[1;32m    334[0m [38;5;124;03m    containing a JSON document).[39;00m
+[1;32m    335[0m 
+[1;32m    336[0m [38;5;124;03m    """[39;00m
+[0;32m--> 337[0m     obj, end [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mraw_decode[49m[43m([49m[43ms[49m[43m,[49m[43m [49m[43midx[49m[38;5;241;43m=[39;49m[43m_w[49m[43m([49m[43ms[49m[43m,[49m[43m [49m[38;5;241;43m0[39;49m[43m)[49m[38;5;241;43m.[39;49m[43mend[49m[43m([49m[43m)[49m[43m)[49m
+[1;32m    338[0m     end [38;5;241m=[39m _w(s, end)[38;5;241m.[39mend()
+[1;32m    339[0m     [38;5;28;01mif[39;00m end [38;5;241m!=[39m [38;5;28mlen[39m(s):
+
+File [0;32m~/opt/anaconda3/lib/python3.9/json/decoder.py:355[0m, in [0;36mJSONDecoder.raw_decode[0;34m(self, s, idx)[0m
+[1;32m    353[0m     obj, end [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mscan_once(s, idx)
+[1;32m    354[0m [38;5;28;01mexcept[39;00m [38;5;167;01mStopIteration[39;00m [38;5;28;01mas[39;00m err:
+[0;32m--> 355[0m     [38;5;28;01mraise[39;00m JSONDecodeError([38;5;124m"[39m[38;5;124mExpecting value[39m[38;5;124m"[39m, s, err[38;5;241m.[39mvalue) [38;5;28;01mfrom[39;00m [38;5;28mNone[39m
+[1;32m    356[0m [38;5;28;01mreturn[39;00m obj, end
+
+[0;31mJSONDecodeError[0m: Expecting value: line 1 column 1 (char 0)
+JSONDecodeError: Expecting value: line 1 column 1 (char 0)
+

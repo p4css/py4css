@@ -1,0 +1,1566 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>TM01 Tokenization &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TM/TM01_tokenization';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Chinese Processing" href="TM01_tokenization%28chi%29.html" />
+    <link rel="prev" title="P08 HTML Parsing - Crawling PTT" href="../PSS/P08_4_ptt_crawler.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">TM01 Tokenization</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/TM/TM01_tokenization.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM01_tokenization.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/TM/TM01_tokenization.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TM01 Tokenization</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-wikipedia">An Example: Wikipedia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-more-example">One more example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#length-of-the-corpus-in-characters">Length of the corpus (in characters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content">Content</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-by-built-in-split">Method 1. by built-in <code class="docutils literal notranslate"><span class="pre">.split()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-by-nltk-s-function">Method 2. by nltk’s function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-3-design-manually-as-python-function">Method 3. Design manually as Python function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-compare-if-two-lists-are-identical">How to compare if two lists are identical?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting">Counting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-and-sign-removal">Stopword and sign removal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-removal-of-punctuation-marks">Method 1.Removal of Punctuation Marks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-removing-all-tokens-that-contain-characters-other-than-letters">Method 2. Removing all tokens that contain characters other than letters.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">Stopword Removal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-capitalization-in-english">Handle Capitalization in English</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-converting-all-characters-to-lowercase">Solution 1: Converting all characters to lowercase.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2-maintain-the-capitalization">Solution 2: Maintain the capitalization.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-counting-results-with-the-removal-of-stopwords">New counting results with the removal of stopwords.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicase-results-with-the-removal-of-stopwords">Unicase results with the removal of stopwords.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lemmatization">Lemmatization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-genearte-data-for-wordcloud-rendering">Applications: Genearte data for WordCloud rendering.</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tm01-tokenization">
+<h1>TM01 Tokenization<a class="headerlink" href="#tm01-tokenization" title="Permalink to this headline">#</a></h1>
+<section id="loading-data">
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Open the corpus in the file “hindu.txt” from <a class="reference external" href="https://en.wikipedia.org/wiki/Hindu">https://en.wikipedia.org/wiki/Hindu</a></p></li>
+<li><p>Other public resource: <a class="reference external" href="http://www.gutenberg.org/">http://www.gutenberg.org/</a></p></li>
+<li><p>Never “push” protected text to Github or other publicly available platforms.</p></li>
+</ul>
+<section id="an-example-wikipedia">
+<h3>An Example: Wikipedia<a class="headerlink" href="#an-example-wikipedia" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install wikipedia</span>
+<span class="kn">import</span> <span class="nn">wikipedia</span> 
+<span class="kn">import</span> <span class="nn">string</span>
+<span class="c1"># cv = wikipedia.page(&quot;Taipei&quot;)</span>
+<span class="c1"># text = cv.content</span>
+<span class="c1"># print(cv.url)</span>
+<span class="c1"># print(&quot;The length of Taipei page is &quot;, len(text))</span>
+<span class="c1"># print(text[:100])</span>
+
+<span class="c1"># text = wikipedia.page(&quot;Rembrandt&quot;).content</span>
+<span class="c1"># print(len(text))</span>
+
+<span class="n">text</span>  <span class="o">=</span> <span class="n">wikipedia</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Rembrandt&quot;</span><span class="p">,</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The length of Rembrandt summary is &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+The length of Rembrandt summary is  1796
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="one-more-example">
+<h3>One more example<a class="headerlink" href="#one-more-example" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span>  <span class="o">=</span> <span class="n">wikipedia</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Hindus&quot;</span><span class="p">,</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The length of Hindus summary is &quot;</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
+The length of Hindus summary is  1549
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-N<span class="w"> </span>https://raw.githubusercontent.com/P4CSS/PSS/master/data/hindu.txt
+<span class="o">!</span>ls
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-02 15:48:56--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/hindu.txt
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404 Not Found
+2023-12-02 15:48:56 ERROR 404: Not Found.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TM00.ipynb                             TM08_doc_classification.ipynb
+TM01_tokenization(chi).ipynb           TM08_doc_classification_pipeline.ipynb
+TM01_tokenization.ipynb                TM09_re.ipynb
+TM02_collocation.ipynb                 TM0X Using CKIPtagger.ipynb
+TM03_2_pos_sentiment_chi.ipynb         blessing.txt
+<span class=" -Color -Color-Red">TM03_POS Tagging.ipynb</span>                 <span class=" -Color -Color-Blue">data</span>
+<span class=" -Color -Color-Red">TM04_IR_search.ipynb</span>                   hindu.txt
+TM05_sentiment.ipynb                   <span class=" -Color -Color-Blue">img</span>
+TM06_Clustering.ipynb                  stopwords_zh-tw.txt
+<span class=" -Color -Color-Red">TM07_1_embeddings.ipynb</span>                test.html
+TM07_2_doc2vec.ipynb                   userdict.txt
+TM07_embedding_clustering.ipynb
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;hindu.txt&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">text</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="length-of-the-corpus-in-characters">
+<h3>Length of the corpus (in characters)<a class="headerlink" href="#length-of-the-corpus-in-characters" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lenght of the corpus: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>The lenght of the corpus: 2747
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="content">
+<h3>Content<a class="headerlink" href="#content" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hindu refers to any person who regards themselves as culturally, ethnically, or religiously adhering to aspects of Hinduism.[1][2] It has historically been used as a geographical, cultural, and later religious identifier for people indigenous to the Indian subcontinent.[3][4]
+
+The historical meaning of the term Hindu has evolved with time. Starting with the Persian and Greek references to the land of the Indus in the 1st millennium BCE through the texts of the medieval era,[5] the term Hindu implied a geographic, ethnic or cultural identifier for people living in the Indian subcontinent around or beyond the Sindhu (Indus) river.[6] By the 16th century, the term began to refer to residents of the subcontinent who were not Turkic or Muslims.[6][a][b]
+
+The historical development of Hindu self-identity within the local South Asian population, in a religious or cultural sense, is unclear.[3][7] Competing theories state that Hindu identity developed in the British colonial era, or that it developed post-8th century CE after the Islamic invasion and medieval Hindu-Muslim wars.[7][8][9] A sense of Hindu identity and the term Hindu appears in some texts dated between the 13th and 18th century in Sanskrit and regional languages.[8][10] The 14th- and 18th-century Indian poets such as Vidyapati, Kabir and Eknath used the phrase Hindu dharma (Hinduism) and contrasted it with Turaka dharma (Islam).[11] The Christian friar Sebastiao Manrique used the term &#39;Hindu&#39; in religious context in 1649.[12] In the 18th century, the European merchants and colonists began to refer to the followers of Indian religions collectively as Hindus, in contrast to Mohamedans for Mughals and Arabs following Islam.[3][6] By the mid-19th century, colonial orientalist texts further distinguished Hindus from Buddhists, Sikhs and Jains,[3] but the colonial laws continued to consider all of them to be within the scope of the term Hindu until about mid-20th century.[13] Scholars state that the custom of distinguishing between Hindus, Buddhists, Jains and Sikhs is a modern phenomenon.[14][15] Hindoo is an archaic spelling variant, whose use today may be considered derogatory.[16][17]
+
+At more than 1.03 billion,[18] Hindus are the world&#39;s third largest group after Christians and Muslims. The vast majority of Hindus, approximately 966 million, live in India, according to India&#39;s 2011 census.[19] After India, the next 9 countries with the largest Hindu populations are, in decreasing order: Nepal, Bangladesh, Indonesia, Pakistan, Sri Lanka, United States, Malaysia, United Kingdom and Myanmar.[20] These together accounted for 99% of the world&#39;s Hindu population, and the remaining nations of the world together had about 6 million Hindus in 2010.[20]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tokenization">
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">#</a></h2>
+<section id="method-1-by-built-in-split">
+<h3>Method 1. by built-in <code class="docutils literal notranslate"><span class="pre">.split()</span></code><a class="headerlink" href="#method-1-by-built-in-split" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_a</span> <span class="o">=</span> <span class="s2">&quot;What’s in a name? That which we call a rose by any other name would smell as sweet.&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentence_a</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
+
+<span class="n">sentence_b</span> <span class="o">=</span> <span class="s2">&quot;2020/04/07 00:08:00&quot;</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">sentence_b</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;/&quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;What’s&#39;, &#39;in&#39;, &#39;a&#39;, &#39;name?&#39;, &#39;That&#39;, &#39;which&#39;, &#39;we&#39;, &#39;call&#39;, &#39;a&#39;, &#39;rose&#39;, &#39;by&#39;, &#39;any&#39;, &#39;other&#39;, &#39;name&#39;, &#39;would&#39;, &#39;smell&#39;, &#39;as&#39;, &#39;sweet.&#39;]
+[&#39;2020&#39;, &#39;04&#39;, &#39;07 00:08:00&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;123&quot;</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;abc&quot;</span><span class="o">.</span><span class="n">isalpha</span><span class="p">())</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>False
+True
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>410
+[&#39;Hindu&#39;, &#39;refers&#39;, &#39;to&#39;, &#39;any&#39;, &#39;person&#39;, &#39;who&#39;, &#39;regards&#39;, &#39;themselves&#39;, &#39;as&#39;, &#39;culturally,&#39;, &#39;ethnically,&#39;, &#39;or&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;to&#39;, &#39;aspects&#39;, &#39;of&#39;, &#39;Hinduism.[1][2]&#39;, &#39;It&#39;, &#39;has&#39;, &#39;historically&#39;, &#39;been&#39;, &#39;used&#39;, &#39;as&#39;, &#39;a&#39;, &#39;geographical,&#39;, &#39;cultural,&#39;, &#39;and&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;to&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent.[3][4]\n\nThe&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;has&#39;, &#39;evolved&#39;, &#39;with&#39;, &#39;time.&#39;, &#39;Starting&#39;, &#39;with&#39;, &#39;the&#39;, &#39;Persian&#39;, &#39;and&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;to&#39;, &#39;the&#39;, &#39;land&#39;, &#39;of&#39;, &#39;the&#39;, &#39;Indus&#39;, &#39;in&#39;, &#39;the&#39;, &#39;1st&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;through&#39;, &#39;the&#39;, &#39;texts&#39;, &#39;of&#39;, &#39;the&#39;, &#39;medieval&#39;, &#39;era,[5]&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;a&#39;, &#39;geographic,&#39;, &#39;ethnic&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;living&#39;, &#39;in&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;or&#39;, &#39;beyond&#39;, &#39;the&#39;, &#39;Sindhu&#39;, &#39;(Indus)&#39;, &#39;river.[6]&#39;, &#39;By&#39;, &#39;the&#39;, &#39;16th&#39;, &#39;century,&#39;, &#39;the&#39;, &#39;term&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;residents&#39;, &#39;of&#39;, &#39;the&#39;, &#39;subcontinent&#39;, &#39;who&#39;, &#39;were&#39;, &#39;not&#39;, &#39;Turkic&#39;, &#39;or&#39;, &#39;Muslims.[6][a][b]\n\nThe&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;self-identity&#39;, &#39;within&#39;, &#39;the&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population,&#39;, &#39;in&#39;, &#39;a&#39;, &#39;religious&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;sense,&#39;, &#39;is&#39;, &#39;unclear.[3][7]&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;that&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;in&#39;, &#39;the&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era,&#39;, &#39;or&#39;, &#39;that&#39;, &#39;it&#39;, &#39;developed&#39;, &#39;post-8th&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;after&#39;, &#39;the&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;and&#39;, &#39;medieval&#39;, &#39;Hindu-Muslim&#39;, &#39;wars.[7][8][9]&#39;, &#39;A&#39;, &#39;sense&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;and&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;in&#39;, &#39;some&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;between&#39;, &#39;the&#39;, &#39;13th&#39;, &#39;and&#39;, &#39;18th&#39;, &#39;century&#39;, &#39;in&#39;, &#39;Sanskrit&#39;, &#39;and&#39;, &#39;regional&#39;, &#39;languages.[8][10]&#39;, &#39;The&#39;, &#39;14th-&#39;, &#39;and&#39;, &#39;18th-century&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;such&#39;, &#39;as&#39;, &#39;Vidyapati,&#39;, &#39;Kabir&#39;, &#39;and&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;the&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;(Hinduism)&#39;, &#39;and&#39;, &#39;contrasted&#39;, &#39;it&#39;, &#39;with&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;(Islam).[11]&#39;, &#39;The&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;the&#39;, &#39;term&#39;, &quot;&#39;Hindu&#39;&quot;, &#39;in&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;in&#39;, &#39;1649.[12]&#39;, &#39;In&#39;, &#39;the&#39;, &#39;18th&#39;, &#39;century,&#39;, &#39;the&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;and&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;the&#39;, &#39;followers&#39;, &#39;of&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;as&#39;, &#39;Hindus,&#39;, &#39;in&#39;, &#39;contrast&#39;, &#39;to&#39;, &#39;Mohamedans&#39;, &#39;for&#39;, &#39;Mughals&#39;, &#39;and&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam.[3][6]&#39;, &#39;By&#39;, &#39;the&#39;, &#39;mid-19th&#39;, &#39;century,&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;further&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;from&#39;, &#39;Buddhists,&#39;, &#39;Sikhs&#39;, &#39;and&#39;, &#39;Jains,[3]&#39;, &#39;but&#39;, &#39;the&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;to&#39;, &#39;consider&#39;, &#39;all&#39;, &#39;of&#39;, &#39;them&#39;, &#39;to&#39;, &#39;be&#39;, &#39;within&#39;, &#39;the&#39;, &#39;scope&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;until&#39;, &#39;about&#39;, &#39;mid-20th&#39;, &#39;century.[13]&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;that&#39;, &#39;the&#39;, &#39;custom&#39;, &#39;of&#39;, &#39;distinguishing&#39;, &#39;between&#39;, &#39;Hindus,&#39;, &#39;Buddhists,&#39;, &#39;Jains&#39;, &#39;and&#39;, &#39;Sikhs&#39;, &#39;is&#39;, &#39;a&#39;, &#39;modern&#39;, &#39;phenomenon.[14][15]&#39;, &#39;Hindoo&#39;, &#39;is&#39;, &#39;an&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant,&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;be&#39;, &#39;considered&#39;, &#39;derogatory.[16][17]\n\nAt&#39;, &#39;more&#39;, &#39;than&#39;, &#39;1.03&#39;, &#39;billion,[18]&#39;, &#39;Hindus&#39;, &#39;are&#39;, &#39;the&#39;, &quot;world&#39;s&quot;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;after&#39;, &#39;Christians&#39;, &#39;and&#39;, &#39;Muslims.&#39;, &#39;The&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;of&#39;, &#39;Hindus,&#39;, &#39;approximately&#39;, &#39;966&#39;, &#39;million,&#39;, &#39;live&#39;, &#39;in&#39;, &#39;India,&#39;, &#39;according&#39;, &#39;to&#39;, &quot;India&#39;s&quot;, &#39;2011&#39;, &#39;census.[19]&#39;, &#39;After&#39;, &#39;India,&#39;, &#39;the&#39;, &#39;next&#39;, &#39;9&#39;, &#39;countries&#39;, &#39;with&#39;, &#39;the&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;are,&#39;, &#39;in&#39;, &#39;decreasing&#39;, &#39;order:&#39;, &#39;Nepal,&#39;, &#39;Bangladesh,&#39;, &#39;Indonesia,&#39;, &#39;Pakistan,&#39;, &#39;Sri&#39;, &#39;Lanka,&#39;, &#39;United&#39;, &#39;States,&#39;, &#39;Malaysia,&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;and&#39;, &#39;Myanmar.[20]&#39;, &#39;These&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;for&#39;, &#39;99%&#39;, &#39;of&#39;, &#39;the&#39;, &quot;world&#39;s&quot;, &#39;Hindu&#39;, &#39;population,&#39;, &#39;and&#39;, &#39;the&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;together&#39;, &#39;had&#39;, &#39;about&#39;, &#39;6&#39;, &#39;million&#39;, &#39;Hindus&#39;, &#39;in&#39;, &#39;2010.[20]&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-2-by-nltk-s-function">
+<h3>Method 2. by nltk’s function<a class="headerlink" href="#method-2-by-nltk-s-function" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;punkt&#39;</span><span class="p">)</span>
+<span class="kn">from</span> <span class="nn">nltk.tokenize</span> <span class="kn">import</span> <span class="n">word_tokenize</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>566
+[&#39;Hindu&#39;, &#39;refers&#39;, &#39;to&#39;, &#39;any&#39;, &#39;person&#39;, &#39;who&#39;, &#39;regards&#39;, &#39;themselves&#39;, &#39;as&#39;, &#39;culturally&#39;, &#39;,&#39;, &#39;ethnically&#39;, &#39;,&#39;, &#39;or&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;to&#39;, &#39;aspects&#39;, &#39;of&#39;, &#39;Hinduism&#39;, &#39;.&#39;, &#39;[&#39;, &#39;1&#39;, &#39;]&#39;, &#39;[&#39;, &#39;2&#39;, &#39;]&#39;, &#39;It&#39;, &#39;has&#39;, &#39;historically&#39;, &#39;been&#39;, &#39;used&#39;, &#39;as&#39;, &#39;a&#39;, &#39;geographical&#39;, &#39;,&#39;, &#39;cultural&#39;, &#39;,&#39;, &#39;and&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;to&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;.&#39;, &#39;[&#39;, &#39;3&#39;, &#39;]&#39;, &#39;[&#39;, &#39;4&#39;, &#39;]&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;has&#39;, &#39;evolved&#39;, &#39;with&#39;, &#39;time&#39;, &#39;.&#39;, &#39;Starting&#39;, &#39;with&#39;, &#39;the&#39;, &#39;Persian&#39;, &#39;and&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;to&#39;, &#39;the&#39;, &#39;land&#39;, &#39;of&#39;, &#39;the&#39;, &#39;Indus&#39;, &#39;in&#39;, &#39;the&#39;, &#39;1st&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;through&#39;, &#39;the&#39;, &#39;texts&#39;, &#39;of&#39;, &#39;the&#39;, &#39;medieval&#39;, &#39;era&#39;, &#39;,&#39;, &#39;[&#39;, &#39;5&#39;, &#39;]&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;a&#39;, &#39;geographic&#39;, &#39;,&#39;, &#39;ethnic&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;living&#39;, &#39;in&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;or&#39;, &#39;beyond&#39;, &#39;the&#39;, &#39;Sindhu&#39;, &#39;(&#39;, &#39;Indus&#39;, &#39;)&#39;, &#39;river&#39;, &#39;.&#39;, &#39;[&#39;, &#39;6&#39;, &#39;]&#39;, &#39;By&#39;, &#39;the&#39;, &#39;16th&#39;, &#39;century&#39;, &#39;,&#39;, &#39;the&#39;, &#39;term&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;residents&#39;, &#39;of&#39;, &#39;the&#39;, &#39;subcontinent&#39;, &#39;who&#39;, &#39;were&#39;, &#39;not&#39;, &#39;Turkic&#39;, &#39;or&#39;, &#39;Muslims&#39;, &#39;.&#39;, &#39;[&#39;, &#39;6&#39;, &#39;]&#39;, &#39;[&#39;, &#39;a&#39;, &#39;]&#39;, &#39;[&#39;, &#39;b&#39;, &#39;]&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;self-identity&#39;, &#39;within&#39;, &#39;the&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population&#39;, &#39;,&#39;, &#39;in&#39;, &#39;a&#39;, &#39;religious&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;sense&#39;, &#39;,&#39;, &#39;is&#39;, &#39;unclear&#39;, &#39;.&#39;, &#39;[&#39;, &#39;3&#39;, &#39;]&#39;, &#39;[&#39;, &#39;7&#39;, &#39;]&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;that&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;in&#39;, &#39;the&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era&#39;, &#39;,&#39;, &#39;or&#39;, &#39;that&#39;, &#39;it&#39;, &#39;developed&#39;, &#39;post-8th&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;after&#39;, &#39;the&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;and&#39;, &#39;medieval&#39;, &#39;Hindu-Muslim&#39;, &#39;wars&#39;, &#39;.&#39;, &#39;[&#39;, &#39;7&#39;, &#39;]&#39;, &#39;[&#39;, &#39;8&#39;, &#39;]&#39;, &#39;[&#39;, &#39;9&#39;, &#39;]&#39;, &#39;A&#39;, &#39;sense&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;and&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;in&#39;, &#39;some&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;between&#39;, &#39;the&#39;, &#39;13th&#39;, &#39;and&#39;, &#39;18th&#39;, &#39;century&#39;, &#39;in&#39;, &#39;Sanskrit&#39;, &#39;and&#39;, &#39;regional&#39;, &#39;languages&#39;, &#39;.&#39;, &#39;[&#39;, &#39;8&#39;, &#39;]&#39;, &#39;[&#39;, &#39;10&#39;, &#39;]&#39;, &#39;The&#39;, &#39;14th-&#39;, &#39;and&#39;, &#39;18th-century&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;such&#39;, &#39;as&#39;, &#39;Vidyapati&#39;, &#39;,&#39;, &#39;Kabir&#39;, &#39;and&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;the&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;(&#39;, &#39;Hinduism&#39;, &#39;)&#39;, &#39;and&#39;, &#39;contrasted&#39;, &#39;it&#39;, &#39;with&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;(&#39;, &#39;Islam&#39;, &#39;)&#39;, &#39;.&#39;, &#39;[&#39;, &#39;11&#39;, &#39;]&#39;, &#39;The&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;the&#39;, &#39;term&#39;, &quot;&#39;Hindu&quot;, &quot;&#39;&quot;, &#39;in&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;in&#39;, &#39;1649&#39;, &#39;.&#39;, &#39;[&#39;, &#39;12&#39;, &#39;]&#39;, &#39;In&#39;, &#39;the&#39;, &#39;18th&#39;, &#39;century&#39;, &#39;,&#39;, &#39;the&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;and&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;the&#39;, &#39;followers&#39;, &#39;of&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;as&#39;, &#39;Hindus&#39;, &#39;,&#39;, &#39;in&#39;, &#39;contrast&#39;, &#39;to&#39;, &#39;Mohamedans&#39;, &#39;for&#39;, &#39;Mughals&#39;, &#39;and&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam&#39;, &#39;.&#39;, &#39;[&#39;, &#39;3&#39;, &#39;]&#39;, &#39;[&#39;, &#39;6&#39;, &#39;]&#39;, &#39;By&#39;, &#39;the&#39;, &#39;mid-19th&#39;, &#39;century&#39;, &#39;,&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;further&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;from&#39;, &#39;Buddhists&#39;, &#39;,&#39;, &#39;Sikhs&#39;, &#39;and&#39;, &#39;Jains&#39;, &#39;,&#39;, &#39;[&#39;, &#39;3&#39;, &#39;]&#39;, &#39;but&#39;, &#39;the&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;to&#39;, &#39;consider&#39;, &#39;all&#39;, &#39;of&#39;, &#39;them&#39;, &#39;to&#39;, &#39;be&#39;, &#39;within&#39;, &#39;the&#39;, &#39;scope&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;until&#39;, &#39;about&#39;, &#39;mid-20th&#39;, &#39;century&#39;, &#39;.&#39;, &#39;[&#39;, &#39;13&#39;, &#39;]&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;that&#39;, &#39;the&#39;, &#39;custom&#39;, &#39;of&#39;, &#39;distinguishing&#39;, &#39;between&#39;, &#39;Hindus&#39;, &#39;,&#39;, &#39;Buddhists&#39;, &#39;,&#39;, &#39;Jains&#39;, &#39;and&#39;, &#39;Sikhs&#39;, &#39;is&#39;, &#39;a&#39;, &#39;modern&#39;, &#39;phenomenon&#39;, &#39;.&#39;, &#39;[&#39;, &#39;14&#39;, &#39;]&#39;, &#39;[&#39;, &#39;15&#39;, &#39;]&#39;, &#39;Hindoo&#39;, &#39;is&#39;, &#39;an&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant&#39;, &#39;,&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;be&#39;, &#39;considered&#39;, &#39;derogatory&#39;, &#39;.&#39;, &#39;[&#39;, &#39;16&#39;, &#39;]&#39;, &#39;[&#39;, &#39;17&#39;, &#39;]&#39;, &#39;At&#39;, &#39;more&#39;, &#39;than&#39;, &#39;1.03&#39;, &#39;billion&#39;, &#39;,&#39;, &#39;[&#39;, &#39;18&#39;, &#39;]&#39;, &#39;Hindus&#39;, &#39;are&#39;, &#39;the&#39;, &#39;world&#39;, &quot;&#39;s&quot;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;after&#39;, &#39;Christians&#39;, &#39;and&#39;, &#39;Muslims&#39;, &#39;.&#39;, &#39;The&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;of&#39;, &#39;Hindus&#39;, &#39;,&#39;, &#39;approximately&#39;, &#39;966&#39;, &#39;million&#39;, &#39;,&#39;, &#39;live&#39;, &#39;in&#39;, &#39;India&#39;, &#39;,&#39;, &#39;according&#39;, &#39;to&#39;, &#39;India&#39;, &quot;&#39;s&quot;, &#39;2011&#39;, &#39;census&#39;, &#39;.&#39;, &#39;[&#39;, &#39;19&#39;, &#39;]&#39;, &#39;After&#39;, &#39;India&#39;, &#39;,&#39;, &#39;the&#39;, &#39;next&#39;, &#39;9&#39;, &#39;countries&#39;, &#39;with&#39;, &#39;the&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;are&#39;, &#39;,&#39;, &#39;in&#39;, &#39;decreasing&#39;, &#39;order&#39;, &#39;:&#39;, &#39;Nepal&#39;, &#39;,&#39;, &#39;Bangladesh&#39;, &#39;,&#39;, &#39;Indonesia&#39;, &#39;,&#39;, &#39;Pakistan&#39;, &#39;,&#39;, &#39;Sri&#39;, &#39;Lanka&#39;, &#39;,&#39;, &#39;United&#39;, &#39;States&#39;, &#39;,&#39;, &#39;Malaysia&#39;, &#39;,&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;and&#39;, &#39;Myanmar&#39;, &#39;.&#39;, &#39;[&#39;, &#39;20&#39;, &#39;]&#39;, &#39;These&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;for&#39;, &#39;99&#39;, &#39;%&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &quot;&#39;s&quot;, &#39;Hindu&#39;, &#39;population&#39;, &#39;,&#39;, &#39;and&#39;, &#39;the&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;together&#39;, &#39;had&#39;, &#39;about&#39;, &#39;6&#39;, &#39;million&#39;, &#39;Hindus&#39;, &#39;in&#39;, &#39;2010&#39;, &#39;.&#39;, &#39;[&#39;, &#39;20&#39;, &#39;]&#39;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package punkt to /Users/jirlong/nltk_data...
+[nltk_data]   Package punkt is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-3-design-manually-as-python-function">
+<h3>Method 3. Design manually as Python function<a class="headerlink" href="#method-3-design-manually-as-python-function" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="k">def</span> <span class="nf">myfun</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="n">y</span><span class="p">):</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">x</span><span class="o">**</span><span class="mi">2</span> <span class="o">+</span> <span class="n">y</span><span class="o">**</span><span class="mi">2</span><span class="p">),</span> <span class="n">x</span><span class="p">,</span> <span class="n">y</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">myfun</span><span class="p">(</span><span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(5.0, 3, 4)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">my_tokenizer</span><span class="p">(</span><span class="n">txt</span><span class="p">):</span>
+    <span class="n">tok</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="n">word_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">txt</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ch</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+            <span class="n">word_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+            <span class="n">tok</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+<span class="c1">#             print(&quot;Word_list: &quot;, word_list)</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tok</span> <span class="o">+=</span> <span class="n">ch</span>
+<span class="c1">#             print(tok)</span>
+    <span class="k">return</span> <span class="n">word_list</span>
+            
+<span class="n">word_list</span> <span class="o">=</span> <span class="n">my_tokenizer</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">word_list</span><span class="p">))</span>
+        
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>409
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tok</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span>
+<span class="k">if</span> <span class="n">tok</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Yes&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;No&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Yes
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># A problematic implementation for word tokenization.</span>
+
+<span class="k">def</span> <span class="nf">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+    <span class="n">tokens</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">tok</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+    <span class="k">for</span> <span class="n">ch</span> <span class="ow">in</span> <span class="n">text</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">ch</span> <span class="o">==</span> <span class="s2">&quot; &quot;</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">tok</span><span class="p">:</span>
+                <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+                <span class="n">tok</span> <span class="o">=</span> <span class="s2">&quot;&quot;</span>
+        <span class="k">else</span><span class="p">:</span>
+            <span class="n">tok</span> <span class="o">+=</span> <span class="n">ch</span>
+    <span class="k">if</span> <span class="n">tok</span><span class="p">:</span>
+        <span class="n">tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tokens</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>410
+[&#39;Hindu&#39;, &#39;refers&#39;, &#39;to&#39;, &#39;any&#39;, &#39;person&#39;, &#39;who&#39;, &#39;regards&#39;, &#39;themselves&#39;, &#39;as&#39;, &#39;culturally,&#39;, &#39;ethnically,&#39;, &#39;or&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;to&#39;, &#39;aspects&#39;, &#39;of&#39;, &#39;Hinduism.[1][2]&#39;, &#39;It&#39;, &#39;has&#39;, &#39;historically&#39;, &#39;been&#39;, &#39;used&#39;, &#39;as&#39;, &#39;a&#39;, &#39;geographical,&#39;, &#39;cultural,&#39;, &#39;and&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;to&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent.[3][4]\n\nThe&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;has&#39;, &#39;evolved&#39;, &#39;with&#39;, &#39;time.&#39;, &#39;Starting&#39;, &#39;with&#39;, &#39;the&#39;, &#39;Persian&#39;, &#39;and&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;to&#39;, &#39;the&#39;, &#39;land&#39;, &#39;of&#39;, &#39;the&#39;, &#39;Indus&#39;, &#39;in&#39;, &#39;the&#39;, &#39;1st&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;through&#39;, &#39;the&#39;, &#39;texts&#39;, &#39;of&#39;, &#39;the&#39;, &#39;medieval&#39;, &#39;era,[5]&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;a&#39;, &#39;geographic,&#39;, &#39;ethnic&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;living&#39;, &#39;in&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;or&#39;, &#39;beyond&#39;, &#39;the&#39;, &#39;Sindhu&#39;, &#39;(Indus)&#39;, &#39;river.[6]&#39;, &#39;By&#39;, &#39;the&#39;, &#39;16th&#39;, &#39;century,&#39;, &#39;the&#39;, &#39;term&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;residents&#39;, &#39;of&#39;, &#39;the&#39;, &#39;subcontinent&#39;, &#39;who&#39;, &#39;were&#39;, &#39;not&#39;, &#39;Turkic&#39;, &#39;or&#39;, &#39;Muslims.[6][a][b]\n\nThe&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;self-identity&#39;, &#39;within&#39;, &#39;the&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population,&#39;, &#39;in&#39;, &#39;a&#39;, &#39;religious&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;sense,&#39;, &#39;is&#39;, &#39;unclear.[3][7]&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;that&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;in&#39;, &#39;the&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era,&#39;, &#39;or&#39;, &#39;that&#39;, &#39;it&#39;, &#39;developed&#39;, &#39;post-8th&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;after&#39;, &#39;the&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;and&#39;, &#39;medieval&#39;, &#39;Hindu-Muslim&#39;, &#39;wars.[7][8][9]&#39;, &#39;A&#39;, &#39;sense&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;and&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;in&#39;, &#39;some&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;between&#39;, &#39;the&#39;, &#39;13th&#39;, &#39;and&#39;, &#39;18th&#39;, &#39;century&#39;, &#39;in&#39;, &#39;Sanskrit&#39;, &#39;and&#39;, &#39;regional&#39;, &#39;languages.[8][10]&#39;, &#39;The&#39;, &#39;14th-&#39;, &#39;and&#39;, &#39;18th-century&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;such&#39;, &#39;as&#39;, &#39;Vidyapati,&#39;, &#39;Kabir&#39;, &#39;and&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;the&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;(Hinduism)&#39;, &#39;and&#39;, &#39;contrasted&#39;, &#39;it&#39;, &#39;with&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;(Islam).[11]&#39;, &#39;The&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;the&#39;, &#39;term&#39;, &quot;&#39;Hindu&#39;&quot;, &#39;in&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;in&#39;, &#39;1649.[12]&#39;, &#39;In&#39;, &#39;the&#39;, &#39;18th&#39;, &#39;century,&#39;, &#39;the&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;and&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;the&#39;, &#39;followers&#39;, &#39;of&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;as&#39;, &#39;Hindus,&#39;, &#39;in&#39;, &#39;contrast&#39;, &#39;to&#39;, &#39;Mohamedans&#39;, &#39;for&#39;, &#39;Mughals&#39;, &#39;and&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam.[3][6]&#39;, &#39;By&#39;, &#39;the&#39;, &#39;mid-19th&#39;, &#39;century,&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;further&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;from&#39;, &#39;Buddhists,&#39;, &#39;Sikhs&#39;, &#39;and&#39;, &#39;Jains,[3]&#39;, &#39;but&#39;, &#39;the&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;to&#39;, &#39;consider&#39;, &#39;all&#39;, &#39;of&#39;, &#39;them&#39;, &#39;to&#39;, &#39;be&#39;, &#39;within&#39;, &#39;the&#39;, &#39;scope&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;until&#39;, &#39;about&#39;, &#39;mid-20th&#39;, &#39;century.[13]&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;that&#39;, &#39;the&#39;, &#39;custom&#39;, &#39;of&#39;, &#39;distinguishing&#39;, &#39;between&#39;, &#39;Hindus,&#39;, &#39;Buddhists,&#39;, &#39;Jains&#39;, &#39;and&#39;, &#39;Sikhs&#39;, &#39;is&#39;, &#39;a&#39;, &#39;modern&#39;, &#39;phenomenon.[14][15]&#39;, &#39;Hindoo&#39;, &#39;is&#39;, &#39;an&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant,&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;be&#39;, &#39;considered&#39;, &#39;derogatory.[16][17]\n\nAt&#39;, &#39;more&#39;, &#39;than&#39;, &#39;1.03&#39;, &#39;billion,[18]&#39;, &#39;Hindus&#39;, &#39;are&#39;, &#39;the&#39;, &quot;world&#39;s&quot;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;after&#39;, &#39;Christians&#39;, &#39;and&#39;, &#39;Muslims.&#39;, &#39;The&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;of&#39;, &#39;Hindus,&#39;, &#39;approximately&#39;, &#39;966&#39;, &#39;million,&#39;, &#39;live&#39;, &#39;in&#39;, &#39;India,&#39;, &#39;according&#39;, &#39;to&#39;, &quot;India&#39;s&quot;, &#39;2011&#39;, &#39;census.[19]&#39;, &#39;After&#39;, &#39;India,&#39;, &#39;the&#39;, &#39;next&#39;, &#39;9&#39;, &#39;countries&#39;, &#39;with&#39;, &#39;the&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;are,&#39;, &#39;in&#39;, &#39;decreasing&#39;, &#39;order:&#39;, &#39;Nepal,&#39;, &#39;Bangladesh,&#39;, &#39;Indonesia,&#39;, &#39;Pakistan,&#39;, &#39;Sri&#39;, &#39;Lanka,&#39;, &#39;United&#39;, &#39;States,&#39;, &#39;Malaysia,&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;and&#39;, &#39;Myanmar.[20]&#39;, &#39;These&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;for&#39;, &#39;99%&#39;, &#39;of&#39;, &#39;the&#39;, &quot;world&#39;s&quot;, &#39;Hindu&#39;, &#39;population,&#39;, &#39;and&#39;, &#39;the&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;together&#39;, &#39;had&#39;, &#39;about&#39;, &#39;6&#39;, &#39;million&#39;, &#39;Hindus&#39;, &#39;in&#39;, &#39;2010.[20]&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="how-to-compare-if-two-lists-are-identical">
+<h3>How to compare if two lists are identical?<a class="headerlink" href="#how-to-compare-if-two-lists-are-identical" title="Permalink to this headline">#</a></h3>
+</section>
+<section id="counting">
+<h3>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">tokens</span> <span class="o">=</span> <span class="n">word_tokenize</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+<span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the	35
+,	33
+[	30
+]	30
+.	18
+and	16
+of	14
+to	12
+in	12
+Hindu	11
+or	6
+term	6
+century	6
+Hindus	6
+a	5
+The	5
+as	4
+for	4
+Indian	4
+3	4
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="stopword-and-sign-removal">
+<h2>Stopword and sign removal<a class="headerlink" href="#stopword-and-sign-removal" title="Permalink to this headline">#</a></h2>
+<section id="method-1-removal-of-punctuation-marks">
+<h3>Method 1.Removal of Punctuation Marks<a class="headerlink" href="#method-1-removal-of-punctuation-marks" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">)</span>       
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>!&quot;#$%&amp;&#39;()*+,-./:;&lt;=&gt;?@[\]^_`{|}~
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">clean_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tok</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">string</span><span class="o">.</span><span class="n">punctuation</span><span class="p">:</span>
+            <span class="n">clean_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clean_tokens</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hindu&#39;, &#39;refers&#39;, &#39;to&#39;, &#39;any&#39;, &#39;person&#39;, &#39;who&#39;, &#39;regards&#39;, &#39;themselves&#39;, &#39;as&#39;, &#39;culturally&#39;, &#39;ethnically&#39;, &#39;or&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;to&#39;, &#39;aspects&#39;, &#39;of&#39;, &#39;Hinduism&#39;, &#39;1&#39;, &#39;2&#39;, &#39;It&#39;, &#39;has&#39;, &#39;historically&#39;, &#39;been&#39;, &#39;used&#39;, &#39;as&#39;, &#39;a&#39;, &#39;geographical&#39;, &#39;cultural&#39;, &#39;and&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;to&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;3&#39;, &#39;4&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;has&#39;, &#39;evolved&#39;, &#39;with&#39;, &#39;time&#39;, &#39;Starting&#39;, &#39;with&#39;, &#39;the&#39;, &#39;Persian&#39;, &#39;and&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;to&#39;, &#39;the&#39;, &#39;land&#39;, &#39;of&#39;, &#39;the&#39;, &#39;Indus&#39;, &#39;in&#39;, &#39;the&#39;, &#39;1st&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;through&#39;, &#39;the&#39;, &#39;texts&#39;, &#39;of&#39;, &#39;the&#39;, &#39;medieval&#39;, &#39;era&#39;, &#39;5&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;a&#39;, &#39;geographic&#39;, &#39;ethnic&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;living&#39;, &#39;in&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;or&#39;, &#39;beyond&#39;, &#39;the&#39;, &#39;Sindhu&#39;, &#39;Indus&#39;, &#39;river&#39;, &#39;6&#39;, &#39;By&#39;, &#39;the&#39;, &#39;16th&#39;, &#39;century&#39;, &#39;the&#39;, &#39;term&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;residents&#39;, &#39;of&#39;, &#39;the&#39;, &#39;subcontinent&#39;, &#39;who&#39;, &#39;were&#39;, &#39;not&#39;, &#39;Turkic&#39;, &#39;or&#39;, &#39;Muslims&#39;, &#39;6&#39;, &#39;a&#39;, &#39;b&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;self-identity&#39;, &#39;within&#39;, &#39;the&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population&#39;, &#39;in&#39;, &#39;a&#39;, &#39;religious&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;sense&#39;, &#39;is&#39;, &#39;unclear&#39;, &#39;3&#39;, &#39;7&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;that&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;in&#39;, &#39;the&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era&#39;, &#39;or&#39;, &#39;that&#39;, &#39;it&#39;, &#39;developed&#39;, &#39;post-8th&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;after&#39;, &#39;the&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;and&#39;, &#39;medieval&#39;, &#39;Hindu-Muslim&#39;, &#39;wars&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;A&#39;, &#39;sense&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;and&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;in&#39;, &#39;some&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;between&#39;, &#39;the&#39;, &#39;13th&#39;, &#39;and&#39;, &#39;18th&#39;, &#39;century&#39;, &#39;in&#39;, &#39;Sanskrit&#39;, &#39;and&#39;, &#39;regional&#39;, &#39;languages&#39;, &#39;8&#39;, &#39;10&#39;, &#39;The&#39;, &#39;14th-&#39;, &#39;and&#39;, &#39;18th-century&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;such&#39;, &#39;as&#39;, &#39;Vidyapati&#39;, &#39;Kabir&#39;, &#39;and&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;the&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;Hinduism&#39;, &#39;and&#39;, &#39;contrasted&#39;, &#39;it&#39;, &#39;with&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;Islam&#39;, &#39;11&#39;, &#39;The&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;the&#39;, &#39;term&#39;, &quot;&#39;Hindu&quot;, &#39;in&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;in&#39;, &#39;1649&#39;, &#39;12&#39;, &#39;In&#39;, &#39;the&#39;, &#39;18th&#39;, &#39;century&#39;, &#39;the&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;and&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;the&#39;, &#39;followers&#39;, &#39;of&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;as&#39;, &#39;Hindus&#39;, &#39;in&#39;, &#39;contrast&#39;, &#39;to&#39;, &#39;Mohamedans&#39;, &#39;for&#39;, &#39;Mughals&#39;, &#39;and&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam&#39;, &#39;3&#39;, &#39;6&#39;, &#39;By&#39;, &#39;the&#39;, &#39;mid-19th&#39;, &#39;century&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;further&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;from&#39;, &#39;Buddhists&#39;, &#39;Sikhs&#39;, &#39;and&#39;, &#39;Jains&#39;, &#39;3&#39;, &#39;but&#39;, &#39;the&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;to&#39;, &#39;consider&#39;, &#39;all&#39;, &#39;of&#39;, &#39;them&#39;, &#39;to&#39;, &#39;be&#39;, &#39;within&#39;, &#39;the&#39;, &#39;scope&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;until&#39;, &#39;about&#39;, &#39;mid-20th&#39;, &#39;century&#39;, &#39;13&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;that&#39;, &#39;the&#39;, &#39;custom&#39;, &#39;of&#39;, &#39;distinguishing&#39;, &#39;between&#39;, &#39;Hindus&#39;, &#39;Buddhists&#39;, &#39;Jains&#39;, &#39;and&#39;, &#39;Sikhs&#39;, &#39;is&#39;, &#39;a&#39;, &#39;modern&#39;, &#39;phenomenon&#39;, &#39;14&#39;, &#39;15&#39;, &#39;Hindoo&#39;, &#39;is&#39;, &#39;an&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;be&#39;, &#39;considered&#39;, &#39;derogatory&#39;, &#39;16&#39;, &#39;17&#39;, &#39;At&#39;, &#39;more&#39;, &#39;than&#39;, &#39;1.03&#39;, &#39;billion&#39;, &#39;18&#39;, &#39;Hindus&#39;, &#39;are&#39;, &#39;the&#39;, &#39;world&#39;, &quot;&#39;s&quot;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;after&#39;, &#39;Christians&#39;, &#39;and&#39;, &#39;Muslims&#39;, &#39;The&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;of&#39;, &#39;Hindus&#39;, &#39;approximately&#39;, &#39;966&#39;, &#39;million&#39;, &#39;live&#39;, &#39;in&#39;, &#39;India&#39;, &#39;according&#39;, &#39;to&#39;, &#39;India&#39;, &quot;&#39;s&quot;, &#39;2011&#39;, &#39;census&#39;, &#39;19&#39;, &#39;After&#39;, &#39;India&#39;, &#39;the&#39;, &#39;next&#39;, &#39;9&#39;, &#39;countries&#39;, &#39;with&#39;, &#39;the&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;are&#39;, &#39;in&#39;, &#39;decreasing&#39;, &#39;order&#39;, &#39;Nepal&#39;, &#39;Bangladesh&#39;, &#39;Indonesia&#39;, &#39;Pakistan&#39;, &#39;Sri&#39;, &#39;Lanka&#39;, &#39;United&#39;, &#39;States&#39;, &#39;Malaysia&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;and&#39;, &#39;Myanmar&#39;, &#39;20&#39;, &#39;These&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;for&#39;, &#39;99&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &quot;&#39;s&quot;, &#39;Hindu&#39;, &#39;population&#39;, &#39;and&#39;, &#39;the&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;together&#39;, &#39;had&#39;, &#39;about&#39;, &#39;6&#39;, &#39;million&#39;, &#39;Hindus&#39;, &#39;in&#39;, &#39;2010&#39;, &#39;20&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="method-2-removing-all-tokens-that-contain-characters-other-than-letters">
+<h3>Method 2. Removing all tokens that contain characters other than letters.<a class="headerlink" href="#method-2-removing-all-tokens-that-contain-characters-other-than-letters" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">clean_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tok</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="n">clean_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">clean_tokens</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hindu&#39;, &#39;refers&#39;, &#39;to&#39;, &#39;any&#39;, &#39;person&#39;, &#39;who&#39;, &#39;regards&#39;, &#39;themselves&#39;, &#39;as&#39;, &#39;culturally&#39;, &#39;ethnically&#39;, &#39;or&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;to&#39;, &#39;aspects&#39;, &#39;of&#39;, &#39;Hinduism&#39;, &#39;It&#39;, &#39;has&#39;, &#39;historically&#39;, &#39;been&#39;, &#39;used&#39;, &#39;as&#39;, &#39;a&#39;, &#39;geographical&#39;, &#39;cultural&#39;, &#39;and&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;to&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;has&#39;, &#39;evolved&#39;, &#39;with&#39;, &#39;time&#39;, &#39;Starting&#39;, &#39;with&#39;, &#39;the&#39;, &#39;Persian&#39;, &#39;and&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;to&#39;, &#39;the&#39;, &#39;land&#39;, &#39;of&#39;, &#39;the&#39;, &#39;Indus&#39;, &#39;in&#39;, &#39;the&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;through&#39;, &#39;the&#39;, &#39;texts&#39;, &#39;of&#39;, &#39;the&#39;, &#39;medieval&#39;, &#39;era&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;a&#39;, &#39;geographic&#39;, &#39;ethnic&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;living&#39;, &#39;in&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;or&#39;, &#39;beyond&#39;, &#39;the&#39;, &#39;Sindhu&#39;, &#39;Indus&#39;, &#39;river&#39;, &#39;By&#39;, &#39;the&#39;, &#39;century&#39;, &#39;the&#39;, &#39;term&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;residents&#39;, &#39;of&#39;, &#39;the&#39;, &#39;subcontinent&#39;, &#39;who&#39;, &#39;were&#39;, &#39;not&#39;, &#39;Turkic&#39;, &#39;or&#39;, &#39;Muslims&#39;, &#39;a&#39;, &#39;b&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;within&#39;, &#39;the&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population&#39;, &#39;in&#39;, &#39;a&#39;, &#39;religious&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;sense&#39;, &#39;is&#39;, &#39;unclear&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;that&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;in&#39;, &#39;the&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era&#39;, &#39;or&#39;, &#39;that&#39;, &#39;it&#39;, &#39;developed&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;after&#39;, &#39;the&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;and&#39;, &#39;medieval&#39;, &#39;wars&#39;, &#39;A&#39;, &#39;sense&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;and&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;in&#39;, &#39;some&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;between&#39;, &#39;the&#39;, &#39;and&#39;, &#39;century&#39;, &#39;in&#39;, &#39;Sanskrit&#39;, &#39;and&#39;, &#39;regional&#39;, &#39;languages&#39;, &#39;The&#39;, &#39;and&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;such&#39;, &#39;as&#39;, &#39;Vidyapati&#39;, &#39;Kabir&#39;, &#39;and&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;the&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;Hinduism&#39;, &#39;and&#39;, &#39;contrasted&#39;, &#39;it&#39;, &#39;with&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;Islam&#39;, &#39;The&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;the&#39;, &#39;term&#39;, &#39;in&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;in&#39;, &#39;In&#39;, &#39;the&#39;, &#39;century&#39;, &#39;the&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;and&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;the&#39;, &#39;followers&#39;, &#39;of&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;as&#39;, &#39;Hindus&#39;, &#39;in&#39;, &#39;contrast&#39;, &#39;to&#39;, &#39;Mohamedans&#39;, &#39;for&#39;, &#39;Mughals&#39;, &#39;and&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam&#39;, &#39;By&#39;, &#39;the&#39;, &#39;century&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;further&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;from&#39;, &#39;Buddhists&#39;, &#39;Sikhs&#39;, &#39;and&#39;, &#39;Jains&#39;, &#39;but&#39;, &#39;the&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;to&#39;, &#39;consider&#39;, &#39;all&#39;, &#39;of&#39;, &#39;them&#39;, &#39;to&#39;, &#39;be&#39;, &#39;within&#39;, &#39;the&#39;, &#39;scope&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;until&#39;, &#39;about&#39;, &#39;century&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;that&#39;, &#39;the&#39;, &#39;custom&#39;, &#39;of&#39;, &#39;distinguishing&#39;, &#39;between&#39;, &#39;Hindus&#39;, &#39;Buddhists&#39;, &#39;Jains&#39;, &#39;and&#39;, &#39;Sikhs&#39;, &#39;is&#39;, &#39;a&#39;, &#39;modern&#39;, &#39;phenomenon&#39;, &#39;Hindoo&#39;, &#39;is&#39;, &#39;an&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;be&#39;, &#39;considered&#39;, &#39;derogatory&#39;, &#39;At&#39;, &#39;more&#39;, &#39;than&#39;, &#39;billion&#39;, &#39;Hindus&#39;, &#39;are&#39;, &#39;the&#39;, &#39;world&#39;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;after&#39;, &#39;Christians&#39;, &#39;and&#39;, &#39;Muslims&#39;, &#39;The&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;of&#39;, &#39;Hindus&#39;, &#39;approximately&#39;, &#39;million&#39;, &#39;live&#39;, &#39;in&#39;, &#39;India&#39;, &#39;according&#39;, &#39;to&#39;, &#39;India&#39;, &#39;census&#39;, &#39;After&#39;, &#39;India&#39;, &#39;the&#39;, &#39;next&#39;, &#39;countries&#39;, &#39;with&#39;, &#39;the&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;are&#39;, &#39;in&#39;, &#39;decreasing&#39;, &#39;order&#39;, &#39;Nepal&#39;, &#39;Bangladesh&#39;, &#39;Indonesia&#39;, &#39;Pakistan&#39;, &#39;Sri&#39;, &#39;Lanka&#39;, &#39;United&#39;, &#39;States&#39;, &#39;Malaysia&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;and&#39;, &#39;Myanmar&#39;, &#39;These&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;for&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;Hindu&#39;, &#39;population&#39;, &#39;and&#39;, &#39;the&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;together&#39;, &#39;had&#39;, &#39;about&#39;, &#39;million&#39;, &#39;Hindus&#39;, &#39;in&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>A shorter implementation with Python generator.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="k">return</span> <span class="p">[</span><span class="n">tok</span> <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">tokens</span> <span class="k">if</span> <span class="n">tok</span><span class="o">.</span><span class="n">isalpha</span><span class="p">()]</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hindu&#39;, &#39;refers&#39;, &#39;to&#39;, &#39;any&#39;, &#39;person&#39;, &#39;who&#39;, &#39;regards&#39;, &#39;themselves&#39;, &#39;as&#39;, &#39;culturally&#39;, &#39;ethnically&#39;, &#39;or&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;to&#39;, &#39;aspects&#39;, &#39;of&#39;, &#39;Hinduism&#39;, &#39;It&#39;, &#39;has&#39;, &#39;historically&#39;, &#39;been&#39;, &#39;used&#39;, &#39;as&#39;, &#39;a&#39;, &#39;geographical&#39;, &#39;cultural&#39;, &#39;and&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;to&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;has&#39;, &#39;evolved&#39;, &#39;with&#39;, &#39;time&#39;, &#39;Starting&#39;, &#39;with&#39;, &#39;the&#39;, &#39;Persian&#39;, &#39;and&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;to&#39;, &#39;the&#39;, &#39;land&#39;, &#39;of&#39;, &#39;the&#39;, &#39;Indus&#39;, &#39;in&#39;, &#39;the&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;through&#39;, &#39;the&#39;, &#39;texts&#39;, &#39;of&#39;, &#39;the&#39;, &#39;medieval&#39;, &#39;era&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;a&#39;, &#39;geographic&#39;, &#39;ethnic&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;for&#39;, &#39;people&#39;, &#39;living&#39;, &#39;in&#39;, &#39;the&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;or&#39;, &#39;beyond&#39;, &#39;the&#39;, &#39;Sindhu&#39;, &#39;Indus&#39;, &#39;river&#39;, &#39;By&#39;, &#39;the&#39;, &#39;century&#39;, &#39;the&#39;, &#39;term&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;residents&#39;, &#39;of&#39;, &#39;the&#39;, &#39;subcontinent&#39;, &#39;who&#39;, &#39;were&#39;, &#39;not&#39;, &#39;Turkic&#39;, &#39;or&#39;, &#39;Muslims&#39;, &#39;a&#39;, &#39;b&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;within&#39;, &#39;the&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population&#39;, &#39;in&#39;, &#39;a&#39;, &#39;religious&#39;, &#39;or&#39;, &#39;cultural&#39;, &#39;sense&#39;, &#39;is&#39;, &#39;unclear&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;that&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;in&#39;, &#39;the&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era&#39;, &#39;or&#39;, &#39;that&#39;, &#39;it&#39;, &#39;developed&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;after&#39;, &#39;the&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;and&#39;, &#39;medieval&#39;, &#39;wars&#39;, &#39;A&#39;, &#39;sense&#39;, &#39;of&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;and&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;in&#39;, &#39;some&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;between&#39;, &#39;the&#39;, &#39;and&#39;, &#39;century&#39;, &#39;in&#39;, &#39;Sanskrit&#39;, &#39;and&#39;, &#39;regional&#39;, &#39;languages&#39;, &#39;The&#39;, &#39;and&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;such&#39;, &#39;as&#39;, &#39;Vidyapati&#39;, &#39;Kabir&#39;, &#39;and&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;the&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;Hinduism&#39;, &#39;and&#39;, &#39;contrasted&#39;, &#39;it&#39;, &#39;with&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;Islam&#39;, &#39;The&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;the&#39;, &#39;term&#39;, &#39;in&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;in&#39;, &#39;In&#39;, &#39;the&#39;, &#39;century&#39;, &#39;the&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;and&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;to&#39;, &#39;refer&#39;, &#39;to&#39;, &#39;the&#39;, &#39;followers&#39;, &#39;of&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;as&#39;, &#39;Hindus&#39;, &#39;in&#39;, &#39;contrast&#39;, &#39;to&#39;, &#39;Mohamedans&#39;, &#39;for&#39;, &#39;Mughals&#39;, &#39;and&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam&#39;, &#39;By&#39;, &#39;the&#39;, &#39;century&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;further&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;from&#39;, &#39;Buddhists&#39;, &#39;Sikhs&#39;, &#39;and&#39;, &#39;Jains&#39;, &#39;but&#39;, &#39;the&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;to&#39;, &#39;consider&#39;, &#39;all&#39;, &#39;of&#39;, &#39;them&#39;, &#39;to&#39;, &#39;be&#39;, &#39;within&#39;, &#39;the&#39;, &#39;scope&#39;, &#39;of&#39;, &#39;the&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;until&#39;, &#39;about&#39;, &#39;century&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;that&#39;, &#39;the&#39;, &#39;custom&#39;, &#39;of&#39;, &#39;distinguishing&#39;, &#39;between&#39;, &#39;Hindus&#39;, &#39;Buddhists&#39;, &#39;Jains&#39;, &#39;and&#39;, &#39;Sikhs&#39;, &#39;is&#39;, &#39;a&#39;, &#39;modern&#39;, &#39;phenomenon&#39;, &#39;Hindoo&#39;, &#39;is&#39;, &#39;an&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;be&#39;, &#39;considered&#39;, &#39;derogatory&#39;, &#39;At&#39;, &#39;more&#39;, &#39;than&#39;, &#39;billion&#39;, &#39;Hindus&#39;, &#39;are&#39;, &#39;the&#39;, &#39;world&#39;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;after&#39;, &#39;Christians&#39;, &#39;and&#39;, &#39;Muslims&#39;, &#39;The&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;of&#39;, &#39;Hindus&#39;, &#39;approximately&#39;, &#39;million&#39;, &#39;live&#39;, &#39;in&#39;, &#39;India&#39;, &#39;according&#39;, &#39;to&#39;, &#39;India&#39;, &#39;census&#39;, &#39;After&#39;, &#39;India&#39;, &#39;the&#39;, &#39;next&#39;, &#39;countries&#39;, &#39;with&#39;, &#39;the&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;are&#39;, &#39;in&#39;, &#39;decreasing&#39;, &#39;order&#39;, &#39;Nepal&#39;, &#39;Bangladesh&#39;, &#39;Indonesia&#39;, &#39;Pakistan&#39;, &#39;Sri&#39;, &#39;Lanka&#39;, &#39;United&#39;, &#39;States&#39;, &#39;Malaysia&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;and&#39;, &#39;Myanmar&#39;, &#39;These&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;for&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;Hindu&#39;, &#39;population&#39;, &#39;and&#39;, &#39;the&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;of&#39;, &#39;the&#39;, &#39;world&#39;, &#39;together&#39;, &#39;had&#39;, &#39;about&#39;, &#39;million&#39;, &#39;Hindus&#39;, &#39;in&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+<p>New counting results with the removal of punctuations and digits.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tokens</span> <span class="o">=</span> <span class="n">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+<span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">tokens</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>the	35
+and	16
+of	14
+to	12
+in	12
+Hindu	11
+or	6
+term	6
+century	6
+Hindus	6
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="stopword-removal">
+<h3>Stopword Removal<a class="headerlink" href="#stopword-removal" title="Permalink to this headline">#</a></h3>
+<p>Load an English stopword list from NTLK.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
+<span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;stopwords&#39;</span><span class="p">)</span>
+<span class="n">stopword_list</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">stopword_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;i&#39;, &#39;me&#39;, &#39;my&#39;, &#39;myself&#39;, &#39;we&#39;, &#39;our&#39;, &#39;ours&#39;, &#39;ourselves&#39;, &#39;you&#39;, &quot;you&#39;re&quot;, &quot;you&#39;ve&quot;, &quot;you&#39;ll&quot;, &quot;you&#39;d&quot;, &#39;your&#39;, &#39;yours&#39;, &#39;yourself&#39;, &#39;yourselves&#39;, &#39;he&#39;, &#39;him&#39;, &#39;his&#39;, &#39;himself&#39;, &#39;she&#39;, &quot;she&#39;s&quot;, &#39;her&#39;, &#39;hers&#39;, &#39;herself&#39;, &#39;it&#39;, &quot;it&#39;s&quot;, &#39;its&#39;, &#39;itself&#39;, &#39;they&#39;, &#39;them&#39;, &#39;their&#39;, &#39;theirs&#39;, &#39;themselves&#39;, &#39;what&#39;, &#39;which&#39;, &#39;who&#39;, &#39;whom&#39;, &#39;this&#39;, &#39;that&#39;, &quot;that&#39;ll&quot;, &#39;these&#39;, &#39;those&#39;, &#39;am&#39;, &#39;is&#39;, &#39;are&#39;, &#39;was&#39;, &#39;were&#39;, &#39;be&#39;, &#39;been&#39;, &#39;being&#39;, &#39;have&#39;, &#39;has&#39;, &#39;had&#39;, &#39;having&#39;, &#39;do&#39;, &#39;does&#39;, &#39;did&#39;, &#39;doing&#39;, &#39;a&#39;, &#39;an&#39;, &#39;the&#39;, &#39;and&#39;, &#39;but&#39;, &#39;if&#39;, &#39;or&#39;, &#39;because&#39;, &#39;as&#39;, &#39;until&#39;, &#39;while&#39;, &#39;of&#39;, &#39;at&#39;, &#39;by&#39;, &#39;for&#39;, &#39;with&#39;, &#39;about&#39;, &#39;against&#39;, &#39;between&#39;, &#39;into&#39;, &#39;through&#39;, &#39;during&#39;, &#39;before&#39;, &#39;after&#39;, &#39;above&#39;, &#39;below&#39;, &#39;to&#39;, &#39;from&#39;, &#39;up&#39;, &#39;down&#39;, &#39;in&#39;, &#39;out&#39;, &#39;on&#39;, &#39;off&#39;, &#39;over&#39;, &#39;under&#39;, &#39;again&#39;, &#39;further&#39;, &#39;then&#39;, &#39;once&#39;, &#39;here&#39;, &#39;there&#39;, &#39;when&#39;, &#39;where&#39;, &#39;why&#39;, &#39;how&#39;, &#39;all&#39;, &#39;any&#39;, &#39;both&#39;, &#39;each&#39;, &#39;few&#39;, &#39;more&#39;, &#39;most&#39;, &#39;other&#39;, &#39;some&#39;, &#39;such&#39;, &#39;no&#39;, &#39;nor&#39;, &#39;not&#39;, &#39;only&#39;, &#39;own&#39;, &#39;same&#39;, &#39;so&#39;, &#39;than&#39;, &#39;too&#39;, &#39;very&#39;, &#39;s&#39;, &#39;t&#39;, &#39;can&#39;, &#39;will&#39;, &#39;just&#39;, &#39;don&#39;, &quot;don&#39;t&quot;, &#39;should&#39;, &quot;should&#39;ve&quot;, &#39;now&#39;, &#39;d&#39;, &#39;ll&#39;, &#39;m&#39;, &#39;o&#39;, &#39;re&#39;, &#39;ve&#39;, &#39;y&#39;, &#39;ain&#39;, &#39;aren&#39;, &quot;aren&#39;t&quot;, &#39;couldn&#39;, &quot;couldn&#39;t&quot;, &#39;didn&#39;, &quot;didn&#39;t&quot;, &#39;doesn&#39;, &quot;doesn&#39;t&quot;, &#39;hadn&#39;, &quot;hadn&#39;t&quot;, &#39;hasn&#39;, &quot;hasn&#39;t&quot;, &#39;haven&#39;, &quot;haven&#39;t&quot;, &#39;isn&#39;, &quot;isn&#39;t&quot;, &#39;ma&#39;, &#39;mightn&#39;, &quot;mightn&#39;t&quot;, &#39;mustn&#39;, &quot;mustn&#39;t&quot;, &#39;needn&#39;, &quot;needn&#39;t&quot;, &#39;shan&#39;, &quot;shan&#39;t&quot;, &#39;shouldn&#39;, &quot;shouldn&#39;t&quot;, &#39;wasn&#39;, &quot;wasn&#39;t&quot;, &#39;weren&#39;, &quot;weren&#39;t&quot;, &#39;won&#39;, &quot;won&#39;t&quot;, &#39;wouldn&#39;, &quot;wouldn&#39;t&quot;]
+</pre></div>
+</div>
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[nltk_data] Downloading package stopwords to
+[nltk_data]     /Users/jirlong/nltk_data...
+[nltk_data]   Package stopwords is already up-to-date!
+</pre></div>
+</div>
+</div>
+</div>
+<p>Remove stopwords from the tokens.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">tokens_clean</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tok</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+            <span class="n">tokens_clean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tokens_clean</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hindu&#39;, &#39;refers&#39;, &#39;person&#39;, &#39;regards&#39;, &#39;culturally&#39;, &#39;ethnically&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;aspects&#39;, &#39;Hinduism&#39;, &#39;It&#39;, &#39;historically&#39;, &#39;used&#39;, &#39;geographical&#39;, &#39;cultural&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;evolved&#39;, &#39;time&#39;, &#39;Starting&#39;, &#39;Persian&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;land&#39;, &#39;Indus&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;texts&#39;, &#39;medieval&#39;, &#39;era&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;geographic&#39;, &#39;ethnic&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;people&#39;, &#39;living&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;beyond&#39;, &#39;Sindhu&#39;, &#39;Indus&#39;, &#39;river&#39;, &#39;By&#39;, &#39;century&#39;, &#39;term&#39;, &#39;began&#39;, &#39;refer&#39;, &#39;residents&#39;, &#39;subcontinent&#39;, &#39;Turkic&#39;, &#39;Muslims&#39;, &#39;b&#39;, &#39;The&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;Hindu&#39;, &#39;within&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population&#39;, &#39;religious&#39;, &#39;cultural&#39;, &#39;sense&#39;, &#39;unclear&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era&#39;, &#39;developed&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;medieval&#39;, &#39;wars&#39;, &#39;A&#39;, &#39;sense&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;century&#39;, &#39;Sanskrit&#39;, &#39;regional&#39;, &#39;languages&#39;, &#39;The&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;Vidyapati&#39;, &#39;Kabir&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;Hinduism&#39;, &#39;contrasted&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;Islam&#39;, &#39;The&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;term&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;In&#39;, &#39;century&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;refer&#39;, &#39;followers&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;Hindus&#39;, &#39;contrast&#39;, &#39;Mohamedans&#39;, &#39;Mughals&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam&#39;, &#39;By&#39;, &#39;century&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;Buddhists&#39;, &#39;Sikhs&#39;, &#39;Jains&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;consider&#39;, &#39;within&#39;, &#39;scope&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;century&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;custom&#39;, &#39;distinguishing&#39;, &#39;Hindus&#39;, &#39;Buddhists&#39;, &#39;Jains&#39;, &#39;Sikhs&#39;, &#39;modern&#39;, &#39;phenomenon&#39;, &#39;Hindoo&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;considered&#39;, &#39;derogatory&#39;, &#39;At&#39;, &#39;billion&#39;, &#39;Hindus&#39;, &#39;world&#39;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;Christians&#39;, &#39;Muslims&#39;, &#39;The&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;Hindus&#39;, &#39;approximately&#39;, &#39;million&#39;, &#39;live&#39;, &#39;India&#39;, &#39;according&#39;, &#39;India&#39;, &#39;census&#39;, &#39;After&#39;, &#39;India&#39;, &#39;next&#39;, &#39;countries&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;decreasing&#39;, &#39;order&#39;, &#39;Nepal&#39;, &#39;Bangladesh&#39;, &#39;Indonesia&#39;, &#39;Pakistan&#39;, &#39;Sri&#39;, &#39;Lanka&#39;, &#39;United&#39;, &#39;States&#39;, &#39;Malaysia&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;Myanmar&#39;, &#39;These&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;world&#39;, &#39;Hindu&#39;, &#39;population&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;world&#39;, &#39;together&#39;, &#39;million&#39;, &#39;Hindus&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="handle-capitalization-in-english">
+<h2>Handle Capitalization in English<a class="headerlink" href="#handle-capitalization-in-english" title="Permalink to this headline">#</a></h2>
+<section id="solution-1-converting-all-characters-to-lowercase">
+<h3>Solution 1: Converting all characters to lowercase.<a class="headerlink" href="#solution-1-converting-all-characters-to-lowercase" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lowercase</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">tokens_lower</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="n">tokens_lower</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    <span class="k">return</span> <span class="n">tokens_lower</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">(</span><span class="n">lowercase</span><span class="p">(</span><span class="n">tokens</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;hindu&#39;, &#39;refers&#39;, &#39;person&#39;, &#39;regards&#39;, &#39;culturally&#39;, &#39;ethnically&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;aspects&#39;, &#39;hinduism&#39;, &#39;historically&#39;, &#39;used&#39;, &#39;geographical&#39;, &#39;cultural&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;indian&#39;, &#39;subcontinent&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;term&#39;, &#39;hindu&#39;, &#39;evolved&#39;, &#39;time&#39;, &#39;starting&#39;, &#39;persian&#39;, &#39;greek&#39;, &#39;references&#39;, &#39;land&#39;, &#39;indus&#39;, &#39;millennium&#39;, &#39;bce&#39;, &#39;texts&#39;, &#39;medieval&#39;, &#39;era&#39;, &#39;term&#39;, &#39;hindu&#39;, &#39;implied&#39;, &#39;geographic&#39;, &#39;ethnic&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;people&#39;, &#39;living&#39;, &#39;indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;beyond&#39;, &#39;sindhu&#39;, &#39;indus&#39;, &#39;river&#39;, &#39;century&#39;, &#39;term&#39;, &#39;began&#39;, &#39;refer&#39;, &#39;residents&#39;, &#39;subcontinent&#39;, &#39;turkic&#39;, &#39;muslims&#39;, &#39;b&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;hindu&#39;, &#39;within&#39;, &#39;local&#39;, &#39;south&#39;, &#39;asian&#39;, &#39;population&#39;, &#39;religious&#39;, &#39;cultural&#39;, &#39;sense&#39;, &#39;unclear&#39;, &#39;competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;british&#39;, &#39;colonial&#39;, &#39;era&#39;, &#39;developed&#39;, &#39;century&#39;, &#39;ce&#39;, &#39;islamic&#39;, &#39;invasion&#39;, &#39;medieval&#39;, &#39;wars&#39;, &#39;sense&#39;, &#39;hindu&#39;, &#39;identity&#39;, &#39;term&#39;, &#39;hindu&#39;, &#39;appears&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;century&#39;, &#39;sanskrit&#39;, &#39;regional&#39;, &#39;languages&#39;, &#39;indian&#39;, &#39;poets&#39;, &#39;vidyapati&#39;, &#39;kabir&#39;, &#39;eknath&#39;, &#39;used&#39;, &#39;phrase&#39;, &#39;hindu&#39;, &#39;dharma&#39;, &#39;hinduism&#39;, &#39;contrasted&#39;, &#39;turaka&#39;, &#39;dharma&#39;, &#39;islam&#39;, &#39;christian&#39;, &#39;friar&#39;, &#39;sebastiao&#39;, &#39;manrique&#39;, &#39;used&#39;, &#39;term&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;century&#39;, &#39;european&#39;, &#39;merchants&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;refer&#39;, &#39;followers&#39;, &#39;indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;hindus&#39;, &#39;contrast&#39;, &#39;mohamedans&#39;, &#39;mughals&#39;, &#39;arabs&#39;, &#39;following&#39;, &#39;islam&#39;, &#39;century&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;distinguished&#39;, &#39;hindus&#39;, &#39;buddhists&#39;, &#39;sikhs&#39;, &#39;jains&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;consider&#39;, &#39;within&#39;, &#39;scope&#39;, &#39;term&#39;, &#39;hindu&#39;, &#39;century&#39;, &#39;scholars&#39;, &#39;state&#39;, &#39;custom&#39;, &#39;distinguishing&#39;, &#39;hindus&#39;, &#39;buddhists&#39;, &#39;jains&#39;, &#39;sikhs&#39;, &#39;modern&#39;, &#39;phenomenon&#39;, &#39;hindoo&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;considered&#39;, &#39;derogatory&#39;, &#39;billion&#39;, &#39;hindus&#39;, &#39;world&#39;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;christians&#39;, &#39;muslims&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;hindus&#39;, &#39;approximately&#39;, &#39;million&#39;, &#39;live&#39;, &#39;india&#39;, &#39;according&#39;, &#39;india&#39;, &#39;census&#39;, &#39;india&#39;, &#39;next&#39;, &#39;countries&#39;, &#39;largest&#39;, &#39;hindu&#39;, &#39;populations&#39;, &#39;decreasing&#39;, &#39;order&#39;, &#39;nepal&#39;, &#39;bangladesh&#39;, &#39;indonesia&#39;, &#39;pakistan&#39;, &#39;sri&#39;, &#39;lanka&#39;, &#39;united&#39;, &#39;states&#39;, &#39;malaysia&#39;, &#39;united&#39;, &#39;kingdom&#39;, &#39;myanmar&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;world&#39;, &#39;hindu&#39;, &#39;population&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;world&#39;, &#39;together&#39;, &#39;million&#39;, &#39;hindus&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="solution-2-maintain-the-capitalization">
+<h3>Solution 2: Maintain the capitalization.<a class="headerlink" href="#solution-2-maintain-the-capitalization" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">tokens_clean</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">tokens</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">tok</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+            <span class="n">tokens_clean</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tok</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">tokens_clean</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Hindu&#39;, &#39;refers&#39;, &#39;person&#39;, &#39;regards&#39;, &#39;culturally&#39;, &#39;ethnically&#39;, &#39;religiously&#39;, &#39;adhering&#39;, &#39;aspects&#39;, &#39;Hinduism&#39;, &#39;historically&#39;, &#39;used&#39;, &#39;geographical&#39;, &#39;cultural&#39;, &#39;later&#39;, &#39;religious&#39;, &#39;identifier&#39;, &#39;people&#39;, &#39;indigenous&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;historical&#39;, &#39;meaning&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;evolved&#39;, &#39;time&#39;, &#39;Starting&#39;, &#39;Persian&#39;, &#39;Greek&#39;, &#39;references&#39;, &#39;land&#39;, &#39;Indus&#39;, &#39;millennium&#39;, &#39;BCE&#39;, &#39;texts&#39;, &#39;medieval&#39;, &#39;era&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;implied&#39;, &#39;geographic&#39;, &#39;ethnic&#39;, &#39;cultural&#39;, &#39;identifier&#39;, &#39;people&#39;, &#39;living&#39;, &#39;Indian&#39;, &#39;subcontinent&#39;, &#39;around&#39;, &#39;beyond&#39;, &#39;Sindhu&#39;, &#39;Indus&#39;, &#39;river&#39;, &#39;century&#39;, &#39;term&#39;, &#39;began&#39;, &#39;refer&#39;, &#39;residents&#39;, &#39;subcontinent&#39;, &#39;Turkic&#39;, &#39;Muslims&#39;, &#39;b&#39;, &#39;historical&#39;, &#39;development&#39;, &#39;Hindu&#39;, &#39;within&#39;, &#39;local&#39;, &#39;South&#39;, &#39;Asian&#39;, &#39;population&#39;, &#39;religious&#39;, &#39;cultural&#39;, &#39;sense&#39;, &#39;unclear&#39;, &#39;Competing&#39;, &#39;theories&#39;, &#39;state&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;developed&#39;, &#39;British&#39;, &#39;colonial&#39;, &#39;era&#39;, &#39;developed&#39;, &#39;century&#39;, &#39;CE&#39;, &#39;Islamic&#39;, &#39;invasion&#39;, &#39;medieval&#39;, &#39;wars&#39;, &#39;sense&#39;, &#39;Hindu&#39;, &#39;identity&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;appears&#39;, &#39;texts&#39;, &#39;dated&#39;, &#39;century&#39;, &#39;Sanskrit&#39;, &#39;regional&#39;, &#39;languages&#39;, &#39;Indian&#39;, &#39;poets&#39;, &#39;Vidyapati&#39;, &#39;Kabir&#39;, &#39;Eknath&#39;, &#39;used&#39;, &#39;phrase&#39;, &#39;Hindu&#39;, &#39;dharma&#39;, &#39;Hinduism&#39;, &#39;contrasted&#39;, &#39;Turaka&#39;, &#39;dharma&#39;, &#39;Islam&#39;, &#39;Christian&#39;, &#39;friar&#39;, &#39;Sebastiao&#39;, &#39;Manrique&#39;, &#39;used&#39;, &#39;term&#39;, &#39;religious&#39;, &#39;context&#39;, &#39;century&#39;, &#39;European&#39;, &#39;merchants&#39;, &#39;colonists&#39;, &#39;began&#39;, &#39;refer&#39;, &#39;followers&#39;, &#39;Indian&#39;, &#39;religions&#39;, &#39;collectively&#39;, &#39;Hindus&#39;, &#39;contrast&#39;, &#39;Mohamedans&#39;, &#39;Mughals&#39;, &#39;Arabs&#39;, &#39;following&#39;, &#39;Islam&#39;, &#39;century&#39;, &#39;colonial&#39;, &#39;orientalist&#39;, &#39;texts&#39;, &#39;distinguished&#39;, &#39;Hindus&#39;, &#39;Buddhists&#39;, &#39;Sikhs&#39;, &#39;Jains&#39;, &#39;colonial&#39;, &#39;laws&#39;, &#39;continued&#39;, &#39;consider&#39;, &#39;within&#39;, &#39;scope&#39;, &#39;term&#39;, &#39;Hindu&#39;, &#39;century&#39;, &#39;Scholars&#39;, &#39;state&#39;, &#39;custom&#39;, &#39;distinguishing&#39;, &#39;Hindus&#39;, &#39;Buddhists&#39;, &#39;Jains&#39;, &#39;Sikhs&#39;, &#39;modern&#39;, &#39;phenomenon&#39;, &#39;Hindoo&#39;, &#39;archaic&#39;, &#39;spelling&#39;, &#39;variant&#39;, &#39;whose&#39;, &#39;use&#39;, &#39;today&#39;, &#39;may&#39;, &#39;considered&#39;, &#39;derogatory&#39;, &#39;billion&#39;, &#39;Hindus&#39;, &#39;world&#39;, &#39;third&#39;, &#39;largest&#39;, &#39;group&#39;, &#39;Christians&#39;, &#39;Muslims&#39;, &#39;vast&#39;, &#39;majority&#39;, &#39;Hindus&#39;, &#39;approximately&#39;, &#39;million&#39;, &#39;live&#39;, &#39;India&#39;, &#39;according&#39;, &#39;India&#39;, &#39;census&#39;, &#39;India&#39;, &#39;next&#39;, &#39;countries&#39;, &#39;largest&#39;, &#39;Hindu&#39;, &#39;populations&#39;, &#39;decreasing&#39;, &#39;order&#39;, &#39;Nepal&#39;, &#39;Bangladesh&#39;, &#39;Indonesia&#39;, &#39;Pakistan&#39;, &#39;Sri&#39;, &#39;Lanka&#39;, &#39;United&#39;, &#39;States&#39;, &#39;Malaysia&#39;, &#39;United&#39;, &#39;Kingdom&#39;, &#39;Myanmar&#39;, &#39;together&#39;, &#39;accounted&#39;, &#39;world&#39;, &#39;Hindu&#39;, &#39;population&#39;, &#39;remaining&#39;, &#39;nations&#39;, &#39;world&#39;, &#39;together&#39;, &#39;million&#39;, &#39;Hindus&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="new-counting-results-with-the-removal-of-stopwords">
+<h3>New counting results with the removal of stopwords.<a class="headerlink" href="#new-counting-results-with-the-removal-of-stopwords" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
+
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hindu	11
+term	6
+century	6
+Hindus	6
+Indian	4
+used	3
+cultural	3
+religious	3
+subcontinent	3
+texts	3
+colonial	3
+world	3
+India	3
+Hinduism	2
+identifier	2
+people	2
+historical	2
+Indus	2
+medieval	2
+era	2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="unicase-results-with-the-removal-of-stopwords">
+<h3>Unicase results with the removal of stopwords.<a class="headerlink" href="#unicase-results-with-the-removal-of-stopwords" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">(</span><span class="n">lowercase</span><span class="p">(</span><span class="n">tokens</span><span class="p">)))</span>
+
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hindu	11
+term	6
+century	6
+hindus	6
+indian	4
+used	3
+cultural	3
+religious	3
+subcontinent	3
+texts	3
+colonial	3
+world	3
+india	3
+hinduism	2
+identifier	2
+people	2
+historical	2
+indus	2
+medieval	2
+era	2
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="stemming">
+<h2>Stemming<a class="headerlink" href="#stemming" title="Permalink to this headline">#</a></h2>
+<p>Stemming with Snowball algorithm implemented by NLTK.</p>
+<p>Reference: <a class="reference external" href="http://snowball.tartarus.org/texts/introduction.html">http://snowball.tartarus.org/texts/introduction.html</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.stem.snowball</span> <span class="kn">import</span> <span class="n">SnowballStemmer</span>
+<span class="n">snowball_stemmer</span> <span class="o">=</span> <span class="n">SnowballStemmer</span><span class="p">(</span><span class="s2">&quot;english&quot;</span><span class="p">)</span>
+
+<span class="n">stemmed_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">stemmed_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">snowball_stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">tok</span><span class="p">))</span>
+<span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">stemmed_tokens</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>hindu	11
+term	6
+centuri	6
+hindus	6
+refer	4
+cultur	4
+religi	4
+use	4
+indian	4
+histor	3
+subcontin	3
+text	3
+develop	3
+popul	3
+state	3
+coloni	3
+islam	3
+world	3
+india	3
+ethnic	2
+hinduism	2
+geograph	2
+identifi	2
+peopl	2
+indus	2
+mediev	2
+era	2
+live	2
+began	2
+muslim	2
+within	2
+sens	2
+ident	2
+dharma	2
+contrast	2
+christian	2
+follow	2
+distinguish	2
+buddhist	2
+sikh	2
+jain	2
+consid	2
+largest	2
+million	2
+unit	2
+togeth	2
+person	1
+regard	1
+adher	1
+aspect	1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="lemmatization">
+<h2>Lemmatization<a class="headerlink" href="#lemmatization" title="Permalink to this headline">#</a></h2>
+<p>Perform lemmatization with WordNet, a lexical ontology, via NLTK. This is a lazy version that does not require part-of-speech information given.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># import nltk</span>
+<span class="c1"># nltk.download(&#39;wordnet&#39;)</span>
+<span class="kn">from</span> <span class="nn">nltk.stem</span> <span class="kn">import</span> <span class="n">WordNetLemmatizer</span>
+<span class="n">wordnet_lemmatizer</span> <span class="o">=</span> <span class="n">WordNetLemmatizer</span><span class="p">()</span>
+
+<span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+    <span class="c1"># ADJ (a), ADJ_SAT (s), ADV (r), NOUN (n) or VERB (v)</span>
+    <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">]:</span>
+        <span class="n">l</span> <span class="o">=</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">l</span> <span class="o">!=</span> <span class="n">token</span><span class="p">:</span>
+            <span class="k">return</span> <span class="n">l</span>
+    <span class="k">return</span> <span class="n">token</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">lemmatize</span><span class="p">(</span><span class="s1">&#39;Dogs&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lemmatize</span><span class="p">(</span><span class="s1">&#39;dogs&#39;</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">lemmatize</span><span class="p">(</span><span class="s1">&#39;hits&#39;</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dogs
+dog
+hit
+</pre></div>
+</div>
+</div>
+</div>
+<p>Show the differences between stemming and lemmatization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="p">[</span>
+    <span class="s1">&#39;open&#39;</span><span class="p">,</span> <span class="s1">&#39;opens&#39;</span><span class="p">,</span> <span class="s1">&#39;opened&#39;</span><span class="p">,</span> <span class="s1">&#39;opening&#39;</span><span class="p">,</span> <span class="s1">&#39;unopened&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;talk&#39;</span><span class="p">,</span> <span class="s1">&#39;talks&#39;</span><span class="p">,</span> <span class="s1">&#39;talked&#39;</span><span class="p">,</span> <span class="s1">&#39;talking&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;decompose&#39;</span><span class="p">,</span> <span class="s1">&#39;decomposes&#39;</span><span class="p">,</span> <span class="s1">&#39;decomposed&#39;</span><span class="p">,</span> <span class="s1">&#39;decomposing&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;do&#39;</span><span class="p">,</span> <span class="s1">&#39;does&#39;</span><span class="p">,</span> <span class="s1">&#39;did&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;wrote&#39;</span><span class="p">,</span> <span class="s1">&#39;written&#39;</span><span class="p">,</span> <span class="s1">&#39;ran&#39;</span><span class="p">,</span> <span class="s1">&#39;gave&#39;</span><span class="p">,</span> <span class="s1">&#39;held&#39;</span><span class="p">,</span> <span class="s1">&#39;went&#39;</span><span class="p">,</span> <span class="s1">&#39;gone&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;lied&#39;</span><span class="p">,</span> <span class="s1">&#39;lies&#39;</span><span class="p">,</span> <span class="s1">&#39;lay&#39;</span><span class="p">,</span> <span class="s1">&#39;lain&#39;</span><span class="p">,</span> <span class="s1">&#39;lying&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;cats&#39;</span><span class="p">,</span> <span class="s1">&#39;people&#39;</span><span class="p">,</span> <span class="s1">&#39;feet&#39;</span><span class="p">,</span> <span class="s1">&#39;women&#39;</span><span class="p">,</span> <span class="s1">&#39;smoothly&#39;</span><span class="p">,</span> <span class="s1">&#39;firstly&#39;</span><span class="p">,</span> <span class="s1">&#39;secondly&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;install&#39;</span><span class="p">,</span> <span class="s1">&#39;installed&#39;</span><span class="p">,</span> <span class="s1">&#39;uninstall&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;internalization&#39;</span><span class="p">,</span> <span class="s1">&#39;internationalization&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;decontextualization&#39;</span><span class="p">,</span> <span class="s1">&#39;decontextualized&#39;</span><span class="p">,</span> <span class="s1">&#39;decentralization&#39;</span><span class="p">,</span> <span class="s1">&#39;decentralized&#39;</span><span class="p">]:</span>
+    <span class="n">s</span> <span class="o">=</span> <span class="n">snowball_stemmer</span><span class="o">.</span><span class="n">stem</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="n">l</span> <span class="o">=</span> <span class="n">lemmatize</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">s</span> <span class="o">!=</span> <span class="n">l</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">l</span><span class="p">))</span>
+    
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>unopened	unopen	unopened
+decompose	decompos	decompose
+decomposes	decompos	decompose
+decomposed	decompos	decompose
+decomposing	decompos	decompose
+does	doe	do
+did	did	do
+wrote	wrote	write
+written	written	write
+ran	ran	run
+gave	gave	give
+held	held	hold
+went	went	go
+gone	gone	go
+lain	lain	lie
+people	peopl	people
+feet	feet	foot
+women	women	woman
+smoothly	smooth	smoothly
+firstly	first	firstly
+secondly	second	secondly
+install	instal	install
+uninstall	uninstal	uninstall
+internalization	intern	internalization
+internationalization	internation	internationalization
+decontextualization	decontextu	decontextualization
+decontextualized	decontextu	decontextualized
+decentralization	decentr	decentralization
+decentralized	decentr	decentralize
+</pre></div>
+</div>
+</div>
+</div>
+<p>New counting results with lemmatization.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lemmatized_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">tok</span> <span class="ow">in</span> <span class="n">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
+    <span class="n">lemmatized_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">tok</span><span class="p">))</span>
+<span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">lemmatized_tokens</span><span class="p">)</span>
+
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">w</span><span class="p">,</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hindu	11
+term	6
+century	6
+Hindus	6
+use	4
+Indian	4
+refer	3
+cultural	3
+religious	3
+subcontinent	3
+text	3
+population	3
+colonial	3
+world	3
+India	3
+Hinduism	2
+identifier	2
+people	2
+historical	2
+Indus	2
+medieval	2
+era	2
+live	2
+begin	2
+Muslims	2
+within	2
+sense	2
+state	2
+identity	2
+develop	2
+dharma	2
+contrast	2
+Islam	2
+distinguish	2
+Buddhists	2
+Sikhs	2
+Jains	2
+consider	2
+large	2
+million	2
+United	2
+together	2
+person	1
+regard	1
+culturally	1
+ethnically	1
+religiously	1
+adhere	1
+aspect	1
+historically	1
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="applications-genearte-data-for-wordcloud-rendering">
+<h2>Applications: Genearte data for WordCloud rendering.<a class="headerlink" href="#applications-genearte-data-for-wordcloud-rendering" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://www.jasondavies.com/wordcloud/">https://www.jasondavies.com/wordcloud/</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">repeated_tokens</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">():</span>
+    <span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">c</span><span class="p">):</span>
+        <span class="n">repeated_tokens</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">repeated_tokens</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Hindu Hindu Hindu Hindu Hindu Hindu Hindu Hindu Hindu Hindu Hindu term term term term term term century century century century century century Hindus Hindus Hindus Hindus Hindus Hindus use use use use Indian Indian Indian Indian refer refer refer cultural cultural cultural religious religious religious subcontinent subcontinent subcontinent text text text population population population colonial colonial colonial world world world India India India Hinduism Hinduism identifier identifier people people historical historical Indus Indus medieval medieval era era live live begin begin Muslims Muslims within within sense sense state state identity identity develop develop dharma dharma contrast contrast Islam Islam distinguish distinguish Buddhists Buddhists Sikhs Sikhs Jains Jains consider consider large large million million United United together together person regard culturally ethnically religiously adhere aspect historically geographical late indigenous mean evolve time Starting Persian Greek reference land millennium BCE imply geographic ethnic around beyond Sindhu river resident Turkic b development local South Asian unclear Competing theory British CE Islamic invasion war appear date Sanskrit regional language poet Vidyapati Kabir Eknath phrase Turaka Christian friar Sebastiao Manrique context European merchant colonist follower religion collectively Mohamedans Mughals Arabs follow orientalist law continue scope Scholars custom modern phenomenon Hindoo archaic spell variant whose today may derogatory billion third group Christians vast majority approximately accord census next country decrease order Nepal Bangladesh Indonesia Pakistan Sri Lanka States Malaysia Kingdom Myanmar account remain nation
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./TM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../PSS/P08_4_ptt_crawler.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P08 HTML Parsing - Crawling PTT</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TM01_tokenization%28chi%29.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Chinese Processing</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading Data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#an-example-wikipedia">An Example: Wikipedia</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#one-more-example">One more example</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#length-of-the-corpus-in-characters">Length of the corpus (in characters)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#content">Content</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tokenization">Tokenization</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-by-built-in-split">Method 1. by built-in <code class="docutils literal notranslate"><span class="pre">.split()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-by-nltk-s-function">Method 2. by nltk’s function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-3-design-manually-as-python-function">Method 3. Design manually as Python function</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#how-to-compare-if-two-lists-are-identical">How to compare if two lists are identical?</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting">Counting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-and-sign-removal">Stopword and sign removal</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-1-removal-of-punctuation-marks">Method 1.Removal of Punctuation Marks</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#method-2-removing-all-tokens-that-contain-characters-other-than-letters">Method 2. Removing all tokens that contain characters other than letters.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#stopword-removal">Stopword Removal</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#handle-capitalization-in-english">Handle Capitalization in English</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-1-converting-all-characters-to-lowercase">Solution 1: Converting all characters to lowercase.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#solution-2-maintain-the-capitalization">Solution 2: Maintain the capitalization.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#new-counting-results-with-the-removal-of-stopwords">New counting results with the removal of stopwords.</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#unicase-results-with-the-removal-of-stopwords">Unicase results with the removal of stopwords.</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#stemming">Stemming</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#lemmatization">Lemmatization</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#applications-genearte-data-for-wordcloud-rendering">Applications: Genearte data for WordCloud rendering.</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

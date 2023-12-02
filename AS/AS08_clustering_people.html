@@ -1,0 +1,2297 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>AS08 - Clustering Commenters Based on Behavior &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'AS/AS08_clustering_people';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Python教學影片" href="../Resource/video_list.html" />
+    <link rel="prev" title="AS08 Youtube comment clustering" href="AS08_clustering_yt_comment.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/AS/AS08_clustering_people.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS08_clustering_people.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/AS/AS08_clustering_people.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>AS08 - Clustering Commenters Based on Behavior</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">1- Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-commenter-to-post-dictionary-30-points">2- Building a Commenter-to-Post Dictionary (30 points)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-commenter-to-posts-matrix-20-points">3- Convert to commenter-to-posts matrix (20 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-up-commenter-to-posts-dictionary">Step 1: build up commenter-to-posts dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-using-countvectorizer">Step 2: Using CountVectorizer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-20-points">Clustering (20 points)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-using-umap-10-20points">Visualization Using UMAP (10+20points)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="as08-clustering-commenters-based-on-behavior">
+<h1>AS08 - Clustering Commenters Based on Behavior<a class="headerlink" href="#as08-clustering-commenters-based-on-behavior" title="Permalink to this headline">#</a></h1>
+<p>In the <a class="reference external" href="https://p4css.github.io/py4css/TM/TM06_Clustering.html">Cluster Tutorial</a>, we explored how to cluster documents using words as features, treating these words as unique fingerprints (features) of the documents. In this assignment, we shift our focus to analyzing commenters. Here, the posts commented on by the commenters are considered as indicators of their behavioral patterns. By treating these commenting behaviors as distinct features, we aim to cluster commenters based on these behavioral characteristics.</p>
+<section id="loading-data">
+<h2>1- Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<p>Once again, we will utilize PTT posts from January 2, 2020. There are a total of 118 posts, each with its own unique ID (<code class="docutils literal notranslate"><span class="pre">canonical_url</span></code>). Additionally, each post contains a series of comments written by commenters (<code class="docutils literal notranslate"><span class="pre">authors</span></code>).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="n">post_list</span> <span class="o">=</span> <span class="p">[]</span>
+
+<span class="c1"># 開啟 JSONL 檔案，一行一行讀取並解析 JSON</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../_build/html/data/2020-01-02.jsonl&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+        <span class="k">try</span><span class="p">:</span>
+            <span class="c1"># 解析 JSON 字典並加入到列表中</span>
+            <span class="n">post</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+            <span class="n">post_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">post</span><span class="p">)</span>
+        <span class="k">except</span> <span class="n">json</span><span class="o">.</span><span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+            <span class="c1"># 處理解析錯誤</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;解析 JSON 時出錯: </span><span class="si">{</span><span class="nb">str</span><span class="p">(</span><span class="n">e</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">post_list</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">post_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># 開啟 JSONL 檔案，一行一行讀取並解析 JSON</span>
+<span class="ne">----&gt; </span><span class="mi">5</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../_build/html/data/2020-01-02.jsonl&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="k">try</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>             <span class="c1"># 解析 JSON 字典並加入到列表中</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../_build/html/data/2020-01-02.jsonl&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_list</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;version&#39;: 1582899164,
+ &#39;canonical_url&#39;: &#39;https://www.ptt.cc/bbs/Gossiping/M.1577894589.A.09F.html&#39;,
+ &#39;title&#39;: &#39;Re: [爆卦] 館長直播爆料柯師傅執行力強大&#39;,
+ &#39;author&#39;: &#39;KKB&#39;,
+ &#39;connect_from&#39;: &#39;111.71.86.187&#39;,
+ &#39;published_at&#39;: &#39;2020-01-02T00:03:06&#39;,
+ &#39;first_seen_at&#39;: &#39;2020-02-28T22:12:44&#39;,
+ &#39;last_updated_at&#39;: &#39;2020-03-29T07:27:57&#39;,
+ &#39;id&#39;: &#39;d3678ba0-6acb-46c6-bb8b-f191b70cfbb6&#39;,
+ &#39;producer_id&#39;: &#39;5030a4ff-81fe-11ea-8627-f23c92e71bad&#39;,
+ &#39;text&#39;: &#39;這館長直播重播\nhttps://youtu.be/Lv3JIt5GKVA?t=838\n找到了14:00開始\n大家看一下他是在黑\n還是只是被陷害\n該還人一個公道\n\n看完了越看越氣\n連雙子星也在黑柯\n南海是你們行政院投審會放行的\n說得好像台北市放行\n\n高嘉瑜你有上PTT\n明天最好上來講清楚\n挺你那麼久\n不講清楚以後看你一次黑你一次\n\n--&#39;,
+ &#39;urls&#39;: [&#39;https://youtu.be/Lv3JIt5GKVA?t=838&#39;],
+ &#39;image_urls&#39;: [],
+ &#39;hashtags&#39;: [],
+ &#39;keywords&#39;: [],
+ &#39;tags&#39;: [],
+ &#39;metadata&#39;: {&#39;metatags&#39;: {&#39;og:site_name&#39;: &#39;Ptt 批踢踢實業坊&#39;,
+   &#39;og:title&#39;: &#39;Re: [爆卦] 館長直播爆料柯師傅執行力強大&#39;,
+   &#39;og:description&#39;: &#39;這館長直播重播\nhttps://youtu.be/Lv3JIt5GKVA?t=838\n找到了14:00開始\n大家看一下他是在黑\n還是只是被陷害\n&#39;,
+   &#39;viewport&#39;: &#39;width=device-width, initial-scale=1&#39;,
+   &#39;robots&#39;: &#39;all&#39;,
+   &#39;keywords&#39;: &#39;Ptt BBS 批踢踢&#39;,
+   &#39;description&#39;: &#39;這館長直播重播\nhttps://youtu.be/Lv3JIt5GKVA?t=838\n找到了14:00開始\n大家看一下他是在黑\n還是只是被陷害\n&#39;},
+  &#39;microdata&#39;: [],
+  &#39;json-ld&#39;: [],
+  &#39;opengraph&#39;: [{&#39;namespace&#39;: {&#39;og&#39;: &#39;http://ogp.me/ns#&#39;},
+    &#39;properties&#39;: [[&#39;og:site_name&#39;, &#39;Ptt 批踢踢實業坊&#39;],
+     [&#39;og:title&#39;, &#39;Re: [爆卦] 館長直播爆料柯師傅執行力強大&#39;],
+     [&#39;og:description&#39;,
+      &#39;這館長直播重播\nhttps://youtu.be/Lv3JIt5GKVA?t=838\n找到了14:00開始\n大家看一下他是在黑\n還是只是被陷害\n&#39;]]}],
+  &#39;microformat&#39;: [],
+  &#39;rdfa&#39;: [{&#39;@id&#39;: &#39;&#39;,
+    &#39;http://ogp.me/ns#description&#39;: [{&#39;@value&#39;: &#39;這館長直播重播\nhttps://youtu.be/Lv3JIt5GKVA?t=838\n找到了14:00開始\n大家看一下他是在黑\n還是只是被陷害\n&#39;}],
+    &#39;http://ogp.me/ns#site_name&#39;: [{&#39;@value&#39;: &#39;Ptt 批踢踢實業坊&#39;}],
+    &#39;http://ogp.me/ns#title&#39;: [{&#39;@value&#39;: &#39;Re: [爆卦] 館長直播爆料柯師傅執行力強大&#39;}]}],
+  &#39;ga-id&#39;: [&#39;UA-32365737-1&#39;]},
+ &#39;comments&#39;: [{&#39;id&#39;: 0,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;aaaba&#39;,
+   &#39;text&#39;: &#39;政問掰&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:03&#39;,
+   &#39;connect_from&#39;: &#39;180.217.65.220&#39;},
+  {&#39;id&#39;: 1,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;justice2008&#39;,
+   &#39;text&#39;: &#39;很前面就講了 稍微跳一下&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:04&#39;,
+   &#39;connect_from&#39;: &#39;220.132.86.43&#39;},
+  {&#39;id&#39;: 2,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;justice2008&#39;,
+   &#39;text&#39;: &#39;整段講了分鐘有了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:04&#39;,
+   &#39;connect_from&#39;: &#39;220.132.86.43&#39;},
+  {&#39;id&#39;: 3,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;l23l23&#39;,
+   &#39;text&#39;: &#39;15分開始吧  最不想國民黨倒的果然是DPP&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:04&#39;,
+   &#39;connect_from&#39;: &#39;114.24.34.132&#39;},
+  {&#39;id&#39;: 4,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;justice2008&#39;,
+   &#39;text&#39;: &#39;整段講了5分鐘有了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:04&#39;,
+   &#39;connect_from&#39;: &#39;220.132.86.43&#39;},
+  {&#39;id&#39;: 5,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;l23l23&#39;,
+   &#39;text&#39;: &#39;郝斌斌很欣慰 終於有人覺得他好了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:05&#39;,
+   &#39;connect_from&#39;: &#39;114.24.34.132&#39;},
+  {&#39;id&#39;: 6,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;firose&#39;,
+   &#39;text&#39;: &#39;最怕國民黨消失的就是民進黨&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:05&#39;,
+   &#39;connect_from&#39;: &#39;220.134.26.93&#39;},
+  {&#39;id&#39;: 7,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;ubcs&#39;,
+   &#39;text&#39;: &#39;https://youtu.be/Lv3JIt5GKVA?t=1050&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:05&#39;,
+   &#39;connect_from&#39;: &#39;1.160.167.50&#39;},
+  {&#39;id&#39;: 8,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;eko112&#39;,
+   &#39;text&#39;: &#39;13:40開始看說的~&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:06&#39;,
+   &#39;connect_from&#39;: &#39;220.142.174.3&#39;},
+  {&#39;id&#39;: 9,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;gg7965977&#39;,
+   &#39;text&#39;: &#39;之前高嘉瑜的演唱會才請學姊&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:07&#39;,
+   &#39;connect_from&#39;: &#39;219.71.240.126&#39;},
+  {&#39;id&#39;: 10,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;eko112&#39;,
+   &#39;text&#39;: &#39;你改影片連結了~~XD&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:07&#39;,
+   &#39;connect_from&#39;: &#39;220.142.174.3&#39;},
+  {&#39;id&#39;: 11,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;gg7965977&#39;,
+   &#39;text&#39;: &#39;哪有那麼快被刺人的啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:07&#39;,
+   &#39;connect_from&#39;: &#39;219.71.240.126&#39;},
+  {&#39;id&#39;: 12,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;justice2008&#39;,
+   &#39;text&#39;: &#39;就真的背刺啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:08&#39;,
+   &#39;connect_from&#39;: &#39;220.132.86.43&#39;},
+  {&#39;id&#39;: 13,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;justice2008&#39;,
+   &#39;text&#39;: &#39;他那段講的好像柯P有後門可以走一樣&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:08&#39;,
+   &#39;connect_from&#39;: &#39;220.132.86.43&#39;},
+  {&#39;id&#39;: 14,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;高真的很誇張 那麼快就背刺&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:08&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 15,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;justice2008&#39;,
+   &#39;text&#39;: &#39;感覺上就變了一個人&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:08&#39;,
+   &#39;connect_from&#39;: &#39;220.132.86.43&#39;},
+  {&#39;id&#39;: 16,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;兩人一搭一唱講超爽.聊天室也罵柯罵&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:09&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 17,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;的很開心..沒誤會他們兩個人拉&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:09&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 18,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;jiaching&#39;,
+   &#39;text&#39;: &#39;有憑有據的背刺也就算了 直接抹黑背刺&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:09&#39;,
+   &#39;connect_from&#39;: &#39;114.37.234.54&#39;},
+  {&#39;id&#39;: 19,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;jiaching&#39;,
+   &#39;text&#39;: &#39;我也是驚呆了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:09&#39;,
+   &#39;connect_from&#39;: &#39;114.37.234.54&#39;},
+  {&#39;id&#39;: 20,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;尤其館長自己又補不能開健身房是北&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:10&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 21,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;justice2008&#39;,
+   &#39;text&#39;: &#39;就超噁的 去年怎麼舔的 今年就怎麼桶&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:10&#39;,
+   &#39;connect_from&#39;: &#39;220.132.86.43&#39;},
+  {&#39;id&#39;: 22,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;市在刁難..那些館粉聽到整個暴怒XD&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:10&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 23,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;Fatsnow&#39;,
+   &#39;text&#39;: &#39;其實從14分開始講 1555直接點名柯市府&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:10&#39;,
+   &#39;connect_from&#39;: &#39;122.121.119.66&#39;},
+  {&#39;id&#39;: 24,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;柯還敢去館長節目喔?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:11&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 25,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;11月9日要去耶 XD&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:11&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 26,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;館粉很多都柯粉&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:12&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 27,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;高這樣要拿柯粉的票喔?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:12&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 28,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;yannicklatte&#39;,
+   &#39;text&#39;: &#39;11月？&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:12&#39;,
+   &#39;connect_from&#39;: &#39;101.12.4.170&#39;},
+  {&#39;id&#39;: 29,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;1月9日 打太快&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:12&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 30,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;選前好像要去&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:13&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 31,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;AGODC&#39;,
+   &#39;text&#39;: &#39;聽說高是台北市議員，這麼大的案子是記錯還&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:13&#39;,
+   &#39;connect_from&#39;: &#39;27.52.36.51&#39;},
+  {&#39;id&#39;: 32,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;AGODC&#39;,
+   &#39;text&#39;: &#39;是在操弄似是而非的抹黑?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:13&#39;,
+   &#39;connect_from&#39;: &#39;27.52.36.51&#39;},
+  {&#39;id&#39;: 33,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;看來贏李彥秀很多&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:13&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 34,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;應該贏李很多&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:14&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 35,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;老K如果能打，小黨也不用這麽辛苦&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:14&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 36,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;azeroth&#39;,
+   &#39;text&#39;: &#39;反正這場選完 DPP要狂咬柯囉 準備好吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:14&#39;,
+   &#39;connect_from&#39;: &#39;114.27.213.4&#39;},
+  {&#39;id&#39;: 37,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;jiaching&#39;,
+   &#39;text&#39;: &#39;柯上館長直撥不表明支持反紅媒 館長氣的&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:14&#39;,
+   &#39;connect_from&#39;: &#39;114.37.234.54&#39;},
+  {&#39;id&#39;: 38,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39; 之前高就黑過柯很多次了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:14&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 39,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;jiaching&#39;,
+   &#39;text&#39;: &#39;要死 結果反紅媒法案不過 館長又裝死了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:14&#39;,
+   &#39;connect_from&#39;: &#39;114.37.234.54&#39;},
+  {&#39;id&#39;: 40,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;MADAOTW&#39;,
+   &#39;text&#39;: &#39;假柯粉別裝了，綠畜才這樣&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:15&#39;,
+   &#39;connect_from&#39;: &#39;180.176.98.25&#39;},
+  {&#39;id&#39;: 41,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;館長是愛國商人啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:15&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 42,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;a19851106&#39;,
+   &#39;text&#39;: &#39;看清了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:15&#39;,
+   &#39;connect_from&#39;: &#39;123.192.210.132&#39;},
+  {&#39;id&#39;: 43,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;bolue&#39;,
+   &#39;text&#39;: &#39;高出來講喇 這張票 你不想要就算了&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:17&#39;,
+   &#39;connect_from&#39;: &#39;36.228.17.143&#39;},
+  {&#39;id&#39;: 44,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;hugr86&#39;,
+   &#39;text&#39;: &#39;愛錢雙標仔商人 跟愛票風向政客 一搭一唱&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:17&#39;,
+   &#39;connect_from&#39;: &#39;118.170.196.107&#39;},
+  {&#39;id&#39;: 45,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;真的是多邊形高手.一下捧一下戳都不&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:17&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 46,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;高嘉瑜這噁心政客不要臉，造謠放假消息誤導&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:17&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 47,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;知道你高嘉瑜下一步要幹嘛.佩服XD&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 48,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;港湖區的人又不知道?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 49,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;配上無腦商人在那一搭一唱，看了就想吐。&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 50,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;高不是柯，她是八面玲瓏又長於言辭的，&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 51,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;可以跟綠營的朋友講高挺郭柯?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 52,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;所以她說出來的話，我覺得不會令人誤解&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 53,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;，而是聽起來像什麼，就是她的意思。也&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 54,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;因此我才認為柯一定要組黨，所謂友柯人&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 55,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;aifighter&#39;,
+   &#39;text&#39;: &#39;最大柯粉被講成無腦商人 這韓粉吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:18&#39;,
+   &#39;connect_from&#39;: &#39;111.243.46.16&#39;},
+  {&#39;id&#39;: 56,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;士，不過都是需要柯才是好朋友，何志偉&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 57,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;跟柯粉講高背刺柯?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 58,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;高不是柯，她是八面玲瓏又長於言辭的，&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 59,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;所以她說出來的話，我覺得不會令人誤解&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 60,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;，而是聽起來像什麼，就是她的意思。也&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 61,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;因此我才認為柯一定要組黨，所謂友柯人&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 62,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;士，不過都是需要柯才是好朋友，何志偉&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 63,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;最大柯粉又怎樣？無腦不懂得查證是事實。&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 64,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;就是[典範]&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 65,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;justiceyes&#39;,
+   &#39;text&#39;: &#39;+&lt;&gt;&lt;是票太多，不需要柯粉票了嗎？呵&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;220.137.44.68&#39;},
+  {&#39;id&#39;: 66,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aifighter&#39;,
+   &#39;text&#39;: &#39;不要再說柯拙於言詞 他是故意失言&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:19&#39;,
+   &#39;connect_from&#39;: &#39;111.243.46.16&#39;},
+  {&#39;id&#39;: 67,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;還在館長是柯粉?.別脫節了.館長現在&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:20&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 68,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;每次被打臉就出來哭自己多可憐，被民進黨摸&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:20&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 69,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;不爽柯的言論很多.只是沒像對韓一樣&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:20&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 70,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;完全翻臉罷了.表面還是稱我大哥XD&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:20&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 71,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aifighter&#39;,
+   &#39;text&#39;: &#39;原來 所以柯粉真的變少了呢&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:20&#39;,
+   &#39;connect_from&#39;: &#39;111.243.46.16&#39;},
+  {&#39;id&#39;: 72,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;頭馬上乖得跟小孩子一樣&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:21&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 73,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aifighter&#39;,
+   &#39;text&#39;: &#39;感謝死忠柯粉說明&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:21&#39;,
+   &#39;connect_from&#39;: &#39;111.243.46.16&#39;},
+  {&#39;id&#39;: 74,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;人家現在是侯粉..真正的大哥&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:21&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 75,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;還開健身房北市刁難他咧，他怎麼不講他沒符&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:22&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 76,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;tpkgo&#39;,
+   &#39;text&#39;: &#39;                      +&lt;&gt;&lt;畫個三角形而已&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:22&#39;,
+   &#39;connect_from&#39;: &#39;111.254.112.229&#39;},
+  {&#39;id&#39;: 77,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;a19851106&#39;,
+   &#39;text&#39;: &#39;反正沒過就是刁難啦 叭叭~~~~&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:22&#39;,
+   &#39;connect_from&#39;: &#39;123.192.210.132&#39;},
+  {&#39;id&#39;: 78,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;合台北市法規才開不成？&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:22&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 79,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;poisonshing&#39;,
+   &#39;text&#39;: &#39;幹你高價魚給我出來講清楚&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:22&#39;,
+   &#39;connect_from&#39;: &#39;101.14.141.83&#39;},
+  {&#39;id&#39;: 80,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;稱柯是我大哥 暗地背刺柯 XD&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:22&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 81,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;stevencool&#39;,
+   &#39;text&#39;: &#39;就是論事啊&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:23&#39;,
+   &#39;connect_from&#39;: &#39;101.136.23.224&#39;},
+  {&#39;id&#39;: 82,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;我不是指柯失言的部分，我是指有些話他&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:23&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 83,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;就是沒辦法講清楚，跳來跳去。&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:23&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 84,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;azeroth&#39;,
+   &#39;text&#39;: &#39;高這種站在友柯立場黑柯的 殺傷力才大&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:23&#39;,
+   &#39;connect_from&#39;: &#39;114.27.213.4&#39;},
+  {&#39;id&#39;: 85,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;azeroth&#39;,
+   &#39;text&#39;: &#39;跟瓜吉一樣 A_A&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:24&#39;,
+   &#39;connect_from&#39;: &#39;114.27.213.4&#39;},
+  {&#39;id&#39;: 86,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;max0928895&#39;,
+   &#39;text&#39;: &#39;高現在是怎樣?上演公主獻頭喔XDDDD&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:24&#39;,
+   &#39;connect_from&#39;: &#39;111.240.216.38&#39;},
+  {&#39;id&#39;: 87,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;max0928895&#39;,
+   &#39;text&#39;: &#39;我就不信她這樣還可以選贏李彥秀&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:24&#39;,
+   &#39;connect_from&#39;: &#39;111.240.216.38&#39;},
+  {&#39;id&#39;: 88,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;拉攏年輕人和深綠吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:25&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 89,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;max0928895&#39;,
+   &#39;text&#39;: &#39;還敢說民進黨沒有要消滅民眾黨?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:26&#39;,
+   &#39;connect_from&#39;: &#39;111.240.216.38&#39;},
+  {&#39;id&#39;: 90,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;她會贏李彥秀。良心從不是政治人物生存&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:26&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 91,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;的必須品，厚黑學才是&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:26&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 92,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;gg7965977&#39;,
+   &#39;text&#39;: &#39;如果是就他所知的去講我倒是還好&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:26&#39;,
+   &#39;connect_from&#39;: &#39;219.71.240.126&#39;},
+  {&#39;id&#39;: 93,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;我猜拉.高大概是看柯現在風向有點不&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:26&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 94,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;exceedMyself&#39;,
+   &#39;text&#39;: &#39;要票又要黑 這黨專出這種&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:27&#39;,
+   &#39;connect_from&#39;: &#39;27.242.37.121&#39;},
+  {&#39;id&#39;: 95,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;gg7965977&#39;,
+   &#39;text&#39;: &#39;如果是為了選票被刺柯文哲 那該死&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:27&#39;,
+   &#39;connect_from&#39;: &#39;219.71.240.126&#39;},
+  {&#39;id&#39;: 96,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;妙..來一記回馬槍把票打出來.高招&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:27&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 97,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;就她所知的去講?她台北市議員耶&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:27&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 98,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;azeroth&#39;,
+   &#39;text&#39;: &#39;還是選的贏李彥秀阿 一般人不會知道這些&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:28&#39;,
+   &#39;connect_from&#39;: &#39;114.27.213.4&#39;},
+  {&#39;id&#39;: 99,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;ghostdx&#39;,
+   &#39;text&#39;: &#39;是指在18分左右那段？&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:28&#39;,
+   &#39;connect_from&#39;: &#39;123.194.185.130&#39;},
+  {&#39;id&#39;: 100,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;azeroth&#39;,
+   &#39;text&#39;: &#39;大部分人會比較像館長 被騙那種&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:28&#39;,
+   &#39;connect_from&#39;: &#39;114.27.213.4&#39;},
+  {&#39;id&#39;: 101,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;明知館粉也是柯的一塊基地&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:28&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 102,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;sharkimage&#39;,
+   &#39;text&#39;: &#39;最怕國民黨消失的就是民進黨+1&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:29&#39;,
+   &#39;connect_from&#39;: &#39;218.161.27.64&#39;},
+  {&#39;id&#39;: 103,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;Shin722&#39;,
+   &#39;text&#39;: &#39;就看柯政黨票沒威脅到民進黨，當然可以安&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:29&#39;,
+   &#39;connect_from&#39;: &#39;114.39.195.192&#39;},
+  {&#39;id&#39;: 104,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;用假消息要拉票喔，怎麼沒想到被DPP監察院&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:29&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 105,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;Shin722&#39;,
+   &#39;text&#39;: &#39;心的拿刀刺人囉&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:29&#39;,
+   &#39;connect_from&#39;: &#39;114.39.195.192&#39;},
+  {&#39;id&#39;: 106,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;gg7965977&#39;,
+   &#39;text&#39;: &#39;館粉很少柯粉了啦= =&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:29&#39;,
+   &#39;connect_from&#39;: &#39;219.71.240.126&#39;},
+  {&#39;id&#39;: 107,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;和內政部打臉的事實放在選民眼前時會怎樣？&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:29&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 108,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;才不是公主獻頭，是綁公主頭w&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:29&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 109,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;gg7965977&#39;,
+   &#39;text&#39;: &#39;館長想在北市開健身房 一直被擋&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:30&#39;,
+   &#39;connect_from&#39;: &#39;219.71.240.126&#39;},
+  {&#39;id&#39;: 110,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;真正的鐵館粉以館粉指令為準.哪會是&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:30&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 111,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;其他人的粉..改天館長又挺KMT.這些&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:30&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 112,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aa01081008tw&#39;,
+   &#39;text&#39;: &#39;館粉180立場轉換也是很簡單的&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:31&#39;,
+   &#39;connect_from&#39;: &#39;36.234.218.223&#39;},
+  {&#39;id&#39;: 113,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;vow70&#39;,
+   &#39;text&#39;: &#39;商人永遠是想到自己而已啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:31&#39;,
+   &#39;connect_from&#39;: &#39;178.128.104.221&#39;},
+  {&#39;id&#39;: 114,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;ghostdx&#39;,
+   &#39;text&#39;: &#39;會看館長直播的幾乎都年輕人&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:31&#39;,
+   &#39;connect_from&#39;: &#39;123.194.185.130&#39;},
+  {&#39;id&#39;: 115,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39; 像高這種友柯的 講的話殺傷力才大&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:32&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 116,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;sharkimage&#39;,
+   &#39;text&#39;: &#39;https://i.imgur.com/9pvR44J.jpg&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:32&#39;,
+   &#39;connect_from&#39;: &#39;218.161.27.64&#39;},
+  {&#39;id&#39;: 117,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;xian&#39;,
+   &#39;text&#39;: &#39;這種表面友好 私下背刺的最恐怖喔&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;111.83.80.188&#39;},
+  {&#39;id&#39;: 118,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;ghostdx&#39;,
+   &#39;text&#39;: &#39;其實顏色很淺 比較會看聽論述 但不見得&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;123.194.185.130&#39;},
+  {&#39;id&#39;: 119,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;最少要讓一般人知道吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 120,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;ghostdx&#39;,
+   &#39;text&#39;: &#39;能分辨真假&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;123.194.185.130&#39;},
+  {&#39;id&#39;: 121,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;柯現在其實沒有很大的影響力W但以前喜&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 122,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;歡高，不介意她被說風向仔，是因為覺得&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 123,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;彥秀阿姨可以去宣傳啊&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 124,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;不管是挺柯槓上姚，或挺賴槓上小英，她&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 125,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;也還算講義氣，不是風向不對就噤聲，但&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:33&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 126,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;是今天之後，我覺得柯還是努力靠自己吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:34&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 127,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;valentian&#39;,
+   &#39;text&#39;: &#39;0rZ&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:34&#39;,
+   &#39;connect_from&#39;: &#39;123.205.150.104&#39;},
+  {&#39;id&#39;: 128,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;就講友柯的議員還背刺柯 這種人你&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:34&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 129,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;woaifafewen&#39;,
+   &#39;text&#39;: &#39;那兩個人一搭一唱真的笑死&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:34&#39;,
+   &#39;connect_from&#39;: &#39;27.96.235.247&#39;},
+  {&#39;id&#39;: 130,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;敢支持?&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:34&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 131,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;ghostdx&#39;,
+   &#39;text&#39;: &#39;DPP早已抓到方法處理柯的影響力&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:34&#39;,
+   &#39;connect_from&#39;: &#39;123.194.185.130&#39;},
+  {&#39;id&#39;: 132,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;NgJovi&#39;,
+   &#39;text&#39;: &#39;蠻可愛的&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:35&#39;,
+   &#39;connect_from&#39;: &#39;123.194.200.134&#39;},
+  {&#39;id&#39;: 133,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;所以更要支持民眾黨&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:35&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 134,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;NgJovi&#39;,
+   &#39;text&#39;: &#39;幹 推錯篇&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:35&#39;,
+   &#39;connect_from&#39;: &#39;123.194.200.134&#39;},
+  {&#39;id&#39;: 135,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;因為擺明第一個要消滅的就是民眾黨&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:35&#39;,
+   &#39;connect_from&#39;: &#39;114.27.70.8&#39;},
+  {&#39;id&#39;: 136,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;NgJovi&#39;,
+   &#39;text&#39;: &#39;噓回來&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:37&#39;,
+   &#39;connect_from&#39;: &#39;123.194.200.134&#39;},
+  {&#39;id&#39;: 137,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;woaifafewen&#39;,
+   &#39;text&#39;: &#39;還影射柯支持南海雙子星 明明是不爽&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:37&#39;,
+   &#39;connect_from&#39;: &#39;27.96.235.247&#39;},
+  {&#39;id&#39;: 138,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;woaifafewen&#39;,
+   &#39;text&#39;: &#39;投審會卡五個月不做決定&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:37&#39;,
+   &#39;connect_from&#39;: &#39;27.96.235.247&#39;},
+  {&#39;id&#39;: 139,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;tw536653&#39;,
+   &#39;text&#39;: &#39;我覺得他只是搞不清楚狀況,然後黨內的同&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:38&#39;,
+   &#39;connect_from&#39;: &#39;114.27.25.248&#39;},
+  {&#39;id&#39;: 140,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;willion003&#39;,
+   &#39;text&#39;: &#39;哈哈哈，不說我還以為執政黨是國民黨&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:38&#39;,
+   &#39;connect_from&#39;: &#39;114.137.206.83&#39;},
+  {&#39;id&#39;: 141,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;willion003&#39;,
+   &#39;text&#39;: &#39;呢！什麼民進黨執政？那麼就是國民黨&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:38&#39;,
+   &#39;connect_from&#39;: &#39;114.137.206.83&#39;},
+  {&#39;id&#39;: 142,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;willion003&#39;,
+   &#39;text&#39;: &#39;遺毒啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:38&#39;,
+   &#39;connect_from&#39;: &#39;114.137.206.83&#39;},
+  {&#39;id&#39;: 143,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;tw536653&#39;,
+   &#39;text&#39;: &#39;溫層一直扭曲,他還是退民進黨比較有救&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:38&#39;,
+   &#39;connect_from&#39;: &#39;114.27.25.248&#39;},
+  {&#39;id&#39;: 144,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;jarry011&#39;,
+   &#39;text&#39;: &#39;高就投機啊&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:42&#39;,
+   &#39;connect_from&#39;: &#39;58.115.96.243&#39;},
+  {&#39;id&#39;: 145,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;williamsm&#39;,
+   &#39;text&#39;: &#39;想不到高是這種人..&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:42&#39;,
+   &#39;connect_from&#39;: &#39;39.8.8.188&#39;},
+  {&#39;id&#39;: 146,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;willtaiwan&#39;,
+   &#39;text&#39;: &#39;高的事蹟大家還不清楚嗎？曾經ptt新聞&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:43&#39;,
+   &#39;connect_from&#39;: &#39;223.140.127.240&#39;},
+  {&#39;id&#39;: 147,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;willtaiwan&#39;,
+   &#39;text&#39;: &#39;部長亂搞，風向精的很，真的想做事柯&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:43&#39;,
+   &#39;connect_from&#39;: &#39;223.140.127.240&#39;},
+  {&#39;id&#39;: 148,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;willtaiwan&#39;,
+   &#39;text&#39;: &#39;找她當副市長怎麼百般拒絕的&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:43&#39;,
+   &#39;connect_from&#39;: &#39;223.140.127.240&#39;},
+  {&#39;id&#39;: 149,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;woaifafewen&#39;,
+   &#39;text&#39;: &#39;當議員的人最好搞不清楚狀況&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:43&#39;,
+   &#39;connect_from&#39;: &#39;27.96.235.247&#39;},
+  {&#39;id&#39;: 150,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;stlinman&#39;,
+   &#39;text&#39;: &#39;心機魚&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:43&#39;,
+   &#39;connect_from&#39;: &#39;150.116.32.15&#39;},
+  {&#39;id&#39;: 151,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;chris44099&#39;,
+   &#39;text&#39;: &#39;嘔嘔嘔嘔嘔&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:44&#39;,
+   &#39;connect_from&#39;: &#39;36.239.51.200&#39;},
+  {&#39;id&#39;: 152,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;navicrops&#39;,
+   &#39;text&#39;: &#39;柯粉真的很急呢  幫QQ&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:45&#39;,
+   &#39;connect_from&#39;: &#39;122.117.206.137&#39;},
+  {&#39;id&#39;: 153,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;sus304&#39;,
+   &#39;text&#39;: &#39;叫學姐跟柯幫忙站台，回頭來用假消息背刺&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:45&#39;,
+   &#39;connect_from&#39;: &#39;110.50.151.29&#39;},
+  {&#39;id&#39;: 154,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;sus304&#39;,
+   &#39;text&#39;: &#39;，。。。&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:45&#39;,
+   &#39;connect_from&#39;: &#39;110.50.151.29&#39;},
+  {&#39;id&#39;: 155,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;sulabird&#39;,
+   &#39;text&#39;: &#39;wow DPP優質候選人&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:45&#39;,
+   &#39;connect_from&#39;: &#39;220.129.0.20&#39;},
+  {&#39;id&#39;: 156,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;woaifafewen&#39;,
+   &#39;text&#39;: &#39;洗那麼多篇了 蟑螂還想不到怎麼回才&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:45&#39;,
+   &#39;connect_from&#39;: &#39;27.96.235.247&#39;},
+  {&#39;id&#39;: 157,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;woaifafewen&#39;,
+   &#39;text&#39;: &#39;急吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:46&#39;,
+   &#39;connect_from&#39;: &#39;27.96.235.247&#39;},
+  {&#39;id&#39;: 158,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;lexmrkz32&#39;,
+   &#39;text&#39;: &#39;唉 還以為她形象好，沒想到是這種人&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:46&#39;,
+   &#39;connect_from&#39;: &#39;124.6.9.230&#39;},
+  {&#39;id&#39;: 159,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;woaifafewen&#39;,
+   &#39;text&#39;: &#39;希望綠蟑們明天能討論出答案喔^^&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:46&#39;,
+   &#39;connect_from&#39;: &#39;27.96.235.247&#39;},
+  {&#39;id&#39;: 160,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;rabbit83035&#39;,
+   &#39;text&#39;: &#39;幹 民進黨人真的都不要臉&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:47&#39;,
+   &#39;connect_from&#39;: &#39;114.44.0.64&#39;},
+  {&#39;id&#39;: 161,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;aaaba&#39;,
+   &#39;text&#39;: &#39;柯糞怎麼會有蟑螂care高價魚的錯覺？蟑螂&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:51&#39;,
+   &#39;connect_from&#39;: &#39;180.217.65.220&#39;},
+  {&#39;id&#39;: 162,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aaaba&#39;,
+   &#39;text&#39;: &#39;主要目標是黑柯，黑不到就默默等下個題材&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:51&#39;,
+   &#39;connect_from&#39;: &#39;180.217.65.220&#39;},
+  {&#39;id&#39;: 163,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;aaaba&#39;,
+   &#39;text&#39;: &#39;，不用浪費力氣護航高價魚&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:51&#39;,
+   &#39;connect_from&#39;: &#39;180.217.65.220&#39;},
+  {&#39;id&#39;: 164,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;dpp優質候選人&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:52&#39;,
+   &#39;connect_from&#39;: &#39;42.75.107.18&#39;},
+  {&#39;id&#39;: 165,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lasekoutkast&#39;,
+   &#39;text&#39;: &#39;我看本篇文章都在批評高吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:53&#39;,
+   &#39;connect_from&#39;: &#39;42.75.107.18&#39;},
+  {&#39;id&#39;: 166,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;terry1020&#39;,
+   &#39;text&#39;: &#39;高甲魚黑歷史不少啊，欠黑&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:57&#39;,
+   &#39;connect_from&#39;: &#39;180.20.122.170&#39;},
+  {&#39;id&#39;: 167,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;fytnship&#39;,
+   &#39;text&#39;: &#39;這一段高嘉瑜真的不行 只講片面資訊&#39;,
+   &#39;published_at&#39;: &#39;01/02 00:58&#39;,
+   &#39;connect_from&#39;: &#39;112.105.75.33&#39;},
+  {&#39;id&#39;: 168,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;atzer2002&#39;,
+   &#39;text&#39;: &#39;這件事不解釋絕對變高黑&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:03&#39;,
+   &#39;connect_from&#39;: &#39;220.143.39.159&#39;},
+  {&#39;id&#39;: 169,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;facewind&#39;,
+   &#39;text&#39;: &#39;雙子星當初過了，不知道是否蓋的完？&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:04&#39;,
+   &#39;connect_from&#39;: &#39;118.167.113.93&#39;},
+  {&#39;id&#39;: 170,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;ship1228&#39;,
+   &#39;text&#39;: &#39;dpp再無人才&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:06&#39;,
+   &#39;connect_from&#39;: &#39;218.166.152.56&#39;},
+  {&#39;id&#39;: 171,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;ANCEE&#39;,
+   &#39;text&#39;: &#39;台北市又沒責任了噢 柯粉真敢說耶&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:06&#39;,
+   &#39;connect_from&#39;: &#39;111.71.2.127&#39;},
+  {&#39;id&#39;: 172,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;ANCEE&#39;,
+   &#39;text&#39;: &#39;好朋友繼續護航起來阿&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:06&#39;,
+   &#39;connect_from&#39;: &#39;111.71.2.127&#39;},
+  {&#39;id&#39;: 173,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;dy2012&#39;,
+   &#39;text&#39;: &#39;高很早就在關注這件案子了 其他人是會比她&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:07&#39;,
+   &#39;connect_from&#39;: &#39;27.242.12.14&#39;},
+  {&#39;id&#39;: 174,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;sharkimage&#39;,
+   &#39;text&#39;: &#39;ANCEE覺得柯市府的責任是什麼&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:07&#39;,
+   &#39;connect_from&#39;: &#39;218.161.27.64&#39;},
+  {&#39;id&#39;: 175,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;dy2012&#39;,
+   &#39;text&#39;: &#39;了解？&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:07&#39;,
+   &#39;connect_from&#39;: &#39;27.242.12.14&#39;},
+  {&#39;id&#39;: 176,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;Kelvinchen&#39;,
+   &#39;text&#39;: &#39;高嘉瑜看來是不想要柯粉票了，民調咬&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:09&#39;,
+   &#39;connect_from&#39;: &#39;1.200.53.39&#39;},
+  {&#39;id&#39;: 177,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;Kelvinchen&#39;,
+   &#39;text&#39;: &#39;這麼近，還在那亂黑，不要到時落選了&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:09&#39;,
+   &#39;connect_from&#39;: &#39;1.200.53.39&#39;},
+  {&#39;id&#39;: 178,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;chachaemail&#39;,
+   &#39;text&#39;: &#39;給她機會説清楚吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:10&#39;,
+   &#39;connect_from&#39;: &#39;124.218.40.245&#39;},
+  {&#39;id&#39;: 179,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;jackhg&#39;,
+   &#39;text&#39;: &#39;柯糞可撥&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:13&#39;,
+   &#39;connect_from&#39;: &#39;1.169.75.76&#39;},
+  {&#39;id&#39;: 180,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;ThisIsEasy&#39;,
+   &#39;text&#39;: &#39;推&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:15&#39;,
+   &#39;connect_from&#39;: &#39;59.127.173.219&#39;},
+  {&#39;id&#39;: 181,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;Jcoray&#39;,
+   &#39;text&#39;: &#39;原來是假柯&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:24&#39;,
+   &#39;connect_from&#39;: &#39;220.132.85.30&#39;},
+  {&#39;id&#39;: 182,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;s916813&#39;,
+   &#39;text&#39;: &#39;那時候監察院是kmt欸&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:26&#39;,
+   &#39;connect_from&#39;: &#39;118.167.6.99&#39;},
+  {&#39;id&#39;: 183,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;ryosuke234&#39;,
+   &#39;text&#39;: &#39;館長直播人家講甚麼就信甚麼 又不考證&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:33&#39;,
+   &#39;connect_from&#39;: &#39;36.236.31.61&#39;},
+  {&#39;id&#39;: 184,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;ryosuke234&#39;,
+   &#39;text&#39;: &#39;會把自己的信用搞差啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:33&#39;,
+   &#39;connect_from&#39;: &#39;36.236.31.61&#39;},
+  {&#39;id&#39;: 185,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;qoomai&#39;,
+   &#39;text&#39;: &#39;推&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:34&#39;,
+   &#39;connect_from&#39;: &#39;218.166.9.106&#39;},
+  {&#39;id&#39;: 186,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;RAY1203&#39;,
+   &#39;text&#39;: &#39;唉民進黨少數的清流......也變成綠色kmt&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:36&#39;,
+   &#39;connect_from&#39;: &#39;111.251.42.2&#39;},
+  {&#39;id&#39;: 187,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;joanrey&#39;,
+   &#39;text&#39;: &#39;她就只是講話比較溫柔的徐佳青而已&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:36&#39;,
+   &#39;connect_from&#39;: &#39;114.136.106.2&#39;},
+  {&#39;id&#39;: 188,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;qkenny&#39;,
+   &#39;text&#39;: &#39;推&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:37&#39;,
+   &#39;connect_from&#39;: &#39;141.61.113.193&#39;},
+  {&#39;id&#39;: 189,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;catvsdog&#39;,
+   &#39;text&#39;: &#39;高真的誇張&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:39&#39;,
+   &#39;connect_from&#39;: &#39;115.82.10.37&#39;},
+  {&#39;id&#39;: 190,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;Faust0073152&#39;,
+   &#39;text&#39;: &#39;柯粉準備殺魚啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:40&#39;,
+   &#39;connect_from&#39;: &#39;110.26.12.166&#39;},
+  {&#39;id&#39;: 191,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;commissar&#39;,
+   &#39;text&#39;: &#39;教徒森77囉～&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:43&#39;,
+   &#39;connect_from&#39;: &#39;118.168.26.86&#39;},
+  {&#39;id&#39;: 192,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;sid3&#39;,
+   &#39;text&#39;: &#39;雙子星那種渾水摸魚偷渡中資是不行的&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:46&#39;,
+   &#39;connect_from&#39;: &#39;1.171.148.213&#39;},
+  {&#39;id&#39;: 193,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;bolue&#39;,
+   &#39;text&#39;: &#39;雙子星不行 陽信可以 因為陽信有黨證&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:51&#39;,
+   &#39;connect_from&#39;: &#39;36.228.17.143&#39;},
+  {&#39;id&#39;: 194,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;fxntdsxdr&#39;,
+   &#39;text&#39;: &#39;講的好像郝市府不敢過柯市府卻過了 卻&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:53&#39;,
+   &#39;connect_from&#39;: &#39;1.170.46.217&#39;},
+  {&#39;id&#39;: 195,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;fxntdsxdr&#39;,
+   &#39;text&#39;: &#39;不提監察院報告輕輕帶過蠻不爽的&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:53&#39;,
+   &#39;connect_from&#39;: &#39;1.170.46.217&#39;},
+  {&#39;id&#39;: 196,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;jesusk&#39;,
+   &#39;text&#39;: &#39;果然是最會選舉的政黨出來的人 這也要抹~&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:55&#39;,
+   &#39;connect_from&#39;: &#39;61.223.155.15&#39;},
+  {&#39;id&#39;: 197,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;jay7777777&#39;,
+   &#39;text&#39;: &#39;偷渡中資不行 所以dpp是中共同路人囉&#39;,
+   &#39;published_at&#39;: &#39;01/02 01:59&#39;,
+   &#39;connect_from&#39;: &#39;114.41.239.50&#39;},
+  {&#39;id&#39;: 198,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;sindy520&#39;,
+   &#39;text&#39;: &#39;要跟李彥秀競爭，結果黑柯，有事嗎？&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:16&#39;,
+   &#39;connect_from&#39;: &#39;211.22.149.51&#39;},
+  {&#39;id&#39;: 199,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;GREENM&#39;,
+   &#39;text&#39;: &#39;倒也不算什麼黑吧 以她的立場看起來的確是&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:19&#39;,
+   &#39;connect_from&#39;: &#39;114.37.42.11&#39;},
+  {&#39;id&#39;: 200,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;GREENM&#39;,
+   &#39;text&#39;: &#39;這樣&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:19&#39;,
+   &#39;connect_from&#39;: &#39;114.37.42.11&#39;},
+  {&#39;id&#39;: 201,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;A0908&#39;,
+   &#39;text&#39;: &#39;蟑螂趕快起來上班啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:25&#39;,
+   &#39;connect_from&#39;: &#39;49.216.67.210&#39;},
+  {&#39;id&#39;: 202,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;eason10&#39;,
+   &#39;text&#39;: &#39;推，高價魚出來說清楚，陳述事實的框架&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:33&#39;,
+   &#39;connect_from&#39;: &#39;114.136.191.226&#39;},
+  {&#39;id&#39;: 203,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;smartwife&#39;,
+   &#39;text&#39;: &#39;支持菸黨才可悲吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:33&#39;,
+   &#39;connect_from&#39;: &#39;1.160.22.12&#39;},
+  {&#39;id&#39;: 204,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;eason10&#39;,
+   &#39;text&#39;: &#39;沒問題嗎？&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:33&#39;,
+   &#39;connect_from&#39;: &#39;114.136.191.226&#39;},
+  {&#39;id&#39;: 205,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;foryou168&#39;,
+   &#39;text&#39;: &#39;有種背刺阿伯的感覺 高最好把這段給說&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:33&#39;,
+   &#39;connect_from&#39;: &#39;36.224.141.194&#39;},
+  {&#39;id&#39;: 206,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;foryou168&#39;,
+   &#39;text&#39;: &#39;清楚&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:33&#39;,
+   &#39;connect_from&#39;: &#39;36.224.141.194&#39;},
+  {&#39;id&#39;: 207,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;MIKEmike07&#39;,
+   &#39;text&#39;: &#39;柯糞崩潰啦&#39;,
+   &#39;published_at&#39;: &#39;01/02 02:54&#39;,
+   &#39;connect_from&#39;: &#39;67.188.29.63&#39;},
+  {&#39;id&#39;: 208,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;JimloveJill&#39;,
+   &#39;text&#39;: &#39;柯粉集體進攻囉&#39;,
+   &#39;published_at&#39;: &#39;01/02 03:44&#39;,
+   &#39;connect_from&#39;: &#39;58.114.12.165&#39;},
+  {&#39;id&#39;: 209,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;sgheart&#39;,
+   &#39;text&#39;: &#39;好多大官&#39;,
+   &#39;published_at&#39;: &#39;01/02 06:55&#39;,
+   &#39;connect_from&#39;: &#39;1.34.166.113&#39;},
+  {&#39;id&#39;: 210,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;runfive&#39;,
+   &#39;text&#39;: &#39;為何友柯的要背刺柯，柯市府依法行政&#39;,
+   &#39;published_at&#39;: &#39;01/02 06:57&#39;,
+   &#39;connect_from&#39;: &#39;110.28.230.102&#39;},
+  {&#39;id&#39;: 211,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;runfive&#39;,
+   &#39;text&#39;: &#39;有錯嗎？該修法不修是代議士怠惰吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 06:59&#39;,
+   &#39;connect_from&#39;: &#39;110.28.230.102&#39;},
+  {&#39;id&#39;: 212,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;joeypp&#39;,
+   &#39;text&#39;: &#39;柯粉真噁&#39;,
+   &#39;published_at&#39;: &#39;01/02 07:08&#39;,
+   &#39;connect_from&#39;: &#39;61.219.7.181&#39;},
+  {&#39;id&#39;: 213,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;zsert13322&#39;,
+   &#39;text&#39;: &#39;可憐&#39;,
+   &#39;published_at&#39;: &#39;01/02 07:15&#39;,
+   &#39;connect_from&#39;: &#39;27.247.160.62&#39;},
+  {&#39;id&#39;: 214,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;j357788&#39;,
+   &#39;text&#39;: &#39;噁心柯粉&#39;,
+   &#39;published_at&#39;: &#39;01/02 07:28&#39;,
+   &#39;connect_from&#39;: &#39;42.72.212.80&#39;},
+  {&#39;id&#39;: 215,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;lel801511&#39;,
+   &#39;text&#39;: &#39;講你媽啦  去你的柯粉&#39;,
+   &#39;published_at&#39;: &#39;01/02 07:31&#39;,
+   &#39;connect_from&#39;: &#39;39.9.132.121&#39;},
+  {&#39;id&#39;: 216,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;johnsky75&#39;,
+   &#39;text&#39;: &#39;太誇張了&#39;,
+   &#39;published_at&#39;: &#39;01/02 07:35&#39;,
+   &#39;connect_from&#39;: &#39;27.242.65.68&#39;},
+  {&#39;id&#39;: 217,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;k24315315&#39;,
+   &#39;text&#39;: &#39;意圖風向的不能罵哦，綠共？&#39;,
+   &#39;published_at&#39;: &#39;01/02 07:37&#39;,
+   &#39;connect_from&#39;: &#39;126.193.77.219&#39;},
+  {&#39;id&#39;: 218,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;sharkimage&#39;,
+   &#39;text&#39;: &#39;https://i.imgur.com/F4aIiaP.jpg&#39;,
+   &#39;published_at&#39;: &#39;01/02 08:03&#39;,
+   &#39;connect_from&#39;: &#39;218.161.27.64&#39;},
+  {&#39;id&#39;: 219,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;ukif&#39;,
+   &#39;text&#39;: &#39;綠共真無恥&#39;,
+   &#39;published_at&#39;: &#39;01/02 08:16&#39;,
+   &#39;connect_from&#39;: &#39;101.13.191.68&#39;},
+  {&#39;id&#39;: 220,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;smartwife&#39;,
+   &#39;text&#39;: &#39;看到別人被抹還拍手叫好的才噁心吧&#39;,
+   &#39;published_at&#39;: &#39;01/02 08:31&#39;,
+   &#39;connect_from&#39;: &#39;223.136.185.89&#39;},
+  {&#39;id&#39;: 221,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;feliz5566&#39;,
+   &#39;text&#39;: &#39;柯粉吃屎 糙&#39;,
+   &#39;published_at&#39;: &#39;01/02 08:47&#39;,
+   &#39;connect_from&#39;: &#39;45.77.214.16&#39;},
+  {&#39;id&#39;: 222,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;surelose&#39;,
+   &#39;text&#39;: &#39;高沒柯粉贏得了李嗎? 李在2016大逆風仍&#39;,
+   &#39;published_at&#39;: &#39;01/02 09:07&#39;,
+   &#39;connect_from&#39;: &#39;180.204.181.49&#39;},
+  {&#39;id&#39;: 223,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;surelose&#39;,
+   &#39;text&#39;: &#39;贏耶 還是高不在乎柯粉票？&#39;,
+   &#39;published_at&#39;: &#39;01/02 09:07&#39;,
+   &#39;connect_from&#39;: &#39;180.204.181.49&#39;},
+  {&#39;id&#39;: 224,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;leo6543210&#39;,
+   &#39;text&#39;: &#39;推&#39;,
+   &#39;published_at&#39;: &#39;01/02 09:21&#39;,
+   &#39;connect_from&#39;: &#39;111.82.234.87&#39;},
+  {&#39;id&#39;: 225,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;jimichang&#39;,
+   &#39;text&#39;: &#39;看一次黑一次 好可怕&#39;,
+   &#39;published_at&#39;: &#39;01/02 10:00&#39;,
+   &#39;connect_from&#39;: &#39;211.72.129.191&#39;},
+  {&#39;id&#39;: 226,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;ccuman&#39;,
+   &#39;text&#39;: &#39;噁心蟑螂還是太多了&#39;,
+   &#39;published_at&#39;: &#39;01/02 10:04&#39;,
+   &#39;connect_from&#39;: &#39;36.226.28.85&#39;},
+  {&#39;id&#39;: 227,
+   &#39;reaction&#39;: &#39;噓&#39;,
+   &#39;author&#39;: &#39;leehom309536&#39;,
+   &#39;text&#39;: &#39;郝不過為何柯會過&#39;,
+   &#39;published_at&#39;: &#39;01/02 10:09&#39;,
+   &#39;connect_from&#39;: &#39;106.1.221.72&#39;},
+  {&#39;id&#39;: 228,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;dreamelves&#39;,
+   &#39;text&#39;: &#39;背刺!&#39;,
+   &#39;published_at&#39;: &#39;01/02 10:55&#39;,
+   &#39;connect_from&#39;: &#39;223.136.119.62&#39;},
+  {&#39;id&#39;: 229,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;CleanThunder&#39;,
+   &#39;text&#39;: &#39;講的很好只挑自己有利的說&#39;,
+   &#39;published_at&#39;: &#39;01/02 11:37&#39;,
+   &#39;connect_from&#39;: &#39;117.19.140.197&#39;},
+  {&#39;id&#39;: 230,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;dog118113&#39;,
+   &#39;text&#39;: &#39;噁心魚&#39;,
+   &#39;published_at&#39;: &#39;01/02 11:44&#39;,
+   &#39;connect_from&#39;: &#39;39.13.135.55&#39;},
+  {&#39;id&#39;: 231,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;Jameshunter&#39;,
+   &#39;text&#39;: &#39;顆顆 監察院+中央政府突然都神隱了&#39;,
+   &#39;published_at&#39;: &#39;01/02 13:35&#39;,
+   &#39;connect_from&#39;: &#39;140.109.214.4&#39;},
+  {&#39;id&#39;: 232,
+   &#39;reaction&#39;: &#39;推&#39;,
+   &#39;author&#39;: &#39;hcln24&#39;,
+   &#39;text&#39;: &#39;kmt倒了ddp就是下一個拉 難怪kmt倒不了&#39;,
+   &#39;published_at&#39;: &#39;01/02 17:36&#39;,
+   &#39;connect_from&#39;: &#39;42.75.169.14&#39;},
+  {&#39;id&#39;: 233,
+   &#39;reaction&#39;: &#39;→&#39;,
+   &#39;author&#39;: &#39;insingW&#39;,
+   &#39;text&#39;: &#39;噁心，還裝&#39;,
+   &#39;published_at&#39;: &#39;01/02 19:25&#39;,
+   &#39;connect_from&#39;: &#39;114.32.204.170&#39;}]}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="building-a-commenter-to-post-dictionary-30-points">
+<h2>2- Building a Commenter-to-Post Dictionary (30 points)<a class="headerlink" href="#building-a-commenter-to-post-dictionary-30-points" title="Permalink to this headline">#</a></h2>
+<p>To cluster commenters based on their behavior, we need to create a commenter feature – a commenter-to-feature matrix. Possible features could include login hours or, simply, the post IDs they have commented on.</p>
+<p>In this context, we will use the post IDs on which they have commented as the commenter features. To start, we must construct a dictionary that maps commenters to the posts they have commented on. In other words, we will associate commenter names with a list of post IDs (I recommend treating <code class="docutils literal notranslate"><span class="pre">canonical_url</span></code> as a post ID).</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<span class="n">commentor2post</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="c1"># your code here</span>
+
+<span class="nb">len</span><span class="p">(</span><span class="n">commentor2post</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3435
+</pre></div>
+</div>
+</div>
+</div>
+<p><strong>Verification</strong>: Output the total number of commenters in the dataset.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Verification</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">commentor2post</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>3435
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="convert-to-commenter-to-posts-matrix-20-points">
+<h2>3- Convert to commenter-to-posts matrix (20 points)<a class="headerlink" href="#convert-to-commenter-to-posts-matrix-20-points" title="Permalink to this headline">#</a></h2>
+<section id="step-1-build-up-commenter-to-posts-dictionary">
+<h3>Step 1: build up commenter-to-posts dictionary<a class="headerlink" href="#step-1-build-up-commenter-to-posts-dictionary" title="Permalink to this headline">#</a></h3>
+<p>如果你卡在這邊，要回去看看<a class="reference external" href="https://p4css.github.io/py4css/TM/TM06_Clustering.html">Clustering教學</a>，注意要被丟進去算tf-idf的documents的資料型態長什麼樣子，也就是這一行程式碼<code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">vectorizer.fit_transform(documents)</span></code>的<code class="docutils literal notranslate"><span class="pre">documents</span></code>是什麼型態。</p>
+<p>If you are stuck here, please go back and review the <a class="reference external" href="https://p4css.github.io/py4css/TM/TM06_Clustering.html">Clustering Tutorial</a>. Pay attention to what the data type of the <code class="docutils literal notranslate"><span class="pre">documents</span></code> that are being used for TF-IDF calculation should look like. In other words, consider what the <code class="docutils literal notranslate"><span class="pre">documents</span></code> variable in this line of code <code class="docutils literal notranslate"><span class="pre">X</span> <span class="pre">=</span> <span class="pre">vectorizer.fit_transform(documents)</span></code> should be in terms of data type.</p>
+<p>Hints: <code class="docutils literal notranslate"><span class="pre">commentor_posts[0]</span></code> should look like this</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">commentor_posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+<span class="s1">&#39;M.1577894589.A.09F M.1577894589.A.09F M.1577894589.A.09F M.1577894589.A.09F M.1577896480.A.640 M.1577947067.A.EAE M.1577947067.A.EAE M.1577978408.A.09B&#39;</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">commentor_posts</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="c1"># your code here</span>
+
+<span class="n">commentor_posts</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;M.1577894589.A.09F M.1577894589.A.09F M.1577894589.A.09F M.1577894589.A.09F M.1577896480.A.640 M.1577947067.A.EAE M.1577947067.A.EAE M.1577978408.A.09B&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="step-2-using-countvectorizer">
+<h3>Step 2: Using CountVectorizer<a class="headerlink" href="#step-2-using-countvectorizer" title="Permalink to this headline">#</a></h3>
+<p>Now, you should follow the code below to construct commentor features (The code below builds a document-to-term matrix.) If you get stuck here, remember to ask ChaGPT for help. Hint: Use <code class="docutils literal notranslate"><span class="pre">CountVectorizer</span></code> instead of <code class="docutils literal notranslate"><span class="pre">TfidfVectorizer</span></code>.</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">vectorizer</span> <span class="o">=</span> <span class="n">TfidfVectorizer</span><span class="p">(</span>
+    <span class="n">ngram_range</span> <span class="o">=</span> <span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span>
+    <span class="n">max_df</span> <span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="n">token_pattern</span> <span class="o">=</span> <span class="sa">r</span><span class="s2">&quot;(?u)\b\w+\b&quot;</span><span class="p">,</span>
+    <span class="n">use_idf</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="p">)</span>
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+
+<span class="n">vectorizer</span> <span class="o">=</span> <span class="n">CountVectorizer</span><span class="p">(</span>
+    <span class="c1"># ngram_range=(1, 2),</span>
+    <span class="n">max_df</span><span class="o">=</span><span class="mf">0.2</span><span class="p">,</span>
+    <span class="c1"># token_pattern=r&quot;(?u)\b\w+\b&quot;</span>
+<span class="p">)</span>
+
+<span class="n">X</span> <span class="o">=</span> <span class="n">vectorizer</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">commentor_posts</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="clustering-20-points">
+<h2>Clustering (20 points)<a class="headerlink" href="#clustering-20-points" title="Permalink to this headline">#</a></h2>
+<p>Now that we have the commenter-to-posts matrix <code class="docutils literal notranslate"><span class="pre">X</span></code>, we can utilize HDBSCAN to cluster the commenters.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># your code here</span>
+
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">cluster_counter</span><span class="p">[</span><span class="o">-</span><span class="mi">1</span><span class="p">]</span><span class="o">/</span><span class="nb">len</span><span class="p">(</span><span class="n">commentor2post</span><span class="p">)</span><span class="si">:</span><span class="s2">.2%</span><span class="si">}</span><span class="s2"> 的人沒有被分群&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;分群數量: </span><span class="si">{</span><span class="nb">len</span><span class="p">(</span><span class="n">cluster_counter</span><span class="p">)</span><span class="o">-</span><span class="mi">1</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19.91% 的人沒有被分群
+分群數量: 17
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="visualization-using-umap-10-20points">
+<h2>Visualization Using UMAP (10+20points)<a class="headerlink" href="#visualization-using-umap-10-20points" title="Permalink to this headline">#</a></h2>
+<p>To facilitate clearer observation, you might consider exploring various dimension reduction algorithms, such as TSNE and UMAP. After experimenting with both, I ultimately chose TSNE for my analysis.</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="c1"># Your code here</span>
+<span class="c1"># points = ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">umap</span>
+<span class="c1"># points = ...</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">32</span><span class="p">,</span> <span class="mi">32</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+
+<span class="c1"># Your code here</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_94522/3180840412.py:10: MatplotlibDeprecationWarning: The get_cmap function was deprecated in Matplotlib 3.7 and will be removed two minor releases later. Use ``matplotlib.colormaps[name]`` or ``matplotlib.colormaps.get_cmap(obj)`` instead.
+  cmap = plt.cm.get_cmap(&#39;viridis&#39;, len(set(labels)))
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>18
+</pre></div>
+</div>
+<img alt="../_images/2410840dd0a92f6a6954ef99635e745219f85d339df4e5f39613864ee4d50302.png" src="../_images/2410840dd0a92f6a6954ef99635e745219f85d339df4e5f39613864ee4d50302.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./AS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="AS08_clustering_yt_comment.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">AS08 Youtube comment clustering</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="../Resource/video_list.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Python教學影片</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">1- Loading Data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-a-commenter-to-post-dictionary-30-points">2- Building a Commenter-to-Post Dictionary (30 points)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-commenter-to-posts-matrix-20-points">3- Convert to commenter-to-posts matrix (20 points)</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-build-up-commenter-to-posts-dictionary">Step 1: build up commenter-to-posts dictionary</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-using-countvectorizer">Step 2: Using CountVectorizer</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clustering-20-points">Clustering (20 points)</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#visualization-using-umap-10-20points">Visualization Using UMAP (10+20points)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

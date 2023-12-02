@@ -1,0 +1,1042 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P05 READ Files &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P05_read_csv_json';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P05-1 Read CSV" href="P05p1_read_csv.html" />
+    <link rel="prev" title="P04 Practice03 Twitter Users" href="P04p3_twitter_users.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">P05 READ Files</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P05_read_csv_json.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P05_read_csv_json.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P05_read_csv_json.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P05 READ Files</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 常見的檔案格式</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">純文字格式檔案</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-format">CSV format</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#json-format">JSON format</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-csv">2. Read/Write CSV</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-data-to-csv">2.1 Write data to CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-csv">2.4 Read CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-path-and-mode">3. File path and mode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-path">3.1 File Path</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">相對路徑的情形</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-mode">3.2 File Mode</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-read-write-list-of-dict-to-csv">4. (Optional) Read/Write List of Dict to CSV</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-list-of-dict-to-csv">3.1 Write List of Dict to CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-csv-as-list-of-dicts">3.2 Read CSV as List of Dicts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-json">5. Read/Write JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-file-firstly">5.1 Open file firstly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-write-out">5.2 Dump (Write-out)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-read-in">5.3 Load (Read-in)</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p05-read-files">
+<h1>P05 READ Files<a class="headerlink" href="#p05-read-files" title="Permalink to this headline">#</a></h1>
+<p>Read <a class="reference external" href="https://docs.google.com/presentation/d/1ZQoBdfjIsd-RdXEby3RmFfotBHZXR0bzKzhaZThkfJU/edit?usp=sharing">Slide</a> to know what is CSV and JSON</p>
+<div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
+<ul class="simple">
+<li><p>Open file</p></li>
+<li><p>Read and wirte CSV</p></li>
+<li><p>Read and write JSON</p></li>
+<li><p>Read and wirte data to pickle</p></li>
+<li><p>Load CSV and JSON by pandas</p></li>
+<li><p>Convert data structures</p></li>
+</ul>
+</div><section id="id1">
+<h2>1. 常見的檔案格式<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<p><strong>Text file 文字檔</strong></p>
+<ul class="simple">
+<li><p>文字檔是一種純文字格式的檔案，可以使用一般的文字編輯器讀取和編輯。</p></li>
+<li><p>在程式開發中，你可以使用字串操作方法逐一寫入和讀取文字檔。</p></li>
+<li><p>常見的文字檔格式包括CSV（逗號分隔值）、JSON（JavaScript物件表示法）、XML（可擴展標記語言）、TXT（純文字檔案）和HTML（超文本標記語言）。</p></li>
+</ul>
+<p><strong>Binary file 二進位檔</strong></p>
+<ul class="simple">
+<li><p>二進位檔是以二進位形式存儲的檔案，通常不能直接以文字編輯器讀取或編輯。</p></li>
+<li><p>在程式開發中，你需要使用特定的函式或工具來讀取和寫入二進位檔。</p></li>
+<li><p>常見的二進位檔格式包括Pickle（Python特定的暫存檔格式）、DB（資料庫檔案）、EXCEL（Microsoft Excel檔案）、Google Sheets（Google雲端試算表檔案）、PDF（便攜式文件格式）以及JPG和PNG等圖像檔案。</p></li>
+<li><p>舉例來說，要讀取Microsoft Excel檔案，需要使用特定的程式或函式，如Microsoft Excel本身或Python的pandas函式庫。</p></li>
+<li><p>Google Sheets也提供API，可以將其當作CSV檔案來讀取，這對於自動化數據處理非常有用。</p></li>
+</ul>
+<section id="id2">
+<h3>純文字格式檔案<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
+<p>當談到資料檔案格式時，CSV、JSON和XML都是純文字格式，這意味著它們的檔案內容以可讀的文字形式儲存，而不是以二進位格式儲存。以下是對這一點的進一步說明：</p>
+<p><strong>CSV（逗號分隔值）檔案格式</strong></p>
+<ul class="simple">
+<li><p>CSV檔案是純文字格式，其中數據以純文字的形式儲存，欄位之間使用逗號作為分隔符號。</p></li>
+<li><p>這意味著CSV檔案可以輕鬆地用一般的文字編輯器打開和閱讀，因為它們的內容是易於理解的。</p></li>
+<li><p>儘管CSV是純文字格式，但它可以用來儲存結構化的表格型資料。</p></li>
+</ul>
+<p><strong>JSON（JavaScript物件表示法）檔案格式</strong></p>
+<ul class="simple">
+<li><p>JSON同樣也是純文字格式，它的資料以純文字的方式儲存，並以物件表示法呈現。</p></li>
+<li><p>JSON使用鍵-值對的結構，鍵和值之間使用冒號分隔，每個鍵-值對之間使用逗號分隔，這使得JSON易於閱讀和編寫。</p></li>
+<li><p>JSON的純文字特性使它成為數據交換和配置文件的理想選擇。</p></li>
+</ul>
+<p><strong>XML（可擴展標記語言）檔案格式</strong></p>
+<ul class="simple">
+<li><p>XML同樣是純文字格式，其中資料以可讀的文字形式儲存，使用標記來標識資料元素。</p></li>
+<li><p>每個XML元素包括開始標記和結束標記，並可以包含屬性，這使得XML適合表示複雜的層次性資料結構。</p></li>
+<li><p>XML的純文字性質使其廣泛用於各種應用，包括配置文件、網頁內容、數據交換和設定檔。</p></li>
+</ul>
+<p>總之，無論是CSV、JSON還是XML，它們都是純文字格式的資料檔案，可以用一般編輯器（如純文字文件）等開啟，容易閱讀和理解。</p>
+<hr><section id="csv-format">
+<h4>CSV format<a class="headerlink" href="#csv-format" title="Permalink to this headline">#</a></h4>
+<p>CSV是逗點分隔檔案，也可以是TAB分隔（.tsv檔），或者是<code class="docutils literal notranslate"><span class="pre">;</span></code>分隔。特色是不管資料內容如何，都必須被框架在二維的表格裡，xls或xlsx等Excel檔案或者google sheet檔案，都可說是這類格式的資料。標準的CSV檔案表示方法如同下方的紫外線資料。大約可以看見是個二維表格的樣子。
+資料內容必須記錄資料變項名稱與資料值。第一列為變項名稱，以逗點分隔。在每列的最末還有一個隱藏字元為<code class="docutils literal notranslate"><span class="pre">\n</span></code>，其為換行符號。通常CSV檔案打開就是如以下為七個欄位的資料，一共有五筆資料。</p>
+<div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>SiteName,UVI,PublishAgency,County,WGS84Lon,WGS84Lat,PublishTime\n
+花蓮,5.59,中央氣象局,花蓮縣,&quot;121,36,48&quot;,&quot;23,58,30&quot;,2015-11-23 12:00\n
+馬祖,4.49,中央氣象局,連江縣,&quot;119,55,24&quot;,&quot;26,10,09&quot;,2015-11-23 12:00\n
+高雄,4.39,中央氣象局,高雄市,&quot;120,18,57&quot;,&quot;22,33,58&quot;,2015-11-23 12:00\n
+玉山,8.14,中央氣象局,南投縣,&quot;120,57,34&quot;,&quot;23,29,15&quot;,2015-11-23 12:00\n
+臺南,4.45,中央氣象局,臺南市,&quot;120,12,17&quot;,&quot;22,59,36&quot;,2015-11-23 12:00\n
+</pre></div>
+</div>
+<hr></section>
+<section id="json-format">
+<h4>JSON format<a class="headerlink" href="#json-format" title="Permalink to this headline">#</a></h4>
+<p>JSON（JavaScript Object Notation）檔案格式是一種純文字格式，具有以下特性：</p>
+<p><strong>JSON檔案格式特性：</strong></p>
+<ol class="arabic simple">
+<li><p><strong>結構化資料表示：</strong> JSON以層次化結構來表示資料，通過物件和陣列的組合，可以表示複雜的資料結構，適用於不同層次的資訊。</p></li>
+<li><p><strong>人類可讀：</strong> JSON使用易於理解的key-value對結構，這使得JSON檔案易於閱讀和編寫，尤其對於開發人員和數據分析師來說。</p></li>
+<li><p><strong>簡潔性：</strong> JSON的語法相對簡單，並且不需要特殊分隔符號，比較不會因為分隔符號辨識問題而出錯。</p></li>
+<li><p><strong>廣泛的支援：</strong> JSON獲得了廣泛的支援，幾乎所有主要的程式語言都有相應的JSON解析和生成庫。</p></li>
+<li><p><strong>多用途性：</strong> JSON不僅可以用於資料交換，還可以用於配置設置、Web應用程序和API的數據傳輸等多個應用領域。</p></li>
+</ol>
+<p><strong>JSON相較於CSV的優點：</strong></p>
+<ol class="arabic simple">
+<li><p><strong>結構性：</strong> JSON允許表示複雜的、多層次的資料結構，而CSV主要用於表格型資料，對於複雜的資料結構不太適合。</p></li>
+<li><p><strong>標籤化資料：</strong> JSON中的鍵-值對使資料更有語義，因此更容易理解每個資料元素的含義，而CSV僅依賴位置來表示資料。</p></li>
+<li><p><strong>嵌套（Nested）支援：</strong> JSON支援巢狀結構，這意味著你可以在一個JSON物件中包含另一個物件，這對於表示層次性資料非常有用。</p></li>
+<li><p><strong>數據類型：</strong> JSON支援不同的數據類型，包括String、Numeric、True/False、Object, List與Dict，這使得它更靈活。</p></li>
+</ol>
+<p><strong>JSON相較於CSV的缺點：</strong></p>
+<ol class="arabic simple">
+<li><p><strong>文件大小：</strong> JSON的語法相對簡單，但它可能比CSV檔案稍微膨脹，尤其是在包含大量資料的情況下。</p></li>
+<li><p><strong>可讀性：</strong> 雖然JSON對於開發人員來說易於理解，但對於一般用戶來說，其可讀性可能不如CSV。</p></li>
+</ol>
+<p>一般來說，JSON格式為了避免過長過大或過多的空白，會去除所有空白和換行符號來儲存。如以下相對應的例子</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[{</span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="s2">&quot;花蓮&quot;</span><span class="p">,</span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="mf">5.59</span><span class="p">,</span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="s2">&quot;花蓮縣&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="s2">&quot;121,36,48&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="s2">&quot;23,58,30&quot;</span><span class="p">,</span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="s2">&quot;2015-11-23 12:00&quot;</span><span class="p">},{</span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="s2">&quot;馬祖&quot;</span><span class="p">,</span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="mf">4.49</span><span class="p">,</span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="s2">&quot;連江縣&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="s2">&quot;119,55,24&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="s2">&quot;26,10,09&quot;</span><span class="p">,</span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="s2">&quot;2015-11-23 12:00&quot;</span><span class="p">},{</span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="s2">&quot;高雄&quot;</span><span class="p">,</span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="mf">4.39</span><span class="p">,</span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="s2">&quot;高雄市&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="s2">&quot;120,18,57&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="s2">&quot;22,33,58&quot;</span><span class="p">,</span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="s2">&quot;2015-11-23 12:00&quot;</span><span class="p">},{</span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="s2">&quot;玉山&quot;</span><span class="p">,</span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="mf">8.14</span><span class="p">,</span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="s2">&quot;南投縣&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="s2">&quot;120,57,34&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="s2">&quot;23,29,15&quot;</span><span class="p">,</span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="s2">&quot;2015-11-23 12:00&quot;</span><span class="p">},{</span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="s2">&quot;臺南&quot;</span><span class="p">,</span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="mf">4.45</span><span class="p">,</span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="s2">&quot;臺南市&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="s2">&quot;120,12,17&quot;</span><span class="p">,</span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="s2">&quot;22,59,36&quot;</span><span class="p">,</span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="s2">&quot;2015-11-23 12:00&quot;</span><span class="p">}]</span>
+</pre></div>
+</div>
+<p>以下為前述CSV範例之相對的JSON格式檔案</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="p">[</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;花蓮&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">5.59</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;花蓮縣&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;121,36,48&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;23,58,30&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23 12:00&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;馬祖&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.49</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;連江縣&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;119,55,24&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;26,10,09&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23 12:00&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;高雄&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.39</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;高雄市&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;120,18,57&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;22,33,58&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23 12:00&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;玉山&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">8.14</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;南投縣&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;120,57,34&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;23,29,15&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23 12:00&quot;</span>
+<span class="w">    </span><span class="p">},</span>
+<span class="w">    </span><span class="p">{</span>
+<span class="w">        </span><span class="nt">&quot;SiteName&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;臺南&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;UVI&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">4.45</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishAgency&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;中央氣象局&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;County&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;臺南市&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lon&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;120,12,17&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;WGS84Lat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;22,59,36&quot;</span><span class="p">,</span>
+<span class="w">        </span><span class="nt">&quot;PublishTime&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2015-11-23 12:00&quot;</span>
+<span class="w">    </span><span class="p">}</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<hr></section>
+</section>
+</section>
+<section id="read-write-csv">
+<h2>2. Read/Write CSV<a class="headerlink" href="#read-write-csv" title="Permalink to this headline">#</a></h2>
+<p><img alt="Alt text" src="../_images/image-1.png" /></p>
+<section id="write-data-to-csv">
+<h3>2.1 Write data to CSV<a class="headerlink" href="#write-data-to-csv" title="Permalink to this headline">#</a></h3>
+<p>假設我有一個Nested List表示了一個包含學生姓名、年齡和城市的CSV資料。第一個子列表包含了標題行，接下來的子列表包含了學生的資料。我們使用這個資料來展示如何讀取和寫入CSV檔案。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">student_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">[</span><span class="s2">&quot;姓名&quot;</span><span class="p">,</span> <span class="s2">&quot;年齡&quot;</span><span class="p">,</span> <span class="s2">&quot;城市&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span> <span class="s2">&quot;紐約&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;22&quot;</span><span class="p">,</span> <span class="s2">&quot;洛杉磯&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;28&quot;</span><span class="p">,</span> <span class="s2">&quot;芝加哥&quot;</span><span class="p">],</span>
+    <span class="p">[</span><span class="s2">&quot;Eva&quot;</span><span class="p">,</span> <span class="s2">&quot;24&quot;</span><span class="p">,</span> <span class="s2">&quot;邁阿密&quot;</span><span class="p">]</span>
+<span class="p">]</span>
+</pre></div>
+</div>
+<p>用以下程式碼可以將上述二維列表寫入CSV檔案中：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">import</span> <span class="pre">csv</span></code>：首先，我們導入Python的CSV模組，以便使用CSV相關的功能。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">with</span> <span class="pre">open('students.csv',</span> <span class="pre">mode='w',</span> <span class="pre">newline='')</span> <span class="pre">as</span> <span class="pre">file:</span></code>打開CSV檔案：使用<code class="docutils literal notranslate"><span class="pre">open</span></code>函式打開一個名為 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 的檔案，並指定檔案模式為寫入模式 <code class="docutils literal notranslate"><span class="pre">'w'</span></code>，這表示我們將要創建或覆蓋現有的檔案。</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">newline=''</span></code>：這個參數確保在寫入CSV檔案時不插入額外的換行符號，以確保資料的一致性。</p></li>
+<li><p>建立CSV寫入器：使用<code class="docutils literal notranslate"><span class="pre">csv.writer</span></code>函式創建一個CSV寫入器 <code class="docutils literal notranslate"><span class="pre">writer</span></code>，以便寫入CSV資料。</p></li>
+<li><p>寫入資料：使用<code class="docutils literal notranslate"><span class="pre">for</span></code>迴圈遍歷名為 <code class="docutils literal notranslate"><span class="pre">student_data</span></code> 的資料（在你的程式中應該有這個變數），然後使用<code class="docutils literal notranslate"><span class="pre">writer.writerow(row)</span></code>將每一行資料寫入CSV檔案。<code class="docutils literal notranslate"><span class="pre">row</span></code>代表要寫入的每一行資料。</p></li>
+</ol>
+</li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;students.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">writer</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="c1"># 建立CSV寫入器</span>
+    
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">student_data</span><span class="p">:</span> 
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span> <span class="c1"># 寫入資料</span>
+
+</pre></div>
+</div>
+</section>
+<section id="read-csv">
+<h3>2.4 Read CSV<a class="headerlink" href="#read-csv" title="Permalink to this headline">#</a></h3>
+<p><img alt="Alt text" src="../_images/image-3.png" /></p>
+<p>當你有了名為 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 的CSV檔案後，你可以使用Python的CSV模組來讀取它。這個程式會讀取 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 檔案，跳過標題行，然後逐行顯示每位學生的姓名、年齡和城市。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;students.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span> <span class="c1"># 讀取CSV檔案</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span> <span class="c1"># 建立CSV讀取器</span>
+    <span class="nb">next</span><span class="p">(</span><span class="n">reader</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span> <span class="c1"># 跳過標題行</span>
+    
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;姓名: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="si">}</span><span class="s2">, 年齡: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">1</span><span class="p">]</span><span class="si">}</span><span class="s2">, 城市: </span><span class="si">{</span><span class="n">row</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+</section>
+<section id="file-path-and-mode">
+<h2>3. File path and mode<a class="headerlink" href="#file-path-and-mode" title="Permalink to this headline">#</a></h2>
+<section id="file-path">
+<h3>3.1 File Path<a class="headerlink" href="#file-path" title="Permalink to this headline">#</a></h3>
+<p>當我們在Python中讀取CSV檔案時，理解檔案路徑的概念變得非常重要。檔案路徑告訴程式碼在哪裡找到CSV檔案，而它可以分為兩種主要類型：絕對路徑和相對路徑。</p>
+<ol class="arabic simple">
+<li><p>絕對路徑（Absolute Path）：</p>
+<ul class="simple">
+<li><p>絕對路徑是一個完整的檔案路徑，包含檔案所在的所有目錄。</p></li>
+<li><p>這種路徑通常以根目錄（root directory）為起點，完整指定了檔案的位置。</p></li>
+<li><p>例如，<code class="docutils literal notranslate"><span class="pre">C:\Users\YourName\Documents\students.csv</span></code> 是一個絕對路徑。</p></li>
+</ul>
+</li>
+<li><p>相對路徑（Relative Path）：</p>
+<ul class="simple">
+<li><p>相對路徑是相對於目前工作目錄（current working directory）的路徑。</p></li>
+<li><p>通常，Python會將檔案路徑解釋為相對於程式運行的目錄。</p></li>
+<li><p>例如，假設我們的Python程式和CSV檔案都在同一個目錄下，那麼只需指定檔案名稱，如<code class="docutils literal notranslate"><span class="pre">'students.csv'</span></code>，就可以使用相對路徑。</p></li>
+</ul>
+</li>
+</ol>
+<section id="id3">
+<h4>相對路徑的情形<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
+<p>我們把前面讀取檔案的程式的檔案位置拉出來為一個變數，並且使用相對路徑來讀取檔案。</p>
+<p><strong>狀況一：</strong> <br>檔案和程式（.ipynb或.py）在同一個目錄下</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;students.csv&#39;</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">file_path</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">reader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+<p><strong>狀況二：</strong> <br>程式（.ipynb或.py）和資料夾<code class="docutils literal notranslate"><span class="pre">data</span></code>在同一個目錄底下，而資料夾<code class="docutils literal notranslate"><span class="pre">data</span></code>底下有檔案<code class="docutils literal notranslate"><span class="pre">students.csv</span></code>。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;data/students.csv&#39;</span>
+</pre></div>
+</div>
+<p><strong>狀況三：</strong> <br>程式（.ipynb或.py）被放在資料夾<code class="docutils literal notranslate"><span class="pre">src</span></code>中，而<code class="docutils literal notranslate"><span class="pre">src</span></code>資料夾和<code class="docutils literal notranslate"><span class="pre">data</span></code>資料夾被一起放在<code class="docutils literal notranslate"><span class="pre">project_a</span></code>底下。資料夾<code class="docutils literal notranslate"><span class="pre">data</span></code>底下有檔案<code class="docutils literal notranslate"><span class="pre">students.csv</span></code>。<code class="docutils literal notranslate"><span class="pre">..</span></code>在相對路徑的意義代表上一層目錄。如果是<code class="docutils literal notranslate"><span class="pre">../..</span></code>則代表上兩層目錄。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;../data/students.csv&#39;</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="file-mode">
+<h3>3.2 File Mode<a class="headerlink" href="#file-mode" title="Permalink to this headline">#</a></h3>
+<p>開啟檔案時，需要先開啟該檔案，並指到一個變數，例如下例中的<code class="docutils literal notranslate"><span class="pre">f</span></code>，並且指定要用什麼讀取模式來開啟檔案。<br>相關說明可見<a class="reference external" href="https://www.tutorialspoint.com/python/python_files_io.htm">Python-File Handling</a></p>
+<ol class="arabic simple">
+<li><p>讀寫模式主要有三種：</p>
+<ol class="arabic simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">r</span></code>表讀取、</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">w</span></code>表直接從頭覆寫寫入、</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">a</span></code>為寫入新資料在檔案最後（Append的意思）。</p></li>
+</ol>
+</li>
+<li><p>後面跟著一個<code class="docutils literal notranslate"><span class="pre">b</span></code>的代表是binary檔案，例如<code class="docutils literal notranslate"><span class="pre">wb</span></code>、<code class="docutils literal notranslate"><span class="pre">rb</span></code>，初學者比較少用到，html、json、txt、csv等都是文字檔案，都不是binary檔案；如果是pdf、bin、docx就都是binary檔案。</p></li>
+<li><p>如果後面跟著一個<code class="docutils literal notranslate"><span class="pre">+</span></code>的， <code class="docutils literal notranslate"><span class="pre">r+</span></code>代表可讀寫、<code class="docutils literal notranslate"><span class="pre">w+</span></code>代表可讀寫，且寫入時如果沒有該檔案，他會自動建立該檔案。</p></li>
+</ol>
+</section>
+</section>
+<section id="optional-read-write-list-of-dict-to-csv">
+<h2>4. (Optional) Read/Write List of Dict to CSV<a class="headerlink" href="#optional-read-write-list-of-dict-to-csv" title="Permalink to this headline">#</a></h2>
+<p>但List of List不是最常見的表達資料型態，反而是List of Dict。因為Dict的Key可以當作欄位名稱，而Value則是資料值。因此，我們可以將List of Dict寫成成CSV檔案，也可以將CSV檔案讀取成List of Dict。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">student_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;姓名&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;年齡&quot;</span><span class="p">:</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span> <span class="s2">&quot;城市&quot;</span><span class="p">:</span> <span class="s2">&quot;紐約&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;姓名&quot;</span><span class="p">:</span> <span class="s2">&quot;Alice&quot;</span><span class="p">,</span> <span class="s2">&quot;年齡&quot;</span><span class="p">:</span> <span class="s2">&quot;22&quot;</span><span class="p">,</span> <span class="s2">&quot;城市&quot;</span><span class="p">:</span> <span class="s2">&quot;洛杉磯&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;姓名&quot;</span><span class="p">:</span> <span class="s2">&quot;Bob&quot;</span><span class="p">,</span> <span class="s2">&quot;年齡&quot;</span><span class="p">:</span> <span class="s2">&quot;28&quot;</span><span class="p">,</span> <span class="s2">&quot;城市&quot;</span><span class="p">:</span> <span class="s2">&quot;芝加哥&quot;</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;姓名&quot;</span><span class="p">:</span> <span class="s2">&quot;Eva&quot;</span><span class="p">,</span> <span class="s2">&quot;年齡&quot;</span><span class="p">:</span> <span class="s2">&quot;24&quot;</span><span class="p">,</span> <span class="s2">&quot;城市&quot;</span><span class="p">:</span> <span class="s2">&quot;邁阿密&quot;</span><span class="p">}</span>
+<span class="p">]</span>
+
+</pre></div>
+</div>
+<section id="write-list-of-dict-to-csv">
+<h3>3.1 Write List of Dict to CSV<a class="headerlink" href="#write-list-of-dict-to-csv" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">student_data</span></code> 資料為一List of Dict。在 <code class="docutils literal notranslate"><span class="pre">csv.DictWriter</span></code> 中，要先指定標題行的欄位名稱，然後使用 <code class="docutils literal notranslate"><span class="pre">writer.writeheader()</span></code> 寫入標題行。接下來，要遍歷 <code class="docutils literal notranslate"><span class="pre">student_data</span></code> 中的每一個Dict所存放的資料，並使用 <code class="docutils literal notranslate"><span class="pre">writer.writerow(row)</span></code> 將每個字典的內容寫入CSV檔案中。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;students.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;w&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">fieldnames</span> <span class="o">=</span> <span class="n">student_data</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+    <span class="n">writer</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictWriter</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="n">fieldnames</span><span class="o">=</span><span class="n">fieldnames</span><span class="p">)</span>
+    <span class="n">writer</span><span class="o">.</span><span class="n">writeheader</span><span class="p">()</span> <span class="c1"># 寫入標題行</span>
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">student_data</span><span class="p">:</span>
+        <span class="n">writer</span><span class="o">.</span><span class="n">writerow</span><span class="p">(</span><span class="n">row</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+<section id="read-csv-as-list-of-dicts">
+<h3>3.2 Read CSV as List of Dicts<a class="headerlink" href="#read-csv-as-list-of-dicts" title="Permalink to this headline">#</a></h3>
+<p>若要從 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 中讀取資料並儲存在 List of Dictionaries 中，你可以使用以下程式碼：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
+
+<span class="n">student_data</span> <span class="o">=</span> <span class="p">[]</span> <span class="c1"># 建立一個空的 List 來儲存資料</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;students.csv&#39;</span><span class="p">,</span> <span class="n">mode</span><span class="o">=</span><span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="n">newline</span><span class="o">=</span><span class="s1">&#39;&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
+    <span class="n">reader</span> <span class="o">=</span> <span class="n">csv</span><span class="o">.</span><span class="n">DictReader</span><span class="p">(</span><span class="n">file</span><span class="p">)</span>
+
+    <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">reader</span><span class="p">:</span>
+        <span class="n">student_data</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="nb">dict</span><span class="p">(</span><span class="n">row</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>這個程式碼首先建立了一個空的List，然後使用 <code class="docutils literal notranslate"><span class="pre">csv.DictReader</span></code> 讀取 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 中的資料行，每一行都轉換為Dict，並將其添加到 <code class="docutils literal notranslate"><span class="pre">student_data</span></code> List 中。最後，它遍歷 <code class="docutils literal notranslate"><span class="pre">student_data</span></code> 並顯示每位學生的資料。</p>
+</section>
+</section>
+<section id="read-write-json">
+<h2>5. Read/Write JSON<a class="headerlink" href="#read-write-json" title="Permalink to this headline">#</a></h2>
+<p><img alt="Alt text" src="../_images/image-4.png" /></p>
+<section id="open-file-firstly">
+<h3>5.1 Open file firstly<a class="headerlink" href="#open-file-firstly" title="Permalink to this headline">#</a></h3>
+<p>無論是讀入資料或寫出資料，都要先開啟檔案（如<code class="docutils literal notranslate"><span class="pre">open('sample.json',</span> <span class="pre">'w')</span></code>）。檔案開啟後，才可以將資料寫入。完整的寫法如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">sample_data</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>通常把資料寫到檔案中稱為dump out（或者save、write視程式語言的函式而不同），而把資料從檔案中讀成程式語言所能處理的結構則稱為load（或read）。</p>
+</section>
+<section id="dump-write-out">
+<h3>5.2 Dump (Write-out)<a class="headerlink" href="#dump-write-out" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">json.dump</span></code> 和 <code class="docutils literal notranslate"><span class="pre">json.dumps</span></code> 都是用於將 Python 資料結構轉換為 JSON 格式的函式，但它們有一些不同之處：</p>
+<ol class="arabic simple">
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">json.dump(obj,</span> <span class="pre">fp)</span></code></strong> ：將 Python 資料結構轉換為 JSON 格式並寫入指定的檔案中。它會將 JSON 資料寫入檔案，不會返回 JSON 字串。</p></li>
+<li><p><strong><code class="docutils literal notranslate"><span class="pre">json.dumps(obj)</span></code></strong> ：將 Python 資料結構轉換為 JSON 格式的字串。它不會將 JSON 寫入檔案，而是將 JSON 字串返回給你。</p></li>
+</ol>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">json</span>
+<span class="n">sample_data</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="p">{</span><span class="s2">&quot;site&quot;</span><span class="p">:</span><span class="s2">&quot;基隆&quot;</span><span class="p">,</span><span class="s2">&quot;AQI&quot;</span><span class="p">:</span><span class="mi">38</span><span class="p">,</span><span class="s2">&quot;PM25&quot;</span><span class="p">:</span><span class="mi">8</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;site&quot;</span><span class="p">:</span><span class="s2">&quot;新店&quot;</span><span class="p">,</span><span class="s2">&quot;AQI&quot;</span><span class="p">:</span><span class="mi">40</span><span class="p">,</span><span class="s2">&quot;PM25&quot;</span><span class="p">:</span><span class="mi">9</span><span class="p">},</span>
+    <span class="p">{</span><span class="s2">&quot;site&quot;</span><span class="p">:</span><span class="s2">&quot;苗栗&quot;</span><span class="p">,</span><span class="s2">&quot;AQI&quot;</span><span class="p">:</span><span class="mi">76</span><span class="p">,</span><span class="s2">&quot;PM25&quot;</span><span class="p">:</span><span class="mi">11</span><span class="p">}]</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
+    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">sample_data</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
+
+</pre></div>
+</div>
+</section>
+<section id="load-read-in">
+<h3>5.3 Load (Read-in)<a class="headerlink" href="#load-read-in" title="Permalink to this headline">#</a></h3>
+<p>讀取JSON則分讀取字串和直接讀取檔案兩種：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">json.loads(str)</span></code>讀取字串：例如像讀取ubike的線上資料，就是先把抓回來的資料轉文字後當成字串讀取入json。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">json.load(f)</span></code>直接讀取檔案：例如適才把一個list of dictionary存成json後，可以用<code class="docutils literal notranslate"><span class="pre">json.load(f)</span></code>讀成python的list of dictionary</p></li>
+</ul>
+<p>範例程式碼如下</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;sample.json&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
+    <span class="n">new_data</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
+<span class="n">new_data</span>
+</pre></div>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P04p3_twitter_users.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P04 Practice03 Twitter Users</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P05p1_read_csv.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P05-1 Read CSV</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">1. 常見的檔案格式</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">純文字格式檔案</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#csv-format">CSV format</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#json-format">JSON format</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-csv">2. Read/Write CSV</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-data-to-csv">2.1 Write data to CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-csv">2.4 Read CSV</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#file-path-and-mode">3. File path and mode</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-path">3.1 File Path</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">相對路徑的情形</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#file-mode">3.2 File Mode</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#optional-read-write-list-of-dict-to-csv">4. (Optional) Read/Write List of Dict to CSV</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#write-list-of-dict-to-csv">3.1 Write List of Dict to CSV</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-csv-as-list-of-dicts">3.2 Read CSV as List of Dicts</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#read-write-json">5. Read/Write JSON</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#open-file-firstly">5.1 Open file firstly</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dump-write-out">5.2 Dump (Write-out)</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#load-read-in">5.3 Load (Read-in)</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

@@ -1,0 +1,2424 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Pandas: Counting and Summarizing &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P06p1_summarizing';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Pandas: filter, select, and timeline process" href="P06p2_filter_select_datetime.html" />
+    <link rel="prev" title="P06 Pandas" href="P06_pandas.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P06p1_summarizing.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P06p1_summarizing.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P06p1_summarizing.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Pandas: Counting and Summarizing</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p1-read-data">P1. Read data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-csv">1.1 Read CSV: 違規藥品廣告</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-and-rename-columns">1.2 Display and rename columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-series">1.3 Pandas series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting">1.4 Counting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2-read-json-youbike">P2. Read JSON : Youbike</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-dict-of-dict-to-list-of-dict-then-to-dataframe">2.1 Convert dict of dict to list of dict, then to DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-part-of-columns">2.2 Display part of columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-built-in-function-to-pandas">2.3 Using built-in function to pandas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2-observing-data">P2. Observing data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-whole-df">2.4 Overview whole df</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-by-index">2.5 Access data by index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-and-access-data">2.6 Slice and access data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-variable-type">2.7 Convert variable type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutate-new-variable">2.8 Mutate new variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p3-summarizing-data">P3. Summarizing data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-single-variable-by-value-counts">3.1 Count single variable by <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-then-count">3.2 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then <code class="docutils literal notranslate"><span class="pre">count()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-then-summarize">3.3 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then summarize</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p4-sort-by-arrange">P4. Sort-by (Arrange)</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="pandas-counting-and-summarizing">
+<h1>Pandas: Counting and Summarizing<a class="headerlink" href="#pandas-counting-and-summarizing" title="Permalink to this headline">#</a></h1>
+<p>這個章節將更系統化地用實際案例來介紹，</p>
+<ol class="arabic simple">
+<li><p>Reading files: <code class="docutils literal notranslate"><span class="pre">pd.read_csv('data.csv')</span></code>或讀取JSON <code class="docutils literal notranslate"><span class="pre">pd.read_json('data.json')</span></code></p></li>
+<li><p>Filtering data: Slicing data <code class="docutils literal notranslate"><span class="pre">df[0:10]</span></code>、Selecting data <code class="docutils literal notranslate"><span class="pre">df['col1']</span></code>、Filtering data <code class="docutils literal notranslate"><span class="pre">df[df['col1']</span> <span class="pre">&gt;</span> <span class="pre">0]</span></code></p></li>
+<li><p>Mutating a new variable(on column), Observing a variable, Changing data type</p></li>
+<li><p>Summarizing data (group by columns): <code class="docutils literal notranslate"><span class="pre">df.groupby('col1').mean()</span></code></p></li>
+<li><p>Arranging (Sorting) data: <code class="docutils literal notranslate"><span class="pre">df.sort_values(by</span> <span class="pre">=</span> <span class="pre">'col1')</span></code></p></li>
+<li><p>Concatenating data: <code class="docutils literal notranslate"><span class="pre">pd.concat([df1,</span> <span class="pre">df2])</span></code></p></li>
+</ol>
+<section id="p1-read-data">
+<h2>P1. Read data<a class="headerlink" href="#p1-read-data" title="Permalink to this headline">#</a></h2>
+<section id="read-csv">
+<h3>1.1 Read CSV: 違規藥品廣告<a class="headerlink" href="#read-csv" title="Permalink to this headline">#</a></h3>
+<p>違規藥品廣告資料集 <a class="reference external" href="https://data.nat.gov.tw/dataset/14196">https://data.nat.gov.tw/dataset/14196</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">drug_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv&#39;</span><span class="p">)</span>
+<span class="c1"># drug_df</span>
+<span class="n">drug_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">drug_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># drug_df</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">drug_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:575,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">575</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:933,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">933</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1217,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span> <span class="c1"># error: No overload variant of &quot;get_handle&quot; matches argument types</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span> <span class="c1"># &quot;Union[str, PathLike[str], ReadCsvBuffer[bytes], ReadCsvBuffer[str]]&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1216</span> <span class="c1"># , &quot;str&quot;, &quot;bool&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1217</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>  <span class="c1"># type: ignore[call-overload]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1219</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1220</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1221</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1223</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1224</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:670,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">670</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">673</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:339,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">339</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:239,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">239</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:214,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">214</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:523,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">523</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:632,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">632</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:561,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">560</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">561</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:494,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">494</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:641,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">641</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 404: Not Found
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># `%who` is a magic command that lists all variables of the current session</span>
+<span class="o">%</span><span class="k">who</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter	 drug_df	 pd	 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="display-and-rename-columns">
+<h3>1.2 Display and rename columns<a class="headerlink" href="#display-and-rename-columns" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>要大概觀察DataFrame的內容，我們可以使用<code class="docutils literal notranslate"><span class="pre">.head()</span></code>方法。這個方法將預設顯示DataFrame的前5行資料，以便我們快速查看資料的結構和內容。</p></li>
+<li><p>有時候，我們可能想要更改DataFrame中欄位的名稱，以使其更具描述性或符合我們的需求。可以像下面一樣直接將所有新欄位名稱傳遞給<code class="docutils literal notranslate"><span class="pre">.columns</span></code>屬性，或者使用<code class="docutils literal notranslate"><span class="pre">.rename()</span></code>方法來將舊欄位名稱映射到新欄位名稱。例如<code class="docutils literal notranslate"><span class="pre">df.rename(columns={'Name':</span> <span class="pre">'Full</span> <span class="pre">Name',</span> <span class="pre">'Age':</span> <span class="pre">'Years</span> <span class="pre">Old'},</span> <span class="pre">inplace=True)</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Check all variables of the dataframe</span>
+<span class="n">drug_df</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;違規產品名稱&#39;, &#39;違規廠商名稱或負責人&#39;, &#39;處分機關&#39;, &#39;處分日期&#39;, &#39;處分法條&#39;, &#39;違規情節&#39;, &#39;刊播日期&#39;,
+       &#39;刊播媒體類別&#39;, &#39;刊播媒體&#39;, &#39;查處情形&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drug_df</span><span class="o">.</span><span class="n">columns</span> <span class="o">=</span> <span class="p">[</span>
+    <span class="s1">&#39;pname&#39;</span><span class="p">,</span> <span class="s1">&#39;cname&#39;</span><span class="p">,</span> <span class="s1">&#39;agency&#39;</span><span class="p">,</span> <span class="s1">&#39;issuedate&#39;</span><span class="p">,</span> <span class="s1">&#39;law&#39;</span><span class="p">,</span> <span class="s1">&#39;fact&#39;</span><span class="p">,</span> 
+    <span class="s1">&#39;pubDate&#39;</span><span class="p">,</span> <span class="s1">&#39;pubMediaType&#39;</span><span class="p">,</span> <span class="s1">&#39;pubMedia&#39;</span><span class="p">,</span> <span class="s1">&#39;trace&#39;</span><span class="p">]</span>
+<span class="n">drug_df</span><span class="o">.</span><span class="n">columns</span>
+<span class="n">drug_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pname</th>
+      <th>cname</th>
+      <th>agency</th>
+      <th>issuedate</th>
+      <th>law</th>
+      <th>fact</th>
+      <th>pubDate</th>
+      <th>pubMediaType</th>
+      <th>pubMedia</th>
+      <th>trace</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
+      <td>NaN</td>
+      <td>03 31 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>廣播電台</td>
+      <td>噶瑪蘭廣播電台股份有限公司</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
+      <td>NaN</td>
+      <td>01 21 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
+      <td>NaN</td>
+      <td>01 25 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>08 27 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>✈日本 代購 TSUMURA 中將湯 24天包裝</td>
+      <td>蘇O涵/蘇O涵</td>
+      <td>NaN</td>
+      <td>01 25 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>08 27 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>_Salty.shop 日本代購 樂敦小花</td>
+      <td>曾O嫺/曾O嫺</td>
+      <td>NaN</td>
+      <td>02 17 2022 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>12 6 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="pandas-series">
+<h3>1.3 Pandas series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">#</a></h3>
+<p>Pandas Series 是一種一維陣列結構，用於存儲同類型的資料，並且每個資料點都有一個與之相關聯的索引。與 Python 的原生 list 不同，Pandas Series 提供了更豐富的功能和操作，包括但不限於資料對齊、切片、過濾以及集成的描述性統計方法。除了這些，Pandas Series 支援更多複雜的資料類型，並且能夠更高效地進行向量化操作。簡而言之，雖然 Pandas Series 和 list 都可以用於存儲一維資料，但 Series 提供了更多專為數據分析而設計的功能和優化。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">))</span>
+<span class="n">pubMediaType</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">pubMediaType</span><span class="p">))</span>
+
+<span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span>
+<span class="c1"># print(set(drug_df.pubMediaType))</span>
+<span class="c1"># drug_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
+&lt;class &#39;list&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0       廣播電台
+1         網路
+2         網路
+3         網路
+4         網路
+        ... 
+2967      網路
+2968      網路
+2969      網路
+2970      網路
+2971      網路
+Name: pubMediaType, Length: 2972, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="counting">
+<h3>1.4 Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h3>
+<p>接下來希望計算一下每個廣告類型<code class="docutils literal notranslate"><span class="pre">pubMediaType</span></code>的數量，以便我們可以了解哪些類型的廣告最多。</p>
+<p>過去我們會用<code class="docutils literal notranslate"><span class="pre">collections</span></code>套件的<code class="docutils literal notranslate"><span class="pre">Counter</span></code>方法來計算。但是現在我們可以使用<code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>方法來計算每個類型的廣告數量。這個方法將返回一個包含每個類型廣告數量的 Pandas Series，其中索引是廣告類型，值是廣告數量。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using `Counter` to count the number of each type of publication media</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">type_dict</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">type_dict</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">fact</span><span class="p">)</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;網路&#39;: 2609, &#39;廣播電台&#39;: 119, &#39;平面媒體&#39;: 117, &#39;電視&#39;: 109, &#39;其他&#39;: 16, nan: 2})
+[(&#39;無照藥商&#39;, 1434), (&#39;廣告違規&#39;, 248), (&#39;無違規&#39;, 185), (&#39;其刊登或宣播之廣告內容與原核准廣告內容不符&#39;, 134), (nan, 132), (&#39;非藥商刊登或宣播藥物廣告&#39;, 108), (&#39;藥品未申請查驗登記&#39;, 94), (&#39;刊播未申請核准之廣告&#39;, 85), (&#39;廣告內容誇大不實&#39;, 67), (&#39;禁藥&#39;, 40)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+<span class="c1"># drug_df[&#39;pubMediaType&#39;].value_counts()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pubMediaType
+網路      2609
+廣播電台     119
+平面媒體     117
+電視       109
+其他        16
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="p2-read-json-youbike">
+<h2>P2. Read JSON : Youbike<a class="headerlink" href="#p2-read-json-youbike" title="Permalink to this headline">#</a></h2>
+<section id="convert-dict-of-dict-to-list-of-dict-then-to-dataframe">
+<h3>2.1 Convert dict of dict to list of dict, then to DataFrame<a class="headerlink" href="#convert-dict-of-dict-to-list-of-dict-then-to-dataframe" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># 顯示所有欄位</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+
+
+<span class="c1"># Convert dict of dict to list of dict</span>
+<span class="n">all_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="n">all_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+
+<span class="c1"># Using list comprehension</span>
+<span class="c1"># all_list = [v for v in data[&quot;retVal&quot;].values()]</span>
+    
+
+<span class="n">ubike_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="display-part-of-columns">
+<h3>2.2 Display part of columns<a class="headerlink" href="#display-part-of-columns" title="Permalink to this headline">#</a></h3>
+<ol class="arabic simple">
+<li><p>Subsetting them by passing a list of column names inside the square brackets <code class="docutils literal notranslate"><span class="pre">df[['col1',</span> <span class="pre">'col2']]</span></code></p></li>
+<li><p>Using the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method to drop columns <code class="docutils literal notranslate"><span class="pre">df.drop(['col1',</span> <span class="pre">'col2'],</span> <span class="pre">axis=1)</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="p">[[</span><span class="s1">&#39;sno&#39;</span><span class="p">,</span> <span class="s1">&#39;sna&#39;</span><span class="p">,</span> <span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="s1">&#39;sbi&#39;</span><span class="p">,</span> <span class="s1">&#39;sarea&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="n">ubike_df</span><span class="o">.</span><span class="n">drop</span><span class="p">([</span><span class="s1">&#39;ar&#39;</span><span class="p">,</span> <span class="s1">&#39;aren&#39;</span><span class="p">,</span> <span class="s1">&#39;snaen&#39;</span><span class="p">,</span> <span class="s1">&#39;lat&#39;</span><span class="p">,</span> <span class="s1">&#39;lng&#39;</span><span class="p">],</span> <span class="n">axis</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>sarea</th>
+      <th>mday</th>
+      <th>sareaen</th>
+      <th>bemp</th>
+      <th>act</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0001</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>84</td>
+      <td>74</td>
+      <td>信義區</td>
+      <td>20221030185227</td>
+      <td>Xinyi Dist.</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0002</th>
+      <td>0002</td>
+      <td>捷運國父紀念館站(2號出口)</td>
+      <td>16</td>
+      <td>4</td>
+      <td>大安區</td>
+      <td>20221030185231</td>
+      <td>Daan Dist.</td>
+      <td>12</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0004</th>
+      <td>0004</td>
+      <td>市民廣場</td>
+      <td>32</td>
+      <td>0</td>
+      <td>信義區</td>
+      <td>20221030185217</td>
+      <td>Xinyi Dist.</td>
+      <td>31</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0005</th>
+      <td>0005</td>
+      <td>興雅國中</td>
+      <td>10</td>
+      <td>1</td>
+      <td>信義區</td>
+      <td>20221030185241</td>
+      <td>Xinyi Dist.</td>
+      <td>9</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>11</td>
+      <td>信義區</td>
+      <td>20221030185230</td>
+      <td>Xinyi Dist.</td>
+      <td>43</td>
+      <td>1</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="using-built-in-function-to-pandas">
+<h3>2.3 Using built-in function to pandas<a class="headerlink" href="#using-built-in-function-to-pandas" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using pandas built-in function to convert dictionary to pandas df</span>
+
+<span class="kn">import</span> <span class="nn">requests</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">ubike_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_dict</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">],</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;index&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="p2-observing-data">
+<h2>P2. Observing data<a class="headerlink" href="#p2-observing-data" title="Permalink to this headline">#</a></h2>
+<p><strong>Oberserving data</strong> <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> and <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> 觀察各個變數的分佈 to check data type or get basic summary of data 。</p>
+<section id="overview-whole-df">
+<h3>2.4 Overview whole df<a class="headerlink" href="#overview-whole-df" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(369, 14)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>sarea</th>
+      <th>mday</th>
+      <th>lat</th>
+      <th>lng</th>
+      <th>ar</th>
+      <th>sareaen</th>
+      <th>snaen</th>
+      <th>aren</th>
+      <th>bemp</th>
+      <th>act</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+      <td>371</td>
+    </tr>
+    <tr>
+      <th>unique</th>
+      <td>371</td>
+      <td>371</td>
+      <td>27</td>
+      <td>30</td>
+      <td>12</td>
+      <td>41</td>
+      <td>369</td>
+      <td>370</td>
+      <td>371</td>
+      <td>12</td>
+      <td>370</td>
+      <td>369</td>
+      <td>40</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>top</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>12</td>
+      <td>0</td>
+      <td>中山區</td>
+      <td>20220922232223</td>
+      <td>25.068530</td>
+      <td>121.525322</td>
+      <td>忠孝東路/松仁路(東南側)</td>
+      <td>Zhongshan Dist.</td>
+      <td>Nangang Park</td>
+      <td>The N.S. side of Lianyun St. &amp; Sec. 2, Xinyi Rd.</td>
+      <td>7</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>freq</th>
+      <td>1</td>
+      <td>1</td>
+      <td>50</td>
+      <td>54</td>
+      <td>44</td>
+      <td>18</td>
+      <td>2</td>
+      <td>2</td>
+      <td>1</td>
+      <td>44</td>
+      <td>2</td>
+      <td>2</td>
+      <td>32</td>
+      <td>371</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="access-data-by-index">
+<h3>2.5 Access data by index<a class="headerlink" href="#access-data-by-index" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access single row</span>
+<span class="n">ubike_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sno                                                 0004
+sna                                                 市民廣場
+tot                                                   32
+sbi                                                    0
+sarea                                                信義區
+mday                                      20221030185217
+lat                                        25.0360361111
+lng                                           121.562325
+ar                  市府路/松壽路(西北側)(鄰近台北101/台北世界貿易中心/台北探索館)
+sareaen                                      Xinyi Dist.
+snaen                                     Citizen Square
+aren       The N.W. side of Road Shifu &amp; Road Song Shou.
+bemp                                                  31
+act                                                    1
+Name: 0004, dtype: object
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access single cell</span>
+<span class="n">ubike_df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[</span><span class="mi">2</span><span class="p">,</span> <span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;0004&#39;
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="slice-and-access-data">
+<h3>2.6 Slice and access data<a class="headerlink" href="#slice-and-access-data" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="p">[:</span><span class="mi">3</span><span class="p">][[</span><span class="s1">&#39;sno&#39;</span><span class="p">,</span> <span class="s1">&#39;sna&#39;</span><span class="p">,</span> <span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="s1">&#39;sbi&#39;</span><span class="p">,</span> <span class="s1">&#39;sarea&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>sarea</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0001</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>84</td>
+      <td>74</td>
+      <td>信義區</td>
+    </tr>
+    <tr>
+      <th>0002</th>
+      <td>0002</td>
+      <td>捷運國父紀念館站(2號出口)</td>
+      <td>16</td>
+      <td>4</td>
+      <td>大安區</td>
+    </tr>
+    <tr>
+      <th>0004</th>
+      <td>0004</td>
+      <td>市民廣場</td>
+      <td>32</td>
+      <td>0</td>
+      <td>信義區</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="convert-variable-type">
+<h3>2.7 Convert variable type<a class="headerlink" href="#convert-variable-type" title="Permalink to this headline">#</a></h3>
+<p><strong>Cleaning data</strong> <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(var)</span></code> 修改變數型態 to convert data type</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ratio = sbi/tot</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">ubike_df</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">]))</span>
+<span class="n">ubike_df</span><span class="p">[</span><span class="s1">&#39;ratio&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ubike_df</span><span class="p">[</span><span class="s1">&#39;sbi&#39;</span><span class="p">])</span><span class="o">/</span><span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ubike_df</span><span class="p">[</span><span class="s1">&#39;tot&#39;</span><span class="p">])</span>
+<span class="n">ubike_df</span><span class="p">[[</span><span class="s1">&#39;sno&#39;</span><span class="p">,</span> <span class="s1">&#39;sna&#39;</span><span class="p">,</span> <span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="s1">&#39;sbi&#39;</span><span class="p">,</span> <span class="s1">&#39;ratio&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0001</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>84</td>
+      <td>74</td>
+      <td>0.880952</td>
+    </tr>
+    <tr>
+      <th>0002</th>
+      <td>0002</td>
+      <td>捷運國父紀念館站(2號出口)</td>
+      <td>16</td>
+      <td>4</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>0004</th>
+      <td>0004</td>
+      <td>市民廣場</td>
+      <td>32</td>
+      <td>0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>0005</th>
+      <td>0005</td>
+      <td>興雅國中</td>
+      <td>10</td>
+      <td>1</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>11</td>
+      <td>0.203704</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="mutate-new-variable">
+<h3>2.8 Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.assign(new_var</span> <span class="pre">=</span> <span class="pre">old_var1</span> <span class="pre">/</span> <span class="pre">old_var2)</span></code> 產生新的變數（方法一） to create or convert new variable. Be careful! You must assign to left to overwrite original df.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df[&quot;new_var&quot;]</span> <span class="pre">=</span> <span class="pre">df.old_var1</span> <span class="pre">/</span> <span class="pre">df.old_var2</span></code> 產生新的變數（方法二）</p></li>
+<li><p>Creating <code class="docutils literal notranslate"><span class="pre">ratio</span> <span class="pre">=</span> <span class="pre">sbi/tot</span></code> for ubike data</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">pd.to_numeric()</span></code> to covert one variable type</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span> <span class="o">=</span> <span class="n">ubike_df</span><span class="o">.</span><span class="n">assign</span><span class="p">(</span>
+    <span class="n">sbi</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ubike_df</span><span class="o">.</span><span class="n">sbi</span><span class="p">),</span>
+    <span class="n">tot</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_numeric</span><span class="p">(</span><span class="n">ubike_df</span><span class="o">.</span><span class="n">tot</span><span class="p">))</span>
+
+<span class="n">ubike_df</span><span class="p">[</span><span class="s2">&quot;ratio&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">ubike_df</span><span class="o">.</span><span class="n">sbi</span> <span class="o">/</span> <span class="n">ubike_df</span><span class="o">.</span><span class="n">tot</span>
+<span class="c1"># ubike_df.ratio2 = ubike_df.sbi / ubike_df.tot</span>
+<span class="c1"># ubike_df = ubike_df.assign(ratio = ubike_df.sbi/ubike_df.tot)</span>
+<span class="c1"># ubike_df.info()</span>
+<span class="n">ubike_df</span><span class="p">[[</span><span class="s1">&#39;sno&#39;</span><span class="p">,</span> <span class="s1">&#39;sna&#39;</span><span class="p">,</span> <span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="s1">&#39;sbi&#39;</span><span class="p">,</span> <span class="s1">&#39;ratio&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0001</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>84</td>
+      <td>74</td>
+      <td>0.880952</td>
+    </tr>
+    <tr>
+      <th>0002</th>
+      <td>0002</td>
+      <td>捷運國父紀念館站(2號出口)</td>
+      <td>16</td>
+      <td>4</td>
+      <td>0.250000</td>
+    </tr>
+    <tr>
+      <th>0004</th>
+      <td>0004</td>
+      <td>市民廣場</td>
+      <td>32</td>
+      <td>0</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>0005</th>
+      <td>0005</td>
+      <td>興雅國中</td>
+      <td>10</td>
+      <td>1</td>
+      <td>0.100000</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>0006</td>
+      <td>臺北南山廣場</td>
+      <td>54</td>
+      <td>11</td>
+      <td>0.203704</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="o">.</span><span class="n">describe</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>count</th>
+      <td>369.000000</td>
+      <td>369.000000</td>
+      <td>369.000000</td>
+    </tr>
+    <tr>
+      <th>mean</th>
+      <td>17.024390</td>
+      <td>6.094851</td>
+      <td>0.370046</td>
+    </tr>
+    <tr>
+      <th>std</th>
+      <td>9.633611</td>
+      <td>5.780327</td>
+      <td>0.218623</td>
+    </tr>
+    <tr>
+      <th>min</th>
+      <td>4.000000</td>
+      <td>0.000000</td>
+      <td>0.000000</td>
+    </tr>
+    <tr>
+      <th>25%</th>
+      <td>10.000000</td>
+      <td>3.000000</td>
+      <td>0.200000</td>
+    </tr>
+    <tr>
+      <th>50%</th>
+      <td>14.000000</td>
+      <td>5.000000</td>
+      <td>0.333333</td>
+    </tr>
+    <tr>
+      <th>75%</th>
+      <td>20.000000</td>
+      <td>8.000000</td>
+      <td>0.500000</td>
+    </tr>
+    <tr>
+      <th>max</th>
+      <td>84.000000</td>
+      <td>74.000000</td>
+      <td>1.000000</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="p3-summarizing-data">
+<h2>P3. Summarizing data<a class="headerlink" href="#p3-summarizing-data" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>Tutorial: <a class="reference external" href="https://jamesrledoux.com/code/group-by-aggregate-pandas">groupby pandas</a></p></li>
+</ul>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">df.groupby(col1)[col2].count()</span></code> summarize col2 according to col1 by counting</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.groupby(col1)[col2].mean()</span></code> summarize col2 according to col1 by calculating their average of each category</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">df.groupby([col1,</span> <span class="pre">col3])[col2].count()</span></code> summarize col2 according to col1 and col3 by counting</p></li>
+</ul>
+<section id="count-single-variable-by-value-counts">
+<h3>3.1 Count single variable by <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code><a class="headerlink" href="#count-single-variable-by-value-counts" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conventional way</span>
+<span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">Counter</span><span class="p">(</span><span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;廣播電台&#39;: 119, &#39;網路&#39;: 2609, &#39;平面媒體&#39;: 117, &#39;其他&#39;: 16, &#39;電視&#39;: 109, nan: 2})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drug_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>pname</th>
+      <th>cname</th>
+      <th>agency</th>
+      <th>issuedate</th>
+      <th>law</th>
+      <th>fact</th>
+      <th>pubDate</th>
+      <th>pubMediaType</th>
+      <th>pubMedia</th>
+      <th>trace</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>維他肝</td>
+      <td>豐怡生化科技股份有限公司/朱O</td>
+      <td>NaN</td>
+      <td>03 31 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告內容誇大不實</td>
+      <td>02 2 2022 12:00AM</td>
+      <td>廣播電台</td>
+      <td>噶瑪蘭廣播電台股份有限公司</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>現貨澳洲Swisse ULTIBOOST維他命D片calcium vitamin VITAM...</td>
+      <td>張O雯/張O雯</td>
+      <td>NaN</td>
+      <td>01 21 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>廣告違規</td>
+      <td>11 30 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>✈日本 代購 參天製藥 處方簽點眼液</td>
+      <td>蘇O涵/蘇O涵</td>
+      <td>NaN</td>
+      <td>01 25 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>08 27 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>✈日本 代購 TSUMURA 中將湯 24天包裝</td>
+      <td>蘇O涵/蘇O涵</td>
+      <td>NaN</td>
+      <td>01 25 2022 12:00AM</td>
+      <td>NaN</td>
+      <td>無照藥商</td>
+      <td>08 27 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>輔導結案</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>_Salty.shop 日本代購 樂敦小花</td>
+      <td>曾O嫺/曾O嫺</td>
+      <td>NaN</td>
+      <td>02 17 2022 12:00AM</td>
+      <td>藥事法第27條</td>
+      <td>無照藥商</td>
+      <td>12 6 2021 12:00AM</td>
+      <td>網路</td>
+      <td>蝦皮購物</td>
+      <td>處分結案</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Pandas way</span>
+<span class="n">drug_df</span><span class="o">.</span><span class="n">pubMediaType</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pubMediaType
+網路      2609
+廣播電台     119
+平面媒體     117
+電視       109
+其他        16
+Name: count, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="groupby-then-count">
+<h3>3.2 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then <code class="docutils literal notranslate"><span class="pre">count()</span></code><a class="headerlink" href="#groupby-then-count" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drug_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;pubMediaType&#39;</span><span class="p">)[</span><span class="s1">&#39;pname&#39;</span><span class="p">,</span> <span class="s1">&#39;agency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_8968/942870560.py:1: FutureWarning: Indexing with multiple keys (implicitly converted to a tuple of keys) will be deprecated, use a list instead.
+  drug_df.groupby(&#39;pubMediaType&#39;)[&#39;pname&#39;, &#39;agency&#39;].count()
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>pname</th>
+      <th>agency</th>
+    </tr>
+    <tr>
+      <th>pubMediaType</th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>其他</th>
+      <td>16</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>平面媒體</th>
+      <td>117</td>
+      <td>117</td>
+    </tr>
+    <tr>
+      <th>廣播電台</th>
+      <td>119</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>網路</th>
+      <td>2609</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>電視</th>
+      <td>109</td>
+      <td>0</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="groupby-then-summarize">
+<h3>3.3 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then summarize<a class="headerlink" href="#groupby-then-summarize" title="Permalink to this headline">#</a></h3>
+<p>Format: <code class="docutils literal notranslate"><span class="pre">df.groupby(col_for_group)[variable_to_group].func()</span></code></p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">col_for_group</span></code>: 要作為群組根據的variable，例如將村里彙整為鄉鎮市區資料時，鄉鎮市區資料極為group的根據</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">variable_to_group</span></code>: 哪些要根據上述的群組來彙整，通常是值，如上例，那就是人口數、土地面積等。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">func()</span></code>: 要用什麼函式來計算，是要計算每組組內的加總或平均？</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="p">[[</span><span class="s1">&#39;sarea&#39;</span><span class="p">,</span> <span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="s1">&#39;sbi&#39;</span><span class="p">]]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sarea</th>
+      <th>tot</th>
+      <th>sbi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0001</th>
+      <td>信義區</td>
+      <td>84</td>
+      <td>74</td>
+    </tr>
+    <tr>
+      <th>0002</th>
+      <td>大安區</td>
+      <td>16</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>0004</th>
+      <td>信義區</td>
+      <td>32</td>
+      <td>0</td>
+    </tr>
+    <tr>
+      <th>0005</th>
+      <td>信義區</td>
+      <td>10</td>
+      <td>1</td>
+    </tr>
+    <tr>
+      <th>0006</th>
+      <td>信義區</td>
+      <td>54</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>0401</th>
+      <td>中山區</td>
+      <td>8</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>0402</th>
+      <td>內湖區</td>
+      <td>12</td>
+      <td>3</td>
+    </tr>
+    <tr>
+      <th>0403</th>
+      <td>內湖區</td>
+      <td>10</td>
+      <td>2</td>
+    </tr>
+    <tr>
+      <th>0404</th>
+      <td>大同區</td>
+      <td>10</td>
+      <td>5</td>
+    </tr>
+    <tr>
+      <th>0405</th>
+      <td>大安區</td>
+      <td>20</td>
+      <td>9</td>
+    </tr>
+  </tbody>
+</table>
+<p>369 rows × 3 columns</p>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># sum up tot in each region(town-level)</span>
+
+<span class="n">ubike_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;sarea&quot;</span><span class="p">)[</span><span class="s2">&quot;tot&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">sum</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sarea
+中山區    672
+中正區    588
+信義區    624
+內湖區    756
+北投區    482
+南港區    388
+士林區    620
+大同區    238
+大安區    666
+文山區    450
+松山區    442
+萬華區    356
+Name: tot, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_stat</span> <span class="o">=</span> <span class="n">ubike_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s2">&quot;sarea&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">agg</span><span class="p">({</span><span class="s2">&quot;tot&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">,</span> <span class="s2">&quot;sbi&quot;</span><span class="p">:</span> <span class="s2">&quot;sum&quot;</span><span class="p">})</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="n">ubike_stat</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sarea</th>
+      <th>tot</th>
+      <th>sbi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>中山區</td>
+      <td>672</td>
+      <td>177</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>中正區</td>
+      <td>588</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>信義區</td>
+      <td>624</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>內湖區</td>
+      <td>756</td>
+      <td>246</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>北投區</td>
+      <td>482</td>
+      <td>170</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>南港區</td>
+      <td>388</td>
+      <td>168</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>士林區</td>
+      <td>620</td>
+      <td>159</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>大同區</td>
+      <td>238</td>
+      <td>75</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>大安區</td>
+      <td>666</td>
+      <td>235</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>文山區</td>
+      <td>450</td>
+      <td>176</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>松山區</td>
+      <td>442</td>
+      <td>202</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>萬華區</td>
+      <td>356</td>
+      <td>169</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="p4-sort-by-arrange">
+<h2>P4. Sort-by (Arrange)<a class="headerlink" href="#p4-sort-by-arrange" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ascending=False to sort by dscending order</span>
+<span class="n">ubike_stat</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sarea</th>
+      <th>tot</th>
+      <th>sbi</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>3</th>
+      <td>內湖區</td>
+      <td>756</td>
+      <td>246</td>
+    </tr>
+    <tr>
+      <th>0</th>
+      <td>中山區</td>
+      <td>672</td>
+      <td>177</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>大安區</td>
+      <td>666</td>
+      <td>235</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>信義區</td>
+      <td>624</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>士林區</td>
+      <td>620</td>
+      <td>159</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>中正區</td>
+      <td>588</td>
+      <td>236</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>北投區</td>
+      <td>482</td>
+      <td>170</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>文山區</td>
+      <td>450</td>
+      <td>176</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>松山區</td>
+      <td>442</td>
+      <td>202</td>
+    </tr>
+    <tr>
+      <th>5</th>
+      <td>南港區</td>
+      <td>388</td>
+      <td>168</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>萬華區</td>
+      <td>356</td>
+      <td>169</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>大同區</td>
+      <td>238</td>
+      <td>75</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;ratio&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)[[</span><span class="s1">&#39;sno&#39;</span><span class="p">,</span> <span class="s1">&#39;sna&#39;</span><span class="p">,</span> <span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="s1">&#39;sbi&#39;</span><span class="p">,</span> <span class="s1">&#39;ratio&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">head</span><span class="p">(</span><span class="mi">10</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: center;">
+      <th></th>
+      <th>sno</th>
+      <th>sna</th>
+      <th>tot</th>
+      <th>sbi</th>
+      <th>ratio</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0119</th>
+      <td>0119</td>
+      <td>捷運劍南路站(2號出口)</td>
+      <td>10</td>
+      <td>10</td>
+      <td>1.000000</td>
+    </tr>
+    <tr>
+      <th>0158</th>
+      <td>0158</td>
+      <td>捷運東湖站</td>
+      <td>18</td>
+      <td>17</td>
+      <td>0.944444</td>
+    </tr>
+    <tr>
+      <th>0120</th>
+      <td>0120</td>
+      <td>捷運龍山寺站(1號出口)</td>
+      <td>14</td>
+      <td>13</td>
+      <td>0.928571</td>
+    </tr>
+    <tr>
+      <th>0001</th>
+      <td>0001</td>
+      <td>捷運市政府站(3號出口)</td>
+      <td>84</td>
+      <td>74</td>
+      <td>0.880952</td>
+    </tr>
+    <tr>
+      <th>0344</th>
+      <td>0344</td>
+      <td>捷運忠孝復興站(5號出口)</td>
+      <td>22</td>
+      <td>19</td>
+      <td>0.863636</td>
+    </tr>
+    <tr>
+      <th>0363</th>
+      <td>0363</td>
+      <td>復興南路一段340巷口</td>
+      <td>12</td>
+      <td>10</td>
+      <td>0.833333</td>
+    </tr>
+    <tr>
+      <th>0265</th>
+      <td>0265</td>
+      <td>中央北路四段30巷口</td>
+      <td>12</td>
+      <td>10</td>
+      <td>0.833333</td>
+    </tr>
+    <tr>
+      <th>0058</th>
+      <td>0058</td>
+      <td>捷運善導寺站(1號出口)</td>
+      <td>12</td>
+      <td>10</td>
+      <td>0.833333</td>
+    </tr>
+    <tr>
+      <th>0095</th>
+      <td>0095</td>
+      <td>東園國小</td>
+      <td>12</td>
+      <td>10</td>
+      <td>0.833333</td>
+    </tr>
+    <tr>
+      <th>0364</th>
+      <td>0364</td>
+      <td>嘉興公園</td>
+      <td>12</td>
+      <td>10</td>
+      <td>0.833333</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P06_pandas.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P06 Pandas</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P06p2_filter_select_datetime.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Pandas: filter, select, and timeline process</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p1-read-data">P1. Read data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#read-csv">1.1 Read CSV: 違規藥品廣告</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-and-rename-columns">1.2 Display and rename columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pandas-series">1.3 Pandas series</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#counting">1.4 Counting</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2-read-json-youbike">P2. Read JSON : Youbike</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-dict-of-dict-to-list-of-dict-then-to-dataframe">2.1 Convert dict of dict to list of dict, then to DataFrame</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#display-part-of-columns">2.2 Display part of columns</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#using-built-in-function-to-pandas">2.3 Using built-in function to pandas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p2-observing-data">P2. Observing data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-whole-df">2.4 Overview whole df</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#access-data-by-index">2.5 Access data by index</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#slice-and-access-data">2.6 Slice and access data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-variable-type">2.7 Convert variable type</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#mutate-new-variable">2.8 Mutate new variable</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p3-summarizing-data">P3. Summarizing data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#count-single-variable-by-value-counts">3.1 Count single variable by <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-then-count">3.2 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then <code class="docutils literal notranslate"><span class="pre">count()</span></code></a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#groupby-then-summarize">3.3 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then summarize</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#p4-sort-by-arrange">P4. Sort-by (Arrange)</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

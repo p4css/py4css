@@ -1,0 +1,1709 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>CSS01 Network Analysis &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'CSS/CSS01_network_analysis';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="CSS02 Simulation" href="CSS02_Simulation.html" />
+    <link rel="prev" title="TM08 Classification" href="../TM/TM08_doc_classification.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/CSS/CSS01_network_analysis.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FCSS/CSS01_network_analysis.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/CSS/CSS01_network_analysis.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>CSS01 Network Analysis</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-network">Building Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collocation-as-cooccurrence">Collocation as Cooccurrence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-network">Drawing network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-networkx">matplotlib &amp; networkx</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvis-network">pyvis.network</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node-level-analysis">Node-level analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-histogram">Degree histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-centrality">Degree centrality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-network-analysis">Global network analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-top-3-components">Get top 3 components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-by-matplotlib">Viz by matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vis-by-pyviz">Vis by pyviz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community">Community</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-up-network">Build-up network</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-original-network">Drawing original network</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-component">Maximum component</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-the-maximum-component">Viz the maximum component</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-communities">Detect communities</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-communities">Viz communities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-communities-by-pyvis">viz communities by pyvis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="css01-network-analysis">
+<h1>CSS01 Network Analysis<a class="headerlink" href="#css01-network-analysis" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p><a class="reference external" href="https://networkx.org/documentation/stable/tutorial.html">Networkx Tutorial</a></p></li>
+<li><p><a class="reference external" href="https://trenton3983.github.io/files/projects/2020-05-21_intro_to_network_analysis_in_python/2020-05-21_intro_to_network_analysis_in_python.html">Intro to network analysis in python</a> by Trenton McKinney (Recommended!)</p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/applied-network-analysis-using-python-25021633a702">Applied Graphical Network Analysis using Python</a></p></li>
+<li><p><a class="reference external" href="https://www.cl.cam.ac.uk/teaching/1415/L109/l109-tutorial_2015.pdf">NetworkX:Network Analysis with Python</a></p></li>
+<li><p><a class="reference external" href="https://alvinntnu.github.io/python-notes/statistical-analyses/network-analysis.html">Network analysis for liquistics</a> by AlvinChen (Good!)</p></li>
+<li><p><a class="reference external" href="https://alvinntnu.github.io/python-notes/statistical-analyses/network-analysis-igraph.html">igraph with python</a> by Alvin Chen (Good!)</p></li>
+<li><p><a class="reference external" href="https://towardsdatascience.com/text-network-analysis-generate-beautiful-network-visualisations-a373dbe183ca">Text network analysis</a> towarddatascience (Good!)</p></li>
+</ul>
+<section id="building-network">
+<h2>Building Network<a class="headerlink" href="#building-network" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># colab</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
+<span class="o">!</span>wget<span class="w"> </span>https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat<span class="w"> </span>-O<span class="w"> </span>pttpost_20210509_n178.dat
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-02 15:47:02--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
+Resolving github.com (github.com)... 20.27.177.113
+Connecting to github.com (github.com)|20.27.177.113|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404 Not Found
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-12-02 15:47:03 ERROR 404: Not Found.
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">EOFError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+
+<span class="ne">EOFError</span>: Ran out of input
+</pre></div>
+</div>
+</div>
+</div>
+<section id="collocation-as-cooccurrence">
+<h3>Collocation as Cooccurrence<a class="headerlink" href="#collocation-as-cooccurrence" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">user_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">all_post</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">all_post</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">&gt;=</span> <span class="mi">0</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">i</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&gt;</span> <span class="n">i</span><span class="o">-</span><span class="mi">5</span> <span class="ow">and</span> <span class="n">j</span> <span class="o">&lt;</span> <span class="n">i</span><span class="o">+</span><span class="mi">5</span> <span class="p">:</span>
+                <span class="n">u1</span><span class="p">,</span> <span class="n">u2</span> <span class="o">=</span> <span class="n">c1</span><span class="p">[</span><span class="s1">&#39;userid&#39;</span><span class="p">],</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;userid&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">u1</span> <span class="o">!=</span> <span class="n">u2</span><span class="p">:</span>
+                    <span class="n">user_pair_counts</span><span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Runna	iampig951753	32
+iampig951753	Runna	32
+psl7634	gustavek	21
+gustavek	psl7634	21
+sl11pman	cwh0105	16
+cwh0105	sl11pman	16
+username1	l88	15
+l88	username1	15
+AIronKuma	lagadidi	14
+lagadidi	AIronKuma	14
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>u1</th>
+      <th>u2</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>Runna</td>
+      <td>iampig951753</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>iampig951753</td>
+      <td>Runna</td>
+      <td>32</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>psl7634</td>
+      <td>gustavek</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>gustavek</td>
+      <td>psl7634</td>
+      <td>21</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sl11pman</td>
+      <td>cwh0105</td>
+      <td>16</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>667</th>
+      <td>kingstongyu</td>
+      <td>cecille</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>668</th>
+      <td>kingstongyu</td>
+      <td>kid1a2b3c4d</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>669</th>
+      <td>kid1a2b3c4d</td>
+      <td>kingstongyu</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>670</th>
+      <td>kid1a2b3c4d</td>
+      <td>kuan12065</td>
+      <td>4</td>
+    </tr>
+    <tr>
+      <th>671</th>
+      <td>kuan12065</td>
+      <td>kid1a2b3c4d</td>
+      <td>4</td>
+    </tr>
+  </tbody>
+</table>
+<p>672 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="drawing-network">
+<h2>Drawing network<a class="headerlink" href="#drawing-network" title="Permalink to this headline">#</a></h2>
+<section id="matplotlib-networkx">
+<h3>matplotlib &amp; networkx<a class="headerlink" href="#matplotlib-networkx" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                            <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+                            <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span>
+                            <span class="n">edge_attr</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+
+<span class="n">widths</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">nodelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+<span class="c1"># nx.draw_kamada_kawai(G,</span>
+<span class="c1">#                     node_size = 5,</span>
+<span class="c1">#                     edge_color = &quot;#8833FF&quot;,</span>
+<span class="c1">#                     with_labels = True)</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="c1"># nx.draw_spring(G,</span>
+<span class="c1">#                node_size = 5,</span>
+<span class="c1">#                edge_color = &quot;#8833FF&quot;,</span>
+<span class="c1">#                font_size = 16,</span>
+<span class="c1">#                with_labels = True)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span>
+                       <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span>
+                       <span class="n">node_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+                       <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span>
+                       <span class="n">edgelist</span> <span class="o">=</span> <span class="n">widths</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                       <span class="n">width</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span><span class="n">w</span><span class="o">/</span><span class="mi">2</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">widths</span><span class="o">.</span><span class="n">values</span><span class="p">()]),</span>
+                       <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                        <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span><span class="n">nodelist</span><span class="p">)),</span>
+                        <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/5391ac72767f186aef9b595357cce983ffb5dfb9ba0467f681c11371025ff520.png" src="../_images/5391ac72767f186aef9b595357cce983ffb5dfb9ba0467f681c11371025ff520.png" />
+</div>
+</div>
+</section>
+<section id="pyvis-network">
+<h3>pyvis.network<a class="headerlink" href="#pyvis-network" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyvis.network</span> <span class="kn">import</span> <span class="n">Network</span>
+<span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="s1">&#39;1024px&#39;</span><span class="p">,</span> <span class="s1">&#39;2048px&#39;</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">from_nx</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s2">&quot;test.html&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Local cdn resources have problems on chrome/safari when used in jupyter-notebook. 
+</pre></div>
+</div>
+<div class="output text_html">
+        <iframe
+            width="2048px"
+            height="600px"
+            src="test.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+<section id="node-level-analysis">
+<h2>Node-level analysis<a class="headerlink" href="#node-level-analysis" title="Permalink to this headline">#</a></h2>
+<p>Reference</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://trenton3983.github.io/files/projects/2020-05-21_intro_to_network_analysis_in_python/2020-05-21_intro_to_network_analysis_in_python.html">https://trenton3983.github.io/files/projects/2020-05-21_intro_to_network_analysis_in_python/2020-05-21_intro_to_network_analysis_in_python.html</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install networkx</span>
+<span class="c1"># !pip install nxviz</span>
+
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+<span class="kn">import</span> <span class="nn">nxviz</span> <span class="k">as</span> <span class="nn">nv</span>
+<span class="kn">import</span> <span class="nn">matplotlib</span> <span class="k">as</span> <span class="nn">mpl</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;NetworkX version: </span><span class="si">{</span><span class="n">nx</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;Matplotlib version: </span><span class="si">{</span><span class="n">mpl</span><span class="o">.</span><span class="n">__version__</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+<span class="c1"># print(f&#39;NXViz version: {nv.__version__}&#39;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NetworkX version: 2.7.1
+Matplotlib version: 3.5.1
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">edges</span><span class="p">()))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>336
+410
+</pre></div>
+</div>
+</div>
+</div>
+<section id="degree-histogram">
+<h3>Degree histogram<a class="headerlink" href="#degree-histogram" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dhist</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_histogram</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">dhist</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0, 286, 74, 27, 8, 4, 1, 2, 1, 3, 0, 0, 2, 2]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">hist</span><span class="p">(</span><span class="n">dhist</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">()</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">scatter</span><span class="p">(</span><span class="nb">range</span><span class="p">(</span><span class="mi">0</span><span class="p">,</span> <span class="nb">len</span><span class="p">(</span><span class="n">dhist</span><span class="p">)),</span> <span class="n">dhist</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6c6e6d01e4ba09d381a3c9e832e984a7cca8eca5603943516f5ddeaf0e9314cd.png" src="../_images/6c6e6d01e4ba09d381a3c9e832e984a7cca8eca5603943516f5ddeaf0e9314cd.png" />
+<img alt="../_images/7661bd973d10fe156c610d14ac48ae229e06b5cb95fbbcd53ac525f17f8641c3.png" src="../_images/7661bd973d10fe156c610d14ac48ae229e06b5cb95fbbcd53ac525f17f8641c3.png" />
+</div>
+</div>
+</section>
+<section id="degree-centrality">
+<h3>Degree centrality<a class="headerlink" href="#degree-centrality" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">bc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">betweenness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="n">cc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">closeness_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+
+<span class="n">c_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">([(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">,</span> <span class="n">bc</span><span class="p">[</span><span class="n">k</span><span class="p">],</span> <span class="n">cc</span><span class="p">[</span><span class="n">k</span><span class="p">])</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">dc</span><span class="o">.</span><span class="n">items</span><span class="p">()],</span> <span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;name&quot;</span><span class="p">,</span> <span class="s2">&quot;degreeC&quot;</span><span class="p">,</span> <span class="s2">&quot;betweenC&quot;</span><span class="p">,</span> <span class="s2">&quot;closeC&quot;</span><span class="p">])</span>
+<span class="n">c_df</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s2">&quot;degreeC&quot;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>name</th>
+      <th>degreeC</th>
+      <th>betweenC</th>
+      <th>closeC</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>56</th>
+      <td>s505015</td>
+      <td>0.031785</td>
+      <td>0.019452</td>
+      <td>0.033651</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>iampig951753</td>
+      <td>0.031785</td>
+      <td>0.024348</td>
+      <td>0.044203</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>sl11pman</td>
+      <td>0.029340</td>
+      <td>0.003715</td>
+      <td>0.028211</td>
+    </tr>
+    <tr>
+      <th>6</th>
+      <td>username1</td>
+      <td>0.029340</td>
+      <td>0.022382</td>
+      <td>0.041179</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>zeumax</td>
+      <td>0.022005</td>
+      <td>0.003296</td>
+      <td>0.026512</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>187</th>
+      <td>goldman0204</td>
+      <td>0.002445</td>
+      <td>0.000000</td>
+      <td>0.003667</td>
+    </tr>
+    <tr>
+      <th>184</th>
+      <td>MrSherlock</td>
+      <td>0.002445</td>
+      <td>0.000000</td>
+      <td>0.003260</td>
+    </tr>
+    <tr>
+      <th>181</th>
+      <td>awei6225</td>
+      <td>0.002445</td>
+      <td>0.000000</td>
+      <td>0.036138</td>
+    </tr>
+    <tr>
+      <th>179</th>
+      <td>popy8789</td>
+      <td>0.002445</td>
+      <td>0.000000</td>
+      <td>0.028765</td>
+    </tr>
+    <tr>
+      <th>409</th>
+      <td>kuan12065</td>
+      <td>0.002445</td>
+      <td>0.000000</td>
+      <td>0.003667</td>
+    </tr>
+  </tbody>
+</table>
+<p>410 rows × 4 columns</p>
+</div></div></div>
+</div>
+</section>
+</section>
+<section id="global-network-analysis">
+<h2>Global network analysis<a class="headerlink" href="#global-network-analysis" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.004007394597173356
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">number_connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>89
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">max_component</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">max_subgraph</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">max_component</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;radius: </span><span class="si">{</span><span class="n">nx</span><span class="o">.</span><span class="n">radius</span><span class="p">(</span><span class="n">max_subgraph</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;diameter: </span><span class="si">{</span><span class="n">nx</span><span class="o">.</span><span class="n">diameter</span><span class="p">(</span><span class="n">max_subgraph</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;eccentricity: </span><span class="si">{</span><span class="n">nx</span><span class="o">.</span><span class="n">eccentricity</span><span class="p">(</span><span class="n">max_subgraph</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;center: </span><span class="si">{</span><span class="n">nx</span><span class="o">.</span><span class="n">center</span><span class="p">(</span><span class="n">max_subgraph</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;periphery: </span><span class="si">{</span><span class="n">nx</span><span class="o">.</span><span class="n">periphery</span><span class="p">(</span><span class="n">max_subgraph</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;density: </span><span class="si">{</span><span class="n">nx</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">max_subgraph</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>radius: 8
+diameter: 16
+eccentricity: {&#39;fman&#39;: 16, &#39;stja&#39;: 10, &#39;superbatman&#39;: 13, &#39;AKPT&#39;: 12, &#39;jonsauwi&#39;: 9, &#39;larailing&#39;: 15, &#39;preisner&#39;: 13, &#39;turbomons&#39;: 13, &#39;wawawa&#39;: 12, &#39;diyaworld&#39;: 16, &#39;elfria&#39;: 14, &#39;username1&#39;: 11, &#39;bluenan&#39;: 10, &#39;iampig951753&#39;: 9, &#39;extrachaos&#39;: 10, &#39;mudee&#39;: 12, &#39;sali921&#39;: 12, &#39;rootking&#39;: 13, &#39;heat0204&#39;: 13, &#39;AntiqueTea&#39;: 12, &#39;Runna&#39;: 10, &#39;moy5566&#39;: 13, &#39;cx3373&#39;: 13, &#39;JamesForrest&#39;: 16, &#39;Kazuma0332&#39;: 9, &#39;cdmlin&#39;: 16, &#39;dahlia7357&#39;: 10, &#39;gustavek&#39;: 14, &#39;atlaswhz&#39;: 13, &#39;AlenCKH&#39;: 13, &#39;stitchris&#39;: 13, &#39;popy8789&#39;: 13, &#39;lunenera&#39;: 10, &#39;cisyong&#39;: 13, &#39;awei6225&#39;: 10, &#39;happybad&#39;: 10, &#39;gt0404&#39;: 14, &#39;chenweichih&#39;: 12, &#39;mike0327&#39;: 10, &#39;qwxr&#39;: 12, &#39;cscst&#39;: 15, &#39;psl7634&#39;: 15, &#39;AllenHuang&#39;: 13, &#39;diskdie7045&#39;: 15, &#39;CavendishJr&#39;: 11, &#39;TsmcEE&#39;: 13, &#39;CTUST&#39;: 15, &#39;weltschmerz&#39;: 14, &#39;larry90605&#39;: 13, &#39;reigon1126&#39;: 15, &#39;nanachi&#39;: 10, &#39;j224278&#39;: 15, &#39;kmaj7&#39;: 14, &#39;c8c8c8c8c8c8&#39;: 13, &#39;QQdragon&#39;: 15, &#39;jeeyi345&#39;: 15, &#39;mcucte&#39;: 12, &#39;mach1210&#39;: 10, &#39;dearjohn307&#39;: 10, &#39;yycbr&#39;: 16, &#39;heartblue&#39;: 11, &#39;macocu&#39;: 13, &#39;vcx530&#39;: 13, &#39;lunanightcat&#39;: 13, &#39;mini186&#39;: 13, &#39;bigwun73&#39;: 12, &#39;enso&#39;: 13, &#39;shamanlin&#39;: 12, &#39;s00126&#39;: 13, &#39;qaz223gy&#39;: 15, &#39;l88&#39;: 12, &#39;decorum&#39;: 14, &#39;clerkhsiao&#39;: 10, &#39;invidia&#39;: 16, &#39;innominate&#39;: 11, &#39;richjf&#39;: 8, &#39;sheng76314&#39;: 10, &#39;Lailungsheng&#39;: 13, &#39;jetalpha&#39;: 13, &#39;s505015&#39;: 12, &#39;kujoukk&#39;: 12}
+center: [&#39;richjf&#39;]
+periphery: [&#39;fman&#39;, &#39;diyaworld&#39;, &#39;JamesForrest&#39;, &#39;cdmlin&#39;, &#39;yycbr&#39;, &#39;invidia&#39;]
+density: 0.026851851851851852
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="components">
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">conn</span><span class="p">))</span> <span class="k">for</span> <span class="n">conn</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;81 31 31 13 11 8 7 5 5 5 5 5 5 4 4 4 4 4 4 4 4 4 4 4 4 4 4 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 3 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2 2&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<section id="get-top-3-components">
+<h3>Get top 3 components<a class="headerlink" href="#get-top-3-components" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">nodelist</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">nodelist</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>81
+31
+31
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># top3_nodelists is just nodelists of top3 subgraph</span>
+<span class="n">top3_nodelists</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]</span>
+
+<span class="c1"># Merge three nodelists</span>
+<span class="n">top3nodes</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="nb">set</span><span class="p">()</span><span class="o">.</span><span class="n">union</span><span class="p">(</span><span class="o">*</span><span class="n">top3_nodelists</span><span class="p">))</span>
+
+<span class="c1"># top3nodes = []</span>
+<span class="c1"># for nodelist in top3_nodelists:</span>
+<span class="c1">#     top3nodes.extend(list(nodelist))</span>
+    
+<span class="c1"># Retrieve Subset of G</span>
+<span class="n">subG</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">top3nodes</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">sorted</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">subG</span><span class="o">.</span><span class="n">nodes</span><span class="p">))</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">subG</span><span class="o">.</span><span class="n">edges</span><span class="p">)</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">subG</span><span class="o">.</span><span class="n">nodes</span><span class="p">)</span>
+<span class="c1"># len(G.nodes)</span>
+<span class="c1"># len(G.edges)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>143
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="viz-by-matplotlib">
+<h3>Viz by matplotlib<a class="headerlink" href="#viz-by-matplotlib" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">colorlist</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span> <span class="p">]</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">subG</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">subG</span><span class="p">)):</span>  <span class="c1">#there&#39;s probably a more elegant approach using zip</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                           <span class="n">nodelist</span> <span class="o">=</span> <span class="n">sg</span><span class="p">,</span>
+                           <span class="n">node_size</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+                           <span class="n">node_color</span> <span class="o">=</span> <span class="n">colorlist</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                           <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                            <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">sg</span><span class="p">,</span><span class="n">sg</span><span class="p">)),</span>
+                            <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">,</span>
+                            <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                           <span class="n">edgelist</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                           <span class="c1"># width=list(nx.get_edge_attributes(subG, &#39;n&#39;).keys()),</span>
+                           <span class="n">edge_color</span><span class="o">=</span><span class="n">colorlist</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                           <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/6f26148b28a66aa72f223282d566f122673a748f2d106b0becca91282440f2c0.png" src="../_images/6f26148b28a66aa72f223282d566f122673a748f2d106b0becca91282440f2c0.png" />
+</div>
+</div>
+</section>
+<section id="vis-by-pyviz">
+<h3>Vis by pyviz<a class="headerlink" href="#vis-by-pyviz" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attr</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">subG</span><span class="p">))</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">sg</span><span class="p">}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">)</span>
+<span class="n">subG</span><span class="o">.</span><span class="n">nodes</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>NodeDataView({&#39;chungkai&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;fman&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;stja&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;giaour&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;superbatman&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;AKPT&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;jonsauwi&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;owo0204&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;cwh0105&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;c28127450&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;larailing&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;preisner&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;turbomons&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;wawawa&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;hydra3179&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;diyaworld&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;elfria&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;sl11pman&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;username1&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;KEYSOLIDER&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;bluenan&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;hyscout&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;iampig951753&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;fifi0828&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;loham&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;digger5566&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;s0914714&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;extrachaos&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;mudee&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;sali921&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;rootking&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;kipi91718&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;heat0204&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;kaky&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;AntiqueTea&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;AlianF&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;Runna&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;moy5566&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;userlance&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;cx3373&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;kujoukk&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;zeumax&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;JamesForrest&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;Kazuma0332&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;cdmlin&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;leffyiscome&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;dahlia7357&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;jma306&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;gustavek&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;poohiceyi&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;atlaswhz&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;AlenCKH&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;stitchris&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;popy8789&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;Tattoo&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;lunenera&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;YaLingYin&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;qaz630210&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;lmlk33&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;Kydland&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;cisyong&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;awei6225&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;GanKer&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;sakurial&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;blue237&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;ESL63&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;tgtg&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;happybad&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;gt0404&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;chenweichih&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;mike0327&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;qwxr&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;cscst&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;nvlsvee&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;edgeking&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;psl7634&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;AllenHuang&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;diskdie7045&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;benjumin&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;CavendishJr&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;TsmcEE&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;CTUST&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;weltschmerz&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;nitvx&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;larry90605&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;reigon1126&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;spzper&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;chanceiam&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;nanachi&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;j224278&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;dawson0130&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;kmaj7&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;shiriri&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;c8c8c8c8c8c8&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;QQdragon&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;jeeyi345&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;lioujh&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;vic4580849&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;mcucte&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;justeit&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;mimimoumou&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;windbomb&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;mach1210&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;dearjohn307&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;yycbr&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;heartblue&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;macocu&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;vcx530&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;s72005ming&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;lunanightcat&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;mini186&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;bigwun73&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;voyage0131&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;enso&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;mortleo&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;NICEGOGO&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;shamanlin&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;s00126&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;s81048112&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;qaz223gy&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;l88&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;rrr518&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;decorum&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;clerkhsiao&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;invidia&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;innominate&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;foxey&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;richjf&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;yymeow&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;mizuhara&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;zero09107&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;bryant780417&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;carryton&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;HELLDIVER&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;sheng76314&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;nedetdo&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;Lailungsheng&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;jeffwei66&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;leterg&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 2}, &#39;jetalpha&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;s505015&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 1}, &#39;XDDDpupu5566&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}, &#39;vwpassat&#39;: {&#39;size&#39;: 10, &#39;group&#39;: 0}})
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">net</span> <span class="o">=</span> <span class="n">Network</span><span class="p">(</span><span class="s1">&#39;1024px&#39;</span><span class="p">,</span> <span class="s1">&#39;2048px&#39;</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">from_nx</span><span class="p">(</span><span class="n">subG</span><span class="p">)</span>
+<span class="n">net</span><span class="o">.</span><span class="n">show_buttons</span><span class="p">(</span><span class="n">filter_</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;physics&#39;</span><span class="p">])</span>
+<span class="c1"># net.show(&quot;test.html&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Local cdn resources have problems on chrome/safari when used in jupyter-notebook. 
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="community">
+<h2>Community<a class="headerlink" href="#community" title="Permalink to this headline">#</a></h2>
+<section id="build-up-network">
+<h3>Build-up network<a class="headerlink" href="#build-up-network" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+<span class="n">user_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">post</span> <span class="ow">in</span> <span class="n">all_post</span><span class="p">:</span>
+    <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">c1</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]):</span>
+        <span class="k">for</span> <span class="n">j</span><span class="p">,</span> <span class="n">c2</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">post</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]):</span>
+            <span class="k">if</span> <span class="n">j</span> <span class="o">!=</span> <span class="n">i</span><span class="p">:</span>
+                <span class="n">u1</span><span class="p">,</span> <span class="n">u2</span> <span class="o">=</span> <span class="n">c1</span><span class="p">[</span><span class="s1">&#39;userid&#39;</span><span class="p">],</span> <span class="n">c2</span><span class="p">[</span><span class="s1">&#39;userid&#39;</span><span class="p">]</span>
+                <span class="k">if</span> <span class="n">u1</span> <span class="o">!=</span> <span class="n">u2</span><span class="p">:</span>
+                    <span class="n">user_pair_counts</span><span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">)]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+<span class="k">for</span> <span class="n">pair</span><span class="p">,</span> <span class="n">c</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="se">\t</span><span class="si">%s</span><span class="se">\t</span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">pair</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">pair</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">c</span><span class="p">))</span>
+    
+<span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">10</span><span class="p">]</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">])</span>
+<span class="n">df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>s72005ming	sl11pman	450
+loham	sl11pman	450
+sl11pman	s72005ming	450
+sl11pman	loham	450
+cwh0105	sl11pman	360
+sl11pman	cwh0105	360
+iampig951753	Runna	308
+Runna	iampig951753	308
+frank355571	sl11pman	270
+sl11pman	frank355571	270
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>u1</th>
+      <th>u2</th>
+      <th>n</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>s72005ming</td>
+      <td>sl11pman</td>
+      <td>450</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>loham</td>
+      <td>sl11pman</td>
+      <td>450</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>sl11pman</td>
+      <td>s72005ming</td>
+      <td>450</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>sl11pman</td>
+      <td>loham</td>
+      <td>450</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>cwh0105</td>
+      <td>sl11pman</td>
+      <td>360</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>1483</th>
+      <td>superbatman</td>
+      <td>username1</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1484</th>
+      <td>vwpassat</td>
+      <td>zeumax</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1485</th>
+      <td>zeumax</td>
+      <td>vwpassat</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1486</th>
+      <td>zeumax</td>
+      <td>giaour</td>
+      <td>11</td>
+    </tr>
+    <tr>
+      <th>1487</th>
+      <td>giaour</td>
+      <td>zeumax</td>
+      <td>11</td>
+    </tr>
+  </tbody>
+</table>
+<p>1488 rows × 3 columns</p>
+</div></div></div>
+</div>
+<section id="drawing-original-network">
+<h4>Drawing original network<a class="headerlink" href="#drawing-original-network" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="kn">import</span> <span class="nn">networkx</span> <span class="k">as</span> <span class="nn">nx</span>
+
+<span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">30</span><span class="p">,</span> <span class="mi">30</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">60</span><span class="p">)</span>
+
+<span class="n">G</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">from_pandas_edgelist</span><span class="p">(</span><span class="n">df</span><span class="p">,</span>
+                            <span class="n">source</span> <span class="o">=</span> <span class="s1">&#39;u1&#39;</span><span class="p">,</span>
+                            <span class="n">target</span> <span class="o">=</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span>
+                            <span class="n">edge_attr</span> <span class="o">=</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+
+<span class="n">widths</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span>
+<span class="n">nodelist</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">nodes</span><span class="p">()</span>
+<span class="c1"># nx.draw_kamada_kawai(G,</span>
+<span class="c1">#                     node_size = 5,</span>
+<span class="c1">#                     edge_color = &quot;#8833FF&quot;,</span>
+<span class="c1">#                     with_labels = True)</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
+<span class="c1"># nx.draw_spring(G,</span>
+<span class="c1">#                node_size = 5,</span>
+<span class="c1">#                edge_color = &quot;#8833FF&quot;,</span>
+<span class="c1">#                font_size = 16,</span>
+<span class="c1">#                with_labels = True)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="p">,</span>
+                       <span class="n">nodelist</span><span class="o">=</span><span class="n">nodelist</span><span class="p">,</span>
+                       <span class="n">node_size</span><span class="o">=</span><span class="mi">15</span><span class="p">,</span>
+                       <span class="n">node_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.7</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">G</span><span class="p">,</span><span class="n">pos</span><span class="p">,</span>
+                       <span class="n">edgelist</span> <span class="o">=</span> <span class="n">widths</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                       <span class="n">width</span><span class="o">=</span><span class="nb">list</span><span class="p">([</span><span class="n">math</span><span class="o">.</span><span class="n">sqrt</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">widths</span><span class="o">.</span><span class="n">values</span><span class="p">()]),</span>
+                       <span class="n">edge_color</span><span class="o">=</span><span class="s1">&#39;black&#39;</span><span class="p">,</span>
+                       <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">G</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                        <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">nodelist</span><span class="p">,</span><span class="n">nodelist</span><span class="p">)),</span>
+                        <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;blue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/27813a814d85fb2b8917f952ca60a0fd52bda5b838d497d0921b88cbf28cdf15.png" src="../_images/27813a814d85fb2b8917f952ca60a0fd52bda5b838d497d0921b88cbf28cdf15.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="maximum-component">
+<h3>Maximum component<a class="headerlink" href="#maximum-component" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topG</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
+<span class="nb">len</span><span class="p">(</span><span class="n">topG</span><span class="p">)</span>
+
+<span class="n">subG</span> <span class="o">=</span> <span class="n">G</span><span class="o">.</span><span class="n">subgraph</span><span class="p">(</span><span class="n">topG</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="viz-the-maximum-component">
+<h4>Viz the maximum component<a class="headerlink" href="#viz-the-maximum-component" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">colorlist</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span> <span class="p">]</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">subG</span><span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">subG</span><span class="p">)):</span>  <span class="c1">#there&#39;s probably a more elegant approach using zip</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                           <span class="n">nodelist</span> <span class="o">=</span> <span class="n">sg</span><span class="p">,</span>
+                           <span class="n">node_size</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+                           <span class="n">node_color</span> <span class="o">=</span> <span class="n">colorlist</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                           <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                            <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">sg</span><span class="p">,</span><span class="n">sg</span><span class="p">)),</span>
+                            <span class="n">font_color</span><span class="o">=</span><span class="s1">&#39;darkgoldenrod&#39;</span><span class="p">,</span>
+                            <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                           <span class="n">edgelist</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                           <span class="c1"># width=list(nx.get_edge_attributes(subG, &#39;n&#39;).keys()),</span>
+                           <span class="n">edge_color</span><span class="o">=</span><span class="n">colorlist</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                           <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/757a8f2aab808665c5f98502a460068f52b37016538b663119c3dbc59b5436e1.png" src="../_images/757a8f2aab808665c5f98502a460068f52b37016538b663119c3dbc59b5436e1.png" />
+</div>
+</div>
+</section>
+</section>
+<section id="detect-communities">
+<h3>Detect communities<a class="headerlink" href="#detect-communities" title="Permalink to this headline">#</a></h3>
+<ul class="simple">
+<li><p><a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/community.html">https://networkx.org/documentation/stable/reference/algorithms/community.html</a></p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">networkx.algorithms</span> <span class="kn">import</span> <span class="n">community</span>
+<span class="n">communities_generator</span> <span class="o">=</span> <span class="n">community</span><span class="o">.</span><span class="n">girvan_newman</span><span class="p">(</span><span class="n">subG</span><span class="p">)</span>
+<span class="n">top_level_communities</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">communities_generator</span><span class="p">)</span>
+<span class="n">second_level_communities</span> <span class="o">=</span> <span class="nb">next</span><span class="p">(</span><span class="n">communities_generator</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">top_level_communities</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">second_level_communities</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+3
+</pre></div>
+</div>
+</div>
+</div>
+<section id="viz-communities">
+<h4>Viz communities<a class="headerlink" href="#viz-communities" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
+<span class="n">colorlist</span> <span class="o">=</span> <span class="p">[</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;g&#39;</span><span class="p">,</span> <span class="s1">&#39;b&#39;</span><span class="p">,</span> <span class="s1">&#39;c&#39;</span><span class="p">,</span> <span class="s1">&#39;m&#39;</span><span class="p">,</span> <span class="s1">&#39;y&#39;</span><span class="p">,</span> <span class="s1">&#39;k&#39;</span> <span class="p">]</span>
+
+<span class="n">pos</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">spring_layout</span><span class="p">(</span><span class="n">subG</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">second_level_communities</span><span class="p">):</span>  <span class="c1">#there&#39;s probably a more elegant approach using zip</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_nodes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                           <span class="n">nodelist</span> <span class="o">=</span> <span class="n">sg</span><span class="p">,</span>
+                           <span class="n">node_size</span> <span class="o">=</span> <span class="mi">15</span><span class="p">,</span>
+                           <span class="n">node_color</span> <span class="o">=</span> <span class="n">colorlist</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                           <span class="n">alpha</span> <span class="o">=</span> <span class="mf">0.7</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_labels</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                            <span class="n">labels</span><span class="o">=</span><span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">sg</span><span class="p">,</span><span class="n">sg</span><span class="p">)),</span>
+                            <span class="n">font_color</span><span class="o">=</span><span class="n">colorlist</span><span class="p">[</span><span class="n">index</span><span class="p">],</span>
+                            <span class="n">font_size</span><span class="o">=</span><span class="mi">8</span><span class="p">)</span>
+    <span class="n">nx</span><span class="o">.</span><span class="n">draw_networkx_edges</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">pos</span><span class="p">,</span>
+                           <span class="n">edgelist</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">get_edge_attributes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">keys</span><span class="p">(),</span>
+                           <span class="c1"># width=list(nx.get_edge_attributes(subG, &#39;n&#39;).keys()),</span>
+                           <span class="c1"># edge_color=colorlist[index],</span>
+                           <span class="n">alpha</span><span class="o">=</span><span class="mf">0.2</span><span class="p">)</span>
+
+<span class="n">plt</span><span class="o">.</span><span class="n">box</span><span class="p">(</span><span class="kc">False</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/46ff2cf4671875f4c0963edf97435aab78c701ca400248ff2a11e9dcde7f01b3.png" src="../_images/46ff2cf4671875f4c0963edf97435aab78c701ca400248ff2a11e9dcde7f01b3.png" />
+</div>
+</div>
+</section>
+<section id="viz-communities-by-pyvis">
+<h4>viz communities by pyvis<a class="headerlink" href="#viz-communities-by-pyvis" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from pyvis.network import Network as net</span>
+<span class="kn">from</span> <span class="nn">pyvis</span> <span class="kn">import</span> <span class="n">network</span> <span class="k">as</span> <span class="n">net</span>
+<span class="c1"># net = Network(&#39;1024px&#39;, &#39;2048px&#39;, notebook=True)</span>
+
+<span class="n">attr</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">second_level_communities</span><span class="p">)</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">sg</span><span class="p">}</span>
+<span class="n">nx</span><span class="o">.</span><span class="n">set_node_attributes</span><span class="p">(</span><span class="n">subG</span><span class="p">,</span> <span class="n">attr</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="s2">&quot;group&quot;</span><span class="p">)</span>
+<span class="n">visnet</span> <span class="o">=</span> <span class="n">net</span><span class="o">.</span><span class="n">Network</span><span class="p">(</span><span class="s1">&#39;768px&#39;</span><span class="p">,</span> <span class="s1">&#39;768px&#39;</span><span class="p">,</span> <span class="n">notebook</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="c1"># net = Network(&#39;768px&#39;, &#39;768px&#39;)</span>
+<span class="n">visnet</span><span class="o">.</span><span class="n">from_nx</span><span class="p">(</span><span class="n">subG</span><span class="p">)</span>
+<span class="n">visnet</span><span class="o">.</span><span class="n">show</span><span class="p">(</span><span class="s1">&#39;nx.html&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Local cdn resources have problems on chrome/safari when used in jupyter-notebook. 
+</pre></div>
+</div>
+<div class="output text_html">
+        <iframe
+            width="768px"
+            height="600px"
+            src="nx.html"
+            frameborder="0"
+            allowfullscreen
+            
+        ></iframe>
+        </div></div>
+</div>
+</section>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./CSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="../TM/TM08_doc_classification.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TM08 Classification</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="CSS02_Simulation.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">CSS02 Simulation</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#building-network">Building Network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#collocation-as-cooccurrence">Collocation as Cooccurrence</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-network">Drawing network</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#matplotlib-networkx">matplotlib &amp; networkx</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#pyvis-network">pyvis.network</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#node-level-analysis">Node-level analysis</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-histogram">Degree histogram</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#degree-centrality">Degree centrality</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#global-network-analysis">Global network analysis</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#components">Components</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-top-3-components">Get top 3 components</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-by-matplotlib">Viz by matplotlib</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#vis-by-pyviz">Vis by pyviz</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#community">Community</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-up-network">Build-up network</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#drawing-original-network">Drawing original network</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#maximum-component">Maximum component</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-the-maximum-component">Viz the maximum component</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#detect-communities">Detect communities</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-communities">Viz communities</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#viz-communities-by-pyvis">viz communities by pyvis</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

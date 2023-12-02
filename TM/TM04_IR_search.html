@@ -1,0 +1,1762 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>TM04 Feature Selection &amp; IR &amp; Search &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'TM/TM04_IR_search';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="TM05 Sentiment analysis" href="TM05_sentiment.html" />
+    <link rel="prev" title="TM03 POS Tagging" href="TM03_POS%20Tagging.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1 current active"><a class="current reference internal" href="#">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/TM/TM04_IR_search.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM04_IR_search.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/TM/TM04_IR_search.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>TM04 Feature Selection & IR & Search</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search">Search</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-data">Build Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-a-single-query-term">Search for a single query term</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-multiple-terms-and">Search for multiple terms (AND)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">TF-IDF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-tf-idf">Testing tf-idf</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-tf-and-df">Compute tf and df</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-idf">Compute idf</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-tfidf-for-whole-doc">(Testing) tfidf for whole doc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ir-model">Basic IR Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation">Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bm25">BM25</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverted-indexing">Inverted Indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-inverted-index">Build inverted index</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="tm04-feature-selection-ir-search">
+<h1>TM04 Feature Selection &amp; IR &amp; Search<a class="headerlink" href="#tm04-feature-selection-ir-search" title="Permalink to this headline">#</a></h1>
+<ul class="simple">
+<li><p>We have a lot of documents, we hope to extract their significant characteristics compared to others.</p></li>
+</ul>
+<section id="search">
+<h2>Search<a class="headerlink" href="#search" title="Permalink to this headline">#</a></h2>
+<section id="build-data">
+<h3>Build Data<a class="headerlink" href="#build-data" title="Permalink to this headline">#</a></h3>
+<p>Each doc has been tokenzied to a word list</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">json</span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/reuters.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">documents</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of documents: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span> <span class="c1"># field: title, content</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">documents</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;content&#39;</span><span class="p">][:</span><span class="mi">100</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">json</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/reuters.json&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">documents</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of documents: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">))</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/reuters.json&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="n">doc_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ASIAN EXPORTERS FEAR DAMAGE FROM U . S .- JAPA...</td>
+      <td>[Mounting, trade, friction, between, the, U, ....</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CHINA DAILY SAYS VERMIN EAT 7 - 12 PCT GRAIN S...</td>
+      <td>[survey, of, 19, provinces, and, seven, cities...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>JAPAN TO REVISE LONG - TERM ENERGY DEMAND DOWN...</td>
+      <td>[The, Ministry, of, International, Trade, and,...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>THAI TRADE DEFICIT WIDENS IN FIRST QUARTER</td>
+      <td>[Thailand, ', s, trade, deficit, widened, to, ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INDONESIA SEES CPO PRICE RISING SHARPLY</td>
+      <td>[Indonesia, expects, crude, palm, oil, (, CPO,...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5664</th>
+      <td>FED SETS TWO BILLION DLR CUSTOMER REPURCHASE</td>
+      <td>[The, Federal, Reserve, entered, the, U, ., S,...</td>
+    </tr>
+    <tr>
+      <th>5665</th>
+      <td>SENATE SEEKS U . S . PROBE OF CANADIAN CORN LEVY</td>
+      <td>[The, Senate, voted, unanimously, to, seek, an...</td>
+    </tr>
+    <tr>
+      <th>5666</th>
+      <td>U . K . MONEY MARKET SHORTAGE FORECAST REVISED...</td>
+      <td>[The, Bank, of, England, said, it, had, revise...</td>
+    </tr>
+    <tr>
+      <th>5667</th>
+      <td>KNIGHT - RIDDER INC &amp;</td>
+      <td>[lt, ;, KRN, &gt;, SETS, QUARTERLY, Qtly, div, 25...</td>
+    </tr>
+    <tr>
+      <th>5668</th>
+      <td>NATIONWIDE CELLULAR SERVICE INC &amp;</td>
+      <td>[lt, ;, NCEL, &gt;, 4TH, QTR, Shr, loss, six, cts...</td>
+    </tr>
+  </tbody>
+</table>
+<p>5669 rows × 2 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="search-for-a-single-query-term">
+<h3>Search for a single query term<a class="headerlink" href="#search-for-a-single-query-term" title="Permalink to this headline">#</a></h3>
+<p><code class="docutils literal notranslate"><span class="pre">search()</span></code>: return all docs containing query term</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">query</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]:</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;computer&quot;</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">query</span><span class="p">)))</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">query</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>54
+[&#39;VW SAYS 480 MLN MARKS MAXIMUM FOR CURRENCY LOSSES&#39;, &#39;JAPAN WARNS U . S . IT MAY RETALIATE IN TRADE DISPUTE&#39;, &#39;SINGAPORE EXTERNAL TRADE GAINS 8 . 8 PCT IN QUARTER&#39;, &#39;TALKING POINT / IBM &amp;&#39;, &#39;YEUTTER SAYS JAPANESE CURB ALL BUT CERTAIN U . S .&#39;, &#39;COMPUTERLAND TO BE ACQUIRED BY INVESTOR GROUP&#39;, &#39;ENTERTAINMENT MARKETING TOPS CRAZY EDDIE OFFER A&#39;, &#39;INVESTORS MAY TAKE COMPUTERLAND PUBLIC&#39;, &#39;SHULTZ WELCOMES TOKYO ECONOMIC PACKAGE U . S .&#39;, &#39;TOSHIBA , SHARP RESTRAIN LAP - TOP PC EXPORTS TO EC&#39;, &#39;MITSUI BUYS FIVE PCT STAKE IN U . S . CHIP MAKER&#39;, &#39;NEW LEADER COMING TO U . S . SEC IN CHALLENGING ERA&#39;, &#39;NAKASONE HARD - PRESSED TO SOOTHE U . S ANGER ON TRADE&#39;, &#39;HONEYWELL BULL SEES REVENUE GROWTH&#39;, &quot;JAPAN &#39; S CHIP MAKERS ANGERED BY U . S . SANCTION PLANS&quot;, &#39;NAKASONE SOUNDS CONCILIATORY NOTE IN CHIP DISPUTE&#39;, &#39;TOKYO BIDS TO STOP CHIP ROW TURNING INTO TRADE WAR&#39;, &#39;JAPAN HAS LITTLE NEW TO OFFER IN MICROCHIP DISPUTE&#39;, &#39;NAKASONE SOUNDS CONCILIATORY NOTE IN CHIP DISPUTE&#39;, &#39;TOKYO BIDS TO STOP CHIP ROW BECOMING TRADE WAR&#39;, &#39;ECONOMIC SPOTLIGHT - U . S . CONGRESS RAPS JAPAN&#39;, &#39;EUROPE ON SIDELINES IN U . S - JAPAN MICROCHIP ROW&#39;, &#39;U . S . SETS CORN DEFICIENCY PAYMENT HALF PIK CERTS&#39;, &#39;U . S . STOCK MARKET OVERREACTS TO TARIFFS - YEUTTER U . S .&#39;, &#39;ENVOY ADVISES NAKASONE TO PREPARE FOR U . S . VISIT&#39;, &#39;U . S .- JAPAN NOT IN TRADE WAR , YEUTTER SAYS&#39;, &#39;JAPAN / U . S . WILL BE AT ODDS WHILE TRADE LOPSIDED&#39;, &#39;JAPAN WARNS OF ANTI - U . S . SENTIMENT IN TRADE ROW&#39;, &#39;JAPAN / U . S . WILL BE AT ODDS WHILE TRADE LOPSIDED&#39;, &#39;EC MINISTERS WILL DISCUSS STRENGTHENING EMS FLOAT&#39;, &#39;IMF , WORLD BANK TO MEET AMID NEW INFLATION FEARS&#39;, &#39;JAPAN CUTS CHIP SUPPLY , MAY PRODUCE SHORTAGE&#39;, &#39;BALDRIGE CONCERNED ABOUT KOREAN / TAIWAN DEFICITS&#39;, &#39;GATT COUNCIL DEFERS DECISION ON SEMICONDUCTORS&#39;, &#39;U . S . TELLS JAPAN TO DO MORE TO CUT TRADE SURPLUS U . S .&#39;, &#39;MATHEMATICAL APPLICATIONS SETS OPERATIONS SALE&#39;, &#39;EXCO BUYS U . S . GOVERNMENT SECURITIES BROKER &amp;&#39;, &#39;JAPAN , U . S . SET TO BEGIN HIGH - LEVEL TRADE TALKS&#39;, &quot;SEARCH FOR BRITISH FERRY &#39; S TOXIC CARGO CONTINUES&quot;, &#39;WEINBERGER OPPOSES FUJITSU BUYING U . S . FIRM&#39;, &#39;FAIRCHILD DEAL FAILURE SEEN MAKING JAPANESE WARY&#39;, &#39;SURALCO ALUMINA EXPORTS DROPPED 75 PCT IN FEB&#39;, &#39;VENTRA BUYS JOINT VENTURE LEASING&#39;, &#39;PAPER SAYS U . S . MAY SEEK TO CURB FOREIGN TAKEOVERS&#39;, &#39;ECONOMIC SPOTLIGHT - JAPAN BUYING OVERSEAS FIRMS&#39;, &#39;PILGRIM VENTURE IN MERGER AGREEMENT &amp;&#39;, &#39;GROUP RECONSIDERS COMPUTER MEMORIES &amp;&#39;, &#39;JAPAN TO ASK CHIP MAKERS TO SLASH OUTPUT FURTHER&#39;, &#39;SCAN - GRAPHICS TO MERGE WITH PUBLIC COMPANY&#39;, &#39;ECONOMIC SPOTLIGHT - U . S . DEFICIT WITH&#39;, &#39;WAVEHILL INTERNATIONAL TO MAKE ACQUISITION &amp;&#39;, &#39;JAPAN IN LAST DITCH EFFORT TO SAVE CHIP PACT&#39;, &#39;BRAZIL COMPUTER MARKET TO REMAIN CLOSED - MINISTER&#39;, &#39;CAROLIAN SYSTEMS SEES LOWER FISCAL 1987 PROFIT &amp;&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="search-for-multiple-terms-and">
+<h3>Search for multiple terms (AND)<a class="headerlink" href="#search-for-multiple-terms-and" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># match if all query terms appears in the doc</span>
+<span class="c1"># match if a list appears in a doc</span>
+<span class="k">def</span> <span class="nf">match</span><span class="p">(</span><span class="n">doc_terms</span><span class="p">,</span> <span class="n">query_terms</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">query_terms</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">doc_terms</span><span class="p">:</span>
+            <span class="k">return</span> <span class="kc">False</span>
+    <span class="k">return</span> <span class="kc">True</span>
+
+
+<span class="k">def</span> <span class="nf">match1</span><span class="p">(</span><span class="n">doc_terms</span><span class="p">,</span> <span class="n">query_terms</span><span class="p">):</span>
+    <span class="k">return</span> <span class="nb">set</span><span class="p">(</span><span class="n">query_terms</span><span class="p">)</span> <span class="o">&lt;=</span> <span class="nb">set</span><span class="p">(</span><span class="n">doc_terms</span><span class="p">)</span>
+
+
+<span class="k">def</span> <span class="nf">search</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">query</span><span class="p">):</span>
+    <span class="n">query_terms</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">match</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">],</span> <span class="n">query_terms</span><span class="p">):</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Japan beef&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of matched results: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of matched results: 21
+ASIAN EXPORTERS FEAR DAMAGE FROM U . S .- JAPAN RIFT
+JAPAN MINISTRY SAYS OPEN FARM TRADE WOULD HIT U . S .
+JAPAN &#39; S LDP URGES MORE IMPORTS OF 12 FARM ITEMS
+U . S . URGES JAPAN TO OPEN FARM MARKET FURTHER U . S .
+LYNG OPENS JAPAN TALKS ON FARM TRADE BARRIERS U . S .
+U . S . URGES JAPAN TO OPEN FARM MARKET FURTHER U . S .
+U . S . MEAT INDUSTRY LAUNCHES CAMPAIGN IN JAPAN
+GATT CASE AGAINST JAPAN A MODEL FOR U . S . - LYNG
+U . S . TAKES TOUGH STAND ON GATT FARM ISSUES
+EC AGREES TRADE DEAL WITH ARGENTINA
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="tf-idf">
+<h2>TF-IDF<a class="headerlink" href="#tf-idf" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p><strong>tf</strong>: The occurrences of a term in a document. <em>tf(t, d)</em></p></li>
+<li><p><strong>df</strong>: document frequency: Number of docs where a word appreared</p></li>
+<li><p><strong>tf-idf</strong>: term-frequency and inverted document frequency</p></li>
+</ul>
+<section id="testing-tf-idf">
+<h3>Testing tf-idf<a class="headerlink" href="#testing-tf-idf" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">print_tfidf</span><span class="p">(</span><span class="n">td</span><span class="p">,</span> <span class="n">ndoc</span><span class="p">,</span> <span class="n">ntd</span><span class="p">):</span>
+    <span class="kn">import</span> <span class="nn">math</span>
+    <span class="n">idf</span> <span class="o">=</span> <span class="n">math</span><span class="o">.</span><span class="n">log</span><span class="p">(</span><span class="n">ndoc</span><span class="o">/</span><span class="n">ntd</span><span class="p">)</span>
+    <span class="n">tfidf</span> <span class="o">=</span> <span class="n">td</span><span class="o">*</span><span class="n">idf</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;n(t, d)=</span><span class="si">%d</span><span class="se">\t</span><span class="s2"> ndoc=</span><span class="si">%d</span><span class="se">\t</span><span class="s2"> ndoc_term=</span><span class="si">%d</span><span class="se">\t</span><span class="s2"> idf=</span><span class="si">%f</span><span class="se">\t</span><span class="s2"> tfidf=</span><span class="si">%f</span><span class="s2">&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">td</span><span class="p">,</span> <span class="n">ndoc</span><span class="p">,</span> <span class="n">ntd</span><span class="p">,</span> <span class="n">idf</span><span class="p">,</span> <span class="n">tfidf</span><span class="p">))</span>
+
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">80</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">50</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">100</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;-&quot;</span><span class="o">*</span><span class="mi">80</span><span class="p">)</span>
+
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">5</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">5</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">10</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">20</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">20</span><span class="p">)</span>
+<span class="n">print_tfidf</span><span class="p">(</span><span class="mi">40</span><span class="p">,</span> <span class="mi">100</span><span class="p">,</span> <span class="mi">40</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>n(t, d)=5	 ndoc=100	 ndoc_term=10	 idf=2.302585	 tfidf=11.512925
+n(t, d)=10	 ndoc=100	 ndoc_term=20	 idf=1.609438	 tfidf=16.094379
+n(t, d)=20	 ndoc=100	 ndoc_term=40	 idf=0.916291	 tfidf=18.325815
+n(t, d)=40	 ndoc=100	 ndoc_term=80	 idf=0.223144	 tfidf=8.925742
+n(t, d)=50	 ndoc=100	 ndoc_term=100	 idf=0.000000	 tfidf=0.000000
+--------------------------------------------------------------------------------
+n(t, d)=5	 ndoc=100	 ndoc_term=5	 idf=2.995732	 tfidf=14.978661
+n(t, d)=5	 ndoc=100	 ndoc_term=10	 idf=2.302585	 tfidf=11.512925
+n(t, d)=5	 ndoc=100	 ndoc_term=20	 idf=1.609438	 tfidf=8.047190
+n(t, d)=5	 ndoc=100	 ndoc_term=40	 idf=0.916291	 tfidf=4.581454
+--------------------------------------------------------------------------------
+n(t, d)=5	 ndoc=100	 ndoc_term=5	 idf=2.995732	 tfidf=14.978661
+n(t, d)=10	 ndoc=100	 ndoc_term=10	 idf=2.302585	 tfidf=23.025851
+n(t, d)=20	 ndoc=100	 ndoc_term=20	 idf=1.609438	 tfidf=32.188758
+n(t, d)=40	 ndoc=100	 ndoc_term=40	 idf=0.916291	 tfidf=36.651629
+</pre></div>
+</div>
+</div>
+</div>
+<section id="compute-tf-and-df">
+<h4>Compute tf and df<a class="headerlink" href="#compute-tf-and-df" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
+
+<span class="n">term_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">doc_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span> <span class="c1"># Number of docs where a word appeared</span>
+
+<span class="n">tdf</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">:</span>
+    <span class="n">term_doc_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="n">doc_terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span> <span class="c1"># to store all terms appearing in the doc</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+            <span class="n">term_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">term_doc_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">doc_terms</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+        
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">doc_terms</span><span class="p">:</span>
+        <span class="n">doc_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">tdf</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">term_doc_freq</span><span class="p">)</span>
+<span class="n">doc_df</span><span class="p">[</span><span class="s1">&#39;tdf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tdf</span>
+<span class="n">doc_df</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>title</th>
+      <th>content</th>
+      <th>tdf</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>ASIAN EXPORTERS FEAR DAMAGE FROM U . S .- JAPA...</td>
+      <td>[Mounting, trade, friction, between, the, U, ....</td>
+      <td>{'Mounting': 1, 'trade': 13, 'friction': 1, 'b...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>CHINA DAILY SAYS VERMIN EAT 7 - 12 PCT GRAIN S...</td>
+      <td>[survey, of, 19, provinces, and, seven, cities...</td>
+      <td>{'survey': 1, 'of': 5, '19': 1, 'provinces': 1...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>JAPAN TO REVISE LONG - TERM ENERGY DEMAND DOWN...</td>
+      <td>[The, Ministry, of, International, Trade, and,...</td>
+      <td>{'The': 2, 'Ministry': 1, 'of': 8, 'Internatio...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>THAI TRADE DEFICIT WIDENS IN FIRST QUARTER</td>
+      <td>[Thailand, ', s, trade, deficit, widened, to, ...</td>
+      <td>{'Thailand': 2, 'trade': 1, 'deficit': 1, 'wid...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>INDONESIA SEES CPO PRICE RISING SHARPLY</td>
+      <td>[Indonesia, expects, crude, palm, oil, (, CPO,...</td>
+      <td>{'Indonesia': 3, 'expects': 1, 'crude': 1, 'pa...</td>
+    </tr>
+    <tr>
+      <th>...</th>
+      <td>...</td>
+      <td>...</td>
+      <td>...</td>
+    </tr>
+    <tr>
+      <th>5664</th>
+      <td>FED SETS TWO BILLION DLR CUSTOMER REPURCHASE</td>
+      <td>[The, Federal, Reserve, entered, the, U, ., S,...</td>
+      <td>{'The': 1, 'Federal': 2, 'Reserve': 1, 'entere...</td>
+    </tr>
+    <tr>
+      <th>5665</th>
+      <td>SENATE SEEKS U . S . PROBE OF CANADIAN CORN LEVY</td>
+      <td>[The, Senate, voted, unanimously, to, seek, an...</td>
+      <td>{'The': 2, 'Senate': 2, 'voted': 1, 'unanimous...</td>
+    </tr>
+    <tr>
+      <th>5666</th>
+      <td>U . K . MONEY MARKET SHORTAGE FORECAST REVISED...</td>
+      <td>[The, Bank, of, England, said, it, had, revise...</td>
+      <td>{'The': 1, 'Bank': 1, 'of': 3, 'England': 1, '...</td>
+    </tr>
+    <tr>
+      <th>5667</th>
+      <td>KNIGHT - RIDDER INC &amp;</td>
+      <td>[lt, ;, KRN, &gt;, SETS, QUARTERLY, Qtly, div, 25...</td>
+      <td>{'lt': 1, 'KRN': 1, 'SETS': 1, 'QUARTERLY': 1,...</td>
+    </tr>
+    <tr>
+      <th>5668</th>
+      <td>NATIONWIDE CELLULAR SERVICE INC &amp;</td>
+      <td>[lt, ;, NCEL, &gt;, 4TH, QTR, Shr, loss, six, cts...</td>
+      <td>{'lt': 1, 'NCEL': 1, '4TH': 1, 'QTR': 1, 'Shr'...</td>
+    </tr>
+  </tbody>
+</table>
+<p>5669 rows × 3 columns</p>
+</div></div></div>
+</div>
+</section>
+<section id="compute-idf">
+<h4>Compute idf<a class="headerlink" href="#compute-idf" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+<span class="n">num_docs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="n">tfidfs</span> <span class="o">=</span> <span class="nb">list</span><span class="p">()</span>
+<span class="k">for</span> <span class="n">tdf</span> <span class="ow">in</span> <span class="n">doc_df</span><span class="p">[</span><span class="s1">&#39;tdf&#39;</span><span class="p">]:</span>
+    <span class="n">tfidf</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">w</span><span class="p">,</span> <span class="n">f</span> <span class="ow">in</span> <span class="n">tdf</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+        <span class="n">tfidf</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">f</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">num_docs</span><span class="o">/</span><span class="n">doc_freq</span><span class="p">[</span><span class="n">w</span><span class="p">])</span>
+    <span class="n">tfidfs</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">tfidf</span><span class="p">)</span>
+<span class="n">doc_df</span><span class="p">[</span><span class="s1">&#39;tfidf&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">tfidfs</span>
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">tfidf</span> <span class="ow">in</span> <span class="nb">zip</span><span class="p">(</span><span class="n">doc_df</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">][:</span><span class="mi">20</span><span class="p">],</span> <span class="n">doc_df</span><span class="p">[</span><span class="s1">&#39;tfidf&#39;</span><span class="p">][:</span><span class="mi">20</span><span class="p">]):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">())</span>
+    <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">tfidf</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">5</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\t</span><span class="si">%s</span><span class="s2">(</span><span class="si">%.4f</span><span class="s2">)&quot;</span><span class="o">%</span><span class="p">(</span><span class="n">k</span><span class="p">,</span> <span class="n">v</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>asian exporters fear damage from u . s .- japan rift
+	Japan(40.0751)
+	trade(35.1953)
+	electronics(31.3001)
+	tariffs(29.1976)
+	businessmen(28.4453)
+china daily says vermin eat 7 - 12 pct grain stocks a
+	preservation(21.7678)
+	waste(18.0189)
+	China(15.8372)
+	storage(13.5929)
+	vermin(12.4689)
+japan to revise long - term energy demand downwards
+	energy(33.8159)
+	MITI(31.0738)
+	electric(16.7628)
+	demand(15.6265)
+	kilolitres(12.4689)
+thai trade deficit widens in first quarter
+	baht(30.4409)
+	Thailand(13.5929)
+	billion(13.4837)
+	pct(13.3317)
+	Janunary(12.4689)
+indonesia sees cpo price rising sharply
+	Harahap(37.4066)
+	CPO(31.4066)
+	palm(27.1858)
+	Indonesia(18.7783)
+	Indonesian(14.1531)
+australian foreign ship ban ends but nsw ports hit
+	NSW(41.8755)
+	ports(28.1705)
+	disrupted(17.3230)
+	disruption(17.3230)
+	shipping(16.8702)
+indonesian commodity exchange may expand
+	rubber(48.1874)
+	exchange(38.7578)
+	Nainggolan(37.4066)
+	coffee(26.9603)
+	trading(22.9718)
+sri lanka gets usda approval for wheat price
+	Colombo(9.4689)
+	Northwest(9.0094)
+	Continental(7.3396)
+	Department(7.3166)
+	Food(6.9770)
+western mining to open new gold mine in australia
+	WMC(34.4066)
+	mine(19.2084)
+	Goodall(12.4689)
+	Bundey(12.4689)
+	WMNG(11.4689)
+sumitomo bank aims at quick recovery from merger
+	Sumitomo(121.2613)
+	Komatsu(112.2199)
+	Heiwa(49.8755)
+	Sogo(49.8755)
+	business(32.1744)
+subroto says indonesia supports tin pact extension
+	extension(29.8755)
+	ITA(28.9846)
+	sixth(24.0283)
+	Subroto(17.5369)
+	pact(10.1877)
+bundesbank allocates 6 . 1 billion marks in tender
+	Bundesbank(41.8392)
+	marks(37.0228)
+	liquidity(22.0587)
+	steering(19.3230)
+	billion(17.9783)
+bond corp still considering atlas mining bail - out
+	Atlas(97.9552)
+	Bond(40.3828)
+	Masbate(24.9378)
+	copper(19.3395)
+	gold(16.2408)
+china industrial output rises in first quarter
+	quarter(11.7429)
+	China(10.5581)
+	edition(9.6615)
+	first(9.2750)
+	industrial(8.7948)
+japan ministry says open farm trade would hit u . s .
+	Japan(46.7543)
+	beef(33.7048)
+	products(24.2055)
+	Farm(22.2735)
+	largest(22.2049)
+amatil proposes two - for - five bonus share issue
+	Amatil(24.9378)
+	AMAA(12.4689)
+	BTI(10.8839)
+	Shareholders(10.1470)
+	rank(9.0094)
+bowater 1986 pretax profits rise 15 . 6 mln stg
+	vs(35.6104)
+	debit(34.6461)
+	mln(22.8789)
+	0p(18.9378)
+	7p(18.0189)
+u . k . money market deficit forecast at 250 mln stg
+	stg(16.9602)
+	bills(16.4066)
+	drain(14.1531)
+	around(10.0343)
+	690(9.2990)
+south korea moves to slow growth of trade surplus
+	Kim(73.2821)
+	surplus(51.4676)
+	Korea(35.8622)
+	South(32.4077)
+	debt(26.3204)
+finns and canadians to study mtbe production plant
+	MTBE(68.8133)
+	Neste(34.4066)
+	Oy(32.6517)
+	Edmonton(32.6517)
+	Celanese(30.4409)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="testing-tfidf-for-whole-doc">
+<h4>(Testing) tfidf for whole doc<a class="headerlink" href="#testing-tfidf-for-whole-doc" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
+
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span> <span class="c1"># tfidf of each word</span>
+<span class="n">num_docs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">term_freq</span><span class="p">:</span>
+    <span class="n">tfidf</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">term_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">num_docs</span><span class="o">/</span><span class="n">doc_freq</span><span class="p">[</span><span class="n">w</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most frequent terms:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">term_freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most frequent document terms:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">doc_freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Terms with the highest TFIDF:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tfidf</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most frequent terms:
+[(&#39;.&#39;, 65574), (&#39;the&#39;, 47222), (&#39;,&#39;, 46891), (&#39;to&#39;, 26853), (&#39;of&#39;, 25821), (&#39;in&#39;, 21209), (&#39;and&#39;, 18750), (&#39;said&#39;, 18485), (&#39;a&#39;, 17638), (&#39;for&#39;, 9145), (&#39;mln&#39;, 9128), (&#39;-&#39;, 9003), (&#39;The&#39;, 8825), (&quot;&#39;&quot;, 8457), (&#39;pct&#39;, 7529), (&#39;s&#39;, 7246), (&#39;on&#39;, 6853), (&#39;from&#39;, 6145), (&#39;that&#39;, 6118), (&#39;is&#39;, 5835), (&#39;&quot;&#39;, 5775), (&#39;dlrs&#39;, 5654), (&#39;by&#39;, 5533), (&#39;1&#39;, 5510), (&#39;at&#39;, 5409), (&#39;it&#39;, 5379), (&#39;was&#39;, 4969), (&#39;be&#39;, 4906), (&#39;year&#39;, 4748), (&#39;with&#39;, 4704), (&#39;U&#39;, 4604), (&#39;000&#39;, 4450), (&#39;S&#39;, 4418), (&#39;its&#39;, 4337), (&#39;billion&#39;, 4320), (&#39;vs&#39;, 4315), (&#39;will&#39;, 4115), (&#39;would&#39;, 3906), (&#39;2&#39;, 3738), (&#39;as&#39;, 3433), (&#39;;&#39;, 3400), (&#39;lt&#39;, 3349), (&#39;/&#39;, 3327), (&#39;has&#39;, 3324), (&#39;not&#39;, 3285), (&#39;an&#39;, 3273), (&#39;he&#39;, 3159), (&#39;,&quot;&#39;, 2990), (&#39;which&#39;, 2873), (&#39;3&#39;, 2861)]
+Most frequent document terms:
+[(&#39;.&#39;, 5518), (&#39;,&#39;, 5260), (&#39;of&#39;, 4774), (&#39;the&#39;, 4675), (&#39;said&#39;, 4608), (&#39;to&#39;, 4505), (&#39;and&#39;, 4409), (&#39;in&#39;, 4328), (&#39;a&#39;, 4186), (&#39;The&#39;, 3645), (&#39;for&#39;, 3481), (&#39;-&#39;, 3132), (&quot;&#39;&quot;, 3066), (&#39;s&#39;, 2929), (&#39;on&#39;, 2869), (&#39;from&#39;, 2800), (&#39;it&#39;, 2629), (&#39;by&#39;, 2603), (&#39;at&#39;, 2591), (&#39;is&#39;, 2481), (&#39;with&#39;, 2407), (&#39;was&#39;, 2358), (&#39;mln&#39;, 2349), (&#39;its&#39;, 2256), (&#39;pct&#39;, 2250), (&#39;1&#39;, 2237), (&#39;that&#39;, 2213), (&#39;be&#39;, 2133), (&#39;year&#39;, 2019), (&#39;;&#39;, 2004), (&#39;lt&#39;, 1985), (&#39;an&#39;, 1953), (&#39;dlrs&#39;, 1920), (&#39;will&#39;, 1886), (&#39;&gt;&#39;, 1865), (&#39;has&#39;, 1848), (&#39;which&#39;, 1806), (&#39;not&#39;, 1787), (&#39;2&#39;, 1751), (&#39;U&#39;, 1743), (&#39;as&#39;, 1737), (&#39;would&#39;, 1733), (&#39;&quot;&#39;, 1704), (&#39;S&#39;, 1680), (&#39;were&#39;, 1571), (&#39;5&#39;, 1560), (&#39;last&#39;, 1549), (&#39;this&#39;, 1540), (&#39;3&#39;, 1499), (&#39;are&#39;, 1466)]
+Terms with the highest TFIDF:
+[(&#39;the&#39;, 13133.755890104927), (&#39;vs&#39;, 11819.897451299465), (&#39;mln&#39;, 11602.122089408393), (&#39;pct&#39;, 10037.43141662644), (&#39;&quot;&#39;, 10014.825591502971), (&#39;billion&#39;, 9708.298988635965), (&#39;to&#39;, 8903.573031221764), (&#39;dlrs&#39;, 8831.479915724474), (&#39;000&#39;, 8735.648149554252), (&#39;/&#39;, 8538.756942662225), (&#39;that&#39;, 8302.681624636662), (&#39;in&#39;, 8258.652467773287), (&#39;U&#39;, 7833.805905389986), (&#39;S&#39;, 7751.968753725295), (&#39;a&#39;, 7717.012287508844), (&#39;-&#39;, 7706.658538925057), (&quot;&#39;&quot;, 7499.131190762607), (&#39;1&#39;, 7391.824860309295), (&#39;tonnes&#39;, 7101.385223833243), (&#39;year&#39;, 7071.924546100801), (&#39;is&#39;, 6956.326735464018), (&#39;be&#39;, 6918.491748867262), (&#39;s&#39;, 6903.163306261671), (&#39;and&#39;, 6799.552353818978), (&#39;on&#39;, 6733.389801100871), (&#39;would&#39;, 6678.567132859057), (&#39;he&#39;, 6604.153901689901), (&#39;will&#39;, 6533.651300788917), (&#39;cts&#39;, 6434.3737582039785), (&#39;for&#39;, 6434.353001850576), (&#39;of&#39;, 6400.914940388855), (&#39;oil&#39;, 6358.193774547681), (&#39;2&#39;, 6335.592962972377), (&#39;was&#39;, 6288.42130712229), (&#39;,&quot;&#39;, 6260.578976192779), (&#39;from&#39;, 6253.566431010715), (&#39;by&#39;, 6213.110591378933), (&#39;at&#39;, 6109.926636935147), (&#39;trade&#39;, 5996.730016845508), (&#39;it&#39;, 5963.052504216226), (&#39;as&#39;, 5858.402536369312), (&#39;with&#39;, 5813.476631030548), (&#39;its&#39;, 5765.292072561284), (&#39;0&#39;, 5695.314602771666), (&#39;The&#39;, 5623.073386890246), (&#39;said&#39;, 5526.1564156909535), (&#39;3&#39;, 5490.527607478552), (&#39;not&#39;, 5471.346975245519), (&#39;1986&#39;, 5451.2519110030335), (&#39;has&#39;, 5375.338499228798)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">nltk.corpus</span> <span class="kn">import</span> <span class="n">stopwords</span>
+<span class="n">stopword_list</span> <span class="o">=</span> <span class="n">stopwords</span><span class="o">.</span><span class="n">words</span><span class="p">(</span><span class="s1">&#39;english&#39;</span><span class="p">)</span>
+
+<span class="n">term_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">doc_freq</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">:</span>
+    <span class="n">doc_terms</span> <span class="o">=</span> <span class="nb">set</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">]:</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">w</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">w</span> <span class="o">=</span> <span class="n">w</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+            <span class="n">term_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+            <span class="n">doc_terms</span><span class="o">.</span><span class="n">add</span><span class="p">(</span><span class="n">w</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">doc_terms</span><span class="p">:</span>
+        <span class="n">doc_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+
+
+<span class="n">tfidf</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+<span class="n">num_docs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)</span>
+<span class="k">for</span> <span class="n">w</span> <span class="ow">in</span> <span class="n">term_freq</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">w</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopword_list</span> <span class="ow">and</span> <span class="nb">len</span><span class="p">(</span><span class="n">w</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+        <span class="n">tfidf</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">=</span> <span class="n">term_freq</span><span class="p">[</span><span class="n">w</span><span class="p">]</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">num_docs</span><span class="o">/</span><span class="n">doc_freq</span><span class="p">[</span><span class="n">w</span><span class="p">])</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most frequent terms:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">term_freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Most frequent document terms:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">doc_freq</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Terms with the highest TFIDF:&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">tfidf</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">50</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Most frequent terms:
+[(&#39;said&#39;, 18494), (&#39;mln&#39;, 9160), (&#39;pct&#39;, 7551), (&#39;dlrs&#39;, 5815), (&#39;year&#39;, 5071), (&#39;u&#39;, 4607), (&#39;billion&#39;, 4321), (&#39;vs&#39;, 4317), (&#39;would&#39;, 3930), (&#39;lt&#39;, 3351), (&#39;last&#39;, 2770), (&#39;bank&#39;, 2731), (&#39;trade&#39;, 2699), (&#39;oil&#39;, 2382), (&#39;cts&#39;, 2322), (&#39;market&#39;, 2320), (&#39;tonnes&#39;, 2307), (&#39;net&#39;, 2190), (&#39;one&#39;, 1998), (&#39;company&#39;, 1983), (&#39;new&#39;, 1974), (&#39;also&#39;, 1826), (&#39;two&#39;, 1813), (&#39;prices&#39;, 1813), (&#39;government&#39;, 1644), (&#39;japan&#39;, 1503), (&#39;rate&#39;, 1492), (&#39;february&#39;, 1488), (&#39;dollar&#39;, 1484), (&#39;january&#39;, 1455), (&#39;week&#39;, 1431), (&#39;may&#39;, 1403), (&#39;shares&#39;, 1399), (&#39;price&#39;, 1328), (&#39;foreign&#39;, 1318), (&#39;loss&#39;, 1304), (&#39;march&#39;, 1278), (&#39;told&#39;, 1276), (&#39;exchange&#39;, 1272), (&#39;could&#39;, 1250), (&#39;production&#39;, 1241), (&#39;share&#39;, 1228), (&#39;stock&#39;, 1226), (&#39;group&#39;, 1205), (&#39;april&#39;, 1169), (&#39;rates&#39;, 1168), (&#39;today&#39;, 1163), (&#39;month&#39;, 1159), (&#39;shr&#39;, 1150), (&#39;rose&#39;, 1148)]
+Most frequent document terms:
+[(&#39;said&#39;, 4609), (&#39;mln&#39;, 2352), (&#39;pct&#39;, 2253), (&#39;year&#39;, 2200), (&#39;lt&#39;, 1987), (&#39;dlrs&#39;, 1966), (&#39;u&#39;, 1744), (&#39;would&#39;, 1740), (&#39;last&#39;, 1618), (&#39;one&#39;, 1306), (&#39;two&#39;, 1295), (&#39;also&#39;, 1274), (&#39;market&#39;, 1219), (&#39;billion&#39;, 1194), (&#39;new&#39;, 1173), (&#39;company&#39;, 1099), (&#39;told&#39;, 1053), (&#39;trade&#39;, 1018), (&#39;net&#39;, 967), (&#39;bank&#39;, 954), (&#39;may&#39;, 914), (&#39;government&#39;, 879), (&#39;today&#39;, 877), (&#39;vs&#39;, 850), (&#39;prices&#39;, 836), (&#39;april&#39;, 833), (&#39;cts&#39;, 827), (&#39;march&#39;, 826), (&#39;three&#39;, 809), (&#39;week&#39;, 806), (&#39;could&#39;, 806), (&#39;added&#39;, 781), (&#39;oil&#39;, 767), (&#39;month&#39;, 764), (&#39;exchange&#39;, 757), (&#39;international&#39;, 752), (&#39;price&#39;, 741), (&#39;total&#39;, 737), (&#39;first&#39;, 733), (&#39;expected&#39;, 733), (&#39;foreign&#39;, 714), (&#39;per&#39;, 704), (&#39;rate&#39;, 701), (&#39;share&#39;, 699), (&#39;corp&#39;, 696), (&#39;current&#39;, 693), (&#39;group&#39;, 686), (&#39;inc&#39;, 685), (&#39;tonnes&#39;, 671), (&#39;five&#39;, 671)]
+Terms with the highest TFIDF:
+[(&#39;mln&#39;, 11625.928874284848), (&#39;pct&#39;, 10052.245761614773), (&#39;billion&#39;, 9710.54628006852), (&#39;dlrs&#39;, 8884.33695958949), (&#39;tonnes&#39;, 7102.583041707593), (&#39;bank&#39;, 7021.491390129802), (&#39;year&#39;, 6924.910669960947), (&#39;oil&#39;, 6873.965563005887), (&#39;would&#39;, 6696.74736491751), (&#39;trade&#39;, 6686.38575420033), (&#39;cts&#39;, 6448.507550453009), (&#39;net&#39;, 5587.799178810262), (&#39;said&#39;, 5523.057434422488), (&#39;market&#39;, 5144.359052222177), (&#39;dollar&#39;, 5049.739415228694), (&#39;last&#39;, 5010.604972048774), (&#39;prices&#39;, 5006.63471161198), (&#39;japan&#39;, 4996.303127414279), (&#39;loss&#39;, 4847.404181128349), (&#39;company&#39;, 4693.568416731597), (&#39;january&#39;, 4679.590091592154), (&#39;february&#39;, 4669.286973448756), (&#39;shares&#39;, 4522.777242325159), (&#39;rate&#39;, 4499.287016354734), (&#39;new&#39;, 4486.687338931271), (&#39;government&#39;, 4420.977722623381), (&#39;stg&#39;, 4273.980342230134), (&#39;one&#39;, 4231.642865801446), (&#39;production&#39;, 4094.001358499999), (&#39;rates&#39;, 4074.8471241785546), (&#39;week&#39;, 4027.1810536920775), (&#39;foreign&#39;, 3939.6315459436505), (&#39;also&#39;, 3932.709138594268), (&#39;stock&#39;, 3925.7648080906674), (&#39;price&#39;, 3898.408834970051), (&#39;two&#39;, 3861.9477564681106), (&#39;profit&#39;, 3803.0457369254964), (&#39;share&#39;, 3708.22832756922), (&#39;exchange&#39;, 3694.81536919646), (&#39;may&#39;, 3693.8579628621833), (&#39;exports&#39;, 3684.1487886651003), (&#39;group&#39;, 3671.4106141141697), (&#39;rose&#39;, 3633.532280877387), (&#39;shr&#39;, 3626.788340297595), (&#39;japanese&#39;, 3605.1178054429806), (&#39;sales&#39;, 3599.8345492389662), (&#39;wheat&#39;, 3568.2748360658793), (&#39;march&#39;, 3551.409384307176), (&#39;could&#39;, 3517.8031566143236), (&#39;offer&#39;, 3493.1652955028644)]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+<section id="basic-ir-model">
+<h2>Basic IR Model<a class="headerlink" href="#basic-ir-model" title="Permalink to this headline">#</a></h2>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Tf%E2%80%93idf">https://en.wikipedia.org/wiki/Tf–idf</a></p>
+<section id="representation">
+<h3>Representation<a class="headerlink" href="#representation" title="Permalink to this headline">#</a></h3>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>doc -&gt; `[(&#39;u&#39;, 18), (&#39;said&#39;, 16), (&#39;trade&#39;, 15), (&#39;japan&#39;, 12), (&#39;dlrs&#39;, 6), (&#39;exports&#39;, 6), (&#39;imports&#39;, 5), (&#39;tariffs&#39;, 5), (&#39;japanese&#39;, 5), (&#39;billion&#39;, 5), (&#39;businessmen&#39;, 4), (&#39;might&#39;, 4), (&#39;electronics&#39;, 4), (&#39;taiwan&#39;, 4), (&#39;also&#39;, 4), (&#39;last&#39;, 4), (&#39;year&#39;, 4), (&#39;hong&#39;, 4), (&#39;kong&#39;, 4), (&#39;products&#39;, 3)]`
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">represent</span><span class="p">(</span><span class="n">terms</span><span class="p">):</span>
+    <span class="n">counter</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">terms</span><span class="p">:</span>
+        <span class="n">term</span> <span class="o">=</span> <span class="n">term</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">stopword_list</span><span class="p">:</span>
+            <span class="k">continue</span>
+        <span class="k">if</span> <span class="ow">not</span> <span class="n">term</span><span class="o">.</span><span class="n">isalpha</span><span class="p">():</span>
+            <span class="k">continue</span>
+        <span class="n">counter</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">return</span> <span class="n">counter</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">represent</span><span class="p">(</span><span class="n">documents</span><span class="p">[</span><span class="mi">0</span><span class="p">][</span><span class="s1">&#39;content&#39;</span><span class="p">])</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">20</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;u&#39;, 18), (&#39;said&#39;, 16), (&#39;trade&#39;, 15), (&#39;japan&#39;, 12), (&#39;dlrs&#39;, 6), (&#39;exports&#39;, 6), (&#39;imports&#39;, 5), (&#39;tariffs&#39;, 5), (&#39;japanese&#39;, 5), (&#39;billion&#39;, 5), (&#39;businessmen&#39;, 4), (&#39;might&#39;, 4), (&#39;electronics&#39;, 4), (&#39;taiwan&#39;, 4), (&#39;also&#39;, 4), (&#39;last&#39;, 4), (&#39;year&#39;, 4), (&#39;hong&#39;, 4), (&#39;kong&#39;, 4), (&#39;products&#39;, 3)]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">tfidf</span><span class="p">(</span><span class="n">doc_dict</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">num_docs</span>
+    <span class="k">global</span> <span class="n">doc_freq</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">query_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">doc_dict</span><span class="p">:</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="n">doc_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">*</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">(</span><span class="n">num_docs</span> <span class="o">/</span> <span class="n">doc_freq</span><span class="p">[</span><span class="n">term</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">score</span>
+
+
+<span class="k">def</span> <span class="nf">match_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">):</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">doc_dict</span> <span class="o">=</span> <span class="n">represent</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span>
+        <span class="n">matched</span> <span class="o">=</span> <span class="kc">True</span>
+        <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">query_dict</span><span class="p">:</span>
+            <span class="k">if</span> <span class="n">term</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">doc_dict</span><span class="p">:</span>
+                <span class="n">matched</span> <span class="o">=</span> <span class="kc">False</span>
+                <span class="k">break</span>
+        <span class="k">if</span> <span class="n">matched</span><span class="p">:</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">results</span>
+
+
+<span class="k">def</span> <span class="nf">ranked_search</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">score_func</span><span class="p">):</span>
+    <span class="n">query_terms</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">query_dict</span> <span class="o">=</span> <span class="n">represent</span><span class="p">(</span><span class="n">query_terms</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">matched_docs</span> <span class="o">=</span> <span class="n">match_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">matched_docs</span><span class="p">:</span>
+        <span class="n">doc_dict</span> <span class="o">=</span> <span class="n">represent</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">score_func</span><span class="p">(</span><span class="n">doc_dict</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">)</span>
+        <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="n">score</span><span class="p">))</span>
+    
+    <span class="n">ranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ranked</span>
+
+    
+<span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Japan beef&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">query</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Number of matched results: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">results</span><span class="p">[</span><span class="mi">0</span><span class="p">:</span><span class="mi">10</span><span class="p">]))</span>
+
+<span class="nb">print</span><span class="p">(</span>
+<span class="sd">&#39;&#39;&#39;</span>
+<span class="sd">---------------------------------------------------------------</span>
+<span class="sd">ranked_search</span>
+<span class="sd">---------------------------------------------------------------</span>
+<span class="sd">&#39;&#39;&#39;</span><span class="p">)</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">ranked_search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">tfidf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of matched results: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">score</span><span class="p">))</span>
+                           
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of matched results: 21
+ASIAN EXPORTERS FEAR DAMAGE FROM U . S .- JAPAN RIFT
+JAPAN MINISTRY SAYS OPEN FARM TRADE WOULD HIT U . S .
+JAPAN &#39; S LDP URGES MORE IMPORTS OF 12 FARM ITEMS
+U . S . URGES JAPAN TO OPEN FARM MARKET FURTHER U . S .
+LYNG OPENS JAPAN TALKS ON FARM TRADE BARRIERS U . S .
+U . S . URGES JAPAN TO OPEN FARM MARKET FURTHER U . S .
+U . S . MEAT INDUSTRY LAUNCHES CAMPAIGN IN JAPAN
+GATT CASE AGAINST JAPAN A MODEL FOR U . S . - LYNG
+U . S . TAKES TOUGH STAND ON GATT FARM ISSUES
+EC AGREES TRADE DEAL WITH ARGENTINA
+
+---------------------------------------------------------------
+ranked_search
+---------------------------------------------------------------
+
+
+Number of matched results: 21
+japan beef price support cut will not raise demand 	 168.859461
+u . s . meat industry launches campaign in japan 	 145.589919
+lyng opens japan talks on farm trade barriers u . s . 	 96.102045
+japan ministry says open farm trade would hit u . s . 	 86.204470
+japan seen reducing beef , pork intervention prices 	 79.368314
+more pressure urged for asia to take u . s . beef 	 59.573164
+asian exporters fear damage from u . s .- japan rift 	 46.501541
+economic spotlight - u . s . congress raps japan 	 46.501541
+gatt case against japan a model for u . s . - lyng 	 46.351369
+australian beef output seen declining in 1987 	 42.989606
+ec agrees trade deal with argentina 	 39.740471
+u . s . urges japan to open farm market further u . s . 	 33.204660
+u . s . urges japan to open farm market further u . s . 	 33.204660
+oecd farm subsidies study results detailed 	 33.204660
+u . s . to ask for share of japan &#39; s rice market u . s . 	 33.129574
+japan &#39; s lipc to buy beef on april 23 	 33.092031
+japan &#39; s lipc to buy beef on april 23 	 33.092031
+u . s . house panel extends eep , urges ussr offer 	 16.546015
+japan sets 1987 / 88 first half beef import quota 	 13.259338
+japan &#39; s ldp urges more imports of 12 farm items 	 9.935118
+u . s . takes tough stand on gatt farm issues 	 9.935118
+</pre></div>
+</div>
+</div>
+</div>
+<section id="sorting">
+<h4>Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">#</a></h4>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">small_list</span> <span class="o">=</span> <span class="p">[</span><span class="mi">5</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">7</span><span class="p">,</span> <span class="mi">9</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_list</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_list</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_list</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="o">-</span><span class="n">x</span><span class="p">))</span>
+
+<span class="n">small_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;beef&#39;</span><span class="p">,</span> <span class="s1">&#39;chiken&#39;</span><span class="p">,</span> <span class="s1">&#39;pork&#39;</span><span class="p">,</span> <span class="s1">&#39;mutton&#39;</span><span class="p">,</span> <span class="s1">&#39;hot&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_strings</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_strings</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+
+
+<span class="n">small_tuples</span> <span class="o">=</span> <span class="p">[(</span><span class="s1">&#39;beef&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;chiken&#39;</span><span class="p">,</span> <span class="mi">2</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;pork&#39;</span><span class="p">,</span> <span class="mi">4</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;mutton&#39;</span><span class="p">,</span> <span class="mi">3</span><span class="p">),</span> <span class="p">(</span><span class="s1">&#39;hot&#39;</span><span class="p">,</span> <span class="mi">7</span><span class="p">)]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_tuples</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_tuples</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_tuples</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">]))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_tuples</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">[</span><span class="mi">0</span><span class="p">])))</span>
+
+
+<span class="n">small_strings</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;社會系&#39;</span><span class="p">,</span> <span class="s1">&#39;社會工作系&#39;</span><span class="p">,</span> <span class="s1">&#39;經濟系&#39;</span><span class="p">,</span> <span class="s1">&#39;政治系&#39;</span><span class="p">,</span> <span class="s1">&#39;國家發展研究所&#39;</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_strings</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">sorted</span><span class="p">(</span><span class="n">small_strings</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="nb">len</span><span class="p">(</span><span class="n">x</span><span class="p">)))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[3, 4, 5, 6, 6, 7, 9]
+[9, 7, 6, 6, 5, 4, 3]
+[9, 7, 6, 6, 5, 4, 3]
+[&#39;beef&#39;, &#39;chiken&#39;, &#39;hot&#39;, &#39;mutton&#39;, &#39;pork&#39;]
+[&#39;hot&#39;, &#39;beef&#39;, &#39;pork&#39;, &#39;chiken&#39;, &#39;mutton&#39;]
+[(&#39;beef&#39;, 4), (&#39;chiken&#39;, 2), (&#39;hot&#39;, 7), (&#39;mutton&#39;, 3), (&#39;pork&#39;, 4)]
+[(&#39;beef&#39;, 4), (&#39;chiken&#39;, 2), (&#39;hot&#39;, 7), (&#39;mutton&#39;, 3), (&#39;pork&#39;, 4)]
+[(&#39;chiken&#39;, 2), (&#39;mutton&#39;, 3), (&#39;beef&#39;, 4), (&#39;pork&#39;, 4), (&#39;hot&#39;, 7)]
+[(&#39;hot&#39;, 7), (&#39;beef&#39;, 4), (&#39;pork&#39;, 4), (&#39;chiken&#39;, 2), (&#39;mutton&#39;, 3)]
+[&#39;國家發展研究所&#39;, &#39;政治系&#39;, &#39;社會工作系&#39;, &#39;社會系&#39;, &#39;經濟系&#39;]
+[&#39;社會系&#39;, &#39;經濟系&#39;, &#39;政治系&#39;, &#39;社會工作系&#39;, &#39;國家發展研究所&#39;]
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="bm25">
+<h3>BM25<a class="headerlink" href="#bm25" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://en.wikipedia.org/wiki/Okapi_BM25">https://en.wikipedia.org/wiki/Okapi_BM25</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">avgdl</span> <span class="o">=</span> <span class="mi">0</span>
+<span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">documents</span><span class="p">:</span>
+    <span class="n">doc_dict</span> <span class="o">=</span> <span class="n">represent</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span>
+    <span class="n">avgdl</span> <span class="o">+=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">doc_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+<span class="n">avgdl</span> <span class="o">/=</span> <span class="n">num_docs</span>
+    
+
+<span class="k">def</span> <span class="nf">idf</span><span class="p">(</span><span class="n">term</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">num_docs</span>
+    <span class="k">global</span> <span class="n">doc_freq</span>
+    <span class="k">return</span> <span class="n">math</span><span class="o">.</span><span class="n">log2</span><span class="p">((</span><span class="n">num_docs</span> <span class="o">-</span> <span class="n">doc_freq</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">)</span> <span class="o">/</span> <span class="p">(</span><span class="n">doc_freq</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">+</span> <span class="mf">0.5</span><span class="p">))</span>
+                     
+                     
+<span class="k">def</span> <span class="nf">bm25</span><span class="p">(</span><span class="n">doc_dict</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">):</span>
+    <span class="k">global</span> <span class="n">num_docs</span>
+    <span class="k">global</span> <span class="n">doc_freq</span>
+    <span class="k">global</span> <span class="n">avgdl</span>
+    <span class="n">k1</span> <span class="o">=</span> <span class="mf">1.2</span>
+    <span class="n">b</span> <span class="o">=</span> <span class="mf">0.75</span>
+    <span class="n">query_len</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">query_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">doc_len</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">doc_dict</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
+    <span class="n">score</span> <span class="o">=</span> <span class="mi">0</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">query_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">doc_dict</span><span class="p">:</span>
+            <span class="n">tf</span> <span class="o">=</span> <span class="p">((</span><span class="n">doc_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">/</span> <span class="n">doc_len</span><span class="p">)</span> <span class="o">*</span> <span class="p">(</span><span class="n">k1</span> <span class="o">+</span> <span class="mi">1</span><span class="p">))</span> <span class="o">/</span> <span class="p">(</span>
+                <span class="p">(</span><span class="n">doc_dict</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">/</span> <span class="n">doc_len</span><span class="p">)</span> <span class="o">+</span> <span class="n">k1</span> <span class="o">*</span><span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">b</span> <span class="o">+</span> <span class="n">b</span> <span class="o">*</span> <span class="p">(</span><span class="n">doc_len</span> <span class="o">/</span> <span class="n">avgdl</span><span class="p">)))</span>
+            <span class="n">score</span> <span class="o">+=</span> <span class="n">idf</span><span class="p">(</span><span class="n">term</span><span class="p">)</span> <span class="o">*</span> <span class="n">tf</span>
+    <span class="k">return</span> <span class="n">score</span>
+                                                            
+                
+<span class="n">results</span> <span class="o">=</span> <span class="n">ranked_search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">bm25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of matched results: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="se">\t</span><span class="s2"> </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="o">.</span><span class="n">lower</span><span class="p">(),</span> <span class="n">score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of matched results: 21
+japan &#39; s lipc to buy beef on april 23 	 1.676211
+japan &#39; s lipc to buy beef on april 23 	 1.676211
+japan sets 1987 / 88 first half beef import quota 	 1.548682
+more pressure urged for asia to take u . s . beef 	 0.618041
+japan seen reducing beef , pork intervention prices 	 0.523364
+australian beef output seen declining in 1987 	 0.444577
+u . s . meat industry launches campaign in japan 	 0.430094
+gatt case against japan a model for u . s . - lyng 	 0.426406
+japan &#39; s ldp urges more imports of 12 farm items 	 0.424614
+u . s . to ask for share of japan &#39; s rice market u . s . 	 0.337159
+japan beef price support cut will not raise demand 	 0.315739
+lyng opens japan talks on farm trade barriers u . s . 	 0.241400
+u . s . urges japan to open farm market further u . s . 	 0.233559
+u . s . urges japan to open farm market further u . s . 	 0.233559
+japan ministry says open farm trade would hit u . s . 	 0.215694
+ec agrees trade deal with argentina 	 0.160007
+economic spotlight - u . s . congress raps japan 	 0.091814
+oecd farm subsidies study results detailed 	 0.052830
+asian exporters fear damage from u . s .- japan rift 	 0.050941
+u . s . house panel extends eep , urges ussr offer 	 0.030293
+u . s . takes tough stand on gatt farm issues 	 0.027802
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="inverted-indexing">
+<h2>Inverted Indexing<a class="headerlink" href="#inverted-indexing" title="Permalink to this headline">#</a></h2>
+<section id="build-inverted-index">
+<h3>Build inverted index<a class="headerlink" href="#build-inverted-index" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">inverted_index</span> <span class="o">=</span> <span class="p">{}</span>
+
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">documents</span><span class="p">)):</span>
+    <span class="n">doc_dict</span> <span class="o">=</span> <span class="n">represent</span><span class="p">(</span><span class="n">documents</span><span class="p">[</span><span class="n">i</span><span class="p">][</span><span class="s1">&#39;content&#39;</span><span class="p">])</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">doc_dict</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">term</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">inverted_index</span><span class="p">:</span>
+            <span class="n">inverted_index</span><span class="p">[</span><span class="n">term</span><span class="p">]</span> <span class="o">=</span> <span class="p">[]</span>
+        <span class="n">inverted_index</span><span class="p">[</span><span class="n">term</span><span class="p">]</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">i</span><span class="p">)</span>
+        
+    
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">match_indexed_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">inverted_index</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">):</span>
+    <span class="n">count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
+    <span class="k">for</span> <span class="n">term</span> <span class="ow">in</span> <span class="n">query_dict</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">doc_id</span> <span class="ow">in</span> <span class="n">inverted_index</span><span class="p">[</span><span class="n">term</span><span class="p">]:</span>
+            <span class="n">count</span><span class="p">[</span><span class="n">doc_id</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="k">for</span> <span class="n">doc_id</span> <span class="ow">in</span> <span class="n">count</span><span class="p">:</span>
+        <span class="k">if</span> <span class="n">count</span><span class="p">[</span><span class="n">doc_id</span><span class="p">]</span> <span class="o">==</span> <span class="nb">len</span><span class="p">(</span><span class="n">query_dict</span><span class="p">):</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">docs</span><span class="p">[</span><span class="n">doc_id</span><span class="p">])</span>
+    <span class="k">return</span> <span class="n">results</span>
+            
+    
+<span class="k">def</span> <span class="nf">ranked_indexed_search</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">inverted_index</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">score_func</span><span class="p">):</span>
+    <span class="n">query_terms</span> <span class="o">=</span> <span class="n">query</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot; &quot;</span><span class="p">)</span>
+    <span class="n">query_dict</span> <span class="o">=</span> <span class="n">represent</span><span class="p">(</span><span class="n">query_terms</span><span class="p">)</span>
+    <span class="n">results</span> <span class="o">=</span> <span class="p">[]</span>
+    <span class="n">docs</span> <span class="o">=</span> <span class="n">match_indexed_docs</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">inverted_index</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">)</span>
+    <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">docs</span><span class="p">:</span>
+        <span class="n">doc_dict</span> <span class="o">=</span> <span class="n">represent</span><span class="p">(</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;content&#39;</span><span class="p">])</span>
+        <span class="n">score</span> <span class="o">=</span> <span class="n">score_func</span><span class="p">(</span><span class="n">doc_dict</span><span class="p">,</span> <span class="n">query_dict</span><span class="p">)</span>
+        <span class="k">if</span> <span class="n">score</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
+            <span class="n">results</span><span class="o">.</span><span class="n">append</span><span class="p">((</span><span class="n">doc</span><span class="p">[</span><span class="s1">&#39;title&#39;</span><span class="p">],</span> <span class="n">score</span><span class="p">))</span>
+    
+    <span class="n">ranked</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">results</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="k">lambda</span> <span class="n">x</span><span class="p">:</span> <span class="n">x</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">ranked</span>
+
+
+<span class="n">results</span> <span class="o">=</span> <span class="n">ranked_indexed_search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">inverted_index</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">bm25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of matched results: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of matched results: 21
+JAPAN &#39; S LIPC TO BUY BEEF ON APRIL 23 1.676211
+JAPAN &#39; S LIPC TO BUY BEEF ON APRIL 23 1.676211
+JAPAN SETS 1987 / 88 FIRST HALF BEEF IMPORT QUOTA 1.548682
+MORE PRESSURE URGED FOR ASIA TO TAKE U . S . BEEF 0.618041
+JAPAN SEEN REDUCING BEEF , PORK INTERVENTION PRICES 0.523364
+AUSTRALIAN BEEF OUTPUT SEEN DECLINING IN 1987 0.444577
+U . S . MEAT INDUSTRY LAUNCHES CAMPAIGN IN JAPAN 0.430094
+GATT CASE AGAINST JAPAN A MODEL FOR U . S . - LYNG 0.426406
+JAPAN &#39; S LDP URGES MORE IMPORTS OF 12 FARM ITEMS 0.424614
+U . S . TO ASK FOR SHARE OF JAPAN &#39; S RICE MARKET U . S . 0.337159
+JAPAN BEEF PRICE SUPPORT CUT WILL NOT RAISE DEMAND 0.315739
+LYNG OPENS JAPAN TALKS ON FARM TRADE BARRIERS U . S . 0.241400
+U . S . URGES JAPAN TO OPEN FARM MARKET FURTHER U . S . 0.233559
+U . S . URGES JAPAN TO OPEN FARM MARKET FURTHER U . S . 0.233559
+JAPAN MINISTRY SAYS OPEN FARM TRADE WOULD HIT U . S . 0.215694
+EC AGREES TRADE DEAL WITH ARGENTINA 0.160007
+ECONOMIC SPOTLIGHT - U . S . CONGRESS RAPS JAPAN 0.091814
+OECD FARM SUBSIDIES STUDY RESULTS DETAILED 0.052830
+ASIAN EXPORTERS FEAR DAMAGE FROM U . S .- JAPAN RIFT 0.050941
+U . S . HOUSE PANEL EXTENDS EEP , URGES USSR OFFER 0.030293
+U . S . TAKES TOUGH STAND ON GATT FARM ISSUES 0.027802
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;Taiwan Japan&quot;</span>
+<span class="n">results</span> <span class="o">=</span> <span class="n">ranked_indexed_search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">inverted_index</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">bm25</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of matched results: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of matched results: 41
+RISING TAIWAN DOLLAR CAUSES FOREIGN RESERVES LOSS 0.557418
+TAIWAN STEEL FIRM SEES LOWER EXPORTS , MORE OUTPUT 0.534024
+THAI ZINC EXPORTS FALL IN MARCH 0.447403
+LONDON GRAIN FREIGHTS 27 , 000 0.411234
+TAIWAN PLANS MISSION TO CLOSE TRADE GAP WITH U . S . 0.361747
+TAIWAN FOREIGN EXCHANGE RESERVES HIT NEW HIGH 0.358275
+TAIWAN SEES SHARP DECLINE IN SHIPBREAKING 0.304945
+YEUTTER PUTS CURRENCY BURDEN ON TAIWAN , KOREA 0.289958
+MULFORD SAYS GERMANY , JAPAN SHOULD DO MORE 0.248875
+BALDRIGE CONCERNED ABOUT KOREAN / TAIWAN DEFICITS 0.226503
+SOUTH AFRICA CORN EXPORTS COULD BE REDUCED - USDA 0.210748
+LONDON FREIGHT MARKET FEATURES GRAIN OUT OF U . S . 0.210735
+TAIWAN ANNOUNCES NEW ROUND OF IMPORT TARIFF CUTS 0.165164
+TAIWAN ANNOUNCES NEW ROUND OF IMPORT TARIFF CUTS 0.165164
+BALDRIGE WARNS OF WORLD TRADE WAR DANGER U . S . 0.155060
+BALDRIGE WARNS OF WORLD TRADE WAR DANGER U . S . 0.152501
+TAIWAN CURBS INFLOWS OF FOREIGN EXCHANGE 0.141761
+TAIWAN COMPLAINS ABOUT SIZE OF RESERVES 0.139054
+REPORT EXPECTS SHARP DROP IN WORLD IRON IMPORTS 0.138398
+USDA COMMENTS ON EXPORT SALES REPORT U . S . 0.130159
+U . S . HOUSE PANEL APPROVES TRADE BILL 0.122454
+TAIWAN SHIPBUILDER LOOKS FOR JAPANESE VENTURES 0.099780
+TAIWAN DOLLAR AND RESERVES SEEN RISING MORE SLOWLY 0.098053
+USDA COMMENTS ON EXPORT SALES REPORT 0.095963
+AUSTRALIAN BEEF OUTPUT SEEN DECLINING IN 1987 0.095316
+ECONOMIC SPOTLIGHT - U . S . DEFICIT WITH 0.093116
+ECONOMIC SPOTLIGHT - U . S . CONGRESS RAPS JAPAN 0.090142
+USDA COMMENTS ON EXPORT SALES 0.089580
+PHILIPPINE PLANNING CHIEF URGES PESO DEVALUATION 0.078124
+ASIAN EXPORTERS FEAR DAMAGE FROM U . S .- JAPAN RIFT 0.069852
+LATIN , CARIBBEAN NATIONS OPPOSE TRADE BILLS A 0.052019
+ECONOMIC SPOTLIGHT - JAPAN SHIPBUILDERS RECOVERY 0.047666
+U . S . HOUSE PANEL APPROVES TRADE BILL 0.044894
+JAPANESE TARIFFS SEEN AS WORLDWIDE WARNING 0.040512
+U . S . TRADE DEFICIT 38 . 37 BILLION DLRS IN 4TH QTR 0.039176
+EXPORT BUSINESS - GRAINS / OILSEEDS COMPLEX 0.025505
+U . S . HOUSE PANEL TAKES FIRST TRADE BILL VOTES 0.019227
+DOLLAR VALUE APPROPRIATE , BUNDESBANK OFFICIAL SAYS 0.018462
+NET CHANGE IN EXPORT COMMITMENTS -- USDA 0.011454
+TRADE INTERESTS READY FOR BATTLE IN U . S . HOUSE U . S . 0.010810
+TRADE INTERESTS READY FOR FIGHT IN U . S . CONGRESS U . S . 0.008743
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">results</span> <span class="o">=</span> <span class="n">ranked_indexed_search</span><span class="p">(</span><span class="n">documents</span><span class="p">,</span> <span class="n">inverted_index</span><span class="p">,</span> <span class="n">query</span><span class="p">,</span> <span class="n">tfidf</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">Number of matched results: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">results</span><span class="p">))</span>
+<span class="k">for</span> <span class="n">title</span><span class="p">,</span> <span class="n">score</span> <span class="ow">in</span> <span class="n">results</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;</span><span class="si">%s</span><span class="s2"> </span><span class="si">%f</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">score</span><span class="p">))</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Number of matched results: 41
+ECONOMIC SPOTLIGHT - U . S . DEFICIT WITH 121.213109
+TAIWAN SEES SHARP DECLINE IN SHIPBREAKING 64.755111
+ASIAN EXPORTERS FEAR DAMAGE FROM U . S .- JAPAN RIFT 63.133312
+ECONOMIC SPOTLIGHT - U . S . CONGRESS RAPS JAPAN 45.701311
+TAIWAN CURBS INFLOWS OF FOREIGN EXCHANGE 43.998890
+NET CHANGE IN EXPORT COMMITMENTS -- USDA 39.863770
+TAIWAN ANNOUNCES NEW ROUND OF IMPORT TARIFF CUTS 38.188223
+TAIWAN ANNOUNCES NEW ROUND OF IMPORT TARIFF CUTS 38.188223
+RISING TAIWAN DOLLAR CAUSES FOREIGN RESERVES LOSS 35.701776
+TAIWAN COMPLAINS ABOUT SIZE OF RESERVES 32.377556
+TAIWAN FOREIGN EXCHANGE RESERVES HIT NEW HIGH 32.377556
+TAIWAN DOLLAR AND RESERVES SEEN RISING MORE SLOWLY 32.377556
+JAPANESE TARIFFS SEEN AS WORLDWIDE WARNING 31.566656
+ECONOMIC SPOTLIGHT - JAPAN SHIPBUILDERS RECOVERY 25.755989
+USDA COMMENTS ON EXPORT SALES REPORT U . S . 24.918215
+TAIWAN PLANS MISSION TO CLOSE TRADE GAP WITH U . S . 24.080442
+YEUTTER PUTS CURRENCY BURDEN ON TAIWAN , KOREA 24.080442
+TAIWAN STEEL FIRM SEES LOWER EXPORTS , MORE OUTPUT 20.756222
+TAIWAN SHIPBUILDER LOOKS FOR JAPANESE VENTURES 20.756222
+USDA COMMENTS ON EXPORT SALES 15.783328
+LONDON FREIGHT MARKET FEATURES GRAIN OUT OF U . S . 15.783328
+USDA COMMENTS ON EXPORT SALES REPORT 15.783328
+U . S . TRADE DEFICIT 38 . 37 BILLION DLRS IN 4TH QTR 15.783328
+BALDRIGE CONCERNED ABOUT KOREAN / TAIWAN DEFICITS 14.945554
+LATIN , CARIBBEAN NATIONS OPPOSE TRADE BILLS A 12.459108
+MULFORD SAYS GERMANY , JAPAN SHOULD DO MORE 12.459108
+THAI ZINC EXPORTS FALL IN MARCH 9.134887
+TRADE INTERESTS READY FOR FIGHT IN U . S . CONGRESS U . S . 9.134887
+TRADE INTERESTS READY FOR BATTLE IN U . S . HOUSE U . S . 9.134887
+PHILIPPINE PLANNING CHIEF URGES PESO DEVALUATION 9.134887
+LONDON GRAIN FREIGHTS 27 , 000 9.134887
+BALDRIGE WARNS OF WORLD TRADE WAR DANGER U . S . 9.134887
+REPORT EXPECTS SHARP DROP IN WORLD IRON IMPORTS 9.134887
+EXPORT BUSINESS - GRAINS / OILSEEDS COMPLEX 9.134887
+U . S . HOUSE PANEL TAKES FIRST TRADE BILL VOTES 9.134887
+SOUTH AFRICA CORN EXPORTS COULD BE REDUCED - USDA 9.134887
+DOLLAR VALUE APPROPRIATE , BUNDESBANK OFFICIAL SAYS 9.134887
+U . S . HOUSE PANEL APPROVES TRADE BILL 9.134887
+U . S . HOUSE PANEL APPROVES TRADE BILL 9.134887
+AUSTRALIAN BEEF OUTPUT SEEN DECLINING IN 1987 9.134887
+BALDRIGE WARNS OF WORLD TRADE WAR DANGER U . S . 9.134887
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./TM"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="TM03_POS%20Tagging.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">TM03 POS Tagging</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="TM05_sentiment.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">TM05 Sentiment analysis</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#search">Search</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-data">Build Data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-a-single-query-term">Search for a single query term</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#search-for-multiple-terms-and">Search for multiple terms (AND)</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#tf-idf">TF-IDF</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-tf-idf">Testing tf-idf</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-tf-and-df">Compute tf and df</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#compute-idf">Compute idf</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#testing-tfidf-for-whole-doc">(Testing) tfidf for whole doc</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#basic-ir-model">Basic IR Model</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#representation">Representation</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#sorting">Sorting</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#bm25">BM25</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#inverted-indexing">Inverted Indexing</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#build-inverted-index">Build inverted index</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

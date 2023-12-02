@@ -1,0 +1,1241 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>Twitter API &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P08_2_twitter_api';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Tweepy for twitter API 2.0" href="P08_3%20tweepy.html" />
+    <link rel="prev" title="Web API: cnyes &amp; 104.com" href="P08_1_web_json.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P08_2_twitter_api.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P08_2_twitter_api.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P08_2_twitter_api.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>Twitter API</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-tweets-data">Overview of tweets data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-twitter-api-2-0">Using Twitter API 2.0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-and-get-bearer-token">Apply and get bearer_token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-tweets-data">Get tweets data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#send-query">Send query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data-from-next-token-pagination">Get data from next token (Pagination)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#query-with-next-token">query with next token</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-for-loop-and-combine-data">Add for-loop and combine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-data-uniqueness">Verify data uniqueness</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewed-by-pandas">Viewed by pandas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-api-documents">Twitter API Documents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-fields">Data fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-formation">Query formation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-fields">More fields</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="twitter-api">
+<h1>Twitter API<a class="headerlink" href="#twitter-api" title="Permalink to this headline">#</a></h1>
+<ol class="arabic simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/en/docs/tutorials/step-by-step-guide-to-making-your-first-request-to-the-twitter-api-v2">Sign-up twitter developter account</a></p></li>
+<li><p>Create a project and an application</p></li>
+<li><p>Applying and copying Bear token</p></li>
+</ol>
+<section id="overview-of-tweets-data">
+<h2>Overview of tweets data<a class="headerlink" href="#overview-of-tweets-data" title="Permalink to this headline">#</a></h2>
+<p>以下所載入的DataFrame為tweets資料，這是Twitter Transparency Center所公布的資料擷取2019/03/15至2019/07/25間的片段。載入的目的是希望能先觀察一下，像Twitter所釋出的資料包含哪些欄位？如果自己運用Twitter所釋出的API來爬取資料，能不能爬到這些資料。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/p4css/py4css/main/data/tweets20190315.csv&quot;</span><span class="p">)</span>
+<span class="n">tweets</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">tweets</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/p4css/py4css/main/data/tweets20190315.csv&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">tweets</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/util/_decorators.py:311,</span> in <span class="ni">deprecate_nonkeyword_arguments.&lt;locals&gt;.decorate.&lt;locals&gt;.wrapper</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">305</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">args</span><span class="p">)</span> <span class="o">&gt;</span> <span class="n">num_allow_args</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">306</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">307</span>         <span class="n">msg</span><span class="o">.</span><span class="n">format</span><span class="p">(</span><span class="n">arguments</span><span class="o">=</span><span class="n">arguments</span><span class="p">),</span>
+<span class="g g-Whitespace">    </span><span class="mi">308</span>         <span class="ne">FutureWarning</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>         <span class="n">stacklevel</span><span class="o">=</span><span class="n">stacklevel</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">return</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:680,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, squeeze, prefix, mangle_dupe_cols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, error_bad_lines, warn_bad_lines, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">665</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">666</span>     <span class="n">dialect</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">delimiter</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span>     <span class="n">defaults</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;delimiter&quot;</span><span class="p">:</span> <span class="s2">&quot;,&quot;</span><span class="p">},</span>
+<span class="g g-Whitespace">    </span><span class="mi">677</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">680</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:575,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">572</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
+<span class="g g-Whitespace">    </span><span class="mi">574</span> <span class="c1"># Create the parser.</span>
+<span class="ne">--&gt; </span><span class="mi">575</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">577</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">578</span>     <span class="k">return</span> <span class="n">parser</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:933,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="g g-Whitespace">    </span><span class="mi">930</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">932</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
+<span class="ne">--&gt; </span><span class="mi">933</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1217,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1213</span>     <span class="n">mode</span> <span class="o">=</span> <span class="s2">&quot;rb&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1214</span> <span class="c1"># error: No overload variant of &quot;get_handle&quot; matches argument types</span>
+<span class="g g-Whitespace">   </span><span class="mi">1215</span> <span class="c1"># &quot;Union[str, PathLike[str], ReadCsvBuffer[bytes], ReadCsvBuffer[str]]&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1216</span> <span class="c1"># , &quot;str&quot;, &quot;bool&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;, &quot;Any&quot;</span>
+<span class="ne">-&gt; </span><span class="mi">1217</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>  <span class="c1"># type: ignore[call-overload]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1218</span>     <span class="n">f</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1219</span>     <span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1220</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1221</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1222</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1223</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1224</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1225</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
+<span class="g g-Whitespace">   </span><span class="mi">1226</span> <span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1227</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
+<span class="g g-Whitespace">   </span><span class="mi">1228</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:670,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">667</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">669</span> <span class="c1"># open URLs</span>
+<span class="ne">--&gt; </span><span class="mi">670</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">671</span>     <span class="n">path_or_buf</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">672</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">673</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">674</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">675</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">676</span> <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">678</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
+<span class="g g-Whitespace">    </span><span class="mi">679</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:339,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="g g-Whitespace">    </span><span class="mi">337</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
+<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">339</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">340</span>     <span class="n">content_encoding</span> <span class="o">=</span> <span class="n">req</span><span class="o">.</span><span class="n">headers</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;Content-Encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">341</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">342</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:239,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">234</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
+<span class="g g-Whitespace">    </span><span class="mi">235</span><span class="sd"> the stdlib.</span>
+<span class="g g-Whitespace">    </span><span class="mi">236</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">237</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
+<span class="ne">--&gt; </span><span class="mi">239</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:214,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">214</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:523,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">523</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">525</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:632,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">630</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">632</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="k">return</span> <span class="n">response</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:561,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">560</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">561</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:494,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">494</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="k">return</span> <span class="n">result</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:641,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">640</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">641</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+
+<span class="ne">HTTPError</span>: HTTP Error 404: Not Found
+</pre></div>
+</div>
+</div>
+</div>
+<p>欄位資訊相當豐富，包含：</p>
+<ol class="arabic simple">
+<li><p>跟tweet本身相關的包含<code class="docutils literal notranslate"><span class="pre">'tweetid',</span> <span class="pre">'userid',</span> <span class="pre">'tweet_language',</span> <span class="pre">'tweet_text',</span> <span class="pre">'tweet_time',</span> <span class="pre">'tweet_client_name',</span> <span class="pre">'in_reply_to_userid',</span> <span class="pre">'in_reply_to_tweetid',</span> <span class="pre">'quoted_tweet_tweetid',</span> <span class="pre">'is_retweet',</span> <span class="pre">'retweet_userid',</span> <span class="pre">'retweet_tweetid',</span> <span class="pre">'latitude',</span> <span class="pre">'longitude',</span> <span class="pre">'quote_count',</span> <span class="pre">'reply_count',</span> <span class="pre">'like_count',</span> <span class="pre">'retweet_count',</span> <span class="pre">'urls'</span></code></p></li>
+<li><p>有些似乎是跟發文者比較相關的，包含<code class="docutils literal notranslate"><span class="pre">'userid',</span> <span class="pre">'user_display_name',</span> <span class="pre">'user_screen_name',</span> <span class="pre">'user_reported_location',</span> <span class="pre">'user_profile_description',</span> <span class="pre">'user_profile_url',</span> <span class="pre">'follower_count',</span> <span class="pre">'following_count',</span> <span class="pre">'account_creation_date',</span> <span class="pre">'account_language'</span></code></p></li>
+<li><p>有些則看起來不見得是Twitter API中原本會附的欄位，如<code class="docutils literal notranslate"><span class="pre">'hashtags',</span> <span class="pre">'user_mentions'</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="o">.</span><span class="n">columns</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Index([&#39;tweetid&#39;, &#39;userid&#39;, &#39;user_display_name&#39;, &#39;user_screen_name&#39;,
+       &#39;user_reported_location&#39;, &#39;user_profile_description&#39;,
+       &#39;user_profile_url&#39;, &#39;follower_count&#39;, &#39;following_count&#39;,
+       &#39;account_creation_date&#39;, &#39;account_language&#39;, &#39;tweet_language&#39;,
+       &#39;tweet_text&#39;, &#39;tweet_time&#39;, &#39;tweet_client_name&#39;, &#39;in_reply_to_userid&#39;,
+       &#39;in_reply_to_tweetid&#39;, &#39;quoted_tweet_tweetid&#39;, &#39;is_retweet&#39;,
+       &#39;retweet_userid&#39;, &#39;retweet_tweetid&#39;, &#39;latitude&#39;, &#39;longitude&#39;,
+       &#39;quote_count&#39;, &#39;reply_count&#39;, &#39;like_count&#39;, &#39;retweet_count&#39;, &#39;hashtags&#39;,
+       &#39;urls&#39;, &#39;user_mentions&#39;, &#39;poll_choices&#39;],
+      dtype=&#39;object&#39;)
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tweets</span><span class="o">.</span><span class="n">info</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.frame.DataFrame&#39;&gt;
+RangeIndex: 15579 entries, 0 to 15578
+Data columns (total 31 columns):
+ #   Column                    Non-Null Count  Dtype  
+---  ------                    --------------  -----  
+ 0   tweetid                   15579 non-null  float64
+ 1   userid                    15579 non-null  object 
+ 2   user_display_name         15579 non-null  object 
+ 3   user_screen_name          15579 non-null  object 
+ 4   user_reported_location    12406 non-null  object 
+ 5   user_profile_description  12585 non-null  object 
+ 6   user_profile_url          658 non-null    object 
+ 7   follower_count            15579 non-null  int64  
+ 8   following_count           15579 non-null  int64  
+ 9   account_creation_date     15579 non-null  object 
+ 10  account_language          15579 non-null  object 
+ 11  tweet_language            15579 non-null  object 
+ 12  tweet_text                15579 non-null  object 
+ 13  tweet_time                15579 non-null  object 
+ 14  tweet_client_name         15579 non-null  object 
+ 15  in_reply_to_userid        1096 non-null   object 
+ 16  in_reply_to_tweetid       1071 non-null   float64
+ 17  quoted_tweet_tweetid      1138 non-null   float64
+ 18  is_retweet                15579 non-null  bool   
+ 19  retweet_userid            5184 non-null   object 
+ 20  retweet_tweetid           5184 non-null   float64
+ 21  latitude                  15579 non-null  object 
+ 22  longitude                 15579 non-null  object 
+ 23  quote_count               15536 non-null  float64
+ 24  reply_count               15536 non-null  float64
+ 25  like_count                15536 non-null  float64
+ 26  retweet_count             15536 non-null  float64
+ 27  hashtags                  15579 non-null  object 
+ 28  urls                      15579 non-null  object 
+ 29  user_mentions             15579 non-null  object 
+ 30  poll_choices              0 non-null      float64
+dtypes: bool(1), float64(9), int64(2), object(19)
+memory usage: 3.6+ MB
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="using-twitter-api-2-0">
+<h2>Using Twitter API 2.0<a class="headerlink" href="#using-twitter-api-2-0" title="Permalink to this headline">#</a></h2>
+<p>何謂API？可以看這一段Twitter API的描述「The Twitter API enables programmatic access to Twitter in unique and advanced ways. Tap into core elements of Twitter like: Tweets, Direct Messages, Spaces, Lists, users, and more.」。簡單地說，網站伺服器（例如社群網站）提供一個存取資料的方式，讓使用者可以用這套方式，合理地向伺服器提出資料要求。一來，現在社群網站都很大，一般用暴力法寫程式也很難將資料撈完，或者找到所需資料在哪；而來，服務提供方也不希望其他使用者亂撈他們資料而影響到服務本身。</p>
+<p>Youtube、DCard、Twitter、Steam、Spotify、Facebook都有API，幾乎大部分中大型線上服務都有API。當然，服務方也不希望被誣陷質的撈取而去做賺錢工作（例如之前被告的Cambridge Analytica即是收集Facebook資料來做服務），所以便會謹慎地審核申請者的資格、規劃合理權限和合理的可撈取數量。</p>
+<p>現在Twitter API 2.0主要分成三種存取權限（<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/getting-started/about-twitter-api">Access levels</a>），通常剛註冊的人給的就是Essentials，學者有機會可以申請到Academic Research，可以獲得更多的Tweets。</p>
+<section id="apply-and-get-bearer-token">
+<h3>Apply and get bearer_token<a class="headerlink" href="#apply-and-get-bearer-token" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">bearer_token</span> <span class="o">=</span> <span class="s2">&quot;YOUR_BEARER_TOKEN&quot;</span>
+</pre></div>
+</div>
+</section>
+<section id="get-tweets-data">
+<h3>Get tweets data<a class="headerlink" href="#get-tweets-data" title="Permalink to this headline">#</a></h3>
+<p>Twitter也有提供大量的範例可以讓使用者學習，例如這個範例<a class="reference external" href="https://github.com/twitterdev/Twitter-API-v2-sample-code/blob/main/Recent-Search/recent_search.py">recent_search.py</a>程式碼就教你怎麼搜尋最近某個關鍵字的相關Tweets。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<span class="kn">import</span> <span class="nn">os</span>
+<span class="kn">import</span> <span class="nn">json</span>
+
+<span class="c1"># To set your environment variables in your terminal run the following line:</span>
+<span class="c1"># export &#39;BEARER_TOKEN&#39;=&#39;&lt;your_bearer_token&gt;&#39;</span>
+<span class="c1"># bearer_token = &quot;YOUR_BEARER_TOKEN&quot;</span>
+
+<span class="n">search_url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent&quot;</span>
+
+<span class="c1"># Optional params: start_time,end_time,since_id,until_id,max_results,next_token,</span>
+<span class="c1"># expansions,tweet.fields,media.fields,poll.fields,place.fields,user.fields</span>
+<span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+
+
+<span class="k">def</span> <span class="nf">bearer_oauth</span><span class="p">(</span><span class="n">r</span><span class="p">):</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;Authorization&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;Bearer </span><span class="si">{</span><span class="n">bearer_token</span><span class="si">}</span><span class="s2">&quot;</span>
+    <span class="n">r</span><span class="o">.</span><span class="n">headers</span><span class="p">[</span><span class="s2">&quot;User-Agent&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;v2RecentSearchPython&quot;</span>
+    <span class="k">return</span> <span class="n">r</span>
+
+<span class="k">def</span> <span class="nf">connect_to_endpoint</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="p">):</span>
+    <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">auth</span><span class="o">=</span><span class="n">bearer_oauth</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
+    <span class="k">if</span> <span class="n">response</span><span class="o">.</span><span class="n">status_code</span> <span class="o">!=</span> <span class="mi">200</span><span class="p">:</span>
+        <span class="k">raise</span> <span class="ne">Exception</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">,</span> <span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
+    <span class="k">return</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+</pre></div>
+</div>
+</section>
+<section id="send-query">
+<h3>Send query<a class="headerlink" href="#send-query" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span>200
+{
+    &quot;data&quot;: [
+        {
+            &quot;author_id&quot;: &quot;39702114&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581622153291538432&quot;],
+            &quot;id&quot;: &quot;1581622153291538432&quot;,
+            &quot;text&quot;: &quot;RT @WelterPatrick: Die Vereinigten Staaten versuchen, China von Mikrochips der Hochleistungsklasse abzuschneiden. Der Weltwirtschaft droht\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1498806254357168132&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581622003508793344&quot;],
+            &quot;id&quot;: &quot;1581622003508793344&quot;,
+            &quot;text&quot;: &quot;RT @lukedepulford: Xi seized #HongKong. Got away with it. Now boasting about it. \n\nPerpetrated #Uyghur genocide. Got away with it. \n\nWe\u2019ve\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;711273903625277441&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581621965366104064&quot;],
+            &quot;id&quot;: &quot;1581621965366104064&quot;,
+            &quot;text&quot;: &quot;RT @Michael_Leh: FAZ: \&quot;Besonders langen Applaus bekam #Xi Jinping f\u00fcr seine \u00c4u\u00dferungen \u00fcber #Taiwan (...) wir werden niemals versprechen, a\u2026&quot;
+        },
+        ...
+        ,
+        {
+            &quot;author_id&quot;: &quot;3237453390&quot;,
+            &quot;edit_history_tweet_ids&quot;: [&quot;1581621739460493312&quot;],
+            &quot;id&quot;: &quot;1581621739460493312&quot;,
+            &quot;text&quot;: &quot;\u0bb5\u0bbf\u0bb0\u0bbf\u0bb5\u0bbe\u0b95 \u0baa\u0b9f\u0bbf\u0b95\u0bcd\u0b95 \ud83d\udc49 https://t.co/wiTe7k8soB \n\n1/2 kg #BlackForestCake \n\u20b9410 Only! \n\nBUY NOW (Chennai Only)\n\ud83d\udc47\ud83d\udc47\ud83d\udc47\nhttps://t.co/n6V58bzwgf\n\n# | #Back | #Taiwan | #Responds https://t.co/LxKXCXlsMb&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;newest_id&quot;: &quot;1581622153291538432&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzejv8x203j69hebwpbc6a92ocayl&quot;,
+        &quot;oldest_id&quot;: &quot;1581621739460493312&quot;,
+        &quot;result_count&quot;: 10
+    }
+}
+</pre></div>
+</div>
+</section>
+<section id="get-data-from-next-token-pagination">
+<h3>Get data from next token (Pagination)<a class="headerlink" href="#get-data-from-next-token-pagination" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate">https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/paginate</a></p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="s1">&#39;b26v89c19zqg8o3fpzejv8x21kvodvznrobqym6fpxoql&#39;</span>
+</pre></div>
+</div>
+<section id="query-with-next-token">
+<h4>query with next token<a class="headerlink" href="#query-with-next-token" title="Permalink to this headline">#</a></h4>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
+                <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> 
+                <span class="s1">&#39;next_token&#39;</span><span class="p">:</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]}</span>
+<span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">json_response</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-JSON notranslate"><div class="highlight"><pre><span></span>200
+{
+    &quot;data&quot;: [
+        {
+            &quot;author_id&quot;: &quot;3097153036&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581621108302057474&quot;
+            ],
+            &quot;id&quot;: &quot;1581621108302057474&quot;,
+            &quot;text&quot;: &quot;RT @lukedepulford: Xi seized #HongKong. Got away with it. Now boasting about it. \n\nPerpetrated #Uyghur genocide. Got away with it. \n\nWe\u2019ve\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1369249624700030982&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581621092078080000&quot;
+            ],
+            &quot;id&quot;: &quot;1581621092078080000&quot;,
+            &quot;text&quot;: &quot;RT @ptcnews: Full control over Hong Kong achieved, determined on Taiwan: Xi Jinping\n\n#HongKong #XiJinping #Taiwan #China #latestnews\n\nhttps\u2026&quot;
+        },
+        {
+            &quot;author_id&quot;: &quot;1391299076&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581621076815417344&quot;
+            ],
+            &quot;id&quot;: &quot;1581621076815417344&quot;,
+            &quot;text&quot;: &quot;RT @iingwen: Today marks 1000 days since our Central Epidemic Command Center was set up. I am deeply grateful to everyone who has contribut\u2026&quot;
+        },
+...,
+        {
+            &quot;author_id&quot;: &quot;1092479930301075456&quot;,
+            &quot;edit_history_tweet_ids&quot;: [
+                &quot;1581620902483341313&quot;
+            ],
+            &quot;id&quot;: &quot;1581620902483341313&quot;,
+            &quot;text&quot;: &quot;RT @StockmoneyL: #Bitcoin and #DXY hand in hand\ud83d\ude4c\n\nA strong U.S. dollar (#DXY) was followed by a decline when drivers start to disapear. \n\nI\u2026&quot;
+        }
+    ],
+    &quot;meta&quot;: {
+        &quot;newest_id&quot;: &quot;1581621108302057474&quot;,
+        &quot;next_token&quot;: &quot;b26v89c19zqg8o3fpzejv8x1ylc17m7a4xeji3mij99j1&quot;,
+        &quot;oldest_id&quot;: &quot;1581620902483341313&quot;,
+        &quot;result_count&quot;: 10
+    }
+}
+</pre></div>
+</div>
+</section>
+</section>
+<section id="add-for-loop-and-combine-data">
+<h3>Add for-loop and combine data<a class="headerlink" href="#add-for-loop-and-combine-data" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="c1"># get the first block of data</span>
+<span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+<span class="n">tweets_all</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span>
+
+<span class="c1"># get next data block with next token</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">):</span>
+    <span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(from:taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
+                    <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> 
+                    <span class="s1">&#39;next_token&#39;</span><span class="p">:</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;meta&quot;</span><span class="p">][</span><span class="s2">&quot;next_token&quot;</span><span class="p">]}</span>
+    <span class="n">json_response</span> <span class="o">=</span> <span class="n">connect_to_endpoint</span><span class="p">(</span><span class="n">search_url</span><span class="p">,</span> <span class="n">query_params</span><span class="p">)</span>
+    <span class="n">tweets_all</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">json_response</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">))</span>
+
+</pre></div>
+</div>
+<section id="verify-data-uniqueness">
+<h4>Verify data uniqueness<a class="headerlink" href="#verify-data-uniqueness" title="Permalink to this headline">#</a></h4>
+<p>有時候複製貼上錯誤變數時，會不小心重複撈第一筆資料。通常至少會稍微驗證一下，是否抓回來的每份資料都是新的資料。那要如何驗證自己上述爬取過程沒有錯誤？最簡單的方法就是把Tweets這份資料獨一無二的編號給掉出來看看是否有重複，在這個例子中就是tweets id。所以先將所有的id給存在一個list中，然後用<code class="docutils literal notranslate"><span class="pre">set()</span></code>來取得該list中的唯一值，如果長度是相等的，那代表抓回來的資料都是非重複資料。</p>
+<div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">))</span>
+<span class="n">ids</span> <span class="o">=</span> <span class="p">[</span><span class="n">d</span><span class="p">[</span><span class="s1">&#39;id&#39;</span><span class="p">]</span> <span class="k">for</span> <span class="n">d</span> <span class="ow">in</span> <span class="n">tweets_all</span><span class="p">]</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="nb">set</span><span class="p">(</span><span class="n">ids</span><span class="p">)))</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="viewed-by-pandas">
+<h3>Viewed by pandas<a class="headerlink" href="#viewed-by-pandas" title="Permalink to this headline">#</a></h3>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
+<span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">)</span>
+</pre></div>
+</div>
+</section>
+</section>
+<section id="twitter-api-documents">
+<h2>Twitter API Documents<a class="headerlink" href="#twitter-api-documents" title="Permalink to this headline">#</a></h2>
+<section id="data-fields">
+<h3>Data fields<a class="headerlink" href="#data-fields" title="Permalink to this headline">#</a></h3>
+<p>如果不知道有哪些欄位可以查詢，可以參考Twitter所提供的API Tools去建構。</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://developer.twitter.com/apitools/api">https://developer.twitter.com/apitools/api</a></p></li>
+<li><p>Choose endpoints <strong>GET /2/tweets/counts/recent</strong> (Returns Tweet Counts from the last 7 days that match a search query)</p></li>
+</ul>
+<p>有一個非常有趣的fields是<a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/annotations/overview">entities annotations</a>，他會去標註在每一則Tweet中有哪些命名實體。例如在這則Tweeet中「<em>【出張TAIWAN PLUS 2022&#64;expo】
+『#pppppins 』は台湾デザイナーAlice Wangにより設立されたブランド。陽気、皮肉、そして文化的なモチーフのピンズはビジュアルを生き生きとさせるカラフルな色使いで、柔らかいエナメルを施した真鍮製です。🍧⛰🌵🦕#TAIWANPLUS2022</em>」就有「台湾」和「Alice Wang」兩個NER被標註出來，除了位置之外，還有辨識為人名、機構、地區的機率（probability）與類別（type）。</p>
+<div class="highlight-json notranslate"><div class="highlight"><pre><span></span><span class="nt">&quot;entities&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<span class="w">                </span><span class="nt">&quot;annotations&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">40</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\u53f0\u6e7e&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.6719</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">39</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Place&quot;</span>
+<span class="w">                    </span><span class="p">},</span>
+<span class="w">                    </span><span class="p">{</span>
+<span class="w">                        </span><span class="nt">&quot;end&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">55</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;normalized_text&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Alice Wang&quot;</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;probability&quot;</span><span class="p">:</span><span class="w"> </span><span class="mf">0.7319</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;start&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">46</span><span class="p">,</span>
+<span class="w">                        </span><span class="nt">&quot;type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Organization&quot;</span>
+<span class="w">                    </span><span class="p">}</span>
+<span class="w">                </span><span class="p">],</span>
+</pre></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># url = &quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&quot;</span>
+<span class="c1"># url = &quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=created_at,geo,id,lang,conversation_id&quot;</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="query-formation">
+<h3>Query formation<a class="headerlink" href="#query-formation" title="Permalink to this headline">#</a></h3>
+<p><a class="reference external" href="https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query">https://developer.twitter.com/en/docs/twitter-api/tweets/search/integrate/build-a-query</a></p>
+<blockquote>
+<div><p>Reviewing the sentiment of a conversation
+The next rule could be used to better understand the sentiment of the conversation developing around the hashtag, #nowplaying, but scoped to just Tweets published within North America. Here is what the two different queries, one for positive and one for negative, would look like without the HTTP encoding:</p>
+</div></blockquote>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">#nowplaying</span> <span class="pre">(happy</span> <span class="pre">OR</span> <span class="pre">exciting</span> <span class="pre">OR</span> <span class="pre">excited</span> <span class="pre">OR</span> <span class="pre">favorite</span> <span class="pre">OR</span> <span class="pre">fav</span> <span class="pre">OR</span> <span class="pre">amazing</span> <span class="pre">OR</span> <span class="pre">lovely</span> <span class="pre">OR</span> <span class="pre">incredible)</span> <span class="pre">(place_country:US</span> <span class="pre">OR</span> <span class="pre">place_country:MX</span> <span class="pre">OR</span> <span class="pre">place_country:CA)</span> <span class="pre">-horrible</span> <span class="pre">-worst</span> <span class="pre">-sucks</span> <span class="pre">-bad</span> <span class="pre">-disappointing</span></code></p>
+</div></blockquote>
+<blockquote>
+<div><p><code class="docutils literal notranslate"><span class="pre">#nowplaying</span> <span class="pre">(horrible</span> <span class="pre">OR</span> <span class="pre">worst</span> <span class="pre">OR</span> <span class="pre">sucks</span> <span class="pre">OR</span> <span class="pre">bad</span> <span class="pre">OR</span> <span class="pre">disappointing)</span> <span class="pre">(place_country:US</span> <span class="pre">OR</span> <span class="pre">place_country:MX</span> <span class="pre">OR</span> <span class="pre">place_country:CA)</span> <span class="pre">-happy</span> <span class="pre">-exciting</span> <span class="pre">-excited</span> <span class="pre">-favorite</span> <span class="pre">-fav</span> <span class="pre">-amazing</span> <span class="pre">-lovely</span> <span class="pre">-incredible</span></code></p>
+</div></blockquote>
+<blockquote>
+<div><p>Adding more conditional operators narrows your search results, for example  <code class="docutils literal notranslate"><span class="pre">(happy</span> <span class="pre">OR</span> <span class="pre">happiness)</span> <span class="pre">place_country:GB</span> <span class="pre">-birthday</span> <span class="pre">-is:retweet</span></code></p>
+</div></blockquote>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span><span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id&#39;</span><span class="p">}</span>
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="more-fields">
+<h3>More fields<a class="headerlink" href="#more-fields" title="Permalink to this headline">#</a></h3>
+<p>Twtiter API分為五種主要類型的資料，可分別查詢，例如用user.field查詢某個tweet作者，分別為</p>
+<ul class="simple">
+<li><p>Tweet → <code class="docutils literal notranslate"><span class="pre">tweet.fields</span></code></p></li>
+<li><p>User → <code class="docutils literal notranslate"><span class="pre">user.fields</span></code></p></li>
+<li><p>Media → <code class="docutils literal notranslate"><span class="pre">media.fields</span></code></p></li>
+<li><p>Poll → <code class="docutils literal notranslate"><span class="pre">poll.fields</span></code></p></li>
+<li><p>Place → <code class="docutils literal notranslate"><span class="pre">place.fields</span></code></p></li>
+</ul>
+<p>但在研究上我可能會需要，在查找Tweet時，便把User的資料帶進來。過去可能會把所有Tweet的資料取完後，然後整理作者列表後逐一撈取。但現在可以在查詢Tweet時，便利用<code class="docutils literal notranslate"><span class="pre">expansions</span></code>連結至其他資料，例如從Tweet連至User資料，然後就可以查詢<code class="docutils literal notranslate"><span class="pre">user.fields</span></code>裡面的欄位。相當於伺服器方幫忙做了資料庫的<code class="docutils literal notranslate"><span class="pre">join</span></code>工作。例子如下：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://api.twitter.com/2/tweets/search/recent?query=taiwan&amp;tweet.fields=created_at,geo,id,lang,conversation_id&amp;expansions=author_id&amp;user.fields=name,username,created_at&quot;</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">auth</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">(),</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">,</span> <span class="n">sort_keys</span><span class="o">=</span><span class="kc">True</span><span class="p">))</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span>
+    <span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="p">[</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;author_id&quot;</span><span class="p">:</span> <span class="s2">&quot;3424647323&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627200738324480&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-10-16T12:44:44.000Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;edit_history_tweet_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;1581627200738324480&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627200738324480&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lang&quot;</span><span class="p">:</span> <span class="s2">&quot;es&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;Claves del discurso de Xi jinping: taiwan, descarbonizacion: solo la har</span><span class="se">\u00e1</span><span class="s2">n cuando las energ</span><span class="se">\u00ed</span><span class="s2">as verdes puedan suplir la energ</span><span class="se">\u00ed</span><span class="s2">as sucias (o sea, nunca).</span><span class="se">\n</span><span class="s2">@amturiel @AAretxaba </span><span class="se">\n</span><span class="s2">@Sphinx_ARDE @desempleado666</span><span class="se">\n</span><span class="s2">https://t.co/pJjjbm2v7o&quot;</span>
+        <span class="p">},</span>
+        <span class="o">...</span><span class="p">,</span>
+        <span class="p">{</span>
+            <span class="s2">&quot;author_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1315467418983043075&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;conversation_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627152146964481&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-10-16T12:44:32.000Z&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;edit_history_tweet_ids&quot;</span><span class="p">:</span> <span class="p">[</span>
+                <span class="s2">&quot;1581627152146964481&quot;</span>
+            <span class="p">],</span>
+            <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627152146964481&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;lang&quot;</span><span class="p">:</span> <span class="s2">&quot;in&quot;</span><span class="p">,</span>
+            <span class="s2">&quot;text&quot;</span><span class="p">:</span> <span class="s2">&quot;24.198985,120.642056</span><span class="se">\n</span><span class="s2">PONY </span><span class="se">\ud83d\udcaf</span><span class="s2"> L3 CP126</span><span class="se">\n\ud83c\uddf9\ud83c\uddfc</span><span class="s2"> Taichung City, Taiwan</span><span class="se">\n\ud83c\udd5f\ud83c\udd5e\ud83c\udd5a\ud83c\udd54\ud83c\udd57\ud83c\udd64\ud83c\udd51\n</span><span class="s2">(https://t.co/vwjTRgW059)</span><span class="se">\n</span><span class="s2">#Hundo #PokemonGO&quot;</span>
+        <span class="p">}</span>
+    <span class="p">],</span>
+    <span class="s2">&quot;includes&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;users&quot;</span><span class="p">:</span> <span class="p">[</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2015-08-15T19:52:07.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;3424647323&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;Alejandro Suarez&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;fatima__lpa&quot;</span>
+            <span class="p">},</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2022-01-19T06:29:05.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1483687872083501066&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;BruteSpoon&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;BruteFork&quot;</span>
+            <span class="p">},</span>
+<span class="o">...</span><span class="p">,</span>
+            <span class="p">{</span>
+                <span class="s2">&quot;created_at&quot;</span><span class="p">:</span> <span class="s2">&quot;2020-10-12T01:41:01.000Z&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;id&quot;</span><span class="p">:</span> <span class="s2">&quot;1315467418983043075&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;name&quot;</span><span class="p">:</span> <span class="s2">&quot;</span><span class="se">\u0f3a</span><span class="s2"> CHIEF </span><span class="se">\u0f3b</span><span class="s2">&quot;</span><span class="p">,</span>
+                <span class="s2">&quot;username&quot;</span><span class="p">:</span> <span class="s2">&quot;ChiefPokemon&quot;</span>
+            <span class="p">}</span>
+        <span class="p">]</span>
+    <span class="p">},</span>
+    <span class="s2">&quot;meta&quot;</span><span class="p">:</span> <span class="p">{</span>
+        <span class="s2">&quot;newest_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627200738324480&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;next_token&quot;</span><span class="p">:</span> <span class="s2">&quot;b26v89c19zqg8o3fpzejv8x295zm8tig2jfxtcaebvuyl&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;oldest_id&quot;</span><span class="p">:</span> <span class="s2">&quot;1581627152146964481&quot;</span><span class="p">,</span>
+        <span class="s2">&quot;result_count&quot;</span><span class="p">:</span> <span class="mi">10</span>
+    <span class="p">}</span>
+<span class="p">}</span>
+</pre></div>
+</div>
+<p>在撈Tweets順便將Users資訊帶回來，此時這些Users資訊會被列在<code class="docutils literal notranslate"><span class="pre">data</span></code>與<code class="docutils literal notranslate"><span class="pre">meta</span></code>這兩個key之外的另一個dictionary</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">res</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">res</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+</pre></div>
+</div>
+<p>OUTPUT</p>
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">dict_keys</span><span class="p">([</span><span class="s1">&#39;data&#39;</span><span class="p">,</span> <span class="s1">&#39;includes&#39;</span><span class="p">,</span> <span class="s1">&#39;meta&#39;</span><span class="p">])</span>
+</pre></div>
+</div>
+</section>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P08_1_web_json.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Web API: cnyes &amp; 104.com</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P08_3%20tweepy.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">Tweepy for twitter API 2.0</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#overview-of-tweets-data">Overview of tweets data</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-twitter-api-2-0">Using Twitter API 2.0</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#apply-and-get-bearer-token">Apply and get bearer_token</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-tweets-data">Get tweets data</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#send-query">Send query</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#get-data-from-next-token-pagination">Get data from next token (Pagination)</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#query-with-next-token">query with next token</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#add-for-loop-and-combine-data">Add for-loop and combine data</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#verify-data-uniqueness">Verify data uniqueness</a></li>
+</ul>
+</li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#viewed-by-pandas">Viewed by pandas</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#twitter-api-documents">Twitter API Documents</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#data-fields">Data fields</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#query-formation">Query formation</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#more-fields">More fields</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

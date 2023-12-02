@@ -1,0 +1,1058 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P04 Flow Control &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P04_for';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P04 Practice01: for loop" href="P04p1_for.html" />
+    <link rel="prev" title="P03 Practice: Accessing dict and list" href="P03p_ans.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">P04 Flow Control</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P04_for.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P04_for.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P04_for.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P04 Flow Control</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-traverse-and-iterate">For: Traverse and Iterate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-continue"><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code>: 中止迴圈</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#range">range()函式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-for-loop">Nested for-loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-9-x-9-table">Print 9 x 9 table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">if-elif-else 條件語句教學</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-assign-0-100-into-a-b-c-class">Example: Assign 0~100 into A, B, C, ..Class</a></li>
+</ul>
+</li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p04-flow-control">
+<h1>P04 Flow Control<a class="headerlink" href="#p04-flow-control" title="Permalink to this headline">#</a></h1>
+<p><strong>for-if-else</strong>的語法概念本身並不難，一個是重複執行的結構，一個是條件判斷式。學習重點應在於，怎麼活用他們來完成一些任務。</p>
+<div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
+<ul class="simple">
+<li><p>for-loo-: Interating and Traversing</p>
+<ul>
+<li><p>基本用法：用於計數和列出特定資料集。</p></li>
+<li><p>列舉（Iterating）：遍歷列表或其他集合型態的所有元素。</p></li>
+<li><p>走訪（Traversing）：用於走訪複雜的資料結構，如多維陣列或樹狀結構。</p></li>
+</ul>
+</li>
+<li><p>break 和 continue：控制迴圈</p>
+<ul>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>：在特定條件下跳過迴圈內剩餘的指令。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>：在特定條件下終止整個迴圈。</p></li>
+<li><p>在網路爬蟲中常用，以處理不確定的爬取範圍和資料可用性。</p></li>
+</ul>
+</li>
+<li><p>range() 函式</p>
+<ul>
+<li><p>用於生成數字序列。</p></li>
+<li><p>可接受一個、兩個或三個參數，以控制數字序列的起始、結束和間隔。</p></li>
+<li><p>可用於逆序列舉和資料型態轉換。</p></li>
+</ul>
+</li>
+<li><p>Nested for-loop</p>
+<ul>
+<li><p>基本語法：一個迴圈內包含另一個或多個迴圈。</p></li>
+<li><p>應用場景：二維數組遍歷、矩陣運算等。</p></li>
+<li><p>計算量較大，需注意效能問題。</p></li>
+<li><p>實作：九九乘法表實作</p></li>
+</ul>
+</li>
+<li><p>if-elif-else</p>
+<ul>
+<li><p>應用場景：多條件判斷、多分支判斷、多路徑判斷</p></li>
+<li><p>實作：成績等第制</p></li>
+</ul>
+</li>
+</ul>
+</div><section id="for-traverse-and-iterate">
+<h2>For: Traverse and Iterate<a class="headerlink" href="#for-traverse-and-iterate" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">for</span></code> 是一個極為強大的程式指令，不僅可以用於計數，還能用於列出所有特定資料集（如youbike站台）的相關資訊。其基本作用是在指定的範疇或資料結構中重複執行一段程式碼，因此它也常被稱作<strong>for-each</strong>迴圈。</p>
+<ul class="simple">
+<li><p><strong>列舉（Iterating）：</strong> <code class="docutils literal notranslate"><span class="pre">for</span></code> 迴圈可以遍歷（iterate）一個列表（list）或其他集合型態的所有元素，並對每一個元素執行特定操作。例如，你可以用它來計算數字的總和或平均值。</p></li>
+<li><p><strong>走訪（Traversing）：</strong> 除了基本的列舉外，<code class="docutils literal notranslate"><span class="pre">for</span></code> 迴圈還可以用於走訪複雜的資料結構，例如多維陣列或樹狀結構。</p></li>
+</ul>
+<p>簡而言之，這裡的 <code class="docutils literal notranslate"><span class="pre">for</span></code> 迴圈是一個多用途的工具，能有效地走訪或列舉列表中的每一個項目，達到如計數、排序或搜索等多種功能。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Counting</span>
+<span class="n">fruit_count</span> <span class="o">=</span> <span class="p">{}</span>
+<span class="n">fruit_list</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;grape&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;apple&#39;</span><span class="p">]</span>
+
+<span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="n">fruit_list</span><span class="p">:</span>
+   <span class="k">if</span> <span class="n">fruit</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">fruit_count</span><span class="p">:</span>
+       <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="mi">1</span>
+   <span class="k">else</span><span class="p">:</span>
+       <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">=</span> <span class="n">fruit_count</span><span class="p">[</span><span class="n">fruit</span><span class="p">]</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="n">fruit_count</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;apple&#39;: 4, &#39;banana&#39;: 3, &#39;grape&#39;: 1}
+</pre></div>
+</div>
+</div>
+</div>
+<p>用以僅僅是把所有的內容給print出來。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">fruit</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;cherry&#39;</span><span class="p">,</span> <span class="s1">&#39;Durian&#39;</span><span class="p">]:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;I love&quot;</span><span class="p">,</span> <span class="n">fruit</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>I love apple
+I love banana
+I love cherry
+I love Durian
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">table</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;Sjoerd&#39;</span><span class="p">:</span> <span class="mi">41273</span><span class="p">,</span> <span class="s1">&#39;Jack&#39;</span><span class="p">:</span> <span class="mi">409</span><span class="p">,</span> <span class="s1">&#39;Dcab&#39;</span><span class="p">:</span> <span class="mi">7678</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="nb">id</span> <span class="ow">in</span> <span class="n">table</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s1">&#39;</span><span class="si">{</span><span class="n">name</span><span class="si">:</span><span class="s1">10</span><span class="si">}</span><span class="s1"> ==&gt; </span><span class="si">{</span><span class="nb">id</span><span class="si">:</span><span class="s1">10d</span><span class="si">}</span><span class="s1">&#39;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Sjoerd     ==&gt;      41273
+Jack       ==&gt;        409
+Dcab       ==&gt;       7678
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="break-continue">
+<h2><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code>: 中止迴圈<a class="headerlink" href="#break-continue" title="Permalink to this headline">#</a></h2>
+<p>在for-loop執行過程中，有時候會希望在某些條件成立時，就直接終止並跳出整個for-loop，或者，迴圈內以下的內容就不要執行，直接執行下一個iteration。包含以下兩種指令：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>: 當條件成立，下方的迴圈內容就不再執行，直接進入下一個iteration。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>：當條件成立，就終止整個回圈，跳出回圈的執行。</p></li>
+</ul>
+<p>在寫爬蟲的時候經常會用到<code class="docutils literal notranslate"><span class="pre">break</span></code>和<code class="docutils literal notranslate"><span class="pre">continue</span></code>的指令，原因是常常不知道究竟要爬多少頁才要停下來，或者，會不會爬到一個已經被移除的貼文（例如PTT）。</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>的應用：在撰寫爬蟲的時候，偶而會遇到不知道要爬到什麼時候，或者總資料筆數有多少（例如Twitter、DCard等等有API的服務）。此時通常會為for-loop設定一個過大停止值，例如撈個1000,000頁。此時，for-loop會一頁一頁往下撈，但總會遇到for-loop撈不到下一頁的情形，那就看看產生的錯誤是什麼，然後用<code class="docutils literal notranslate"><span class="pre">if</span></code>來判斷，如果出現該錯誤的時候，我就<code class="docutils literal notranslate"><span class="pre">break</span></code>出整個for-loop迴圈，就會停止該for-loop而不會真的撈到100,000頁。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>的應用：在撰寫爬蟲的時候，通常我們會在for-loop中邊爬邊剖析資料，也就是把一個頁面爬下來之後，就立刻剖析他，偵測看看標題、作者是什麼，然後才進入下一迴圈、爬下一個頁面。但是，偶而就會遇到像是PTT的貼文一樣，明明還有該網址，但是內容卻被移除了。既然內容被移除了，那就偵測不到標題和作者了。這時候，程式的寫法往往會是，我偵測看看是不是貼文是不是被移除了，如果被移除了，雖然我把該頁抓下來了，那我就用<code class="docutils literal notranslate"><span class="pre">continue</span></code>跳過剖析頁面資料的過程，直接進入下一圈迴圈（沒跳過反而會出現Error）。但也許各位會問，那這樣不就和if-else很像？如果偵測到什麼，就做什麼事。但利用<code class="docutils literal notranslate"><span class="pre">continue</span></code>可以讓程式碼比較乾淨，不用把之後要剖析資料的程式碼，放在if-else的判斷式裡面。</p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">continue</span></code>的邏輯示意圖如下，當滿足某個條件而執行<code class="docutils literal notranslate"><span class="pre">continue</span></code>時，便不會執行在for-loop在<code class="docutils literal notranslate"><span class="pre">continue</span></code>後面的指令，而會直接進入下一圈for-loop（Illustration from <a class="reference external" href="https://www.geeksforgeeks.org/break-continue-and-pass-in-python/%EF%BC%89%E3%80%82">https://www.geeksforgeeks.org/break-continue-and-pass-in-python/）。</a>
+<img alt="image.png" src="PSS/attachment:0cd50692-f6c5-4815-82a6-31c6d9a7b356.png" /></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">grades</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">&gt;=</span><span class="mi">100</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carlos
+ellen
+</pre></div>
+</div>
+</div>
+</div>
+<p>在下面的例子中，若讀到小於100的數值，就直接進入下一個iteration，就不會執行到<code class="docutils literal notranslate"><span class="pre">print(g)</span></code></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">grades</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">&lt;</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="k">continue</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carlos
+ellen
+</pre></div>
+</div>
+</div>
+</div>
+<p>在下面的例子中，若讀到大於等於100的數值，break會使得整個for-loop終止。通常用於找到一序列的資料中，有沒有包含某個合乎條件的情形，有的話便跳出。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">grades</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;albert&#39;</span><span class="p">:</span> <span class="mi">33</span><span class="p">,</span> <span class="s1">&#39;bob&#39;</span><span class="p">:</span> <span class="mi">44</span><span class="p">,</span> <span class="s1">&#39;carlos&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">,</span> <span class="s1">&#39;david&#39;</span><span class="p">:</span> <span class="mi">90</span><span class="p">,</span> <span class="s1">&#39;ellen&#39;</span><span class="p">:</span> <span class="mi">100</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="n">grades</span><span class="p">[</span><span class="n">g</span><span class="p">]</span> <span class="o">&gt;=</span> <span class="mi">100</span><span class="p">:</span>
+        <span class="nb">print</span><span class="p">(</span><span class="n">g</span><span class="p">)</span>
+        <span class="k">break</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>carlos
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="range">
+<h2>range()函式<a class="headerlink" href="#range" title="Permalink to this headline">#</a></h2>
+<p><code class="docutils literal notranslate"><span class="pre">range()</span></code> 是一個內建函數，主要用於生成一個數字序列。這個函數可以接受一個、兩個或三個參數，各自有不同的用途。for-loop為了用index來列舉所有List中的項目，經常搭配<code class="docutils literal notranslate"><span class="pre">range()</span></code>使用。基本用法如下</p>
+<ul class="simple">
+<li><p><strong>一個參數</strong>：<code class="docutils literal notranslate"><span class="pre">range(n)</span></code> 會生成從 <code class="docutils literal notranslate"><span class="pre">0</span></code> 到 <code class="docutils literal notranslate"><span class="pre">n-1</span></code> 的整數序列。</p></li>
+<li><p><strong>兩個參數</strong>：<code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop)</span></code> 會生成從 <code class="docutils literal notranslate"><span class="pre">start</span></code> 到 <code class="docutils literal notranslate"><span class="pre">stop-1</span></code> 的整數序列。</p></li>
+<li><p><strong>三個參數</strong>：<code class="docutils literal notranslate"><span class="pre">range(start,</span> <span class="pre">stop,</span> <span class="pre">step)</span></code> 會生成從 <code class="docutils literal notranslate"><span class="pre">start</span></code> 到 <code class="docutils literal notranslate"><span class="pre">stop-1</span></code> 的整數序列，其中每個數字的間隔是 <code class="docutils literal notranslate"><span class="pre">step</span></code>。</p></li>
+<li><p><strong>逆序列舉</strong>：你可以使用負數作為 <code class="docutils literal notranslate"><span class="pre">step</span></code> 參數，來生成一個逆序的數字序列。如<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(5,</span> <span class="pre">0,</span> <span class="pre">-1)</span></code>會輸出<code class="docutils literal notranslate"><span class="pre">5</span> <span class="pre">4</span> <span class="pre">3</span> <span class="pre">2</span> <span class="pre">1</span></code>。</p></li>
+<li><p><strong>資料型態轉換</strong>：雖然 <code class="docutils literal notranslate"><span class="pre">range()</span></code> 主要用於生成整數序列，但你也可以通過轉換來創造其他類型的序列，例如將其轉換為一個列表。<code class="docutils literal notranslate"><span class="pre">my_list</span> <span class="pre">=</span> <span class="pre">list(range(5))</span></code></p></li>
+</ul>
+<p><code class="docutils literal notranslate"><span class="pre">range()</span></code>函數對於<code class="docutils literal notranslate"><span class="pre">for</span></code>迴圈來說是極其有用的，因為他可以讓<code class="docutils literal notranslate"><span class="pre">for</span></code>迴圈遍歷過一個範圍內的所有數字，因而可以用來遍歷一個列表（List）或其他資料結構。</p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">6</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0
+1
+2
+3
+4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+3
+4
+5
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+  <span class="nb">print</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2
+5
+8
+11
+14
+17
+20
+23
+26
+29
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;apple&#39;</span><span class="p">,</span> <span class="s1">&#39;banana&#39;</span><span class="p">,</span> <span class="s1">&#39;cherry&#39;</span><span class="p">]</span>
+<span class="k">for</span> <span class="n">i</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">alist</span><span class="p">)):</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">i</span><span class="p">,</span> <span class="n">alist</span><span class="p">[</span><span class="n">i</span><span class="p">])</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0 apple
+1 banana
+2 cherry
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+<section id="nested-for-loop">
+<h2>Nested for-loop<a class="headerlink" href="#nested-for-loop" title="Permalink to this headline">#</a></h2>
+<p>在程式設計中，嵌套迴圈（nested loops）是一個迴圈內包含另一個或多個迴圈的概念。在這節教學中，我們將透過實例來介紹如何使用 Python 中的嵌套 <code class="docutils literal notranslate"><span class="pre">for-loop</span></code>。</p>
+<p>基本語法</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">outer_var</span> <span class="ow">in</span> <span class="n">outer_sequence</span><span class="p">:</span>
+    <span class="c1"># outer loop body</span>
+    <span class="k">for</span> <span class="n">inner_var</span> <span class="ow">in</span> <span class="n">inner_sequence</span><span class="p">:</span>
+        <span class="c1"># inner loop body</span>
+    <span class="c1"># end of inner loop</span>
+<span class="c1"># end of outer loop</span>
+</pre></div>
+</div>
+<p>應用情景</p>
+<ul class="simple">
+<li><p>二維數組或列表的遍歷。</p></li>
+<li><p>矩陣運算。</p></li>
+<li><p>圖形和遊戲開發中的格點系統。</p></li>
+</ul>
+<p>補充說明</p>
+<ul class="simple">
+<li><p>嵌套迴圈會大幅度增加程式的計算量，因此，在使用時應該特別注意效能問題。適當地使用<code class="docutils literal notranslate"><span class="pre">break</span></code>或<code class="docutils literal notranslate"><span class="pre">continue</span></code>能夠提高嵌套迴圈的效能。</p></li>
+</ul>
+<hr class="docutils" />
+<section id="print-9-x-9-table">
+<h3>Print 9 x 9 table<a class="headerlink" href="#print-9-x-9-table" title="Permalink to this headline">#</a></h3>
+<p>九九乘法表是基礎數學中一個重要的工具，用於練習和記憶基本的乘法運算。這個題目要求使用Python程式碼來生成九九乘法表。</p>
+<p>程式碼解析</p>
+<ol class="arabic simple">
+<li><p>使用兩個嵌套的 <code class="docutils literal notranslate"><span class="pre">for</span></code> 迴圈，外層迴圈變數 <code class="docutils literal notranslate"><span class="pre">a</span></code> 從1到9，內層迴圈變數 <code class="docutils literal notranslate"><span class="pre">b</span></code> 也從1到9。</p></li>
+<li><p>在內層迴圈中，使用 <code class="docutils literal notranslate"><span class="pre">print</span></code> 函數來輸出每一個乘法運算（<code class="docutils literal notranslate"><span class="pre">a*b</span></code>）的結果。</p></li>
+<li><p>使用字串格式化<code class="docutils literal notranslate"><span class="pre">f&quot;{a}*{b}</span> <span class="pre">={a*b:2d}&quot;</span></code>來確保輸出的格式是整齊的。</p></li>
+<li><p>使用 <code class="docutils literal notranslate"><span class="pre">end=&quot;</span>&#160; <span class="pre">&quot;</span></code> 來確保每一行的所有乘法運算結果都在同一行輸出。</p></li>
+<li><p>在內層迴圈結束後，使用 <code class="docutils literal notranslate"><span class="pre">print()</span></code> 函數來換行。</p></li>
+</ol>
+<p>題目目的</p>
+<ol class="arabic simple">
+<li><p>練習使用嵌套迴圈。</p></li>
+<li><p>練習使用字串格式化來控制輸出格式。</p></li>
+<li><p>理解如何使用程式碼來生成九九乘法表。</p></li>
+</ol>
+<p>提示</p>
+<ul class="simple">
+<li><p>注意如何使用字串格式化來控制輸出的空格和對齊。</p></li>
+<li><p>注意 <code class="docutils literal notranslate"><span class="pre">end=&quot;</span>&#160; <span class="pre">&quot;</span></code> 的作用，它確保了同一行的輸出不會換行。</p></li>
+</ul>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">a</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">b</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">10</span><span class="p">):</span>
+        <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">a</span><span class="si">}</span><span class="s2">*</span><span class="si">{</span><span class="n">b</span><span class="si">}</span><span class="s2"> =</span><span class="si">{</span><span class="n">a</span><span class="o">*</span><span class="n">b</span><span class="si">:</span><span class="s2">2d</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">,</span> <span class="n">end</span><span class="o">=</span><span class="s2">&quot;  &quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1*1 = 1  1*2 = 2  1*3 = 3  1*4 = 4  1*5 = 5  1*6 = 6  1*7 = 7  1*8 = 8  1*9 = 9  
+2*1 = 2  2*2 = 4  2*3 = 6  2*4 = 8  2*5 =10  2*6 =12  2*7 =14  2*8 =16  2*9 =18  
+3*1 = 3  3*2 = 6  3*3 = 9  3*4 =12  3*5 =15  3*6 =18  3*7 =21  3*8 =24  3*9 =27  
+4*1 = 4  4*2 = 8  4*3 =12  4*4 =16  4*5 =20  4*6 =24  4*7 =28  4*8 =32  4*9 =36  
+5*1 = 5  5*2 =10  5*3 =15  5*4 =20  5*5 =25  5*6 =30  5*7 =35  5*8 =40  5*9 =45  
+6*1 = 6  6*2 =12  6*3 =18  6*4 =24  6*5 =30  6*6 =36  6*7 =42  6*8 =48  6*9 =54  
+7*1 = 7  7*2 =14  7*3 =21  7*4 =28  7*5 =35  7*6 =42  7*7 =49  7*8 =56  7*9 =63  
+8*1 = 8  8*2 =16  8*3 =24  8*4 =32  8*5 =40  8*6 =48  8*7 =56  8*8 =64  8*9 =72  
+9*1 = 9  9*2 =18  9*3 =27  9*4 =36  9*5 =45  9*6 =54  9*7 =63  9*8 =72  9*9 =81  
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="if-elif-else">
+<h2>if-elif-else 條件語句教學<a class="headerlink" href="#if-elif-else" title="Permalink to this headline">#</a></h2>
+<p>在程式設計中，<code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code> 是用來執行基於一個或多個條件的分支運算。在這節教學中，我們會透過實例來介紹如何在 Python 中使用 <code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code> 條件語句。</p>
+<p>基本語法</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
+    <span class="c1"># Code block for condition1</span>
+<span class="k">elif</span> <span class="n">condition2</span><span class="p">:</span>
+    <span class="c1"># Code block for condition2</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="c1"># Code block if none of the conditions are met</span>
+</pre></div>
+</div>
+<p>範例：學生成績評定。以下是一個簡單的 <code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code> 程式範例，用來評定學生成績。</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">grade</span> <span class="o">=</span> <span class="mi">85</span>
+
+<span class="k">if</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">90</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;優秀&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;良好&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">70</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;中等&quot;</span><span class="p">)</span>
+<span class="k">elif</span> <span class="n">grade</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;及格&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;不及格&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>應用場景</p>
+<ul class="simple">
+<li><p>數值比較（例如，找出最大值或最小值）。</p></li>
+<li><p>狀態檢查（例如，檢查檔案是否存在）。</p></li>
+<li><p>資料過濾和篩選。</p></li>
+</ul>
+<hr class="docutils" />
+<section id="example-assign-0-100-into-a-b-c-class">
+<h3>Example: Assign 0~100 into A, B, C, ..Class<a class="headerlink" href="#example-assign-0-100-into-a-b-c-class" title="Permalink to this headline">#</a></h3>
+<p>在這個Python練習題中，我們有一個名為<code class="docutils literal notranslate"><span class="pre">grades</span></code>的列表，其中包含多個學生成績（範圍為0到100分）。我們還有一個名為<code class="docutils literal notranslate"><span class="pre">grade_dict</span></code>的字典，用於存儲各等級（A、B、C、F）的頻率。我們的任務是使用for迴圈遍歷<code class="docutils literal notranslate"><span class="pre">grades</span></code>列表，並根據每個學生成績更新<code class="docutils literal notranslate"><span class="pre">grade_dict</span></code>字典。</p>
+<ul class="simple">
+<li><p>練習Python的基本數據結構（列表和字典）</p></li>
+<li><p>熟悉條件語句（<code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code>）</p></li>
+<li><p>練習迴圈結構</p></li>
+</ul>
+<p>提示</p>
+<ol class="arabic simple">
+<li><p><strong>條件判斷</strong>: 注意條件語句中的數字範圍。例如，等級”A”對應的分數範圍是80至100。</p></li>
+<li><p><strong>字典更新</strong>: 在適當的條件塊內，使用<code class="docutils literal notranslate"><span class="pre">+=</span> <span class="pre">1</span></code>來更新<code class="docutils literal notranslate"><span class="pre">grade_dict</span></code>中的相應頻率。</p></li>
+<li><p><strong>確保範圍</strong>: 由於學生成績的範圍是0到100，所以在條件語句中確保所有可能的分數都被考慮到。</p></li>
+<li><p><strong>結果輸出</strong>: 最後的<code class="docutils literal notranslate"><span class="pre">print(grade_dict)</span></code>將顯示各等級的頻率。您可以進一步優化輸出格式，以便更易於閱讀。</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initializing level frequency</span>
+<span class="n">grades</span> <span class="o">=</span> <span class="p">[</span><span class="mi">17</span><span class="p">,</span> <span class="mi">65</span><span class="p">,</span> <span class="mi">5</span><span class="p">,</span> <span class="mi">74</span><span class="p">,</span> <span class="mi">93</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">94</span><span class="p">,</span> <span class="mi">16</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">32</span><span class="p">,</span> <span class="mi">78</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">70</span><span class="p">,</span> <span class="mi">22</span><span class="p">,</span> <span class="mi">43</span><span class="p">,</span> <span class="mi">95</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">30</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">51</span><span class="p">,</span> <span class="mi">96</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">13</span><span class="p">,</span> <span class="mi">21</span><span class="p">,</span> <span class="mi">4</span><span class="p">,</span> <span class="mi">47</span><span class="p">,</span> <span class="mi">19</span><span class="p">,</span> <span class="mi">44</span><span class="p">,</span> <span class="mi">59</span><span class="p">,</span> <span class="mi">6</span><span class="p">,</span> <span class="mi">0</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">40</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">39</span><span class="p">,</span> <span class="mi">57</span><span class="p">,</span> <span class="mi">99</span><span class="p">,</span> <span class="mi">35</span><span class="p">,</span> <span class="mi">81</span><span class="p">,</span> <span class="mi">31</span><span class="p">,</span> <span class="mi">89</span><span class="p">,</span> <span class="mi">63</span><span class="p">,</span> <span class="mi">80</span><span class="p">,</span> <span class="mi">85</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">60</span><span class="p">,</span> <span class="mi">17</span><span class="p">,</span> <span class="mi">68</span><span class="p">,</span> <span class="mi">62</span><span class="p">,</span> <span class="mi">36</span><span class="p">,</span> <span class="mi">3</span><span class="p">,</span> <span class="mi">28</span><span class="p">,</span> <span class="mi">8</span><span class="p">,</span> <span class="mi">38</span><span class="p">,</span> <span class="mi">83</span><span class="p">,</span> <span class="mi">73</span><span class="p">,</span> <span class="mi">67</span><span class="p">,</span> <span class="mi">2</span><span class="p">]</span>
+<span class="n">grade_dict</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;F&#39;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;C&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;B&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">,</span> <span class="s2">&quot;A&quot;</span><span class="p">:</span><span class="mi">0</span><span class="p">}</span>
+
+<span class="c1"># Counting level frequency</span>
+<span class="k">for</span> <span class="n">g</span> <span class="ow">in</span> <span class="n">grades</span><span class="p">:</span>
+    <span class="k">if</span> <span class="mi">100</span> <span class="o">&gt;=</span> <span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">80</span><span class="p">:</span>
+        <span class="n">grade_dict</span><span class="p">[</span><span class="s2">&quot;A&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="mi">79</span> <span class="o">&gt;=</span> <span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">72</span><span class="p">:</span>
+        <span class="n">grade_dict</span><span class="p">[</span><span class="s2">&quot;B&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">elif</span> <span class="mi">71</span> <span class="o">&gt;=</span> <span class="n">g</span> <span class="o">&gt;=</span> <span class="mi">60</span><span class="p">:</span>
+        <span class="n">grade_dict</span><span class="p">[</span><span class="s2">&quot;C&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+    <span class="k">else</span><span class="p">:</span>
+        <span class="n">grade_dict</span><span class="p">[</span><span class="s2">&quot;F&quot;</span><span class="p">]</span> <span class="o">+=</span> <span class="mi">1</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">grade_dict</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 35, &#39;C&#39;: 8, &#39;B&#39;: 3, &#39;A&#39;: 14}
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<div class="toctree-wrapper compound">
+</div>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P03p_ans.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">P03 Practice: Accessing dict and list</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P04p1_for.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P04 Practice01: for loop</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#for-traverse-and-iterate">For: Traverse and Iterate</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#break-continue"><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code>: 中止迴圈</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#range">range()函式</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#nested-for-loop">Nested for-loop</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#print-9-x-9-table">Print 9 x 9 table</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#if-elif-else">if-elif-else 條件語句教學</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#example-assign-0-100-into-a-b-c-class">Example: Assign 0~100 into A, B, C, ..Class</a></li>
+</ul>
+</li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>

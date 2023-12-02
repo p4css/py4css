@@ -1,0 +1,1350 @@
+
+
+<!DOCTYPE html>
+
+
+<html >
+
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+
+    <title>P06-3 Processing timestamp &#8212; Programming for Social Scientists</title>
+  
+  
+  
+  <script data-cfasync="false">
+    document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+  </script>
+  
+  <!-- Loaded before other Sphinx assets -->
+  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+
+  
+  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
+    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
+  
+  <!-- Pre-loaded scripts that we'll load fully later -->
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+
+    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
+    <script src="../_static/jquery.js"></script>
+    <script src="../_static/underscore.js"></script>
+    <script src="../_static/doctools.js"></script>
+    <script src="../_static/clipboard.min.js"></script>
+    <script src="../_static/copybutton.js"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script>let toggleHintShow = 'Click to show';</script>
+    <script>let toggleHintHide = 'Click to hide';</script>
+    <script>let toggleOpenOnPrint = 'true';</script>
+    <script src="../_static/togglebutton.js"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script src="../_static/design-tabs.js"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
+const thebe_selector = ".thebe,.cell"
+const thebe_selector_input = "pre"
+const thebe_selector_output = ".output, .cell_output"
+</script>
+    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P06p3_timestamp';</script>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="P07 Visualization" href="P07_0_visualization.html" />
+    <link rel="prev" title="Pandas: filter, select, and timeline process" href="P06p2_filter_select_datetime.html" />
+  <meta name="viewport" content="width=device-width, initial-scale=1"/>
+  <meta name="docsearch:language" content="None"/>
+  </head>
+  
+  
+  <body data-bs-spy="scroll" data-bs-target=".bd-toc-nav" data-offset="180" data-bs-root-margin="0px 0px -60%" data-default-mode="">
+
+  
+  
+  <a class="skip-link" href="#main-content">Skip to main content</a>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__primary"
+          id="__primary"/>
+  <label class="overlay overlay-primary" for="__primary"></label>
+  
+  <input type="checkbox"
+          class="sidebar-toggle"
+          name="__secondary"
+          id="__secondary"/>
+  <label class="overlay overlay-secondary" for="__secondary"></label>
+  
+  <div class="search-button__wrapper">
+    <div class="search-button__overlay"></div>
+    <div class="search-button__search-container">
+<form class="bd-search d-flex align-items-center"
+      action="../search.html"
+      method="get">
+  <i class="fa-solid fa-magnifying-glass"></i>
+  <input type="search"
+         class="form-control"
+         name="q"
+         id="search-input"
+         placeholder="Search this book..."
+         aria-label="Search this book..."
+         autocomplete="off"
+         autocorrect="off"
+         autocapitalize="off"
+         spellcheck="false"/>
+  <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
+</form></div>
+  </div>
+  
+    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
+    </nav>
+  
+  <div class="bd-container">
+    <div class="bd-container__inner bd-page-width">
+      
+      <div class="bd-sidebar-primary bd-sidebar">
+        
+
+  
+  <div class="sidebar-header-items sidebar-primary__section">
+    
+    
+    
+    
+  </div>
+  
+    <div class="sidebar-primary-items__start sidebar-primary__section">
+        <div class="sidebar-primary-item">
+  
+
+<a class="navbar-brand logo" href="../intro.html">
+  
+  
+  
+  
+    
+    
+      
+    
+    
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+  
+  
+</a></div>
+        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+    <div class="bd-toc-item navbar-nav active">
+        
+        <ul class="nav bd-sidenav bd-sidenav__home-link">
+            <li class="toctree-l1">
+                <a class="reference internal" href="../intro.html">
+                    Programming for Social Scientists
+                </a>
+            </li>
+        </ul>
+        <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
+
+<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
+
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
+<ul class="current nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current active has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
+<li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
+<li class="toctree-l2 current active"><a class="current reference internal" href="#">P06-3 Processing timestamp</a></li>
+</ul>
+</li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
+</ul>
+</li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
+
+
+
+
+
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
+
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM04_IR_search.html">TM04 Feature Selection &amp; IR &amp; Search</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM05_sentiment.html">TM05 Sentiment analysis</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Machine Learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM06_Clustering.html">TM06 Clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1pXfdPEQDY5wDhlzjr867duFsAVAXj5Yz?usp=sharing">Transformer-Clusteirng</a></li>
+<li class="toctree-l1"><a class="reference external" href="https://colab.research.google.com/drive/1YD8mjrpEH6-0rYMY0L1xFFKpJ2jGY6nT?usp=share_link">Transformer-Classification</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Compuational Social Science</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS01_network_analysis.html">CSS01 Network Analysis</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../CSS/CSS02_Simulation.html">CSS02 Simulation</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
+
+
+
+
+<li class="toctree-l1"><a class="reference external" href="https://drive.google.com/file/d/1L9coxxzKsy7_KzrBWno6Jh9zY785AtJB/view?usp=sharing">AS06 Tokenization</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS06_Tokenization.html">AS06 - Tokenization and keywords</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS07_collocation.html">AS07 Collocation for finding enthusiastic commentors</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_yt_comment.html">AS08 Youtube comment clustering</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS08_clustering_people.html">AS08 - Clustering Commenters Based on Behavior</a></li>
+</ul>
+<p aria-level="2" class="caption" role="heading"><span class="caption-text">Resources</span></p>
+<ul class="nav bd-sidenav">
+<li class="toctree-l1"><a class="reference internal" href="../Resource/video_list.html">Python教學影片</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../Resource/IDEs.html">Python開發環境</a></li>
+</ul>
+
+    </div>
+</nav></div>
+    </div>
+  
+  
+  <div class="sidebar-primary-items__end sidebar-primary__section">
+  </div>
+  
+  <div id="rtd-footer-container"></div>
+
+
+      </div>
+      
+      <main id="main-content" class="bd-main">
+        
+        
+
+<div class="sbt-scroll-pixel-helper"></div>
+
+          <div class="bd-content">
+            <div class="bd-article-container">
+              
+              <div class="bd-header-article">
+<div class="header-article-items header-article__inner">
+  
+    <div class="header-article-items__start">
+      
+        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+  <span class="fa-solid fa-bars"></span>
+</label></div>
+      
+    </div>
+  
+  
+    <div class="header-article-items__end">
+      
+        <div class="header-article-item">
+
+<div class="article-header-buttons">
+
+
+
+
+
+<div class="dropdown dropdown-launch-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Launch interactive content">
+    <i class="fas fa-rocket"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P06p3_timestamp.ipynb" target="_blank"
+   class="btn btn-sm dropdown-item"
+   title="Launch onColab"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  
+    <img src="../_static/images/logo_colab.png">
+  </span>
+<span class="btn__text-container">Colab</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-source-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Source repositories">
+    <i class="fab fa-github"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css" target="_blank"
+   class="btn btn-sm btn-source-repository-button dropdown-item"
+   title="來源儲存庫"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fab fa-github"></i>
+  </span>
+<span class="btn__text-container">Repository</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P06p3_timestamp.html&body=Your%20issue%20content%20here." target="_blank"
+   class="btn btn-sm btn-source-issues-button dropdown-item"
+   title="開啟議題"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-lightbulb"></i>
+  </span>
+<span class="btn__text-container">Open issue</span>
+</a>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+
+
+<div class="dropdown dropdown-download-buttons">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+    <i class="fas fa-download"></i>
+  </button>
+  <ul class="dropdown-menu">
+      
+      
+      
+      <li><a href="../_sources/PSS/P06p3_timestamp.ipynb" target="_blank"
+   class="btn btn-sm btn-download-source-button dropdown-item"
+   title="下載原始檔"
+   data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file"></i>
+  </span>
+<span class="btn__text-container">.ipynb</span>
+</a>
+</li>
+      
+      
+      
+      
+      <li>
+<button onclick="window.print()"
+  class="btn btn-sm btn-download-pdf-button dropdown-item"
+  title="列印成 PDF"
+  data-bs-placement="left" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-file-pdf"></i>
+  </span>
+<span class="btn__text-container">.pdf</span>
+</button>
+</li>
+      
+  </ul>
+</div>
+
+
+
+
+<button onclick="toggleFullScreen()"
+  class="btn btn-sm btn-fullscreen-button"
+  title="全螢幕模式"
+  data-bs-placement="bottom" data-bs-toggle="tooltip"
+>
+  
+
+<span class="btn__icon-container">
+  <i class="fas fa-expand"></i>
+  </span>
+
+</button>
+
+
+<script>
+document.write(`
+  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
+    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
+    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  </button>
+`);
+</script>
+
+<script>
+document.write(`
+  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+  </button>
+`);
+</script>
+<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <span class="fa-solid fa-list"></span>
+</label>
+</div></div>
+      
+    </div>
+  
+</div>
+</div>
+              
+              
+
+<div id="jb-print-docs-body" class="onlyprint">
+    <h1>P06-3 Processing timestamp</h1>
+    <!-- Table of contents -->
+    <div id="print-main-content">
+        <div id="jb-print-toc">
+            
+            <div>
+                <h2> 目錄 </h2>
+            </div>
+            <nav aria-label="Page">
+                <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-df">post_df</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comment-df">comment_df</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-timestamp">Convert timestamp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-time-features">Retrieve time features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeline">Plot timeline</a></li>
+</ul>
+            </nav>
+        </div>
+    </div>
+</div>
+
+              
+                
+<div id="searchbox"></div>
+                <article class="bd-article" role="main">
+                  
+  <section class="tex2jax_ignore mathjax_ignore" id="p06-3-processing-timestamp">
+<h1>P06-3 Processing timestamp<a class="headerlink" href="#p06-3-processing-timestamp" title="Permalink to this headline">#</a></h1>
+<p>我們可以認得<code class="docutils literal notranslate"><span class="pre">20210509</span></code>或<code class="docutils literal notranslate"><span class="pre">Sun</span> <span class="pre">May</span> <span class="pre">9</span> <span class="pre">10:52:43</span> <span class="pre">2021</span></code>或<code class="docutils literal notranslate"><span class="pre">2021-05-09</span> <span class="pre">10:52:43</span></code>是一個時間，但對程式而言，這就是一個字串。
+如果我們希望可以從中取出年、月、週、日、Weekday或做時間的運算（例如把時間加一週），然後來觀察時間上的分佈特徵（例如觀察所有貼文在時間軸上的生產力曲線），那就得把這些字串轉為時間型態，而Python的時間型態是<code class="docutils literal notranslate"><span class="pre">datetime</span></code>。</p>
+<p>通常就是兩個步驟，分別是<code class="docutils literal notranslate"><span class="pre">strptime()</span></code>和<code class="docutils literal notranslate"><span class="pre">strftime()</span></code>。前者將文字轉為時間物件、後者將時間物件轉為指定的字串格式。而轉換的方法並非程式會自動轉，而是你要告訴程式，你這個字串的格式為何？或者反過來，是告訴程式，你要轉為什麼格式的字串。例如<code class="docutils literal notranslate"><span class="pre">Sun</span> <span class="pre">May</span> <span class="pre">9</span> <span class="pre">10:52:43</span> <span class="pre">2021</span></code>如果要正確地轉為時間格式的話，應該是用以下格式轉：</p>
+<div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">date_string</span> <span class="o">=</span> <span class="s2">&quot;Sun May 9 10:52:43 2021&quot;</span>
+<span class="n">date_object</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">strptime</span><span class="p">(</span><span class="n">date_string</span><span class="p">,</span> <span class="s2">&quot;</span><span class="si">%a</span><span class="s2"> %b </span><span class="si">%d</span><span class="s2"> %H:%M:%S %Y&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+<p>上述程式碼中<code class="docutils literal notranslate"><span class="pre">%a</span> <span class="pre">%b</span> <span class="pre">%d</span> <span class="pre">%H:%M:%S</span> <span class="pre">%Y</span></code>是格式字符串，它告訴<code class="docutils literal notranslate"><span class="pre">strptime</span></code>函數如何解釋日期時間字符串中的每個部分。具體來說：</p>
+<ul class="simple">
+<li><p><code class="docutils literal notranslate"><span class="pre">%a</span></code>：解析星期幾的縮寫（例如 “Sun”）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%b</span></code>：解析月份的縮寫（例如 “May”）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%d</span></code>：解析日期。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%H</span></code>：解析小時（24小時制）。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%M</span></code>：解析分鐘。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%S</span></code>：解析秒。</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">%Y</span></code>：解析完整四位數的年份。</p></li>
+</ul>
+<p>你可以從這個Python Doc的<a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">strftime() and strptime() Behavior</a>這一節找到相關資訊。</p>
+<section id="loading-data">
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<p>Testing picle data download from <a class="github reference external" href="https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat">P4CSS/PSS</a></p>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># via colab</span>
+<span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">import pickle</span>
+<span class="sd">!wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat</span>
+<span class="sd">with open(&quot;pttpost_20210509_n178.dat&quot;, &quot;rb&quot;) as fin:</span>
+<span class="sd">    all_post = pickle.load(fin)</span>
+<span class="sd">&quot;&quot;&quot;</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;\nimport pickle\n!wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat\nwith open(&quot;pttpost_20210509_n178.dat&quot;, &quot;rb&quot;) as fin:\n    all_post = pickle.load(fin)\n&#39;
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../AS/data/pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+    <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+</div>
+<section id="post-df">
+<h3>post_df<a class="headerlink" href="#post-df" title="Permalink to this headline">#</a></h3>
+<p>Processing</p>
+<ol class="arabic simple">
+<li><p>Convert list-of-dict to dataframe</p></li>
+<li><p>Drop non-trivial-value column <code class="docutils literal notranslate"><span class="pre">comments</span></code></p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="n">all_post</span>
+<span class="n">post_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_post</span><span class="p">)</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;comments&quot;</span><span class="p">])</span>
+<span class="n">post_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+<span class="c1"># comment_df = pd.DataFrame(all_post)[[&quot;plink&quot;, &quot;comments&quot;]].explode(&quot;comments&quot;)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author</th>
+      <th>authorid</th>
+      <th>nickname</th>
+      <th>link</th>
+      <th>title</th>
+      <th>timestamp</th>
+      <th>content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>s72005ming (QQ)</td>
+      <td>s72005ming</td>
+      <td>QQ</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>[問卦] 美國會研究因武漢肺炎死亡的人種嗎？</td>
+      <td>Sun May  9 10:52:43 2021</td>
+      <td>美國是民族大熔爐\n\n全世界各種人種都有\n\n但是依照各個人種做研究又有歧視的問題\n\...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>cka (CK)</td>
+      <td>cka</td>
+      <td>CK</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620484638....</td>
+      <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>Sat May  8 22:37:16 2021</td>
+      <td>簡單講就是經濟跟死亡二選一的問題\n\n如果你全部的人都關在家不用上班\n經濟停止活動\n是...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>cpblgu (《善良溫柔》的心愛)</td>
+      <td>cpblgu</td>
+      <td>《善良溫柔》的心愛</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620481036....</td>
+      <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>Sat May  8 21:37:14 2021</td>
+      <td>這就是自由過了頭\n\n日本就是太快西化\n\n才犯了西方世界的飮毒\n\n\n要是日本還遺...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dumbbbb (ㄏㄏ)</td>
+      <td>Dumbbbb</td>
+      <td>ㄏㄏ</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620479086....</td>
+      <td>[爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>Sat May  8 21:04:44 2021</td>
+      <td>先附上新聞aign=none\n\n根據數據統計\n\n大阪1百萬人/19.6人死亡\n印度...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>leoyuan (糜爛生活該結束了)</td>
+      <td>leoyuan</td>
+      <td>糜爛生活該結束了</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620478128....</td>
+      <td>Re: [爆卦] 昨天武漢肺炎AZ疫苗將近萬人施打</td>
+      <td>Sat May  8 20:48:46 2021</td>
+      <td>想居家檢疫後來去打疫苗，想說大家都不打那別浪費了。\n\n結果台北馬偕預約全滿，其他醫院隨便...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="comment-df">
+<h3>comment_df<a class="headerlink" href="#comment-df" title="Permalink to this headline">#</a></h3>
+<p>Processing</p>
+<ol class="arabic simple">
+<li><p>Select <code class="docutils literal notranslate"><span class="pre">link</span></code> and <code class="docutils literal notranslate"><span class="pre">comments</span></code> columns</p></li>
+<li><p>Explode <code class="docutils literal notranslate"><span class="pre">comments</span></code> (a list-of-dict), remember to <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code></p></li>
+<li><p>Normalize <code class="docutils literal notranslate"><span class="pre">comments</span></code> (a dict)’s key-value pairs to dataframe columns</p></li>
+<li><p>Drop column <code class="docutils literal notranslate"><span class="pre">comments</span></code></p></li>
+<li><p>Drop duplicated rows if exists.</p></li>
+</ol>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">selected</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_post</span><span class="p">)[[</span><span class="s2">&quot;link&quot;</span><span class="p">,</span> <span class="s2">&quot;comments&quot;</span><span class="p">]]</span>
+<span class="n">selected</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[{&#39;tag&#39;: &#39;推 &#39;,
+  &#39;userid&#39;: &#39;shiriri&#39;,
+  &#39;content&#39;: &#39;: 有很多了 黑人跟拉丁裔比較高 亞裔跟白人差不多&#39;,
+  &#39;timestamp&#39;: &#39; 05/09 10:59\n&#39;},
+ {&#39;tag&#39;: &#39;→ &#39;,
+  &#39;userid&#39;: &#39;HELLDIVER&#39;,
+  &#39;content&#39;: &#39;: 有趣的是 剛開始大爆發時 還說亞洲人比較會得武漢病毒&#39;,
+  &#39;timestamp&#39;: &#39; 05/09 11:01\n&#39;},
+ {&#39;tag&#39;: &#39;噓 &#39;,
+  &#39;userid&#39;: &#39;redsa12&#39;,
+  &#39;content&#39;: &#39;: 網路即時數據就都有按人種按年齡區分的數據了...&#39;,
+  &#39;timestamp&#39;: &#39; 05/09 11:06\n&#39;},
+ {&#39;tag&#39;: &#39;→ &#39;,
+  &#39;userid&#39;: &#39;redsa12&#39;,
+  &#39;content&#39;: &#39;: 問之前先估狗好嗎 加油好嗎&#39;,
+  &#39;timestamp&#39;: &#39; 05/09 11:06\n&#39;}]
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exploded</span> <span class="o">=</span> <span class="n">selected</span><span class="o">.</span><span class="n">explode</span><span class="p">(</span><span class="s2">&quot;comments&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">reset_index</span><span class="p">()</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Dataframe shape: </span><span class="si">{</span><span class="n">exploded</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">exploded</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dataframe shape: (6587, 3)
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>link</th>
+      <th>comments</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>{'tag': '推 ', 'userid': 'shiriri', 'content': ...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>{'tag': '→ ', 'userid': 'HELLDIVER', 'content'...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>{'tag': '噓 ', 'userid': 'redsa12', 'content': ...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>{'tag': '→ ', 'userid': 'redsa12', 'content': ...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620484638....</td>
+      <td>{'tag': '推 ', 'userid': 'eddisontw', 'content'...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">exploded</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]</span>
+<span class="n">comment_df</span> <span class="o">=</span> <span class="n">exploded</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">json_normalize</span><span class="p">(</span><span class="n">exploded</span><span class="p">[</span><span class="s1">&#39;comments&#39;</span><span class="p">]))</span>
+<span class="n">comment_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;comments&quot;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">comment_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>index</th>
+      <th>link</th>
+      <th>tag</th>
+      <th>userid</th>
+      <th>content</th>
+      <th>timestamp</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>推</td>
+      <td>shiriri</td>
+      <td>: 有很多了 黑人跟拉丁裔比較高 亞裔跟白人差不多</td>
+      <td>05/09 10:59\n</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>→</td>
+      <td>HELLDIVER</td>
+      <td>: 有趣的是 剛開始大爆發時 還說亞洲人比較會得武漢病毒</td>
+      <td>05/09 11:01\n</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>噓</td>
+      <td>redsa12</td>
+      <td>: 網路即時數據就都有按人種按年齡區分的數據了...</td>
+      <td>05/09 11:06\n</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>0</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>→</td>
+      <td>redsa12</td>
+      <td>: 問之前先估狗好嗎 加油好嗎</td>
+      <td>05/09 11:06\n</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>1</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620484638....</td>
+      <td>推</td>
+      <td>eddisontw</td>
+      <td>: 日本傳統文化裏面 老人等於不值錢垃圾 揹去山上丟掉的</td>
+      <td>05/08 22:39\n</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">comment_df</span><span class="o">.</span><span class="n">drop_duplicates</span><span class="p">(</span><span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">comment_df</span><span class="o">.</span><span class="n">shape</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(6585, 6)
+</pre></div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<section id="convert-timestamp">
+<h2>Convert timestamp<a class="headerlink" href="#convert-timestamp" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %H:%M:%S %Y&#39;</span><span class="p">)</span>
+<span class="n">display</span><span class="p">(</span><span class="n">post_df</span><span class="o">.</span><span class="n">dtypes</span><span class="p">)</span>
+<span class="n">post_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>author               object
+authorid             object
+nickname             object
+link                 object
+title                object
+timestamp    datetime64[ns]
+content              object
+dtype: object
+</pre></div>
+</div>
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author</th>
+      <th>authorid</th>
+      <th>nickname</th>
+      <th>link</th>
+      <th>title</th>
+      <th>timestamp</th>
+      <th>content</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>s72005ming (QQ)</td>
+      <td>s72005ming</td>
+      <td>QQ</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>[問卦] 美國會研究因武漢肺炎死亡的人種嗎？</td>
+      <td>2021-05-09 10:52:43</td>
+      <td>美國是民族大熔爐\n\n全世界各種人種都有\n\n但是依照各個人種做研究又有歧視的問題\n\...</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>cka (CK)</td>
+      <td>cka</td>
+      <td>CK</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620484638....</td>
+      <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>2021-05-08 22:37:16</td>
+      <td>簡單講就是經濟跟死亡二選一的問題\n\n如果你全部的人都關在家不用上班\n經濟停止活動\n是...</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>cpblgu (《善良溫柔》的心愛)</td>
+      <td>cpblgu</td>
+      <td>《善良溫柔》的心愛</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620481036....</td>
+      <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>2021-05-08 21:37:14</td>
+      <td>這就是自由過了頭\n\n日本就是太快西化\n\n才犯了西方世界的飮毒\n\n\n要是日本還遺...</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dumbbbb (ㄏㄏ)</td>
+      <td>Dumbbbb</td>
+      <td>ㄏㄏ</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620479086....</td>
+      <td>[爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>2021-05-08 21:04:44</td>
+      <td>先附上新聞aign=none\n\n根據數據統計\n\n大阪1百萬人/19.6人死亡\n印度...</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>leoyuan (糜爛生活該結束了)</td>
+      <td>leoyuan</td>
+      <td>糜爛生活該結束了</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620478128....</td>
+      <td>Re: [爆卦] 昨天武漢肺炎AZ疫苗將近萬人施打</td>
+      <td>2021-05-08 20:48:46</td>
+      <td>想居家檢疫後來去打疫苗，想說大家都不打那別浪費了。\n\n結果台北馬偕預約全滿，其他醫院隨便...</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="retrieve-time-features">
+<h2>Retrieve time features<a class="headerlink" href="#retrieve-time-features" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
+<span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;month&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">month</span>
+<span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s1">&#39;%A&#39;</span><span class="p">)</span>
+<span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;num_weekday&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">weekday</span> <span class="o">+</span> <span class="mi">1</span>
+
+<span class="n">post_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_html"><div>
+<style scoped>
+    .dataframe tbody tr th:only-of-type {
+        vertical-align: middle;
+    }
+
+    .dataframe tbody tr th {
+        vertical-align: top;
+    }
+
+    .dataframe thead th {
+        text-align: right;
+    }
+</style>
+<table border="1" class="dataframe">
+  <thead>
+    <tr style="text-align: right;">
+      <th></th>
+      <th>author</th>
+      <th>authorid</th>
+      <th>nickname</th>
+      <th>link</th>
+      <th>title</th>
+      <th>timestamp</th>
+      <th>content</th>
+      <th>year</th>
+      <th>month</th>
+      <th>weekday</th>
+      <th>num_weekday</th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <th>0</th>
+      <td>s72005ming (QQ)</td>
+      <td>s72005ming</td>
+      <td>QQ</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620528765....</td>
+      <td>[問卦] 美國會研究因武漢肺炎死亡的人種嗎？</td>
+      <td>2021-05-09 10:52:43</td>
+      <td>美國是民族大熔爐\n\n全世界各種人種都有\n\n但是依照各個人種做研究又有歧視的問題\n\...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Sunday</td>
+      <td>7</td>
+    </tr>
+    <tr>
+      <th>1</th>
+      <td>cka (CK)</td>
+      <td>cka</td>
+      <td>CK</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620484638....</td>
+      <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>2021-05-08 22:37:16</td>
+      <td>簡單講就是經濟跟死亡二選一的問題\n\n如果你全部的人都關在家不用上班\n經濟停止活動\n是...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>2</th>
+      <td>cpblgu (《善良溫柔》的心愛)</td>
+      <td>cpblgu</td>
+      <td>《善良溫柔》的心愛</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620481036....</td>
+      <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>2021-05-08 21:37:14</td>
+      <td>這就是自由過了頭\n\n日本就是太快西化\n\n才犯了西方世界的飮毒\n\n\n要是日本還遺...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>3</th>
+      <td>Dumbbbb (ㄏㄏ)</td>
+      <td>Dumbbbb</td>
+      <td>ㄏㄏ</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620479086....</td>
+      <td>[爆卦] 大阪肺炎死亡率超越印度啦！！</td>
+      <td>2021-05-08 21:04:44</td>
+      <td>先附上新聞aign=none\n\n根據數據統計\n\n大阪1百萬人/19.6人死亡\n印度...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
+    </tr>
+    <tr>
+      <th>4</th>
+      <td>leoyuan (糜爛生活該結束了)</td>
+      <td>leoyuan</td>
+      <td>糜爛生活該結束了</td>
+      <td>https://www.ptt.cc/bbs/Gossiping/M.1620478128....</td>
+      <td>Re: [爆卦] 昨天武漢肺炎AZ疫苗將近萬人施打</td>
+      <td>2021-05-08 20:48:46</td>
+      <td>想居家檢疫後來去打疫苗，想說大家都不打那別浪費了。\n\n結果台北馬偕預約全滿，其他醫院隨便...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
+    </tr>
+  </tbody>
+</table>
+</div></div></div>
+</div>
+</section>
+<section id="plot-timeline">
+<h2>Plot timeline<a class="headerlink" href="#plot-timeline" title="Permalink to this headline">#</a></h2>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 按月份分組帖子的數量</span>
+<span class="n">post_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;W&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">post_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+<span class="n">post_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;D&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>timestamp
+2021-03-09     6
+2021-03-11     1
+2021-03-13     2
+2021-03-14    10
+2021-03-16     1
+2021-03-17     2
+2021-03-19     1
+2021-03-20     1
+2021-03-21     1
+2021-03-22     3
+2021-03-24     6
+2021-03-25     2
+2021-03-26     1
+2021-03-29     1
+2021-03-30     4
+2021-03-31     4
+2021-04-01     2
+2021-04-02     4
+2021-04-03     1
+2021-04-04     1
+2021-04-07     2
+2021-04-10     1
+2021-04-11     1
+2021-04-12     2
+2021-04-13     2
+2021-04-14     4
+2021-04-16     3
+2021-04-17     2
+2021-04-18     2
+2021-04-19     5
+2021-04-20     8
+2021-04-21     1
+2021-04-22     3
+2021-04-24     5
+2021-04-25     3
+2021-04-26     4
+2021-04-27    13
+2021-04-28     8
+2021-04-29     4
+2021-04-30     4
+2021-05-01     5
+2021-05-02     7
+2021-05-03    12
+2021-05-04     1
+2021-05-05     7
+2021-05-06     3
+2021-05-07     3
+2021-05-08     8
+2021-05-09     1
+Freq: D, dtype: int64
+</pre></div>
+</div>
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+<span class="n">monthly_posts</span> <span class="o">=</span> <span class="n">post_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">))</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+
+<span class="c1"># 繪製條形圖</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">6</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">monthly_posts</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s1">&#39;bar&#39;</span><span class="p">,</span> <span class="n">color</span><span class="o">=</span><span class="s1">&#39;skyblue&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Monthly Post Productivity&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Month&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Number of Posts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">rotation</span><span class="o">=</span><span class="mi">45</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/3a25ac982d0a748fa0ae2ef2c766975a542de9de9fe20dc024dcf856d676ceaa.png" src="../_images/3a25ac982d0a748fa0ae2ef2c766975a542de9de9fe20dc024dcf856d676ceaa.png" />
+</div>
+</div>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
+
+<span class="c1"># Assuming you have a DataFrame named df with &#39;ptime&#39; column in datetime format</span>
+<span class="c1"># If &#39;ptime&#39; is not in datetime format, convert it first using pd.to_datetime()</span>
+
+<span class="c1"># Group the data by week and count occurrences</span>
+<span class="n">weekly_counts1</span> <span class="o">=</span> <span class="n">post_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="n">pd</span><span class="o">.</span><span class="n">Grouper</span><span class="p">(</span><span class="n">key</span><span class="o">=</span><span class="s1">&#39;timestamp&#39;</span><span class="p">,</span> <span class="n">freq</span><span class="o">=</span><span class="s1">&#39;W-MON&#39;</span><span class="p">))</span><span class="o">.</span><span class="n">size</span><span class="p">()</span>
+
+<span class="c1"># Create a time series plot for the weekly counts</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">24</span><span class="p">,</span> <span class="mi">12</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">300</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">weekly_counts1</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">weekly_counts1</span><span class="o">.</span><span class="n">values</span><span class="p">,</span> <span class="n">marker</span><span class="o">=</span><span class="s1">&#39;o&#39;</span><span class="p">,</span> <span class="n">linestyle</span><span class="o">=</span><span class="s1">&#39;-&#39;</span><span class="p">,</span> <span class="n">linewidth</span> <span class="o">=</span> <span class="mi">2</span><span class="p">,</span> <span class="n">label</span><span class="o">=</span><span class="s1">&#39;Weekly Counts&#39;</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;Week&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Count&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">xticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">yticks</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span> 
+<span class="n">plt</span><span class="o">.</span><span class="n">title</span><span class="p">(</span><span class="s1">&#39;Weekly Productivity&#39;</span><span class="p">,</span> <span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">legend</span><span class="p">(</span><span class="n">fontsize</span><span class="o">=</span><span class="mi">20</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">grid</span><span class="p">(</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<img alt="../_images/f1967cff26d4aee4d8cafdc111f9c11b752bd72cabadfe1a03ccd44a8d5b0c22.png" src="../_images/f1967cff26d4aee4d8cafdc111f9c11b752bd72cabadfe1a03ccd44a8d5b0c22.png" />
+</div>
+</div>
+</section>
+</section>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            name: "python3",
+            path: "./PSS"
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+                </article>
+              
+
+              
+              
+                <footer class="bd-footer-article">
+                  
+<div class="footer-article-items footer-article__inner">
+  
+    <div class="footer-article-item"><!-- Previous / next buttons -->
+<div class="prev-next-area">
+    <a class="left-prev"
+       href="P06p2_filter_select_datetime.html"
+       title="previous page">
+      <i class="fa-solid fa-angle-left"></i>
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">previous</p>
+        <p class="prev-next-title">Pandas: filter, select, and timeline process</p>
+      </div>
+    </a>
+    <a class="right-next"
+       href="P07_0_visualization.html"
+       title="next page">
+      <div class="prev-next-info">
+        <p class="prev-next-subtitle">next</p>
+        <p class="prev-next-title">P07 Visualization</p>
+      </div>
+      <i class="fa-solid fa-angle-right"></i>
+    </a>
+</div></div>
+  
+</div>
+
+                </footer>
+              
+            </div>
+            
+            
+              
+                <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
+  <div class="sidebar-secondary-item">
+  <div class="page-toc tocsection onthispage">
+    <i class="fa-solid fa-list"></i> 目錄
+  </div>
+  <nav class="bd-toc-nav page-toc">
+    <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#loading-data">Loading data</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#post-df">post_df</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#comment-df">comment_df</a></li>
+</ul>
+</li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-timestamp">Convert timestamp</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#retrieve-time-features">Retrieve time features</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#plot-timeline">Plot timeline</a></li>
+</ul>
+  </nav></div>
+
+</div></div>
+              
+            
+          </div>
+          <footer class="bd-footer-content">
+            
+<div class="bd-footer-content__inner container">
+  
+  <div class="footer-item">
+    
+<p class="component-author">
+作者： JILUNG
+</p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  <p class="copyright">
+    
+      © Copyright 2022.
+      <br/>
+    
+  </p>
+
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+  <div class="footer-item">
+    
+  </div>
+  
+</div>
+          </footer>
+        
+
+      </main>
+    </div>
+  </div>
+  
+  <!-- Scripts loaded after <body> so the DOM is not blocked -->
+  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+
+  <footer class="bd-footer">
+  </footer>
+  </body>
+</html>
