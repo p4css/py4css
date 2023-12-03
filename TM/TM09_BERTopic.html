@@ -497,14 +497,16 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-comparison">Process comparison</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-import-and-clean-data">Step 1. Import and clean data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-run-bertopic">Step 2 Run BERTopic</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-envs-for-bertopic">2.1 Prepare envs for bertopic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-model">2.1 Initialize model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-bertopic">2.2 Run bertopic</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-result-exploration">Step 3. Result exploration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-terms">Topic-terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terms-probability-of-each-topic">Terms probability of each topic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-counts-and-representative-docs">Topic counts and representative docs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-documnets-of-each-topic">Inspect documnets of each topic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-terms-overview-of-all-topics">Topic-terms overview of all topics</a></li>
@@ -527,16 +529,23 @@ document.write(`
   <section class="tex2jax_ignore mathjax_ignore" id="tm09-topic-modeling-by-bertopic">
 <h1>TM09 Topic Modeling by BERtopic<a class="headerlink" href="#tm09-topic-modeling-by-bertopic" title="Permalink to this headline">#</a></h1>
 <p><img alt="Alt text" src="../_images/img_tm09_1.png" /></p>
+<section id="process-comparison">
+<h2>Process comparison<a class="headerlink" href="#process-comparison" title="Permalink to this headline">#</a></h2>
+<ul class="simple">
+<li><p>原始的群集法需要先把文檔處理成近似「Document-Term Matrix」的型態（雖然現在skilearn都可以代勞）。在這之前會需要做好幾個步驟的資料清理，包含去除一些數字或英文字母、移除空白、斷詞、移除停用詞、留下保留字等。</p></li>
+<li><p>若是用Embedding則不需要先移除停用詞，因為停用詞也可能是其他詞的「脈絡」，若把停用詞都移掉了，可能會喪失一些脈絡，因此，使用Embedding的話，先不用移除停用詞，也不見得需要做TF-IDF的重要關鍵字萃取。</p></li>
+<li><p>如果是用SimpleTransformer與BERTopic這類深度學習架構，因為模型中包含將文檔轉換為文檔向量的過程，所以不用特地做資料清理或抽取關鍵字，都是在最後一個階段的群集結果呈現時，才需要對文檔做斷詞以便於呈現。</p></li>
+</ul>
+<p><img alt="Alt text" src="../_images/img_tm09_2.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
 
 <span class="kn">import</span> <span class="nn">warnings</span>
 <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;.*The &#39;nopython&#39; keyword.*&quot;</span><span class="p">)</span>
-<span class="kn">import</span> <span class="nn">os</span>
-<span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;TOKENIZERS_PARALLELISM&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="s2">&quot;false&quot;</span>
+<span class="c1"># import os</span>
+<span class="c1"># os.environ[&quot;TOKENIZERS_PARALLELISM&quot;] = &quot;false&quot;</span>
 
 <span class="kn">import</span> <span class="nn">re</span>
 <span class="kn">import</span> <span class="nn">zhon.hanzi</span>
@@ -545,40 +554,31 @@ document.write(`
 
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/stopwords_zh-tw.txt&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
     <span class="n">stopwords</span> <span class="o">=</span> <span class="n">fin</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">)[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;stop words: &quot;</span><span class="p">,</span> <span class="n">stopwords</span><span class="p">[:</span><span class="mi">100</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">stopwords</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>stop words:  [&#39;?&#39;, &#39;、&#39;, &#39;。&#39;, &#39;“&#39;, &#39;”&#39;, &#39;《&#39;, &#39;》&#39;, &#39;！&#39;, &#39;「&#39;, &#39;」&#39;, &#39;『&#39;, &#39;』&#39;, &#39;，&#39;, &#39;：&#39;, &#39;；&#39;, &#39;？&#39;, &#39;人民&#39;, &#39;末##末&#39;, &#39;啊&#39;, &#39;阿&#39;, &#39;哎&#39;, &#39;哎呀&#39;, &#39;哎喲&#39;, &#39;唉&#39;, &#39;我&#39;, &#39;我們&#39;, &#39;按&#39;, &#39;按照&#39;, &#39;依照&#39;, &#39;吧&#39;, &#39;吧噠&#39;, &#39;把&#39;, &#39;罷了&#39;, &#39;被&#39;, &#39;本&#39;, &#39;本著&#39;, &#39;比&#39;, &#39;比方&#39;, &#39;比如&#39;, &#39;鄙人&#39;, &#39;彼&#39;, &#39;彼此&#39;, &#39;邊&#39;, &#39;別&#39;, &#39;別的&#39;, &#39;別說&#39;, &#39;並&#39;, &#39;並且&#39;, &#39;不比&#39;, &#39;不成&#39;, &#39;不單&#39;, &#39;不但&#39;, &#39;不獨&#39;, &#39;不管&#39;, &#39;不光&#39;, &#39;不過&#39;, &#39;不僅&#39;, &#39;不拘&#39;, &#39;不論&#39;, &#39;不怕&#39;, &#39;不然&#39;, &#39;不如&#39;, &#39;不特&#39;, &#39;不惟&#39;, &#39;不問&#39;, &#39;不只&#39;, &#39;朝&#39;, &#39;朝著&#39;, &#39;趁&#39;, &#39;趁著&#39;, &#39;乘&#39;, &#39;沖&#39;, &#39;除&#39;, &#39;除此之外&#39;, &#39;除非&#39;, &#39;除了&#39;, &#39;此&#39;, &#39;此間&#39;, &#39;此外&#39;, &#39;從&#39;, &#39;從而&#39;, &#39;打&#39;, &#39;待&#39;, &#39;但&#39;, &#39;但是&#39;, &#39;當&#39;, &#39;當著&#39;, &#39;到&#39;, &#39;得&#39;, &#39;的&#39;, &#39;的話&#39;, &#39;等&#39;, &#39;等等&#39;, &#39;地&#39;, &#39;第&#39;, &#39;叮咚&#39;, &#39;對&#39;, &#39;對於&#39;, &#39;多&#39;, &#39;多少&#39;]
-1212
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">warnings</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">warnings</span><span class="o">.</span><span class="n">filterwarnings</span><span class="p">(</span><span class="s2">&quot;ignore&quot;</span><span class="p">,</span> <span class="n">message</span><span class="o">=</span><span class="s2">&quot;.*The &#39;nopython&#39; keyword.*&quot;</span><span class="p">)</span>
+
+<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
+</section>
 <section id="step-1-import-and-clean-data">
 <h2>Step 1. Import and clean data<a class="headerlink" href="#step-1-import-and-clean-data" title="Permalink to this headline">#</a></h2>
+<p>Notes that we don’t need tokenization and stop-word removal here. Just clean up space or punctuation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data/sentiment.csv&#39;</span><span class="p">)</span>
-
-<span class="k">def</span> <span class="nf">remove_stopWords</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">word</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">stopwords</span><span class="p">:</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">out</span>
-
-
-<span class="kn">import</span> <span class="nn">unicodedata</span> <span class="c1"># for removing Chinese puctuation</span>
-<span class="k">def</span> <span class="nf">remove_punc_by_unicode</span><span class="p">(</span><span class="n">words</span><span class="p">):</span>
-    <span class="n">out</span> <span class="o">=</span> <span class="p">[]</span>
-    <span class="k">for</span> <span class="n">word</span> <span class="ow">in</span> <span class="n">words</span><span class="p">:</span>
-        <span class="k">if</span> <span class="n">word</span> <span class="o">!=</span> <span class="s2">&quot; &quot;</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">unicodedata</span><span class="o">.</span><span class="n">category</span><span class="p">(</span><span class="n">word</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span><span class="o">.</span><span class="n">startswith</span><span class="p">(</span><span class="s1">&#39;P&#39;</span><span class="p">):</span>
-            <span class="n">out</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">word</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">out</span>
 
 <span class="k">def</span> <span class="nf">clean_text</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
     <span class="n">text</span> <span class="o">=</span> <span class="n">re</span><span class="o">.</span><span class="n">sub</span><span class="p">(</span><span class="s2">&quot;[</span><span class="se">\r\t</span><span class="s2"> ]+&quot;</span><span class="p">,</span> <span class="s2">&quot; &quot;</span><span class="p">,</span> <span class="n">text</span><span class="p">)</span>
@@ -595,45 +595,6 @@ document.write(`
 <h2>Step 2 Run BERTopic<a class="headerlink" href="#step-2-run-bertopic" title="Permalink to this headline">#</a></h2>
 <section id="prepare-envs-for-bertopic">
 <h3>2.1 Prepare envs for bertopic<a class="headerlink" href="#prepare-envs-for-bertopic" title="Permalink to this headline">#</a></h3>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install bertopic</span>
-<span class="c1"># !pip install hdbscan</span>
-<span class="c1"># !pip install jieba</span>
-
-<span class="kn">from</span> <span class="nn">bertopic</span> <span class="kn">import</span> <span class="n">BERTopic</span>
-<span class="kn">from</span> <span class="nn">transformers.pipelines</span> <span class="kn">import</span> <span class="n">pipeline</span>
-
-<span class="kn">from</span> <span class="nn">bertopic.vectorizers</span> <span class="kn">import</span> <span class="n">ClassTfidfTransformer</span>
-<span class="kn">from</span> <span class="nn">bertopic.representation</span> <span class="kn">import</span> <span class="n">KeyBERTInspired</span>
-<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
-<span class="kn">import</span> <span class="nn">jieba</span>
-<span class="n">jieba</span><span class="o">.</span><span class="n">load_userdict</span><span class="p">(</span><span class="s2">&quot;data/userdict.txt&quot;</span><span class="p">)</span>
-
-<span class="kn">from</span> <span class="nn">hdbscan</span> <span class="kn">import</span> <span class="n">HDBSCAN</span>
-
-<span class="k">def</span> <span class="nf">tokenize_zh</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
-    <span class="n">words</span> <span class="o">=</span> <span class="n">jieba</span><span class="o">.</span><span class="n">lcut</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
-    <span class="k">return</span> <span class="n">words</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ModuleNotFoundError</span><span class="g g-Whitespace">                       </span>Traceback (most recent call last)
-<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># !pip install bertopic</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="c1"># !pip install hdbscan</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># !pip install jieba</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="kn">from</span> <span class="nn">bertopic</span> <span class="kn">import</span> <span class="n">BERTopic</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">transformers.pipelines</span> <span class="kn">import</span> <span class="n">pipeline</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">bertopic.vectorizers</span> <span class="kn">import</span> <span class="n">ClassTfidfTransformer</span>
-
-<span class="ne">ModuleNotFoundError</span>: No module named &#39;bertopic&#39;
-</pre></div>
-</div>
-</div>
-</div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">cleaned</span>
@@ -658,11 +619,32 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </div>
 </section>
-<section id="run-bertopic">
-<h3>2.2 Run bertopic<a class="headerlink" href="#run-bertopic" title="Permalink to this headline">#</a></h3>
+<section id="initialize-model">
+<h3>2.1 Initialize model<a class="headerlink" href="#initialize-model" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># embedding_model = pipeline(&quot;feature-extraction&quot;, model=&quot;ckiplab/bert-base-chinese&quot;)</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install bertopic</span>
+<span class="c1"># !pip install hdbscan</span>
+<span class="c1"># !pip install jieba</span>
+
+<span class="kn">from</span> <span class="nn">bertopic</span> <span class="kn">import</span> <span class="n">BERTopic</span>
+<span class="kn">from</span> <span class="nn">transformers.pipelines</span> <span class="kn">import</span> <span class="n">pipeline</span>
+
+<span class="kn">from</span> <span class="nn">bertopic.vectorizers</span> <span class="kn">import</span> <span class="n">ClassTfidfTransformer</span>
+<span class="kn">from</span> <span class="nn">bertopic.representation</span> <span class="kn">import</span> <span class="n">KeyBERTInspired</span>
+<span class="kn">from</span> <span class="nn">sklearn.feature_extraction.text</span> <span class="kn">import</span> <span class="n">CountVectorizer</span>
+
+<span class="kn">import</span> <span class="nn">jieba</span>
+<span class="n">jieba</span><span class="o">.</span><span class="n">load_userdict</span><span class="p">(</span><span class="s2">&quot;data/userdict.txt&quot;</span><span class="p">)</span> <span class="c1"># prepared by yourself</span>
+
+<span class="kn">from</span> <span class="nn">hdbscan</span> <span class="kn">import</span> <span class="n">HDBSCAN</span>
+
+<span class="k">def</span> <span class="nf">tokenize_zh</span><span class="p">(</span><span class="n">text</span><span class="p">):</span>
+   <span class="n">words</span> <span class="o">=</span> <span class="n">jieba</span><span class="o">.</span><span class="n">lcut</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
+   <span class="k">return</span> <span class="n">words</span>
+
+
+<span class="c1"># embedding_model = pipeline(&quot;feature-extraction&quot;, model=&quot;ckiplab/bert-base-chinese&quot;)</span>
 <span class="c1"># embeddings = [embedding_model(doc)[0] for doc in docs] # Asking chatGPT but wrong</span>
 <span class="c1"># embeddings = embedding_model.encode(docs, show_progress_bar=False) # by BERTopic&#39;s sentence transformer</span>
 
@@ -674,29 +656,8 @@ Name: cleaned, Length: 6388, dtype: object
                         <span class="n">cluster_selection_method</span><span class="o">=</span><span class="s1">&#39;eom&#39;</span><span class="p">,</span> <span class="n">prediction_data</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">min_samples</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 
 
-<span class="c1"># docs = df_unnested[&quot;trigram&quot;]</span>
-<span class="c1"># docs = list(df_unnested[&quot;trigram&quot;])[:500]</span>
 <span class="n">docs</span> <span class="o">=</span> <span class="n">df</span><span class="p">[</span><span class="s2">&quot;cleaned&quot;</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">docs</span><span class="p">))</span>
-
-<span class="n">topic_model</span> <span class="o">=</span> <span class="n">BERTopic</span><span class="p">()</span>
-
-<span class="n">topic_model</span> <span class="o">=</span> <span class="n">BERTopic</span><span class="p">(</span>
-    <span class="n">language</span><span class="o">=</span><span class="s2">&quot;chinese (traditional)&quot;</span><span class="p">,</span>
-    <span class="n">embedding_model</span><span class="o">=</span><span class="s2">&quot;distiluse-base-multilingual-cased-v1&quot;</span><span class="p">,</span>
-    <span class="n">calculate_probabilities</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-
-
-
-<span class="n">topic_model</span> <span class="o">=</span> <span class="n">BERTopic</span><span class="p">(</span><span class="n">language</span><span class="o">=</span><span class="s2">&quot;chinese (traditional)&quot;</span><span class="p">,</span>
-                    <span class="c1">#    embedding_model=&quot;paraphrase-xlm-r-multilingual-v1&quot;,</span>
-                       <span class="n">embedding_model</span><span class="o">=</span><span class="s2">&quot;distiluse-base-multilingual-cased-v1&quot;</span><span class="p">,</span>
-                    <span class="c1">#    embedding_model = embedding_model,</span>
-                       <span class="n">vectorizer_model</span><span class="o">=</span><span class="n">vectorizer_model</span><span class="p">,</span>
-                    <span class="c1">#    representation_model=representation_model,</span>
-                    <span class="c1">#    ctfidf_model=ctfidf_model,</span>
-                       <span class="n">calculate_probabilities</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
-<span class="n">topics</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="n">topic_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
@@ -713,11 +674,55 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </div>
 </section>
+<section id="run-bertopic">
+<h3>2.2 Run bertopic<a class="headerlink" href="#run-bertopic" title="Permalink to this headline">#</a></h3>
+<div class="cell docutils container">
+<div class="cell_input docutils container">
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
+<span class="sd">There are a few parameters that you can tune to improve your topic model.</span>
+<span class="sd">Here I provides some examples:</span>
+<span class="sd">Model 1: Default parameters</span>
+<span class="sd">Model 2: Specify the language and embedding model</span>
+<span class="sd">Model 3: Specify more parameters</span>
+<span class="sd">&quot;&quot;&quot;</span>
+
+<span class="c1"># Model 1</span>
+<span class="c1"># topic_model = BERTopic()</span>
+
+<span class="c1"># Model 2</span>
+<span class="c1"># topic_model = BERTopic(</span>
+<span class="c1">#     language=&quot;chinese (traditional)&quot;,</span>
+<span class="c1">#     embedding_model=&quot;distiluse-base-multilingual-cased-v1&quot;,</span>
+<span class="c1">#     calculate_probabilities=True, verbose=True)</span>
+
+<span class="c1"># Model 3</span>
+<span class="n">topic_model</span> <span class="o">=</span> <span class="n">BERTopic</span><span class="p">(</span>
+    <span class="n">language</span><span class="o">=</span><span class="s2">&quot;chinese (traditional)&quot;</span><span class="p">,</span>
+    <span class="c1">#    embedding_model=&quot;paraphrase-xlm-r-multilingual-v1&quot;,</span>
+    <span class="n">embedding_model</span><span class="o">=</span><span class="s2">&quot;distiluse-base-multilingual-cased-v1&quot;</span><span class="p">,</span>
+    <span class="n">vectorizer_model</span><span class="o">=</span><span class="n">vectorizer_model</span><span class="p">,</span>
+    <span class="c1">#    representation_model=representation_model,</span>
+    <span class="c1">#    ctfidf_model=ctfidf_model,</span>
+    <span class="n">calculate_probabilities</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+<span class="n">topics</span><span class="p">,</span> <span class="n">probs</span> <span class="o">=</span> <span class="n">topic_model</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Batches: 100%|██████████| 200/200 [00:32&lt;00:00,  6.07it/s]
+2023-12-03 12:04:38,881 - BERTopic - Transformed documents to Embeddings
+2023-12-03 12:04:43,698 - BERTopic - Reduced dimensionality
+2023-12-03 12:04:44,907 - BERTopic - Clustered reduced embeddings
+</pre></div>
+</div>
+</div>
+</div>
+</section>
 </section>
 <section id="step-3-result-exploration">
 <h2>Step 3. Result exploration<a class="headerlink" href="#step-3-result-exploration" title="Permalink to this headline">#</a></h2>
-<section id="topic-terms">
-<h3>Topic-terms<a class="headerlink" href="#topic-terms" title="Permalink to this headline">#</a></h3>
+<section id="terms-probability-of-each-topic">
+<h3>Terms probability of each topic<a class="headerlink" href="#terms-probability-of-each-topic" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_model</span><span class="o">.</span><span class="n">get_topic</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -1570,14 +1575,16 @@ Name: cleaned, Length: 6388, dtype: object
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#process-comparison">Process comparison</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-1-import-and-clean-data">Step 1. Import and clean data</a></li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-2-run-bertopic">Step 2 Run BERTopic</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#prepare-envs-for-bertopic">2.1 Prepare envs for bertopic</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#initialize-model">2.1 Initialize model</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#run-bertopic">2.2 Run bertopic</a></li>
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#step-3-result-exploration">Step 3. Result exploration</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-terms">Topic-terms</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#terms-probability-of-each-topic">Terms probability of each topic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-counts-and-representative-docs">Topic counts and representative docs</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#inspect-documnets-of-each-topic">Inspect documnets of each topic</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#topic-terms-overview-of-all-topics">Topic-terms overview of all topics</a></li>
