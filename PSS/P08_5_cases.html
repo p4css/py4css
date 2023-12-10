@@ -212,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="P09_database.html">P09 Database</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
 <ul class="nav bd-sidenav">
@@ -237,6 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM09_BERTopic.html">TM09 Topic Modeling by BERtopic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM10_Using_Open_AI.html">TM10 Using Open AI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
 <ul class="nav bd-sidenav">
@@ -533,7 +535,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
 200
-{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;8958ee56-301e-00b0-7c1d-2b0353000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Sun, 10 Dec 2023 04:01:58 GMT&#39;}
+{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;39ce753e-c01e-00ae-152d-2bd9be000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Sun, 10 Dec 2023 05:59:06 GMT&#39;}
 &lt;class &#39;requests.models.Response&#39;&gt;
 &lt;class &#39;str&#39;&gt;
 </pre></div>
@@ -902,30 +904,6 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
     <tr>
       <th>10</th>
       <td>2</td>
-      <td>13212828</td>
-      <td>人工智慧資料科學家/AI Data Scientist_台達研究院(台北)</td>
-      <td>人工智慧&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;/AI...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001010</td>
-      <td>台北市內湖區</td>
-      <td>瑞光路186號</td>
-      <td>「台達研究院」(Delta Research Center, DRC)成立於2013年，為台...</td>
-      <td>...</td>
-      <td>人工智慧資料科學家/AI Data Scientist_台達研究院(台北)</td>
-      <td>台達電子工業股份有限公司 _DELTA ELECTRONICS INC.</td>
-      <td>121.5778267</td>
-      <td>25.0742151</td>
-      <td>0</td>
-      <td>[數學及電算機科學學科類, 工程學科類]</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>11</th>
-      <td>2</td>
       <td>13657315</td>
       <td>【資訊科技】資料科學家</td>
       <td>【資訊科技】&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;</td>
@@ -946,6 +924,30 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
       <td>0.38</td>
       <td>99001005018</td>
       <td>捷運市政府站</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>2</td>
+      <td>13212828</td>
+      <td>人工智慧資料科學家/AI Data Scientist_台達研究院(台北)</td>
+      <td>人工智慧&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;/AI...</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001010</td>
+      <td>台北市內湖區</td>
+      <td>瑞光路186號</td>
+      <td>「台達研究院」(Delta Research Center, DRC)成立於2013年，為台...</td>
+      <td>...</td>
+      <td>人工智慧資料科學家/AI Data Scientist_台達研究院(台北)</td>
+      <td>台達電子工業股份有限公司 _DELTA ELECTRONICS INC.</td>
+      <td>121.5778267</td>
+      <td>25.0742151</td>
+      <td>0</td>
+      <td>[數學及電算機科學學科類, 工程學科類]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <th>12</th>
@@ -1045,30 +1047,6 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
     </tr>
     <tr>
       <th>16</th>
-      <td>0</td>
-      <td>13646257</td>
-      <td>AI數據分析資料科學家</td>
-      <td>AI數據分析&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001003</td>
-      <td>台北市中山區</td>
-      <td>民權東路三段4號15樓</td>
-      <td>1. 熱衷或有接觸AI領域相關產品之應用的相關經驗。\n2. 根據公司業務與項目，協同RD進...</td>
-      <td>...</td>
-      <td>AI數據分析資料科學家</td>
-      <td>立達信集團_立信電子科技有限公司</td>
-      <td>121.5387503</td>
-      <td>25.0620318</td>
-      <td>0</td>
-      <td>[資訊管理相關, 其他商業及管理相關, 數理統計相關]</td>
-      <td></td>
-      <td></td>
-      <td></td>
-      <td></td>
-    </tr>
-    <tr>
-      <th>17</th>
       <td>2</td>
       <td>13008885</td>
       <td>資料科學分析師 Data Scientist R&amp;amp;D - 人工智慧科技 (數數發中心...</td>
@@ -1090,6 +1068,30 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
       <td>0.43</td>
       <td>99001005018</td>
       <td>捷運市政府站</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>0</td>
+      <td>13646257</td>
+      <td>AI數據分析資料科學家</td>
+      <td>AI數據分析&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;</td>
+      <td>1</td>
+      <td>1</td>
+      <td>6001001003</td>
+      <td>台北市中山區</td>
+      <td>民權東路三段4號15樓</td>
+      <td>1. 熱衷或有接觸AI領域相關產品之應用的相關經驗。\n2. 根據公司業務與項目，協同RD進...</td>
+      <td>...</td>
+      <td>AI數據分析資料科學家</td>
+      <td>立達信集團_立信電子科技有限公司</td>
+      <td>121.5387503</td>
+      <td>25.0620318</td>
+      <td>0</td>
+      <td>[資訊管理相關, 其他商業及管理相關, 數理統計相關]</td>
+      <td></td>
+      <td></td>
+      <td></td>
+      <td></td>
     </tr>
     <tr>
       <th>18</th>

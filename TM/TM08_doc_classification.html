@@ -212,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../PSS/P09_database.html">P09 Database</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
 <ul class="nav bd-sidenav">
@@ -237,6 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">TM08 Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="TM09_BERTopic.html">TM09 Topic Modeling by BERtopic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="TM10_Using_Open_AI.html">TM10 Using Open AI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
 <ul class="nav bd-sidenav">
@@ -564,7 +566,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.282 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.281 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -1116,27 +1118,27 @@ Name: tag, Length: 6388, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>1793</th>
+      <th>232</th>
       <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>1597</th>
+      <td>P</td>
       <td>P</td>
     </tr>
     <tr>
-      <th>910</th>
-      <td>N</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>2134</th>
-      <td>N</td>
+      <th>1959</th>
+      <td>P</td>
       <td>P</td>
     </tr>
     <tr>
-      <th>4964</th>
-      <td>N</td>
-      <td>N</td>
+      <th>2932</th>
+      <td>P</td>
+      <td>P</td>
     </tr>
     <tr>
-      <th>227</th>
+      <th>3876</th>
       <td>N</td>
       <td>N</td>
     </tr>
@@ -1146,27 +1148,27 @@ Name: tag, Length: 6388, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>4947</th>
-      <td>P</td>
-      <td>P</td>
-    </tr>
-    <tr>
-      <th>5102</th>
+      <th>4201</th>
       <td>N</td>
       <td>P</td>
     </tr>
     <tr>
-      <th>5097</th>
+      <th>1701</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>3143</th>
+      <th>3851</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>3373</th>
+      <th>3451</th>
+      <td>P</td>
+      <td>P</td>
+    </tr>
+    <tr>
+      <th>4836</th>
       <td>N</td>
       <td>N</td>
     </tr>
@@ -1194,17 +1196,17 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7480438184663537
-[[882 112]
- [371 552]]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7584767866458008
+[[875 106]
+ [357 579]]
               precision    recall  f1-score   support
 
-           N       0.70      0.89      0.79       994
-           P       0.83      0.60      0.70       923
+           N       0.71      0.89      0.79       981
+           P       0.85      0.62      0.71       936
 
-    accuracy                           0.75      1917
-   macro avg       0.77      0.74      0.74      1917
-weighted avg       0.77      0.75      0.74      1917
+    accuracy                           0.76      1917
+   macro avg       0.78      0.76      0.75      1917
+weighted avg       0.78      0.76      0.75      1917
 </pre></div>
 </div>
 </div>
@@ -1277,8 +1279,8 @@ weighted avg       0.77      0.75      0.74      1917
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.81      0.80      0.80       994
-           P       0.79      0.79      0.79       923
+           N       0.81      0.80      0.81       981
+           P       0.79      0.81      0.80       936
 
     accuracy                           0.80      1917
    macro avg       0.80      0.80      0.80      1917
@@ -1287,12 +1289,12 @@ weighted avg       0.80      0.80      0.80      1917
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.66      0.76      0.71      1007
-           P       0.68      0.57      0.62       910
+           N       0.65      0.77      0.70       993
+           P       0.69      0.56      0.62       924
 
     accuracy                           0.67      1917
    macro avg       0.67      0.66      0.66      1917
-weighted avg       0.67      0.67      0.67      1917
+weighted avg       0.67      0.67      0.66      1917
 </pre></div>
 </div>
 </div>
@@ -1360,17 +1362,17 @@ weighted avg       0.67      0.67      0.67      1917
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.78      0.90      0.84       994
-           P       0.88      0.72      0.79       923
+           N       0.80      0.91      0.85       981
+           P       0.89      0.76      0.82       936
 
-    accuracy                           0.82      1917
-   macro avg       0.83      0.81      0.81      1917
-weighted avg       0.82      0.82      0.81      1917
+    accuracy                           0.83      1917
+   macro avg       0.84      0.83      0.83      1917
+weighted avg       0.84      0.83      0.83      1917
 
               precision    recall  f1-score   support
 
-           N       0.80      0.92      0.85      1005
-           P       0.89      0.74      0.81       912
+           N       0.81      0.89      0.85      1026
+           P       0.86      0.76      0.81       891
 
     accuracy                           0.83      1917
    macro avg       0.84      0.83      0.83      1917
@@ -1407,8 +1409,8 @@ weighted avg       0.84      0.83      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.32116166, 0.4355723 , 0.54745085, ..., 0.48067824, 0.22647894,
-       0.20448985])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.4208423 , 0.87255368, 0.85708792, ..., 0.336892  , 0.84180082,
+       0.22008137])
 </pre></div>
 </div>
 </div>
@@ -1457,28 +1459,28 @@ weighted avg       0.84      0.83      0.83      1917
   </thead>
   <tbody>
     <tr>
-      <th>1723</th>
-      <td>0.018579</td>
+      <th>477</th>
+      <td>0.043470</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1289</th>
-      <td>0.052226</td>
+      <th>413</th>
+      <td>0.047680</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1240</th>
-      <td>0.053397</td>
+      <th>1894</th>
+      <td>0.047680</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1486</th>
-      <td>0.054285</td>
+      <th>130</th>
+      <td>0.053791</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1871</th>
-      <td>0.054650</td>
+      <th>332</th>
+      <td>0.053791</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1487,28 +1489,28 @@ weighted avg       0.84      0.83      0.83      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>1869</th>
-      <td>0.979562</td>
+      <th>568</th>
+      <td>0.982374</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1811</th>
-      <td>0.979634</td>
+      <th>1266</th>
+      <td>0.982498</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>832</th>
-      <td>0.985044</td>
+      <th>318</th>
+      <td>0.985954</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>215</th>
-      <td>0.987907</td>
+      <th>1187</th>
+      <td>0.986721</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>541</th>
-      <td>0.989162</td>
+      <th>652</th>
+      <td>0.995350</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1553,31 +1555,31 @@ weighted avg       0.84      0.83      0.83      1917
       <th>0</th>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.989162</td>
+      <td>1.995350</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.000000</td>
-      <td>0.001083</td>
-      <td>0.989162</td>
+      <td>0.001068</td>
+      <td>0.995350</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0.000000</td>
-      <td>0.050921</td>
-      <td>0.916071</td>
+      <td>0.011752</td>
+      <td>0.968503</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.001006</td>
-      <td>0.050921</td>
-      <td>0.913888</td>
+      <td>0.000000</td>
+      <td>0.013889</td>
+      <td>0.966584</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.001006</td>
-      <td>0.056338</td>
-      <td>0.910212</td>
+      <td>0.000000</td>
+      <td>0.042735</td>
+      <td>0.928040</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1586,38 +1588,38 @@ weighted avg       0.84      0.83      0.83      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>470</th>
-      <td>0.977867</td>
-      <td>0.998917</td>
-      <td>0.082802</td>
+      <th>461</th>
+      <td>0.980632</td>
+      <td>0.998932</td>
+      <td>0.085301</td>
     </tr>
     <tr>
-      <th>471</th>
-      <td>0.977867</td>
+      <th>462</th>
+      <td>0.980632</td>
       <td>1.000000</td>
-      <td>0.081820</td>
+      <td>0.083188</td>
     </tr>
     <tr>
-      <th>472</th>
-      <td>0.988934</td>
+      <th>463</th>
+      <td>0.994903</td>
       <td>1.000000</td>
-      <td>0.059422</td>
+      <td>0.054701</td>
     </tr>
     <tr>
-      <th>473</th>
-      <td>0.995976</td>
+      <th>464</th>
+      <td>0.998981</td>
       <td>1.000000</td>
-      <td>0.054650</td>
+      <td>0.047680</td>
     </tr>
     <tr>
-      <th>474</th>
+      <th>465</th>
       <td>1.000000</td>
       <td>1.000000</td>
-      <td>0.018579</td>
+      <td>0.043470</td>
     </tr>
   </tbody>
 </table>
-<p>475 rows × 3 columns</p>
+<p>466 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1628,7 +1630,7 @@ weighted avg       0.84      0.83      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9020155603174845
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9137065788441936
 </pre></div>
 </div>
 </div>
@@ -1648,7 +1650,7 @@ weighted avg       0.84      0.83      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/522c3d343b37a15089354ec9338aeefa062114e48c0f72ad6794bae8e06d315e.png" src="../_images/522c3d343b37a15089354ec9338aeefa062114e48c0f72ad6794bae8e06d315e.png" />
+<img alt="../_images/44eaa206f961074e8abcca82c372c79cbad8c180b471239156cabea03babdab9.png" src="../_images/44eaa206f961074e8abcca82c372c79cbad8c180b471239156cabea03babdab9.png" />
 </div>
 </div>
 </section>
@@ -1671,7 +1673,7 @@ weighted avg       0.84      0.83      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/56a7e0ceead65af82b2ba54b51a9e4c92abd804e3134b95acf8121186624f931.png" src="../_images/56a7e0ceead65af82b2ba54b51a9e4c92abd804e3134b95acf8121186624f931.png" />
+<img alt="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" src="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" />
 </div>
 </div>
 <section id="roc-curve-by-nb">
@@ -1690,7 +1692,7 @@ weighted avg       0.84      0.83      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/b271bcc1522de0814db9145b00ad7ebf9c91d5f80807712c9a37461757361403.png" src="../_images/b271bcc1522de0814db9145b00ad7ebf9c91d5f80807712c9a37461757361403.png" />
+<img alt="../_images/50480b0e2691df6fa7f6d0adf69654accc88dd62f9ed38a43ab7278fd17f5873.png" src="../_images/50480b0e2691df6fa7f6d0adf69654accc88dd62f9ed38a43ab7278fd17f5873.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1715,7 +1717,7 @@ weighted avg       0.84      0.83      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/56a7e0ceead65af82b2ba54b51a9e4c92abd804e3134b95acf8121186624f931.png" src="../_images/56a7e0ceead65af82b2ba54b51a9e4c92abd804e3134b95acf8121186624f931.png" />
+<img alt="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" src="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" />
 </div>
 </div>
 </section>

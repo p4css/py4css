@@ -17,21 +17,21 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
-
-li = [(u1, u2, user_pair_counts[(u1, u2)], mi) for (u1, u2), mi in pmi_scores.most_common()]
-df = pd.DataFrame.from_records(li, columns =['u1', 'u2', 'count', 'mi'])
-df
+# colab
+import pickle
+# !wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat
+with open("data/pttpost_20210509_n178.dat", "rb") as fin:
+    all_post = pickle.load(fin)
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mNameError[0m                                 Traceback (most recent call last)
-Input [0;32mIn [8][0m, in [0;36m<cell line: 3>[0;34m()[0m
-[1;32m      1[0m [38;5;28;01mimport[39;00m [38;5;21;01mpandas[39;00m [38;5;28;01mas[39;00m [38;5;21;01mpd[39;00m
-[0;32m----> 3[0m li [38;5;241m=[39m [(u1, u2, user_pair_counts[(u1, u2)], mi) [38;5;28;01mfor[39;00m (u1, u2), mi [38;5;129;01min[39;00m [43mpmi_scores[49m[38;5;241m.[39mmost_common()]
-[1;32m      4[0m df [38;5;241m=[39m pd[38;5;241m.[39mDataFrame[38;5;241m.[39mfrom_records(li, columns [38;5;241m=[39m[[38;5;124m'[39m[38;5;124mu1[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mu2[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mcount[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mmi[39m[38;5;124m'[39m])
-[1;32m      5[0m df
+[0;31mFileNotFoundError[0m                         Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 4>[0;34m()[0m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mpickle[39;00m
+[1;32m      3[0m [38;5;66;03m# !wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat[39;00m
+[0;32m----> 4[0m [38;5;28;01mwith[39;00m [38;5;28;43mopen[39;49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mdata/pttpost_20210509_n178.dat[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mrb[39;49m[38;5;124;43m"[39;49m[43m)[49m [38;5;28;01mas[39;00m fin:
+[1;32m      5[0m     all_post [38;5;241m=[39m pickle[38;5;241m.[39mload(fin)
 
-[0;31mNameError[0m: name 'pmi_scores' is not defined
-NameError: name 'pmi_scores' is not defined
+[0;31mFileNotFoundError[0m: [Errno 2] No such file or directory: 'data/pttpost_20210509_n178.dat'
+FileNotFoundError: [Errno 2] No such file or directory: 'data/pttpost_20210509_n178.dat'
 

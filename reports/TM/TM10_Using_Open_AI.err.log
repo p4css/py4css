@@ -1,0 +1,65 @@
+Traceback (most recent call last):
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from openai import OpenAI
+OPEN_API_KEY = "YOUR_API_KEY"
+client = OpenAI(api_key = OPEN_API_KEY)
+
+from tenacity import (
+    retry,
+    stop_after_attempt,
+    wait_random_exponential,
+) 
+
+# @retry(wait=wait_random_exponential(min=3, max=10), stop=stop_after_attempt(3))
+def ask_gpt(query):
+    completion = client.chat.completions.create(
+        model="gpt-3.5-turbo-1106",
+        messages=[
+            {"role": "system", "content": "以下留言是各類商店討論版中的評論，請協助分析，這些留言的評論對象是"},
+            {"role": "system", "content": """
+                A-旅館
+                B-食品
+                C-餐廳
+                D-3C用品
+                E-其他"""},
+            {"role": "system", "content": "只要回答A|B|C|D|E即可，謝謝！你也可以照你的判斷新增新label!"},
+            {"role": "user", "content": f"留言內容為「{query}」"},
+            {"role": "assistant", "content": "你的答案是："},
+            ],
+        # n=1,
+        # stop=["\n"], 
+        temperature=0,
+        frequency_penalty=0.0,
+        presence_penalty=0.0
+    )
+    return completion
+    # return completion.choices[0].message.content.strip()
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mImportError[0m                               Traceback (most recent call last)
+Input [0;32mIn [3][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[0;32m----> 1[0m [38;5;28;01mfrom[39;00m [38;5;21;01mopenai[39;00m [38;5;28;01mimport[39;00m OpenAI
+[1;32m      2[0m OPEN_API_KEY [38;5;241m=[39m [38;5;124m"[39m[38;5;124mYOUR_API_KEY[39m[38;5;124m"[39m
+[1;32m      3[0m client [38;5;241m=[39m OpenAI(api_key [38;5;241m=[39m OPEN_API_KEY)
+
+[0;31mImportError[0m: cannot import name 'OpenAI' from 'openai' (/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/openai/__init__.py)
+ImportError: cannot import name 'OpenAI' from 'openai' (/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/openai/__init__.py)
+

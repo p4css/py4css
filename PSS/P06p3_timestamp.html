@@ -212,6 +212,7 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
+<li class="toctree-l1"><a class="reference internal" href="P09_database.html">P09 Database</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
 <ul class="nav bd-sidenav">
@@ -237,6 +238,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM09_BERTopic.html">TM09 Topic Modeling by BERtopic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM10_Using_Open_AI.html">TM10 Using Open AI</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
 <ul class="nav bd-sidenav">
@@ -565,6 +567,18 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pickle</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../AS/data/pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+
+<span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../AS/data/pttpost_20210509_n178.dat&#39;
+</pre></div>
+</div>
+</div>
 </div>
 <section id="post-df">
 <h3>post_df<a class="headerlink" href="#post-df" title="Permalink to this headline">#</a></h3>
@@ -887,13 +901,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>author               object
-authorid             object
-nickname             object
-link                 object
-title                object
-timestamp    datetime64[ns]
-content              object
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>author                 object
+authorid               object
+nickname               object
+link                   object
+title                  object
+timestamp      datetime64[ns]
+content                object
+year                    int64
+month                   int64
+weekday                object
+num_weekday             int64
 dtype: object
 </pre></div>
 </div>
@@ -922,6 +940,10 @@ dtype: object
       <th>title</th>
       <th>timestamp</th>
       <th>content</th>
+      <th>year</th>
+      <th>month</th>
+      <th>weekday</th>
+      <th>num_weekday</th>
     </tr>
   </thead>
   <tbody>
@@ -934,6 +956,10 @@ dtype: object
       <td>[問卦] 美國會研究因武漢肺炎死亡的人種嗎？</td>
       <td>2021-05-09 10:52:43</td>
       <td>美國是民族大熔爐\n\n全世界各種人種都有\n\n但是依照各個人種做研究又有歧視的問題\n\...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Sunday</td>
+      <td>7</td>
     </tr>
     <tr>
       <th>1</th>
@@ -944,6 +970,10 @@ dtype: object
       <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
       <td>2021-05-08 22:37:16</td>
       <td>簡單講就是經濟跟死亡二選一的問題\n\n如果你全部的人都關在家不用上班\n經濟停止活動\n是...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>2</th>
@@ -954,6 +984,10 @@ dtype: object
       <td>Re: [爆卦] 大阪肺炎死亡率超越印度啦！！</td>
       <td>2021-05-08 21:37:14</td>
       <td>這就是自由過了頭\n\n日本就是太快西化\n\n才犯了西方世界的飮毒\n\n\n要是日本還遺...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>3</th>
@@ -964,6 +998,10 @@ dtype: object
       <td>[爆卦] 大阪肺炎死亡率超越印度啦！！</td>
       <td>2021-05-08 21:04:44</td>
       <td>先附上新聞aign=none\n\n根據數據統計\n\n大阪1百萬人/19.6人死亡\n印度...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
     </tr>
     <tr>
       <th>4</th>
@@ -974,6 +1012,10 @@ dtype: object
       <td>Re: [爆卦] 昨天武漢肺炎AZ疫苗將近萬人施打</td>
       <td>2021-05-08 20:48:46</td>
       <td>想居家檢疫後來去打疫苗，想說大家都不打那別浪費了。\n\n結果台北馬偕預約全滿，其他醫院隨便...</td>
+      <td>2021</td>
+      <td>5</td>
+      <td>Saturday</td>
+      <td>6</td>
     </tr>
   </tbody>
 </table>
@@ -1185,7 +1227,7 @@ Freq: D, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/3a25ac982d0a748fa0ae2ef2c766975a542de9de9fe20dc024dcf856d676ceaa.png" src="../_images/3a25ac982d0a748fa0ae2ef2c766975a542de9de9fe20dc024dcf856d676ceaa.png" />
+<img alt="../_images/6245bff576bc67f3b3f6fdf76c2a9728f0e44f84fe59dabf1ff179c22b8f0be0.png" src="../_images/6245bff576bc67f3b3f6fdf76c2a9728f0e44f84fe59dabf1ff179c22b8f0be0.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1214,7 +1256,7 @@ Freq: D, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/f1967cff26d4aee4d8cafdc111f9c11b752bd72cabadfe1a03ccd44a8d5b0c22.png" src="../_images/f1967cff26d4aee4d8cafdc111f9c11b752bd72cabadfe1a03ccd44a8d5b0c22.png" />
+<img alt="../_images/785bc4a7cbe2b33c68685411e560ab92b1f1504ac7378773d180df6d7bb673ea.png" src="../_images/785bc4a7cbe2b33c68685411e560ab92b1f1504ac7378773d180df6d7bb673ea.png" />
 </div>
 </div>
 </section>
