@@ -236,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM09_BERTopic.html">TM09 Topic Modeling by BERtopic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
 <ul class="nav bd-sidenav">
@@ -1007,7 +1008,7 @@ poli has 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;jour&#39;: 4, &#39;econ&#39;: 3, &#39;poli&#39;: 1}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;poli&#39;: 1, &#39;jour&#39;: 4, &#39;econ&#39;: 3}
 </pre></div>
 </div>
 </div>
@@ -1081,12 +1082,10 @@ poli 	 1
 Requirement already satisfied: beautifulsoup4 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (4.11.1)
 Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (2.27.1)
 Requirement already satisfied: urllib3&lt;1.27,&gt;=1.21.1 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.26.14)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.3)
 Requirement already satisfied: charset-normalizer~=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
 Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2022.5.18.1)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.3)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
 </pre></div>
 </div>
 </div>
@@ -1317,7 +1316,7 @@ Counter({1: 175, 2: 26, 4: 5, 3: 4, 5: 3, 7: 1, 23: 1, 10: 1, 6: 1, 13: 1, 9: 1,
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of:  75
-Grades:  41 98 48 49 80 69 96 82 40 46 37 66 37 74 47 66 44 38 40 84 84 57 52 92 76 72 91 87 68 47 72 72 63 71 65 52 66 64 51 47 68 41 58 41 99 98 59 44 86 95 73 62 70 47 77 60 64 78 51 71 85 45 40 36 82 82 91 56 87 76 46 95 56 55 69
+Grades:  71 51 53 54 83 58 69 47 62 57 43 38 80 39 67 90 35 45 80 83 94 55 83 99 67 48 38 71 66 77 44 57 45 69 89 51 60 50 61 81 58 52 80 55 49 74 88 36 42 62 65 51 40 89 74 76 94 66 91 92 74 100 72 41 88 92 93 59 75 78 50 56 43 96 69
 </pre></div>
 </div>
 </div>
@@ -1345,7 +1344,7 @@ Grades:  41 98 48 49 80 69 96 82 40 46 37 66 37 74 47 66 44 38 40 84 84 57 52 92
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 31, &#39;C&#39;: 16, &#39;B&#39;: 9, &#39;A&#39;: 19}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 32, &#39;C&#39;: 14, &#39;B&#39;: 8, &#39;A&#39;: 21}
 </pre></div>
 </div>
 </div>

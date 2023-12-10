@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="CSS02 Simulation" href="CSS02_Simulation.html" />
-    <link rel="prev" title="TM08 Classification" href="../TM/TM08_doc_classification.html" />
+    <link rel="prev" title="TM09 Topic Modeling by BERtopic" href="../TM/TM09_BERTopic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="None"/>
   </head>
@@ -236,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM09_BERTopic.html">TM09 Topic Modeling by BERtopic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
 <ul class="nav bd-sidenav">
@@ -568,7 +569,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-02 15:47:02--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-10 11:59:37--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
 Resolving github.com (github.com)... 20.27.177.113
 Connecting to github.com (github.com)|20.27.177.113|:443... 
 </pre></div>
@@ -579,20 +580,34 @@ Connecting to github.com (github.com)|20.27.177.113|:443...
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404 Not Found
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
+Location: https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat [following]
+--2023-12-10 11:59:37--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-12-02 15:47:03 ERROR 404: Not Found.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">EOFError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+Length: 992132 (969K) [application/octet-stream]
+Saving to: &#39;pttpost_20210509_n178.dat&#39;
 
-<span class="ne">EOFError</span>: Ran out of input
+
+          pttpost_2   0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         pttpost_20  60%[===========&gt;        ] 584.00K  2.58MB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        pttpost_202  75%[==============&gt;     ] 728.00K   739KB/s               
+pttpost_20210509_n1 100%[===================&gt;] 968.88K   982KB/s    in 1.0s    
+
+2023-12-10 11:59:39 (982 KB/s) - &#39;pttpost_20210509_n178.dat&#39; saved [992132/992132]
 </pre></div>
 </div>
 </div>
@@ -641,100 +656,17 @@ lagadidi	AIronKuma	14
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>u1</th>
-      <th>u2</th>
-      <th>n</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>Runna</td>
-      <td>iampig951753</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>iampig951753</td>
-      <td>Runna</td>
-      <td>32</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>psl7634</td>
-      <td>gustavek</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>gustavek</td>
-      <td>psl7634</td>
-      <td>21</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>sl11pman</td>
-      <td>cwh0105</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>667</th>
-      <td>kingstongyu</td>
-      <td>cecille</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>668</th>
-      <td>kingstongyu</td>
-      <td>kid1a2b3c4d</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>669</th>
-      <td>kid1a2b3c4d</td>
-      <td>kingstongyu</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>670</th>
-      <td>kid1a2b3c4d</td>
-      <td>kuan12065</td>
-      <td>4</td>
-    </tr>
-    <tr>
-      <th>671</th>
-      <td>kuan12065</td>
-      <td>kid1a2b3c4d</td>
-      <td>4</td>
-    </tr>
-  </tbody>
-</table>
-<p>672 rows × 3 columns</p>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;pd&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 </section>
@@ -1581,12 +1513,12 @@ sl11pman	frank355571	270
     <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
-       href="../TM/TM08_doc_classification.html"
+       href="../TM/TM09_BERTopic.html"
        title="previous page">
       <i class="fa-solid fa-angle-left"></i>
       <div class="prev-next-info">
         <p class="prev-next-subtitle">previous</p>
-        <p class="prev-next-title">TM08 Classification</p>
+        <p class="prev-next-title">TM09 Topic Modeling by BERtopic</p>
       </div>
     </a>
     <a class="right-next"

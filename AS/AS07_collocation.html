@@ -236,6 +236,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_embedding_clustering.html">TM07 embedding and clustering</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM07_2_doc2vec.html">TM07 word2vec vs doc2vec</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM08_doc_classification.html">TM08 Classification</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../TM/TM09_BERTopic.html">TM09 Topic Modeling by BERtopic</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Using deep learning</span></p>
 <ul class="nav bd-sidenav">
@@ -534,7 +535,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-02 15:46:55--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2023-12-10 11:59:28--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
 Resolving github.com (github.com)... 
 </pre></div>
 </div>
@@ -548,20 +549,39 @@ Connecting to github.com (github.com)|20.27.177.113|:443...
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>404 Not Found
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
+Location: https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat [following]
+--2023-12-10 11:59:29--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.108.133, 185.199.110.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.108.133|:443... 
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2023-12-02 15:46:56 ERROR 404: Not Found.
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">EOFError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">get_ipython</span><span class="p">()</span><span class="o">.</span><span class="n">system</span><span class="p">(</span><span class="s1">&#39;wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
-<span class="ne">----&gt; </span><span class="mi">5</span>     <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+Length: 992132 (969K) [application/octet-stream]
+Saving to: &#39;pttpost_20210509_n178.dat&#39;
 
-<span class="ne">EOFError</span>: Ran out of input
+
+          pttpost_2   0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         pttpost_20  15%[==&gt;                 ] 151.10K   689KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        pttpost_202  32%[=====&gt;              ] 311.10K   584KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       pttpost_2021  77%[==============&gt;     ] 746.38K  1006KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pttpost_20210509_n1 100%[===================&gt;] 968.88K  1.01MB/s    in 0.9s    
+
+2023-12-10 11:59:31 (1.01 MB/s) - &#39;pttpost_20210509_n178.dat&#39; saved [992132/992132]
 </pre></div>
 </div>
 </div>
@@ -763,112 +783,18 @@ Connecting to github.com (github.com)|20.27.177.113|:443...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">user_pair_counts</span><span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">)],</span> <span class="n">mi</span><span class="p">)</span> <span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">mi</span> <span class="ow">in</span> <span class="n">pmi_scores</span><span class="o">.</span><span class="n">most_common</span><span class="p">()]</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;count&#39;</span><span class="p">,</span> <span class="s1">&#39;mi&#39;</span><span class="p">])</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="n">df</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>u1</th>
-      <th>u2</th>
-      <th>count</th>
-      <th>mi</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>devilscry</td>
-      <td>kinghung88</td>
-      <td>6</td>
-      <td>10.892489</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>kinghung88</td>
-      <td>devilscry</td>
-      <td>6</td>
-      <td>10.892489</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>SwordGod</td>
-      <td>duoloveyang</td>
-      <td>6</td>
-      <td>10.892489</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>duoloveyang</td>
-      <td>SwordGod</td>
-      <td>6</td>
-      <td>10.892489</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>enso</td>
-      <td>kmaj7</td>
-      <td>6</td>
-      <td>10.892489</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>36349</th>
-      <td>s505015</td>
-      <td>jma306</td>
-      <td>1</td>
-      <td>2.307526</td>
-    </tr>
-    <tr>
-      <th>36350</th>
-      <td>gt0404</td>
-      <td>mudee</td>
-      <td>1</td>
-      <td>2.277779</td>
-    </tr>
-    <tr>
-      <th>36351</th>
-      <td>mudee</td>
-      <td>gt0404</td>
-      <td>1</td>
-      <td>2.277779</td>
-    </tr>
-    <tr>
-      <th>36352</th>
-      <td>marktak</td>
-      <td>iampig951753</td>
-      <td>1</td>
-      <td>2.130938</td>
-    </tr>
-    <tr>
-      <th>36353</th>
-      <td>iampig951753</td>
-      <td>marktak</td>
-      <td>1</td>
-      <td>2.130938</td>
-    </tr>
-  </tbody>
-</table>
-<p>36354 rows × 4 columns</p>
-</div></div></div>
+<span class="ne">NameError</span>: name &#39;pmi_scores&#39; is not defined
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="filter-high-frequency-pairs">
