@@ -252,7 +252,9 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01 for Python Basic</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+
+
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
@@ -560,13 +562,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+Building prefix dict from the default dictionary ...
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.281 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.302 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -859,7 +865,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;scipy.sparse.csr.csr_matrix&#39;&gt;
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;scipy.sparse._csr.csr_matrix&#39;&gt;
 (6388, 11959)
 </pre></div>
 </div>
@@ -896,6 +902,60 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">common_texts</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">gensim.models.doc2vec</span> <span class="kn">import</span> <span class="n">Doc2Vec</span><span class="p">,</span> <span class="n">TaggedDocument</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">tagged_documents</span> <span class="o">=</span> <span class="p">[</span><span class="n">TaggedDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">documents</span><span class="p">)]</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;4.1.2&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">logging</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">parsing</span><span class="p">,</span> <span class="n">corpora</span><span class="p">,</span> <span class="n">matutils</span><span class="p">,</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">similarities</span><span class="p">,</span> <span class="n">utils</span>  <span class="c1"># noqa:F401</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;gensim&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>  <span class="c1"># To ensure reload() doesn&#39;t add another one</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This package contains implementations of various streaming corpus I/O format.</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># bring corpus classes directly into package namespace, to save some typing</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.indexedcorpus</span> <span class="kn">import</span> <span class="n">IndexedCorpus</span>  <span class="c1"># noqa:F401 must appear before the other classes</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.mmcorpus</span> <span class="kn">import</span> <span class="n">MmCorpus</span>  <span class="c1"># noqa:F401</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.bleicorpus</span> <span class="kn">import</span> <span class="n">BleiCorpus</span>  <span class="c1"># noqa:F401</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="n">indexedcorpus</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">logging</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">utils</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="k">class</span> <span class="nc">IndexedCorpus</span><span class="p">(</span><span class="n">interfaces</span><span class="o">.</span><span class="n">CorpusABC</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">interfaces</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Basic interfaces used across the whole Gensim package.</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="sd"> </span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> These interfaces are used for building corpora, model transformation and similarity queries.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span> <span class="nn">logging</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">matutils</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">class</span> <span class="nc">CorpusABC</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">SaveLoad</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">matutils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">import</span> <span class="nn">scipy.linalg</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">scipy.linalg.lapack</span> <span class="kn">import</span> <span class="n">get_lapack_funcs</span>
+<span class="ne">---&gt; </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">scipy.linalg.special_matrices</span> <span class="kn">import</span> <span class="n">triu</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">psi</span>  <span class="c1"># gamma function utils</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;triu&#39; from &#39;scipy.linalg.special_matrices&#39; (/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/scipy/linalg/special_matrices.py)
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -926,6 +986,12 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="c1"># fit = selector.fit(X_tfidf, y)</span>
 <span class="c1"># fit.scores_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.15789817, 0.01763186, 0.45339518, ..., 0.32014909, 0.00125132,
+       0.33394599])
 </pre></div>
 </div>
 </div>
@@ -995,9 +1061,7 @@ document.write(`
 6386    N
 6387    P
 Name: tag, Length: 6388, dtype: object
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(4471, 11959)
+(4471, 11959)
 (4471, 100)
 (4471, 1000)
 </pre></div>
@@ -1118,27 +1182,27 @@ Name: tag, Length: 6388, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>232</th>
+      <th>3528</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>1597</th>
+      <th>3977</th>
       <td>P</td>
       <td>P</td>
     </tr>
     <tr>
-      <th>1959</th>
-      <td>P</td>
-      <td>P</td>
+      <th>5972</th>
+      <td>N</td>
+      <td>N</td>
     </tr>
     <tr>
-      <th>2932</th>
-      <td>P</td>
-      <td>P</td>
+      <th>345</th>
+      <td>N</td>
+      <td>N</td>
     </tr>
     <tr>
-      <th>3876</th>
+      <th>1809</th>
       <td>N</td>
       <td>N</td>
     </tr>
@@ -1148,28 +1212,28 @@ Name: tag, Length: 6388, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>4201</th>
+      <th>3327</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>3840</th>
       <td>N</td>
       <td>P</td>
     </tr>
     <tr>
-      <th>1701</th>
+      <th>3637</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>3851</th>
+      <th>529</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>3451</th>
+      <th>2944</th>
       <td>P</td>
-      <td>P</td>
-    </tr>
-    <tr>
-      <th>4836</th>
-      <td>N</td>
       <td>N</td>
     </tr>
   </tbody>
@@ -1196,17 +1260,15 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.7584767866458008
-[[875 106]
- [357 579]]
-              precision    recall  f1-score   support
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
 
-           N       0.71      0.89      0.79       981
-           P       0.85      0.62      0.71       936
-
-    accuracy                           0.76      1917
-   macro avg       0.78      0.76      0.75      1917
-weighted avg       0.78      0.76      0.75      1917
+<span class="ne">NameError</span>: name &#39;y_tfidf_test&#39; is not defined
 </pre></div>
 </div>
 </div>
@@ -1279,22 +1341,21 @@ weighted avg       0.78      0.76      0.75      1917
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.81      0.80      0.81       981
-           P       0.79      0.81      0.80       936
+           N       0.81      0.79      0.80       987
+           P       0.78      0.81      0.79       930
 
     accuracy                           0.80      1917
    macro avg       0.80      0.80      0.80      1917
 weighted avg       0.80      0.80      0.80      1917
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.65      0.77      0.70       993
-           P       0.69      0.56      0.62       924
+              precision    recall  f1-score   support
+
+           N       0.68      0.74      0.71      1038
+           P       0.66      0.58      0.62       879
 
     accuracy                           0.67      1917
    macro avg       0.67      0.66      0.66      1917
-weighted avg       0.67      0.67      0.66      1917
+weighted avg       0.67      0.67      0.67      1917
 </pre></div>
 </div>
 </div>
@@ -1330,6 +1391,18 @@ weighted avg       0.67      0.67      0.66      1917
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           N       0.79      0.91      0.84       987
+           P       0.88      0.74      0.81       930
+
+    accuracy                           0.83      1917
+   macro avg       0.84      0.83      0.83      1917
+weighted avg       0.84      0.83      0.83      1917
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1362,21 +1435,21 @@ weighted avg       0.67      0.67      0.66      1917
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.80      0.91      0.85       981
-           P       0.89      0.76      0.82       936
+           N       0.79      0.91      0.84       987
+           P       0.88      0.74      0.80       930
 
     accuracy                           0.83      1917
-   macro avg       0.84      0.83      0.83      1917
-weighted avg       0.84      0.83      0.83      1917
+   macro avg       0.83      0.82      0.82      1917
+weighted avg       0.83      0.83      0.82      1917
 
               precision    recall  f1-score   support
 
-           N       0.81      0.89      0.85      1026
-           P       0.86      0.76      0.81       891
+           N       0.80      0.91      0.85      1011
+           P       0.88      0.75      0.81       906
 
-    accuracy                           0.83      1917
+    accuracy                           0.84      1917
    macro avg       0.84      0.83      0.83      1917
-weighted avg       0.84      0.83      0.83      1917
+weighted avg       0.84      0.84      0.83      1917
 </pre></div>
 </div>
 </div>
@@ -1409,8 +1482,8 @@ weighted avg       0.84      0.83      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.4208423 , 0.87255368, 0.85708792, ..., 0.336892  , 0.84180082,
-       0.22008137])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.36521659, 0.5253291 , 0.57791509, ..., 0.92233505, 0.53882655,
+       0.4744045 ])
 </pre></div>
 </div>
 </div>
@@ -1459,28 +1532,28 @@ weighted avg       0.84      0.83      0.83      1917
   </thead>
   <tbody>
     <tr>
-      <th>477</th>
-      <td>0.043470</td>
+      <th>1553</th>
+      <td>0.040226</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>413</th>
-      <td>0.047680</td>
+      <th>103</th>
+      <td>0.043580</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1894</th>
-      <td>0.047680</td>
+      <th>233</th>
+      <td>0.045870</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>130</th>
-      <td>0.053791</td>
+      <th>575</th>
+      <td>0.046373</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>332</th>
-      <td>0.053791</td>
+      <th>964</th>
+      <td>0.046484</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1489,28 +1562,28 @@ weighted avg       0.84      0.83      0.83      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>568</th>
-      <td>0.982374</td>
+      <th>1869</th>
+      <td>0.974932</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1266</th>
-      <td>0.982498</td>
+      <th>474</th>
+      <td>0.977466</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>318</th>
-      <td>0.985954</td>
+      <th>1781</th>
+      <td>0.978268</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1187</th>
-      <td>0.986721</td>
+      <th>1714</th>
+      <td>0.982856</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>652</th>
-      <td>0.995350</td>
+      <th>454</th>
+      <td>0.994109</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1555,31 +1628,31 @@ weighted avg       0.84      0.83      0.83      1917
       <th>0</th>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.995350</td>
+      <td>1.994109</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.000000</td>
-      <td>0.001068</td>
-      <td>0.995350</td>
+      <td>0.001028</td>
+      <td>0.994109</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0.000000</td>
-      <td>0.011752</td>
-      <td>0.968503</td>
+      <td>0.008222</td>
+      <td>0.969941</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.000000</td>
-      <td>0.013889</td>
-      <td>0.966584</td>
+      <td>0.001059</td>
+      <td>0.008222</td>
+      <td>0.969613</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.000000</td>
-      <td>0.042735</td>
-      <td>0.928040</td>
+      <td>0.001059</td>
+      <td>0.044193</td>
+      <td>0.923721</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1588,38 +1661,38 @@ weighted avg       0.84      0.83      0.83      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>461</th>
-      <td>0.980632</td>
-      <td>0.998932</td>
-      <td>0.085301</td>
+      <th>418</th>
+      <td>0.980932</td>
+      <td>0.998972</td>
+      <td>0.069844</td>
     </tr>
     <tr>
-      <th>462</th>
-      <td>0.980632</td>
+      <th>419</th>
+      <td>0.980932</td>
       <td>1.000000</td>
-      <td>0.083188</td>
+      <td>0.069067</td>
     </tr>
     <tr>
-      <th>463</th>
-      <td>0.994903</td>
+      <th>420</th>
+      <td>0.988347</td>
       <td>1.000000</td>
-      <td>0.054701</td>
+      <td>0.057836</td>
     </tr>
     <tr>
-      <th>464</th>
-      <td>0.998981</td>
+      <th>421</th>
+      <td>0.994703</td>
       <td>1.000000</td>
-      <td>0.047680</td>
+      <td>0.051924</td>
     </tr>
     <tr>
-      <th>465</th>
+      <th>422</th>
       <td>1.000000</td>
       <td>1.000000</td>
-      <td>0.043470</td>
+      <td>0.040226</td>
     </tr>
   </tbody>
 </table>
-<p>466 rows × 3 columns</p>
+<p>423 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1630,7 +1703,7 @@ weighted avg       0.84      0.83      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9137065788441936
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9145204417579738
 </pre></div>
 </div>
 </div>
@@ -1650,7 +1723,7 @@ weighted avg       0.84      0.83      0.83      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/44eaa206f961074e8abcca82c372c79cbad8c180b471239156cabea03babdab9.png" src="../_images/44eaa206f961074e8abcca82c372c79cbad8c180b471239156cabea03babdab9.png" />
+<img alt="../_images/0d5febe039d65a30652c537c65b1e727c4f2b2363268849de5fa1e583cf67199.png" src="../_images/0d5febe039d65a30652c537c65b1e727c4f2b2363268849de5fa1e583cf67199.png" />
 </div>
 </div>
 </section>
@@ -1673,7 +1746,7 @@ weighted avg       0.84      0.83      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" src="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" />
+<img alt="../_images/c1c62fc1f21aeee767d7784e9598c02d8440f1cceb3df081ec28f9122fd25878.png" src="../_images/c1c62fc1f21aeee767d7784e9598c02d8440f1cceb3df081ec28f9122fd25878.png" />
 </div>
 </div>
 <section id="roc-curve-by-nb">
@@ -1692,7 +1765,7 @@ weighted avg       0.84      0.83      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/50480b0e2691df6fa7f6d0adf69654accc88dd62f9ed38a43ab7278fd17f5873.png" src="../_images/50480b0e2691df6fa7f6d0adf69654accc88dd62f9ed38a43ab7278fd17f5873.png" />
+<img alt="../_images/d9e72a5a65abda7f5a9095a1c3fdd7b47b4641705762b0e5b57a27dd187fc0ad.png" src="../_images/d9e72a5a65abda7f5a9095a1c3fdd7b47b4641705762b0e5b57a27dd187fc0ad.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1702,6 +1775,13 @@ weighted avg       0.84      0.83      0.83      1917
 <span class="c1"># plt.show()</span>
 </pre></div>
 </div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_roc_curve is deprecated; Function :func:`plot_roc_curve` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: :meth:`sklearn.metric.RocCurveDisplay.from_predictions` or :meth:`sklearn.metric.RocCurveDisplay.from_estimator`.
+  warnings.warn(msg, category=FutureWarning)
+</pre></div>
+</div>
+<img alt="../_images/44115e18d299a251b95a80089669971169710ec4d3e9c487c72a02f67f8c0fa6.png" src="../_images/44115e18d299a251b95a80089669971169710ec4d3e9c487c72a02f67f8c0fa6.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -1717,7 +1797,7 @@ weighted avg       0.84      0.83      0.83      1917
   warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
-<img alt="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" src="../_images/439a48ecd7625705278b2ced485c2202ea484893a950adec3a7ac9740b82a230.png" />
+<img alt="../_images/cc6d1dd8698a5e1d76534435a3833c525154fe9e763f4e56c818d5153d8c9cec.png" src="../_images/cc6d1dd8698a5e1d76534435a3833c525154fe9e763f4e56c818d5153d8c9cec.png" />
 </div>
 </div>
 </section>
