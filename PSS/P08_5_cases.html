@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Scraping cases &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P08 HTML Parsing - Crawling PTT" href="P08_4_ptt_crawler.html" />
     <link rel="prev" title="Tweepy for twitter API 2.0" href="P08_3%20tweepy.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P08_5_cases.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P08_5_cases.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -518,9 +522,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="scraping-cases">
-<h1>Scraping cases<a class="headerlink" href="#scraping-cases" title="Permalink to this headline">#</a></h1>
+<h1>Scraping cases<a class="headerlink" href="#scraping-cases" title="Permalink to this heading">#</a></h1>
 <section id="youbike-data">
-<h2>Youbike Data<a class="headerlink" href="#youbike-data" title="Permalink to this headline">#</a></h2>
+<h2>Youbike Data<a class="headerlink" href="#youbike-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -537,7 +541,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Response [200]&gt;
 200
-{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;3b419e45-301e-0033-4cb7-833f02000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Thu, 20 Feb 2025 16:52:13 GMT&#39;}
+{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;e4633e4b-e01e-0052-41ce-901c41000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Sun, 09 Mar 2025 08:39:11 GMT&#39;}
 &lt;class &#39;requests.models.Response&#39;&gt;
 &lt;class &#39;str&#39;&gt;
 </pre></div>
@@ -546,7 +550,7 @@ document.write(`
 </div>
 </section>
 <section id="taipei-bus">
-<h2>Taipei Bus<a class="headerlink" href="#taipei-bus" title="Permalink to this headline">#</a></h2>
+<h2>Taipei Bus<a class="headerlink" href="#taipei-bus" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -566,7 +570,7 @@ document.write(`
 </div>
 </section>
 <section id="cnyes">
-<h2>Cnyes<a class="headerlink" href="#cnyes" title="Permalink to this headline">#</a></h2>
+<h2>Cnyes<a class="headerlink" href="#cnyes" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -585,7 +589,7 @@ document.write(`
 </div>
 </section>
 <section id="com">
-<h2><a class="reference external" href="http://104.com">104.com</a><a class="headerlink" href="#com" title="Permalink to this headline">#</a></h2>
+<h2><a class="reference external" href="http://104.com">104.com</a><a class="headerlink" href="#com" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -597,29 +601,23 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
-  from pandas.core.computation.check import NUMEXPR_INSTALLED
-/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
-  from pandas.core import (
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:910,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">909</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">910</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">911</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">912</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">913</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/models.py:971,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">970</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
 <span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
 <span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
 <span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
 <span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
 <span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
 <span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
 <span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
@@ -627,9 +625,9 @@ document.write(`
 <span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
 <span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
 <span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="bp">None</span>
+<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
 <span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
 
 <span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
@@ -637,18 +635,20 @@ document.write(`
 <span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
 
 <span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">Input In [4],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/requests/models.py:917,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">915</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">message</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">916</span> <span class="k">else</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">917</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/models.py:975,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
+<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
+<span class="ne">--&gt; </span><span class="mi">975</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
 
-<span class="ne">JSONDecodeError</span>: [Errno Expecting value] &lt;html&gt;&lt;head&gt;&lt;/head&gt;&lt;body&gt;&lt;/body&gt;&lt;/html&gt;: 0
+<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
 </pre></div>
 </div>
 </div>
@@ -1201,7 +1201,7 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
 </div>
 </section>
 <section id="id1">
-<h2>Taipei Bus<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
+<h2>Taipei Bus<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 </section>
 </section>
 
@@ -1268,7 +1268,7 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1291,7 +1291,7 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Pandas: Counting and Summarizing &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Pandas: filter, select, and timeline process" href="P06p2_filter_select_datetime.html" />
     <link rel="prev" title="P06 Pandas" href="P06_pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P06p1_summarizing.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P06p1_summarizing.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -541,7 +545,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-counting-and-summarizing">
-<h1>Pandas: Counting and Summarizing<a class="headerlink" href="#pandas-counting-and-summarizing" title="Permalink to this headline">#</a></h1>
+<h1>Pandas: Counting and Summarizing<a class="headerlink" href="#pandas-counting-and-summarizing" title="Permalink to this heading">#</a></h1>
 <p>這個章節將更系統化地用實際案例來介紹，</p>
 <ol class="arabic simple">
 <li><p>Reading files: <code class="docutils literal notranslate"><span class="pre">pd.read_csv('data.csv')</span></code>或讀取JSON <code class="docutils literal notranslate"><span class="pre">pd.read_json('data.json')</span></code></p></li>
@@ -552,9 +556,9 @@ document.write(`
 <li><p>Concatenating data: <code class="docutils literal notranslate"><span class="pre">pd.concat([df1,</span> <span class="pre">df2])</span></code></p></li>
 </ol>
 <section id="p1-read-data">
-<h2>P1. Read data<a class="headerlink" href="#p1-read-data" title="Permalink to this headline">#</a></h2>
+<h2>P1. Read data<a class="headerlink" href="#p1-read-data" title="Permalink to this heading">#</a></h2>
 <section id="read-csv">
-<h3>1.1 Read CSV: 違規藥品廣告<a class="headerlink" href="#read-csv" title="Permalink to this headline">#</a></h3>
+<h3>1.1 Read CSV: 違規藥品廣告<a class="headerlink" href="#read-csv" title="Permalink to this heading">#</a></h3>
 <p>違規藥品廣告資料集 <a class="reference external" href="https://data.nat.gov.tw/dataset/14196">https://data.nat.gov.tw/dataset/14196</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -566,21 +570,15 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
-  from pandas.core.computation.check import NUMEXPR_INSTALLED
-/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
-  from pandas.core import (
-</pre></div>
-</div>
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">HTTPError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">drug_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># drug_df</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">drug_df</span><span class="o">.</span><span class="n">head</span><span class="p">()</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
 <span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
@@ -590,19 +588,19 @@ document.write(`
 <span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
 <span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
 <span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
 <span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
 <span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
 <span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
 <span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
@@ -618,7 +616,7 @@ document.write(`
 <span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
 <span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
 <span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
 <span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
 <span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
@@ -631,7 +629,7 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
 <span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/io/common.py:384,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
 <span class="g g-Whitespace">    </span><span class="mi">382</span> <span class="c1"># assuming storage_options is to be interpreted as headers</span>
 <span class="g g-Whitespace">    </span><span class="mi">383</span> <span class="n">req_info</span> <span class="o">=</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">Request</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">storage_options</span><span class="p">)</span>
 <span class="ne">--&gt; </span><span class="mi">384</span> <span class="k">with</span> <span class="n">urlopen</span><span class="p">(</span><span class="n">req_info</span><span class="p">)</span> <span class="k">as</span> <span class="n">req</span><span class="p">:</span>
@@ -639,7 +637,7 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">386</span>     <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
 <span class="g g-Whitespace">    </span><span class="mi">387</span>         <span class="c1"># Override compression based on Content-Encoding header</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/io/common.py:289,</span> in <span class="ni">urlopen</span><span class="nt">(*args, **kwargs)</span>
 <span class="g g-Whitespace">    </span><span class="mi">283</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
 <span class="g g-Whitespace">    </span><span class="mi">284</span><span class="sd"> Lazy-import wrapper for stdlib urlopen, as that imports a big chunk of</span>
 <span class="g g-Whitespace">    </span><span class="mi">285</span><span class="sd"> the stdlib.</span>
@@ -647,40 +645,40 @@ document.write(`
 <span class="g g-Whitespace">    </span><span class="mi">287</span> <span class="kn">import</span> <span class="nn">urllib.request</span>
 <span class="ne">--&gt; </span><span class="mi">289</span> <span class="k">return</span> <span class="n">urllib</span><span class="o">.</span><span class="n">request</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:214,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
-<span class="g g-Whitespace">    </span><span class="mi">212</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">213</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
-<span class="ne">--&gt; </span><span class="mi">214</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/urllib/request.py:216,</span> in <span class="ni">urlopen</span><span class="nt">(url, data, timeout, cafile, capath, cadefault, context)</span>
+<span class="g g-Whitespace">    </span><span class="mi">214</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">215</span>     <span class="n">opener</span> <span class="o">=</span> <span class="n">_opener</span>
+<span class="ne">--&gt; </span><span class="mi">216</span> <span class="k">return</span> <span class="n">opener</span><span class="o">.</span><span class="n">open</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">data</span><span class="p">,</span> <span class="n">timeout</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:523,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
-<span class="g g-Whitespace">    </span><span class="mi">521</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
-<span class="g g-Whitespace">    </span><span class="mi">522</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">523</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">525</span> <span class="k">return</span> <span class="n">response</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/urllib/request.py:525,</span> in <span class="ni">OpenerDirector.open</span><span class="nt">(self, fullurl, data, timeout)</span>
+<span class="g g-Whitespace">    </span><span class="mi">523</span> <span class="k">for</span> <span class="n">processor</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">process_response</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">protocol</span><span class="p">,</span> <span class="p">[]):</span>
+<span class="g g-Whitespace">    </span><span class="mi">524</span>     <span class="n">meth</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">processor</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">525</span>     <span class="n">response</span> <span class="o">=</span> <span class="n">meth</span><span class="p">(</span><span class="n">req</span><span class="p">,</span> <span class="n">response</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">527</span> <span class="k">return</span> <span class="n">response</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:632,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
-<span class="g g-Whitespace">    </span><span class="mi">629</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
-<span class="g g-Whitespace">    </span><span class="mi">630</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
-<span class="g g-Whitespace">    </span><span class="mi">631</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">632</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">633</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span> <span class="k">return</span> <span class="n">response</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/urllib/request.py:634,</span> in <span class="ni">HTTPErrorProcessor.http_response</span><span class="nt">(self, request, response)</span>
+<span class="g g-Whitespace">    </span><span class="mi">631</span> <span class="c1"># According to RFC 2616, &quot;2xx&quot; code indicates that the client&#39;s</span>
+<span class="g g-Whitespace">    </span><span class="mi">632</span> <span class="c1"># request was successfully received, understood, and accepted.</span>
+<span class="g g-Whitespace">    </span><span class="mi">633</span> <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="mi">200</span> <span class="o">&lt;=</span> <span class="n">code</span> <span class="o">&lt;</span> <span class="mi">300</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">634</span>     <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">parent</span><span class="o">.</span><span class="n">error</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">635</span>         <span class="s1">&#39;http&#39;</span><span class="p">,</span> <span class="n">request</span><span class="p">,</span> <span class="n">response</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">637</span> <span class="k">return</span> <span class="n">response</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:561,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">559</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">560</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
-<span class="ne">--&gt; </span><span class="mi">561</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/urllib/request.py:563,</span> in <span class="ni">OpenerDirector.error</span><span class="nt">(self, proto, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">561</span> <span class="k">if</span> <span class="n">http_err</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">562</span>     <span class="n">args</span> <span class="o">=</span> <span class="p">(</span><span class="nb">dict</span><span class="p">,</span> <span class="s1">&#39;default&#39;</span><span class="p">,</span> <span class="s1">&#39;http_error_default&#39;</span><span class="p">)</span> <span class="o">+</span> <span class="n">orig_args</span>
+<span class="ne">--&gt; </span><span class="mi">563</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_call_chain</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:494,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">494</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="k">return</span> <span class="n">result</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/urllib/request.py:496,</span> in <span class="ni">OpenerDirector._call_chain</span><span class="nt">(self, chain, kind, meth_name, *args)</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="k">for</span> <span class="n">handler</span> <span class="ow">in</span> <span class="n">handlers</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="n">func</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">handler</span><span class="p">,</span> <span class="n">meth_name</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">496</span>     <span class="n">result</span> <span class="o">=</span> <span class="n">func</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>     <span class="k">if</span> <span class="n">result</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="k">return</span> <span class="n">result</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/urllib/request.py:641,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">640</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">641</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/urllib/request.py:643,</span> in <span class="ni">HTTPDefaultErrorHandler.http_error_default</span><span class="nt">(self, req, fp, code, msg, hdrs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">642</span> <span class="k">def</span> <span class="nf">http_error_default</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">req</span><span class="p">,</span> <span class="n">fp</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">643</span>     <span class="k">raise</span> <span class="n">HTTPError</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">full_url</span><span class="p">,</span> <span class="n">code</span><span class="p">,</span> <span class="n">msg</span><span class="p">,</span> <span class="n">hdrs</span><span class="p">,</span> <span class="n">fp</span><span class="p">)</span>
 
 <span class="ne">HTTPError</span>: HTTP Error 404: Not Found
 </pre></div>
@@ -702,7 +700,7 @@ document.write(`
 </div>
 </section>
 <section id="display-and-rename-columns">
-<h3>1.2 Display and rename columns<a class="headerlink" href="#display-and-rename-columns" title="Permalink to this headline">#</a></h3>
+<h3>1.2 Display and rename columns<a class="headerlink" href="#display-and-rename-columns" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>要大概觀察DataFrame的內容，我們可以使用<code class="docutils literal notranslate"><span class="pre">.head()</span></code>方法。這個方法將預設顯示DataFrame的前5行資料，以便我們快速查看資料的結構和內容。</p></li>
 <li><p>有時候，我們可能想要更改DataFrame中欄位的名稱，以使其更具描述性或符合我們的需求。可以像下面一樣直接將所有新欄位名稱傳遞給<code class="docutils literal notranslate"><span class="pre">.columns</span></code>屬性，或者使用<code class="docutils literal notranslate"><span class="pre">.rename()</span></code>方法來將舊欄位名稱映射到新欄位名稱。例如<code class="docutils literal notranslate"><span class="pre">df.rename(columns={'Name':</span> <span class="pre">'Full</span> <span class="pre">Name',</span> <span class="pre">'Age':</span> <span class="pre">'Years</span> <span class="pre">Old'},</span> <span class="pre">inplace=True)</span></code></p></li>
@@ -835,7 +833,7 @@ document.write(`
 </div>
 </section>
 <section id="pandas-series">
-<h3>1.3 Pandas series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">#</a></h3>
+<h3>1.3 Pandas series<a class="headerlink" href="#pandas-series" title="Permalink to this heading">#</a></h3>
 <p>Pandas Series 是一種一維陣列結構，用於存儲同類型的資料，並且每個資料點都有一個與之相關聯的索引。與 Python 的原生 list 不同，Pandas Series 提供了更豐富的功能和操作，包括但不限於資料對齊、切片、過濾以及集成的描述性統計方法。除了這些，Pandas Series 支援更多複雜的資料類型，並且能夠更高效地進行向量化操作。簡而言之，雖然 Pandas Series 和 list 都可以用於存儲一維資料，但 Series 提供了更多專為數據分析而設計的功能和優化。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -872,7 +870,7 @@ Name: pubMediaType, Length: 2972, dtype: object
 </div>
 </section>
 <section id="counting">
-<h3>1.4 Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h3>
+<h3>1.4 Counting<a class="headerlink" href="#counting" title="Permalink to this heading">#</a></h3>
 <p>接下來希望計算一下每個廣告類型<code class="docutils literal notranslate"><span class="pre">pubMediaType</span></code>的數量，以便我們可以了解哪些類型的廣告最多。</p>
 <p>過去我們會用<code class="docutils literal notranslate"><span class="pre">collections</span></code>套件的<code class="docutils literal notranslate"><span class="pre">Counter</span></code>方法來計算。但是現在我們可以使用<code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>方法來計算每個類型的廣告數量。這個方法將返回一個包含每個類型廣告數量的 Pandas Series，其中索引是廣告類型，值是廣告數量。</p>
 <div class="cell docutils container">
@@ -915,9 +913,9 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="p2-read-json-youbike">
-<h2>P2. Read JSON : Youbike<a class="headerlink" href="#p2-read-json-youbike" title="Permalink to this headline">#</a></h2>
+<h2>P2. Read JSON : Youbike<a class="headerlink" href="#p2-read-json-youbike" title="Permalink to this heading">#</a></h2>
 <section id="convert-dict-of-dict-to-list-of-dict-then-to-dataframe">
-<h3>2.1 Convert dict of dict to list of dict, then to DataFrame<a class="headerlink" href="#convert-dict-of-dict-to-list-of-dict-then-to-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Convert dict of dict to list of dict, then to DataFrame<a class="headerlink" href="#convert-dict-of-dict-to-list-of-dict-then-to-dataframe" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -945,7 +943,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="display-part-of-columns">
-<h3>2.2 Display part of columns<a class="headerlink" href="#display-part-of-columns" title="Permalink to this headline">#</a></h3>
+<h3>2.2 Display part of columns<a class="headerlink" href="#display-part-of-columns" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Subsetting them by passing a list of column names inside the square brackets <code class="docutils literal notranslate"><span class="pre">df[['col1',</span> <span class="pre">'col2']]</span></code></p></li>
 <li><p>Using the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method to drop columns <code class="docutils literal notranslate"><span class="pre">df.drop(['col1',</span> <span class="pre">'col2'],</span> <span class="pre">axis=1)</span></code></p></li>
@@ -1054,7 +1052,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="using-built-in-function-to-pandas">
-<h3>2.3 Using built-in function to pandas<a class="headerlink" href="#using-built-in-function-to-pandas" title="Permalink to this headline">#</a></h3>
+<h3>2.3 Using built-in function to pandas<a class="headerlink" href="#using-built-in-function-to-pandas" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using pandas built-in function to convert dictionary to pandas df</span>
@@ -1069,10 +1067,10 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="p2-observing-data">
-<h2>P2. Observing data<a class="headerlink" href="#p2-observing-data" title="Permalink to this headline">#</a></h2>
+<h2>P2. Observing data<a class="headerlink" href="#p2-observing-data" title="Permalink to this heading">#</a></h2>
 <p><strong>Oberserving data</strong> <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> and <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> 觀察各個變數的分佈 to check data type or get basic summary of data 。</p>
 <section id="overview-whole-df">
-<h3>2.4 Overview whole df<a class="headerlink" href="#overview-whole-df" title="Permalink to this headline">#</a></h3>
+<h3>2.4 Overview whole df<a class="headerlink" href="#overview-whole-df" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="o">.</span><span class="n">shape</span>
@@ -1201,7 +1199,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="access-data-by-index">
-<h3>2.5 Access data by index<a class="headerlink" href="#access-data-by-index" title="Permalink to this headline">#</a></h3>
+<h3>2.5 Access data by index<a class="headerlink" href="#access-data-by-index" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access single row</span>
@@ -1244,7 +1242,7 @@ Name: 0004, dtype: object
 </div>
 </section>
 <section id="slice-and-access-data">
-<h3>2.6 Slice and access data<a class="headerlink" href="#slice-and-access-data" title="Permalink to this headline">#</a></h3>
+<h3>2.6 Slice and access data<a class="headerlink" href="#slice-and-access-data" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="p">[:</span><span class="mi">3</span><span class="p">][[</span><span class="s1">&#39;sno&#39;</span><span class="p">,</span> <span class="s1">&#39;sna&#39;</span><span class="p">,</span> <span class="s1">&#39;tot&#39;</span><span class="p">,</span> <span class="s1">&#39;sbi&#39;</span><span class="p">,</span> <span class="s1">&#39;sarea&#39;</span><span class="p">]]</span>
@@ -1308,7 +1306,7 @@ Name: 0004, dtype: object
 </div>
 </section>
 <section id="convert-variable-type">
-<h3>2.7 Convert variable type<a class="headerlink" href="#convert-variable-type" title="Permalink to this headline">#</a></h3>
+<h3>2.7 Convert variable type<a class="headerlink" href="#convert-variable-type" title="Permalink to this heading">#</a></h3>
 <p><strong>Cleaning data</strong> <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(var)</span></code> 修改變數型態 to convert data type</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1395,7 +1393,7 @@ Name: 0004, dtype: object
 </div>
 </section>
 <section id="mutate-new-variable">
-<h3>2.8 Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this headline">#</a></h3>
+<h3>2.8 Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.assign(new_var</span> <span class="pre">=</span> <span class="pre">old_var1</span> <span class="pre">/</span> <span class="pre">old_var2)</span></code> 產生新的變數（方法一） to create or convert new variable. Be careful! You must assign to left to overwrite original df.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">df[&quot;new_var&quot;]</span> <span class="pre">=</span> <span class="pre">df.old_var1</span> <span class="pre">/</span> <span class="pre">df.old_var2</span></code> 產生新的變數（方法二）</p></li>
@@ -1573,7 +1571,7 @@ Name: 0004, dtype: object
 </section>
 </section>
 <section id="p3-summarizing-data">
-<h2>P3. Summarizing data<a class="headerlink" href="#p3-summarizing-data" title="Permalink to this headline">#</a></h2>
+<h2>P3. Summarizing data<a class="headerlink" href="#p3-summarizing-data" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Tutorial: <a class="reference external" href="https://jamesrledoux.com/code/group-by-aggregate-pandas">groupby pandas</a></p></li>
 </ul>
@@ -1583,7 +1581,7 @@ Name: 0004, dtype: object
 <li><p><code class="docutils literal notranslate"><span class="pre">df.groupby([col1,</span> <span class="pre">col3])[col2].count()</span></code> summarize col2 according to col1 and col3 by counting</p></li>
 </ul>
 <section id="count-single-variable-by-value-counts">
-<h3>3.1 Count single variable by <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code><a class="headerlink" href="#count-single-variable-by-value-counts" title="Permalink to this headline">#</a></h3>
+<h3>3.1 Count single variable by <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code><a class="headerlink" href="#count-single-variable-by-value-counts" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conventional way</span>
@@ -1726,7 +1724,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="groupby-then-count">
-<h3>3.2 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then <code class="docutils literal notranslate"><span class="pre">count()</span></code><a class="headerlink" href="#groupby-then-count" title="Permalink to this headline">#</a></h3>
+<h3>3.2 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then <code class="docutils literal notranslate"><span class="pre">count()</span></code><a class="headerlink" href="#groupby-then-count" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drug_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;pubMediaType&#39;</span><span class="p">)[</span><span class="s1">&#39;pname&#39;</span><span class="p">,</span> <span class="s1">&#39;agency&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1797,7 +1795,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="groupby-then-summarize">
-<h3>3.3 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then summarize<a class="headerlink" href="#groupby-then-summarize" title="Permalink to this headline">#</a></h3>
+<h3>3.3 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then summarize<a class="headerlink" href="#groupby-then-summarize" title="Permalink to this heading">#</a></h3>
 <p>Format: <code class="docutils literal notranslate"><span class="pre">df.groupby(col_for_group)[variable_to_group].func()</span></code></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">col_for_group</span></code>: 要作為群組根據的variable，例如將村里彙整為鄉鎮市區資料時，鄉鎮市區資料極為group的根據</p></li>
@@ -2044,7 +2042,7 @@ Name: tot, dtype: int64
 </section>
 </section>
 <section id="p4-sort-by-arrange">
-<h2>P4. Sort-by (Arrange)<a class="headerlink" href="#p4-sort-by-arrange" title="Permalink to this headline">#</a></h2>
+<h2>P4. Sort-by (Arrange)<a class="headerlink" href="#p4-sort-by-arrange" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ascending=False to sort by dscending order</span>
@@ -2336,7 +2334,7 @@ Name: tot, dtype: int64
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -2382,7 +2380,7 @@ Name: tot, dtype: int64
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

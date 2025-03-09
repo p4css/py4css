@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>AS03: Summarizing Data by Pandas &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS03 Summarize data with Pandas" href="AS03_pandas_summarization.html" />
     <link rel="prev" title="AS02 List-dict-for-if" href="AS02_list_dict_for_if.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS03_summarize_ptt.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/AS/AS03_summarize_ptt.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -520,9 +524,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as03-summarizing-data-by-pandas">
-<h1>AS03: Summarizing Data by Pandas<a class="headerlink" href="#as03-summarizing-data-by-pandas" title="Permalink to this headline">#</a></h1>
+<h1>AS03: Summarizing Data by Pandas<a class="headerlink" href="#as03-summarizing-data-by-pandas" title="Permalink to this heading">#</a></h1>
 <section id="q1-loading-data-50-points">
-<h2>Q1. Loading data (50 points)<a class="headerlink" href="#q1-loading-data-50-points" title="Permalink to this headline">#</a></h2>
+<h2>Q1. Loading data (50 points)<a class="headerlink" href="#q1-loading-data-50-points" title="Permalink to this heading">#</a></h2>
 <p>請使用ChatGPT來幫你完成以下任務：</p>
 <ol class="arabic simple">
 <li><p>先把上個作業的jsonl檔讀取為pandas dataframe。問ChatGPT時，建議你稍微描述一下，該jsonl檔每列是一個dictionary。</p></li>
@@ -542,7 +546,7 @@ document.write(`
 </div>
 </section>
 <section id="q2-counting-10-points">
-<h2>Q2. Counting (10 points)<a class="headerlink" href="#q2-counting-10-points" title="Permalink to this headline">#</a></h2>
+<h2>Q2. Counting (10 points)<a class="headerlink" href="#q2-counting-10-points" title="Permalink to this heading">#</a></h2>
 <p>該資料集中共有幾位貼文者？（注意，可能同一位版友會張貼超過一篇文章）</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,7 +557,7 @@ document.write(`
 </div>
 </section>
 <section id="q3-sorting-15-points">
-<h2>Q3. Sorting (15 points)<a class="headerlink" href="#q3-sorting-15-points" title="Permalink to this headline">#</a></h2>
+<h2>Q3. Sorting (15 points)<a class="headerlink" href="#q3-sorting-15-points" title="Permalink to this heading">#</a></h2>
 <p>留言數前十高的留言者是誰？用dataframe的方式印出留言者的暱稱和留言則數。15分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -564,7 +568,7 @@ document.write(`
 </div>
 </section>
 <section id="q4-sorting-10-points">
-<h2>Q4. Sorting (10 points)<a class="headerlink" href="#q4-sorting-10-points" title="Permalink to this headline">#</a></h2>
+<h2>Q4. Sorting (10 points)<a class="headerlink" href="#q4-sorting-10-points" title="Permalink to this heading">#</a></h2>
 <p>留言數最高的前十篇文章是哪幾篇？各有多少篇留言？用dataframe的方式印出留言者的暱稱和留言則數df.head(10)可以印出前10筆資料。10分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,7 +579,7 @@ document.write(`
 </div>
 </section>
 <section id="q5-timestamp-processing-10-points">
-<h2>Q5. Timestamp Processing (10 points)<a class="headerlink" href="#q5-timestamp-processing-10-points" title="Permalink to this headline">#</a></h2>
+<h2>Q5. Timestamp Processing (10 points)<a class="headerlink" href="#q5-timestamp-processing-10-points" title="Permalink to this heading">#</a></h2>
 <p>這是某一天的資料，請問，若把時間拆解成24小時，請依照小時印出每個小時有幾篇貼文。（這題有點難，記得要把相關資料給ChatGPT，他才能幫你拆解）10分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -586,7 +590,7 @@ document.write(`
 </div>
 </section>
 <section id="q6-summarizing-5-points">
-<h2>Q6. Summarizing (5 points)<a class="headerlink" href="#q6-summarizing-5-points" title="Permalink to this headline">#</a></h2>
+<h2>Q6. Summarizing (5 points)<a class="headerlink" href="#q6-summarizing-5-points" title="Permalink to this heading">#</a></h2>
 <p>留言過最多篇貼文的留言者，由高至低排列。注意，留言數最高的人不見得是留言過最多貼文的人，搞不好有人在同一篇貼文有超多留言。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -597,7 +601,7 @@ document.write(`
 </div>
 </section>
 <section id="more">
-<h2>More<a class="headerlink" href="#more" title="Permalink to this headline">#</a></h2>
+<h2>More<a class="headerlink" href="#more" title="Permalink to this heading">#</a></h2>
 <p>把前十高留言者、留言數最高的前十篇文章用橫向Bar chart繪圖。你可以考慮用plotly、原生的matplotlib、seaborn，但要注意有可能遇到無法處理中文字型的問題，可能要問看看ChatGPT要處理圖表中的中文字型。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -672,7 +676,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -697,7 +701,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

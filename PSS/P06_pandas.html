@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>P06 Pandas &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Pandas: Counting and Summarizing" href="P06p1_summarizing.html" />
     <link rel="prev" title="Read more formats" href="P05p3_read_other_format.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P06_pandas.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P06_pandas.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -523,14 +527,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p06-pandas">
-<h1>P06 Pandas<a class="headerlink" href="#p06-pandas" title="Permalink to this headline">#</a></h1>
+<h1>P06 Pandas<a class="headerlink" href="#p06-pandas" title="Permalink to this heading">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.google.com/presentation/d/1OP8GcjUUWc9MWxfPNW2Ch47iENpXyOKeMKGzSth1UPs/edit?usp=sharing">Slide: Py06 Pandas and data manipulation</a></p></li>
 <li><p>Pandas cheat sheet: <a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf</a></p></li>
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/20638006/convert-list-of-dictionaries-to-dataframe">stackoverflow: Convert to json</a></p></li>
 </ul>
 <section id="pandas-dataframe">
-<h2>Pandas DataFrame<a class="headerlink" href="#pandas-dataframe" title="Permalink to this headline">#</a></h2>
+<h2>Pandas DataFrame<a class="headerlink" href="#pandas-dataframe" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Pandas模仿Matlab或R的dataframe的函式庫。在資料科學逐漸發展的過程，這些資料大多以類似統計軟體或者Excel等試算表（Sheet）的狀態儲存，也就是二維的表格，且通常是直欄為變數、而橫列為資料列。</p></li>
 <li><p>把這些資料讀進Python時，固然可以讀成List-of-dictionary或List-of-list的型態，但大部分資料操作的思考邏輯，都是以欄和列為基礎，例如增加一個欄是refactor以後的結果、或者篩選出某些變數符合條件的資料列，或者依據某個欄來重新排列資料列的位置。而Pandas可以說就是被設計來滿足這樣的需求的，</p></li>
@@ -552,7 +556,7 @@ document.write(`
 <p>學習資源：<a class="reference external" href="https://pandas.pydata.org/Pandas_Cheat_Sheet.pdf">Pandas cheat sheet (from pandas)</a></p>
 </section>
 <section id="dict-list-and-pandas-dataframe">
-<h2>1. Dict, List, and Pandas DataFrame<a class="headerlink" href="#dict-list-and-pandas-dataframe" title="Permalink to this headline">#</a></h2>
+<h2>1. Dict, List, and Pandas DataFrame<a class="headerlink" href="#dict-list-and-pandas-dataframe" title="Permalink to this heading">#</a></h2>
 <p>通常使用Pandas DataFrame是為了處理「表格狀」的資料。因此，不會只像一層的List或Dict，而是會有多層的List或Dict，或是多個List或Dict組成的List或Dict。以下是一個典型List of Dicts轉為DataFrame的例子：</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -618,7 +622,7 @@ document.write(`
 </div>
 </section>
 <section id="read-write-by-pandas">
-<h2>2. Read/Write by Pandas<a class="headerlink" href="#read-write-by-pandas" title="Permalink to this headline">#</a></h2>
+<h2>2. Read/Write by Pandas<a class="headerlink" href="#read-write-by-pandas" title="Permalink to this heading">#</a></h2>
 <p>這門課，尤其是資料科學，會傾向於用Pandas DataFrame來操作資料，對於初期的觀察資料，或者資料的排序、彙整、計數、篩選、儲存與檔案轉換等，都非常方便。你會用到Pandas Dataframe來操作資料可能會有以下幾種情形：</p>
 <ol class="arabic simple">
 <li><p>將CSV或EXCEL檔案讀入成為Pandas DataFrame（常用）</p></li>
@@ -632,7 +636,7 @@ document.write(`
 </ol>
 <p><img alt="Alt text" src="../_images/image-6-1.png" /></p>
 <section id="convert-list-of-dicts-to-dataframe">
-<h3>Convert list of dicts to DataFrame<a class="headerlink" href="#convert-list-of-dicts-to-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Convert list of dicts to DataFrame<a class="headerlink" href="#convert-list-of-dicts-to-dataframe" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -697,7 +701,7 @@ document.write(`
 </div>
 </section>
 <section id="write-dataframe-to-csv-file">
-<h3>Write DataFrame to CSV file<a class="headerlink" href="#write-dataframe-to-csv-file" title="Permalink to this headline">#</a></h3>
+<h3>Write DataFrame to CSV file<a class="headerlink" href="#write-dataframe-to-csv-file" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">df</span><span class="o">.</span><span class="n">to_csv</span><span class="p">(</span><span class="s1">&#39;data1.csv&#39;</span><span class="p">,</span> <span class="n">index</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
 
@@ -705,7 +709,7 @@ document.write(`
 </div>
 </section>
 <section id="read-csv-file-to-dataframe">
-<h3>Read CSV file to DataFrame<a class="headerlink" href="#read-csv-file-to-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Read CSV file to DataFrame<a class="headerlink" href="#read-csv-file-to-dataframe" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s1">&#39;data1.csv&#39;</span><span class="p">)</span>
 
@@ -713,7 +717,7 @@ document.write(`
 </div>
 </section>
 <section id="write-dataframe-to-json-file">
-<h3>Write DataFrame to JSON file<a class="headerlink" href="#write-dataframe-to-json-file" title="Permalink to this headline">#</a></h3>
+<h3>Write DataFrame to JSON file<a class="headerlink" href="#write-dataframe-to-json-file" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">df</span><span class="o">.</span><span class="n">to_json</span><span class="p">(</span><span class="s1">&#39;data1.json&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
 
@@ -721,7 +725,7 @@ document.write(`
 </div>
 </section>
 <section id="read-json-file-to-dataframe">
-<h3>Read JSON file to DataFrame<a class="headerlink" href="#read-json-file-to-dataframe" title="Permalink to this headline">#</a></h3>
+<h3>Read JSON file to DataFrame<a class="headerlink" href="#read-json-file-to-dataframe" title="Permalink to this heading">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_json</span><span class="p">(</span><span class="s1">&#39;data1.json&#39;</span><span class="p">,</span> <span class="n">orient</span><span class="o">=</span><span class="s1">&#39;records&#39;</span><span class="p">)</span>
 
@@ -796,7 +800,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -824,7 +828,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

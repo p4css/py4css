@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>TM01 Tokenization &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Chinese Processing" href="TM01_tokenization%28chi%29.html" />
     <link rel="prev" title="P09 Database" href="../PSS/P09_database.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM01_tokenization.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/TM/TM01_tokenization.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -544,16 +548,16 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tm01-tokenization">
-<h1>TM01 Tokenization<a class="headerlink" href="#tm01-tokenization" title="Permalink to this headline">#</a></h1>
+<h1>TM01 Tokenization<a class="headerlink" href="#tm01-tokenization" title="Permalink to this heading">#</a></h1>
 <section id="loading-data">
-<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<h2>Loading Data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Open the corpus in the file “hindu.txt” from <a class="reference external" href="https://en.wikipedia.org/wiki/Hindu">https://en.wikipedia.org/wiki/Hindu</a></p></li>
 <li><p>Other public resource: <a class="reference external" href="http://www.gutenberg.org/">http://www.gutenberg.org/</a></p></li>
 <li><p>Never “push” protected text to Github or other publicly available platforms.</p></li>
 </ul>
 <section id="an-example-wikipedia">
-<h3>An Example: Wikipedia<a class="headerlink" href="#an-example-wikipedia" title="Permalink to this headline">#</a></h3>
+<h3>An Example: Wikipedia<a class="headerlink" href="#an-example-wikipedia" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install wikipedia</span>
@@ -576,14 +580,14 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
-The length of Rembrandt summary is  1469
+The length of Rembrandt summary is  1482
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="one-more-example">
-<h3>One more example<a class="headerlink" href="#one-more-example" title="Permalink to this headline">#</a></h3>
+<h3>One more example<a class="headerlink" href="#one-more-example" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">text</span>  <span class="o">=</span> <span class="n">wikipedia</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Hindus&quot;</span><span class="p">,</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>
@@ -607,27 +611,7 @@ The length of Hindus summary is  1547
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-02-21 00:52:25--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/hindu.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
-Length: 2747 (2.7K) [text/plain]
-Saving to: &#39;hindu.txt&#39;
-
-
-hindu.txt             0%[                    ]       0  --.-KB/s               
-hindu.txt           100%[===================&gt;]   2.68K  --.-KB/s    in 0s      
-
-Last-modified header missing -- time-stamps turned off.
-2025-02-21 00:52:26 (12.2 MB/s) - &#39;hindu.txt&#39; saved [2747/2747]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TM00.ipynb                             TM08_doc_classification.ipynb
@@ -657,7 +641,7 @@ TM07_embedding_clustering.ipynb        userdict.txt
 </div>
 </section>
 <section id="length-of-the-corpus-in-characters">
-<h3>Length of the corpus (in characters)<a class="headerlink" href="#length-of-the-corpus-in-characters" title="Permalink to this headline">#</a></h3>
+<h3>Length of the corpus (in characters)<a class="headerlink" href="#length-of-the-corpus-in-characters" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="s2">&quot;The lenght of the corpus: </span><span class="si">%d</span><span class="s2">&quot;</span> <span class="o">%</span> <span class="nb">len</span><span class="p">(</span><span class="n">text</span><span class="p">))</span>
@@ -672,7 +656,7 @@ TM07_embedding_clustering.ipynb        userdict.txt
 </div>
 </section>
 <section id="content">
-<h3>Content<a class="headerlink" href="#content" title="Permalink to this headline">#</a></h3>
+<h3>Content<a class="headerlink" href="#content" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">text</span><span class="p">)</span>
@@ -694,9 +678,9 @@ At more than 1.03 billion,[18] Hindus are the world&#39;s third largest group af
 </section>
 </section>
 <section id="tokenization">
-<h2>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this headline">#</a></h2>
+<h2>Tokenization<a class="headerlink" href="#tokenization" title="Permalink to this heading">#</a></h2>
 <section id="method-1-by-built-in-split">
-<h3>Method 1. by built-in <code class="docutils literal notranslate"><span class="pre">.split()</span></code><a class="headerlink" href="#method-1-by-built-in-split" title="Permalink to this headline">#</a></h3>
+<h3>Method 1. by built-in <code class="docutils literal notranslate"><span class="pre">.split()</span></code><a class="headerlink" href="#method-1-by-built-in-split" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">sentence_a</span> <span class="o">=</span> <span class="s2">&quot;What’s in a name? That which we call a rose by any other name would smell as sweet.&quot;</span>
@@ -744,7 +728,7 @@ True
 </div>
 </section>
 <section id="method-2-by-nltk-s-function">
-<h3>Method 2. by nltk’s function<a class="headerlink" href="#method-2-by-nltk-s-function" title="Permalink to this headline">#</a></h3>
+<h3>Method 2. by nltk’s function<a class="headerlink" href="#method-2-by-nltk-s-function" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
@@ -768,7 +752,7 @@ True
 </div>
 </section>
 <section id="method-3-design-manually-as-python-function">
-<h3>Method 3. Design manually as Python function<a class="headerlink" href="#method-3-design-manually-as-python-function" title="Permalink to this headline">#</a></h3>
+<h3>Method 3. Design manually as Python function<a class="headerlink" href="#method-3-design-manually-as-python-function" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -860,10 +844,10 @@ True
 </div>
 </section>
 <section id="how-to-compare-if-two-lists-are-identical">
-<h3>How to compare if two lists are identical?<a class="headerlink" href="#how-to-compare-if-two-lists-are-identical" title="Permalink to this headline">#</a></h3>
+<h3>How to compare if two lists are identical?<a class="headerlink" href="#how-to-compare-if-two-lists-are-identical" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="counting">
-<h3>Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h3>
+<h3>Counting<a class="headerlink" href="#counting" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -904,9 +888,9 @@ Indian	4
 </section>
 </section>
 <section id="stopword-and-sign-removal">
-<h2>Stopword and sign removal<a class="headerlink" href="#stopword-and-sign-removal" title="Permalink to this headline">#</a></h2>
+<h2>Stopword and sign removal<a class="headerlink" href="#stopword-and-sign-removal" title="Permalink to this heading">#</a></h2>
 <section id="method-1-removal-of-punctuation-marks">
-<h3>Method 1.Removal of Punctuation Marks<a class="headerlink" href="#method-1-removal-of-punctuation-marks" title="Permalink to this headline">#</a></h3>
+<h3>Method 1.Removal of Punctuation Marks<a class="headerlink" href="#method-1-removal-of-punctuation-marks" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
@@ -941,7 +925,7 @@ Indian	4
 </div>
 </section>
 <section id="method-2-removing-all-tokens-that-contain-characters-other-than-letters">
-<h3>Method 2. Removing all tokens that contain characters other than letters.<a class="headerlink" href="#method-2-removing-all-tokens-that-contain-characters-other-than-letters" title="Permalink to this headline">#</a></h3>
+<h3>Method 2. Removing all tokens that contain characters other than letters.<a class="headerlink" href="#method-2-removing-all-tokens-that-contain-characters-other-than-letters" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_punctuation_marks</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
@@ -1006,7 +990,7 @@ Hindus	6
 </div>
 </section>
 <section id="stopword-removal">
-<h3>Stopword Removal<a class="headerlink" href="#stopword-removal" title="Permalink to this headline">#</a></h3>
+<h3>Stopword Removal<a class="headerlink" href="#stopword-removal" title="Permalink to this heading">#</a></h3>
 <p>Load an English stopword list from NTLK.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1054,9 +1038,9 @@ Hindus	6
 </section>
 </section>
 <section id="handle-capitalization-in-english">
-<h2>Handle Capitalization in English<a class="headerlink" href="#handle-capitalization-in-english" title="Permalink to this headline">#</a></h2>
+<h2>Handle Capitalization in English<a class="headerlink" href="#handle-capitalization-in-english" title="Permalink to this heading">#</a></h2>
 <section id="solution-1-converting-all-characters-to-lowercase">
-<h3>Solution 1: Converting all characters to lowercase.<a class="headerlink" href="#solution-1-converting-all-characters-to-lowercase" title="Permalink to this headline">#</a></h3>
+<h3>Solution 1: Converting all characters to lowercase.<a class="headerlink" href="#solution-1-converting-all-characters-to-lowercase" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">lowercase</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
@@ -1077,7 +1061,7 @@ Hindus	6
 </div>
 </section>
 <section id="solution-2-maintain-the-capitalization">
-<h3>Solution 2: Maintain the capitalization.<a class="headerlink" href="#solution-2-maintain-the-capitalization" title="Permalink to this headline">#</a></h3>
+<h3>Solution 2: Maintain the capitalization.<a class="headerlink" href="#solution-2-maintain-the-capitalization" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">):</span>
@@ -1098,7 +1082,7 @@ Hindus	6
 </div>
 </section>
 <section id="new-counting-results-with-the-removal-of-stopwords">
-<h3>New counting results with the removal of stopwords.<a class="headerlink" href="#new-counting-results-with-the-removal-of-stopwords" title="Permalink to this headline">#</a></h3>
+<h3>New counting results with the removal of stopwords.<a class="headerlink" href="#new-counting-results-with-the-removal-of-stopwords" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">(</span><span class="n">tokens</span><span class="p">))</span>
@@ -1135,7 +1119,7 @@ era	2
 </div>
 </section>
 <section id="unicase-results-with-the-removal-of-stopwords">
-<h3>Unicase results with the removal of stopwords.<a class="headerlink" href="#unicase-results-with-the-removal-of-stopwords" title="Permalink to this headline">#</a></h3>
+<h3>Unicase results with the removal of stopwords.<a class="headerlink" href="#unicase-results-with-the-removal-of-stopwords" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_count</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="n">remove_stopwords</span><span class="p">(</span><span class="n">lowercase</span><span class="p">(</span><span class="n">tokens</span><span class="p">)))</span>
@@ -1173,7 +1157,7 @@ era	2
 </section>
 </section>
 <section id="stemming">
-<h2>Stemming<a class="headerlink" href="#stemming" title="Permalink to this headline">#</a></h2>
+<h2>Stemming<a class="headerlink" href="#stemming" title="Permalink to this heading">#</a></h2>
 <p>Stemming with Snowball algorithm implemented by NLTK.</p>
 <p>Reference: <a class="reference external" href="http://snowball.tartarus.org/texts/introduction.html">http://snowball.tartarus.org/texts/introduction.html</a></p>
 <div class="cell docutils container">
@@ -1248,7 +1232,7 @@ aspect	1
 </div>
 </section>
 <section id="lemmatization">
-<h2>Lemmatization<a class="headerlink" href="#lemmatization" title="Permalink to this headline">#</a></h2>
+<h2>Lemmatization<a class="headerlink" href="#lemmatization" title="Permalink to this heading">#</a></h2>
 <p>Perform lemmatization with WordNet, a lexical ontology, via NLTK. This is a lazy version that does not require part-of-speech information given.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1272,9 +1256,119 @@ aspect	1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dogs
-dog
-hit
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">LookupError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/nltk/corpus/util.py:84,</span> in <span class="ni">LazyCorpusLoader.__load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span> <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">84</span>     <span class="n">root</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">zip_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span> <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/nltk/data.py:583,</span> in <span class="ni">find</span><span class="nt">(resource_name, paths)</span>
+<span class="g g-Whitespace">    </span><span class="mi">582</span> <span class="n">resource_not_found</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">583</span> <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="n">resource_not_found</span><span class="p">)</span>
+
+<span class="ne">LookupError</span>: 
+<span class="o">**********************************************************************</span>
+  <span class="n">Resource</span> <span class="n">wordnet</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+  <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">NLTK</span> <span class="n">Downloader</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">the</span> <span class="n">resource</span><span class="p">:</span>
+
+  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">nltk</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;wordnet&#39;</span><span class="p">)</span>
+  
+  <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nltk</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">html</span>
+
+  <span class="n">Attempted</span> <span class="n">to</span> <span class="n">load</span> <span class="n">corpora</span><span class="o">/</span><span class="n">wordnet</span><span class="o">.</span><span class="n">zip</span><span class="o">/</span><span class="n">wordnet</span><span class="o">/</span>
+
+  <span class="n">Searched</span> <span class="ow">in</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/anaconda3/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/anaconda3/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/anaconda3/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/lib/nltk_data&#39;</span>
+<span class="o">**********************************************************************</span>
+
+
+<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
+
+<span class="ne">LookupError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">28</span><span class="p">],</span> <span class="n">line</span> <span class="mi">14</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>             <span class="k">return</span> <span class="n">l</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span>     <span class="k">return</span> <span class="n">token</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="nb">print</span><span class="p">(</span><span class="n">lemmatize</span><span class="p">(</span><span class="s1">&#39;Dogs&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="nb">print</span><span class="p">(</span><span class="n">lemmatize</span><span class="p">(</span><span class="s1">&#39;dogs&#39;</span><span class="p">))</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="nb">print</span><span class="p">(</span><span class="n">lemmatize</span><span class="p">(</span><span class="s1">&#39;hits&#39;</span><span class="p">))</span>
+
+<span class="nn">Cell In[28], line 9,</span> in <span class="ni">lemmatize</span><span class="nt">(token)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">):</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span>     <span class="c1"># ADJ (a), ADJ_SAT (s), ADV (r), NOUN (n) or VERB (v)</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span>     <span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="p">[</span><span class="s1">&#39;v&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="s1">&#39;a&#39;</span><span class="p">,</span> <span class="s1">&#39;r&#39;</span><span class="p">,</span> <span class="s1">&#39;s&#39;</span><span class="p">]:</span>
+<span class="ne">----&gt; </span><span class="mi">9</span>         <span class="n">l</span> <span class="o">=</span> <span class="n">wordnet_lemmatizer</span><span class="o">.</span><span class="n">lemmatize</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="n">pos</span><span class="o">=</span><span class="n">p</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span>         <span class="k">if</span> <span class="n">l</span> <span class="o">!=</span> <span class="n">token</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span>             <span class="k">return</span> <span class="n">l</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/nltk/stem/wordnet.py:45,</span> in <span class="ni">WordNetLemmatizer.lemmatize</span><span class="nt">(self, word, pos)</span>
+<span class="g g-Whitespace">     </span><span class="mi">33</span> <span class="k">def</span> <span class="nf">lemmatize</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">word</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">pos</span><span class="p">:</span> <span class="nb">str</span> <span class="o">=</span> <span class="s2">&quot;n&quot;</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="nb">str</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">34</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Lemmatize `word` using WordNet&#39;s built-in morphy function.</span>
+<span class="g g-Whitespace">     </span><span class="mi">35</span><span class="sd">     Returns the input word unchanged if it cannot be found in WordNet.</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span><span class="sd">     :return: The lemma of `word`, for the given `pos`.</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">---&gt; </span><span class="mi">45</span>     <span class="n">lemmas</span> <span class="o">=</span> <span class="n">wn</span><span class="o">.</span><span class="n">_morphy</span><span class="p">(</span><span class="n">word</span><span class="p">,</span> <span class="n">pos</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">46</span>     <span class="k">return</span> <span class="nb">min</span><span class="p">(</span><span class="n">lemmas</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">)</span> <span class="k">if</span> <span class="n">lemmas</span> <span class="k">else</span> <span class="n">word</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/nltk/corpus/util.py:121,</span> in <span class="ni">LazyCorpusLoader.__getattr__</span><span class="nt">(self, attr)</span>
+<span class="g g-Whitespace">    </span><span class="mi">118</span> <span class="k">if</span> <span class="n">attr</span> <span class="o">==</span> <span class="s2">&quot;__bases__&quot;</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">119</span>     <span class="k">raise</span> <span class="ne">AttributeError</span><span class="p">(</span><span class="s2">&quot;LazyCorpusLoader object has no attribute &#39;__bases__&#39;&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">121</span> <span class="bp">self</span><span class="o">.</span><span class="n">__load</span><span class="p">()</span>
+<span class="g g-Whitespace">    </span><span class="mi">122</span> <span class="c1"># This looks circular, but its not, since __load() changes our</span>
+<span class="g g-Whitespace">    </span><span class="mi">123</span> <span class="c1"># __class__ to something new:</span>
+<span class="g g-Whitespace">    </span><span class="mi">124</span> <span class="k">return</span> <span class="nb">getattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">attr</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/nltk/corpus/util.py:86,</span> in <span class="ni">LazyCorpusLoader.__load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">84</span>             <span class="n">root</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">zip_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">85</span>         <span class="k">except</span> <span class="ne">LookupError</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">86</span>             <span class="k">raise</span> <span class="n">e</span>
+<span class="g g-Whitespace">     </span><span class="mi">88</span> <span class="c1"># Load the corpus.</span>
+<span class="g g-Whitespace">     </span><span class="mi">89</span> <span class="n">corpus</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">__reader_cls</span><span class="p">(</span><span class="n">root</span><span class="p">,</span> <span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">__args</span><span class="p">,</span> <span class="o">**</span><span class="bp">self</span><span class="o">.</span><span class="n">__kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/nltk/corpus/util.py:81,</span> in <span class="ni">LazyCorpusLoader.__load</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">     </span><span class="mi">79</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">80</span>     <span class="k">try</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">81</span>         <span class="n">root</span> <span class="o">=</span> <span class="n">nltk</span><span class="o">.</span><span class="n">data</span><span class="o">.</span><span class="n">find</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">subdir</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="bp">self</span><span class="o">.</span><span class="n">__name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">82</span>     <span class="k">except</span> <span class="ne">LookupError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
+<span class="g g-Whitespace">     </span><span class="mi">83</span>         <span class="k">try</span><span class="p">:</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/nltk/data.py:583,</span> in <span class="ni">find</span><span class="nt">(resource_name, paths)</span>
+<span class="g g-Whitespace">    </span><span class="mi">581</span> <span class="n">sep</span> <span class="o">=</span> <span class="s2">&quot;*&quot;</span> <span class="o">*</span> <span class="mi">70</span>
+<span class="g g-Whitespace">    </span><span class="mi">582</span> <span class="n">resource_not_found</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">msg</span><span class="si">}</span><span class="se">\n</span><span class="si">{</span><span class="n">sep</span><span class="si">}</span><span class="se">\n</span><span class="s2">&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">583</span> <span class="k">raise</span> <span class="ne">LookupError</span><span class="p">(</span><span class="n">resource_not_found</span><span class="p">)</span>
+
+<span class="ne">LookupError</span>: 
+<span class="o">**********************************************************************</span>
+  <span class="n">Resource</span> <span class="n">wordnet</span> <span class="ow">not</span> <span class="n">found</span><span class="o">.</span>
+  <span class="n">Please</span> <span class="n">use</span> <span class="n">the</span> <span class="n">NLTK</span> <span class="n">Downloader</span> <span class="n">to</span> <span class="n">obtain</span> <span class="n">the</span> <span class="n">resource</span><span class="p">:</span>
+
+  <span class="o">&gt;&gt;&gt;</span> <span class="kn">import</span> <span class="nn">nltk</span>
+  <span class="o">&gt;&gt;&gt;</span> <span class="n">nltk</span><span class="o">.</span><span class="n">download</span><span class="p">(</span><span class="s1">&#39;wordnet&#39;</span><span class="p">)</span>
+  
+  <span class="n">For</span> <span class="n">more</span> <span class="n">information</span> <span class="n">see</span><span class="p">:</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">nltk</span><span class="o">.</span><span class="n">org</span><span class="o">/</span><span class="n">data</span><span class="o">.</span><span class="n">html</span>
+
+  <span class="n">Attempted</span> <span class="n">to</span> <span class="n">load</span> <span class="n">corpora</span><span class="o">/</span><span class="n">wordnet</span>
+
+  <span class="n">Searched</span> <span class="ow">in</span><span class="p">:</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/anaconda3/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/anaconda3/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/Users/jirlong/anaconda3/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/share/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/lib/nltk_data&#39;</span>
+    <span class="o">-</span> <span class="s1">&#39;/usr/local/lib/nltk_data&#39;</span>
+<span class="o">**********************************************************************</span>
 </pre></div>
 </div>
 </div>
@@ -1405,7 +1499,7 @@ historically	1
 </div>
 </section>
 <section id="applications-genearte-data-for-wordcloud-rendering">
-<h2>Applications: Genearte data for WordCloud rendering.<a class="headerlink" href="#applications-genearte-data-for-wordcloud-rendering" title="Permalink to this headline">#</a></h2>
+<h2>Applications: Genearte data for WordCloud rendering.<a class="headerlink" href="#applications-genearte-data-for-wordcloud-rendering" title="Permalink to this heading">#</a></h2>
 <p><a class="reference external" href="https://www.jasondavies.com/wordcloud/">https://www.jasondavies.com/wordcloud/</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1491,7 +1585,7 @@ historically	1
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1540,7 +1634,7 @@ historically	1
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

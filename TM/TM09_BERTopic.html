@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>TM09 Topic Modeling by BERtopic &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="TM10 Using Open AI" href="TM10_Using_Open_AI.html" />
     <link rel="prev" title="TM08 Classification" href="TM08_doc_classification.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM09_BERTopic.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/TM/TM09_BERTopic.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -531,10 +535,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tm09-topic-modeling-by-bertopic">
-<h1>TM09 Topic Modeling by BERtopic<a class="headerlink" href="#tm09-topic-modeling-by-bertopic" title="Permalink to this headline">#</a></h1>
+<h1>TM09 Topic Modeling by BERtopic<a class="headerlink" href="#tm09-topic-modeling-by-bertopic" title="Permalink to this heading">#</a></h1>
 <p><img alt="Alt text" src="../_images/img_tm09_1.png" /></p>
 <section id="process-comparison">
-<h2>Process comparison<a class="headerlink" href="#process-comparison" title="Permalink to this headline">#</a></h2>
+<h2>Process comparison<a class="headerlink" href="#process-comparison" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>原始的群集法需要先把文檔處理成近似「Document-Term Matrix」的型態（雖然現在skilearn都可以代勞）。在這之前會需要做好幾個步驟的資料清理，包含去除一些數字或英文字母、移除空白、斷詞、移除停用詞、留下保留字等。</p></li>
 <li><p>若是用Embedding則不需要先移除停用詞，因為停用詞也可能是其他詞的「脈絡」，若把停用詞都移掉了，可能會喪失一些脈絡，因此，使用Embedding的話，先不用移除停用詞，也不見得需要做TF-IDF的重要關鍵字萃取。</p></li>
@@ -564,7 +568,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">IPython.display</span> <span class="kn">import</span> <span class="n">display</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">pd</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">display</span><span class="o">.</span><span class="n">float_format</span> <span class="o">=</span> <span class="s1">&#39;</span><span class="si">{:.4f}</span><span class="s1">&#39;</span><span class="o">.</span><span class="n">format</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="kn">import</span> <span class="nn">warnings</span>
@@ -577,7 +581,7 @@ document.write(`
 </div>
 </section>
 <section id="step-1-import-and-clean-data">
-<h2>Step 1. Import and clean data<a class="headerlink" href="#step-1-import-and-clean-data" title="Permalink to this headline">#</a></h2>
+<h2>Step 1. Import and clean data<a class="headerlink" href="#step-1-import-and-clean-data" title="Permalink to this heading">#</a></h2>
 <p>Notes that we don’t need tokenization and stop-word removal here. Just clean up space or punctuation.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -596,9 +600,9 @@ document.write(`
 </div>
 </section>
 <section id="step-2-run-bertopic">
-<h2>Step 2 Run BERTopic<a class="headerlink" href="#step-2-run-bertopic" title="Permalink to this headline">#</a></h2>
+<h2>Step 2 Run BERTopic<a class="headerlink" href="#step-2-run-bertopic" title="Permalink to this heading">#</a></h2>
 <section id="prepare-envs-for-bertopic">
-<h3>2.1 Prepare envs for bertopic<a class="headerlink" href="#prepare-envs-for-bertopic" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Prepare envs for bertopic<a class="headerlink" href="#prepare-envs-for-bertopic" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span><span class="o">.</span><span class="n">cleaned</span>
@@ -624,7 +628,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="initialize-model">
-<h3>2.1 Initialize model<a class="headerlink" href="#initialize-model" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Initialize model<a class="headerlink" href="#initialize-model" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install bertopic</span>
@@ -679,7 +683,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="run-bertopic">
-<h3>2.2 Run bertopic<a class="headerlink" href="#run-bertopic" title="Permalink to this headline">#</a></h3>
+<h3>2.2 Run bertopic<a class="headerlink" href="#run-bertopic" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -724,9 +728,9 @@ Name: cleaned, Length: 6388, dtype: object
 </section>
 </section>
 <section id="step-3-result-exploration">
-<h2>Step 3. Result exploration<a class="headerlink" href="#step-3-result-exploration" title="Permalink to this headline">#</a></h2>
+<h2>Step 3. Result exploration<a class="headerlink" href="#step-3-result-exploration" title="Permalink to this heading">#</a></h2>
 <section id="terms-probability-of-each-topic">
-<h3>Terms probability of each topic<a class="headerlink" href="#terms-probability-of-each-topic" title="Permalink to this headline">#</a></h3>
+<h3>Terms probability of each topic<a class="headerlink" href="#terms-probability-of-each-topic" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_model</span><span class="o">.</span><span class="n">get_topic</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>
@@ -750,7 +754,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="topic-counts-and-representative-docs">
-<h3>Topic counts and representative docs<a class="headerlink" href="#topic-counts-and-representative-docs" title="Permalink to this headline">#</a></h3>
+<h3>Topic counts and representative docs<a class="headerlink" href="#topic-counts-and-representative-docs" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">freq</span> <span class="o">=</span> <span class="n">topic_model</span><span class="o">.</span><span class="n">get_topic_info</span><span class="p">();</span>
@@ -919,7 +923,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="inspect-documnets-of-each-topic">
-<h3>Inspect documnets of each topic<a class="headerlink" href="#inspect-documnets-of-each-topic" title="Permalink to this headline">#</a></h3>
+<h3>Inspect documnets of each topic<a class="headerlink" href="#inspect-documnets-of-each-topic" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">doc_info</span> <span class="o">=</span> <span class="n">topic_model</span><span class="o">.</span><span class="n">get_document_info</span><span class="p">(</span><span class="n">docs</span><span class="p">)</span>
@@ -1085,7 +1089,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="topic-terms-overview-of-all-topics">
-<h3>Topic-terms overview of all topics<a class="headerlink" href="#topic-terms-overview-of-all-topics" title="Permalink to this headline">#</a></h3>
+<h3>Topic-terms overview of all topics<a class="headerlink" href="#topic-terms-overview-of-all-topics" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_topics</span> <span class="o">=</span> <span class="n">topic_model</span><span class="o">.</span><span class="n">get_topics</span><span class="p">()</span>
@@ -1384,7 +1388,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="ldavis-relation-between-topics">
-<h3>LDAVis (Relation between topics)<a class="headerlink" href="#ldavis-relation-between-topics" title="Permalink to this headline">#</a></h3>
+<h3>LDAVis (Relation between topics)<a class="headerlink" href="#ldavis-relation-between-topics" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_model</span><span class="o">.</span><span class="n">visualize_topics</span><span class="p">()</span>
@@ -1426,7 +1430,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="topic-term-bar-charts">
-<h3>Topic-term bar-charts<a class="headerlink" href="#topic-term-bar-charts" title="Permalink to this headline">#</a></h3>
+<h3>Topic-term bar-charts<a class="headerlink" href="#topic-term-bar-charts" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_model</span><span class="o">.</span><span class="n">visualize_barchart</span><span class="p">(</span><span class="n">top_n_topics</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">n_words</span> <span class="o">=</span> <span class="mi">10</span><span class="p">,</span> <span class="n">topics</span> <span class="o">=</span> <span class="nb">range</span><span class="p">(</span><span class="mi">10</span><span class="p">))</span>
@@ -1468,7 +1472,7 @@ Name: cleaned, Length: 6388, dtype: object
 </div>
 </section>
 <section id="document-distribution-with-topics">
-<h3>Document distribution with topics<a class="headerlink" href="#document-distribution-with-topics" title="Permalink to this headline">#</a></h3>
+<h3>Document distribution with topics<a class="headerlink" href="#document-distribution-with-topics" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topic_model</span><span class="o">.</span><span class="n">visualize_documents</span><span class="p">(</span><span class="n">docs</span><span class="p">,</span> <span class="n">hide_document_hover</span> <span class="o">=</span> <span class="kc">True</span><span class="p">,</span> <span class="n">topics</span><span class="o">=</span><span class="nb">range</span><span class="p">(</span><span class="mi">16</span><span class="p">))</span>
@@ -1575,7 +1579,7 @@ Name: cleaned, Length: 6388, dtype: object
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1611,7 +1615,7 @@ Name: cleaned, Length: 6388, dtype: object
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

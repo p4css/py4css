@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>AS03 Summarize data with Pandas &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS04 Twitter API and Pandas Visualization" href="AS04_vis_twitter_api.html" />
     <link rel="prev" title="AS03: Summarizing Data by Pandas" href="AS03_summarize_ptt.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS03_pandas_summarization.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/AS/AS03_pandas_summarization.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -534,12 +538,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as03-summarize-data-with-pandas">
-<h1>AS03 Summarize data with Pandas<a class="headerlink" href="#as03-summarize-data-with-pandas" title="Permalink to this headline">#</a></h1>
+<h1>AS03 Summarize data with Pandas<a class="headerlink" href="#as03-summarize-data-with-pandas" title="Permalink to this heading">#</a></h1>
 <section id="download-data">
-<h2>Download data<a class="headerlink" href="#download-data" title="Permalink to this headline">#</a></h2>
+<h2>Download data<a class="headerlink" href="#download-data" title="Permalink to this heading">#</a></h2>
 <p>到內政部開放資料平台上或開放資料平台尋找並下載<a class="reference external" href="https://data.gov.tw/dataset/130544">「結婚對數按婚姻類型、性別及年齡分(按發生)」</a>資料（CSV）並讀取。或者可以用API讀取<code class="docutils literal notranslate"><span class="pre">https://od.moi.gov.tw/api/v1/rest/datastore/301000000A-001660-015</span></code>。</p>
 <section id="read-from-web-api-json">
-<h3>Read from Web API (JSON)<a class="headerlink" href="#read-from-web-api-json" title="Permalink to this headline">#</a></h3>
+<h3>Read from Web API (JSON)<a class="headerlink" href="#read-from-web-api-json" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -558,19 +562,11 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
-  from pandas.core.computation.check import NUMEXPR_INSTALLED
-/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
-  from pandas.core import (
-</pre></div>
-</div>
-</div>
 </div>
 <p>注意觀察資料，這個資料是，某鄉鎮市區（<code class="docutils literal notranslate"><span class="pre">site_id</span></code>）的某一種結婚型態（<code class="docutils literal notranslate"><span class="pre">marriage_type</span></code>）的雙方年齡組（<code class="docutils literal notranslate"><span class="pre">female_age_or_spouse1</span></code>, <code class="docutils literal notranslate"><span class="pre">male_age_or_spouse2</span></code>）有幾對（<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>）。如果把<code class="docutils literal notranslate"><span class="pre">marry_pair</span></code>全部相加，就會是當年度婚姻的總對數。</p>
 </section>
 <section id="read-csv-from-web-path">
-<h3>Read CSV from web path<a class="headerlink" href="#read-csv-from-web-path" title="Permalink to this headline">#</a></h3>
+<h3>Read CSV from web path<a class="headerlink" href="#read-csv-from-web-path" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># csv_path = &quot;https://data.moi.gov.tw/MoiOD/System/DownloadFile.aspx?DATA=D6E64661-DD38-4244-A86B-396F5F00808B&quot;</span>
@@ -582,7 +578,7 @@ document.write(`
 </div>
 </section>
 <section id="alternative-read-local-csv">
-<h3>Alternative-Read local CSV<a class="headerlink" href="#alternative-read-local-csv" title="Permalink to this headline">#</a></h3>
+<h3>Alternative-Read local CSV<a class="headerlink" href="#alternative-read-local-csv" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Modify the path according to your PC</span>
@@ -596,7 +592,7 @@ document.write(`
 </section>
 </section>
 <section id="data-description">
-<h2>1. Data Description<a class="headerlink" href="#data-description" title="Permalink to this headline">#</a></h2>
+<h2>1. Data Description<a class="headerlink" href="#data-description" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 列印出所有變數</span>
@@ -622,7 +618,7 @@ document.write(`
 </div>
 </section>
 <section id="summarize-single-variable">
-<h2>2. Summarize single variable<a class="headerlink" href="#summarize-single-variable" title="Permalink to this headline">#</a></h2>
+<h2>2. Summarize single variable<a class="headerlink" href="#summarize-single-variable" title="Permalink to this heading">#</a></h2>
 <p>計算男同、女同、異性婚姻各有幾對。預期結果如下（數字可能不同）：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">marriage_type</span>
 <span class="n">不同性別</span>       <span class="mi">112537</span>
@@ -643,7 +639,7 @@ document.write(`
 </div>
 </section>
 <section id="summarize-two-variable-hirarchically">
-<h2>3. Summarize two variable hirarchically<a class="headerlink" href="#summarize-two-variable-hirarchically" title="Permalink to this headline">#</a></h2>
+<h2>3. Summarize two variable hirarchically<a class="headerlink" href="#summarize-two-variable-hirarchically" title="Permalink to this heading">#</a></h2>
 <p>計算每個鄉鎮市區的男同、女同、異性婚姻人數各有幾對. 你可能會需要謹慎觀看影片或者上網查詢「groupby two variables」。預期結果如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">site_id</span>  <span class="n">marriage_type</span>
 <span class="n">南投縣中寮鄉</span>   <span class="n">不同性別</span>              <span class="mi">59</span>
@@ -671,7 +667,7 @@ document.write(`
 </div>
 </section>
 <section id="convert-groupby-result-to-dataframe">
-<h2>4. Convert groupby result to dataframe<a class="headerlink" href="#convert-groupby-result-to-dataframe" title="Permalink to this headline">#</a></h2>
+<h2>4. Convert groupby result to dataframe<a class="headerlink" href="#convert-groupby-result-to-dataframe" title="Permalink to this heading">#</a></h2>
 <p>上述groupby的結果會變為series型態，請上網查詢如何把groupby的結果轉為名為<code class="docutils literal notranslate"><span class="pre">mstat</span></code>的dataframe。並把轉出來的dataframe指給變數<code class="docutils literal notranslate"><span class="pre">mstat</span></code>(Hints: <code class="docutils literal notranslate"><span class="pre">to_frame()</span></code>, <code class="docutils literal notranslate"><span class="pre">reset_index()</span></code>)。</p>
 <p>預期輸出：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	site_id	marriage_type	marry_pair
@@ -704,7 +700,7 @@ document.write(`
 </div>
 </section>
 <section id="spread-marriage-type-to-wide-form">
-<h2>5. Spread marriage_type to wide form<a class="headerlink" href="#spread-marriage-type-to-wide-form" title="Permalink to this headline">#</a></h2>
+<h2>5. Spread marriage_type to wide form<a class="headerlink" href="#spread-marriage-type-to-wide-form" title="Permalink to this heading">#</a></h2>
 <p>基於長表格（long table）的設計，目前結婚類型放在<code class="docutils literal notranslate"><span class="pre">marriage_type</span></code>這個欄位。現在我希望把<code class="docutils literal notranslate"><span class="pre">marriage_type</span></code>的數值（相同性別_女性、不同性別、相同性別_男性）展開在欄（Column）的方向，預計產生如下列型態的dataframe，方法可參考以下pandas對pivot的說明與範例。<a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html">https://pandas.pydata.org/docs/reference/api/pandas.DataFrame.pivot.html</a></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>marriage_type	不同性別	相同性別_女性	相同性別_男性
 site_id			
@@ -740,7 +736,7 @@ site_id
 </div>
 </section>
 <section id="using-reset-index-to-convert-index-to-normal-column-variable">
-<h2>6. Using reset_index() to convert index to normal column(variable)<a class="headerlink" href="#using-reset-index-to-convert-index-to-normal-column-variable" title="Permalink to this headline">#</a></h2>
+<h2>6. Using reset_index() to convert index to normal column(variable)<a class="headerlink" href="#using-reset-index-to-convert-index-to-normal-column-variable" title="Permalink to this heading">#</a></h2>
 <p>上題結果將會產生有階層的欄位，如下：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">marriage_type</span>    <span class="n">不同性別</span>    <span class="n">相同性別_女性</span>    <span class="n">相同性別_男性</span>
 <span class="n">site_id</span>         
@@ -776,7 +772,7 @@ site_id
 </div>
 </section>
 <section id="rename-variable-names">
-<h2>7. Rename variable names<a class="headerlink" href="#rename-variable-names" title="Permalink to this headline">#</a></h2>
+<h2>7. Rename variable names<a class="headerlink" href="#rename-variable-names" title="Permalink to this heading">#</a></h2>
 <p>重新修改變數名稱（欄位名稱）為<code class="docutils literal notranslate"><span class="pre">side_id</span></code>, <code class="docutils literal notranslate"><span class="pre">hetero</span></code>, <code class="docutils literal notranslate"><span class="pre">homoF</span></code>, <code class="docutils literal notranslate"><span class="pre">homoM</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -790,7 +786,7 @@ site_id
 </div>
 </section>
 <section id="mutate-new-variable">
-<h2>8. Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this headline">#</a></h2>
+<h2>8. Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this heading">#</a></h2>
 <p>設計簡單的運算以產生每個鄉鎮的結婚總對數（<code class="docutils literal notranslate"><span class="pre">tot</span></code>）、同婚總對數（<code class="docutils literal notranslate"><span class="pre">homotot</span></code>）、同婚總對數所佔比例（<code class="docutils literal notranslate"><span class="pre">homoratio</span></code>），請依照題意指定變數名稱。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span>	<span class="n">side_id</span>	<span class="n">hetero</span>	<span class="n">homoF</span>	<span class="n">homoM</span>	<span class="n">homotot</span>	<span class="n">tot</span>	<span class="n">homoratio</span>
 <span class="mi">0</span>	<span class="n">南投縣中寮鄉</span>	<span class="mi">59</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">0</span>	<span class="mi">59</span>	<span class="mf">0.000000</span>
@@ -820,7 +816,7 @@ site_id
 </div>
 </section>
 <section id="sorting">
-<h2>9. Sorting<a class="headerlink" href="#sorting" title="Permalink to this headline">#</a></h2>
+<h2>9. Sorting<a class="headerlink" href="#sorting" title="Permalink to this heading">#</a></h2>
 <p>為了列印出同婚對數相較於總對數的比例最高的10個鄉鎮市區，請用<code class="docutils literal notranslate"><span class="pre">sort_values</span></code>依前題新產生的變數<code class="docutils literal notranslate"><span class="pre">homeratio</span></code>將該dataframe的列資料重新排序。
 預期結果應顯示：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">side_id</span>	<span class="n">hetero</span>	<span class="n">homoF</span>	<span class="n">homoM</span>	<span class="n">homotot</span>	<span class="n">tot</span>	<span class="n">homoratio</span>
@@ -845,7 +841,7 @@ site_id
 </div>
 </section>
 <section id="summarizing-by-hand">
-<h2>10. Summarizing by hand<a class="headerlink" href="#summarizing-by-hand" title="Permalink to this headline">#</a></h2>
+<h2>10. Summarizing by hand<a class="headerlink" href="#summarizing-by-hand" title="Permalink to this heading">#</a></h2>
 <p>在下題中，老師希望你不要用pandas的方式來操作數據，希望你用一般的檔案讀取方法與for-loop來走訪所有資料。並建立一個以縣市為key的dictionary，來統計每個縣市，相同性別_男性、相同性別_女性、不同性別的結婚對數各有幾對。以下兩段程式碼會幫助你處理好資料。</p>
 <ol class="arabic simple">
 <li><p>第一段程式碼是用<code class="docutils literal notranslate"><span class="pre">f.read()</span></code>來讀取資料，請注意觀察資料讀取後的格式。</p></li>
@@ -867,7 +863,7 @@ site_id
 </div>
 </div>
 <section id="retrieve-county-name">
-<h3>Retrieve county name<a class="headerlink" href="#retrieve-county-name" title="Permalink to this headline">#</a></h3>
+<h3>Retrieve county name<a class="headerlink" href="#retrieve-county-name" title="Permalink to this heading">#</a></h3>
 <p>下面這段程式碼已經幫你寫好了，他會將原本的每一筆資料多產生一個變數（dictionary的key）是<code class="docutils literal notranslate"><span class="pre">county</span></code>，方法很簡單就只是將原本的縣市鄉鎮市區取出前三個字，如下面程式碼的<code class="docutils literal notranslate"><span class="pre">tdict['site_id'][:3]</span></code>。請勿修改以下程式碼，以下程式碼會</p>
 <ol class="arabic simple">
 <li><p>將每筆資料的欄位對應到統一的欄位名稱、</p></li>
@@ -901,7 +897,7 @@ site_id
 </div>
 </section>
 <section id="summarize-marriage-type-by-county">
-<h3>Summarize marriage_type by county<a class="headerlink" href="#summarize-marriage-type-by-county" title="Permalink to this headline">#</a></h3>
+<h3>Summarize marriage_type by county<a class="headerlink" href="#summarize-marriage-type-by-county" title="Permalink to this heading">#</a></h3>
 <p>現在我希望用一個dict去統計，每個縣市（<code class="docutils literal notranslate"><span class="pre">county</span></code>）不同的婚姻類型（<code class="docutils literal notranslate"><span class="pre">marriage_type</span></code>）各有幾對。我的想法是用計數（Counting）的技巧，所以要建立兩層的dict來累計每個county有多少個不同marriage_type的婚姻案例。內層為marriage_type，外層為county。預期結果如下。</p>
 <div class="highlight-json notranslate"><div class="highlight"><pre><span></span>{   &#39;南投縣&#39;: {&#39;不同性別&#39;: 2189, &#39;相同性別_女性&#39;: 12, &#39;相同性別_男性&#39;: 6},
     &#39;嘉義市&#39;: {&#39;不同性別&#39;: 1214, &#39;相同性別_女性&#39;: 16, &#39;相同性別_男性&#39;: 7},
@@ -947,7 +943,7 @@ site_id
 </div>
 </section>
 <section id="for-loop">
-<h3>將上述結果用for-loop整齊列印出來。<a class="headerlink" href="#for-loop" title="Permalink to this headline">#</a></h3>
+<h3>將上述結果用for-loop整齊列印出來。<a class="headerlink" href="#for-loop" title="Permalink to this heading">#</a></h3>
 <p>預期結果：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">county</span>	<span class="n">不同性別</span>	<span class="n">相同性別_男性</span>	<span class="n">相同性別_女性</span>
 <span class="n">新北市</span>	<span class="mi">18972</span>	<span class="mi">107</span>	<span class="mi">231</span>
@@ -1050,7 +1046,7 @@ site_id
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1089,7 +1085,7 @@ site_id
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

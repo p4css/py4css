@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>Chinese Processing &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="TM02 Collocation" href="TM02_collocation.html" />
     <link rel="prev" title="TM01 Tokenization" href="TM01_tokenization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM01_tokenization(chi).html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/TM/TM01_tokenization(chi).ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -532,9 +536,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="chinese-processing">
-<h1>Chinese Processing<a class="headerlink" href="#chinese-processing" title="Permalink to this headline">#</a></h1>
+<h1>Chinese Processing<a class="headerlink" href="#chinese-processing" title="Permalink to this heading">#</a></h1>
 <section id="loading-data">
-<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <p>Load the fiction “Blessing” written by Lu Xun</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -544,27 +548,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-02-21 00:52:31--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/blessing.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.110.133, 185.199.111.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
-Length: 28418 (28K) [text/plain]
-Saving to: &#39;blessing.txt&#39;
-
-
-blessing.txt          0%[                    ]       0  --.-KB/s               
-blessing.txt        100%[===================&gt;]  27.75K  --.-KB/s    in 0.01s   
-
-Last-modified header missing -- time-stamps turned off.
-2025-02-21 00:52:32 (2.04 MB/s) - &#39;blessing.txt&#39; saved [28418/28418]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TM00.ipynb                             TM08_doc_classification.ipynb
@@ -610,7 +594,7 @@ Number of characters: 9618
 </div>
 </section>
 <section id="setence-segment">
-<h2>Setence segment<a class="headerlink" href="#setence-segment" title="Permalink to this headline">#</a></h2>
+<h2>Setence segment<a class="headerlink" href="#setence-segment" title="Permalink to this heading">#</a></h2>
 <p>After Removing the fullspace and newline symbols</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -631,7 +615,7 @@ Number of sentences: 273
 </div>
 </section>
 <section id="chinese-word-segmentation">
-<h2>Chinese word Segmentation<a class="headerlink" href="#chinese-word-segmentation" title="Permalink to this headline">#</a></h2>
+<h2>Chinese word Segmentation<a class="headerlink" href="#chinese-word-segmentation" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install jieba</span>
@@ -647,13 +631,13 @@ Number of sentences: 273
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>舊曆的年底畢竟最像年底，村鎮上不必說，就在天空中也顯出將到新年的氣象來
-&lt;generator object Tokenizer.cut at 0x105d29040&gt;
+&lt;generator object Tokenizer.cut at 0x106308e40&gt;
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dumping model to file cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Dumping model to file cache /var/folders/4m/shks9p8j0dnbv51nf7cyysfc0000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.367 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.297 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -682,9 +666,9 @@ Number of sentences: 273
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="comparing-simlified-and-traditional-chinese-word-segmentation">
-<h1>Comparing Simlified and Traditional Chinese Word Segmentation<a class="headerlink" href="#comparing-simlified-and-traditional-chinese-word-segmentation" title="Permalink to this headline">#</a></h1>
+<h1>Comparing Simlified and Traditional Chinese Word Segmentation<a class="headerlink" href="#comparing-simlified-and-traditional-chinese-word-segmentation" title="Permalink to this heading">#</a></h1>
 <section id="converstion-between-simplified-and-traditional-chinese">
-<h2>Converstion between Simplified and Traditional Chinese<a class="headerlink" href="#converstion-between-simplified-and-traditional-chinese" title="Permalink to this headline">#</a></h2>
+<h2>Converstion between Simplified and Traditional Chinese<a class="headerlink" href="#converstion-between-simplified-and-traditional-chinese" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>pip<span class="w"> </span>install<span class="w"> </span>hanziconv
@@ -699,7 +683,11 @@ Number of sentences: 273
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: hanziconv in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (0.3.2)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: hanziconv in /Users/jirlong/anaconda3/lib/python3.10/site-packages (0.3.2)
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">DEPRECATION: textract 1.6.5 has a non-standard dependency specifier extract-msg&lt;=0.29.*. pip 24.0 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of textract or contact the author to suggest that they release a version with a conforming dependency specifiers. Discussion can be found at https://github.com/pypa/pip/issues/12063</span>
+
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>台北市长柯文哲
@@ -727,7 +715,7 @@ Number of sentences: 273
 </div>
 </section>
 <section id="segmentation-comparision-between-traditional-and-simplified-chinese">
-<h2>Segmentation comparision between traditional and simplified Chinese<a class="headerlink" href="#segmentation-comparision-between-traditional-and-simplified-chinese" title="Permalink to this headline">#</a></h2>
+<h2>Segmentation comparision between traditional and simplified Chinese<a class="headerlink" href="#segmentation-comparision-between-traditional-and-simplified-chinese" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tra</span> <span class="o">=</span> <span class="s1">&#39;台北市長柯文哲&#39;</span>
@@ -786,7 +774,7 @@ Number of sentences: 273
 </div>
 </section>
 <section id="solution-1-traditional-cutted-by-simplified-index">
-<h2>Solution 1: Traditional cutted by Simplified index<a class="headerlink" href="#solution-1-traditional-cutted-by-simplified-index" title="Permalink to this headline">#</a></h2>
+<h2>Solution 1: Traditional cutted by Simplified index<a class="headerlink" href="#solution-1-traditional-cutted-by-simplified-index" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span>
@@ -832,7 +820,7 @@ Number of sentences: 273
 </div>
 </section>
 <section id="solution-2-traditional-by-simplified-index">
-<h2>Solution 2: traditional by simplified index<a class="headerlink" href="#solution-2-traditional-by-simplified-index" title="Permalink to this headline">#</a></h2>
+<h2>Solution 2: traditional by simplified index<a class="headerlink" href="#solution-2-traditional-by-simplified-index" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">restore</span><span class="p">(</span><span class="n">text</span><span class="p">,</span> <span class="n">toks</span><span class="p">):</span>
@@ -899,7 +887,7 @@ Number of sentences: 273
 </div>
 </section>
 <section id="tool-comparing-traditional-cutted-by-simplfied-chinese">
-<h2>(Tool) Comparing Traditional cutted by simplfied Chinese<a class="headerlink" href="#tool-comparing-traditional-cutted-by-simplfied-chinese" title="Permalink to this headline">#</a></h2>
+<h2>(Tool) Comparing Traditional cutted by simplfied Chinese<a class="headerlink" href="#tool-comparing-traditional-cutted-by-simplfied-chinese" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">tra_cutted</span> <span class="o">=</span> <span class="nb">list</span><span class="p">(</span><span class="n">jieba</span><span class="o">.</span><span class="n">cut</span><span class="p">(</span><span class="n">sample</span><span class="p">))</span>
@@ -1011,7 +999,7 @@ Cutted by sim: [&#39;國民黨&#39;, &#39;高雄市&#39;, &#39;長&#39;, &#39;�
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="loading-userdict">
-<h1>Loading userdict<a class="headerlink" href="#loading-userdict" title="Permalink to this headline">#</a></h1>
+<h1>Loading userdict<a class="headerlink" href="#loading-userdict" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>wget<span class="w"> </span>-N<span class="w"> </span>https://raw.githubusercontent.com/P4CSS/PSS/master/data/userdict.txt
@@ -1022,27 +1010,7 @@ Cutted by sim: [&#39;國民黨&#39;, &#39;高雄市&#39;, &#39;長&#39;, &#39;�
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-02-21 00:52:35--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/userdict.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.110.133, 185.199.111.133, 185.199.108.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
-Length: 43 [text/plain]
-Saving to: &#39;userdict.txt&#39;
-
-
-userdict.txt          0%[                    ]       0  --.-KB/s               
-userdict.txt        100%[===================&gt;]      43  --.-KB/s    in 0s      
-
-Last-modified header missing -- time-stamps turned off.
-2025-02-21 00:52:35 (488 KB/s) - &#39;userdict.txt&#39; saved [43/43]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>TM00.ipynb                             TM08_doc_classification.ipynb
@@ -1079,7 +1047,7 @@ TM07_embedding_clustering.ipynb        userdict.txt
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="pos-tagging-with-jieba">
-<h1>POS Tagging with Jieba<a class="headerlink" href="#pos-tagging-with-jieba" title="Permalink to this headline">#</a></h1>
+<h1>POS Tagging with Jieba<a class="headerlink" href="#pos-tagging-with-jieba" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">jieba.posseg</span>
@@ -1185,7 +1153,7 @@ TM07_embedding_clustering.ipynb        userdict.txt
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="top-words-mining">
-<h1>Top Words Mining<a class="headerlink" href="#top-words-mining" title="Permalink to this headline">#</a></h1>
+<h1>Top Words Mining<a class="headerlink" href="#top-words-mining" title="Permalink to this heading">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -1235,9 +1203,6 @@ TM07_embedding_clustering.ipynb        userdict.txt
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;Ps&#39;, &#39;Ps&#39;, &#39;Po&#39;, &#39;Po&#39;, &#39;Po&#39;, &#39;Lo&#39;, &#39;Lo&#39;, &#39;Lo&#39;, &#39;Lo&#39;]
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -1262,7 +1227,7 @@ TM07_embedding_clustering.ipynb        userdict.txt
 </div>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="stop-word-removal">
-<h1>Stop word removal<a class="headerlink" href="#stop-word-removal" title="Permalink to this headline">#</a></h1>
+<h1>Stop word removal<a class="headerlink" href="#stop-word-removal" title="Permalink to this heading">#</a></h1>
 <p>Manipulate a Chinese stopword list.</p>
 <p>What is “U+FEFF”?</p>
 <blockquote>
@@ -1286,27 +1251,7 @@ TM07_embedding_clustering.ipynb        userdict.txt
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-02-21 00:52:36--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/stopwords_zh-tw.txt
-Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.111.133, 185.199.108.133, 185.199.109.133, ...
-Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
-Length: 8125 (7.9K) [text/plain]
-Saving to: &#39;stopwords_zh-tw.txt&#39;
-
-
-stopwords_zh-tw.txt   0%[                    ]       0  --.-KB/s               
-stopwords_zh-tw.txt 100%[===================&gt;]   7.93K  --.-KB/s    in 0.001s  
-
-Last-modified header missing -- time-stamps turned off.
-2025-02-21 00:52:37 (5.25 MB/s) - &#39;stopwords_zh-tw.txt&#39; saved [8125/8125]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;?&#39;, &#39;、&#39;, &#39;。&#39;, &#39;“&#39;, &#39;”&#39;, &#39;《&#39;, &#39;》&#39;, &#39;！&#39;, &#39;，&#39;, &#39;：&#39;, &#39;；&#39;, &#39;？&#39;, &#39;人民&#39;, &#39;末##末&#39;, &#39;啊&#39;, &#39;阿&#39;, &#39;哎&#39;, &#39;哎呀&#39;, &#39;哎喲&#39;, &#39;唉&#39;, &#39;我&#39;, &#39;我們&#39;, &#39;按&#39;, &#39;按照&#39;, &#39;依照&#39;, &#39;吧&#39;, &#39;吧噠&#39;, &#39;把&#39;, &#39;罷了&#39;, &#39;被&#39;, &#39;本&#39;, &#39;本著&#39;, &#39;比&#39;, &#39;比方&#39;, &#39;比如&#39;, &#39;鄙人&#39;, &#39;彼&#39;, &#39;彼此&#39;, &#39;邊&#39;, &#39;別&#39;, &#39;別的&#39;, &#39;別說&#39;, &#39;並&#39;, &#39;並且&#39;, &#39;不比&#39;, &#39;不成&#39;, &#39;不單&#39;, &#39;不但&#39;, &#39;不獨&#39;, &#39;不管&#39;, &#39;不光&#39;, &#39;不過&#39;, &#39;不僅&#39;, &#39;不拘&#39;, &#39;不論&#39;, &#39;不怕&#39;, &#39;不然&#39;, &#39;不如&#39;, &#39;不特&#39;, &#39;不惟&#39;, &#39;不問&#39;, &#39;不只&#39;, &#39;朝&#39;, &#39;朝著&#39;, &#39;趁&#39;, &#39;趁著&#39;, &#39;乘&#39;, &#39;沖&#39;, &#39;除&#39;, &#39;除此之外&#39;, &#39;除非&#39;, &#39;除了&#39;, &#39;此&#39;, &#39;此間&#39;, &#39;此外&#39;, &#39;從&#39;, &#39;從而&#39;, &#39;打&#39;, &#39;待&#39;, &#39;但&#39;, &#39;但是&#39;, &#39;當&#39;, &#39;當著&#39;, &#39;到&#39;, &#39;得&#39;, &#39;的&#39;, &#39;的話&#39;, &#39;等&#39;, &#39;等等&#39;, &#39;地&#39;, &#39;第&#39;, &#39;叮咚&#39;, &#39;對&#39;, &#39;對於&#39;, &#39;多&#39;, &#39;多少&#39;, &#39;而&#39;, &#39;而況&#39;, &#39;而且&#39;, &#39;而是&#39;, &#39;而外&#39;, &#39;而言&#39;, &#39;而已&#39;, &#39;爾後&#39;, &#39;反過來&#39;, &#39;反過來說&#39;, &#39;反之&#39;, &#39;非但&#39;, &#39;非徒&#39;, &#39;否則&#39;, &#39;嘎&#39;, &#39;嘎登&#39;, &#39;該&#39;, &#39;趕&#39;, &#39;個&#39;, &#39;各&#39;, &#39;各個&#39;, &#39;各位&#39;, &#39;各種&#39;, &#39;各自&#39;, &#39;給&#39;, &#39;根據&#39;, &#39;跟&#39;, &#39;故&#39;, &#39;故此&#39;, &#39;固然&#39;, &#39;關於&#39;, &#39;管&#39;, &#39;歸&#39;, &#39;果然&#39;, &#39;果真&#39;, &#39;過&#39;, &#39;哈&#39;, &#39;哈哈&#39;, &#39;呵&#39;, &#39;和&#39;, &#39;何&#39;, &#39;何處&#39;, &#39;何況&#39;, &#39;何時&#39;, &#39;嘿&#39;, &#39;哼&#39;, &#39;哼唷&#39;, &#39;呼哧&#39;, &#39;乎&#39;, &#39;嘩&#39;, &#39;還是&#39;, &#39;還有&#39;, &#39;換句話說&#39;, &#39;換言之&#39;, &#39;或&#39;, &#39;或是&#39;, &#39;或者&#39;, &#39;極了&#39;, &#39;及&#39;, &#39;及其&#39;, &#39;及至&#39;, &#39;即&#39;, &#39;即便&#39;, &#39;即或&#39;, &#39;即令&#39;, &#39;即若&#39;, &#39;即使&#39;, &#39;幾&#39;, &#39;幾時&#39;, &#39;己&#39;, &#39;既&#39;, &#39;既然&#39;, &#39;既是&#39;, &#39;繼而&#39;, &#39;加之&#39;, &#39;假如&#39;, &#39;假若&#39;, &#39;假使&#39;, &#39;鑒於&#39;, &#39;將&#39;, &#39;較&#39;, &#39;較之&#39;, &#39;叫&#39;, &#39;接著&#39;, &#39;結果&#39;, &#39;借&#39;, &#39;緊接著&#39;, &#39;進而&#39;, &#39;盡&#39;, &#39;儘管&#39;, &#39;經&#39;, &#39;經過&#39;, &#39;就&#39;, &#39;就是&#39;, &#39;就是說&#39;, &#39;據&#39;, &#39;具體地說&#39;, &#39;具體說來&#39;, &#39;開始&#39;, &#39;開外&#39;, &#39;靠&#39;, &#39;咳&#39;, &#39;可&#39;, &#39;可見&#39;, &#39;可是&#39;, &#39;可以&#39;, &#39;況且&#39;, &#39;啦&#39;, &#39;來&#39;, &#39;來著&#39;, &#39;離&#39;, &#39;例如&#39;, &#39;哩&#39;, &#39;連&#39;, &#39;連同&#39;, &#39;兩者&#39;, &#39;了&#39;, &#39;臨&#39;, &#39;另&#39;, &#39;另外&#39;, &#39;另一方面&#39;, &#39;論&#39;, &#39;嘛&#39;, &#39;嗎&#39;, &#39;慢說&#39;, &#39;漫說&#39;, &#39;冒&#39;, &#39;麼&#39;, &#39;每&#39;, &#39;每當&#39;, &#39;們&#39;, &#39;莫若&#39;, &#39;某&#39;, &#39;某個&#39;, &#39;某些&#39;, &#39;拿&#39;, &#39;哪&#39;, &#39;哪邊&#39;, &#39;哪兒&#39;, &#39;哪個&#39;, &#39;哪裏&#39;, &#39;哪年&#39;, &#39;哪怕&#39;, &#39;哪天&#39;, &#39;哪些&#39;, &#39;哪樣&#39;, &#39;那&#39;, &#39;那邊&#39;, &#39;那兒&#39;, &#39;那個&#39;, &#39;那會兒&#39;, &#39;那裏&#39;, &#39;那麼&#39;, &#39;那麼些&#39;, &#39;那麼樣&#39;, &#39;那時&#39;, &#39;那些&#39;, &#39;那樣&#39;, &#39;乃&#39;, &#39;乃至&#39;, &#39;呢&#39;, &#39;能&#39;, &#39;你&#39;, &#39;你們&#39;, &#39;您&#39;, &#39;寧&#39;, &#39;寧可&#39;, &#39;寧肯&#39;, &#39;寧願&#39;, &#39;哦&#39;, &#39;嘔&#39;, &#39;啪達&#39;, &#39;旁人&#39;, &#39;呸&#39;, &#39;憑&#39;, &#39;憑藉&#39;, &#39;其&#39;, &#39;其次&#39;, &#39;其二&#39;, &#39;其他&#39;, &#39;其它&#39;, &#39;其一&#39;, &#39;其餘&#39;, &#39;其中&#39;, &#39;起&#39;, &#39;起見&#39;, &#39;豈但&#39;, &#39;恰恰相反&#39;, &#39;前後&#39;, &#39;前者&#39;, &#39;且&#39;, &#39;然而&#39;, &#39;然後&#39;, &#39;然則&#39;, &#39;讓&#39;, &#39;人家&#39;, &#39;任&#39;, &#39;任何&#39;, &#39;任憑&#39;, &#39;如&#39;, &#39;如此&#39;, &#39;如果&#39;, &#39;如何&#39;, &#39;如其&#39;, &#39;如若&#39;, &#39;如上所述&#39;, &#39;若&#39;, &#39;若非&#39;, &#39;若是&#39;, &#39;啥&#39;, &#39;上下&#39;, &#39;尚且&#39;, &#39;設若&#39;, &#39;設使&#39;, &#39;甚而&#39;, &#39;甚麼&#39;, &#39;甚至&#39;, &#39;省得&#39;, &#39;時候&#39;, &#39;什麼&#39;, &#39;什麼樣&#39;, &#39;使得&#39;, &#39;是&#39;, &#39;是的&#39;, &#39;首先&#39;, &#39;誰&#39;, &#39;誰知&#39;, &#39;順&#39;, &#39;順著&#39;, &#39;似的&#39;, &#39;雖&#39;, &#39;雖然&#39;, &#39;雖說&#39;, &#39;雖則&#39;, &#39;隨&#39;, &#39;隨著&#39;, &#39;所&#39;, &#39;所以&#39;, &#39;他&#39;, &#39;他們&#39;, &#39;他人&#39;, &#39;它&#39;, &#39;它們&#39;, &#39;她&#39;, &#39;她們&#39;, &#39;倘&#39;, &#39;倘或&#39;, &#39;倘然&#39;, &#39;倘若&#39;, &#39;倘使&#39;, &#39;騰&#39;, &#39;替&#39;, &#39;通過&#39;, &#39;同&#39;, &#39;同時&#39;, &#39;哇&#39;, &#39;萬一&#39;, &#39;往&#39;, &#39;望&#39;, &#39;為&#39;, &#39;為何&#39;, &#39;為了&#39;, &#39;為什麼&#39;, &#39;為著&#39;, &#39;餵&#39;, &#39;嗡嗡&#39;, &#39;我&#39;, &#39;我們&#39;, &#39;嗚&#39;, &#39;嗚呼&#39;, &#39;烏乎&#39;, &#39;無論&#39;, &#39;無寧&#39;, &#39;毋寧&#39;, &#39;嘻&#39;, &#39;嚇&#39;, &#39;相對而言&#39;, &#39;像&#39;, &#39;向&#39;, &#39;向著&#39;, &#39;噓&#39;, &#39;呀&#39;, &#39;焉&#39;, &#39;沿&#39;, &#39;沿著&#39;, &#39;要&#39;, &#39;要不&#39;, &#39;要不然&#39;, &#39;要不是&#39;, &#39;要麼&#39;, &#39;要是&#39;, &#39;也&#39;, &#39;也罷&#39;, &#39;也好&#39;, &#39;一&#39;, &#39;一般&#39;, &#39;一旦&#39;, &#39;一方面&#39;, &#39;一來&#39;, &#39;一切&#39;, &#39;一樣&#39;, &#39;一則&#39;, &#39;依&#39;, &#39;依照&#39;, &#39;矣&#39;, &#39;以&#39;, &#39;以便&#39;, &#39;以及&#39;, &#39;以免&#39;, &#39;以至&#39;, &#39;以至於&#39;, &#39;以致&#39;, &#39;抑或&#39;, &#39;因&#39;, &#39;因此&#39;, &#39;因而&#39;, &#39;因為&#39;, &#39;喲&#39;, &#39;用&#39;, &#39;由&#39;, &#39;由此可見&#39;, &#39;由於&#39;, &#39;有&#39;, &#39;有的&#39;, &#39;有關&#39;, &#39;有些&#39;, &#39;又&#39;, &#39;於&#39;, &#39;於是&#39;, &#39;於是乎&#39;, &#39;與&#39;, &#39;與此同時&#39;, &#39;與否&#39;, &#39;與其&#39;, &#39;越是&#39;, &#39;雲雲&#39;, &#39;哉&#39;, &#39;再說&#39;, &#39;再者&#39;, &#39;在&#39;, &#39;在下&#39;, &#39;咱&#39;, &#39;咱們&#39;, &#39;則&#39;, &#39;怎&#39;, &#39;怎麼&#39;, &#39;怎麼辦&#39;, &#39;怎麼樣&#39;, &#39;怎樣&#39;, &#39;咋&#39;, &#39;照&#39;, &#39;照著&#39;, &#39;者&#39;, &#39;這&#39;, &#39;這邊&#39;, &#39;這兒&#39;, &#39;這個&#39;, &#39;這會兒&#39;, &#39;這就是說&#39;, &#39;這裏&#39;, &#39;這麼&#39;, &#39;這麼點兒&#39;, &#39;這麼些&#39;, &#39;這麼樣&#39;, &#39;這時&#39;, &#39;這些&#39;, &#39;這樣&#39;, &#39;正如&#39;, &#39;吱&#39;, &#39;之&#39;, &#39;之類&#39;, &#39;之所以&#39;, &#39;之一&#39;, &#39;只是&#39;, &#39;只限&#39;, &#39;只要&#39;, &#39;只有&#39;, &#39;至&#39;, &#39;至於&#39;, &#39;諸位&#39;, &#39;著&#39;, &#39;著呢&#39;, &#39;自&#39;, &#39;自從&#39;, &#39;自個兒&#39;, &#39;自各兒&#39;, &#39;自己&#39;, &#39;自家&#39;, &#39;自身&#39;, &#39;綜上所述&#39;, &#39;總的來看&#39;, &#39;總的來說&#39;, &#39;總的說來&#39;, &#39;總而言之&#39;, &#39;總之&#39;, &#39;縱&#39;, &#39;縱令&#39;, &#39;縱然&#39;, &#39;縱使&#39;, &#39;遵照&#39;, &#39;作為&#39;, &#39;兮&#39;, &#39;呃&#39;, &#39;唄&#39;, &#39;咚&#39;, &#39;咦&#39;, &#39;喏&#39;, &#39;啐&#39;, &#39;喔唷&#39;, &#39;嗬&#39;, &#39;嗯&#39;, &#39;噯&#39;, &#39;~&#39;, &#39;!&#39;, &#39;.&#39;, &#39;:&#39;, &#39;&quot;&#39;, &quot;&#39;&quot;, &#39;(&#39;, &#39;)&#39;, &#39;*&#39;, &#39;A&#39;, &#39;白&#39;, &#39;社會主義&#39;, &#39;--&#39;, &#39;..&#39;, &#39;&gt;&gt;&#39;, &#39; [&#39;, &#39; ]&#39;, &#39;&#39;, &#39;&lt;&#39;, &#39;&gt;&#39;, &#39;/&#39;, &#39;\\&#39;, &#39;|&#39;, &#39;-&#39;, &#39;_&#39;, &#39;+&#39;, &#39;=&#39;, &#39;&amp;&#39;, &#39;^&#39;, &#39;%&#39;, &#39;#&#39;, &#39;@&#39;, &#39;`&#39;, &#39;;&#39;, &#39;$&#39;, &#39;（&#39;, &#39;）&#39;, &#39;——&#39;, &#39;—&#39;, &#39;￥&#39;, &#39;·&#39;, &#39;...&#39;, &#39;‘&#39;, &#39;’&#39;, &#39;〉&#39;, &#39;〈&#39;, &#39;…&#39;, &#39;\u3000&#39;, &#39;0&#39;, &#39;1&#39;, &#39;2&#39;, &#39;3&#39;, &#39;4&#39;, &#39;5&#39;, &#39;6&#39;, &#39;7&#39;, &#39;8&#39;, &#39;9&#39;, &#39;０&#39;, &#39;１&#39;, &#39;２&#39;, &#39;３&#39;, &#39;４&#39;, &#39;５&#39;, &#39;６&#39;, &#39;７&#39;, &#39;８&#39;, &#39;９&#39;, &#39;二&#39;, &#39;三&#39;, &#39;四&#39;, &#39;五&#39;, &#39;六&#39;, &#39;七&#39;, &#39;八&#39;, &#39;九&#39;, &#39;零&#39;, &#39;＞&#39;, &#39;＜&#39;, &#39;＠&#39;, &#39;＃&#39;, &#39;＄&#39;, &#39;％&#39;, &#39;︿&#39;, &#39;＆&#39;, &#39;＊&#39;, &#39;＋&#39;, &#39;～&#39;, &#39;｜&#39;, &#39;［&#39;, &#39;］&#39;, &#39;｛&#39;, &#39;｝&#39;, &#39;啊哈&#39;, &#39;啊呀&#39;, &#39;啊喲&#39;, &#39;挨次&#39;, &#39;挨個&#39;, &#39;挨家挨戶&#39;, &#39;挨門挨戶&#39;, &#39;挨門逐戶&#39;, &#39;挨著&#39;, &#39;按理&#39;, &#39;按期&#39;, &#39;按時&#39;, &#39;按說&#39;, &#39;暗地裏&#39;, &#39;暗中&#39;, &#39;暗自&#39;, &#39;昂然&#39;, &#39;八成&#39;, &#39;白白&#39;, &#39;半&#39;, &#39;梆&#39;, &#39;保管&#39;, &#39;保險&#39;, &#39;飽&#39;, &#39;背地裏&#39;, &#39;背靠背&#39;, &#39;倍感&#39;, &#39;倍加&#39;, &#39;本人&#39;, &#39;本身&#39;, &#39;甭&#39;, &#39;比起&#39;, &#39;比如說&#39;, &#39;比照&#39;, &#39;畢竟&#39;, &#39;必&#39;, &#39;必定&#39;, &#39;必將&#39;, &#39;必須&#39;, &#39;便&#39;, &#39;別人&#39;, &#39;並非&#39;, &#39;並肩&#39;, &#39;並沒&#39;, &#39;並沒有&#39;, &#39;併排&#39;, &#39;並無&#39;, &#39;勃然&#39;, &#39;不&#39;, &#39;不必&#39;, &#39;不常&#39;, &#39;不大&#39;, &#39;不但...而且&#39;, &#39;不得&#39;, &#39;不得不&#39;, &#39;不得了&#39;, &#39;不得已&#39;, &#39;不迭&#39;, &#39;不定&#39;, &#39;不對&#39;, &#39;不妨&#39;, &#39;不管怎樣&#39;, &#39;不會&#39;, &#39;不僅...而且&#39;, &#39;不僅僅&#39;, &#39;不僅僅是&#39;, &#39;不經意&#39;, &#39;不可開交&#39;, &#39;不可抗拒&#39;, &#39;不力&#39;, &#39;不了&#39;, &#39;不料&#39;, &#39;不滿&#39;, &#39;不免&#39;, &#39;不能不&#39;, &#39;不起&#39;, &#39;不巧&#39;, &#39;不然的話&#39;, &#39;不日&#39;, &#39;不少&#39;, &#39;不勝&#39;, &#39;不時&#39;, &#39;不是&#39;, &#39;不同&#39;, &#39;不能&#39;, &#39;不要&#39;, &#39;不外&#39;, &#39;不外乎&#39;, &#39;不下&#39;, &#39;不限&#39;, &#39;不消&#39;, &#39;不已&#39;, &#39;不亦樂乎&#39;, &#39;不由得&#39;, &#39;不再&#39;, &#39;不擇手段&#39;, &#39;不怎麼&#39;, &#39;不曾&#39;, &#39;不知不覺&#39;, &#39;不止&#39;, &#39;不止一次&#39;, &#39;不至於&#39;, &#39;才&#39;, &#39;才能&#39;, &#39;策略地&#39;, &#39;差不多&#39;, &#39;差一點&#39;, &#39;常&#39;, &#39;常常&#39;, &#39;常言道&#39;, &#39;常言說&#39;, &#39;常言說得好&#39;, &#39;長此下去&#39;, &#39;長話短說&#39;, &#39;長期以來&#39;, &#39;長線&#39;, &#39;敞開兒&#39;, &#39;徹夜&#39;, &#39;陳年&#39;, &#39;趁便&#39;, &#39;趁機&#39;, &#39;趁熱&#39;, &#39;趁勢&#39;, &#39;趁早&#39;, &#39;成年&#39;, &#39;成年累月&#39;, &#39;成心&#39;, &#39;乘機&#39;, &#39;乘勝&#39;, &#39;乘勢&#39;, &#39;乘隙&#39;, &#39;乘虛&#39;, &#39;誠然&#39;, &#39;遲早&#39;, &#39;充分&#39;, &#39;充其極&#39;, &#39;充其量&#39;, &#39;抽冷子&#39;, &#39;臭&#39;, &#39;初&#39;, &#39;出&#39;, &#39;出來&#39;, &#39;出去&#39;, &#39;除此&#39;, &#39;除此而外&#39;, &#39;除此以外&#39;, &#39;除開&#39;, &#39;除去&#39;, &#39;除卻&#39;, &#39;除外&#39;, &#39;處處&#39;, &#39;川流不息&#39;, &#39;傳&#39;, &#39;傳說&#39;, &#39;傳聞&#39;, &#39;串列&#39;, &#39;純&#39;, &#39;純粹&#39;, &#39;此後&#39;, &#39;此中&#39;, &#39;次第&#39;, &#39;匆匆&#39;, &#39;從不&#39;, &#39;從此&#39;, &#39;從此以後&#39;, &#39;從古到今&#39;, &#39;從古至今&#39;, &#39;從今以後&#39;, &#39;從寬&#39;, &#39;從來&#39;, &#39;從輕&#39;, &#39;從速&#39;, &#39;從頭&#39;, &#39;從未&#39;, &#39;從無到有&#39;, &#39;從小&#39;, &#39;從新&#39;, &#39;從嚴&#39;, &#39;從優&#39;, &#39;從早到晚&#39;, &#39;從中&#39;, &#39;從重&#39;, &#39;湊巧&#39;, &#39;粗&#39;, &#39;存心&#39;, &#39;達旦&#39;, &#39;打從&#39;, &#39;打開天窗說亮話&#39;, &#39;大&#39;, &#39;大不了&#39;, &#39;大大&#39;, &#39;大抵&#39;, &#39;大都&#39;, &#39;大多&#39;, &#39;大凡&#39;, &#39;大概&#39;, &#39;大家&#39;, &#39;大舉&#39;, &#39;大略&#39;, &#39;大面兒上&#39;, &#39;大事&#39;, &#39;大體&#39;, &#39;大體上&#39;, &#39;大約&#39;, &#39;大張旗鼓&#39;, &#39;大致&#39;, &#39;呆呆地&#39;, &#39;帶&#39;, &#39;殆&#39;, &#39;待到&#39;, &#39;單&#39;, &#39;單純&#39;, &#39;單單&#39;, &#39;但願&#39;, &#39;彈指之間&#39;, &#39;當場&#39;, &#39;當兒&#39;, &#39;當即&#39;, &#39;當口兒&#39;, &#39;當然&#39;, &#39;當庭&#39;, &#39;當頭&#39;, &#39;當下&#39;, &#39;當真&#39;, &#39;當中&#39;, &#39;倒不如&#39;, &#39;倒不如說&#39;, &#39;倒是&#39;, &#39;到處&#39;, &#39;到底&#39;, &#39;到了兒&#39;, &#39;到目前為止&#39;, &#39;到頭&#39;, &#39;到頭來&#39;, &#39;得起&#39;, &#39;得天獨厚&#39;, &#39;的確&#39;, &#39;等到&#39;, &#39;叮噹&#39;, &#39;頂多&#39;, &#39;定&#39;, &#39;動不動&#39;, &#39;動輒&#39;, &#39;陡然&#39;, &#39;都&#39;, &#39;獨&#39;, &#39;獨自&#39;, &#39;斷然&#39;, &#39;頓時&#39;, &#39;多次&#39;, &#39;多多&#39;, &#39;多多少少&#39;, &#39;多多益善&#39;, &#39;多虧&#39;, &#39;多年來&#39;, &#39;多年前&#39;, &#39;而後&#39;, &#39;而論&#39;, &#39;而又&#39;, &#39;爾等&#39;, &#39;二話不說&#39;, &#39;二話沒說&#39;, &#39;反倒&#39;, &#39;反倒是&#39;, &#39;反而&#39;, &#39;反手&#39;, &#39;反之亦然&#39;, &#39;反之則&#39;, &#39;方&#39;, &#39;方才&#39;, &#39;方能&#39;, &#39;放量&#39;, &#39;非常&#39;, &#39;非得&#39;, &#39;分期&#39;, &#39;分期分批&#39;, &#39;分頭&#39;, &#39;奮勇&#39;, &#39;憤然&#39;, &#39;風雨無阻&#39;, &#39;逢&#39;, &#39;弗&#39;, &#39;甫&#39;, &#39;嘎嘎&#39;, &#39;該當&#39;, &#39;概&#39;, &#39;趕快&#39;, &#39;趕早不趕晚&#39;, &#39;敢&#39;, &#39;敢情&#39;, &#39;敢於&#39;, &#39;剛&#39;, &#39;剛才&#39;, &#39;剛好&#39;, &#39;剛巧&#39;, &#39;高低&#39;, &#39;格外&#39;, &#39;隔日&#39;, &#39;隔夜&#39;, &#39;個人&#39;, &#39;各式&#39;, &#39;更&#39;, &#39;更加&#39;, &#39;更進一步&#39;, &#39;更為&#39;, &#39;公然&#39;, &#39;共&#39;, &#39;共總&#39;, &#39;夠瞧的&#39;, &#39;姑且&#39;, &#39;古來&#39;, &#39;故而&#39;, &#39;故意&#39;, &#39;固&#39;, &#39;怪&#39;, &#39;怪不得&#39;, &#39;慣常&#39;, &#39;光&#39;, &#39;光是&#39;, &#39;歸根到底&#39;, &#39;歸根結底&#39;, &#39;過於&#39;, &#39;毫不&#39;, &#39;毫無&#39;, &#39;毫無保留地&#39;, &#39;毫無例外&#39;, &#39;好在&#39;, &#39;何必&#39;, &#39;何嘗&#39;, &#39;何妨&#39;, &#39;何苦&#39;, &#39;何樂而不為&#39;, &#39;何須&#39;, &#39;何止&#39;, &#39;很&#39;, &#39;很多&#39;, &#39;很少&#39;, &#39;轟然&#39;, &#39;後來&#39;, &#39;呼啦&#39;, &#39;忽地&#39;, &#39;忽然&#39;, &#39;互&#39;, &#39;互相&#39;, &#39;嘩啦&#39;, &#39;話說&#39;, &#39;還&#39;, &#39;恍然&#39;, &#39;會&#39;, &#39;豁然&#39;, &#39;活&#39;, &#39;夥同&#39;, &#39;或多或少&#39;, &#39;或許&#39;, &#39;基本&#39;, &#39;基本上&#39;, &#39;基於&#39;, &#39;極&#39;, &#39;極大&#39;, &#39;極度&#39;, &#39;極端&#39;, &#39;極力&#39;, &#39;極其&#39;, &#39;極為&#39;, &#39;急匆匆&#39;, &#39;即將&#39;, &#39;即刻&#39;, &#39;即是說&#39;, &#39;幾度&#39;, &#39;幾番&#39;, &#39;幾乎&#39;, &#39;幾經&#39;, &#39;既...又&#39;, &#39;繼之&#39;, &#39;加上&#39;, &#39;加以&#39;, &#39;間或&#39;, &#39;簡而言之&#39;, &#39;簡言之&#39;, &#39;簡直&#39;, &#39;見&#39;, &#39;將才&#39;, &#39;將近&#39;, &#39;將要&#39;, &#39;交口&#39;, &#39;較比&#39;, &#39;較為&#39;, &#39;接連不斷&#39;, &#39;接下來&#39;, &#39;皆可&#39;, &#39;截然&#39;, &#39;截至&#39;, &#39;藉以&#39;, &#39;藉此&#39;, &#39;藉以&#39;, &#39;屆時&#39;, &#39;僅&#39;, &#39;僅僅&#39;, &#39;謹&#39;, &#39;進來&#39;, &#39;進去&#39;, &#39;近&#39;, &#39;近幾年來&#39;, &#39;近來&#39;, &#39;近年來&#39;, &#39;儘管如此&#39;, &#39;儘可能&#39;, &#39;儘快&#39;, &#39;儘量&#39;, &#39;盡然&#39;, &#39;盡如人意&#39;, &#39;盡心竭力&#39;, &#39;盡心盡力&#39;, &#39;儘早&#39;, &#39;精光&#39;, &#39;經常&#39;, &#39;竟&#39;, &#39;竟然&#39;, &#39;究竟&#39;, &#39;就此&#39;, &#39;就地&#39;, &#39;就算&#39;, &#39;居然&#39;, &#39;局外&#39;, &#39;舉凡&#39;, &#39;據稱&#39;, &#39;據此&#39;, &#39;據實&#39;, &#39;據說&#39;, &#39;據我所知&#39;, &#39;據悉&#39;, &#39;具體來說&#39;, &#39;決不&#39;, &#39;決非&#39;, &#39;絕&#39;, &#39;絕不&#39;, &#39;絕頂&#39;, &#39;絕對&#39;, &#39;絕非&#39;, &#39;均&#39;, &#39;喀&#39;, &#39;看&#39;, &#39;看來&#39;, &#39;看起來&#39;, &#39;看上去&#39;, &#39;看樣子&#39;, &#39;可好&#39;, &#39;可能&#39;, &#39;恐怕&#39;, &#39;快&#39;, &#39;快要&#39;, &#39;來不及&#39;, &#39;來得及&#39;, &#39;來講&#39;, &#39;來看&#39;, &#39;攔腰&#39;, &#39;牢牢&#39;, &#39;老&#39;, &#39;老大&#39;, &#39;老老實實&#39;, &#39;老是&#39;, &#39;累次&#39;, &#39;累年&#39;, &#39;理當&#39;, &#39;理該&#39;, &#39;理應&#39;, &#39;歷&#39;, &#39;立&#39;, &#39;立地&#39;, &#39;立刻&#39;, &#39;立馬&#39;, &#39;立時&#39;, &#39;聯袂&#39;, &#39;連連&#39;, &#39;連日&#39;, &#39;連日來&#39;, &#39;連聲&#39;, &#39;連袂&#39;, &#39;臨到&#39;, &#39;另方面&#39;, &#39;另行&#39;, &#39;另一個&#39;, &#39;路經&#39;, &#39;屢&#39;, &#39;屢次&#39;, &#39;屢次三番&#39;, &#39;屢屢&#39;, &#39;縷縷&#39;, &#39;率爾&#39;, &#39;率然&#39;, &#39;略&#39;, &#39;略加&#39;, &#39;略微&#39;, &#39;略為&#39;, &#39;論說&#39;, &#39;馬上&#39;, &#39;蠻&#39;, &#39;滿&#39;, &#39;沒&#39;, &#39;沒有&#39;, &#39;每逢&#39;, &#39;每每&#39;, &#39;每時每刻&#39;, &#39;猛然&#39;, &#39;猛然間&#39;, &#39;莫&#39;, &#39;莫不&#39;, &#39;莫非&#39;, &#39;莫如&#39;, &#39;默默地&#39;, &#39;默然&#39;, &#39;吶&#39;, &#39;那末&#39;, &#39;奈&#39;, &#39;難道&#39;, &#39;難得&#39;, &#39;難怪&#39;, &#39;難說&#39;, &#39;內&#39;, &#39;年覆一年&#39;, &#39;凝神&#39;, &#39;偶而&#39;, &#39;偶爾&#39;, &#39;怕&#39;, &#39;砰&#39;, &#39;碰巧&#39;, &#39;譬如&#39;, &#39;偏偏&#39;, &#39;乒&#39;, &#39;平素&#39;, &#39;頗&#39;, &#39;迫於&#39;, &#39;撲通&#39;, &#39;其後&#39;, &#39;其實&#39;, &#39;奇&#39;, &#39;齊&#39;, &#39;起初&#39;, &#39;起來&#39;, &#39;起首&#39;, &#39;起頭&#39;, &#39;起先&#39;, &#39;豈&#39;, &#39;豈非&#39;, &#39;豈止&#39;, &#39;迄&#39;, &#39;恰逢&#39;, &#39;恰好&#39;, &#39;恰恰&#39;, &#39;恰巧&#39;, &#39;恰如&#39;, &#39;恰似&#39;, &#39;千&#39;, &#39;千萬&#39;, &#39;千萬千萬&#39;, &#39;切&#39;, &#39;切不可&#39;, &#39;切莫&#39;, &#39;切切&#39;, &#39;切勿&#39;, &#39;竊&#39;, &#39;親口&#39;, &#39;親身&#39;, &#39;親手&#39;, &#39;親眼&#39;, &#39;親自&#39;, &#39;頃&#39;, &#39;頃刻&#39;, &#39;頃刻間&#39;, &#39;頃刻之間&#39;, &#39;請勿&#39;, &#39;窮年累月&#39;, &#39;取道&#39;, &#39;去&#39;, &#39;權時&#39;, &#39;全都&#39;, &#39;全力&#39;, &#39;全年&#39;, &#39;全然&#39;, &#39;全身心&#39;, &#39;然&#39;, &#39;人人&#39;, &#39;仍&#39;, &#39;仍舊&#39;, &#39;仍然&#39;, &#39;日覆一日&#39;, &#39;日見&#39;, &#39;日漸&#39;, &#39;日益&#39;, &#39;日臻&#39;, &#39;如常&#39;, &#39;如此等等&#39;, &#39;如次&#39;, &#39;如今&#39;, &#39;如期&#39;, &#39;如前所述&#39;, &#39;如上&#39;, &#39;如下&#39;, &#39;汝&#39;, &#39;三番兩次&#39;, &#39;三番五次&#39;, &#39;三天兩頭&#39;, &#39;瑟瑟&#39;, &#39;沙沙&#39;, &#39;上&#39;, &#39;上來&#39;, &#39;上去&#39;]
@@ -1406,7 +1351,7 @@ Last-modified header missing -- time-stamps turned off.
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1443,7 +1388,7 @@ Last-modified header missing -- time-stamps turned off.
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

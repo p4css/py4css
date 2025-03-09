@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>AS06 - Tokenization and keywords &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS07 Collocation for finding enthusiastic commentors" href="AS07_collocation.html" />
     <link rel="prev" title="AS05. Improving Youtube Scraper with ChatGPT" href="AS05_Scraping_youtube_with_chatGPT.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FAS/AS06_Tokenization.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/AS/AS06_Tokenization.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -522,7 +526,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as06-tokenization-and-keywords">
-<h1>AS06 - Tokenization and keywords<a class="headerlink" href="#as06-tokenization-and-keywords" title="Permalink to this headline">#</a></h1>
+<h1>AS06 - Tokenization and keywords<a class="headerlink" href="#as06-tokenization-and-keywords" title="Permalink to this heading">#</a></h1>
 <ol class="arabic simple">
 <li><p>Q1~Q5: Each question is worth 15 points</p></li>
 <li><p>Q6: 25 points</p></li>
@@ -548,13 +552,22 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 5&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">post_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="c1"># 開啟 JSONL 檔案，一行一行讀取並解析 JSON</span>
 <span class="ne">----&gt; </span><span class="mi">5</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../_build/html/data/2020-01-02.jsonl&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">file</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">6</span>     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">file</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">7</span>         <span class="k">try</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>             <span class="c1"># 解析 JSON 字典並加入到列表中</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
+<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../_build/html/data/2020-01-02.jsonl&#39;
 </pre></div>
@@ -646,7 +659,7 @@ document.write(`
 </div></div></div>
 </div>
 <section id="q1-replacing-all-english-words-and-numbers">
-<h2>Q1 Replacing all English words and numbers<a class="headerlink" href="#q1-replacing-all-english-words-and-numbers" title="Permalink to this headline">#</a></h2>
+<h2>Q1 Replacing all English words and numbers<a class="headerlink" href="#q1-replacing-all-english-words-and-numbers" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Write a function to Remove all English words and numbers in the <code class="docutils literal notranslate"><span class="pre">text</span></code> column</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> to apply the function to the <code class="docutils literal notranslate"><span class="pre">text</span></code> column, and save it to a new column named <code class="docutils literal notranslate"><span class="pre">text_cleaned</span></code></p></li>
@@ -660,7 +673,7 @@ document.write(`
 </div>
 </section>
 <section id="q2-replacing-all-punctuations-and-spaces">
-<h2>Q2 Replacing all punctuations and spaces<a class="headerlink" href="#q2-replacing-all-punctuations-and-spaces" title="Permalink to this headline">#</a></h2>
+<h2>Q2 Replacing all punctuations and spaces<a class="headerlink" href="#q2-replacing-all-punctuations-and-spaces" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Write a function to Remove all punctuations and spaces in the <code class="docutils literal notranslate"><span class="pre">text_cleaned</span></code> column</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> to apply the function to the <code class="docutils literal notranslate"><span class="pre">text_cleaned</span></code> column</p></li>
@@ -674,7 +687,7 @@ document.write(`
 </div>
 </section>
 <section id="q3-tokenization-by-jeiba">
-<h2>Q3. Tokenization by jeiba<a class="headerlink" href="#q3-tokenization-by-jeiba" title="Permalink to this headline">#</a></h2>
+<h2>Q3. Tokenization by jeiba<a class="headerlink" href="#q3-tokenization-by-jeiba" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Tokenize the <code class="docutils literal notranslate"><span class="pre">text_cleaned</span></code> column by jeiba and generate a new column named <code class="docutils literal notranslate"><span class="pre">tokens</span></code> to the <code class="docutils literal notranslate"><span class="pre">post_df</span></code></p></li>
 </ul>
@@ -687,7 +700,7 @@ document.write(`
 </div>
 </section>
 <section id="q4-remove-all-chinese-stop-words">
-<h2>Q4. Remove all Chinese stop words<a class="headerlink" href="#q4-remove-all-chinese-stop-words" title="Permalink to this headline">#</a></h2>
+<h2>Q4. Remove all Chinese stop words<a class="headerlink" href="#q4-remove-all-chinese-stop-words" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Write a function to Remove all Chinese stop words in the <code class="docutils literal notranslate"><span class="pre">tokens</span></code> column</p></li>
 <li><p>Using <code class="docutils literal notranslate"><span class="pre">.apply()</span></code> to apply the function to the <code class="docutils literal notranslate"><span class="pre">tokens</span></code> column, and save the result to a new column named <code class="docutils literal notranslate"><span class="pre">cleaned_tokens</span></code></p></li>
@@ -701,7 +714,7 @@ document.write(`
 </div>
 </section>
 <section id="q5-calculate-word-frequency-and-print-the-top-30-words">
-<h2>Q5. Calculate word frequency and print the top 30 words<a class="headerlink" href="#q5-calculate-word-frequency-and-print-the-top-30-words" title="Permalink to this headline">#</a></h2>
+<h2>Q5. Calculate word frequency and print the top 30 words<a class="headerlink" href="#q5-calculate-word-frequency-and-print-the-top-30-words" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Select the <code class="docutils literal notranslate"><span class="pre">cleaned_tokens</span></code> column and calculate the word frequency by using <code class="docutils literal notranslate"><span class="pre">Counter()</span></code> function.</p></li>
 <li><p>Print the top 30 words and their frequency</p></li>
@@ -715,7 +728,7 @@ document.write(`
 </div>
 </section>
 <section id="q6-retrieve-keywords-from-posts">
-<h2>Q6. Retrieve keywords from posts<a class="headerlink" href="#q6-retrieve-keywords-from-posts" title="Permalink to this headline">#</a></h2>
+<h2>Q6. Retrieve keywords from posts<a class="headerlink" href="#q6-retrieve-keywords-from-posts" title="Permalink to this heading">#</a></h2>
 <ol class="arabic simple">
 <li><p>Describe the question to ChatGPT, and ask ChatGPT to know how to retrieve keywords from tokens of posts by TF-IDF algorithm</p></li>
 <li><p>Add a new column called ‘keywords,’ and these keywords are extracted from the ‘cleaned_tokens’ column using TF-IDF calculation. Originally, each pandas cell in the ‘cleaned_tokens’ column should be a list of strings, and ‘keywords’ should also be a list of strings.</p></li>
@@ -728,7 +741,7 @@ document.write(`
 </div>
 </div>
 <section id="print-for-verification">
-<h3>Print for verification<a class="headerlink" href="#print-for-verification" title="Permalink to this headline">#</a></h3>
+<h3>Print for verification<a class="headerlink" href="#print-for-verification" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p>Print the first 5 rows of the <code class="docutils literal notranslate"><span class="pre">post_df</span></code> to verify the result</p></li>
 <li><p>Just select the <code class="docutils literal notranslate"><span class="pre">cleaned_text</span></code>, <code class="docutils literal notranslate"><span class="pre">cleaned_tokens</span></code>, and <code class="docutils literal notranslate"><span class="pre">keywords</span></code> columns to print</p></li>
@@ -807,7 +820,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -834,7 +847,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

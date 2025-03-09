@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>P03 Practice: Accessing dict and list &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P04 Flow Control" href="P04_for.html" />
     <link rel="prev" title="P03 Practice: Accessing dict and list" href="P03p.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -252,8 +253,11 @@ const thebe_selector_output = ".output, .cell_output"
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Assignments</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">PART I: Trivial Question with AI</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS01_basic.html">AS01: Python Basics</a></li>
 
+
+
+<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
@@ -364,7 +368,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -381,7 +385,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P03p_ans.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -402,7 +406,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -411,7 +415,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P03p_ans.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -429,7 +433,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -449,7 +453,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -497,7 +501,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -537,9 +541,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p03-practice-accessing-dict-and-list">
-<h1>P03 Practice: Accessing dict and list<a class="headerlink" href="#p03-practice-accessing-dict-and-list" title="Permalink to this headline">#</a></h1>
+<h1>P03 Practice: Accessing dict and list<a class="headerlink" href="#p03-practice-accessing-dict-and-list" title="Permalink to this heading">#</a></h1>
 <section id="q1-accessing-youbike-data">
-<h2>Q1. Accessing youbike data<a class="headerlink" href="#q1-accessing-youbike-data" title="Permalink to this headline">#</a></h2>
+<h2>Q1. Accessing youbike data<a class="headerlink" href="#q1-accessing-youbike-data" title="Permalink to this heading">#</a></h2>
 <p><strong>資料來源</strong>：（<a class="reference external" href="https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz">https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz</a>）。</p>
 <p><strong>目的</strong>：使用該API可以取得當下所有YouBike站點的資訊，包括站點名稱、經緯度、可借車輛數、可停空位數等。我想要統計，目前全台北市的可借車輛數和可停空位數的總和，藉此來計算目前全台北市的YouBike使用率。此時我會需要用到Python中的List和Dictionary，來幫助我遍歷（traverse）YouBike資料，並進行加總計數。</p>
 <p><strong>擷取YouBike資料的步驟</strong></p>
@@ -555,7 +559,7 @@ document.write(`
 <li><p>一旦資料被轉換成Python的資料結構，我們就可以按照需求來存取其各個部分，通常這會是一個由多層的列表和字典組成的巢狀結構。</p></li>
 </ol>
 <section id="getting-data">
-<h3>Getting Data<a class="headerlink" href="#getting-data" title="Permalink to this headline">#</a></h3>
+<h3>Getting Data<a class="headerlink" href="#getting-data" title="Permalink to this heading">#</a></h3>
 <p>這一節將教授如何從網路上獲取資料並將其轉換成Python的字典（dict）和列表（list）結構。注意，不要太在意抓取資料的細節暫，未來會有更詳細的教學。這裡主要是使用一個實際例子來展示如何存取字典（dict）。</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">requests</span></code> 是一個專門用來發送網路請求的Python函式庫。在這裡，我們使用 <code class="docutils literal notranslate"><span class="pre">.get()</span></code> 方法來向指定的URL發送HTTP GET請求，並獲得回應。你可以使用 <code class="docutils literal notranslate"><span class="pre">type()</span></code> 函數來查看 <code class="docutils literal notranslate"><span class="pre">response</span></code> 的資料型態，它應該會返回 <code class="docutils literal notranslate"><span class="pre">&lt;class</span> <span class="pre">'requests.models.Response'&gt;</span></code>。</p></li>
@@ -595,7 +599,7 @@ document.write(`
 </div>
 </section>
 <section id="traversing-json-data">
-<h3>Traversing JSON data:<a class="headerlink" href="#traversing-json-data" title="Permalink to this headline">#</a></h3>
+<h3>Traversing JSON data:<a class="headerlink" href="#traversing-json-data" title="Permalink to this heading">#</a></h3>
 <p>採用系統性的測試策略，逐步探索由列表（list）與字典（dict）所組成的資料結構。透過這兩個基本法則，我們可以有系統地探索和理解複雜的JSON資料結構：</p>
 <ul class="simple">
 <li><p><strong>法則一：用type()確認資料型態</strong>。</p></li>
@@ -628,7 +632,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </div>
 </section>
 <section id="observing-data">
-<h3>Observing data<a class="headerlink" href="#observing-data" title="Permalink to this headline">#</a></h3>
+<h3>Observing data<a class="headerlink" href="#observing-data" title="Permalink to this heading">#</a></h3>
 <p>實際觀察該JSON資料結構後，你可能會注意到以下幾個特點：</p>
 <ul>
 <li><p>資料結構由三層字典（dictionary）構成。</p></li>
@@ -647,7 +651,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </ul>
 </section>
 <section id="getting-all-keys-and-values">
-<h3>Getting all keys and values<a class="headerlink" href="#getting-all-keys-and-values" title="Permalink to this headline">#</a></h3>
+<h3>Getting all keys and values<a class="headerlink" href="#getting-all-keys-and-values" title="Permalink to this heading">#</a></h3>
 <p>使用<code class="docutils literal notranslate"><span class="pre">.keys()</span></code>與<code class="docutils literal notranslate"><span class="pre">.values()</span></code>與<code class="docutils literal notranslate"><span class="pre">.items()</span></code>分別取出dict的內容</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -664,7 +668,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </div>
 </section>
 <section id="iterating-data">
-<h3>Iterating data<a class="headerlink" href="#iterating-data" title="Permalink to this headline">#</a></h3>
+<h3>Iterating data<a class="headerlink" href="#iterating-data" title="Permalink to this heading">#</a></h3>
 <p>嘗試用<code class="docutils literal notranslate"><span class="pre">for</span></code>-loop將所有的<code class="docutils literal notranslate"><span class="pre">sbi</span></code>值給列印出來，請觀察看看不使用<code class="docutils literal notranslate"><span class="pre">.items()</span></code>和使用<code class="docutils literal notranslate"><span class="pre">.items()</span></code>的用法有何差異。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">():</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">][</span><span class="n">k</span><span class="p">][</span><span class="s2">&quot;sbi&quot;</span><span class="p">])</span>
@@ -705,7 +709,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </section>
 </section>
 <section id="q2-sum-up-total-number-of-sbi-and-tot">
-<h2>Q2. Sum-up total number of sbi and tot<a class="headerlink" href="#q2-sum-up-total-number-of-sbi-and-tot" title="Permalink to this headline">#</a></h2>
+<h2>Q2. Sum-up total number of sbi and tot<a class="headerlink" href="#q2-sum-up-total-number-of-sbi-and-tot" title="Permalink to this heading">#</a></h2>
 <p>我想要知道，在全天候24小時中，ubike的使用率何時較高、何時較低。所以我打算統計全台北市所有YouBike站點的可借車輛數（sbi）和可停空位數（tot）的總和，並計算兩者的比例。這樣一來，我就可以知道該時刻全台北市的YouBike使用率了。未來，我只需要寫一隻爬蟲，每五分鐘就收一次YouBike的資料，並計算出YouBike的使用率，就可以知道全天候24小時中，YouBike的使用率何時較高、何時較低了。</p>
 <p>所以接下來，我打算計算 <code class="docutils literal notranslate"><span class="pre">data['retVal']</span></code>中所有 <code class="docutils literal notranslate"><span class="pre">sbi</span></code> 和 <code class="docutils literal notranslate"><span class="pre">tot</span></code> 值的總和，以及這兩個總和的比例：</p>
 <ol class="arabic simple">
@@ -739,10 +743,10 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </div>
 </section>
 <section id="q3-counting-ubike-site-number-of-each-area">
-<h2>Q3: Counting ubike site number of each area<a class="headerlink" href="#q3-counting-ubike-site-number-of-each-area" title="Permalink to this headline">#</a></h2>
+<h2>Q3: Counting ubike site number of each area<a class="headerlink" href="#q3-counting-ubike-site-number-of-each-area" title="Permalink to this heading">#</a></h2>
 <p>現在，我們已經可以用簡單的for-loop逐一跑過所有的Youbike即時資料。但我發現在資料中，<code class="docutils literal notranslate"><span class="pre">area</span></code>欄位資料為行政區，所以我想要統計，每個行政區有幾個Youbike站點。這樣一來，我就可以知道哪個行政區的Youbike站點最多了。相同的，我也可以統計，每個行政區的Youbike站點的可借車輛數（sbi）和可停空位數（tot）的總和，並計算兩者的比例。這樣一來，我就可以知道哪個行政區的Youbike使用率最高了。</p>
 <section id="counting-sites-by-area">
-<h3>Counting sites by area<a class="headerlink" href="#counting-sites-by-area" title="Permalink to this headline">#</a></h3>
+<h3>Counting sites by area<a class="headerlink" href="#counting-sites-by-area" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">area_dict</span> <span class="o">=</span> <span class="p">{}</span>
@@ -776,7 +780,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </div>
 </section>
 <section id="method-2">
-<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline">#</a></h3>
+<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this heading">#</a></h3>
 <p>我可以用<code class="docutils literal notranslate"><span class="pre">items()</span></code>一次取出一對key-value pair，但因為是(key, value)的型態，所以我for-loop前面要用兩個參數去接每一對數值，我將之命名為<code class="docutils literal notranslate"><span class="pre">key,</span> <span class="pre">row</span></code>。如果這樣寫，if-else中的表示式就可以跟著改。我不用一定要用<code class="docutils literal notranslate"><span class="pre">key</span></code>才能存取dictionary中的資料，我可以直接用後面的row，也就是key所對應到的value來取用dictionary中的資料。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -811,7 +815,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="q4-traversing-aqi-data">
-<h1>Q4: Traversing AQI data<a class="headerlink" href="#q4-traversing-aqi-data" title="Permalink to this headline">#</a></h1>
+<h1>Q4: Traversing AQI data<a class="headerlink" href="#q4-traversing-aqi-data" title="Permalink to this heading">#</a></h1>
 <p>以下為存取環保署開放資料平台空品資料的API連結與方法，請仿照Trace Youbike data的方法依序回答以下兩個問題。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -830,7 +834,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </div>
 </div>
 <section id="aqi-1-accessing-list">
-<h2>AQI.1 Accessing list<a class="headerlink" href="#aqi-1-accessing-list" title="Permalink to this headline">#</a></h2>
+<h2>AQI.1 Accessing list<a class="headerlink" href="#aqi-1-accessing-list" title="Permalink to this heading">#</a></h2>
 <p>請Access該筆資料列印出第一個站台的站台名稱為何？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -846,7 +850,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </div>
 </section>
 <section id="aqi-2-checking-data-type">
-<h2>AQI.2 Checking data type<a class="headerlink" href="#aqi-2-checking-data-type" title="Permalink to this headline">#</a></h2>
+<h2>AQI.2 Checking data type<a class="headerlink" href="#aqi-2-checking-data-type" title="Permalink to this heading">#</a></h2>
 <p>請Access空品資料的任一筆資料，觀察資料內容，用程式列印出AQI的Data type為何？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -862,7 +866,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 </div>
 </section>
 <section id="aqi-3-converting-data-structure">
-<h2>AQI.3: Converting data structure<a class="headerlink" href="#aqi-3-converting-data-structure" title="Permalink to this headline">#</a></h2>
+<h2>AQI.3: Converting data structure<a class="headerlink" href="#aqi-3-converting-data-structure" title="Permalink to this heading">#</a></h2>
 <p>目前的資料是將所有測站資料存放在一個List中，這樣會使得我們無法查詢例如「三重」測站的資料。因此，我們需要將資料結構轉換成Dictionary，以便我們可以透過測站名稱來查詢資料。怎麼做？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -959,7 +963,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1001,7 +1005,7 @@ dict_keys([&#39;sno&#39;, &#39;sna&#39;, &#39;tot&#39;, &#39;sbi&#39;, &#39;sare
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>
