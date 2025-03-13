@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>TM02 Collocation &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="TM03 POS Tagging" href="TM03_POS%20Tagging.html" />
     <link rel="prev" title="Chinese Processing" href="TM01_tokenization%28chi%29.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -368,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="來源儲存庫"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -385,7 +384,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM02_collocation.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="開啟議題"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -406,7 +405,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -415,7 +414,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/TM/TM02_collocation.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="下載原始檔"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -433,7 +432,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="列印成 PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -453,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全螢幕模式"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -501,7 +500,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目錄 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -579,7 +578,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tm02-collocation">
-<h1>TM02 Collocation<a class="headerlink" href="#tm02-collocation" title="Permalink to this heading">#</a></h1>
+<h1>TM02 Collocation<a class="headerlink" href="#tm02-collocation" title="Permalink to this headline">#</a></h1>
 <ol class="arabic simple">
 <li><p>由於共詞對（Collocation）方法會把所有文章的詞共現（Co-occurrence）累加計算才有意義，所以也不用保持原本Pandas的型態，因此可以把要計算共詞對的文章Column從DataFrame中抽出來計算即可。</p></li>
 <li><p>共詞對方法有助於捕捉到一群文本的核心觀念，而在圖書資訊領域，這類的研究通常稱為語義網絡（Semantic Network），這方面有相當多的文獻可以看。如果從字面上來理解，Semantic Network可以說是Collocation和Part-of-speech詞性辨識的兩種方法的組合，意味著要抽取的網路是基於某些特定詞性的關係。</p></li>
@@ -596,16 +595,24 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+</pre></div>
+</div>
+</div>
 </div>
 <section id="data-preparation">
-<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this heading">#</a></h2>
+<h2>Data Preparation<a class="headerlink" href="#data-preparation" title="Permalink to this headline">#</a></h2>
 <section id="loading-data">
-<h3>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h3>
+<h3>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h3>
 <p>本單元將依照政大資科黃瀚萱老師的教材建議，採用一個較長文本《共產黨宣言（The Communist Manifesto）》來介紹Collocation（共詞對），並測試能否找到一些該文本的特徵。該文件可由Project Gutenberg免費電子書處下載，你也可以下載其他的英文書籍來做測試，以觀察文本間的差異。</p>
 </section>
 </section>
 <section id="introduciton-to-collocation">
-<h2>Introduciton to Collocation<a class="headerlink" href="#introduciton-to-collocation" title="Permalink to this heading">#</a></h2>
+<h2>Introduciton to Collocation<a class="headerlink" href="#introduciton-to-collocation" title="Permalink to this headline">#</a></h2>
 <p>Collocation是指在語言中出現頻率較高、且有著相對固定的詞語搭配。這些詞語在一起出現的頻率高於隨機出現的機率，並且通常具有特定的語意或文化內涵。Collocation在語言學和語料庫研究中扮演著重要角色，可以幫助人們更好地理解和使用語言。在進行collocation研究時，我們會根據兩個單詞在特定位置出現的頻率來判斷它們之間是否存在特殊的語法、語義或主題相關關係。比如，如果兩個單詞在同一篇文章中出現的機率比隨機出現的機率更高，那麼我們就可以判斷它們是collocate。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -642,7 +649,7 @@ document.write(`
 </div>
 </section>
 <section id="text-preprocessing">
-<h2>Text preprocessing<a class="headerlink" href="#text-preprocessing" title="Permalink to this heading">#</a></h2>
+<h2>Text preprocessing<a class="headerlink" href="#text-preprocessing" title="Permalink to this headline">#</a></h2>
 <p>在文本處理過程，通常會在前處理階段先刪除停用詞（Stop-words），但之後我們會要計算共詞對（Collocation）的距離。如果在這個階段就把停用詞拿掉的話，共詞對的距離計算會有誤。所以應該是到最後在計算共詞對的數量時才篩除不處理。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -684,7 +691,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </div>
 <section id="most-frequent-tokens-term-frequency">
-<h3>Most Frequent Tokens: Term frequency<a class="headerlink" href="#most-frequent-tokens-term-frequency" title="Permalink to this heading">#</a></h3>
+<h3>Most Frequent Tokens: Term frequency<a class="headerlink" href="#most-frequent-tokens-term-frequency" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -827,12 +834,12 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </section>
 </section>
 <section id="bigram">
-<h2>Bigram<a class="headerlink" href="#bigram" title="Permalink to this heading">#</a></h2>
+<h2>Bigram<a class="headerlink" href="#bigram" title="Permalink to this headline">#</a></h2>
 <p>Bigram指的是一個文本或序列中連續（consecutive）的兩個詞語，也可以稱為雙詞語。換句話說，它是兩個相鄰詞語組成的序列，其中一個詞語緊接在另一個詞語後面。</p>
 <p>Bigram和Collocation都是語言學中研究詞語搭配的概念。Bigram通常指的是相鄰的兩個詞語組成的序列，Collocation則是指頻繁出現在一起的詞語組合。在文本分析中，Bigram和Collocation都可以用來建立語言模型、預測下一個詞語或詞語組合的機率、進行文本分類等等。兩者最大的相同處是都強調了詞語之間的關聯性和上下文信息的重要性。</p>
 <p>可以說Bigram是一種Collocation，但是Collocation不一定是Bigram。Bigram是指相鄰的兩個詞語組成的序列，而Collocation則是指頻繁出現在一起的詞語組合。Bigram是Collocation的一種特例，因為Bigram只考慮相鄰的兩個詞語，而Collocation則可能包括更長的詞語組合，也可以跨越多個詞語。因此，Bigram是Collocation的一種形式化表達，而Collocation則更廣泛地描述了詞語之間的關聯性。</p>
 <section id="counting-the-most-frequent-consecutive-pair-of-word">
-<h3>Counting the most frequent consecutive pair of word<a class="headerlink" href="#counting-the-most-frequent-consecutive-pair-of-word" title="Permalink to this heading">#</a></h3>
+<h3>Counting the most frequent consecutive pair of word<a class="headerlink" href="#counting-the-most-frequent-consecutive-pair-of-word" title="Permalink to this headline">#</a></h3>
 <p>在Python中，Tuple是一種不可變（<em>Immutable</em>）的序列，而List是可變的序列。因此，通常我們可以使用List來儲存和操作序列資料。但在某些情況下，Tuple也可以作為List的一個元素或索引使用。在這個例子中，我們使用<code class="docutils literal notranslate"><span class="pre">(w1,</span> <span class="pre">w2)</span></code>作為<code class="docutils literal notranslate"><span class="pre">word_pair_counts</span></code>的鍵，這樣就可以 確保每對單詞都是唯一的。而如果我們使用List作為鍵，由於List是可變對象（<em>Mutable</em>），不能被用作字典的鍵。因此，使用Tuple作為鍵是一個很好的選擇。最後，<code class="docutils literal notranslate"><span class="pre">word_pair_counts</span></code>將包含所有相鄰單詞對及其頻率的計數器。</p>
 <p><strong>Trick</strong>: 計算<code class="docutils literal notranslate"><span class="pre">word_pair_counts()</span></code>可以用下面的方法來做，相當於把<code class="docutils literal notranslate"><span class="pre">tokens</span></code>往後shift一格，<code class="docutils literal notranslate"><span class="pre">zip</span></code>後直接丟進<code class="docutils literal notranslate"><span class="pre">Counter()</span></code>。真的是高招。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">tokens</span><span class="p">,</span> <span class="n">tokens</span><span class="p">[</span><span class="mi">1</span><span class="p">:]))</span>
@@ -1013,7 +1020,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </section>
 </section>
 <section id="removing-stopwords">
-<h2>Removing stopwords<a class="headerlink" href="#removing-stopwords" title="Permalink to this heading">#</a></h2>
+<h2>Removing stopwords<a class="headerlink" href="#removing-stopwords" title="Permalink to this headline">#</a></h2>
 <p>在計算詞對數量的時候才拿除包含停用詞的共詞對（如果沒打算觀察停用詞的話）。但如果是在構式方法（Construction-based）中，停用詞中的代名詞、that或介系詞可能都會因為研究旨趣而需有所取捨，故建議仔細考量拿去停用詞的時機。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1065,10 +1072,10 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="distant-collocations">
-<h2>Distant Collocations<a class="headerlink" href="#distant-collocations" title="Permalink to this heading">#</a></h2>
+<h2>Distant Collocations<a class="headerlink" href="#distant-collocations" title="Permalink to this headline">#</a></h2>
 <p>假設我們要研究 “cat” 這個詞彙在英語語料中與 “fish” 這個詞彙的距離。傳統的 collocation 研究只會考慮這兩個詞彙相鄰出現的情況，但在 distant collocation 研究中，我們會考慮它們在文本中相隔一些距離的情況。</p>
 <section id="most-frequent-collocations-with-a-distance-of-k">
-<h3>Most frequent collocations with a distance of k<a class="headerlink" href="#most-frequent-collocations-with-a-distance-of-k" title="Permalink to this heading">#</a></h3>
+<h3>Most frequent collocations with a distance of k<a class="headerlink" href="#most-frequent-collocations-with-a-distance-of-k" title="Permalink to this headline">#</a></h3>
 <p>這個例子中，使用了一個<code class="docutils literal notranslate"><span class="pre">window_size</span></code>的概念，代表著從每個詞彙開始往前或往後最多可以看到多遠的詞彙。在這個程式碼中，<code class="docutils literal notranslate"><span class="pre">window_size</span></code>被設定為<code class="docutils literal notranslate"><span class="pre">9</span></code>。</p>
 <p>接著，迴圈會進行<code class="docutils literal notranslate"><span class="pre">tokens</span></code>列表的內容遍歷，從第一個詞彙開始一直到倒數第二個詞彙，以每一個詞彙為起點，往後最多看到<code class="docutils literal notranslate"><span class="pre">window_size</span></code>個詞彙的範圍內，所有兩個詞彙之間的距離（也就是中間隔了多少個詞彙）進行統計。例如，如果一個句子中有詞彙”apple”, “banana”, “cherry”, “date”, “elderberry”，那麼當window_size被設定為9時，從”apple”開始，可以看到與它距離最近的詞彙是”banana”，距離為1；從”apple”開始，可以看到與它距離最遠的詞彙是”elderberry”，距離為4。最後，兩個詞彙之間的距離與它們共同出現的次數都被記錄在兩個<code class="docutils literal notranslate"><span class="pre">Counter</span></code>物件<code class="docutils literal notranslate"><span class="pre">word_pair_distance_counts</span></code>和<code class="docutils literal notranslate"><span class="pre">word_pair_counts</span></code>中，以方便進一步的分析。這個過程就是Distant collocation分析的過程。</p>
 <p><code class="docutils literal notranslate"><span class="pre">word_pair_counts</span></code>紀錄的是每對詞出現的次數，這是為了作為分母來抵銷掉詞對出現次數多寡的影響。在計算Distant Collocation時，若只考慮詞對之間的距離而不考慮詞對出現的次數，可能會出現詞對出現次數較多但是距離較遠的情況被誤判為collocation的情況，而這樣的情況不符合collocation的定義。因此，除了紀錄詞對之間的距離，我們還需要考慮詞對出現的次數，來抵銷掉詞對多寡的影響。</p>
@@ -1121,7 +1128,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="id1">
-<h3>詞對的常見距離<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
+<h3>詞對的常見距離<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
 <p>這個程式碼使用了一個for迴圈從1到window_size去計算兩個詞在各個距離範圍內的出現次數。程式碼中的print語句將每個距離範圍內的詞對(‘the’, ‘of’)的出現次數輸出到控制台上，並以此來計算這個詞對的平均距離。因為在這裡是以一個固定的詞對來觀察，所以可以通過計算這個詞對在各個距離範圍內的出現次數，來推斷這個詞對常出現的平均距離。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1154,7 +1161,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="id2">
-<h3>詞對的平均距離<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>詞對的平均距離<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>程式碼會從<code class="docutils literal notranslate"><span class="pre">word_pair_distance_counts</span></code>中取出每一個詞對和該詞對的距離，然後計算該詞對的平均距離，並將其存在 <code class="docutils literal notranslate"><span class="pre">pair_mean_distances</span></code>變數中。在計算平均距離時，程式碼會將距離乘以詞對的出現次數（即<code class="docutils literal notranslate"><span class="pre">word_pair_counts</span></code>中的值），然後再除以詞對出現的總次數。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1195,7 +1202,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="filtering-one-time-cases">
-<h3>Filtering one-time cases<a class="headerlink" href="#filtering-one-time-cases" title="Permalink to this heading">#</a></h3>
+<h3>Filtering one-time cases<a class="headerlink" href="#filtering-one-time-cases" title="Permalink to this headline">#</a></h3>
 <p>不考慮只出現一次過的詞對<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">word_pair_counts[(w1,</span> <span class="pre">w2)]</span> <span class="pre">&gt;</span> <span class="pre">1:</span></code></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1236,7 +1243,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </div>
 <section id="id3">
-<h4>印出平均距離最近的詞對<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>印出平均距離最近的詞對<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="p">(</span><span class="n">w1</span><span class="p">,</span> <span class="n">w2</span><span class="p">),</span> <span class="n">distance</span> <span class="ow">in</span> <span class="n">pair_mean_distances</span><span class="o">.</span><span class="n">most_common</span><span class="p">()[</span><span class="o">-</span><span class="mi">20</span><span class="p">:]:</span>
@@ -1271,7 +1278,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="id4">
-<h4>印出平均距離在中間的詞對<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h4>
+<h4>印出平均距離在中間的詞對<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_pairs</span> <span class="o">=</span> <span class="nb">len</span><span class="p">(</span><span class="n">pair_mean_distances</span><span class="p">)</span>
@@ -1309,7 +1316,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </section>
 </section>
 <section id="filtering-with-offset-deviation">
-<h3>Filtering with offset deviation<a class="headerlink" href="#filtering-with-offset-deviation" title="Permalink to this heading">#</a></h3>
+<h3>Filtering with offset deviation<a class="headerlink" href="#filtering-with-offset-deviation" title="Permalink to this headline">#</a></h3>
 <p>單純計算詞對的平均距離，可能無法全面了解詞對出現的情況。因此，我們需要觀察詞對出現的變異性。為此，我們計算詞對的變異數，其計算方式為詞對的數量乘上該詞對的距離與平均距離差的平方。這段程式碼是計算詞對的變異數，首先初始化了一個<code class="docutils literal notranslate"><span class="pre">Counter</span></code>為<code class="docutils literal notranslate"><span class="pre">pair_deviations</span></code>，接下來使用for loop遍歷<code class="docutils literal notranslate"><span class="pre">word_pair_distance_counts</span></code>，判斷詞對出現次數是否大於1，如果是，則計算該詞對的變異數，並將結果存入<code class="docutils literal notranslate"><span class="pre">pair_deviations</span></code>中。最後，再次遍歷<code class="docutils literal notranslate"><span class="pre">pair_deviations</span></code>，計算每個詞對的標準差，並將其存入<code class="docutils literal notranslate"><span class="pre">pair_deviations</span></code>中，這樣便完成了詞對變異數的計算。</p>
 <p>需要注意的是，當詞對出現的次數小於等於1時，其變異數為零。所以篩去了詞對僅出現過一次的詞對<code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">word_pair_counts[(w1,</span> <span class="pre">w2)]</span> <span class="pre">&gt;</span> <span class="pre">1:</span></code>。</p>
 <div class="cell docutils container">
@@ -1683,7 +1690,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="with-a-higher-supportive-threshold">
-<h3>With a higher supportive threshold<a class="headerlink" href="#with-a-higher-supportive-threshold" title="Permalink to this heading">#</a></h3>
+<h3>With a higher supportive threshold<a class="headerlink" href="#with-a-higher-supportive-threshold" title="Permalink to this headline">#</a></h3>
 <p>前述案例觀察了出現超過一次的詞對的詞對距離變異，
 <code class="docutils literal notranslate"><span class="pre">if</span> <span class="pre">word_pair_counts[(w1,</span> <span class="pre">w2)]</span> <span class="pre">&gt;</span> <span class="pre">1:</span></code>
 接下來則希望觀察出現超過10次的詞對，這主要是為了觀察，文本中比較常出現的詞對。且值得注意的是，這是<code class="docutils literal notranslate"><span class="pre">windows=9</span></code>的詞對。未來也可以照需求把它改成，在同一個句子中的詞對。</p>
@@ -1880,9 +1887,9 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </section>
 </section>
 <section id="pearson-s-chi-square-test">
-<h2>Pearson’s Chi-Square Test<a class="headerlink" href="#pearson-s-chi-square-test" title="Permalink to this heading">#</a></h2>
+<h2>Pearson’s Chi-Square Test<a class="headerlink" href="#pearson-s-chi-square-test" title="Permalink to this headline">#</a></h2>
 <section id="back-to-bigrams">
-<h3>Back to bigrams<a class="headerlink" href="#back-to-bigrams" title="Permalink to this heading">#</a></h3>
+<h3>Back to bigrams<a class="headerlink" href="#back-to-bigrams" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_pair_counts</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -1906,7 +1913,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="chi-square-function">
-<h3>Chi-Square function<a class="headerlink" href="#chi-square-function" title="Permalink to this heading">#</a></h3>
+<h3>Chi-Square function<a class="headerlink" href="#chi-square-function" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">def</span> <span class="nf">chisquare</span><span class="p">(</span><span class="n">o11</span><span class="p">,</span> <span class="n">o12</span><span class="p">,</span> <span class="n">o21</span><span class="p">,</span> <span class="n">o22</span><span class="p">):</span>
@@ -1919,7 +1926,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="now-we-can-compute-the-chi-squares">
-<h3>Now we can compute the chi-squares.<a class="headerlink" href="#now-we-can-compute-the-chi-squares" title="Permalink to this heading">#</a></h3>
+<h3>Now we can compute the chi-squares.<a class="headerlink" href="#now-we-can-compute-the-chi-squares" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_chi_squares</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -2087,7 +2094,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="focus-on-more-frequent-bigrams">
-<h3>Focus on more frequent bigrams<a class="headerlink" href="#focus-on-more-frequent-bigrams" title="Permalink to this heading">#</a></h3>
+<h3>Focus on more frequent bigrams<a class="headerlink" href="#focus-on-more-frequent-bigrams" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_chi_squares</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -2417,7 +2424,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="now-we-can-filtering-out-the-stopwords">
-<h3>Now we can filtering out the stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-stopwords" title="Permalink to this heading">#</a></h3>
+<h3>Now we can filtering out the stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-stopwords" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pair_chi_squares</span> <span class="o">=</span> <span class="n">Counter</span><span class="p">()</span>
@@ -2744,9 +2751,9 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </section>
 </section>
 <section id="mutual-information">
-<h2>Mutual Information<a class="headerlink" href="#mutual-information" title="Permalink to this heading">#</a></h2>
+<h2>Mutual Information<a class="headerlink" href="#mutual-information" title="Permalink to this headline">#</a></h2>
 <section id="define-a-function-for-computing-mutual-information">
-<h3>Define a function for computing mutual information<a class="headerlink" href="#define-a-function-for-computing-mutual-information" title="Permalink to this heading">#</a></h3>
+<h3>Define a function for computing mutual information<a class="headerlink" href="#define-a-function-for-computing-mutual-information" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -3094,7 +3101,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="now-we-can-filtering-out-the-collocations-containing-stopwords">
-<h3>Now we can filtering out the collocations containing stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-collocations-containing-stopwords" title="Permalink to this heading">#</a></h3>
+<h3>Now we can filtering out the collocations containing stopwords<a class="headerlink" href="#now-we-can-filtering-out-the-collocations-containing-stopwords" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">num_unigrams</span> <span class="o">=</span> <span class="nb">sum</span><span class="p">(</span><span class="n">word_counts</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -3263,7 +3270,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </section>
 <section id="asking-chatgpt">
-<h3>Asking chatGPT<a class="headerlink" href="#asking-chatgpt" title="Permalink to this heading">#</a></h3>
+<h3>Asking chatGPT<a class="headerlink" href="#asking-chatgpt" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -3297,7 +3304,9 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1. third	estate	PMI=12.52	count=2
-2. constitution	adapted	PMI=12.52	count=2
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>2. constitution	adapted	PMI=12.52	count=2
 3. corporate	guilds	PMI=11.94	count=2
 4. eternal	truths	PMI=11.52	count=3
 5. handed	down	PMI=11.52	count=2
@@ -3324,7 +3333,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </section>
 </section>
 <section class="tex2jax_ignore mathjax_ignore" id="the-simiplist-way-co-occurrence-count">
-<h1>The simiplist way: Co-occurrence count<a class="headerlink" href="#the-simiplist-way-co-occurrence-count" title="Permalink to this heading">#</a></h1>
+<h1>The simiplist way: Co-occurrence count<a class="headerlink" href="#the-simiplist-way-co-occurrence-count" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">window_size</span> <span class="o">=</span> <span class="mi">5</span>
@@ -3491,7 +3500,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </div>
 <section id="visualization">
-<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://towardsdatascience.com/visualizing-networks-in-python-d70f4cbeb259">Visualizing Networks in Python</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3596,11 +3605,11 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2275eb9b52facdc31d2e5d987a4485652bf2f0a8193fc519dd7d1a35801a203e.png" src="../_images/2275eb9b52facdc31d2e5d987a4485652bf2f0a8193fc519dd7d1a35801a203e.png" />
+<img alt="../_images/37b3282d79a525839ccc49769770f305a5d728516b99b737fe59cbd80443e666.png" src="../_images/37b3282d79a525839ccc49769770f305a5d728516b99b737fe59cbd80443e666.png" />
 </div>
 </div>
 <section id="layout">
-<h3>Layout<a class="headerlink" href="#layout" title="Permalink to this heading">#</a></h3>
+<h3>Layout<a class="headerlink" href="#layout" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">graphviz_layout</span></code>:</p>
 <ol class="arabic simple">
 <li><p>need to install graphviz <a class="reference external" href="https://www.graphviz.org/download/">https://www.graphviz.org/download/</a> by <code class="docutils literal notranslate"><span class="pre">brew</span> <span class="pre">install</span> <span class="pre">graphviz</span></code>, then</p></li>
@@ -3613,7 +3622,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 <li><p>相比之下，spring_layout使用了Fruchterman-Reingold力導向算法，它模擬了一個力學系統，將邊緣視為彈簧，將節點視為互相排斥的物體，有時稱為反重力力量，使節點保持靠近。因此，它對於大型圖形和需要可視化分組的應用程序非常有用。在模擬期間，節點之間的距離可以改變，因此它對於需要可視化節點之間相對距離的應用程序非常有用，例如生物學家將蛋白質相互作用關係繪製為圖形。</p></li>
 </ul>
 <section id="spring-layout-fruchterman-reingold">
-<h4>Spring layout (Fruchterman-Reingold)<a class="headerlink" href="#spring-layout-fruchterman-reingold" title="Permalink to this heading">#</a></h4>
+<h4>Spring layout (Fruchterman-Reingold)<a class="headerlink" href="#spring-layout-fruchterman-reingold" title="Permalink to this headline">#</a></h4>
 <p>使用 Fruchterman-Reingold 力導向算法來定位節點的位置。該算法模擬了一個力學系統，將邊緣視為連接節點的彈簧，將節點視為互相排斥的物體，有時稱為反重力力量，使節點保持靠近。直到位置趨於平衡為止。函數中有一些參數：節點之間的最小距離（0.01）和「溫度」（0.1），以確保節點不會飛出。在模擬期間，k可以調整節點間的距離。而<code class="docutils literal notranslate"><span class="pre">scale</span></code>和<code class="docutils literal notranslate"><span class="pre">center</span></code>确定重新縮放的大小和位置，以固定某些節點不允許它們在模擬中移動。這也關閉了模擬結束時的重新縮放功能。此外，將 scale 設置為<code class="docutils literal notranslate"><span class="pre">None</span></code>會關閉重新縮放。以下為該函式的參數：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">G</span></code>：NetworkX 圖或節點列表。每個節點都會被分配一個位置。</p></li>
@@ -3637,7 +3646,7 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/0b444c98a26ef03af0a908848e8af5202cb2cf2f62f3d6f989c5c8603a6dfeed.png" src="../_images/0b444c98a26ef03af0a908848e8af5202cb2cf2f62f3d6f989c5c8603a6dfeed.png" />
+<img alt="../_images/91ac2e0c27717281973238980c9b5f8917d44977c971cd5408e342cf3c66faf8.png" src="../_images/91ac2e0c27717281973238980c9b5f8917d44977c971cd5408e342cf3c66faf8.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -3651,14 +3660,13 @@ manifesto/of/the/communist/party/by/karl/marx/and/frederick/engels/a/specter/is/
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Warning: When  cdn_resources is &#39;local&#39; jupyter notebook has issues displaying graphics on chrome/safari. Use cdn_resources=&#39;in_line&#39; or cdn_resources=&#39;remote&#39; if you have issues viewing graphics in a notebook.
-test.html
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Local cdn resources have problems on chrome/safari when used in jupyter-notebook. 
 </pre></div>
 </div>
 <div class="output text_html">
         <iframe
             width="2048px"
-            height="1024px"
+            height="600px"
             src="test.html"
             frameborder="0"
             allowfullscreen
@@ -3670,7 +3678,7 @@ test.html
 </section>
 </section>
 <section id="question">
-<h2>Question<a class="headerlink" href="#question" title="Permalink to this heading">#</a></h2>
+<h2>Question<a class="headerlink" href="#question" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>與Mutual Information相比，Frequency based 的缺點是什什 麼?</p></li>
 <li><p>處理理 metamorphosis_franz_kafka.txt，找出三種 collocations</p>
@@ -3687,7 +3695,7 @@ test.html
 </div>
 </section>
 <section id="using-nltk">
-<h2>Using NLTK<a class="headerlink" href="#using-nltk" title="Permalink to this heading">#</a></h2>
+<h2>Using NLTK<a class="headerlink" href="#using-nltk" title="Permalink to this headline">#</a></h2>
 <p>Reference: <a class="reference external" href="https://zhuanlan.zhihu.com/p/403285461">https://zhuanlan.zhihu.com/p/403285461</a>
 Source code of NLTK Collocation: <a class="reference external" href="https://www.nltk.org/_modules/nltk/collocations.html">https://www.nltk.org/_modules/nltk/collocations.html</a></p>
 <div class="cell docutils container">
@@ -3705,7 +3713,7 @@ Source code of NLTK Collocation: <a class="reference external" href="https://www
 </div>
 </div>
 <section id="preprocessing">
-<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this heading">#</a></h3>
+<h3>Preprocessing<a class="headerlink" href="#preprocessing" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">nltk</span>
@@ -3772,7 +3780,7 @@ bourgeois	socialism	5
 </div>
 </section>
 <section id="calculate-pmi-by-nltk">
-<h3>Calculate PMI by NLTK<a class="headerlink" href="#calculate-pmi-by-nltk" title="Permalink to this heading">#</a></h3>
+<h3>Calculate PMI by NLTK<a class="headerlink" href="#calculate-pmi-by-nltk" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.nltk.org/api/nltk.collocations.html">https://www.nltk.org/api/nltk.collocations.html</a></p></li>
 <li><p><a class="reference external" href="https://tedboy.github.io/nlps/generated/generated/nltk.BigramCollocationFinder.html">https://tedboy.github.io/nlps/generated/generated/nltk.BigramCollocationFinder.html</a></p></li>
@@ -3825,7 +3833,7 @@ bourgeois	socialism	5
 </div>
 </section>
 <section id="calculating-raw-freqs-phi-and-t">
-<h3>Calculating raw_freqs, phi, and t<a class="headerlink" href="#calculating-raw-freqs-phi-and-t" title="Permalink to this heading">#</a></h3>
+<h3>Calculating raw_freqs, phi, and t<a class="headerlink" href="#calculating-raw-freqs-phi-and-t" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">bigram_measures</span></code>還有很多不同的指標，包含<code class="docutils literal notranslate"><span class="pre">likelihood_ratio</span></code>, <code class="docutils literal notranslate"><span class="pre">raw_freq</span></code>, <code class="docutils literal notranslate"><span class="pre">phi_sq</span></code>, <code class="docutils literal notranslate"><span class="pre">student_t</span></code>, …等可以運用。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -3962,7 +3970,7 @@ bourgeois	socialism	5
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目錄
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -4042,7 +4050,7 @@ bourgeois	socialism	5
   <div class="footer-item">
     
 <p class="component-author">
-By JILUNG
+作者： JILUNG
 </p>
 
   </div>

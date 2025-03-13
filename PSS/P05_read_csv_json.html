@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>P05 READ Files &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P05-1 Read CSV" href="P05p1_read_csv.html" />
     <link rel="prev" title="P04 Practice03 Twitter Users" href="P04p3_twitter_users.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -368,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="來源儲存庫"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -385,7 +384,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P05_read_csv_json.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="開啟議題"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -406,7 +405,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -415,7 +414,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P05_read_csv_json.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="下載原始檔"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -433,7 +432,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="列印成 PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -453,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全螢幕模式"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -501,7 +500,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目錄 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -549,7 +548,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p05-read-files">
-<h1>P05 READ Files<a class="headerlink" href="#p05-read-files" title="Permalink to this heading">#</a></h1>
+<h1>P05 READ Files<a class="headerlink" href="#p05-read-files" title="Permalink to this headline">#</a></h1>
 <p>Read <a class="reference external" href="https://docs.google.com/presentation/d/1ZQoBdfjIsd-RdXEby3RmFfotBHZXR0bzKzhaZThkfJU/edit?usp=sharing">Slide</a> to know what is CSV and JSON</p>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ul class="simple">
@@ -561,7 +560,7 @@ document.write(`
 <li><p>Convert data structures</p></li>
 </ul>
 </div><section id="id1">
-<h2>1. 常見的檔案格式<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>1. 常見的檔案格式<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p><strong>Text file 文字檔</strong></p>
 <ul class="simple">
 <li><p>文字檔是一種純文字格式的檔案，可以使用一般的文字編輯器讀取和編輯。</p></li>
@@ -577,7 +576,7 @@ document.write(`
 <li><p>Google Sheets也提供API，可以將其當作CSV檔案來讀取，這對於自動化數據處理非常有用。</p></li>
 </ul>
 <section id="id2">
-<h3>純文字格式檔案<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h3>
+<h3>純文字格式檔案<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p>當談到資料檔案格式時，CSV、JSON和XML都是純文字格式，這意味著它們的檔案內容以可讀的文字形式儲存，而不是以二進位格式儲存。以下是對這一點的進一步說明：</p>
 <p><strong>CSV（逗號分隔值）檔案格式</strong></p>
 <ul class="simple">
@@ -599,7 +598,7 @@ document.write(`
 </ul>
 <p>總之，無論是CSV、JSON還是XML，它們都是純文字格式的資料檔案，可以用一般編輯器（如純文字文件）等開啟，容易閱讀和理解。</p>
 <hr><section id="csv-format">
-<h4>CSV format<a class="headerlink" href="#csv-format" title="Permalink to this heading">#</a></h4>
+<h4>CSV format<a class="headerlink" href="#csv-format" title="Permalink to this headline">#</a></h4>
 <p>CSV是逗點分隔檔案，也可以是TAB分隔（.tsv檔），或者是<code class="docutils literal notranslate"><span class="pre">;</span></code>分隔。特色是不管資料內容如何，都必須被框架在二維的表格裡，xls或xlsx等Excel檔案或者google sheet檔案，都可說是這類格式的資料。標準的CSV檔案表示方法如同下方的紫外線資料。大約可以看見是個二維表格的樣子。
 資料內容必須記錄資料變項名稱與資料值。第一列為變項名稱，以逗點分隔。在每列的最末還有一個隱藏字元為<code class="docutils literal notranslate"><span class="pre">\n</span></code>，其為換行符號。通常CSV檔案打開就是如以下為七個欄位的資料，一共有五筆資料。</p>
 <div class="highlight-csv notranslate"><div class="highlight"><pre><span></span>SiteName,UVI,PublishAgency,County,WGS84Lon,WGS84Lat,PublishTime\n
@@ -612,7 +611,7 @@ document.write(`
 </div>
 <hr></section>
 <section id="json-format">
-<h4>JSON format<a class="headerlink" href="#json-format" title="Permalink to this heading">#</a></h4>
+<h4>JSON format<a class="headerlink" href="#json-format" title="Permalink to this headline">#</a></h4>
 <p>JSON（JavaScript Object Notation）檔案格式是一種純文字格式，具有以下特性：</p>
 <p><strong>JSON檔案格式特性：</strong></p>
 <ol class="arabic simple">
@@ -692,10 +691,10 @@ document.write(`
 </section>
 </section>
 <section id="read-write-csv">
-<h2>2. Read/Write CSV<a class="headerlink" href="#read-write-csv" title="Permalink to this heading">#</a></h2>
+<h2>2. Read/Write CSV<a class="headerlink" href="#read-write-csv" title="Permalink to this headline">#</a></h2>
 <p><img alt="Alt text" src="../_images/image-1.png" /></p>
 <section id="write-data-to-csv">
-<h3>2.1 Write data to CSV<a class="headerlink" href="#write-data-to-csv" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Write data to CSV<a class="headerlink" href="#write-data-to-csv" title="Permalink to this headline">#</a></h3>
 <p>假設我有一個Nested List表示了一個包含學生姓名、年齡和城市的CSV資料。第一個子列表包含了標題行，接下來的子列表包含了學生的資料。我們使用這個資料來展示如何讀取和寫入CSV檔案。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">student_data</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">[</span><span class="s2">&quot;姓名&quot;</span><span class="p">,</span> <span class="s2">&quot;年齡&quot;</span><span class="p">,</span> <span class="s2">&quot;城市&quot;</span><span class="p">],</span>
@@ -729,7 +728,7 @@ document.write(`
 </div>
 </section>
 <section id="read-csv">
-<h3>2.4 Read CSV<a class="headerlink" href="#read-csv" title="Permalink to this heading">#</a></h3>
+<h3>2.4 Read CSV<a class="headerlink" href="#read-csv" title="Permalink to this headline">#</a></h3>
 <p><img alt="Alt text" src="../_images/image-3.png" /></p>
 <p>當你有了名為 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 的CSV檔案後，你可以使用Python的CSV模組來讀取它。這個程式會讀取 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 檔案，跳過標題行，然後逐行顯示每位學生的姓名、年齡和城市。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
@@ -746,9 +745,9 @@ document.write(`
 </section>
 </section>
 <section id="file-path-and-mode">
-<h2>3. File path and mode<a class="headerlink" href="#file-path-and-mode" title="Permalink to this heading">#</a></h2>
+<h2>3. File path and mode<a class="headerlink" href="#file-path-and-mode" title="Permalink to this headline">#</a></h2>
 <section id="file-path">
-<h3>3.1 File Path<a class="headerlink" href="#file-path" title="Permalink to this heading">#</a></h3>
+<h3>3.1 File Path<a class="headerlink" href="#file-path" title="Permalink to this headline">#</a></h3>
 <p>當我們在Python中讀取CSV檔案時，理解檔案路徑的概念變得非常重要。檔案路徑告訴程式碼在哪裡找到CSV檔案，而它可以分為兩種主要類型：絕對路徑和相對路徑。</p>
 <ol class="arabic simple">
 <li><p>絕對路徑（Absolute Path）：</p>
@@ -767,7 +766,7 @@ document.write(`
 </li>
 </ol>
 <section id="id3">
-<h4>相對路徑的情形<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h4>
+<h4>相對路徑的情形<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h4>
 <p>我們把前面讀取檔案的程式的檔案位置拉出來為一個變數，並且使用相對路徑來讀取檔案。</p>
 <p><strong>狀況一：</strong> <br>檔案和程式（.ipynb或.py）在同一個目錄下</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">file_path</span> <span class="o">=</span> <span class="s1">&#39;students.csv&#39;</span>
@@ -789,7 +788,7 @@ document.write(`
 </section>
 </section>
 <section id="file-mode">
-<h3>3.2 File Mode<a class="headerlink" href="#file-mode" title="Permalink to this heading">#</a></h3>
+<h3>3.2 File Mode<a class="headerlink" href="#file-mode" title="Permalink to this headline">#</a></h3>
 <p>開啟檔案時，需要先開啟該檔案，並指到一個變數，例如下例中的<code class="docutils literal notranslate"><span class="pre">f</span></code>，並且指定要用什麼讀取模式來開啟檔案。<br>相關說明可見<a class="reference external" href="https://www.tutorialspoint.com/python/python_files_io.htm">Python-File Handling</a></p>
 <ol class="arabic simple">
 <li><p>讀寫模式主要有三種：</p>
@@ -805,7 +804,7 @@ document.write(`
 </section>
 </section>
 <section id="optional-read-write-list-of-dict-to-csv">
-<h2>4. (Optional) Read/Write List of Dict to CSV<a class="headerlink" href="#optional-read-write-list-of-dict-to-csv" title="Permalink to this heading">#</a></h2>
+<h2>4. (Optional) Read/Write List of Dict to CSV<a class="headerlink" href="#optional-read-write-list-of-dict-to-csv" title="Permalink to this headline">#</a></h2>
 <p>但List of List不是最常見的表達資料型態，反而是List of Dict。因為Dict的Key可以當作欄位名稱，而Value則是資料值。因此，我們可以將List of Dict寫成成CSV檔案，也可以將CSV檔案讀取成List of Dict。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">student_data</span> <span class="o">=</span> <span class="p">[</span>
     <span class="p">{</span><span class="s2">&quot;姓名&quot;</span><span class="p">:</span> <span class="s2">&quot;John&quot;</span><span class="p">,</span> <span class="s2">&quot;年齡&quot;</span><span class="p">:</span> <span class="s2">&quot;25&quot;</span><span class="p">,</span> <span class="s2">&quot;城市&quot;</span><span class="p">:</span> <span class="s2">&quot;紐約&quot;</span><span class="p">},</span>
@@ -817,7 +816,7 @@ document.write(`
 </pre></div>
 </div>
 <section id="write-list-of-dict-to-csv">
-<h3>3.1 Write List of Dict to CSV<a class="headerlink" href="#write-list-of-dict-to-csv" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Write List of Dict to CSV<a class="headerlink" href="#write-list-of-dict-to-csv" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">student_data</span></code> 資料為一List of Dict。在 <code class="docutils literal notranslate"><span class="pre">csv.DictWriter</span></code> 中，要先指定標題行的欄位名稱，然後使用 <code class="docutils literal notranslate"><span class="pre">writer.writeheader()</span></code> 寫入標題行。接下來，要遍歷 <code class="docutils literal notranslate"><span class="pre">student_data</span></code> 中的每一個Dict所存放的資料，並使用 <code class="docutils literal notranslate"><span class="pre">writer.writerow(row)</span></code> 將每個字典的內容寫入CSV檔案中。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 
@@ -831,7 +830,7 @@ document.write(`
 </div>
 </section>
 <section id="read-csv-as-list-of-dicts">
-<h3>3.2 Read CSV as List of Dicts<a class="headerlink" href="#read-csv-as-list-of-dicts" title="Permalink to this heading">#</a></h3>
+<h3>3.2 Read CSV as List of Dicts<a class="headerlink" href="#read-csv-as-list-of-dicts" title="Permalink to this headline">#</a></h3>
 <p>若要從 <code class="docutils literal notranslate"><span class="pre">students.csv</span></code> 中讀取資料並儲存在 List of Dictionaries 中，你可以使用以下程式碼：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 
@@ -847,10 +846,10 @@ document.write(`
 </section>
 </section>
 <section id="read-write-json">
-<h2>5. Read/Write JSON<a class="headerlink" href="#read-write-json" title="Permalink to this heading">#</a></h2>
+<h2>5. Read/Write JSON<a class="headerlink" href="#read-write-json" title="Permalink to this headline">#</a></h2>
 <p><img alt="Alt text" src="../_images/image-4.png" /></p>
 <section id="open-file-firstly">
-<h3>5.1 Open file firstly<a class="headerlink" href="#open-file-firstly" title="Permalink to this heading">#</a></h3>
+<h3>5.1 Open file firstly<a class="headerlink" href="#open-file-firstly" title="Permalink to this headline">#</a></h3>
 <p>無論是讀入資料或寫出資料，都要先開啟檔案（如<code class="docutils literal notranslate"><span class="pre">open('sample.json',</span> <span class="pre">'w')</span></code>）。檔案開啟後，才可以將資料寫入。完整的寫法如下：</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;sample.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
     <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">sample_data</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
@@ -859,7 +858,7 @@ document.write(`
 <p>通常把資料寫到檔案中稱為dump out（或者save、write視程式語言的函式而不同），而把資料從檔案中讀成程式語言所能處理的結構則稱為load（或read）。</p>
 </section>
 <section id="dump-write-out">
-<h3>5.2 Dump (Write-out)<a class="headerlink" href="#dump-write-out" title="Permalink to this heading">#</a></h3>
+<h3>5.2 Dump (Write-out)<a class="headerlink" href="#dump-write-out" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">json.dump</span></code> 和 <code class="docutils literal notranslate"><span class="pre">json.dumps</span></code> 都是用於將 Python 資料結構轉換為 JSON 格式的函式，但它們有一些不同之處：</p>
 <ol class="arabic simple">
 <li><p><strong><code class="docutils literal notranslate"><span class="pre">json.dump(obj,</span> <span class="pre">fp)</span></code></strong> ：將 Python 資料結構轉換為 JSON 格式並寫入指定的檔案中。它會將 JSON 資料寫入檔案，不會返回 JSON 字串。</p></li>
@@ -878,7 +877,7 @@ document.write(`
 </div>
 </section>
 <section id="load-read-in">
-<h3>5.3 Load (Read-in)<a class="headerlink" href="#load-read-in" title="Permalink to this heading">#</a></h3>
+<h3>5.3 Load (Read-in)<a class="headerlink" href="#load-read-in" title="Permalink to this headline">#</a></h3>
 <p>讀取JSON則分讀取字串和直接讀取檔案兩種：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">json.loads(str)</span></code>讀取字串：例如像讀取ubike的線上資料，就是先把抓回來的資料轉文字後當成字串讀取入json。</p></li>
@@ -959,7 +958,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目錄
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1009,7 +1008,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By JILUNG
+作者： JILUNG
 </p>
 
   </div>

@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
@@ -22,23 +11,191 @@ Traceback (most recent call last):
     return future.result()
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-for link in links:
-    print(link)
-    res = requests.get(link, timeout=(1, 2))
-    soup = BeautifulSoup(res.text, "html.parser")
-    metas = soup.find_all(class_='article-meta-value')
-    author = metas[0].text
-    title = metas[-2].text
-    timestamp = metas[-1].text
--------------------
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import requests
+url = 'https://www.ptt.cc/bbs/Boy-Girl/index.html'
+print(url)
+
+response = requests.get(url, timeout=(2, 3))
+print(response.text[:500])
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mtimeout[0m                                   Traceback (most recent call last)
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:449[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
+[1;32m    445[0m         [38;5;28;01mexcept[39;00m [38;5;167;01mBaseException[39;00m [38;5;28;01mas[39;00m e:
+[1;32m    446[0m             [38;5;66;03m# Remove the TypeError from the exception chain in[39;00m
+[1;32m    447[0m             [38;5;66;03m# Python 3 (including for exceptions like SystemExit).[39;00m
+[1;32m    448[0m             [38;5;66;03m# Otherwise it looks like a bug in the code.[39;00m
+[0;32m--> 449[0m             [43msix[49m[38;5;241;43m.[39;49m[43mraise_from[49m[43m([49m[43me[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m
+[1;32m    450[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError, SocketError) [38;5;28;01mas[39;00m e:
+
+File [0;32m<string>:3[0m, in [0;36mraise_from[0;34m(value, from_value)[0m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:444[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
+[1;32m    443[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 444[0m     httplib_response [38;5;241m=[39m [43mconn[49m[38;5;241;43m.[39;49m[43mgetresponse[49m[43m([49m[43m)[49m
+[1;32m    445[0m [38;5;28;01mexcept[39;00m [38;5;167;01mBaseException[39;00m [38;5;28;01mas[39;00m e:
+[1;32m    446[0m     [38;5;66;03m# Remove the TypeError from the exception chain in[39;00m
+[1;32m    447[0m     [38;5;66;03m# Python 3 (including for exceptions like SystemExit).[39;00m
+[1;32m    448[0m     [38;5;66;03m# Otherwise it looks like a bug in the code.[39;00m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/http/client.py:1377[0m, in [0;36mHTTPConnection.getresponse[0;34m(self)[0m
+[1;32m   1376[0m [38;5;28;01mtry[39;00m:
+[0;32m-> 1377[0m     [43mresponse[49m[38;5;241;43m.[39;49m[43mbegin[49m[43m([49m[43m)[49m
+[1;32m   1378[0m [38;5;28;01mexcept[39;00m [38;5;167;01mConnectionError[39;00m:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/http/client.py:320[0m, in [0;36mHTTPResponse.begin[0;34m(self)[0m
+[1;32m    319[0m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
+[0;32m--> 320[0m     version, status, reason [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_read_status[49m[43m([49m[43m)[49m
+[1;32m    321[0m     [38;5;28;01mif[39;00m status [38;5;241m!=[39m CONTINUE:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/http/client.py:281[0m, in [0;36mHTTPResponse._read_status[0;34m(self)[0m
+[1;32m    280[0m [38;5;28;01mdef[39;00m [38;5;21m_read_status[39m([38;5;28mself[39m):
+[0;32m--> 281[0m     line [38;5;241m=[39m [38;5;28mstr[39m([38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mfp[49m[38;5;241;43m.[39;49m[43mreadline[49m[43m([49m[43m_MAXLINE[49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[38;5;241;43m1[39;49m[43m)[49m, [38;5;124m"[39m[38;5;124miso-8859-1[39m[38;5;124m"[39m)
+[1;32m    282[0m     [38;5;28;01mif[39;00m [38;5;28mlen[39m(line) [38;5;241m>[39m _MAXLINE:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/socket.py:704[0m, in [0;36mSocketIO.readinto[0;34m(self, b)[0m
+[1;32m    703[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 704[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_sock[49m[38;5;241;43m.[39;49m[43mrecv_into[49m[43m([49m[43mb[49m[43m)[49m
+[1;32m    705[0m [38;5;28;01mexcept[39;00m timeout:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/ssl.py:1241[0m, in [0;36mSSLSocket.recv_into[0;34m(self, buffer, nbytes, flags)[0m
+[1;32m   1238[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
+[1;32m   1239[0m           [38;5;124m"[39m[38;5;124mnon-zero flags not allowed in calls to recv_into() on [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m
+[1;32m   1240[0m           [38;5;28mself[39m[38;5;241m.[39m[38;5;18m__class__[39m)
+[0;32m-> 1241[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mnbytes[49m[43m,[49m[43m [49m[43mbuffer[49m[43m)[49m
+[1;32m   1242[0m [38;5;28;01melse[39;00m:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/ssl.py:1099[0m, in [0;36mSSLSocket.read[0;34m(self, len, buffer)[0m
+[1;32m   1098[0m [38;5;28;01mif[39;00m buffer [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+[0;32m-> 1099[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_sslobj[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[38;5;28;43mlen[39;49m[43m,[49m[43m [49m[43mbuffer[49m[43m)[49m
+[1;32m   1100[0m [38;5;28;01melse[39;00m:
+
+[0;31mtimeout[0m: The read operation timed out
+
+During handling of the above exception, another exception occurred:
+
+[0;31mReadTimeoutError[0m                          Traceback (most recent call last)
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/adapters.py:486[0m, in [0;36mHTTPAdapter.send[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[1;32m    485[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 486[0m     resp [38;5;241m=[39m [43mconn[49m[38;5;241;43m.[39;49m[43murlopen[49m[43m([49m
+[1;32m    487[0m [43m        [49m[43mmethod[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mmethod[49m[43m,[49m
+[1;32m    488[0m [43m        [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m
+[1;32m    489[0m [43m        [49m[43mbody[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mbody[49m[43m,[49m
+[1;32m    490[0m [43m        [49m[43mheaders[49m[38;5;241;43m=[39;49m[43mrequest[49m[38;5;241;43m.[39;49m[43mheaders[49m[43m,[49m
+[1;32m    491[0m [43m        [49m[43mredirect[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    492[0m [43m        [49m[43massert_same_host[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    493[0m [43m        [49m[43mpreload_content[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    494[0m [43m        [49m[43mdecode_content[49m[38;5;241;43m=[39;49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    495[0m [43m        [49m[43mretries[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mmax_retries[49m[43m,[49m
+[1;32m    496[0m [43m        [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout[49m[43m,[49m
+[1;32m    497[0m [43m        [49m[43mchunked[49m[38;5;241;43m=[39;49m[43mchunked[49m[43m,[49m
+[1;32m    498[0m [43m    [49m[43m)[49m
+[1;32m    500[0m [38;5;28;01mexcept[39;00m (ProtocolError, [38;5;167;01mOSError[39;00m) [38;5;28;01mas[39;00m err:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:787[0m, in [0;36mHTTPConnectionPool.urlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)[0m
+[1;32m    785[0m     e [38;5;241m=[39m ProtocolError([38;5;124m"[39m[38;5;124mConnection aborted.[39m[38;5;124m"[39m, e)
+[0;32m--> 787[0m retries [38;5;241m=[39m [43mretries[49m[38;5;241;43m.[39;49m[43mincrement[49m[43m([49m
+[1;32m    788[0m [43m    [49m[43mmethod[49m[43m,[49m[43m [49m[43murl[49m[43m,[49m[43m [49m[43merror[49m[38;5;241;43m=[39;49m[43me[49m[43m,[49m[43m [49m[43m_pool[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m,[49m[43m [49m[43m_stacktrace[49m[38;5;241;43m=[39;49m[43msys[49m[38;5;241;43m.[39;49m[43mexc_info[49m[43m([49m[43m)[49m[43m[[49m[38;5;241;43m2[39;49m[43m][49m
+[1;32m    789[0m [43m[49m[43m)[49m
+[1;32m    790[0m retries[38;5;241m.[39msleep()
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/util/retry.py:550[0m, in [0;36mRetry.increment[0;34m(self, method, url, response, error, _pool, _stacktrace)[0m
+[1;32m    549[0m [38;5;28;01mif[39;00m read [38;5;129;01mis[39;00m [38;5;28;01mFalse[39;00m [38;5;129;01mor[39;00m [38;5;129;01mnot[39;00m [38;5;28mself[39m[38;5;241m.[39m_is_method_retryable(method):
+[0;32m--> 550[0m     [38;5;28;01mraise[39;00m [43msix[49m[38;5;241;43m.[39;49m[43mreraise[49m[43m([49m[38;5;28;43mtype[39;49m[43m([49m[43merror[49m[43m)[49m[43m,[49m[43m [49m[43merror[49m[43m,[49m[43m [49m[43m_stacktrace[49m[43m)[49m
+[1;32m    551[0m [38;5;28;01melif[39;00m read [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/packages/six.py:770[0m, in [0;36mreraise[0;34m(tp, value, tb)[0m
+[1;32m    769[0m         [38;5;28;01mraise[39;00m value[38;5;241m.[39mwith_traceback(tb)
+[0;32m--> 770[0m     [38;5;28;01mraise[39;00m value
+[1;32m    771[0m [38;5;28;01mfinally[39;00m:
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:703[0m, in [0;36mHTTPConnectionPool.urlopen[0;34m(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, **response_kw)[0m
+[1;32m    702[0m [38;5;66;03m# Make the request on the httplib connection object.[39;00m
+[0;32m--> 703[0m httplib_response [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_make_request[49m[43m([49m
+[1;32m    704[0m [43m    [49m[43mconn[49m[43m,[49m
+[1;32m    705[0m [43m    [49m[43mmethod[49m[43m,[49m
+[1;32m    706[0m [43m    [49m[43murl[49m[43m,[49m
+[1;32m    707[0m [43m    [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout_obj[49m[43m,[49m
+[1;32m    708[0m [43m    [49m[43mbody[49m[38;5;241;43m=[39;49m[43mbody[49m[43m,[49m
+[1;32m    709[0m [43m    [49m[43mheaders[49m[38;5;241;43m=[39;49m[43mheaders[49m[43m,[49m
+[1;32m    710[0m [43m    [49m[43mchunked[49m[38;5;241;43m=[39;49m[43mchunked[49m[43m,[49m
+[1;32m    711[0m [43m[49m[43m)[49m
+[1;32m    713[0m [38;5;66;03m# If we're going to release the connection in ``finally:``, then[39;00m
+[1;32m    714[0m [38;5;66;03m# the response doesn't need to know about the connection. Otherwise[39;00m
+[1;32m    715[0m [38;5;66;03m# it will also try to release it and we'll have a double-release[39;00m
+[1;32m    716[0m [38;5;66;03m# mess.[39;00m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:451[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
+[1;32m    450[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError, SocketError) [38;5;28;01mas[39;00m e:
+[0;32m--> 451[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_raise_timeout[49m[43m([49m[43merr[49m[38;5;241;43m=[39;49m[43me[49m[43m,[49m[43m [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m[43m [49m[43mtimeout_value[49m[38;5;241;43m=[39;49m[43mread_timeout[49m[43m)[49m
+[1;32m    452[0m     [38;5;28;01mraise[39;00m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:340[0m, in [0;36mHTTPConnectionPool._raise_timeout[0;34m(self, err, url, timeout_value)[0m
+[1;32m    339[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(err, SocketTimeout):
+[0;32m--> 340[0m     [38;5;28;01mraise[39;00m ReadTimeoutError(
+[1;32m    341[0m         [38;5;28mself[39m, url, [38;5;124m"[39m[38;5;124mRead timed out. (read timeout=[39m[38;5;132;01m%s[39;00m[38;5;124m)[39m[38;5;124m"[39m [38;5;241m%[39m timeout_value
+[1;32m    342[0m     )
+[1;32m    344[0m [38;5;66;03m# See the above comment about EAGAIN in Python 3. In Python 2 we have[39;00m
+[1;32m    345[0m [38;5;66;03m# to specifically catch it and throw the timeout error[39;00m
+
+[0;31mReadTimeoutError[0m: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=3)
+
+During handling of the above exception, another exception occurred:
+
+[0;31mReadTimeout[0m                               Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 5>[0;34m()[0m
+[1;32m      2[0m url [38;5;241m=[39m [38;5;124m'[39m[38;5;124mhttps://www.ptt.cc/bbs/Boy-Girl/index.html[39m[38;5;124m'[39m
+[1;32m      3[0m [38;5;28mprint[39m(url)
+[0;32m----> 5[0m response [38;5;241m=[39m [43mrequests[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[43murl[49m[43m,[49m[43m [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43m([49m[38;5;241;43m2[39;49m[43m,[49m[43m [49m[38;5;241;43m3[39;49m[43m)[49m[43m)[49m
+[1;32m      6[0m [38;5;28mprint[39m(response[38;5;241m.[39mtext[:[38;5;241m500[39m])
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/api.py:73[0m, in [0;36mget[0;34m(url, params, **kwargs)[0m
+[1;32m     62[0m [38;5;28;01mdef[39;00m [38;5;21mget[39m(url, params[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
+[1;32m     63[0m [38;5;250m    [39m[38;5;124mr[39m[38;5;124;03m"""Sends a GET request.[39;00m
+[1;32m     64[0m 
+[1;32m     65[0m [38;5;124;03m    :param url: URL for the new :class:`Request` object.[39;00m
+[0;32m   (...)[0m
+[1;32m     70[0m [38;5;124;03m    :rtype: requests.Response[39;00m
+[1;32m     71[0m [38;5;124;03m    """[39;00m
+[0;32m---> 73[0m     [38;5;28;01mreturn[39;00m [43mrequest[49m[43m([49m[38;5;124;43m"[39;49m[38;5;124;43mget[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[43murl[49m[43m,[49m[43m [49m[43mparams[49m[38;5;241;43m=[39;49m[43mparams[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/api.py:59[0m, in [0;36mrequest[0;34m(method, url, **kwargs)[0m
+[1;32m     55[0m [38;5;66;03m# By using the 'with' statement we are sure the session is closed, thus we[39;00m
+[1;32m     56[0m [38;5;66;03m# avoid leaving sockets open which can trigger a ResourceWarning in some[39;00m
+[1;32m     57[0m [38;5;66;03m# cases, and look like a memory leak in others.[39;00m
+[1;32m     58[0m [38;5;28;01mwith[39;00m sessions[38;5;241m.[39mSession() [38;5;28;01mas[39;00m session:
+[0;32m---> 59[0m     [38;5;28;01mreturn[39;00m [43msession[49m[38;5;241;43m.[39;49m[43mrequest[49m[43m([49m[43mmethod[49m[38;5;241;43m=[39;49m[43mmethod[49m[43m,[49m[43m [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/sessions.py:589[0m, in [0;36mSession.request[0;34m(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)[0m
+[1;32m    584[0m send_kwargs [38;5;241m=[39m {
+[1;32m    585[0m     [38;5;124m"[39m[38;5;124mtimeout[39m[38;5;124m"[39m: timeout,
+[1;32m    586[0m     [38;5;124m"[39m[38;5;124mallow_redirects[39m[38;5;124m"[39m: allow_redirects,
+[1;32m    587[0m }
+[1;32m    588[0m send_kwargs[38;5;241m.[39mupdate(settings)
+[0;32m--> 589[0m resp [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msend[49m[43m([49m[43mprep[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43msend_kwargs[49m[43m)[49m
+[1;32m    591[0m [38;5;28;01mreturn[39;00m resp
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/sessions.py:703[0m, in [0;36mSession.send[0;34m(self, request, **kwargs)[0m
+[1;32m    700[0m start [38;5;241m=[39m preferred_clock()
+[1;32m    702[0m [38;5;66;03m# Send the request[39;00m
+[0;32m--> 703[0m r [38;5;241m=[39m [43madapter[49m[38;5;241;43m.[39;49m[43msend[49m[43m([49m[43mrequest[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+[1;32m    705[0m [38;5;66;03m# Total elapsed time of the request (approximately)[39;00m
+[1;32m    706[0m elapsed [38;5;241m=[39m preferred_clock() [38;5;241m-[39m start
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/adapters.py:532[0m, in [0;36mHTTPAdapter.send[0;34m(self, request, stream, timeout, verify, cert, proxies)[0m
+[1;32m    530[0m     [38;5;28;01mraise[39;00m SSLError(e, request[38;5;241m=[39mrequest)
+[1;32m    531[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(e, ReadTimeoutError):
+[0;32m--> 532[0m     [38;5;28;01mraise[39;00m ReadTimeout(e, request[38;5;241m=[39mrequest)
+[1;32m    533[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(e, _InvalidHeader):
+[1;32m    534[0m     [38;5;28;01mraise[39;00m InvalidHeader(e, request[38;5;241m=[39mrequest)
+
+[0;31mReadTimeout[0m: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=3)
+ReadTimeout: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=3)
 

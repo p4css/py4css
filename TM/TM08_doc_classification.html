@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>TM08 Classification &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="TM09 Topic Modeling by BERtopic" href="TM09_BERTopic.html" />
     <link rel="prev" title="TM07 word2vec vs doc2vec" href="TM07_2_doc2vec.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -368,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="來源儲存庫"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -385,7 +384,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM08_doc_classification.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="開啟議題"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -406,7 +405,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -415,7 +414,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/TM/TM08_doc_classification.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="下載原始檔"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -433,7 +432,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="列印成 PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -453,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全螢幕模式"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -501,7 +500,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目錄 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -550,9 +549,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tm08-classification">
-<h1>TM08 Classification<a class="headerlink" href="#tm08-classification" title="Permalink to this heading">#</a></h1>
+<h1>TM08 Classification<a class="headerlink" href="#tm08-classification" title="Permalink to this headline">#</a></h1>
 <section id="preparing-data">
-<h2>Preparing data<a class="headerlink" href="#preparing-data" title="Permalink to this heading">#</a></h2>
+<h2>Preparing data<a class="headerlink" href="#preparing-data" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -566,13 +565,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+Building prefix dict from the default dictionary ...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/4m/shks9p8j0dnbv51nf7cyysfc0000gn/T/jieba.cache
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.270 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.297 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -667,7 +670,7 @@ document.write(`
 </div></div></div>
 </div>
 <section id="removing-punctuation">
-<h3>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Permalink to this heading">#</a></h3>
+<h3>Removing Punctuation<a class="headerlink" href="#removing-punctuation" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">unicodedata</span> <span class="c1"># for removing Chinese puctuation</span>
@@ -794,7 +797,7 @@ document.write(`
 </section>
 </section>
 <section id="feature-selection">
-<h2>Feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this heading">#</a></h2>
+<h2>Feature selection<a class="headerlink" href="#feature-selection" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">documents</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">doc</span><span class="p">)</span> <span class="k">for</span> <span class="n">doc</span> <span class="ow">in</span> <span class="n">df</span><span class="p">[</span><span class="s1">&#39;cleaned&#39;</span><span class="p">]]</span>
@@ -818,7 +821,7 @@ document.write(`
 </div>
 </div>
 <section id="tfidf-vectorization">
-<h3>tfidf vectorization<a class="headerlink" href="#tfidf-vectorization" title="Permalink to this heading">#</a></h3>
+<h3>tfidf vectorization<a class="headerlink" href="#tfidf-vectorization" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/clustering-documents-with-python-97314ad6a78d">https://towardsdatascience.com/clustering-documents-with-python-97314ad6a78d</a></p></li>
 <li><p><a class="reference external" href="https://blog.csdn.net/blmoistawinde/article/details/80816179">https://blog.csdn.net/blmoistawinde/article/details/80816179</a></p></li>
@@ -889,7 +892,7 @@ document.write(`
 </div>
 </section>
 <section id="doc2vec">
-<h3>doc2vec<a class="headerlink" href="#doc2vec" title="Permalink to this heading">#</a></h3>
+<h3>doc2vec<a class="headerlink" href="#doc2vec" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">common_texts</span>
@@ -899,6 +902,60 @@ document.write(`
 
 <span class="n">model</span> <span class="o">=</span> <span class="n">Doc2Vec</span><span class="p">(</span><span class="n">tagged_documents</span><span class="p">,</span> <span class="n">vector_size</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> 
                 <span class="n">window</span><span class="o">=</span><span class="mi">5</span><span class="p">,</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">gensim.test.utils</span> <span class="kn">import</span> <span class="n">common_texts</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">from</span> <span class="nn">gensim.models.doc2vec</span> <span class="kn">import</span> <span class="n">Doc2Vec</span><span class="p">,</span> <span class="n">TaggedDocument</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="n">tagged_documents</span> <span class="o">=</span> <span class="p">[</span><span class="n">TaggedDocument</span><span class="p">(</span><span class="n">doc</span><span class="p">,</span> <span class="p">[</span><span class="n">i</span><span class="p">])</span> <span class="k">for</span> <span class="n">i</span><span class="p">,</span> <span class="n">doc</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">documents</span><span class="p">)]</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;4.1.2&#39;</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">logging</span>
+<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">parsing</span><span class="p">,</span> <span class="n">corpora</span><span class="p">,</span> <span class="n">matutils</span><span class="p">,</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">similarities</span><span class="p">,</span> <span class="n">utils</span>  <span class="c1"># noqa:F401</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;gensim&#39;</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>  <span class="c1"># To ensure reload() doesn&#39;t add another one</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This package contains implementations of various streaming corpus I/O format.</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># bring corpus classes directly into package namespace, to save some typing</span>
+<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.indexedcorpus</span> <span class="kn">import</span> <span class="n">IndexedCorpus</span>  <span class="c1"># noqa:F401 must appear before the other classes</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.mmcorpus</span> <span class="kn">import</span> <span class="n">MmCorpus</span>  <span class="c1"># noqa:F401</span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.bleicorpus</span> <span class="kn">import</span> <span class="n">BleiCorpus</span>  <span class="c1"># noqa:F401</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="n">indexedcorpus</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">logging</span>
+<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span> <span class="nn">numpy</span>
+<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">utils</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="k">class</span> <span class="nc">IndexedCorpus</span><span class="p">(</span><span class="n">interfaces</span><span class="o">.</span><span class="n">CorpusABC</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">interfaces</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Basic interfaces used across the whole Gensim package.</span>
+<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="sd"> </span>
+<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> These interfaces are used for building corpora, model transformation and similarity queries.</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">     </span><span class="mi">14</span><span class="sd"> </span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span> <span class="nn">logging</span>
+<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">matutils</span>
+<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">class</span> <span class="nc">CorpusABC</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">SaveLoad</span><span class="p">):</span>
+
+<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">matutils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
+<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">import</span> <span class="nn">scipy.linalg</span>
+<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">scipy.linalg.lapack</span> <span class="kn">import</span> <span class="n">get_lapack_funcs</span>
+<span class="ne">---&gt; </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">scipy.linalg.special_matrices</span> <span class="kn">import</span> <span class="n">triu</span>
+<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">psi</span>  <span class="c1"># gamma function utils</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+
+<span class="ne">ImportError</span>: cannot import name &#39;triu&#39; from &#39;scipy.linalg.special_matrices&#39; (/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/scipy/linalg/special_matrices.py)
 </pre></div>
 </div>
 </div>
@@ -920,7 +977,7 @@ document.write(`
 </div>
 </section>
 <section id="chi-square-feature-selector">
-<h3>Chi.square feature selector<a class="headerlink" href="#chi-square-feature-selector" title="Permalink to this heading">#</a></h3>
+<h3>Chi.square feature selector<a class="headerlink" href="#chi-square-feature-selector" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/using-the-chi-squared-test-for-feature-selection-with-implementation-b15a4dad93f1">https://towardsdatascience.com/using-the-chi-squared-test-for-feature-selection-with-implementation-b15a4dad93f1</a></p></li>
 </ul>
@@ -932,6 +989,12 @@ document.write(`
 <span class="n">y</span> <span class="o">=</span> <span class="n">df</span><span class="o">.</span><span class="n">iloc</span><span class="p">[:,</span> <span class="mi">0</span><span class="p">]</span>
 <span class="c1"># fit = selector.fit(X_tfidf, y)</span>
 <span class="c1"># fit.scores_</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.15789817, 0.01763186, 0.45339518, ..., 0.32014909, 0.00125132,
+       0.33394599])
 </pre></div>
 </div>
 </div>
@@ -954,7 +1017,7 @@ document.write(`
 </section>
 </section>
 <section id="train-test-split">
-<h2>train_test_split()<a class="headerlink" href="#train-test-split" title="Permalink to this heading">#</a></h2>
+<h2>train_test_split()<a class="headerlink" href="#train-test-split" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html">https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.train_test_split.html</a></p></li>
 <li><p>Params</p>
@@ -1010,9 +1073,9 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </section>
 <section id="modeling">
-<h2>Modeling<a class="headerlink" href="#modeling" title="Permalink to this heading">#</a></h2>
+<h2>Modeling<a class="headerlink" href="#modeling" title="Permalink to this headline">#</a></h2>
 <section id="naive-bayes">
-<h3>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this heading">#</a></h3>
+<h3>Naive Bayes<a class="headerlink" href="#naive-bayes" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Naive Bayes </span>
@@ -1025,7 +1088,10 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><style>#sk-container-id-1 {color: black;background-color: white;}#sk-container-id-1 pre{padding: 0;}#sk-container-id-1 div.sk-toggleable {background-color: white;}#sk-container-id-1 label.sk-toggleable__label {cursor: pointer;display: block;width: 100%;margin-bottom: 0;padding: 0.3em;box-sizing: border-box;text-align: center;}#sk-container-id-1 label.sk-toggleable__label-arrow:before {content: "▸";float: left;margin-right: 0.25em;color: #696969;}#sk-container-id-1 label.sk-toggleable__label-arrow:hover:before {color: black;}#sk-container-id-1 div.sk-estimator:hover label.sk-toggleable__label-arrow:before {color: black;}#sk-container-id-1 div.sk-toggleable__content {max-height: 0;max-width: 0;overflow: hidden;text-align: left;background-color: #f0f8ff;}#sk-container-id-1 div.sk-toggleable__content pre {margin: 0.2em;color: black;border-radius: 0.25em;background-color: #f0f8ff;}#sk-container-id-1 input.sk-toggleable__control:checked~div.sk-toggleable__content {max-height: 200px;max-width: 100%;overflow: auto;}#sk-container-id-1 input.sk-toggleable__control:checked~label.sk-toggleable__label-arrow:before {content: "▾";}#sk-container-id-1 div.sk-estimator input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-label input.sk-toggleable__control:checked~label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 input.sk-hidden--visually {border: 0;clip: rect(1px 1px 1px 1px);clip: rect(1px, 1px, 1px, 1px);height: 1px;margin: -1px;overflow: hidden;padding: 0;position: absolute;width: 1px;}#sk-container-id-1 div.sk-estimator {font-family: monospace;background-color: #f0f8ff;border: 1px dotted black;border-radius: 0.25em;box-sizing: border-box;margin-bottom: 0.5em;}#sk-container-id-1 div.sk-estimator:hover {background-color: #d4ebff;}#sk-container-id-1 div.sk-parallel-item::after {content: "";width: 100%;border-bottom: 1px solid gray;flex-grow: 1;}#sk-container-id-1 div.sk-label:hover label.sk-toggleable__label {background-color: #d4ebff;}#sk-container-id-1 div.sk-serial::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: 0;}#sk-container-id-1 div.sk-serial {display: flex;flex-direction: column;align-items: center;background-color: white;padding-right: 0.2em;padding-left: 0.2em;position: relative;}#sk-container-id-1 div.sk-item {position: relative;z-index: 1;}#sk-container-id-1 div.sk-parallel {display: flex;align-items: stretch;justify-content: center;background-color: white;position: relative;}#sk-container-id-1 div.sk-item::before, #sk-container-id-1 div.sk-parallel-item::before {content: "";position: absolute;border-left: 1px solid gray;box-sizing: border-box;top: 0;bottom: 0;left: 50%;z-index: -1;}#sk-container-id-1 div.sk-parallel-item {display: flex;flex-direction: column;z-index: 1;position: relative;background-color: white;}#sk-container-id-1 div.sk-parallel-item:first-child::after {align-self: flex-end;width: 50%;}#sk-container-id-1 div.sk-parallel-item:last-child::after {align-self: flex-start;width: 50%;}#sk-container-id-1 div.sk-parallel-item:only-child::after {width: 0;}#sk-container-id-1 div.sk-dashed-wrapped {border: 1px dashed gray;margin: 0 0.4em 0.5em 0.4em;box-sizing: border-box;padding-bottom: 0.4em;background-color: white;}#sk-container-id-1 div.sk-label label {font-family: monospace;font-weight: bold;display: inline-block;line-height: 1.2em;}#sk-container-id-1 div.sk-label-container {text-align: center;}#sk-container-id-1 div.sk-container {/* jupyter's `normalize.less` sets `[hidden] { display: none; }` but bootstrap.min.css set `[hidden] { display: none !important; }` so we also need the `!important` here to be able to override the default hidden behavior on the sphinx rendered scikit-learn.org. See: https://github.com/scikit-learn/scikit-learn/issues/21755 */display: inline-block !important;position: relative;}#sk-container-id-1 div.sk-text-repr-fallback {display: none;}</style><div id="sk-container-id-1" class="sk-top-container"><div class="sk-text-repr-fallback"><pre>GaussianNB()</pre><b>In a Jupyter environment, please rerun this cell to show the HTML representation or trust the notebook. <br />On GitHub, the HTML representation is unable to render, please try loading this page with nbviewer.org.</b></div><div class="sk-container" hidden><div class="sk-item"><div class="sk-estimator sk-toggleable"><input class="sk-toggleable__control sk-hidden--visually" id="sk-estimator-id-1" type="checkbox" checked><label for="sk-estimator-id-1" class="sk-toggleable__label sk-toggleable__label-arrow">GaussianNB</label><div class="sk-toggleable__content"><pre>GaussianNB()</pre></div></div></div></div></div></div></div>
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>GaussianNB()
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1043,7 +1109,7 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </section>
 <section id="xgboost">
-<h3>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this heading">#</a></h3>
+<h3>XGBoost<a class="headerlink" href="#xgboost" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html">https://scikit-learn.org/stable/modules/generated/sklearn.ensemble.GradientBoostingClassifier.html</a></p></li>
 </ul>
@@ -1059,7 +1125,7 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </section>
 <section id="decision-tree">
-<h3>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this heading">#</a></h3>
+<h3>Decision Tree<a class="headerlink" href="#decision-tree" title="Permalink to this headline">#</a></h3>
 <p><img alt="image.png" src="TM/attachment:c6b0c041-df92-4d96-8855-0eb146fcd458.png" /></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1085,7 +1151,7 @@ Name: tag, Length: 6388, dtype: object
 </section>
 </section>
 <section id="prediction">
-<h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this heading">#</a></h2>
+<h2>Prediction<a class="headerlink" href="#prediction" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">y_tfidf_pred</span> <span class="o">=</span> <span class="n">classifier</span><span class="o">.</span><span class="n">predict</span><span class="p">(</span><span class="n">X_tfidf_test</span><span class="p">)</span>
@@ -1119,27 +1185,27 @@ Name: tag, Length: 6388, dtype: object
   </thead>
   <tbody>
     <tr>
-      <th>4045</th>
+      <th>3528</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>1856</th>
+      <th>3977</th>
       <td>P</td>
       <td>P</td>
     </tr>
     <tr>
-      <th>814</th>
+      <th>5972</th>
       <td>N</td>
-      <td>P</td>
-    </tr>
-    <tr>
-      <th>1333</th>
       <td>N</td>
-      <td>P</td>
     </tr>
     <tr>
-      <th>4227</th>
+      <th>345</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>1809</th>
       <td>N</td>
       <td>N</td>
     </tr>
@@ -1149,29 +1215,29 @@ Name: tag, Length: 6388, dtype: object
       <td>...</td>
     </tr>
     <tr>
-      <th>5494</th>
+      <th>3327</th>
       <td>N</td>
       <td>N</td>
     </tr>
     <tr>
-      <th>1141</th>
-      <td>N</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>4475</th>
-      <td>N</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>3991</th>
-      <td>N</td>
-      <td>N</td>
-    </tr>
-    <tr>
-      <th>6018</th>
+      <th>3840</th>
       <td>N</td>
       <td>P</td>
+    </tr>
+    <tr>
+      <th>3637</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>529</th>
+      <td>N</td>
+      <td>N</td>
+    </tr>
+    <tr>
+      <th>2944</th>
+      <td>P</td>
+      <td>N</td>
     </tr>
   </tbody>
 </table>
@@ -1180,7 +1246,7 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </section>
 <section id="evaluation">
-<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this heading">#</a></h2>
+<h2>Evaluation<a class="headerlink" href="#evaluation" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
@@ -1197,24 +1263,22 @@ Name: tag, Length: 6388, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>0.748565466875326
-[[884 124]
- [358 551]]
-              precision    recall  f1-score   support
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.metrics</span> <span class="kn">import</span> <span class="n">confusion_matrix</span><span class="p">,</span> <span class="n">classification_report</span><span class="p">,</span> <span class="n">accuracy_score</span>
+<span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">accuracy</span> <span class="o">=</span> <span class="n">accuracy_score</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">accuracy</span><span class="p">)</span>
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">cm</span> <span class="o">=</span> <span class="n">confusion_matrix</span><span class="p">(</span><span class="n">y_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_pred</span><span class="p">)</span>
 
-           N       0.71      0.88      0.79      1008
-           P       0.82      0.61      0.70       909
-
-    accuracy                           0.75      1917
-   macro avg       0.76      0.74      0.74      1917
-weighted avg       0.76      0.75      0.74      1917
+<span class="ne">NameError</span>: name &#39;y_tfidf_test&#39; is not defined
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="explaining-classification-report">
-<h2>Explaining classification_report<a class="headerlink" href="#explaining-classification-report" title="Permalink to this heading">#</a></h2>
+<h2>Explaining classification_report<a class="headerlink" href="#explaining-classification-report" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://datascience.stackexchange.com/questions/64441/how-to-interpret-classification-report-of-scikit-learn">https://datascience.stackexchange.com/questions/64441/how-to-interpret-classification-report-of-scikit-learn</a></p></li>
 <li><p>The <strong>recall</strong> means “how many of this class you find over the whole number of element of this class”</p></li>
@@ -1223,7 +1287,7 @@ weighted avg       0.76      0.75      0.74      1917
 <li><p>The <strong>support</strong> is the number of occurence of the given class in your dataset (so the case has 1004 of class N and 913 of class P, which is a almost balanced dataset.</p></li>
 </ul>
 <section id="notes-precision-and-recall">
-<h3>Notes: precision and recall<a class="headerlink" href="#notes-precision-and-recall" title="Permalink to this heading">#</a></h3>
+<h3>Notes: precision and recall<a class="headerlink" href="#notes-precision-and-recall" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>Precision and recall is highly used for imbalanced dataset because in an highly imbalanced dataset, a 99% accuracy can be meaningless.</p></li>
 <li><p>We should not compare the precision and the recall over two classes. This only means the classifier is better to find class 0 over class 1.</p></li>
@@ -1240,7 +1304,7 @@ weighted avg       0.76      0.75      0.74      1917
 </section>
 </section>
 <section id="overall-evaluating">
-<h2>Overall Evaluating<a class="headerlink" href="#overall-evaluating" title="Permalink to this heading">#</a></h2>
+<h2>Overall Evaluating<a class="headerlink" href="#overall-evaluating" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span><span class="p">,</span> <span class="n">RandomForestClassifier</span>
@@ -1280,22 +1344,21 @@ weighted avg       0.76      0.75      0.74      1917
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.82      0.81      0.81      1008
-           P       0.79      0.80      0.80       909
+           N       0.81      0.79      0.80       987
+           P       0.78      0.81      0.79       930
 
     accuracy                           0.80      1917
    macro avg       0.80      0.80      0.80      1917
-weighted avg       0.81      0.80      0.80      1917
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+weighted avg       0.80      0.80      0.80      1917
 
-           N       0.65      0.73      0.69      1006
-           P       0.65      0.57      0.61       911
+              precision    recall  f1-score   support
 
-    accuracy                           0.65      1917
-   macro avg       0.65      0.65      0.65      1917
-weighted avg       0.65      0.65      0.65      1917
+           N       0.68      0.74      0.71      1038
+           P       0.66      0.58      0.62       879
+
+    accuracy                           0.67      1917
+   macro avg       0.67      0.66      0.66      1917
+weighted avg       0.67      0.67      0.67      1917
 </pre></div>
 </div>
 </div>
@@ -1331,6 +1394,18 @@ weighted avg       0.65      0.65      0.65      1917
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
+
+           N       0.79      0.91      0.84       987
+           P       0.88      0.74      0.81       930
+
+    accuracy                           0.83      1917
+   macro avg       0.84      0.83      0.83      1917
+weighted avg       0.84      0.83      0.83      1917
+</pre></div>
+</div>
+</div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1363,27 +1438,27 @@ weighted avg       0.65      0.65      0.65      1917
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>              precision    recall  f1-score   support
 
-           N       0.78      0.88      0.82      1008
-           P       0.84      0.72      0.78       909
+           N       0.79      0.91      0.84       987
+           P       0.88      0.74      0.80       930
 
-    accuracy                           0.80      1917
-   macro avg       0.81      0.80      0.80      1917
-weighted avg       0.81      0.80      0.80      1917
+    accuracy                           0.83      1917
+   macro avg       0.83      0.82      0.82      1917
+weighted avg       0.83      0.83      0.82      1917
 
               precision    recall  f1-score   support
 
-           N       0.78      0.91      0.84       974
-           P       0.89      0.73      0.80       943
+           N       0.80      0.91      0.85      1011
+           P       0.88      0.75      0.81       906
 
-    accuracy                           0.82      1917
-   macro avg       0.83      0.82      0.82      1917
-weighted avg       0.83      0.82      0.82      1917
+    accuracy                           0.84      1917
+   macro avg       0.84      0.83      0.83      1917
+weighted avg       0.84      0.84      0.83      1917
 </pre></div>
 </div>
 </div>
 </div>
 <section id="roc-receiver-operating-characteristic-curve">
-<h3>ROC Receiver Operating Characteristic Curve<a class="headerlink" href="#roc-receiver-operating-characteristic-curve" title="Permalink to this heading">#</a></h3>
+<h3>ROC Receiver Operating Characteristic Curve<a class="headerlink" href="#roc-receiver-operating-characteristic-curve" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://www.dezyre.com/recipes/plot-roc-curve-in-python">https://www.dezyre.com/recipes/plot-roc-curve-in-python</a></p></li>
 <li><p>Scikit-learn: ROC <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html">https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc.html</a></p></li>
@@ -1410,15 +1485,15 @@ weighted avg       0.83      0.82      0.82      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.35306495, 0.96716364, 0.46031125, ..., 0.4688118 , 0.40705253,
-       0.47316455])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([0.36521659, 0.5253291 , 0.57791509, ..., 0.92233505, 0.53882655,
+       0.4744045 ])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="confusion-matrix">
-<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this heading">#</a></h3>
+<h3>Confusion matrix<a class="headerlink" href="#confusion-matrix" title="Permalink to this headline">#</a></h3>
 <p><img alt="image.png" src="TM/attachment:b7a0a5e8-c79d-460e-b254-530e978970a0.png" /></p>
 <ul class="simple">
 <li><p>X: FPR = FP/(FP + TN);</p></li>
@@ -1460,28 +1535,28 @@ weighted avg       0.83      0.82      0.82      1917
   </thead>
   <tbody>
     <tr>
-      <th>1502</th>
-      <td>0.016310</td>
+      <th>1553</th>
+      <td>0.040226</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1451</th>
-      <td>0.043854</td>
+      <th>103</th>
+      <td>0.043580</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>909</th>
-      <td>0.046906</td>
+      <th>233</th>
+      <td>0.045870</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1618</th>
-      <td>0.048019</td>
+      <th>575</th>
+      <td>0.046373</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>21</th>
-      <td>0.052112</td>
+      <th>964</th>
+      <td>0.046484</td>
       <td>0</td>
     </tr>
     <tr>
@@ -1490,28 +1565,28 @@ weighted avg       0.83      0.82      0.82      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>1133</th>
-      <td>0.982365</td>
+      <th>1869</th>
+      <td>0.974932</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1433</th>
-      <td>0.985135</td>
+      <th>474</th>
+      <td>0.977466</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>352</th>
-      <td>0.988848</td>
+      <th>1781</th>
+      <td>0.978268</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1078</th>
-      <td>0.990167</td>
+      <th>1714</th>
+      <td>0.982856</td>
       <td>1</td>
     </tr>
     <tr>
-      <th>1272</th>
-      <td>0.993697</td>
+      <th>454</th>
+      <td>0.994109</td>
       <td>1</td>
     </tr>
   </tbody>
@@ -1556,31 +1631,31 @@ weighted avg       0.83      0.82      0.82      1917
       <th>0</th>
       <td>0.000000</td>
       <td>0.000000</td>
-      <td>1.993697</td>
+      <td>1.994109</td>
     </tr>
     <tr>
       <th>1</th>
       <td>0.000000</td>
-      <td>0.001100</td>
-      <td>0.993697</td>
+      <td>0.001028</td>
+      <td>0.994109</td>
     </tr>
     <tr>
       <th>2</th>
       <td>0.000000</td>
-      <td>0.044004</td>
-      <td>0.925855</td>
+      <td>0.008222</td>
+      <td>0.969941</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0.000000</td>
-      <td>0.046205</td>
-      <td>0.924540</td>
+      <td>0.001059</td>
+      <td>0.008222</td>
+      <td>0.969613</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>0.000000</td>
-      <td>0.052805</td>
-      <td>0.917597</td>
+      <td>0.001059</td>
+      <td>0.044193</td>
+      <td>0.923721</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1589,38 +1664,38 @@ weighted avg       0.83      0.82      0.82      1917
       <td>...</td>
     </tr>
     <tr>
-      <th>455</th>
-      <td>0.984127</td>
-      <td>1.000000</td>
-      <td>0.063933</td>
+      <th>418</th>
+      <td>0.980932</td>
+      <td>0.998972</td>
+      <td>0.069844</td>
     </tr>
     <tr>
-      <th>456</th>
-      <td>0.987103</td>
+      <th>419</th>
+      <td>0.980932</td>
       <td>1.000000</td>
-      <td>0.063823</td>
+      <td>0.069067</td>
     </tr>
     <tr>
-      <th>457</th>
-      <td>0.989087</td>
+      <th>420</th>
+      <td>0.988347</td>
       <td>1.000000</td>
-      <td>0.062840</td>
+      <td>0.057836</td>
     </tr>
     <tr>
-      <th>458</th>
-      <td>0.992063</td>
+      <th>421</th>
+      <td>0.994703</td>
       <td>1.000000</td>
-      <td>0.061174</td>
+      <td>0.051924</td>
     </tr>
     <tr>
-      <th>459</th>
+      <th>422</th>
       <td>1.000000</td>
       <td>1.000000</td>
-      <td>0.016310</td>
+      <td>0.040226</td>
     </tr>
   </tbody>
 </table>
-<p>460 rows × 3 columns</p>
+<p>423 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1631,7 +1706,7 @@ weighted avg       0.83      0.82      0.82      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9074679789407513
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>roc_auc_score for DecisionTree:  0.9145204417579738
 </pre></div>
 </div>
 </div>
@@ -1651,12 +1726,12 @@ weighted avg       0.83      0.82      0.82      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/d139ef8e4dd4b40e8f2268fa20491ae585c81301bc60ec56ca8ff7e255fa5f70.png" src="../_images/d139ef8e4dd4b40e8f2268fa20491ae585c81301bc60ec56ca8ff7e255fa5f70.png" />
+<img alt="../_images/0d5febe039d65a30652c537c65b1e727c4f2b2363268849de5fa1e583cf67199.png" src="../_images/0d5febe039d65a30652c537c65b1e727c4f2b2363268849de5fa1e583cf67199.png" />
 </div>
 </div>
 </section>
 <section id="by-plot-roc-curve">
-<h3>by <code class="docutils literal notranslate"><span class="pre">plot_roc_curve()</span></code><a class="headerlink" href="#by-plot-roc-curve" title="Permalink to this heading">#</a></h3>
+<h3>by <code class="docutils literal notranslate"><span class="pre">plot_roc_curve()</span></code><a class="headerlink" href="#by-plot-roc-curve" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">plot_roc_curve()</span></code>: <a class="reference external" href="https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_roc_curve.html">https://scikit-learn.org/stable/modules/generated/sklearn.metrics.plot_roc_curve.html</a></p></li>
 <li><p>plot roc curve with cross-validation: <a class="reference external" href="https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py">https://scikit-learn.org/stable/auto_examples/model_selection/plot_roc_crossval.html#sphx-glr-auto-examples-model-selection-plot-roc-crossval-py</a></p></li>
@@ -1670,20 +1745,15 @@ weighted avg       0.83      0.82      0.82      1917
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">26</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">sklearn.metrics</span> <span class="k">as</span> <span class="nn">metrics</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">metrics</span><span class="o">.</span><span class="n">plot_roc_curve</span><span class="p">(</span><span class="n">classifier</span><span class="p">,</span> <span class="n">X_tfidf_test</span><span class="p">,</span> <span class="n">y_tfidf_test</span><span class="p">)</span>  
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">plt</span><span class="o">.</span><span class="n">show</span><span class="p">()</span>
-
-<span class="ne">AttributeError</span>: module &#39;sklearn.metrics&#39; has no attribute &#39;plot_roc_curve&#39;
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/utils/deprecation.py:87: FutureWarning: Function plot_roc_curve is deprecated; Function :func:`plot_roc_curve` is deprecated in 1.0 and will be removed in 1.2. Use one of the class methods: :meth:`sklearn.metric.RocCurveDisplay.from_predictions` or :meth:`sklearn.metric.RocCurveDisplay.from_estimator`.
+  warnings.warn(msg, category=FutureWarning)
 </pre></div>
 </div>
+<img alt="../_images/c1c62fc1f21aeee767d7784e9598c02d8440f1cceb3df081ec28f9122fd25878.png" src="../_images/c1c62fc1f21aeee767d7784e9598c02d8440f1cceb3df081ec28f9122fd25878.png" />
 </div>
 </div>
 <section id="roc-curve-by-nb">
-<h4>roc_curve by NB<a class="headerlink" href="#roc-curve-by-nb" title="Permalink to this heading">#</a></h4>
+<h4>roc_curve by NB<a class="headerlink" href="#roc-curve-by-nb" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.naive_bayes</span> <span class="kn">import</span> <span class="n">GaussianNB</span>
@@ -1737,7 +1807,7 @@ weighted avg       0.83      0.82      0.82      1917
 </section>
 </section>
 <section id="practise">
-<h2>Practise<a class="headerlink" href="#practise" title="Permalink to this heading">#</a></h2>
+<h2>Practise<a class="headerlink" href="#practise" title="Permalink to this headline">#</a></h2>
 <p>Comparing chi2 k=500, k=1000, k=2000 with models RandomForest, LogisticRegression, and SVC</p>
 </section>
 </section>
@@ -1805,7 +1875,7 @@ weighted avg       0.83      0.82      0.82      1917
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目錄
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1856,7 +1926,7 @@ weighted avg       0.83      0.82      0.82      1917
   <div class="footer-item">
     
 <p class="component-author">
-By JILUNG
+作者： JILUNG
 </p>
 
   </div>

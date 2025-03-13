@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>P04 Practice02 Search &amp; Maximum &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P04 Practice03 Twitter Users" href="P04p3_twitter_users.html" />
     <link rel="prev" title="P04 Practice01: for loop" href="P04p1_for.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -368,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="來源儲存庫"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -385,7 +384,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P04p2_search_maximum.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="開啟議題"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -406,7 +405,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -415,7 +414,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P04p2_search_maximum.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="下載原始檔"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -433,7 +432,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="列印成 PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -453,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全螢幕模式"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -501,7 +500,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目錄 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -560,7 +559,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p04-practice02-search-maximum">
-<h1>P04 Practice02 Search &amp; Maximum<a class="headerlink" href="#p04-practice02-search-maximum" title="Permalink to this heading">#</a></h1>
+<h1>P04 Practice02 Search &amp; Maximum<a class="headerlink" href="#p04-practice02-search-maximum" title="Permalink to this headline">#</a></h1>
 <p><strong>for-loop + if-else: conditional operators</strong></p>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ul class="simple">
@@ -579,7 +578,7 @@ document.write(`
 <li><p><strong>Rescaling</strong>: <br>透過一個標準的映射表，將AQI數值轉換為五個等級：非常高、高、中、低、非常低，以便使用者更容易理解。例子: AQI 67轉換為”高”等級。</p></li>
 </ul>
 </div><section id="aqx">
-<h2>空氣品質指數（AQX）案例研究<a class="headerlink" href="#aqx" title="Permalink to this heading">#</a></h2>
+<h2>空氣品質指數（AQX）案例研究<a class="headerlink" href="#aqx" title="Permalink to this headline">#</a></h2>
 <p><strong>簡介與資料來源</strong></p>
 <p>這個案例研究旨在分析來自行政院環保署的即時空氣品質數據。這些數據可以在<a class="reference external" href="https://taqm.epa.gov.tw/taqm/tw/default.aspx">行政院環保署的空氣品質監測網站</a>上查詢，並會按照AQI值用不同顏色代表其嚴重程度。更即時的數據也可在行政院環保署的<a class="reference external" href="https://opendata.epa.gov.tw/api/v1/AQI?%24skip=0&amp;%24top=1000&amp;%24format=json">開放資料平台</a>找到。</p>
 <p><strong>分析策略</strong></p>
@@ -594,353 +593,38 @@ document.write(`
 <p><strong>重要性與溝通</strong></p>
 <p>為何需要這樣的分析？主要是為了將複雜的數據以容易理解的方式傳達給大眾。儘管數據分析主要是由專家進行，但其目的通常是為了解釋或傳達某種特定信息給一般人。為了做到這一點，使用簡單明瞭的語言是關鍵——例如，「大部分地區」、「最嚴重地區」或「前幾名」等。有了數據和統計支持，我們就可以更自信地，也更準確地傳達這些信息。</p>
 <section id="load-aqx-data">
-<h3>Load AQX data<a class="headerlink" href="#load-aqx-data" title="Permalink to this heading">#</a></h3>
+<h3>Load AQX data<a class="headerlink" href="#load-aqx-data" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>本案例所使用的資料仍然是網頁上json格式的資料，因此，仍需要用<code class="docutils literal notranslate"><span class="pre">requests</span></code>函式庫將其取回，再用<code class="docutils literal notranslate"><span class="pre">json()</span></code>將json格式的文字解析為Python的dict與list。</p></li>
 <li><p>原始網頁為https://airtw.moenv.gov.tw/cht/EnvMonitoring/Central/CentralMonitoring.aspx。</p></li>
-<li><p>json資料網址為https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2023/09/17%2011:00，其中QueryTime為查詢的時間，格式為YYYY/MM/DD HH:MM，例如2023/09/17 11:00。需要改為合理且近日的日期。</p></li>
+<li><p>json資料網址為https://airtw.moenv.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2025/03/12%2011:00，其中QueryTime為查詢的時間，格式為YYYY/MM/DD HH:MM，例如2025/03/12 11:00。需要改為合理且近日的日期。</p></li>
 </ol>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2023/09/17%2011:00&quot;</span>
+<span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.moenv.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2025/03/12%2011:00&quot;</span>
 <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">))</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">aqdata</span><span class="p">[</span><span class="mi">0</span><span class="p">]))</span>
+
+
+<span class="c1"># print aqdata in pretty format</span>
+<span class="c1"># print(json.dumps(aqdata, indent=4, ensure_ascii=False))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ConnectionResetError</span><span class="g g-Whitespace">                      </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:790,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span> <span class="c1"># Make the request on the HTTPConnection object</span>
-<span class="ne">--&gt; </span><span class="mi">790</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="n">response_conn</span><span class="o">=</span><span class="n">response_conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">800</span>     <span class="n">preload_content</span><span class="o">=</span><span class="n">preload_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span>     <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="o">**</span><span class="n">response_kw</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">805</span> <span class="c1"># Everything went great!</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:491,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="n">new_e</span> <span class="o">=</span> <span class="n">_wrap_proxy_error</span><span class="p">(</span><span class="n">new_e</span><span class="p">,</span> <span class="n">conn</span><span class="o">.</span><span class="n">proxy</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">491</span>     <span class="k">raise</span> <span class="n">new_e</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="c1"># conn.request() calls http.client.*.request, not the method in</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="c1"># urllib3.request. It also calls makefile (recv) on the socket.</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:467,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
-<span class="g g-Whitespace">    </span><span class="mi">466</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">467</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span> <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:1096,</span> in <span class="ni">HTTPSConnectionPool._validate_conn</span><span class="nt">(self, conn)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1095</span> <span class="k">if</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_closed</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1096</span>     <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_verified</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connection.py:642,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">634</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span>         <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">636</span>             <span class="sa">f</span><span class="s2">&quot;System time is way off (before </span><span class="si">{</span><span class="n">RECENT_DATE</span><span class="si">}</span><span class="s2">). This will probably &quot;</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">639</span>         <span class="n">SystemTimeWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">640</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">642</span> <span class="n">sock_and_verified</span> <span class="o">=</span> <span class="n">_ssl_wrap_socket_and_match_hostname</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">643</span>     <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">644</span>     <span class="n">cert_reqs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cert_reqs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="n">ssl_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_version</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">646</span>     <span class="n">ssl_minimum_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_minimum_version</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">647</span>     <span class="n">ssl_maximum_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_maximum_version</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="n">ca_certs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_certs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">649</span>     <span class="n">ca_cert_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_cert_dir</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">650</span>     <span class="n">ca_cert_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_cert_data</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="n">cert_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cert_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="n">key_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">key_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">653</span>     <span class="n">key_password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">key_password</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">654</span>     <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">655</span>     <span class="n">ssl_context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_context</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">656</span>     <span class="n">tls_in_tls</span><span class="o">=</span><span class="n">tls_in_tls</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">657</span>     <span class="n">assert_hostname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">assert_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">658</span>     <span class="n">assert_fingerprint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">assert_fingerprint</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">sock_and_verified</span><span class="o">.</span><span class="n">socket</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connection.py:782,</span> in <span class="ni">_ssl_wrap_socket_and_match_hostname</span><span class="nt">(sock, cert_reqs, ssl_version, ssl_minimum_version, ssl_maximum_version, cert_file, key_file, key_password, ca_certs, ca_cert_dir, ca_cert_data, assert_hostname, assert_fingerprint, server_hostname, ssl_context, tls_in_tls)</span>
-<span class="g g-Whitespace">    </span><span class="mi">780</span>         <span class="n">server_hostname</span> <span class="o">=</span> <span class="n">normalized</span>
-<span class="ne">--&gt; </span><span class="mi">782</span> <span class="n">ssl_sock</span> <span class="o">=</span> <span class="n">ssl_wrap_socket</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">783</span>     <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">784</span>     <span class="n">keyfile</span><span class="o">=</span><span class="n">key_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="n">certfile</span><span class="o">=</span><span class="n">cert_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="n">key_password</span><span class="o">=</span><span class="n">key_password</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="n">ca_certs</span><span class="o">=</span><span class="n">ca_certs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="n">ca_cert_dir</span><span class="o">=</span><span class="n">ca_cert_dir</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="n">ca_cert_data</span><span class="o">=</span><span class="n">ca_cert_data</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">790</span>     <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">ssl_context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">tls_in_tls</span><span class="o">=</span><span class="n">tls_in_tls</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/util/ssl_.py:470,</span> in <span class="ni">ssl_wrap_socket</span><span class="nt">(sock, keyfile, certfile, cert_reqs, ca_certs, server_hostname, ssl_version, ciphers, ssl_context, ca_cert_dir, key_password, ca_cert_data, tls_in_tls)</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span>     <span class="k">pass</span>
-<span class="ne">--&gt; </span><span class="mi">470</span> <span class="n">ssl_sock</span> <span class="o">=</span> <span class="n">_ssl_wrap_socket_impl</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">tls_in_tls</span><span class="p">,</span> <span class="n">server_hostname</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">471</span> <span class="k">return</span> <span class="n">ssl_sock</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/util/ssl_.py:514,</span> in <span class="ni">_ssl_wrap_socket_impl</span><span class="nt">(sock, ssl_context, tls_in_tls, server_hostname)</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="k">return</span> <span class="n">SSLTransport</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">ssl_context</span><span class="p">,</span> <span class="n">server_hostname</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">514</span> <span class="k">return</span> <span class="n">ssl_context</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/ssl.py:513,</span> in <span class="ni">SSLContext.wrap_socket</span><span class="nt">(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span> <span class="k">def</span> <span class="nf">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sock</span><span class="p">,</span> <span class="n">server_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span>                 <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">509</span>                 <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span>                 <span class="n">server_hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>     <span class="c1"># SSLSocket class handles server_hostname encoding before it calls</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="c1"># ctx._wrap_socket()</span>
-<span class="ne">--&gt; </span><span class="mi">513</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sslsocket_class</span><span class="o">.</span><span class="n">_create</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>         <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span>         <span class="n">server_side</span><span class="o">=</span><span class="n">server_side</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>         <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="n">do_handshake_on_connect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span>         <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="n">suppress_ragged_eofs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>         <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">520</span>         <span class="n">session</span><span class="o">=</span><span class="n">session</span>
-<span class="g g-Whitespace">    </span><span class="mi">521</span>     <span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/ssl.py:1104,</span> in <span class="ni">SSLSocket._create</span><span class="nt">(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;do_handshake_on_connect should not be specified for non-blocking sockets&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1104</span>         <span class="bp">self</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span> <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/ssl.py:1375,</span> in <span class="ni">SSLSocket.do_handshake</span><span class="nt">(self, block)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1374</span>         <span class="bp">self</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1375</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1376</span> <span class="k">finally</span><span class="p">:</span>
-
-<span class="ne">ConnectionResetError</span>: [Errno 54] Connection reset by peer
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ProtocolError</span><span class="g g-Whitespace">                             </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/adapters.py:486,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">485</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">486</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">489</span>         <span class="n">body</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="n">headers</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">491</span>         <span class="n">redirect</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">492</span>         <span class="n">assert_same_host</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span>         <span class="n">preload_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span>         <span class="n">decode_content</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>         <span class="n">retries</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">max_retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">timeout</span><span class="o">=</span><span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:844,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">842</span>     <span class="n">new_e</span> <span class="o">=</span> <span class="n">ProtocolError</span><span class="p">(</span><span class="s2">&quot;Connection aborted.&quot;</span><span class="p">,</span> <span class="n">new_e</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">844</span> <span class="n">retries</span> <span class="o">=</span> <span class="n">retries</span><span class="o">.</span><span class="n">increment</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">845</span>     <span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">error</span><span class="o">=</span><span class="n">new_e</span><span class="p">,</span> <span class="n">_pool</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span> <span class="n">_stacktrace</span><span class="o">=</span><span class="n">sys</span><span class="o">.</span><span class="n">exc_info</span><span class="p">()[</span><span class="mi">2</span><span class="p">]</span>
-<span class="g g-Whitespace">    </span><span class="mi">846</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">847</span> <span class="n">retries</span><span class="o">.</span><span class="n">sleep</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/util/retry.py:470,</span> in <span class="ni">Retry.increment</span><span class="nt">(self, method, url, response, error, _pool, _stacktrace)</span>
-<span class="g g-Whitespace">    </span><span class="mi">469</span> <span class="k">if</span> <span class="n">read</span> <span class="ow">is</span> <span class="kc">False</span> <span class="ow">or</span> <span class="n">method</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">or</span> <span class="ow">not</span> <span class="bp">self</span><span class="o">.</span><span class="n">_is_method_retryable</span><span class="p">(</span><span class="n">method</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">470</span>     <span class="k">raise</span> <span class="n">reraise</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">error</span><span class="p">),</span> <span class="n">error</span><span class="p">,</span> <span class="n">_stacktrace</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">471</span> <span class="k">elif</span> <span class="n">read</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/util/util.py:38,</span> in <span class="ni">reraise</span><span class="nt">(tp, value, tb)</span>
-<span class="g g-Whitespace">     </span><span class="mi">37</span> <span class="k">if</span> <span class="n">value</span><span class="o">.</span><span class="n">__traceback__</span> <span class="ow">is</span> <span class="ow">not</span> <span class="n">tb</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">38</span>     <span class="k">raise</span> <span class="n">value</span><span class="o">.</span><span class="n">with_traceback</span><span class="p">(</span><span class="n">tb</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">39</span> <span class="k">raise</span> <span class="n">value</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:790,</span> in <span class="ni">HTTPConnectionPool.urlopen</span><span class="nt">(self, method, url, body, headers, retries, redirect, assert_same_host, timeout, pool_timeout, release_conn, chunked, body_pos, preload_content, decode_content, **response_kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span> <span class="c1"># Make the request on the HTTPConnection object</span>
-<span class="ne">--&gt; </span><span class="mi">790</span> <span class="n">response</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_request</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span>     <span class="n">url</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">794</span>     <span class="n">timeout</span><span class="o">=</span><span class="n">timeout_obj</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span>     <span class="n">body</span><span class="o">=</span><span class="n">body</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">796</span>     <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">797</span>     <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">798</span>     <span class="n">retries</span><span class="o">=</span><span class="n">retries</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">799</span>     <span class="n">response_conn</span><span class="o">=</span><span class="n">response_conn</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">800</span>     <span class="n">preload_content</span><span class="o">=</span><span class="n">preload_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">801</span>     <span class="n">decode_content</span><span class="o">=</span><span class="n">decode_content</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">802</span>     <span class="o">**</span><span class="n">response_kw</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">803</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">805</span> <span class="c1"># Everything went great!</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:491,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
-<span class="g g-Whitespace">    </span><span class="mi">490</span>         <span class="n">new_e</span> <span class="o">=</span> <span class="n">_wrap_proxy_error</span><span class="p">(</span><span class="n">new_e</span><span class="p">,</span> <span class="n">conn</span><span class="o">.</span><span class="n">proxy</span><span class="o">.</span><span class="n">scheme</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">491</span>     <span class="k">raise</span> <span class="n">new_e</span>
-<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="c1"># conn.request() calls http.client.*.request, not the method in</span>
-<span class="g g-Whitespace">    </span><span class="mi">494</span> <span class="c1"># urllib3.request. It also calls makefile (recv) on the socket.</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:467,</span> in <span class="ni">HTTPConnectionPool._make_request</span><span class="nt">(self, conn, method, url, body, headers, retries, timeout, chunked, response_conn, preload_content, decode_content, enforce_content_length)</span>
-<span class="g g-Whitespace">    </span><span class="mi">466</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">467</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_validate_conn</span><span class="p">(</span><span class="n">conn</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span> <span class="k">except</span> <span class="p">(</span><span class="n">SocketTimeout</span><span class="p">,</span> <span class="n">BaseSSLError</span><span class="p">)</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connectionpool.py:1096,</span> in <span class="ni">HTTPSConnectionPool._validate_conn</span><span class="nt">(self, conn)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1095</span> <span class="k">if</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_closed</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1096</span>     <span class="n">conn</span><span class="o">.</span><span class="n">connect</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">conn</span><span class="o">.</span><span class="n">is_verified</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connection.py:642,</span> in <span class="ni">HTTPSConnection.connect</span><span class="nt">(self)</span>
-<span class="g g-Whitespace">    </span><span class="mi">634</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">635</span>         <span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">636</span>             <span class="sa">f</span><span class="s2">&quot;System time is way off (before </span><span class="si">{</span><span class="n">RECENT_DATE</span><span class="si">}</span><span class="s2">). This will probably &quot;</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">639</span>         <span class="n">SystemTimeWarning</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">640</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">642</span> <span class="n">sock_and_verified</span> <span class="o">=</span> <span class="n">_ssl_wrap_socket_and_match_hostname</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">643</span>     <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">644</span>     <span class="n">cert_reqs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cert_reqs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">645</span>     <span class="n">ssl_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_version</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">646</span>     <span class="n">ssl_minimum_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_minimum_version</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">647</span>     <span class="n">ssl_maximum_version</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_maximum_version</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">648</span>     <span class="n">ca_certs</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_certs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">649</span>     <span class="n">ca_cert_dir</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_cert_dir</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">650</span>     <span class="n">ca_cert_data</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ca_cert_data</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">651</span>     <span class="n">cert_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">cert_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">652</span>     <span class="n">key_file</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">key_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">653</span>     <span class="n">key_password</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">key_password</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">654</span>     <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">655</span>     <span class="n">ssl_context</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">ssl_context</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">656</span>     <span class="n">tls_in_tls</span><span class="o">=</span><span class="n">tls_in_tls</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">657</span>     <span class="n">assert_hostname</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">assert_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">658</span>     <span class="n">assert_fingerprint</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">assert_fingerprint</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">659</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">660</span> <span class="bp">self</span><span class="o">.</span><span class="n">sock</span> <span class="o">=</span> <span class="n">sock_and_verified</span><span class="o">.</span><span class="n">socket</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/connection.py:782,</span> in <span class="ni">_ssl_wrap_socket_and_match_hostname</span><span class="nt">(sock, cert_reqs, ssl_version, ssl_minimum_version, ssl_maximum_version, cert_file, key_file, key_password, ca_certs, ca_cert_dir, ca_cert_data, assert_hostname, assert_fingerprint, server_hostname, ssl_context, tls_in_tls)</span>
-<span class="g g-Whitespace">    </span><span class="mi">780</span>         <span class="n">server_hostname</span> <span class="o">=</span> <span class="n">normalized</span>
-<span class="ne">--&gt; </span><span class="mi">782</span> <span class="n">ssl_sock</span> <span class="o">=</span> <span class="n">ssl_wrap_socket</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">783</span>     <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">784</span>     <span class="n">keyfile</span><span class="o">=</span><span class="n">key_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">785</span>     <span class="n">certfile</span><span class="o">=</span><span class="n">cert_file</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">786</span>     <span class="n">key_password</span><span class="o">=</span><span class="n">key_password</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">787</span>     <span class="n">ca_certs</span><span class="o">=</span><span class="n">ca_certs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">788</span>     <span class="n">ca_cert_dir</span><span class="o">=</span><span class="n">ca_cert_dir</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">789</span>     <span class="n">ca_cert_data</span><span class="o">=</span><span class="n">ca_cert_data</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">790</span>     <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">791</span>     <span class="n">ssl_context</span><span class="o">=</span><span class="n">context</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">792</span>     <span class="n">tls_in_tls</span><span class="o">=</span><span class="n">tls_in_tls</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">793</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">795</span> <span class="k">try</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/util/ssl_.py:470,</span> in <span class="ni">ssl_wrap_socket</span><span class="nt">(sock, keyfile, certfile, cert_reqs, ca_certs, server_hostname, ssl_version, ciphers, ssl_context, ca_cert_dir, key_password, ca_cert_data, tls_in_tls)</span>
-<span class="g g-Whitespace">    </span><span class="mi">468</span>     <span class="k">pass</span>
-<span class="ne">--&gt; </span><span class="mi">470</span> <span class="n">ssl_sock</span> <span class="o">=</span> <span class="n">_ssl_wrap_socket_impl</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">context</span><span class="p">,</span> <span class="n">tls_in_tls</span><span class="p">,</span> <span class="n">server_hostname</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">471</span> <span class="k">return</span> <span class="n">ssl_sock</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/urllib3/util/ssl_.py:514,</span> in <span class="ni">_ssl_wrap_socket_impl</span><span class="nt">(sock, ssl_context, tls_in_tls, server_hostname)</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="k">return</span> <span class="n">SSLTransport</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">ssl_context</span><span class="p">,</span> <span class="n">server_hostname</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">514</span> <span class="k">return</span> <span class="n">ssl_context</span><span class="o">.</span><span class="n">wrap_socket</span><span class="p">(</span><span class="n">sock</span><span class="p">,</span> <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/ssl.py:513,</span> in <span class="ni">SSLContext.wrap_socket</span><span class="nt">(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)</span>
-<span class="g g-Whitespace">    </span><span class="mi">507</span> <span class="k">def</span> <span class="nf">wrap_socket</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sock</span><span class="p">,</span> <span class="n">server_side</span><span class="o">=</span><span class="kc">False</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">508</span>                 <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">509</span>                 <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">510</span>                 <span class="n">server_hostname</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">session</span><span class="o">=</span><span class="kc">None</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">511</span>     <span class="c1"># SSLSocket class handles server_hostname encoding before it calls</span>
-<span class="g g-Whitespace">    </span><span class="mi">512</span>     <span class="c1"># ctx._wrap_socket()</span>
-<span class="ne">--&gt; </span><span class="mi">513</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">sslsocket_class</span><span class="o">.</span><span class="n">_create</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">514</span>         <span class="n">sock</span><span class="o">=</span><span class="n">sock</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">515</span>         <span class="n">server_side</span><span class="o">=</span><span class="n">server_side</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">516</span>         <span class="n">do_handshake_on_connect</span><span class="o">=</span><span class="n">do_handshake_on_connect</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">517</span>         <span class="n">suppress_ragged_eofs</span><span class="o">=</span><span class="n">suppress_ragged_eofs</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">518</span>         <span class="n">server_hostname</span><span class="o">=</span><span class="n">server_hostname</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">519</span>         <span class="n">context</span><span class="o">=</span><span class="bp">self</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">520</span>         <span class="n">session</span><span class="o">=</span><span class="n">session</span>
-<span class="g g-Whitespace">    </span><span class="mi">521</span>     <span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/ssl.py:1104,</span> in <span class="ni">SSLSocket._create</span><span class="nt">(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1103</span>             <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;do_handshake_on_connect should not be specified for non-blocking sockets&quot;</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1104</span>         <span class="bp">self</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1105</span> <span class="k">except</span> <span class="p">(</span><span class="ne">OSError</span><span class="p">,</span> <span class="ne">ValueError</span><span class="p">):</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/ssl.py:1375,</span> in <span class="ni">SSLSocket.do_handshake</span><span class="nt">(self, block)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1374</span>         <span class="bp">self</span><span class="o">.</span><span class="n">settimeout</span><span class="p">(</span><span class="kc">None</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1375</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">do_handshake</span><span class="p">()</span>
-<span class="g g-Whitespace">   </span><span class="mi">1376</span> <span class="k">finally</span><span class="p">:</span>
-
-<span class="ne">ProtocolError</span>: (&#39;Connection aborted.&#39;, ConnectionResetError(54, &#39;Connection reset by peer&#39;))
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">ConnectionError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">json</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">url</span> <span class="o">=</span> <span class="s2">&quot;https://airtw.epa.gov.tw/gis_ajax.aspx?Type=GetAQInfo&amp;Layer=EPA&amp;QueryTime=2023/09/17%2011:00&quot;</span>
-<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">aqdata</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/api.py:73,</span> in <span class="ni">get</span><span class="nt">(url, params, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">62</span> <span class="k">def</span> <span class="nf">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="g g-Whitespace">     </span><span class="mi">63</span><span class="w">     </span><span class="sa">r</span><span class="sd">&quot;&quot;&quot;Sends a GET request.</span>
-<span class="g g-Whitespace">     </span><span class="mi">64</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">65</span><span class="sd">     :param url: URL for the new :class:`Request` object.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">70</span><span class="sd">     :rtype: requests.Response</span>
-<span class="g g-Whitespace">     </span><span class="mi">71</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">---&gt; </span><span class="mi">73</span>     <span class="k">return</span> <span class="n">request</span><span class="p">(</span><span class="s2">&quot;get&quot;</span><span class="p">,</span> <span class="n">url</span><span class="p">,</span> <span class="n">params</span><span class="o">=</span><span class="n">params</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/api.py:59,</span> in <span class="ni">request</span><span class="nt">(method, url, **kwargs)</span>
-<span class="g g-Whitespace">     </span><span class="mi">55</span> <span class="c1"># By using the &#39;with&#39; statement we are sure the session is closed, thus we</span>
-<span class="g g-Whitespace">     </span><span class="mi">56</span> <span class="c1"># avoid leaving sockets open which can trigger a ResourceWarning in some</span>
-<span class="g g-Whitespace">     </span><span class="mi">57</span> <span class="c1"># cases, and look like a memory leak in others.</span>
-<span class="g g-Whitespace">     </span><span class="mi">58</span> <span class="k">with</span> <span class="n">sessions</span><span class="o">.</span><span class="n">Session</span><span class="p">()</span> <span class="k">as</span> <span class="n">session</span><span class="p">:</span>
-<span class="ne">---&gt; </span><span class="mi">59</span>     <span class="k">return</span> <span class="n">session</span><span class="o">.</span><span class="n">request</span><span class="p">(</span><span class="n">method</span><span class="o">=</span><span class="n">method</span><span class="p">,</span> <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/sessions.py:589,</span> in <span class="ni">Session.request</span><span class="nt">(self, method, url, params, data, headers, cookies, files, auth, timeout, allow_redirects, proxies, hooks, stream, verify, cert, json)</span>
-<span class="g g-Whitespace">    </span><span class="mi">584</span> <span class="n">send_kwargs</span> <span class="o">=</span> <span class="p">{</span>
-<span class="g g-Whitespace">    </span><span class="mi">585</span>     <span class="s2">&quot;timeout&quot;</span><span class="p">:</span> <span class="n">timeout</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">586</span>     <span class="s2">&quot;allow_redirects&quot;</span><span class="p">:</span> <span class="n">allow_redirects</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">587</span> <span class="p">}</span>
-<span class="g g-Whitespace">    </span><span class="mi">588</span> <span class="n">send_kwargs</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">settings</span><span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">589</span> <span class="n">resp</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">prep</span><span class="p">,</span> <span class="o">**</span><span class="n">send_kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">591</span> <span class="k">return</span> <span class="n">resp</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/sessions.py:703,</span> in <span class="ni">Session.send</span><span class="nt">(self, request, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">700</span> <span class="n">start</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="c1"># Send the request</span>
-<span class="ne">--&gt; </span><span class="mi">703</span> <span class="n">r</span> <span class="o">=</span> <span class="n">adapter</span><span class="o">.</span><span class="n">send</span><span class="p">(</span><span class="n">request</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span> <span class="c1"># Total elapsed time of the request (approximately)</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span> <span class="n">elapsed</span> <span class="o">=</span> <span class="n">preferred_clock</span><span class="p">()</span> <span class="o">-</span> <span class="n">start</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/adapters.py:501,</span> in <span class="ni">HTTPAdapter.send</span><span class="nt">(self, request, stream, timeout, verify, cert, proxies)</span>
-<span class="g g-Whitespace">    </span><span class="mi">486</span>     <span class="n">resp</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">urlopen</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">487</span>         <span class="n">method</span><span class="o">=</span><span class="n">request</span><span class="o">.</span><span class="n">method</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">488</span>         <span class="n">url</span><span class="o">=</span><span class="n">url</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">chunked</span><span class="o">=</span><span class="n">chunked</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">498</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">except</span> <span class="p">(</span><span class="n">ProtocolError</span><span class="p">,</span> <span class="ne">OSError</span><span class="p">)</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">501</span>     <span class="k">raise</span> <span class="ne">ConnectionError</span><span class="p">(</span><span class="n">err</span><span class="p">,</span> <span class="n">request</span><span class="o">=</span><span class="n">request</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">except</span> <span class="n">MaxRetryError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">504</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">reason</span><span class="p">,</span> <span class="n">ConnectTimeoutError</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">505</span>         <span class="c1"># TODO: Remove this in 3.0.0: see #2811</span>
-
-<span class="ne">ConnectionError</span>: (&#39;Connection aborted.&#39;, ConnectionResetError(54, &#39;Connection reset by peer&#39;))
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;list&#39;&gt;
+&lt;class &#39;dict&#39;&gt;
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="traverse-aqi-content">
-<h3>Traverse AQI content<a class="headerlink" href="#traverse-aqi-content" title="Permalink to this heading">#</a></h3>
+<h3>Traverse AQI content<a class="headerlink" href="#traverse-aqi-content" title="Permalink to this headline">#</a></h3>
 <p>既然傳回來的資料看起來是個list of dict的結構，外層為一個list，不失一般性地取index為0的第一筆資料來觀察。</p>
 <ul class="simple">
 <li><p><strong>法則一：如果偵測出他是一個list</strong>，那就取出第0筆資料往下追蹤。</p></li>
@@ -952,24 +636,6 @@ document.write(`
 
 
 <span class="c1"># Print the content of the first data entry</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;1&#39;,
- &#39;SiteName&#39;: &#39;二林&#39;,
- &#39;AQI&#39;: &#39;66&#39;,
- &#39;ViewName&#39;: &#39;二林&#39;,
- &#39;AreaName&#39;: &#39;中部空品區&#39;,
- &#39;AreaID&#39;: &#39;3&#39;,
- &#39;COUNTY_Eng&#39;: &#39;Changhua&#39;,
- &#39;POLLUTANT&#39;: &#39;細懸浮微粒&#39;,
- &#39;SiteAddres&#39;: &#39;彰化縣二林鎮萬合里江山巷1號&#39;,
- &#39;TWD97_Lon&#39;: 120.409653,
- &#39;TWD97_Lat&#39;: 23.925175,
- &#39;SiteType&#39;: &#39;一般站&#39;,
- &#39;SiteType2&#39;: &#39;中央政府&#39;,
- &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
@@ -985,7 +651,7 @@ document.write(`
 </div>
 </section>
 <section id="print-and-observe-each-data-entry">
-<h3>Print and observe each data entry<a class="headerlink" href="#print-and-observe-each-data-entry" title="Permalink to this heading">#</a></h3>
+<h3>Print and observe each data entry<a class="headerlink" href="#print-and-observe-each-data-entry" title="Permalink to this headline">#</a></h3>
 <p>列印出相關資料來做觀察，包含AQI、POLLUTANT（污染物種類）。如果資料筆數過多不易觀察的話，應該用List Slicing取出前數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[:10]</span></code>）或後數筆（例如<code class="docutils literal notranslate"><span class="pre">alist[-3:]</span></code>）來觀察</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">二林</span>	<span class="mi">79</span>	<span class="n">細懸浮微粒</span>
 <span class="n">三重</span>	<span class="mi">58</span>	<span class="n">細懸浮微粒</span>
@@ -1007,7 +673,7 @@ document.write(`
 </div>
 </section>
 <section id="range-to-traverse-list-by-index">
-<h3><code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#range-to-traverse-list-by-index" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">range()</span></code> to traverse list by index<a class="headerlink" href="#range-to-traverse-list-by-index" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>因為<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>是一個list，也可以透過index去access<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>中第0個、第1個、第2個dict的內容。<br>但此時你就要去用index存取<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>內的值，你的程式碼會稍微長一點點。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">range(n)</span></code>函式，相當於<code class="docutils literal notranslate"><span class="pre">range(0,</span> <span class="pre">n)</span></code>，可以產生<code class="docutils literal notranslate"><span class="pre">0</span></code>至<code class="docutils literal notranslate"><span class="pre">n-1</span></code>的list。<br>用<code class="docutils literal notranslate"><span class="pre">list()</span></code>轉換後（例如<code class="docutils literal notranslate"><span class="pre">list(range(10))</span></code>)便會顯示出其內容。</p></li>
@@ -1043,7 +709,7 @@ document.write(`
 <p>而<code class="docutils literal notranslate"><span class="pre">aqdata</span></code>這個list的長度為<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，其list index從0至<code class="docutils literal notranslate"><span class="pre">len(aqdataa)</span></code>，所以使用<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">i</span> <span class="pre">in</span> <span class="pre">range(len(aqdata)):</span></code>可以走訪整個list的內容。（註：以下的例子只列印出前10個）</p>
 </section>
 <section id="enumerate-to-access-index-and-item-simultaneously">
-<h3><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and item simultaneously<a class="headerlink" href="#enumerate-to-access-index-and-item-simultaneously" title="Permalink to this heading">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">enumerate()</span></code> to access index and item simultaneously<a class="headerlink" href="#enumerate-to-access-index-and-item-simultaneously" title="Permalink to this headline">#</a></h3>
 <p>前面我們介紹到兩個版本，</p>
 <ol class="arabic simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">site</span> <span class="pre">in</span> <span class="pre">aqdata[&quot;Data&quot;]:</span></code>是用<code class="docutils literal notranslate"><span class="pre">site</span></code>作為臨時變數以在for-loop中存取所有的資料項目。</p></li>
@@ -1062,92 +728,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;enumerate&#39;&gt;
-0 二林 66 細懸浮微粒
-1 三重 28 
-2 三義 36 
-3 土城 13 
-4 士林 20 
-5 大同 39 
-6 大里 57 細懸浮微粒
-7 大園 23 
-8 大寮 84 細懸浮微粒
-9 小港 76 細懸浮微粒
-10 中山 18 
-11 中壢 20 
-12 仁武 78 細懸浮微粒
-13 斗六 57 細懸浮微粒
-14 冬山 13 
-15 古亭 14 
-16 左營 65 細懸浮微粒
-17 平鎮 15 
-18 永和 19 
-19 安南 62 細懸浮微粒
-20 朴子 67 細懸浮微粒
-21 汐止 13 
-22 竹山 43 
-23 竹東 29 
-24 西屯 59 細懸浮微粒
-25 沙鹿 43 
-26 宜蘭 13 
-27 忠明 54 細懸浮微粒
-28 松山 14 
-29 板橋 22 
-30 林口 13 
-31 林園 68 細懸浮微粒
-32 花蓮 16 
-33 金門 47 
-34 前金 67 細懸浮微粒
-35 前鎮 65 細懸浮微粒
-36 南投 62 細懸浮微粒
-37 屏東 79 細懸浮微粒
-38 恆春 10 
-39 美濃 67 細懸浮微粒
-40 苗栗 21 
-41 埔里 43 
-42 桃園 19 
-43 馬公 36 
-44 馬祖 71 臭氧八小時
-45 基隆 17 
-46 崙背 61 細懸浮微粒
-47 淡水 17 
-48 麥寮 54 細懸浮微粒
-49 善化 67 細懸浮微粒
-50 復興 61 細懸浮微粒
-51 湖口 30 
-52 菜寮 20 
-53 陽明 18 
-54 新竹 19 
-55 新店 12 
-56 新莊 21 
-57 新港 71 細懸浮微粒
-58 新營 60 細懸浮微粒
-59 楠梓 70 細懸浮微粒
-60 萬里 29 
-61 萬華 12 
-62 嘉義 71 細懸浮微粒
-63 彰化 58 細懸浮微粒
-64 臺西 62 細懸浮微粒
-65 臺東 9 
-66 臺南 66 細懸浮微粒
-67 鳳山 73 細懸浮微粒
-68 潮州 63 細懸浮微粒
-69 線西 48 
-70 橋頭 71 細懸浮微粒
-71 頭份 13 
-72 龍潭 13 
-73 豐原 52 細懸浮微粒
-74 關山 7 
-75 觀音 54 細懸浮微粒
-76 彰化(員林) 65 細懸浮微粒
-77 高雄(湖內) 77 細懸浮微粒
-78 臺南(麻豆) 58 細懸浮微粒
-79 屏東(琉球) -1 
-80 桃園(三民) 18 
-81 新北(樹林) 20 
-82 臺南(學甲) 51 細懸浮微粒
-83 屏東(枋寮) 47 
-84 富貴角 34 
-85 大城 66 細懸浮微粒
 </pre></div>
 </div>
 </div>
@@ -1155,7 +735,7 @@ document.write(`
 </section>
 </section>
 <section id="prepare-data-for-search-and-query">
-<h2>Prepare data for search and query<a class="headerlink" href="#prepare-data-for-search-and-query" title="Permalink to this heading">#</a></h2>
+<h2>Prepare data for search and query<a class="headerlink" href="#prepare-data-for-search-and-query" title="Permalink to this headline">#</a></h2>
 <p>顯然AQI資料是一個非常標準的JSON格式，轉換為Python的資料型態就會變成list of dict。<br>
 但我希望可以用空品站名稱來查詢空品站的指標，要怎麼做呢？有兩種方法：<br></p>
 <ol class="arabic simple">
@@ -1163,16 +743,11 @@ document.write(`
 <li><p>我想要建立一個新的<code class="docutils literal notranslate"><span class="pre">aqdict</span></code>，希望可以用<code class="docutils literal notranslate"><span class="pre">aqdict[&quot;三重&quot;]</span></code>就直接列印出<code class="docutils literal notranslate"><span class="pre">三重</span></code>的資料。</p></li>
 </ol>
 <section id="method-01-search-with-for-loop">
-<h3>Method 01. Search with for-loop<a class="headerlink" href="#method-01-search-with-for-loop" title="Permalink to this heading">#</a></h3>
+<h3>Method 01. Search with for-loop<a class="headerlink" href="#method-01-search-with-for-loop" title="Permalink to this headline">#</a></h3>
 <p>就把所有資料用for-loop走訪一遍，如果站台名稱等於所欲查詢的站台的話，那就把他列印出來。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">query</span> <span class="o">=</span> <span class="s2">&quot;三重&quot;</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
 </pre></div>
 </div>
 </div>
@@ -1183,17 +758,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
-{&#39;SiteID&#39;: &#39;61&#39;, &#39;SiteName&#39;: &#39;萬里&#39;, &#39;AQI&#39;: &#39;29&#39;, &#39;ViewName&#39;: &#39;萬里&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市萬里區瑪鋉路221號&#39;, &#39;TWD97_Lon&#39;: 121.689881, &#39;TWD97_Lat&#39;: 25.179667, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
-{&#39;SiteID&#39;: &#39;62&#39;, &#39;SiteName&#39;: &#39;萬華&#39;, &#39;AQI&#39;: &#39;12&#39;, &#39;ViewName&#39;: &#39;萬華&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Taipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;臺北市萬華區中華路1段66號&#39;, &#39;TWD97_Lon&#39;: 121.507972, &#39;TWD97_Lat&#39;: 25.046503, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="method-02-convert-data-structure-hashing">
-<h3>Method 02. Convert data structure - hashing<a class="headerlink" href="#method-02-convert-data-structure-hashing" title="Permalink to this heading">#</a></h3>
+<h3>Method 02. Convert data structure - hashing<a class="headerlink" href="#method-02-convert-data-structure-hashing" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>如果希望可以用<code class="docutils literal notranslate"><span class="pre">aqdict[&quot;三重&quot;]</span></code>就直接列印出三重的資料，有一個方法是重建一個新的以測站作為key的dict，這樣只需要有站名，就可以直接藉由key-to-value的對應找到該站的資料，所以要建的dict是站名對應到該空品站資料的對應。</p></li>
 <li><p>建立方法是把整個list of dict走訪過一遍，把list中每個dict assign給該dict中的測站名稱 <code class="docutils literal notranslate"><span class="pre">site[&quot;SiteName&quot;]</span></code></p></li>
@@ -1204,17 +772,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;SiteID&#39;: &#39;2&#39;, &#39;SiteName&#39;: &#39;三重&#39;, &#39;AQI&#39;: &#39;28&#39;, &#39;ViewName&#39;: &#39;三重&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市三重區三和路重陽路交口&#39;, &#39;TWD97_Lon&#39;: 121.493806, &#39;TWD97_Lat&#39;: 25.072611, &#39;SiteType&#39;: &#39;交通站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
-{&#39;SiteID&#39;: &#39;61&#39;, &#39;SiteName&#39;: &#39;萬里&#39;, &#39;AQI&#39;: &#39;29&#39;, &#39;ViewName&#39;: &#39;萬里&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Newtaipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;新北市萬里區瑪鋉路221號&#39;, &#39;TWD97_Lon&#39;: 121.689881, &#39;TWD97_Lat&#39;: 25.179667, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
-{&#39;SiteID&#39;: &#39;62&#39;, &#39;SiteName&#39;: &#39;萬華&#39;, &#39;AQI&#39;: &#39;12&#39;, &#39;ViewName&#39;: &#39;萬華&#39;, &#39;AreaName&#39;: &#39;北部空品區&#39;, &#39;AreaID&#39;: &#39;1&#39;, &#39;COUNTY_Eng&#39;: &#39;Taipei&#39;, &#39;POLLUTANT&#39;: &#39;&#39;, &#39;SiteAddres&#39;: &#39;臺北市萬華區中華路1段66號&#39;, &#39;TWD97_Lon&#39;: 121.507972, &#39;TWD97_Lat&#39;: 25.046503, &#39;SiteType&#39;: &#39;一般站&#39;, &#39;SiteType2&#39;: &#39;中央政府&#39;, &#39;siteowner&#39;: &#39;行政院環境保護署&#39;}
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="dump-new-dict-to-json">
-<h3>Dump new dict to .json<a class="headerlink" href="#dump-new-dict-to-json" title="Permalink to this heading">#</a></h3>
+<h3>Dump new dict to .json<a class="headerlink" href="#dump-new-dict-to-json" title="Permalink to this headline">#</a></h3>
 <p>在Python中把資料dump成json會遠比csv來得方便，在R中則剛好相反。原因是Python的dictionary與list兩項資料結構恰好json的格式一一相符，所以非常容易就可以把資料dump出去或者read進來。如果是要dump成csv檔的話，就必須想辦法把資料整理成pandas dataframe的二維型態。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1226,7 +787,7 @@ document.write(`
 </section>
 </section>
 <section id="rescale-aqi-index">
-<h2>Rescale AQI index<a class="headerlink" href="#rescale-aqi-index" title="Permalink to this heading">#</a></h2>
+<h2>Rescale AQI index<a class="headerlink" href="#rescale-aqi-index" title="Permalink to this headline">#</a></h2>
 <p>前面說到一般大眾其實不了解AQI數值的意義，也不知道最大最小值是多少，所以在對外作呈現的時候，呈現AQI數值是沒意義的。大眾比較容易了解的是「現在嚴不嚴重」。因此，我們可以依照環保署對於空氣品質的等級劃分方法來將所有站台區分成幾個等級，相當於是按照數值做統計上的分層，將數值轉為factor的操作。</p>
 <p>而程式邏輯上要做的事情是，用if-elif-else來設計好不同的區間判斷，然後用for-loop把所有AQI的值走訪過一遍，看每個站台落入哪個區間。</p>
 <p><img alt="image.png" src="PSS/attachment:47374209-14dd-44c8-a5cc-dc60f9565867.png" /></p>
@@ -1246,99 +807,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>二林 66 普通
-三重 28 良好
-三義 36 良好
-土城 13 良好
-士林 20 良好
-大同 39 良好
-大里 57 普通
-大園 23 良好
-大寮 84 普通
-小港 76 普通
-中山 18 良好
-中壢 20 良好
-仁武 78 普通
-斗六 57 普通
-冬山 13 良好
-古亭 14 良好
-左營 65 普通
-平鎮 15 良好
-永和 19 良好
-安南 62 普通
-朴子 67 普通
-汐止 13 良好
-竹山 43 良好
-竹東 29 良好
-西屯 59 普通
-沙鹿 43 良好
-宜蘭 13 良好
-忠明 54 普通
-松山 14 良好
-板橋 22 良好
-林口 13 良好
-林園 68 普通
-花蓮 16 良好
-金門 47 良好
-前金 67 普通
-前鎮 65 普通
-南投 62 普通
-屏東 79 普通
-恆春 10 良好
-美濃 67 普通
-苗栗 21 良好
-埔里 43 良好
-桃園 19 良好
-馬公 36 良好
-馬祖 71 普通
-基隆 17 良好
-崙背 61 普通
-淡水 17 良好
-麥寮 54 普通
-善化 67 普通
-復興 61 普通
-湖口 30 良好
-菜寮 20 良好
-陽明 18 良好
-新竹 19 良好
-新店 12 良好
-新莊 21 良好
-新港 71 普通
-新營 60 普通
-楠梓 70 普通
-萬里 29 良好
-萬華 12 良好
-嘉義 71 普通
-彰化 58 普通
-臺西 62 普通
-臺東 9 良好
-臺南 66 普通
-鳳山 73 普通
-潮州 63 普通
-線西 48 良好
-橋頭 71 普通
-頭份 13 良好
-龍潭 13 良好
-豐原 52 普通
-關山 7 良好
-觀音 54 普通
-彰化(員林) 65 普通
-高雄(湖內) 77 普通
-臺南(麻豆) 58 普通
-屏東(琉球) -1 Unknown
-桃園(三民) 18 良好
-新北(樹林) 20 良好
-臺南(學甲) 51 普通
-屏東(枋寮) 47 良好
-富貴角 34 良好
-大城 66 普通
-</pre></div>
-</div>
-</div>
 </div>
 <section id="option-rescale-better">
-<h3>(Option) Rescale better<a class="headerlink" href="#option-rescale-better" title="Permalink to this heading">#</a></h3>
+<h3>(Option) Rescale better<a class="headerlink" href="#option-rescale-better" title="Permalink to this headline">#</a></h3>
 <p>為了避免過多的if-elif-else或者switch的使用，可以先把scale和category寫成兩個List，然後用多一層for-loop來trace該value會落在List的哪個區間。
 <img alt="image.png" src="PSS/attachment:636ae1de-2309-4048-9d44-46fb039807ec.png" /></p>
 <div class="cell docutils container">
@@ -1355,92 +826,6 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{-1: &#39;Unknown&#39;, 50: &#39;良好&#39;, 100: &#39;普通&#39;, 150: &#39;對敏感族群不健康&#39;, 200: &#39;對所有族群不健康&#39;, 300: &#39;非常不健康&#39;, 1000: &#39;危害&#39;}
-二林 66 普通 普通
-三重 28 良好 良好
-三義 36 良好 良好
-土城 13 良好 良好
-士林 20 良好 良好
-大同 39 良好 良好
-大里 57 普通 普通
-大園 23 良好 良好
-大寮 84 普通 普通
-小港 76 普通 普通
-中山 18 良好 良好
-中壢 20 良好 良好
-仁武 78 普通 普通
-斗六 57 普通 普通
-冬山 13 良好 良好
-古亭 14 良好 良好
-左營 65 普通 普通
-平鎮 15 良好 良好
-永和 19 良好 良好
-安南 62 普通 普通
-朴子 67 普通 普通
-汐止 13 良好 良好
-竹山 43 良好 良好
-竹東 29 良好 良好
-西屯 59 普通 普通
-沙鹿 43 良好 良好
-宜蘭 13 良好 良好
-忠明 54 普通 普通
-松山 14 良好 良好
-板橋 22 良好 良好
-林口 13 良好 良好
-林園 68 普通 普通
-花蓮 16 良好 良好
-金門 47 良好 良好
-前金 67 普通 普通
-前鎮 65 普通 普通
-南投 62 普通 普通
-屏東 79 普通 普通
-恆春 10 良好 良好
-美濃 67 普通 普通
-苗栗 21 良好 良好
-埔里 43 良好 良好
-桃園 19 良好 良好
-馬公 36 良好 良好
-馬祖 71 普通 普通
-基隆 17 良好 良好
-崙背 61 普通 普通
-淡水 17 良好 良好
-麥寮 54 普通 普通
-善化 67 普通 普通
-復興 61 普通 普通
-湖口 30 良好 良好
-菜寮 20 良好 良好
-陽明 18 良好 良好
-新竹 19 良好 良好
-新店 12 良好 良好
-新莊 21 良好 良好
-新港 71 普通 普通
-新營 60 普通 普通
-楠梓 70 普通 普通
-萬里 29 良好 良好
-萬華 12 良好 良好
-嘉義 71 普通 普通
-彰化 58 普通 普通
-臺西 62 普通 普通
-臺東 9 良好 良好
-臺南 66 普通 普通
-鳳山 73 普通 普通
-潮州 63 普通 普通
-線西 48 良好 良好
-橋頭 71 普通 普通
-頭份 13 良好 良好
-龍潭 13 良好 良好
-豐原 52 普通 普通
-關山 7 良好 良好
-觀音 54 普通 普通
-彰化(員林) 65 普通 普通
-高雄(湖內) 77 普通 普通
-臺南(麻豆) 58 普通 普通
-屏東(琉球) -1 Unknown Unknown
-桃園(三民) 18 良好 良好
-新北(樹林) 20 良好 良好
-臺南(學甲) 51 普通 普通
-屏東(枋寮) 47 良好 良好
-富貴角 34 良好 良好
-大城 66 普通 普通
 </pre></div>
 </div>
 </div>
@@ -1448,11 +833,11 @@ document.write(`
 </section>
 </section>
 <section id="detect-prominant-data">
-<h2>Detect prominant data<a class="headerlink" href="#detect-prominant-data" title="Permalink to this heading">#</a></h2>
+<h2>Detect prominant data<a class="headerlink" href="#detect-prominant-data" title="Permalink to this headline">#</a></h2>
 <p>有了這類的資料後，可以做出什麼樣的資料描述呢？通常第一個想到的分析方法就是找到最嚴重、最差、變化最劇烈的地區。以下這是個非常好的例子說明要如何運用<code class="docutils literal notranslate"><span class="pre">if</span></code>和<code class="docutils literal notranslate"><span class="pre">for</span></code>找出AQI最高的地區。在過程中，必須要注意，原本的資料的資料型態為何，甚至要注意，原本的資料是否有缺漏。</p>
 <p>這個案例企圖找出AQI最高的是哪些站台，且把該站台列印出來。注意，要列印的是AQI最高的站台，而不是最高的AQI值；此外還要注意，AQI最高的站台可能不只一個（這時候該怎麼處理？）。</p>
 <section id="find-the-maximum">
-<h3>Find the maximum<a class="headerlink" href="#find-the-maximum" title="Permalink to this heading">#</a></h3>
+<h3>Find the maximum<a class="headerlink" href="#find-the-maximum" title="Permalink to this headline">#</a></h3>
 <p>找到最大值或最小值的概念：就個人的邏輯思考一下，要怎麼找到一群數的最大值？解題邏輯：把第一個數先拿來當標準，之後確認過每個數，有沒有比這個數更大的，若有的話，最大值就代換成找到的那個數，沒有的話，那第一個數就是最大值。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1469,16 +854,10 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>大寮 84
-屏東(琉球) -1
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="use-built-in-functions">
-<h3>Use built-in functions<a class="headerlink" href="#use-built-in-functions" title="Permalink to this heading">#</a></h3>
+<h3>Use built-in functions<a class="headerlink" href="#use-built-in-functions" title="Permalink to this headline">#</a></h3>
 <p>這類比較大小的簡單功能一定都有人幫忙寫好了（如以下的例子），只要記得使用它就好。但是，要記得這樣的函式其實就是透過類似上述方法來比較大小以找到最大值。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1492,21 +871,16 @@ document.write(`
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1 82 197 13 15.153846153846153
-[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 54, 65, 77, 58, -1, 18, 20, 51, 47, 34, 66]
-大寮 84
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>84
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="find-top-n">
-<h3>Find top n<a class="headerlink" href="#find-top-n" title="Permalink to this heading">#</a></h3>
+<h3>Find top n<a class="headerlink" href="#find-top-n" title="Permalink to this headline">#</a></h3>
 <p>前面的例子是只要找最大值，所以只需要用一個變數來存放最大值。但現在的任務如果是要找到前n大，那就必須要有n個變數來儲存。往往實用上這個n還常常開放給使用者自行輸入，必須是可變動的。那最好的解決方法就是，乾脆把所有數值由大到小排列好，放在一個List裡面，然後看看要取前n大，就用List Slicing取出前面n個數值。</p>
 <section id="sorted-by-sorted-function">
-<h4>Sorted by <code class="docutils literal notranslate"><span class="pre">sorted</span></code> function<a class="headerlink" href="#sorted-by-sorted-function" title="Permalink to this heading">#</a></h4>
+<h4>Sorted by <code class="docutils literal notranslate"><span class="pre">sorted</span></code> function<a class="headerlink" href="#sorted-by-sorted-function" title="Permalink to this headline">#</a></h4>
 <ol class="arabic simple">
 <li><p>開一個空的List，用For將所有資料走訪一遍，把所有的AQI的值給<code class="docutils literal notranslate"><span class="pre">append()</span></code>在該List中。</p></li>
 <li><p>存起來以後，我用<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>這個函式把這些值做排序。</p></li>
@@ -1530,12 +904,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[66, 28, 36, 13, 20, 39, 57, 23, 84, 76, 18, 20, 78, 57, 13, 14, 65, 15, 19, 62, 67, 13, 43, 29, 59, 43, 13, 54, 14, 22, 13, 68, 16, 47, 67, 65, 62, 79, 10, 67, 21, 43, 19, 36, 71, 17, 61, 17, 54, 67, 61, 30, 20, 18, 19, 12, 21, 71, 60, 70, 29, 12, 71, 58, 62, 9, 66, 73, 63, 48, 71, 13, 13, 52, 7, 54, 65, 77, 58, -1, 18, 20, 51, 47, 34, 66]
-大寮 84
-小港 76
-仁武 78
-屏東 79
-高雄(湖內) 77
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[145, 132, 33, 117, 103, 121, 121, 90, 101, 97, 112, 122, 107, 103, 68, 93, 104, 124, 114, 152, 130, 100, 69, 73, 109, 116, 58, 107, 104, 110, 86, 110, 33, 92, 111, 99, 73, 89, 35, 75, 101, 88, 116, 64, 38, 66, 144, 96, 124, 130, 102, 105, 122, 37, 113, 82, 99, 152, 152, 108, 40, 112, 127, 97, 102, 33, 133, 98, 75, 139, 105, 107, 72, 61, 35, 87, 65, 94, 143, 82, 52, 101, 52, 40, 115, 113]
 </pre></div>
 </div>
 </div>
@@ -1543,11 +912,11 @@ document.write(`
 </section>
 </section>
 <section id="practice-print-out-the-site-which-values-are-larger-than-the-first-quarter">
-<h3>(Practice) Print out the site which values are larger than the first quarter<a class="headerlink" href="#practice-print-out-the-site-which-values-are-larger-than-the-first-quarter" title="Permalink to this heading">#</a></h3>
+<h3>(Practice) Print out the site which values are larger than the first quarter<a class="headerlink" href="#practice-print-out-the-site-which-values-are-larger-than-the-first-quarter" title="Permalink to this headline">#</a></h3>
 <p>有了排序後的List，就可以很方便地取一個閾值把要的資料取出來（最大值、前四分之一大的值或者是前三大的值），例如把大於該閾值的站台都給列印出來，即為所求。</p>
 </section>
 <section id="practice-print-out-sites-with-top-3-serious-values">
-<h3>(Practice) Print out sites with top 3 serious values<a class="headerlink" href="#practice-print-out-sites-with-top-3-serious-values" title="Permalink to this heading">#</a></h3>
+<h3>(Practice) Print out sites with top 3 serious values<a class="headerlink" href="#practice-print-out-sites-with-top-3-serious-values" title="Permalink to this headline">#</a></h3>
 <p>取出Top-3的範例</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1559,16 +928,99 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>103
-金門 126
-馬公 115
-馬祖 122
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>145
+二林 145
+三重 132
+三義 33
+土城 117
+士林 103
+大同 121
+大里 121
+大園 90
+大寮 101
+小港 97
+中山 112
+中壢 122
+仁武 107
+斗六 103
+冬山 68
+古亭 93
+左營 104
+平鎮 124
+永和 114
+安南 152
+朴子 130
+汐止 100
+竹山 69
+竹東 73
+西屯 109
+沙鹿 116
+宜蘭 58
+忠明 107
+松山 104
+板橋 110
+林口 86
+林園 110
+花蓮 33
+金門 92
+前金 111
+前鎮 99
+南投 73
+屏東 89
+恆春 35
+美濃 75
+苗栗 101
+埔里 88
+桃園 116
+馬公 64
+馬祖 38
+基隆 66
+崙背 144
+淡水 96
+麥寮 124
+善化 130
+復興 102
+湖口 105
+菜寮 122
+陽明 37
+新竹 113
+新店 82
+新莊 99
+新港 152
+新營 152
+楠梓 108
+萬里 40
+萬華 112
+嘉義 127
+彰化 97
+臺西 102
+臺東 33
+臺南 133
+鳳山 98
+潮州 75
+線西 139
+橋頭 105
+頭份 107
+龍潭 72
+豐原 61
+關山 35
+觀音 87
+宜蘭（頭城） 65
+高雄（湖內） 94
+臺南（麻豆） 143
+屏東（琉球） 82
+台中市（和平區消防隊） 52
+新北（樹林） 101
+屏東(枋山) 52
+富貴角 40
+大城 115
+員林 113
 </pre></div>
 </div>
 </div>
 </div>
 <section id="option-by-comperhensive-style">
-<h4>(Option) By comperhensive style<a class="headerlink" href="#option-by-comperhensive-style" title="Permalink to this heading">#</a></h4>
+<h4>(Option) By comperhensive style<a class="headerlink" href="#option-by-comperhensive-style" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">aqlist</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">([</span><span class="nb">int</span><span class="p">(</span><span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">])</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">aqdata</span><span class="p">],</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
@@ -1577,7 +1029,7 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;大寮&#39;, &#39;84&#39;), (&#39;仁武&#39;, &#39;78&#39;), (&#39;屏東&#39;, &#39;79&#39;)]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;安南&#39;, &#39;152&#39;), (&#39;新港&#39;, &#39;152&#39;), (&#39;新營&#39;, &#39;152&#39;)]
 </pre></div>
 </div>
 </div>
@@ -1585,7 +1037,7 @@ document.write(`
 </section>
 </section>
 <section id="option-sorting-algorithm-by-hand">
-<h3>(Option) Sorting Algorithm by hand<a class="headerlink" href="#option-sorting-algorithm-by-hand" title="Permalink to this heading">#</a></h3>
+<h3>(Option) Sorting Algorithm by hand<a class="headerlink" href="#option-sorting-algorithm-by-hand" title="Permalink to this headline">#</a></h3>
 <p>前例用了一個<code class="docutils literal notranslate"><span class="pre">sorted</span></code>函式就排序了所有的AQI的值，那這類<code class="docutils literal notranslate"><span class="pre">sorted</span></code>的排序函式是怎麼寫的呢？排序邏輯可以有很多種，但最容易理解的一種可以用兩層的排序演算法來達成。觀念很簡單：</p>
 <ol class="arabic simple">
 <li><p>先抓住第一個，一一和後面比較，看看有沒有人比它大，有的話，就和後面做置換（Swap），沒有的話就不動，這樣跑過一輪，就可以保證第一個最大。</p></li>
@@ -1628,7 +1080,10 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[84, 79, 78, 77, 76, 73, 71, 71, 71, 71, 70, 68, 67, 67, 67, 67, 66, 66, 66, 65, 65, 65, 63, 62, 62, 62, 61, 61, 60, 59, 58, 58, 57, 57, 54, 54, 54, 52, 51, 48, 47, 47, 43, 43, 43, 39, 36, 36, 34, 30, 29, 29, 28, 23, 22, 21, 21, 20, 20, 20, 20, 19, 19, 19, 18, 18, 18, 17, 17, 16, 15, 14, 14, 13, 13, 13, 13, 13, 13, 13, 12, 12, 10, 9, 7, -1]
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span>  <span class="n">Input</span> <span class="n">In</span> <span class="p">[</span><span class="mi">19</span><span class="p">]</span>
+    <span class="k">if</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;&quot;</span> <span class="ow">or</span> <span class="n">site</span><span class="p">[</span><span class="s1">&#39;AQI&#39;</span><span class="p">]</span> <span class="o">!=</span> <span class="s2">&quot;ND&quot;</span><span class="p">:</span>
+    <span class="o">^</span>
+<span class="ne">IndentationError</span>: unexpected indent
 </pre></div>
 </div>
 </div>
@@ -1636,10 +1091,10 @@ document.write(`
 </section>
 </section>
 <section id="convert-data-to-dataframe">
-<h2>Convert data to dataframe<a class="headerlink" href="#convert-data-to-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>Convert data to dataframe<a class="headerlink" href="#convert-data-to-dataframe" title="Permalink to this headline">#</a></h2>
 <p>操作開放資料的時候，經常會為了方便處理，把資料轉成未來pandas可以處理的形式。而這樣的形式通常是list of dictionary。</p>
 <section id="aqx-data-to-pandas-dataframe">
-<h3>AQX data to pandas dataframe<a class="headerlink" href="#aqx-data-to-pandas-dataframe" title="Permalink to this heading">#</a></h3>
+<h3>AQX data to pandas dataframe<a class="headerlink" href="#aqx-data-to-pandas-dataframe" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
@@ -1881,7 +1336,7 @@ document.write(`
 </div>
 </section>
 <section id="youbike-data-to-pandas-dataframe">
-<h3>Youbike data to pandas dataframe<a class="headerlink" href="#youbike-data-to-pandas-dataframe" title="Permalink to this heading">#</a></h3>
+<h3>Youbike data to pandas dataframe<a class="headerlink" href="#youbike-data-to-pandas-dataframe" title="Permalink to this headline">#</a></h3>
 <p>Youbike的原始資料為dict-of-dict的型態，所以需要轉為list-of-dict比較好轉成pandas的dataframe。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1894,7 +1349,7 @@ document.write(`
 </div>
 </div>
 <section id="problematic-by-converting-directly">
-<h4>Problematic by converting directly<a class="headerlink" href="#problematic-by-converting-directly" title="Permalink to this heading">#</a></h4>
+<h4>Problematic by converting directly<a class="headerlink" href="#problematic-by-converting-directly" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>如果直接用<code class="docutils literal notranslate"><span class="pre">pd.Dataframe</span></code>轉dict-of-dict會出現什麼狀況呢？</p></li>
 <li><p>結果是dict的key，也就是Youbike站的id，變成dataframe的欄。看似好像就是個表格，應該可以用，但實際上這違背了原本dataframe的設計。這類sheet-like的設計，無論是EXCEL、Google sheet、R、Python、Stata、SPSS的想法都一樣，資料直欄（Column)就是不同的變數，而資料橫列（Row）就是每筆資料。</p></li>
@@ -2292,7 +1747,7 @@ document.write(`
 </div>
 </section>
 <section id="solution-one-convert-data-structure">
-<h4>Solution One: Convert data structure<a class="headerlink" href="#solution-one-convert-data-structure" title="Permalink to this heading">#</a></h4>
+<h4>Solution One: Convert data structure<a class="headerlink" href="#solution-one-convert-data-structure" title="Permalink to this headline">#</a></h4>
 <p>仿照AQX的資料結構，在讀取資料後，先開一個空的<code class="docutils literal notranslate"><span class="pre">site_list</span></code>，然後一一把讀到的每個dict用<code class="docutils literal notranslate"><span class="pre">append()</span></code>一一放到list中。
 最後在用<code class="docutils literal notranslate"><span class="pre">pd.DataFrame(list_of_dict)</span></code>來轉換成dataframe。</p>
 <div class="cell docutils container">
@@ -2557,7 +2012,7 @@ document.write(`
 </div>
 </section>
 <section id="good-use-values-to-retrive-all-values">
-<h4>(Good) Use <code class="docutils literal notranslate"><span class="pre">values()</span></code> to retrive all values<a class="headerlink" href="#good-use-values-to-retrive-all-values" title="Permalink to this heading">#</a></h4>
+<h4>(Good) Use <code class="docutils literal notranslate"><span class="pre">values()</span></code> to retrive all values<a class="headerlink" href="#good-use-values-to-retrive-all-values" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">data</span><span class="p">[</span><span class="s1">&#39;retVal&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">values</span><span class="p">())</span>
@@ -2860,7 +2315,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目錄
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -2921,7 +2376,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By JILUNG
+作者： JILUNG
 </p>
 
   </div>

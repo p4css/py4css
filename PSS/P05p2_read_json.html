@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>P05-2 Load and dump ubike json data &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Read more formats" href="P05p3_read_other_format.html" />
     <link rel="prev" title="P05-1 Read CSV" href="P05p1_read_csv.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -368,7 +367,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="Source repository"
+   title="來源儲存庫"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -385,7 +384,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P05p2_read_json.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="Open an issue"
+   title="開啟議題"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -406,7 +405,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -415,7 +414,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P05p2_read_json.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="Download source file"
+   title="下載原始檔"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -433,7 +432,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="Print to PDF"
+  title="列印成 PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -453,7 +452,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="Fullscreen mode"
+  title="全螢幕模式"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -501,7 +500,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> Contents </h2>
+                <h2> 目錄 </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -534,12 +533,12 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p05-2-load-and-dump-ubike-json-data">
-<h1>P05-2 Load and dump ubike json data<a class="headerlink" href="#p05-2-load-and-dump-ubike-json-data" title="Permalink to this heading">#</a></h1>
+<h1>P05-2 Load and dump ubike json data<a class="headerlink" href="#p05-2-load-and-dump-ubike-json-data" title="Permalink to this headline">#</a></h1>
 <p>這個例子載入了台北市ubike的即時資料，該資料以JSON格式儲存，但他並非List of dict(s)的型態，而是Dict of dict(s)的型態，在最外面亦多一層Dictionary包裹著資料和回傳是否傳輸成功的確認碼。因此，和一般的例子比較起來，這個例子必須要找到資料的節點，在解出為Python的物件時，也要考慮如何處理資料中兩層的Dictionary。</p>
 <section id="read-and-write-json">
-<h2>Read and Write JSON<a class="headerlink" href="#read-and-write-json" title="Permalink to this heading">#</a></h2>
+<h2>Read and Write JSON<a class="headerlink" href="#read-and-write-json" title="Permalink to this headline">#</a></h2>
 <section id="step-1-requests-to-get-data-from-internet">
-<h3>Step 1. Requests to get data from internet<a class="headerlink" href="#step-1-requests-to-get-data-from-internet" title="Permalink to this heading">#</a></h3>
+<h3>Step 1. Requests to get data from internet<a class="headerlink" href="#step-1-requests-to-get-data-from-internet" title="Permalink to this headline">#</a></h3>
 <p>在以下的程式碼中，我用<code class="docutils literal notranslate"><span class="pre">requests</span></code>這個套件發出一個<code class="docutils literal notranslate"><span class="pre">get()</span></code>要求，然後我嘗試列印出一些該要求的回傳資料，以確認我成功地獲得我要求的資料。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -579,7 +578,7 @@ document.write(`
 </div>
 </section>
 <section id="step-2-convert-json-text-to-python-objects">
-<h3>Step 2. Convert json text to python objects<a class="headerlink" href="#step-2-convert-json-text-to-python-objects" title="Permalink to this heading">#</a></h3>
+<h3>Step 2. Convert json text to python objects<a class="headerlink" href="#step-2-convert-json-text-to-python-objects" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">json_obj</span> <span class="o">=</span> <span class="n">json</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">)</span>
@@ -601,7 +600,7 @@ document.write(`
 </div>
 </section>
 <section id="step-3-save-data-to-json">
-<h3>Step 3. Save data to json<a class="headerlink" href="#step-3-save-data-to-json" title="Permalink to this heading">#</a></h3>
+<h3>Step 3. Save data to json<a class="headerlink" href="#step-3-save-data-to-json" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_obj</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ubike.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
 
@@ -610,10 +609,10 @@ document.write(`
 </section>
 </section>
 <section id="load-dump-pickle">
-<h2>Load/Dump Pickle<a class="headerlink" href="#load-dump-pickle" title="Permalink to this heading">#</a></h2>
+<h2>Load/Dump Pickle<a class="headerlink" href="#load-dump-pickle" title="Permalink to this headline">#</a></h2>
 <p>Pickle有點類似暫存檔，把什麼東西dump-out，當load-in回來時就會是原本的樣子。不用再重新Parsing。甚至如果原本資料型態</p>
 <section id="dump-to-pickle">
-<h3>Dump to Pickle<a class="headerlink" href="#dump-to-pickle" title="Permalink to this heading">#</a></h3>
+<h3>Dump to Pickle<a class="headerlink" href="#dump-to-pickle" title="Permalink to this headline">#</a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.p&quot;</span><span class="p">,</span> <span class="s2">&quot;wb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
     <span class="n">pickle</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_obj</span><span class="p">,</span> <span class="n">fout</span><span class="p">)</span>
@@ -621,7 +620,7 @@ document.write(`
 </div>
 </section>
 <section id="load-pickle-data">
-<h3>Load Pickle data<a class="headerlink" href="#load-pickle-data" title="Permalink to this heading">#</a></h3>
+<h3>Load Pickle data<a class="headerlink" href="#load-pickle-data" title="Permalink to this headline">#</a></h3>
 <div class="highlight-Python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.p&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
     <span class="n">ubike_data</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
 </pre></div>
@@ -629,10 +628,10 @@ document.write(`
 </section>
 </section>
 <section id="convert-csv-to-json">
-<h2>Convert CSV to JSON<a class="headerlink" href="#convert-csv-to-json" title="Permalink to this heading">#</a></h2>
+<h2>Convert CSV to JSON<a class="headerlink" href="#convert-csv-to-json" title="Permalink to this headline">#</a></h2>
 <p>現在我想做的是，假設我有一個檔案是CSV檔，但我希望用手動方式把它改為JSON檔，要怎麼做？做法其實就是先把CSV第一列取出來儲存為Key，然後把這個Key一一和每一列的值給對應起來結合成一個又一個的Dictionary，最後把每列所產生的Dictionary用<code class="docutils literal notranslate"><span class="pre">append()</span></code>加入一個List中，就會是一個List of dictionaries結構的JSON格式。</p>
 <section id="step-1-read-csv-to-list-of-list">
-<h3>Step 1: Read CSV to list of list<a class="headerlink" href="#step-1-read-csv-to-list-of-list" title="Permalink to this heading">#</a></h3>
+<h3>Step 1: Read CSV to list of list<a class="headerlink" href="#step-1-read-csv-to-list-of-list" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">all_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;drug_156_2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
     <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">f</span><span class="o">.</span><span class="n">read</span><span class="p">()</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="s2">&quot;</span><span class="se">\n</span><span class="s2">&quot;</span><span class="p">):</span>
@@ -647,7 +646,7 @@ document.write(`
 </div>
 </section>
 <section id="step-2-convert-list-of-list-to-list-of-dict">
-<h3>Step 2: Convert list of list to list of dict<a class="headerlink" href="#step-2-convert-list-of-list-to-list-of-dict" title="Permalink to this heading">#</a></h3>
+<h3>Step 2: Convert list of list to list of dict<a class="headerlink" href="#step-2-convert-list-of-list-to-list-of-dict" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">json_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">all_list</span><span class="p">[</span><span class="mi">1</span><span class="p">:]:</span>
     <span class="n">temp_dict</span> <span class="o">=</span> <span class="nb">dict</span><span class="p">(</span><span class="nb">zip</span><span class="p">(</span><span class="n">keys</span><span class="p">,</span> <span class="n">row</span><span class="p">))</span>
@@ -657,7 +656,7 @@ document.write(`
 </div>
 </section>
 <section id="step-3-dump-to-json">
-<h3>Step 3: Dump to json<a class="headerlink" href="#step-3-dump-to-json" title="Permalink to this heading">#</a></h3>
+<h3>Step 3: Dump to json<a class="headerlink" href="#step-3-dump-to-json" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">json_obj</span><span class="p">,</span> <span class="nb">open</span><span class="p">(</span><span class="s1">&#39;ubike.json&#39;</span><span class="p">,</span> <span class="s1">&#39;w&#39;</span><span class="p">))</span>
 
@@ -730,7 +729,7 @@ document.write(`
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> Contents
+    <i class="fa-solid fa-list"></i> 目錄
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -765,7 +764,7 @@ document.write(`
   <div class="footer-item">
     
 <p class="component-author">
-By JILUNG
+作者： JILUNG
 </p>
 
   </div>
