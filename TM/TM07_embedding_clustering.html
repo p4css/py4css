@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>TM07 embedding and clustering &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="TM07 word2vec vs doc2vec" href="TM07_2_doc2vec.html" />
     <link rel="prev" title="TM06 Clustering" href="TM06_Clustering.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -259,10 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
@@ -367,7 +366,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -384,7 +383,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM07_embedding_clustering.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -405,7 +404,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -414,7 +413,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/TM/TM07_embedding_clustering.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -432,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -452,7 +451,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -500,7 +499,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -550,7 +549,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tm07-embedding-and-clustering">
-<h1>TM07 embedding and clustering<a class="headerlink" href="#tm07-embedding-and-clustering" title="Permalink to this headline">#</a></h1>
+<h1>TM07 embedding and clustering<a class="headerlink" href="#tm07-embedding-and-clustering" title="Permalink to this heading">#</a></h1>
 <p>在做文本聚類（Document Clustering）的時候，即使抽出每個文本的關鍵字，也有可能會有聚類效果不好（群與群之間分不開）的情形。這其中一種可能的原因是文本中有非常多意義相近或類型相近的名詞，但在計算的時候被視為不同的文字。例如在政治類文本中的「小英」或「蔡英文」意指同一個人，但在計算上就是兩個相異詞；又如下列兩個句子，叉燒和豆花都是一種食品，在句子中的位置非常接近，但如果就以抽關鍵字與文字作為特徵向量的方法來做文件比對，這就是兩個完全相異的詞。所以，我們想要找到一種方法，能夠讓「叉燒」和「豆花」這兩個字的表徵「Representation」相近一些。</p>
 <ul class="simple">
 <li><p>這家的「叉燒」不好吃</p></li>
@@ -559,7 +558,7 @@ document.write(`
 <p>「詞嵌入（Word embeddings）」的想法是，從上面兩句話來看，可以發現「叉燒」與「豆花」兩個字周遭的句法結構是非常接近的，而且主要是「店家+食品+評價」的句法結構。所以，可以嘗試把「叉燒」或「豆花」周遭的文字作為該詞的表徵（除了自己本身以外），這也可以簡單地說是一個詞出現的脈絡。如果可以用這樣的方式表徵「叉燒」與「豆花」，那自然「店家」或「評價」也可以被這樣表徵，同時就克服了「叉燒」與「豆花」周遭的文字也有可能會有意思相近的情形。</p>
 <p>詞嵌入：將一個詞周遭一定範圍內的字詞（除了該詞本身）作為該詞的表徵。</p>
 <section id="process">
-<h2>Process<a class="headerlink" href="#process" title="Permalink to this headline">#</a></h2>
+<h2>Process<a class="headerlink" href="#process" title="Permalink to this heading">#</a></h2>
 <p>整體過程如下圖：</p>
 <ol class="arabic simple">
 <li><p>從一個文本有哪些字中，會建立一出每個字周遭w個字作為其脈絡的矩陣，亦即以周遭文字為特徵的term-term matrix。</p></li>
@@ -571,7 +570,7 @@ document.write(`
 <p><img alt="Alt text" src="../_images/TM07_1.png" /></p>
 </section>
 <section id="loading-data">
-<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
 <p>這邊用作範例的資料仍然是在<a class="reference internal" href="TM06_Clustering.html#tm06-clustering"><span class="std std-ref">TM06 Clustering</span></a>所使用的評價留言。之前透過TF-IDF抽取關鍵字在群集的效果並不好，希望這個例子可以有所改善。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -593,17 +592,13 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
-  from pandas.core.computation.check import NUMEXPR_INSTALLED
-/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
-  from pandas.core import (
-Building prefix dict from the default dictionary ...
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/4m/shks9p8j0dnbv51nf7cyysfc0000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.311 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.291 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -669,9 +664,9 @@ Building prefix dict from the default dictionary ...
 </div>
 </section>
 <section id="term-frequency">
-<h2>Term frequency<a class="headerlink" href="#term-frequency" title="Permalink to this headline">#</a></h2>
+<h2>Term frequency<a class="headerlink" href="#term-frequency" title="Permalink to this heading">#</a></h2>
 <section id="loading-stopwords">
-<h3>Loading stopwords<a class="headerlink" href="#loading-stopwords" title="Permalink to this headline">#</a></h3>
+<h3>Loading stopwords<a class="headerlink" href="#loading-stopwords" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !wget https://raw.githubusercontent.com/p4css/py4css/main/data/sentiment.csv -O stopwords_zh-tw.txt </span>
@@ -778,7 +773,7 @@ Building prefix dict from the default dictionary ...
 </div>
 </section>
 <section id="detecting-chinese-punctuation">
-<h3>Detecting Chinese punctuation<a class="headerlink" href="#detecting-chinese-punctuation" title="Permalink to this headline">#</a></h3>
+<h3>Detecting Chinese punctuation<a class="headerlink" href="#detecting-chinese-punctuation" title="Permalink to this heading">#</a></h3>
 <p>以下先觀察資料的詞頻（依照高至低排列）</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -808,12 +803,12 @@ Building prefix dict from the default dictionary ...
 </section>
 </section>
 <section id="building-word2vec-model">
-<h2>Building word2vec model<a class="headerlink" href="#building-word2vec-model" title="Permalink to this headline">#</a></h2>
+<h2>Building word2vec model<a class="headerlink" href="#building-word2vec-model" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Reference: <a class="reference external" href="https://radimrehurek.com/gensim/models/word2vec.html">https://radimrehurek.com/gensim/models/word2vec.html</a></p></li>
 </ul>
 <section id="building-model">
-<h3>Building model<a class="headerlink" href="#building-model" title="Permalink to this headline">#</a></h3>
+<h3>Building model<a class="headerlink" href="#building-model" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">vector_size</span></code>: 每個詞要表徵為多少維度的向量</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">window</span></code>: 每個詞的表徵要納入前後多少個詞。</p></li>
@@ -825,63 +820,10 @@ Building prefix dict from the default dictionary ...
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
-<span class="nn">Input In [5],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
-<span class="ne">----&gt; </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">gensim.models</span> <span class="kn">import</span> <span class="n">Word2Vec</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="n">model</span> <span class="o">=</span> <span class="n">Word2Vec</span><span class="p">(</span><span class="n">df</span><span class="p">[</span><span class="s1">&#39;token_text&#39;</span><span class="p">],</span> <span class="n">min_count</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">vector_size</span><span class="o">=</span><span class="mi">300</span><span class="p">,</span> <span class="n">window</span><span class="o">=</span><span class="mi">10</span><span class="p">,</span> <span class="n">sg</span><span class="o">=</span><span class="mi">0</span><span class="p">,</span> <span class="n">workers</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">11</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span> <span class="n">__version__</span> <span class="o">=</span> <span class="s1">&#39;4.1.2&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">import</span> <span class="nn">logging</span>
-<span class="ne">---&gt; </span><span class="mi">11</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">parsing</span><span class="p">,</span> <span class="n">corpora</span><span class="p">,</span> <span class="n">matutils</span><span class="p">,</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">models</span><span class="p">,</span> <span class="n">similarities</span><span class="p">,</span> <span class="n">utils</span>  <span class="c1"># noqa:F401</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="s1">&#39;gensim&#39;</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="k">if</span> <span class="ow">not</span> <span class="n">logger</span><span class="o">.</span><span class="n">handlers</span><span class="p">:</span>  <span class="c1"># To ensure reload() doesn&#39;t add another one</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="fm">__init__</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">6</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">2</span><span class="sd"> This package contains implementations of various streaming corpus I/O format.</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="c1"># bring corpus classes directly into package namespace, to save some typing</span>
-<span class="ne">----&gt; </span><span class="mi">6</span> <span class="kn">from</span> <span class="nn">.indexedcorpus</span> <span class="kn">import</span> <span class="n">IndexedCorpus</span>  <span class="c1"># noqa:F401 must appear before the other classes</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span> <span class="kn">from</span> <span class="nn">.mmcorpus</span> <span class="kn">import</span> <span class="n">MmCorpus</span>  <span class="c1"># noqa:F401</span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span> <span class="kn">from</span> <span class="nn">.bleicorpus</span> <span class="kn">import</span> <span class="n">BleiCorpus</span>  <span class="c1"># noqa:F401</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">corpora</span><span class="o">/</span><span class="n">indexedcorpus</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">14</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="kn">import</span> <span class="nn">logging</span>
-<span class="g g-Whitespace">     </span><span class="mi">12</span> <span class="kn">import</span> <span class="nn">numpy</span>
-<span class="ne">---&gt; </span><span class="mi">14</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">interfaces</span><span class="p">,</span> <span class="n">utils</span>
-<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">19</span> <span class="k">class</span> <span class="nc">IndexedCorpus</span><span class="p">(</span><span class="n">interfaces</span><span class="o">.</span><span class="n">CorpusABC</span><span class="p">):</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">interfaces</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">19</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">      </span><span class="mi">7</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Basic interfaces used across the whole Gensim package.</span>
-<span class="g g-Whitespace">      </span><span class="mi">8</span><span class="sd"> </span>
-<span class="g g-Whitespace">      </span><span class="mi">9</span><span class="sd"> These interfaces are used for building corpora, model transformation and similarity queries.</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">     </span><span class="mi">14</span><span class="sd"> </span>
-<span class="g g-Whitespace">     </span><span class="mi">15</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">     </span><span class="mi">17</span> <span class="kn">import</span> <span class="nn">logging</span>
-<span class="ne">---&gt; </span><span class="mi">19</span> <span class="kn">from</span> <span class="nn">gensim</span> <span class="kn">import</span> <span class="n">utils</span><span class="p">,</span> <span class="n">matutils</span>
-<span class="g g-Whitespace">     </span><span class="mi">22</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-<span class="g g-Whitespace">     </span><span class="mi">25</span> <span class="k">class</span> <span class="nc">CorpusABC</span><span class="p">(</span><span class="n">utils</span><span class="o">.</span><span class="n">SaveLoad</span><span class="p">):</span>
-
-<span class="n">File</span> <span class="o">~/</span><span class="n">opt</span><span class="o">/</span><span class="n">anaconda3</span><span class="o">/</span><span class="n">lib</span><span class="o">/</span><span class="n">python3</span><span class="mf">.9</span><span class="o">/</span><span class="n">site</span><span class="o">-</span><span class="n">packages</span><span class="o">/</span><span class="n">gensim</span><span class="o">/</span><span class="n">matutils</span><span class="o">.</span><span class="n">py</span><span class="p">:</span><span class="mi">22</span><span class="p">,</span> <span class="ow">in</span> <span class="o">&lt;</span><span class="n">module</span><span class="o">&gt;</span>
-<span class="g g-Whitespace">     </span><span class="mi">20</span> <span class="kn">import</span> <span class="nn">scipy.linalg</span>
-<span class="g g-Whitespace">     </span><span class="mi">21</span> <span class="kn">from</span> <span class="nn">scipy.linalg.lapack</span> <span class="kn">import</span> <span class="n">get_lapack_funcs</span>
-<span class="ne">---&gt; </span><span class="mi">22</span> <span class="kn">from</span> <span class="nn">scipy.linalg.special_matrices</span> <span class="kn">import</span> <span class="n">triu</span>
-<span class="g g-Whitespace">     </span><span class="mi">23</span> <span class="kn">from</span> <span class="nn">scipy.special</span> <span class="kn">import</span> <span class="n">psi</span>  <span class="c1"># gamma function utils</span>
-<span class="g g-Whitespace">     </span><span class="mi">26</span> <span class="n">logger</span> <span class="o">=</span> <span class="n">logging</span><span class="o">.</span><span class="n">getLogger</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
-
-<span class="ne">ImportError</span>: cannot import name &#39;triu&#39; from &#39;scipy.linalg.special_matrices&#39; (/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/scipy/linalg/special_matrices.py)
-</pre></div>
-</div>
-</div>
 </div>
 </section>
 <section id="testing-similarity">
-<h3>Testing Similarity<a class="headerlink" href="#testing-similarity" title="Permalink to this headline">#</a></h3>
+<h3>Testing Similarity<a class="headerlink" href="#testing-similarity" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Number of dimensions of the NumPy array: <code class="docutils literal notranslate"><span class="pre">.ndim</span></code></p></li>
 <li><p>Shape of the NumPy array: <code class="docutils literal notranslate"><span class="pre">.shape</span></code></p></li>
@@ -905,66 +847,81 @@ Building prefix dict from the default dictionary ...
 300
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-0.31674013,  0.98479056,  0.55002797, -0.00300632, -0.3717087 ,
-       -0.03676438,  0.80388683,  1.6157628 ,  0.40359935, -1.0496926 ,
-        0.8474335 , -0.20636885, -0.06867974, -0.5290617 , -0.64192927,
-       -1.4889965 ,  0.14241537, -0.79011923,  0.5477932 , -0.15136261,
-        0.18019041,  0.25337672,  0.45982563,  0.09620805,  0.9149604 ,
-       -0.32965535, -1.1101619 ,  0.57151294, -0.65307313, -1.1042819 ,
-       -0.75969183,  0.03025471,  0.6332594 , -0.46678978,  0.15717323,
-        0.44125384,  0.9859078 , -0.858264  , -0.78866714, -0.21589145,
-       -0.15076241,  0.7403064 ,  0.18195632, -0.7552988 ,  0.670244  ,
-        0.66446006,  0.7908314 ,  0.19624071, -0.21637331,  0.7410341 ,
-        0.2018969 ,  0.11659689, -1.1713946 ,  1.0404803 , -0.48892394,
-        0.24101909,  0.6852858 , -0.80667424, -0.15899062,  0.10740341,
-       -0.6248213 ,  0.69450855, -0.30251327, -0.01447687, -0.44272155,
-       -0.034931  ,  0.0795709 ,  0.378609  , -0.01827897, -0.63884705,
-       -0.37481406,  1.1624388 ,  1.0024775 , -1.0239692 ,  0.65707207,
-       -0.26540062, -0.5378139 ,  0.5749483 , -0.2964817 ,  0.8744263 ,
-       -0.409887  , -0.2019899 ,  0.16116548,  1.6190301 , -0.6298043 ,
-        0.33836612,  0.14986096, -0.29683048,  0.57827306,  1.3161428 ,
-        0.746071  , -0.02674316,  0.34763205, -0.10220644,  1.0766499 ,
-        0.8596506 ,  0.37119558, -0.10488071, -0.430386  ,  0.8484839 ,
-       -0.5337901 , -0.22894964,  0.36559382,  0.20601663,  0.72325504,
-       -0.90736324, -0.3510841 ,  0.27675876, -0.9021447 ,  0.00625647,
-       -0.8587577 , -0.81876093, -0.2696968 ,  0.2338682 ,  1.1149645 ,
-        0.5337267 , -0.5086132 ,  1.0597248 ,  0.6384551 , -0.51972336,
-        0.50807506, -0.06691699,  0.44538307,  0.7103351 , -0.5880603 ,
-        0.7973816 , -0.04407971, -0.7934531 , -0.12063044,  1.2121446 ,
-        0.31629476,  1.3825697 , -0.48027393, -1.1468766 ,  0.39236096,
-        0.7697679 , -0.06801656, -0.1128414 , -1.0483779 , -1.0044184 ,
-        1.1609178 , -1.3813472 , -0.6587842 ,  0.17600417,  0.6811292 ,
-       -0.20426959, -1.2949921 , -0.6932213 ,  0.7130819 , -0.6537436 ,
-        0.80478823, -1.3830805 , -0.24629247,  0.11279636, -0.42554554,
-        0.9468984 , -0.9282241 , -0.5342584 ,  0.22016637,  0.92432934,
-        0.13714142,  0.79499644, -1.0027289 ,  0.7783872 ,  0.09744018,
-        0.51108646, -0.05931205, -0.15764461,  0.02146756,  1.4525805 ,
-       -1.1039083 ,  0.693873  ,  0.5300894 ,  0.4275913 , -0.41768038,
-        0.7643551 , -0.35882598, -0.39352876, -0.05752953, -0.9892436 ,
-       -0.39861318,  0.03411812, -0.5413952 , -0.6486807 , -1.0571779 ,
-        0.26868477,  1.2085382 ,  0.46889672,  0.74091434, -0.7977621 ,
-        1.0160011 , -0.2070249 , -0.9689545 , -0.32355538,  0.73729783,
-       -1.2218018 ,  0.35534024, -1.3652048 , -0.3647369 , -0.18551765,
-       -0.58584356, -0.01865287,  0.53105867, -1.0275669 ,  0.5589776 ,
-       -0.16521098, -0.56169087,  0.72472477,  0.27248138, -0.663583  ,
-       -0.02980347, -0.853396  , -0.8577957 , -0.33844447,  1.2100823 ,
-       -0.8294232 , -0.23286888, -1.209963  , -1.0508454 , -1.0827427 ,
-        0.5814727 ,  0.05291079, -1.014674  , -0.6751364 , -0.5927091 ,
-       -0.14469829, -0.30572426, -0.16201921, -0.22367771,  0.6728401 ,
-        0.44044545, -0.72082436, -0.11595754, -0.8603207 , -0.6725368 ,
-        0.4699738 ,  0.24779996,  0.35437146,  0.55862975, -0.80594516,
-        0.5818724 , -0.32281822, -0.08001819, -0.50888896,  0.48103222,
-       -1.2542436 , -0.19470057, -0.1517278 ,  0.30944467,  1.3499352 ,
-       -0.13914947,  0.0498984 ,  0.35035107,  0.31423557, -0.2309058 ,
-        0.12240745,  1.6961956 ,  0.2529443 , -0.72138107, -0.5419234 ,
-       -0.06021542, -0.11458967,  0.31610987, -0.4830627 , -0.98961425,
-        0.09138416,  1.0765471 , -0.46883726, -0.3936698 ,  0.00505236,
-       -0.49208698, -0.06001532, -0.22224393, -0.38241354,  0.6577097 ,
-        0.8394873 ,  0.97649723,  0.22798742, -0.7240729 ,  0.13368899,
-        1.1682982 , -0.0919172 ,  0.5074343 ,  0.3198598 ,  0.25696194,
-        0.12996699, -1.6954168 ,  1.0607601 ,  0.14463532,  0.978959  ,
-        0.34372905,  0.6593779 ,  0.6915598 , -0.5140742 ,  0.8198427 ,
-        1.0754904 ,  0.6701624 , -0.08041768,  0.8007277 , -0.56923896],
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([-6.07946694e-01,  1.26701367e+00,  5.60346901e-01,  2.26394266e-01,
+       -7.34302521e-01, -7.16134131e-01,  1.42090929e+00,  1.55002892e+00,
+        6.17510736e-01, -6.16182268e-01,  8.91362548e-01,  2.03801543e-01,
+       -4.70310986e-01,  1.72332093e-01, -4.84408170e-01, -1.43784904e+00,
+        7.86494553e-01, -4.20918673e-01, -2.34663397e-01, -6.63853483e-03,
+        9.37202573e-03,  1.04624800e-01,  4.89379227e-01,  1.25260755e-01,
+        1.37132668e+00, -4.38409656e-01, -1.47375965e+00,  9.47335064e-02,
+       -1.00683284e+00, -9.84660149e-01, -1.17074025e+00, -3.57939452e-01,
+        7.37472713e-01, -5.32903485e-02, -4.31286059e-02,  8.25072706e-01,
+        7.51127005e-01, -1.19988024e+00, -5.92565954e-01, -9.40224901e-02,
+       -4.58040237e-01,  7.92552352e-01,  3.58810797e-02, -5.18139243e-01,
+        4.52904969e-01,  1.59723222e-01,  7.42594361e-01,  5.57530463e-01,
+        1.57969892e-01,  8.85808051e-01,  5.53607404e-01,  1.31898940e-01,
+       -1.19238424e+00,  1.02005184e+00, -2.68616140e-01,  2.02714220e-01,
+        7.15463519e-01,  1.20034032e-02, -2.56993383e-01, -6.75627813e-02,
+       -8.53949428e-01,  1.47244588e-01, -2.12298870e-01,  5.52556455e-01,
+        1.54421628e-02,  3.45531106e-01, -2.71609649e-02,  6.35988116e-01,
+       -3.82351547e-01, -2.54215658e-01, -1.34041339e-01,  7.55013406e-01,
+        2.69528717e-01, -5.74609160e-01,  6.37019753e-01, -3.94521087e-01,
+       -3.07811081e-01, -1.12542108e-01, -2.95722969e-02,  6.09828770e-01,
+       -3.57450306e-01, -5.12499094e-01,  2.10205644e-01,  1.37208557e+00,
+       -4.22512144e-01,  1.39696896e-01,  5.46493948e-01, -2.55017012e-01,
+        4.86708611e-01,  9.79047716e-01,  5.57006538e-01, -3.77938092e-01,
+        1.80565104e-01, -4.23950613e-01,  1.42430592e+00,  1.12465560e+00,
+        4.63018090e-01, -4.86787111e-01, -2.51684964e-01,  6.24268770e-01,
+       -6.52181506e-01, -5.18309586e-02,  5.77131093e-01,  7.13578891e-04,
+        7.04880178e-01, -7.11277068e-01, -4.51674998e-01, -8.32445174e-02,
+       -8.49434078e-01,  2.28840306e-01, -7.51847029e-01, -6.15085006e-01,
+       -3.85327898e-02,  1.93691894e-01,  1.05186212e+00,  2.67028898e-01,
+       -2.22335607e-01,  1.08203149e+00,  1.10782290e+00, -9.77932215e-01,
+        7.41025805e-01,  5.56753755e-01,  5.55703402e-01,  1.70058116e-01,
+       -2.44481623e-01,  6.91693902e-01, -7.44130164e-02, -7.70074129e-01,
+       -1.54374063e-01,  8.74960423e-01,  5.07927418e-01,  8.55208874e-01,
+        7.32161105e-02, -1.45195055e+00,  1.69013828e-01,  5.16287267e-01,
+       -2.67402291e-01, -3.29922438e-01, -6.18599057e-01, -9.43347931e-01,
+        9.50948060e-01, -1.40229154e+00, -3.88126314e-01,  2.35113129e-01,
+        3.84655058e-01,  9.53139588e-02, -1.15766513e+00, -5.57872534e-01,
+        7.73538768e-01, -5.43136179e-01,  7.12761998e-01, -1.10511470e+00,
+       -7.90902734e-01, -2.25715712e-01, -1.64058134e-01,  6.74708784e-01,
+       -7.76950240e-01, -5.81746936e-01, -2.32985526e-01,  7.30874181e-01,
+        3.61197442e-01,  8.84081781e-01, -9.89921033e-01,  9.04485524e-01,
+       -8.73139501e-02,  6.00573421e-01,  1.05591744e-01, -5.97475827e-01,
+        3.56183529e-01,  1.44769156e+00, -1.08278203e+00,  3.36320102e-01,
+        5.41672945e-01,  2.58768290e-01,  3.80039543e-01,  8.39048684e-01,
+       -1.92414701e-01, -3.56469542e-01,  2.98484892e-01, -5.63088834e-01,
+       -1.71186164e-01,  5.90218604e-02, -7.31742203e-01, -4.13429171e-01,
+       -6.51114583e-01,  1.49755433e-01,  8.31029058e-01,  2.27994993e-01,
+        5.73100805e-01, -1.06948292e+00,  5.09518564e-01, -1.69095919e-01,
+       -4.85157013e-01, -3.85786444e-02,  4.38608080e-01, -1.37829483e+00,
+        1.73744664e-01, -1.35108769e+00, -5.02280951e-01,  3.08730640e-02,
+       -6.22778475e-01, -2.10967809e-01,  1.52880386e-01, -8.76003087e-01,
+        4.71900880e-01, -4.68685389e-01, -6.15877390e-01,  7.44363487e-01,
+        2.68611759e-01, -4.15066212e-01, -2.60419816e-01, -7.91178286e-01,
+       -8.94843757e-01, -4.10571218e-01,  1.06584036e+00, -6.37412965e-01,
+       -4.56854522e-01, -1.27063644e+00, -6.79653764e-01, -1.06838822e+00,
+        9.74972665e-01,  9.92305428e-02, -7.80180812e-01, -7.29906559e-01,
+        6.51039854e-02, -2.89993465e-01, -6.08968064e-02, -6.29263222e-01,
+       -7.70581961e-01,  5.62856257e-01,  2.54912943e-01, -4.46603239e-01,
+       -2.47468308e-01, -6.66198969e-01, -2.54037589e-01,  4.42754149e-01,
+        3.41751389e-02,  6.91363275e-01,  4.43482935e-01, -5.82820237e-01,
+        5.69991052e-01, -3.01935583e-01,  7.15420209e-03, -4.80804771e-01,
+        6.29992425e-01, -1.11187923e+00, -4.59883779e-01, -4.42771241e-02,
+       -1.99785382e-01,  1.08965063e+00,  3.10720742e-01,  2.48524874e-01,
+        7.01063037e-01, -6.81648999e-02, -4.99949515e-01,  3.39663923e-02,
+        1.85778201e+00,  4.45039451e-01, -8.63625407e-01, -6.52491748e-01,
+        2.84473836e-01, -3.11607867e-01,  2.40968261e-02, -7.38523006e-01,
+       -1.20044923e+00, -2.03938738e-01,  1.02997255e+00, -4.01133560e-02,
+       -2.94272870e-01,  9.35726523e-01, -5.36413372e-01, -3.96150798e-01,
+       -9.95400269e-03, -5.19573863e-04,  1.15626335e+00,  1.01255023e+00,
+        1.48005760e+00,  4.37615544e-01, -6.22223973e-01,  1.05204403e-01,
+        8.39127779e-01, -4.20365818e-02,  4.20179486e-01, -2.43464127e-01,
+       -5.17247729e-02,  4.78032589e-01, -1.29973388e+00,  1.15032244e+00,
+        4.07166421e-01,  8.95133257e-01,  2.40865231e-01,  2.87617087e-01,
+        7.90940642e-01, -9.52419564e-02,  4.31570083e-01,  1.68457866e+00,
+        4.81270105e-01, -3.42454225e-01,  5.45276821e-01, -1.07083285e+00],
       dtype=float32)
 </pre></div>
 </div>
@@ -981,9 +938,9 @@ Building prefix dict from the default dictionary ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;來安裝&#39;, 0.9180076122283936), (&#39;好評&#39;, 0.9177042841911316), (&#39;貴&#39;, 0.9163232445716858), (&#39;還沒安裝&#39;, 0.9159592390060425), (&#39;真的&#39;, 0.9159547686576843), (&#39;哦&#39;, 0.9159358143806458), (&#39;c&#39;, 0.915668785572052), (&#39;遞&#39;, 0.9155442714691162), (&#39;呵呵&#39;, 0.9154207110404968), (&#39;包裝&#39;, 0.9153860211372375), (&#39;喜歡&#39;, 0.9153680205345154), (&#39;保障&#39;, 0.9153565168380737), (&#39;新&#39;, 0.9152351021766663), (&#39;遺憾&#39;, 0.9152233004570007), (&#39;今晚&#39;, 0.9151896238327026), (&#39;吧&#39;, 0.91505366563797), (&#39;回來&#39;, 0.9150165915489197), (&#39;一瓶&#39;, 0.9149009585380554), (&#39;送到&#39;, 0.9148070812225342), (&#39;很難&#39;, 0.9147375822067261)]
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[(&#39;快點&#39;, 0.9287009239196777), (&#39;嗚&#39;, 0.9269012212753296), (&#39;酸酸乳&#39;, 0.9260907173156738), (&#39;香蕉&#39;, 0.9246014952659607), (&#39;香草&#39;, 0.9242873191833496), (&#39;到底&#39;, 0.9221895933151245), (&#39;危險&#39;, 0.9219173192977905), (&#39;開心&#39;, 0.921214759349823), (&#39;害怕&#39;, 0.9211307168006897), (&#39;生命&#39;, 0.9211248159408569), (&#39;三位&#39;, 0.9204643368721008), (&#39;回覆&#39;, 0.920119047164917), (&#39;味&#39;, 0.9201104640960693), (&#39;唉&#39;, 0.9199362993240356), (&#39;致癌&#39;, 0.9197471141815186), (&#39;哈哈哈&#39;, 0.9196656346321106), (&#39;幸運者&#39;, 0.9194204807281494), (&#39;耶&#39;, 0.9184173941612244), (&#39;出發&#39;, 0.918306827545166), (&#39;珍惜&#39;, 0.9181964993476868)]
 ----------------------------------------
-[(&#39;乾淨&#39;, 0.9076069593429565), (&#39;不錯&#39;, 0.90566086769104), (&#39;較&#39;, 0.9039303660392761), (&#39;比&#39;, 0.9032891392707825), (&#39;價效&#39;, 0.9023041129112244), (&#39;高&#39;, 0.9013342261314392), (&#39;環境&#39;, 0.901299238204956), (&#39;外觀&#39;, 0.9012528657913208), (&#39;交通&#39;, 0.9009637236595154), (&#39;比比&#39;, 0.8986650705337524), (&#39;精細&#39;, 0.89838045835495), (&#39;足夠&#39;, 0.8979520201683044), (&#39;舒適&#39;, 0.8975657820701599), (&#39;很&#39;, 0.8970848321914673), (&#39;手感&#39;, 0.896841824054718), (&#39;房間&#39;, 0.8965977430343628), (&#39;地理位置&#39;, 0.8965383172035217), (&#39;比還&#39;, 0.8964570164680481), (&#39;設施&#39;, 0.8952569961547852), (&#39;總體&#39;, 0.8947798609733582)]
+[(&#39;不錯&#39;, 0.9179893732070923), (&#39;外觀&#39;, 0.9165046215057373), (&#39;總體&#39;, 0.9160520434379578), (&#39;很&#39;, 0.9160037040710449), (&#39;高&#39;, 0.9158604145050049), (&#39;好&#39;, 0.9158157706260681), (&#39;比高&#39;, 0.9151260256767273), (&#39;配置&#39;, 0.914924681186676), (&#39;手感&#39;, 0.9143297076225281), (&#39;適中&#39;, 0.9130561947822571), (&#39;輕便&#39;, 0.9127748608589172), (&#39;服務&#39;, 0.9126827120780945), (&#39;比&#39;, 0.912606418132782), (&#39;價格&#39;, 0.912468671798706), (&#39;算&#39;, 0.9122589230537415), (&#39;漂亮&#39;, 0.9122161865234375), (&#39;音效&#39;, 0.9121838808059692), (&#39;價效&#39;, 0.9121792912483215), (&#39;方便&#39;, 0.9119850397109985), (&#39;環境&#39;, 0.9119145274162292)]
 </pre></div>
 </div>
 </div>
@@ -991,7 +948,7 @@ Building prefix dict from the default dictionary ...
 </section>
 </section>
 <section id="visualized-with-dimension-reduction">
-<h2>Visualized with Dimension reduction<a class="headerlink" href="#visualized-with-dimension-reduction" title="Permalink to this headline">#</a></h2>
+<h2>Visualized with Dimension reduction<a class="headerlink" href="#visualized-with-dimension-reduction" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://medium.com/marketingdatascience/%E8%A7%A3%E6%B1%BApython-3-matplotlib%E8%88%87seaborn%E8%A6%96%E8%A6%BA%E5%8C%96%E5%A5%97%E4%BB%B6%E4%B8%AD%E6%96%87%E9%A1%AF%E7%A4%BA%E5%95%8F%E9%A1%8C-f7b3773a889b">Matplotlib顯示中文問題: Win</a></p></li>
 <li><p><a class="reference external" href="https://hoishing.medium.com/using-chinese-characters-in-matplotlib-5c49dbb6a2f7">Using Chinese Characters in Matplotlib</a></p></li>
@@ -1008,13 +965,13 @@ Building prefix dict from the default dictionary ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 1728x1152 with 0 Axes&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;Figure size 2400x1600 with 0 Axes&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="retrieve-top-150-to-visualize">
-<h3>Retrieve top 150 to visualize<a class="headerlink" href="#retrieve-top-150-to-visualize" title="Permalink to this headline">#</a></h3>
+<h3>Retrieve top 150 to visualize<a class="headerlink" href="#retrieve-top-150-to-visualize" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">words</span> <span class="o">=</span> <span class="p">[</span><span class="n">k</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">word_count</span><span class="o">.</span><span class="n">most_common</span><span class="p">(</span><span class="mi">150</span><span class="p">)]</span>
@@ -1033,7 +990,7 @@ Building prefix dict from the default dictionary ...
 </div>
 </section>
 <section id="reduced-by-pca">
-<h3>Reduced by PCA<a class="headerlink" href="#reduced-by-pca" title="Permalink to this headline">#</a></h3>
+<h3>Reduced by PCA<a class="headerlink" href="#reduced-by-pca" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.decomposition</span> <span class="kn">import</span> <span class="n">PCA</span>
@@ -1046,33 +1003,33 @@ Building prefix dict from the default dictionary ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 4.74592759,  6.66997576],
-       [ 3.94307783, -2.60163107],
-       [ 4.40328159, -1.35683092],
-       [ 5.11001776, -2.06241048],
-       [ 3.96341292, -0.25232676],
-       [ 3.25000117, -1.99057109],
-       [ 3.90847063,  0.61370119],
-       [ 2.88722208, -1.06897115],
-       [ 3.15435492, -2.46605869],
-       [ 3.59059089, -0.8162231 ],
-       [ 1.28886906,  1.61802887],
-       [ 2.73910398, -1.29906524],
-       [ 4.44527505,  0.89595956],
-       [ 3.6601702 , -1.05660219],
-       [ 2.76336013, -0.696953  ],
-       [ 2.31693718, -1.28750469],
-       [ 3.52185532,  1.5431232 ],
-       [ 2.54727455, -1.34922231],
-       [ 2.23930328,  1.36073811],
-       [ 2.80369536,  0.28384042]])
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 4.88274202,  6.14149789],
+       [ 3.91470969, -2.21588733],
+       [ 4.50733148, -1.6581313 ],
+       [ 4.81597629, -1.82918568],
+       [ 3.97558511, -0.07164941],
+       [ 3.27844812, -1.77248968],
+       [ 3.90373086,  0.53107194],
+       [ 3.21840534, -1.20958029],
+       [ 3.02323683, -2.64732746],
+       [ 3.30717016, -0.85605003],
+       [ 1.18949601,  1.37825734],
+       [ 2.68621797, -1.23527621],
+       [ 4.5992115 ,  0.83371931],
+       [ 3.69799118, -0.85420728],
+       [ 2.88005336, -0.63318571],
+       [ 2.23498697, -1.46897261],
+       [ 3.06730025,  1.37353007],
+       [ 2.24794583, -1.20231488],
+       [ 2.2732309 ,  1.2684365 ],
+       [ 2.69642065,  0.3130024 ]])
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="reduced-by-t-sne">
-<h3>Reduced by t-SNE<a class="headerlink" href="#reduced-by-t-sne" title="Permalink to this headline">#</a></h3>
+<h3>Reduced by t-SNE<a class="headerlink" href="#reduced-by-t-sne" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
@@ -1085,32 +1042,32 @@ Building prefix dict from the default dictionary ...
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/manifold/_t_sne.py:780: FutureWarning: The default initialization in TSNE will change from &#39;random&#39; to &#39;pca&#39; in 1.2.
-  warnings.warn(
-/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/sklearn/manifold/_t_sne.py:790: FutureWarning: The default learning rate in TSNE will change from 200.0 to &#39;auto&#39; in 1.2.
-  warnings.warn(
-</pre></div>
-</div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>array([[ 3.533635 ,  8.816418 ],
-       [ 7.881401 , 11.521997 ],
-       [ 8.462722 , 10.540993 ],
-       [ 8.62881  , 11.126393 ],
-       [ 8.310931 ,  9.248061 ],
-       [ 7.2129927, 11.120084 ],
-       [ 8.277661 ,  8.218708 ],
-       [ 6.891917 , 10.136549 ],
-       [ 7.1364975, 11.589076 ],
-       [ 7.6893387,  9.757972 ],
-       [ 6.0102773,  3.7812707],
-       [ 6.610463 , 10.45834  ],
-       [ 8.645096 ,  8.1233015],
-       [ 7.736853 , 10.236523 ],
-       [ 6.7616935,  9.381545 ],
-       [ 5.8497934, 10.372941 ],
-       [ 8.115181 ,  7.253542 ],
-       [ 6.2641997, 10.595124 ],
-       [ 6.8710256,  5.9440203],
-       [ 7.0219254,  7.9688826]], dtype=float32)
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">11</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">tsne</span> <span class="o">=</span> <span class="n">TSNE</span><span class="p">(</span><span class="n">n_components</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">points</span> <span class="o">=</span> <span class="n">tsne</span><span class="o">.</span><span class="n">fit_transform</span><span class="p">(</span><span class="n">X</span><span class="p">)</span> 
+<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="n">points</span><span class="p">[:</span><span class="mi">20</span><span class="p">]</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/sklearn/manifold/_t_sne.py:1118,</span> in <span class="ni">TSNE.fit_transform</span><span class="nt">(self, X, y)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1097</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Fit X into an embedded space and return that transformed output.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1098</span><span class="sd"> </span>
+<span class="g g-Whitespace">   </span><span class="mi">1099</span><span class="sd"> Parameters</span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1115</span><span class="sd">     Embedding of the training data in low-dimensional space.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1116</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1117</span> <span class="bp">self</span><span class="o">.</span><span class="n">_validate_params</span><span class="p">()</span>
+<span class="ne">-&gt; </span><span class="mi">1118</span> <span class="bp">self</span><span class="o">.</span><span class="n">_check_params_vs_input</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1119</span> <span class="n">embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1120</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding_</span> <span class="o">=</span> <span class="n">embedding</span>
+
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/sklearn/manifold/_t_sne.py:828,</span> in <span class="ni">TSNE._check_params_vs_input</span><span class="nt">(self, X)</span>
+<span class="g g-Whitespace">    </span><span class="mi">827</span> <span class="k">def</span> <span class="nf">_check_params_vs_input</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">828</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">perplexity</span> <span class="o">&gt;=</span> <span class="n">X</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<span class="g g-Whitespace">    </span><span class="mi">829</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;perplexity must be less than n_samples&quot;</span><span class="p">)</span>
+
+<span class="ne">AttributeError</span>: &#39;list&#39; object has no attribute &#39;shape&#39;
 </pre></div>
 </div>
 </div>
@@ -1118,9 +1075,9 @@ Building prefix dict from the default dictionary ...
 </section>
 </section>
 <section id="plotting">
-<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h2>
+<h2>Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h2>
 <section id="plot-by-matplotlib-or-seaborn">
-<h3>Plot by matplotlib or seaborn<a class="headerlink" href="#plot-by-matplotlib-or-seaborn" title="Permalink to this headline">#</a></h3>
+<h3>Plot by matplotlib or seaborn<a class="headerlink" href="#plot-by-matplotlib-or-seaborn" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># fig = plt.gcf()</span>
@@ -1150,7 +1107,7 @@ Building prefix dict from the default dictionary ...
 </div>
 </section>
 <section id="plot-by-bokeh">
-<h3>plot by bokeh<a class="headerlink" href="#plot-by-bokeh" title="Permalink to this headline">#</a></h3>
+<h3>plot by bokeh<a class="headerlink" href="#plot-by-bokeh" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/40450943/adding-labels-to-a-bokeh-plot">https://stackoverflow.com/questions/40450943/adding-labels-to-a-bokeh-plot</a></p></li>
 <li><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/user_guide/annotations.html">https://docs.bokeh.org/en/latest/docs/user_guide/annotations.html</a></p></li>
@@ -1618,12 +1575,12 @@ Building prefix dict from the default dictionary ...
 </section>
 </section>
 <section id="doc-clustering-with-embeddings">
-<h2>Doc clustering with embeddings<a class="headerlink" href="#doc-clustering-with-embeddings" title="Permalink to this headline">#</a></h2>
+<h2>Doc clustering with embeddings<a class="headerlink" href="#doc-clustering-with-embeddings" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p><a class="reference external" href="https://medium.com/datamixcontent-lab/%E8%B3%87%E6%96%99%E5%88%86%E6%9E%90%E5%B8%AB%E8%87%AA%E5%AD%B8%E7%AD%86%E8%A8%98-%E6%A6%82%E5%BF%B5-%E5%AF%A6%E4%BD%9C%E7%AF%87-%E8%87%AA%E7%84%B6%E8%AA%9E%E8%A8%80%E8%99%95%E7%90%86%E5%85%A5%E9%96%80-%E4%B9%8B-word2vec-doc2vec-%E6%AF%94%E8%BC%83-c94dd0a407c7">【資料分析概念大全｜認識文本分析】Word2Vec, Doc2Vec 比較 (附Python程式碼)</a></p></li>
 </ul>
 <section id="sum-up-wordvec-to-docvec">
-<h3>Sum up wordvec to docvec<a class="headerlink" href="#sum-up-wordvec-to-docvec" title="Permalink to this headline">#</a></h3>
+<h3>Sum up wordvec to docvec<a class="headerlink" href="#sum-up-wordvec-to-docvec" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">df</span>
@@ -1810,7 +1767,7 @@ Building prefix dict from the default dictionary ...
 </div>
 </div>
 <section id="convert-to-numpy-array">
-<h4>Convert to numpy array<a class="headerlink" href="#convert-to-numpy-array" title="Permalink to this headline">#</a></h4>
+<h4>Convert to numpy array<a class="headerlink" href="#convert-to-numpy-array" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -1828,7 +1785,7 @@ Building prefix dict from the default dictionary ...
 </section>
 </section>
 <section id="reduce-dimension-by-tsne">
-<h3>Reduce dimension by tsne<a class="headerlink" href="#reduce-dimension-by-tsne" title="Permalink to this headline">#</a></h3>
+<h3>Reduce dimension by tsne<a class="headerlink" href="#reduce-dimension-by-tsne" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
@@ -1849,7 +1806,7 @@ Building prefix dict from the default dictionary ...
 </div>
 </section>
 <section id="reduce-dimension-by-umap">
-<h3>Reduce dimension by umap<a class="headerlink" href="#reduce-dimension-by-umap" title="Permalink to this headline">#</a></h3>
+<h3>Reduce dimension by umap<a class="headerlink" href="#reduce-dimension-by-umap" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install umap-learn</span>
@@ -1876,7 +1833,7 @@ Building prefix dict from the default dictionary ...
 </div>
 </section>
 <section id="clustering-by-hdbscan">
-<h3>Clustering by hdbscan<a class="headerlink" href="#clustering-by-hdbscan" title="Permalink to this headline">#</a></h3>
+<h3>Clustering by hdbscan<a class="headerlink" href="#clustering-by-hdbscan" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
@@ -2123,7 +2080,7 @@ Counter({13: 4144, -1: 425, 11: 409, 6: 214, 12: 201, 4: 154, 1: 141, 10: 128, 9
 </div>
 </section>
 <section id="id1">
-<h3>Plotting<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h3>
+<h3>Plotting<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -2381,7 +2338,7 @@ Cluster 3 has 61 members
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -2433,7 +2390,7 @@ Cluster 3 has 61 members
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

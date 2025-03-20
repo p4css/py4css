@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>P04 Flow Control &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P04 Practice01: for loop" href="P04p1_for.html" />
     <link rel="prev" title="P03 Practice: Accessing dict and list" href="P03p_ans.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -259,10 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
@@ -367,7 +366,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -384,7 +383,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FPSS/P04_for.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -405,7 +404,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -414,7 +413,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/PSS/P04_for.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -432,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -452,7 +451,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -500,7 +499,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -527,7 +526,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p04-flow-control">
-<h1>P04 Flow Control<a class="headerlink" href="#p04-flow-control" title="Permalink to this headline">#</a></h1>
+<h1>P04 Flow Control<a class="headerlink" href="#p04-flow-control" title="Permalink to this heading">#</a></h1>
 <p><strong>for-if-else</strong>的語法概念本身並不難，一個是重複執行的結構，一個是條件判斷式。學習重點應在於，怎麼活用他們來完成一些任務。</p>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ul class="simple">
@@ -568,7 +567,7 @@ document.write(`
 </li>
 </ul>
 </div><section id="for-traverse-and-iterate">
-<h2>For: Traverse and Iterate<a class="headerlink" href="#for-traverse-and-iterate" title="Permalink to this headline">#</a></h2>
+<h2>For: Traverse and Iterate<a class="headerlink" href="#for-traverse-and-iterate" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">for</span></code> 是一個極為強大的程式指令，不僅可以用於計數，還能用於列出所有特定資料集（如youbike站台）的相關資訊。其基本作用是在指定的範疇或資料結構中重複執行一段程式碼，因此它也常被稱作<strong>for-each</strong>迴圈。</p>
 <ul class="simple">
 <li><p><strong>列舉（Iterating）：</strong> <code class="docutils literal notranslate"><span class="pre">for</span></code> 迴圈可以遍歷（iterate）一個列表（list）或其他集合型態的所有元素，並對每一個元素執行特定操作。例如，你可以用它來計算數字的總和或平均值。</p></li>
@@ -632,7 +631,7 @@ Dcab       ==&gt;       7678
 </div>
 </section>
 <section id="break-continue">
-<h2><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code>: 中止迴圈<a class="headerlink" href="#break-continue" title="Permalink to this headline">#</a></h2>
+<h2><code class="docutils literal notranslate"><span class="pre">break</span></code> &amp; <code class="docutils literal notranslate"><span class="pre">continue</span></code>: 中止迴圈<a class="headerlink" href="#break-continue" title="Permalink to this heading">#</a></h2>
 <p>在for-loop執行過程中，有時候會希望在某些條件成立時，就直接終止並跳出整個for-loop，或者，迴圈內以下的內容就不要執行，直接執行下一個iteration。包含以下兩種指令：</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>: 當條件成立，下方的迴圈內容就不再執行，直接進入下一個iteration。</p></li>
@@ -698,7 +697,7 @@ ellen
 </div>
 </section>
 <section id="range">
-<h2>range()函式<a class="headerlink" href="#range" title="Permalink to this headline">#</a></h2>
+<h2>range()函式<a class="headerlink" href="#range" title="Permalink to this heading">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">range()</span></code> 是一個內建函數，主要用於生成一個數字序列。這個函數可以接受一個、兩個或三個參數，各自有不同的用途。for-loop為了用index來列舉所有List中的項目，經常搭配<code class="docutils literal notranslate"><span class="pre">range()</span></code>使用。基本用法如下</p>
 <ul class="simple">
 <li><p><strong>一個參數</strong>：<code class="docutils literal notranslate"><span class="pre">range(n)</span></code> 會生成從 <code class="docutils literal notranslate"><span class="pre">0</span></code> 到 <code class="docutils literal notranslate"><span class="pre">n-1</span></code> 的整數序列。</p></li>
@@ -782,7 +781,7 @@ ellen
 </div>
 </section>
 <section id="nested-for-loop">
-<h2>Nested for-loop<a class="headerlink" href="#nested-for-loop" title="Permalink to this headline">#</a></h2>
+<h2>Nested for-loop<a class="headerlink" href="#nested-for-loop" title="Permalink to this heading">#</a></h2>
 <p>在程式設計中，嵌套迴圈（nested loops）是一個迴圈內包含另一個或多個迴圈的概念。在這節教學中，我們將透過實例來介紹如何使用 Python 中的嵌套 <code class="docutils literal notranslate"><span class="pre">for-loop</span></code>。</p>
 <p>基本語法</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">outer_var</span> <span class="ow">in</span> <span class="n">outer_sequence</span><span class="p">:</span>
@@ -805,7 +804,7 @@ ellen
 </ul>
 <hr class="docutils" />
 <section id="print-9-x-9-table">
-<h3>Print 9 x 9 table<a class="headerlink" href="#print-9-x-9-table" title="Permalink to this headline">#</a></h3>
+<h3>Print 9 x 9 table<a class="headerlink" href="#print-9-x-9-table" title="Permalink to this heading">#</a></h3>
 <p>九九乘法表是基礎數學中一個重要的工具，用於練習和記憶基本的乘法運算。這個題目要求使用Python程式碼來生成九九乘法表。</p>
 <p>程式碼解析</p>
 <ol class="arabic simple">
@@ -852,7 +851,7 @@ ellen
 </section>
 </section>
 <section id="if-elif-else">
-<h2>if-elif-else 條件語句教學<a class="headerlink" href="#if-elif-else" title="Permalink to this headline">#</a></h2>
+<h2>if-elif-else 條件語句教學<a class="headerlink" href="#if-elif-else" title="Permalink to this heading">#</a></h2>
 <p>在程式設計中，<code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code> 是用來執行基於一個或多個條件的分支運算。在這節教學中，我們會透過實例來介紹如何在 Python 中使用 <code class="docutils literal notranslate"><span class="pre">if-elif-else</span></code> 條件語句。</p>
 <p>基本語法</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">if</span> <span class="n">condition1</span><span class="p">:</span>
@@ -886,7 +885,7 @@ ellen
 </ul>
 <hr class="docutils" />
 <section id="example-assign-0-100-into-a-b-c-class">
-<h3>Example: Assign 0~100 into A, B, C, ..Class<a class="headerlink" href="#example-assign-0-100-into-a-b-c-class" title="Permalink to this headline">#</a></h3>
+<h3>Example: Assign 0~100 into A, B, C, ..Class<a class="headerlink" href="#example-assign-0-100-into-a-b-c-class" title="Permalink to this heading">#</a></h3>
 <p>在這個Python練習題中，我們有一個名為<code class="docutils literal notranslate"><span class="pre">grades</span></code>的列表，其中包含多個學生成績（範圍為0到100分）。我們還有一個名為<code class="docutils literal notranslate"><span class="pre">grade_dict</span></code>的字典，用於存儲各等級（A、B、C、F）的頻率。我們的任務是使用for迴圈遍歷<code class="docutils literal notranslate"><span class="pre">grades</span></code>列表，並根據每個學生成績更新<code class="docutils literal notranslate"><span class="pre">grade_dict</span></code>字典。</p>
 <ul class="simple">
 <li><p>練習Python的基本數據結構（列表和字典）</p></li>
@@ -995,7 +994,7 @@ ellen
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -1024,7 +1023,7 @@ ellen
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>

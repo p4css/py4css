@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
 
     <title>TM06 Clustering &#8212; Programming for Social Scientists</title>
   
@@ -46,6 +46,7 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
+    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -68,7 +69,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="TM07 embedding and clustering" href="TM07_embedding_clustering.html" />
     <link rel="prev" title="TM05 Sentiment analysis" href="TM05_sentiment.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -259,10 +260,8 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_youbike.html">AS02 Youbike Applications</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl.html">AS02 Reading PTT data</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS02_ptt_jsonl_ans.html">AS02 Reading PTT data</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS02_list_dict_for_if.html">AS02 List-dict-for-if</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS03_summarize_ptt.html">AS03: Summarizing Data by Pandas</a></li>
-<li class="toctree-l1"><a class="reference internal" href="../AS/AS03_pandas_summarization.html">AS03 Summarize data with Pandas</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS04_vis_twitter_api.html">AS04 Twitter API and Pandas Visualization</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS05_scraping_youtube.html">AS05 Scraping youtube</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../AS/AS05_Scraping_youtube_with_chatGPT.html">AS05. Improving Youtube Scraper with ChatGPT</a></li>
@@ -367,7 +366,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css" target="_blank"
    class="btn btn-sm btn-source-repository-button dropdown-item"
-   title="來源儲存庫"
+   title="Source repository"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -384,7 +383,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://github.com/p4css/py4css/issues/new?title=Issue%20on%20page%20%2FTM/TM06_Clustering.html&body=Your%20issue%20content%20here." target="_blank"
    class="btn btn-sm btn-source-issues-button dropdown-item"
-   title="開啟議題"
+   title="Open an issue"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -405,7 +404,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 <div class="dropdown dropdown-download-buttons">
-  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="下載此頁面">
+  <button class="btn dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false" aria-label="Download this page">
     <i class="fas fa-download"></i>
   </button>
   <ul class="dropdown-menu">
@@ -414,7 +413,7 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="../_sources/TM/TM06_Clustering.ipynb" target="_blank"
    class="btn btn-sm btn-download-source-button dropdown-item"
-   title="下載原始檔"
+   title="Download source file"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -432,7 +431,7 @@ const thebe_selector_output = ".output, .cell_output"
       <li>
 <button onclick="window.print()"
   class="btn btn-sm btn-download-pdf-button dropdown-item"
-  title="列印成 PDF"
+  title="Print to PDF"
   data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
@@ -452,7 +451,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 <button onclick="toggleFullScreen()"
   class="btn btn-sm btn-fullscreen-button"
-  title="全螢幕模式"
+  title="Fullscreen mode"
   data-bs-placement="bottom" data-bs-toggle="tooltip"
 >
   
@@ -500,7 +499,7 @@ document.write(`
         <div id="jb-print-toc">
             
             <div>
-                <h2> 目錄 </h2>
+                <h2> Contents </h2>
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
@@ -555,10 +554,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="tm06-clustering">
-<span id="id1"></span><h1>TM06 Clustering<a class="headerlink" href="#tm06-clustering" title="Permalink to this headline">#</a></h1>
+<span id="id1"></span><h1>TM06 Clustering<a class="headerlink" href="#tm06-clustering" title="Permalink to this heading">#</a></h1>
 <p><img alt="Clusteirng" src="../_images/TM06_1.png" /></p>
 <section id="cleaning-prepare-data">
-<h2>[Cleaning] Prepare data<a class="headerlink" href="#cleaning-prepare-data" title="Permalink to this headline">#</a></h2>
+<h2>[Cleaning] Prepare data<a class="headerlink" href="#cleaning-prepare-data" title="Permalink to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Can download the file from ...</span>
@@ -572,17 +571,9 @@ document.write(`
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
-  from pandas.core.computation.check import NUMEXPR_INSTALLED
-/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
-  from pandas.core import (
-</pre></div>
-</div>
-</div>
 </div>
 <section id="chinese-tokenization-with-jieba">
-<h3>Chinese Tokenization with jieba<a class="headerlink" href="#chinese-tokenization-with-jieba" title="Permalink to this headline">#</a></h3>
+<h3>Chinese Tokenization with jieba<a class="headerlink" href="#chinese-tokenization-with-jieba" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !pip install jieba</span>
@@ -596,10 +587,10 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Building prefix dict from the default dictionary ...
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/jieba.cache
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/4m/shks9p8j0dnbv51nf7cyysfc0000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.314 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.317 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -695,7 +686,7 @@ document.write(`
 </div>
 </section>
 <section id="removing-punctuations-and-stopwords">
-<h3>Removing Punctuations and stopwords<a class="headerlink" href="#removing-punctuations-and-stopwords" title="Permalink to this headline">#</a></h3>
+<h3>Removing Punctuations and stopwords<a class="headerlink" href="#removing-punctuations-and-stopwords" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># !wget https://raw.githubusercontent.com/p4css/py4css/main/data/sentiment.csv -O stopwords_zh-tw.txt </span>
@@ -800,9 +791,9 @@ document.write(`
 </section>
 </section>
 <section id="feature-selection-tf-idf">
-<h2>Feature selection (TF-IDF)<a class="headerlink" href="#feature-selection-tf-idf" title="Permalink to this headline">#</a></h2>
+<h2>Feature selection (TF-IDF)<a class="headerlink" href="#feature-selection-tf-idf" title="Permalink to this heading">#</a></h2>
 <section id="tfidf-vectorization">
-<h3>tfidf vectorization<a class="headerlink" href="#tfidf-vectorization" title="Permalink to this headline">#</a></h3>
+<h3>tfidf vectorization<a class="headerlink" href="#tfidf-vectorization" title="Permalink to this heading">#</a></h3>
 <ol class="arabic simple">
 <li><p><a class="reference external" href="https://towardsdatascience.com/clustering-documents-with-python-97314ad6a78d">https://towardsdatascience.com/clustering-documents-with-python-97314ad6a78d</a></p></li>
 <li><p><a class="reference external" href="https://blog.csdn.net/blmoistawinde/article/details/80816179">https://blog.csdn.net/blmoistawinde/article/details/80816179</a></p></li>
@@ -832,7 +823,7 @@ document.write(`
 </div>
 </section>
 <section id="method-1">
-<h3>Method 1.<a class="headerlink" href="#method-1" title="Permalink to this headline">#</a></h3>
+<h3>Method 1.<a class="headerlink" href="#method-1" title="Permalink to this heading">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">.fit_transform()</span></code> fit and transform the tfidf vectorizer on the corpus to get the feature vectors.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -857,7 +848,7 @@ document.write(`
 </div>
 </section>
 <section id="method-2">
-<h3>Method 2.<a class="headerlink" href="#method-2" title="Permalink to this headline">#</a></h3>
+<h3>Method 2.<a class="headerlink" href="#method-2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Model 1: Original tfidf</p></li>
 <li><p>Model 2: Define how to tokenize a string, the pattern offen appears in English tokenziation</p></li>
@@ -1018,7 +1009,7 @@ Number of features in model 4:  11860
 </div>
 </section>
 <section id="transform-step-2-of-the-method-2">
-<h3><code class="docutils literal notranslate"><span class="pre">transform()</span></code>: Step 2 of the method 2<a class="headerlink" href="#transform-step-2-of-the-method-2" title="Permalink to this headline">#</a></h3>
+<h3><code class="docutils literal notranslate"><span class="pre">transform()</span></code>: Step 2 of the method 2<a class="headerlink" href="#transform-step-2-of-the-method-2" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>X is a document by term matrix (e.g., 6388 docs by 11,860 words). Each matrix cell is the <em>tf-idf</em> value of the term in the doc.</p></li>
 </ul>
@@ -1043,14 +1034,14 @@ Number of features in model 4:  11860
 </section>
 </section>
 <section id="clustering">
-<h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h2>
+<h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this heading">#</a></h2>
 <ul class="simple">
 <li><p>we have a 6388 (docs) x 11860 (terms) matrix. Each raw is the presentation of each document. It is to say each docs is represented by a vector of 11860 terms.</p></li>
 <li><p>Now we can compare similarities among any pair of documents.</p></li>
 </ul>
 <p><img alt="Clusteirng" src="../_images/TM06_1.png" /></p>
 <section id="evaluation-for-selecting-the-number-of-clusters-k">
-<h3>Evaluation for selecting the number of clusters (k)<a class="headerlink" href="#evaluation-for-selecting-the-number-of-clusters-k" title="Permalink to this headline">#</a></h3>
+<h3>Evaluation for selecting the number of clusters (k)<a class="headerlink" href="#evaluation-for-selecting-the-number-of-clusters-k" title="Permalink to this heading">#</a></h3>
 <p>The KMeans algorithm clusters data by trying to separate samples in n groups of equal variance, minimizing a criterion known as the inertia or within-cluster sum-of-squares (<a class="reference external" href="https://scikit-learn.org/stable/modules/clustering.html#k-means">https://scikit-learn.org/stable/modules/clustering.html#k-means</a>).</p>
 <p>The weak point of KMeans is that we need to decide the number of clusters (k) before we start clustering. There are several ways to evaluate the number of clusters (k) we should use. Here we use the elbow method Above.</p>
 <p>You can take a look at the next cell of code to view how to cluster the documents into k clusters before we decide the number of clusters (k).</p>
@@ -1078,55 +1069,56 @@ Number of features in model 4:  11860
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="nn">Input In [9],</span> in <span class="ni">&lt;cell line: 12&gt;</span><span class="nt">()</span>
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">9</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
 <span class="g g-Whitespace">      </span><span class="mi">8</span>    <span class="n">km</span> <span class="o">=</span> <span class="n">KMeans</span><span class="p">(</span><span class="n">n_clusters</span><span class="o">=</span><span class="n">k</span><span class="p">,</span> <span class="n">max_iter</span><span class="o">=</span><span class="mi">200</span><span class="p">,</span> <span class="n">n_init</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">9</span>    <span class="n">km</span> <span class="o">=</span> <span class="n">km</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">)</span>
 <span class="ne">---&gt; </span><span class="mi">12</span> <span class="n">plt</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">K</span><span class="p">,</span> <span class="n">Sum_of_squared_distances</span><span class="p">,</span> <span class="s1">&#39;bx-&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">13</span> <span class="n">plt</span><span class="o">.</span><span class="n">xlabel</span><span class="p">(</span><span class="s1">&#39;k&#39;</span><span class="p">)</span>
 <span class="g g-Whitespace">     </span><span class="mi">14</span> <span class="n">plt</span><span class="o">.</span><span class="n">ylabel</span><span class="p">(</span><span class="s1">&#39;Sum_of_squared_distances&#39;</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/pyplot.py:2757,</span> in <span class="ni">plot</span><span class="nt">(scalex, scaley, data, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2755</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">Axes</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">2756</span> <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
-<span class="ne">-&gt; </span><span class="mi">2757</span>     <span class="k">return</span> <span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">2758</span>         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="n">scalex</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="n">scaley</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">2759</span>         <span class="o">**</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/matplotlib/pyplot.py:2785,</span> in <span class="ni">plot</span><span class="nt">(scalex, scaley, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2783</span> <span class="nd">@_copy_docstring_and_deprecators</span><span class="p">(</span><span class="n">Axes</span><span class="o">.</span><span class="n">plot</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">2784</span> <span class="k">def</span> <span class="nf">plot</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">):</span>
+<span class="ne">-&gt; </span><span class="mi">2785</span>     <span class="k">return</span> <span class="n">gca</span><span class="p">()</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span>
+<span class="g g-Whitespace">   </span><span class="mi">2786</span>         <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">scalex</span><span class="o">=</span><span class="n">scalex</span><span class="p">,</span> <span class="n">scaley</span><span class="o">=</span><span class="n">scaley</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">2787</span>         <span class="o">**</span><span class="p">({</span><span class="s2">&quot;data&quot;</span><span class="p">:</span> <span class="n">data</span><span class="p">}</span> <span class="k">if</span> <span class="n">data</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="p">{}),</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_axes.py:1632,</span> in <span class="ni">Axes.plot</span><span class="nt">(self, scalex, scaley, data, *args, **kwargs)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1390</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1391</span><span class="sd"> Plot y versus x as lines and/or markers.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1392</span><span class="sd"> </span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/matplotlib/axes/_axes.py:1688,</span> in <span class="ni">Axes.plot</span><span class="nt">(self, scalex, scaley, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1445</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1446</span><span class="sd"> Plot y versus x as lines and/or markers.</span>
+<span class="g g-Whitespace">   </span><span class="mi">1447</span><span class="sd"> </span>
 <span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1629</span><span class="sd"> (``&#39;green&#39;``) or hex strings (``&#39;#008000&#39;``).</span>
-<span class="g g-Whitespace">   </span><span class="mi">1630</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="g g-Whitespace">   </span><span class="mi">1631</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">cbook</span><span class="o">.</span><span class="n">normalize_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">mlines</span><span class="o">.</span><span class="n">Line2D</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1632</span> <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_lines</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1633</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1634</span>     <span class="bp">self</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1685</span><span class="sd"> (``&#39;green&#39;``) or hex strings (``&#39;#008000&#39;``).</span>
+<span class="g g-Whitespace">   </span><span class="mi">1686</span><span class="sd"> &quot;&quot;&quot;</span>
+<span class="g g-Whitespace">   </span><span class="mi">1687</span> <span class="n">kwargs</span> <span class="o">=</span> <span class="n">cbook</span><span class="o">.</span><span class="n">normalize_kwargs</span><span class="p">(</span><span class="n">kwargs</span><span class="p">,</span> <span class="n">mlines</span><span class="o">.</span><span class="n">Line2D</span><span class="p">)</span>
+<span class="ne">-&gt; </span><span class="mi">1688</span> <span class="n">lines</span> <span class="o">=</span> <span class="p">[</span><span class="o">*</span><span class="bp">self</span><span class="o">.</span><span class="n">_get_lines</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)]</span>
+<span class="g g-Whitespace">   </span><span class="mi">1689</span> <span class="k">for</span> <span class="n">line</span> <span class="ow">in</span> <span class="n">lines</span><span class="p">:</span>
+<span class="g g-Whitespace">   </span><span class="mi">1690</span>     <span class="bp">self</span><span class="o">.</span><span class="n">add_line</span><span class="p">(</span><span class="n">line</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_base.py:312,</span> in <span class="ni">_process_plot_var_args.__call__</span><span class="nt">(self, data, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="n">this</span> <span class="o">+=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">311</span>     <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
-<span class="ne">--&gt; </span><span class="mi">312</span> <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plot_args</span><span class="p">(</span><span class="n">this</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/matplotlib/axes/_base.py:311,</span> in <span class="ni">_process_plot_var_args.__call__</span><span class="nt">(self, data, *args, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">309</span>     <span class="n">this</span> <span class="o">+=</span> <span class="n">args</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span>
+<span class="g g-Whitespace">    </span><span class="mi">310</span>     <span class="n">args</span> <span class="o">=</span> <span class="n">args</span><span class="p">[</span><span class="mi">1</span><span class="p">:]</span>
+<span class="ne">--&gt; </span><span class="mi">311</span> <span class="k">yield from</span> <span class="bp">self</span><span class="o">.</span><span class="n">_plot_args</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">312</span>     <span class="n">this</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">,</span> <span class="n">ambiguous_fmt_datakey</span><span class="o">=</span><span class="n">ambiguous_fmt_datakey</span><span class="p">)</span>
 
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/matplotlib/axes/_base.py:498,</span> in <span class="ni">_process_plot_var_args._plot_args</span><span class="nt">(self, tup, kwargs, return_kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">495</span>     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">update_units</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">497</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-<span class="ne">--&gt; </span><span class="mi">498</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x and y must have same first dimension, but &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">499</span>                      <span class="sa">f</span><span class="s2">&quot;have shapes </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">500</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x and y can be no greater than 2D, but have &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">502</span>                      <span class="sa">f</span><span class="s2">&quot;shapes </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/matplotlib/axes/_base.py:504,</span> in <span class="ni">_process_plot_var_args._plot_args</span><span class="nt">(self, tup, kwargs, return_kwargs, ambiguous_fmt_datakey)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span>     <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="o">.</span><span class="n">yaxis</span><span class="o">.</span><span class="n">update_units</span><span class="p">(</span><span class="n">y</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span> <span class="o">!=</span> <span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
+<span class="ne">--&gt; </span><span class="mi">504</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x and y must have same first dimension, but &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>                      <span class="sa">f</span><span class="s2">&quot;have shapes </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">506</span> <span class="k">if</span> <span class="n">x</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span> <span class="ow">or</span> <span class="n">y</span><span class="o">.</span><span class="n">ndim</span> <span class="o">&gt;</span> <span class="mi">2</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">507</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;x and y can be no greater than 2D, but have &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">508</span>                      <span class="sa">f</span><span class="s2">&quot;shapes </span><span class="si">{</span><span class="n">x</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2"> and </span><span class="si">{</span><span class="n">y</span><span class="o">.</span><span class="n">shape</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="ne">ValueError</span>: x and y must have same first dimension, but have shapes (18,) and (0,)
 </pre></div>
 </div>
-<img alt="../_images/acf8b18dcf2c5918dca86ee7dd477a1e58f3bc043cdd9a261c9cab3c24addebd.png" src="../_images/acf8b18dcf2c5918dca86ee7dd477a1e58f3bc043cdd9a261c9cab3c24addebd.png" />
+<img alt="../_images/bbb6304095e4977a2a9378210419bf7faa65d5aea08fd4e74d3b925693b0f530.png" src="../_images/bbb6304095e4977a2a9378210419bf7faa65d5aea08fd4e74d3b925693b0f530.png" />
 </div>
 </div>
 </section>
 <section id="clustering-by-kmeans">
-<h3>Clustering by KMeans<a class="headerlink" href="#clustering-by-kmeans" title="Permalink to this headline">#</a></h3>
+<h3>Clustering by KMeans<a class="headerlink" href="#clustering-by-kmeans" title="Permalink to this heading">#</a></h3>
 <p>After we decide the number of clusters (k), we can start clustering the documents by KMeans.</p>
 <p>The params of KMeans:</p>
 <ul class="simple">
@@ -1226,13 +1218,13 @@ Number of features in model 4:  11860
 </div>
 </section>
 <section id="clustering-by-hdbscan">
-<h3>Clustering by HDBSCAN<a class="headerlink" href="#clustering-by-hdbscan" title="Permalink to this headline">#</a></h3>
+<h3>Clustering by HDBSCAN<a class="headerlink" href="#clustering-by-hdbscan" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html">https://hdbscan.readthedocs.io/en/latest/comparing_clustering_algorithms.html</a></p></li>
 <li><p>HDBSCAN is a clustering algorithm developed by Campello, Moulavi, and Sander. It extends DBSCAN by converting it into a hierarchical clustering algorithm, and then using a technique to extract a flat clustering based in the stability of clusters. This allows HDBSCAN to find clusters of varying densities (unlike DBSCAN), and be more robust to parameter selection.</p></li>
 </ul>
 <section id="evaluating-param-min-cluster-size">
-<h4>Evaluating param: <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code><a class="headerlink" href="#evaluating-param-min-cluster-size" title="Permalink to this headline">#</a></h4>
+<h4>Evaluating param: <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code><a class="headerlink" href="#evaluating-param-min-cluster-size" title="Permalink to this heading">#</a></h4>
 <p>Before we start clustering, we need to decide the value of <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code>. The value of <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code> is the minimum number of documents in a cluster. If the number of documents in a cluster is less than <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code>, the cluster will be considered as noise.</p>
 <p>Here we use two criteria to evaluate the value of <code class="docutils literal notranslate"><span class="pre">min_cluster_size</span></code>:</p>
 <ol class="arabic simple">
@@ -1407,14 +1399,14 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </section>
 </section>
 <section id="visualizing-overall-patterns">
-<h2>Visualizing Overall Patterns<a class="headerlink" href="#visualizing-overall-patterns" title="Permalink to this headline">#</a></h2>
+<h2>Visualizing Overall Patterns<a class="headerlink" href="#visualizing-overall-patterns" title="Permalink to this heading">#</a></h2>
 <p>After performing clustering (whether using KMeans or HDBSCAN), we now have labels for each document. Our next step is to create a scatter plot to visualize these documents. Documents with different labels will be represented with different colors.</p>
 <p><img alt="Clusteirng" src="../_images/TM06_1.png" /></p>
 <section id="v1-document-distribution-by-dimension-reduction">
-<h3>V1. Document Distribution by dimension reduction<a class="headerlink" href="#v1-document-distribution-by-dimension-reduction" title="Permalink to this headline">#</a></h3>
+<h3>V1. Document Distribution by dimension reduction<a class="headerlink" href="#v1-document-distribution-by-dimension-reduction" title="Permalink to this heading">#</a></h3>
 <p>We now have a 6388 (docs) x 11860 (terms) matrix. Each raw is the presentation of each document. It is to say each docs is represented by a vector of 11860 terms. It is hard to visualize the documents in a 11860-dimensional space. Therefore, we need to reduce the dimension of the documents.</p>
 <section id="dimension-reduction-by-svd">
-<h4>Dimension reduction by SVD<a class="headerlink" href="#dimension-reduction-by-svd" title="Permalink to this headline">#</a></h4>
+<h4>Dimension reduction by SVD<a class="headerlink" href="#dimension-reduction-by-svd" title="Permalink to this heading">#</a></h4>
 <p>Here we use the SVD (Singular Value Decomposition) to reduce the dimension of the documents. The SVD is a dimension reduction method. It can reduce the dimension of the documents while keeping the variance of the documents.</p>
 <p>We hope to reduce the dimension of the documents to <strong>2</strong> dimensions so that we can visualize the documents in a 2-dimensional space. The SVD can help us to reduce the dimension of the documents to 2 dimensions.</p>
 <div class="cell docutils container">
@@ -1443,7 +1435,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </div>
 </section>
 <section id="reduction-using-tsne">
-<h4>Reduction using TSNE<a class="headerlink" href="#reduction-using-tsne" title="Permalink to this headline">#</a></h4>
+<h4>Reduction using TSNE<a class="headerlink" href="#reduction-using-tsne" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">sklearn.manifold</span> <span class="kn">import</span> <span class="n">TSNE</span>
@@ -1475,7 +1467,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </div>
 </section>
 <section id="reduction-using-umap">
-<h4>Reduction using UMAP<a class="headerlink" href="#reduction-using-umap" title="Permalink to this headline">#</a></h4>
+<h4>Reduction using UMAP<a class="headerlink" href="#reduction-using-umap" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">umap</span>
@@ -1489,7 +1481,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </div>
 </section>
 <section id="visualization-by-matplotlib">
-<h4>Visualization by matplotlib<a class="headerlink" href="#visualization-by-matplotlib" title="Permalink to this headline">#</a></h4>
+<h4>Visualization by matplotlib<a class="headerlink" href="#visualization-by-matplotlib" title="Permalink to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1560,7 +1552,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </div>
 </section>
 <section id="visualization-by-bokeh">
-<h4>Visualization by Bokeh<a class="headerlink" href="#visualization-by-bokeh" title="Permalink to this headline">#</a></h4>
+<h4>Visualization by Bokeh<a class="headerlink" href="#visualization-by-bokeh" title="Permalink to this heading">#</a></h4>
 <p>Now, we can represent each document as a two-dimensional pair (x, y) and visualize it on a scatter plot. Additionally, we have labels for each document, allowing us to color each point (document) on the scatter plot with a different color.</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2042,7 +2034,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </div>
 </div>
 <section id="bokeh-palettes">
-<h5>bokeh.palettes<a class="headerlink" href="#bokeh-palettes" title="Permalink to this headline">#</a></h5>
+<h5>bokeh.palettes<a class="headerlink" href="#bokeh-palettes" title="Permalink to this heading">#</a></h5>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.bokeh.org/en/latest/docs/reference/palettes.html">https://docs.bokeh.org/en/latest/docs/reference/palettes.html</a></p></li>
 </ul>
@@ -2101,10 +2093,10 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </section>
 </section>
 <section id="v2-visualizing-word-freq-in-each-cluster">
-<h3>V2. Visualizing word freq in each cluster<a class="headerlink" href="#v2-visualizing-word-freq-in-each-cluster" title="Permalink to this headline">#</a></h3>
+<h3>V2. Visualizing word freq in each cluster<a class="headerlink" href="#v2-visualizing-word-freq-in-each-cluster" title="Permalink to this heading">#</a></h3>
 </section>
 <section id="store-to-dict-list-for-bar-chart">
-<h3>Store to dict+list for bar chart<a class="headerlink" href="#store-to-dict-list-for-bar-chart" title="Permalink to this headline">#</a></h3>
+<h3>Store to dict+list for bar chart<a class="headerlink" href="#store-to-dict-list-for-bar-chart" title="Permalink to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Using defaultdict: <a class="reference external" href="https://docs.python.org/3/library/collections.html">https://docs.python.org/3/library/collections.html</a></p></li>
 </ul>
@@ -2179,7 +2171,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </div>
 </section>
 <section id="v3-deprecated-heatmap-by-seaborn">
-<h3>V3. (Deprecated) Heatmap by seaborn<a class="headerlink" href="#v3-deprecated-heatmap-by-seaborn" title="Permalink to this headline">#</a></h3>
+<h3>V3. (Deprecated) Heatmap by seaborn<a class="headerlink" href="#v3-deprecated-heatmap-by-seaborn" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="sd">&quot;&quot;&quot;</span>
@@ -2216,7 +2208,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 </div>
 </section>
 <section id="barh-by-seaborn">
-<h3>Barh by seaborn<a class="headerlink" href="#barh-by-seaborn" title="Permalink to this headline">#</a></h3>
+<h3>Barh by seaborn<a class="headerlink" href="#barh-by-seaborn" title="Permalink to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
@@ -2305,7 +2297,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
-    <i class="fa-solid fa-list"></i> 目錄
+    <i class="fa-solid fa-list"></i> Contents
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
@@ -2362,7 +2354,7 @@ Counter({2: 2916, 12: 1098, 8: 677, -1: 325, 14: 271, 10: 180, 18: 170, 5: 130, 
   <div class="footer-item">
     
 <p class="component-author">
-作者： JILUNG
+By JILUNG
 </p>
 
   </div>
