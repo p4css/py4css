@@ -66,7 +66,7 @@ const thebe_selector_output = ".output, .cell_output"
     <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P08_1_web_json';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
-    <link rel="next" title="Twitter API" href="P08_2_twitter_api.html" />
+    <link rel="next" title="Scraping cases" href="P08_5_cases.html" />
     <link rel="prev" title="P08 Web Crawler" href="P08_0_scraper.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
   <meta name="docsearch:language" content="en"/>
@@ -207,8 +207,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="current nav bd-sidenav">
 <li class="toctree-l1 current active has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul class="current">
 <li class="toctree-l2 current active"><a class="current reference internal" href="#">Web API: cnyes &amp; 104.com</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
 </ul>
 </li>
@@ -539,7 +537,6 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-timestamp-as-file-name">Using timestamp as file name</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-version-104">Clean version. 104</a></li>
 </ul>
             </nav>
         </div>
@@ -572,14 +569,14 @@ document.write(`
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json&#39;</span><span class="p">)</span>
 <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 <span class="nb">type</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">())</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>list
 </pre></div>
 </div>
 </div>
@@ -686,7 +683,7 @@ dict_keys([&#39;QTime&#39;, &#39;totalRows&#39;, &#39;totalPage&#39;, &#39;range
 <p>撰寫爬蟲時必須「模仿」瀏覽器的機制，如果對方希望瀏覽器提供這樣的資訊，那撰寫爬蟲時也就要提供這樣的資訊。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=</span><span class="si">%E</span><span class="s1">8%B3</span><span class="si">%87%</span><span class="s1">E6</span><span class="si">%96%</span><span class="s1">99</span><span class="si">%E</span><span class="s1">7%A7</span><span class="si">%91%</span><span class="s1">E5%AD%B8&amp;mode=s&amp;order=15&amp;page=1&amp;pagesize=20&amp;&#39;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
 </pre></div>
@@ -717,7 +714,7 @@ dict_keys([&#39;QTime&#39;, &#39;totalRows&#39;, &#39;totalPage&#39;, &#39;range
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Date&#39;: &#39;Thu, 20 Mar 2025 02:49:30 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html; charset=utf-8&#39;, &#39;Transfer-Encoding&#39;: &#39;chunked&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Vary&#39;: &#39;Accept-Encoding&#39;, &#39;cf-cache-status&#39;: &#39;DYNAMIC&#39;, &#39;Server&#39;: &#39;cloudflare&#39;, &#39;CF-RAY&#39;: &#39;9231e587fb668f1b-TPE&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Date&#39;: &#39;Thu, 27 Mar 2025 07:18:23 GMT&#39;, &#39;Content-Type&#39;: &#39;text/html; charset=utf-8&#39;, &#39;Transfer-Encoding&#39;: &#39;chunked&#39;, &#39;Connection&#39;: &#39;keep-alive&#39;, &#39;Vary&#39;: &#39;Accept-Encoding&#39;, &#39;cf-cache-status&#39;: &#39;DYNAMIC&#39;, &#39;Server&#39;: &#39;cloudflare&#39;, &#39;CF-RAY&#39;: &#39;926d1d067fc66a84-TPE&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;}
 </pre></div>
 </div>
 </div>
@@ -751,7 +748,7 @@ dict_keys([&#39;QTime&#39;, &#39;totalRows&#39;, &#39;totalPage&#39;, &#39;range
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json&#39;</span><span class="p">)</span>
 
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="p">)</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">status_code</span><span class="p">)</span>
@@ -778,23 +775,22 @@ dict_keys([&#39;QTime&#39;, &#39;totalRows&#39;, &#39;totalPage&#39;, &#39;range
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Content-Length&#39;: &#39;30165&#39;, &#39;Content-Type&#39;: &#39;application/octet-stream&#39;, &#39;Content-Encoding&#39;: &#39;gzip&#39;, &#39;Content-MD5&#39;: &#39;EFQuHfXNKFZPZRyOMXoYhA==&#39;, &#39;Last-Modified&#39;: &#39;Sun, 30 Oct 2022 10:53:49 GMT&#39;, &#39;ETag&#39;: &#39;0x8DABA6507095944&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;fb42d2a1-b01e-0070-3c42-99d95e000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Thu, 20 Mar 2025 02:49:31 GMT&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;Content-Length&#39;: &#39;808177&#39;, &#39;Content-Type&#39;: &#39;application/json; charset=UTF-8&#39;, &#39;Content-MD5&#39;: &#39;mA7/xcXHwZ3iIgSCq6CoMA==&#39;, &#39;Last-Modified&#39;: &#39;Thu, 27 Mar 2025 07:18:09 GMT&#39;, &#39;ETag&#39;: &#39;0x8DD6CFF86FB107E&#39;, &#39;Server&#39;: &#39;Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0&#39;, &#39;x-ms-request-id&#39;: &#39;7a9aca76-601e-003e-02e8-9ef7d6000000&#39;, &#39;x-ms-version&#39;: &#39;2009-09-19&#39;, &#39;x-ms-lease-status&#39;: &#39;unlocked&#39;, &#39;x-ms-blob-type&#39;: &#39;BlockBlob&#39;, &#39;Access-Control-Allow-Origin&#39;: &#39;*&#39;, &#39;Date&#39;: &#39;Thu, 27 Mar 2025 07:18:23 GMT&#39;}
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>                                                                        0
-Content-Length                                                      30165
-Content-Type                                     application/octet-stream
-Content-Encoding                                                     gzip
-Content-MD5                                      EFQuHfXNKFZPZRyOMXoYhA==
-Last-Modified                               Sun, 30 Oct 2022 10:53:49 GMT
-ETag                                                    0x8DABA6507095944
+Content-Length                                                     808177
+Content-Type                              application/json; charset=UTF-8
+Content-MD5                                      mA7/xcXHwZ3iIgSCq6CoMA==
+Last-Modified                               Thu, 27 Mar 2025 07:18:09 GMT
+ETag                                                    0x8DD6CFF86FB107E
 Server                       Windows-Azure-Blob/1.0 Microsoft-HTTPAPI/2.0
-x-ms-request-id                      fb42d2a1-b01e-0070-3c42-99d95e000000
+x-ms-request-id                      7a9aca76-601e-003e-02e8-9ef7d6000000
 x-ms-version                                                   2009-09-19
 x-ms-lease-status                                                unlocked
 x-ms-blob-type                                                  BlockBlob
 Access-Control-Allow-Origin                                             *
-Date                                        Thu, 20 Mar 2025 02:49:31 GMT
+Date                                        Thu, 27 Mar 2025 07:18:23 GMT
 </pre></div>
 </div>
 </div>
@@ -812,64 +808,19 @@ Date                                        Thu, 20 Mar 2025 02:49:31 GMT
 <p>下方程式碼在送出<code class="docutils literal notranslate"><span class="pre">GET()</span></code>要求時也一併送出了Referer的資訊<code class="docutils literal notranslate"><span class="pre">'https://www.104.com.tw/'</span></code>，意義相當於偽裝成先打開104.com的首頁後，從首頁進入這個查詢連結。理論上如果沒進入首頁，就直接進入查詢連結，不是非常可疑嗎？所以，有些伺服器會偵測，這個要求是從哪一個頁面網址點選後轉過來的，</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
-
-<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=</span><span class="si">%E</span><span class="s1">8%B3</span><span class="si">%87%</span><span class="s1">E6</span><span class="si">%96%</span><span class="s1">99</span><span class="si">%E</span><span class="s1">7%A7</span><span class="si">%91%</span><span class="s1">E5%AD%B8&amp;mode=s&amp;order=15&amp;page=1&amp;pagesize=20&#39;</span>
+<span class="n">headers</span> <span class="o">=</span> <span class="p">{</span>
+    <span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">,</span>
+    <span class="s1">&#39;User-Agent&#39;</span><span class="p">:</span> <span class="s1">&#39;Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/106.0.0.0 Safari/537.36 Edg/106.0.1370.34&#39;</span>
+<span class="p">}</span>
 
 <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
+<span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/models.py:971,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">970</span> <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/json/__init__.py:346,</span> in <span class="ni">loads</span><span class="nt">(s, cls, object_hook, parse_float, parse_int, parse_constant, object_pairs_hook, **kw)</span>
-<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="p">(</span><span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">344</span>         <span class="n">parse_int</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">parse_float</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span>
-<span class="g g-Whitespace">    </span><span class="mi">345</span>         <span class="n">parse_constant</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="n">object_pairs_hook</span> <span class="ow">is</span> <span class="kc">None</span> <span class="ow">and</span> <span class="ow">not</span> <span class="n">kw</span><span class="p">):</span>
-<span class="ne">--&gt; </span><span class="mi">346</span>     <span class="k">return</span> <span class="n">_default_decoder</span><span class="o">.</span><span class="n">decode</span><span class="p">(</span><span class="n">s</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">347</span> <span class="k">if</span> <span class="bp">cls</span> <span class="ow">is</span> <span class="kc">None</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/json/decoder.py:337,</span> in <span class="ni">JSONDecoder.decode</span><span class="nt">(self, s, _w)</span>
-<span class="g g-Whitespace">    </span><span class="mi">333</span><span class="w"> </span><span class="sd">&quot;&quot;&quot;Return the Python representation of ``s`` (a ``str`` instance</span>
-<span class="g g-Whitespace">    </span><span class="mi">334</span><span class="sd"> containing a JSON document).</span>
-<span class="g g-Whitespace">    </span><span class="mi">335</span><span class="sd"> </span>
-<span class="g g-Whitespace">    </span><span class="mi">336</span><span class="sd"> &quot;&quot;&quot;</span>
-<span class="ne">--&gt; </span><span class="mi">337</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">raw_decode</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">idx</span><span class="o">=</span><span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">338</span> <span class="n">end</span> <span class="o">=</span> <span class="n">_w</span><span class="p">(</span><span class="n">s</span><span class="p">,</span> <span class="n">end</span><span class="p">)</span><span class="o">.</span><span class="n">end</span><span class="p">()</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/json/decoder.py:355,</span> in <span class="ni">JSONDecoder.raw_decode</span><span class="nt">(self, s, idx)</span>
-<span class="g g-Whitespace">    </span><span class="mi">354</span> <span class="k">except</span> <span class="ne">StopIteration</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">355</span>     <span class="k">raise</span> <span class="n">JSONDecodeError</span><span class="p">(</span><span class="s2">&quot;Expecting value&quot;</span><span class="p">,</span> <span class="n">s</span><span class="p">,</span> <span class="n">err</span><span class="o">.</span><span class="n">value</span><span class="p">)</span> <span class="kn">from</span> <span class="kc">None</span>
-<span class="g g-Whitespace">    </span><span class="mi">356</span> <span class="k">return</span> <span class="n">obj</span><span class="p">,</span> <span class="n">end</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
-
-<span class="n">During</span> <span class="n">handling</span> <span class="n">of</span> <span class="n">the</span> <span class="n">above</span> <span class="n">exception</span><span class="p">,</span> <span class="n">another</span> <span class="n">exception</span> <span class="n">occurred</span><span class="p">:</span>
-
-<span class="ne">JSONDecodeError</span><span class="g g-Whitespace">                           </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">5</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
-<span class="ne">----&gt; </span><span class="mi">5</span> <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">6</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">))</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/requests/models.py:975,</span> in <span class="ni">Response.json</span><span class="nt">(self, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">971</span>     <span class="k">return</span> <span class="n">complexjson</span><span class="o">.</span><span class="n">loads</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">972</span> <span class="k">except</span> <span class="n">JSONDecodeError</span> <span class="k">as</span> <span class="n">e</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">973</span>     <span class="c1"># Catch JSON-related errors and raise as requests.JSONDecodeError</span>
-<span class="g g-Whitespace">    </span><span class="mi">974</span>     <span class="c1"># This aliases json.JSONDecodeError and simplejson.JSONDecodeError</span>
-<span class="ne">--&gt; </span><span class="mi">975</span>     <span class="k">raise</span> <span class="n">RequestsJSONDecodeError</span><span class="p">(</span><span class="n">e</span><span class="o">.</span><span class="n">msg</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">doc</span><span class="p">,</span> <span class="n">e</span><span class="o">.</span><span class="n">pos</span><span class="p">)</span>
-
-<span class="ne">JSONDecodeError</span>: Expecting value: line 1 column 1 (char 0)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict
 </pre></div>
 </div>
 </div>
@@ -882,18 +833,19 @@ Date                                        Thu, 20 Mar 2025 02:49:31 GMT
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="mi">0</span><span class="p">]))</span>
+<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
 <span class="n">df</span>
+<span class="c1"># print(raw[&#39;data&#39;].keys())</span>
+<span class="c1"># print(type(raw[&#39;data&#39;][&#39;list&#39;]))</span>
+<span class="c1"># print(type(raw[&#39;data&#39;][&#39;list&#39;][0]))</span>
+<span class="c1"># df = pd.DataFrame(raw[&#39;data&#39;][&#39;list&#39;])</span>
+<span class="c1"># df</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;status&#39;, &#39;action&#39;, &#39;data&#39;, &#39;statusMsg&#39;, &#39;errorMsg&#39;])
-&lt;class &#39;dict&#39;&gt;
-dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list&#39;, &#39;count&#39;, &#39;pageNo&#39;, &#39;totalPage&#39;, &#39;totalCount&#39;])
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;data&#39;, &#39;metadata&#39;])
 &lt;class &#39;list&#39;&gt;
 &lt;class &#39;dict&#39;&gt;
 </pre></div>
@@ -916,543 +868,601 @@ dict_keys([&#39;query&#39;, &#39;filterDesc&#39;, &#39;queryDesc&#39;, &#39;list
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>jobType</th>
-      <th>jobNo</th>
-      <th>jobName</th>
-      <th>jobNameSnippet</th>
-      <th>jobRole</th>
-      <th>jobRo</th>
-      <th>jobAddrNo</th>
-      <th>jobAddrNoDesc</th>
-      <th>jobAddress</th>
+      <th>appearDate</th>
+      <th>applyCnt</th>
+      <th>coIndustry</th>
+      <th>coIndustryDesc</th>
+      <th>custName</th>
+      <th>custNo</th>
       <th>description</th>
+      <th>descSnippet</th>
+      <th>mrtDist</th>
+      <th>jobAddress</th>
       <th>...</th>
-      <th>tags</th>
-      <th>landmark</th>
-      <th>link</th>
-      <th>jobsource</th>
-      <th>jobNameRaw</th>
-      <th>custNameRaw</th>
-      <th>lon</th>
-      <th>lat</th>
-      <th>remoteWorkType</th>
-      <th>major</th>
+      <th>s5</th>
+      <th>d3</th>
+      <th>hrBehaviorPR</th>
+      <th>jobCat</th>
+      <th>labels</th>
+      <th>isSave</th>
+      <th>isApplied</th>
+      <th>applyDate</th>
+      <th>userApplyCount</th>
+      <th>isActivelyHiring</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>0</td>
-      <td>10589685</td>
-      <td>Data Scientist 資料科學家_數據分析師 | CBU_21_13</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001002020</td>
-      <td>新北市三重區</td>
-      <td>三和路四段111之32號7樓</td>
-      <td>分群、推薦、迴歸預測等演算法理論基礎，並有實作經驗\r\n2. 熟悉程式與分析應用，如 Py...</td>
+      <td>20250324</td>
+      <td>5</td>
+      <td>1004001007</td>
+      <td>金融控股業</td>
+      <td>富邦產物保險股份有限公司</td>
+      <td>70826461000</td>
+      <td>★富邦產險招募MA：經營管理組\n目標以成為企業及個人保險之全方位經營管理人才為發展方向，歷...</td>
+      <td>★富邦產險招募MA：經營管理組\n目標以成為企業及個人保險之全方位經營管理人才為發展方向，歷...</td>
+      <td>0.00</td>
+      <td>(以大台北地區為主，依公司指派)</td>
       <td>...</td>
-      <td>[員工300人]</td>
-      <td>距捷運三和國中站110公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Data Scientist 資料科學家_數據分析師 | CBU_21_13</td>
-      <td>伊雲谷數位科技股份有限公司</td>
-      <td>121.4856118</td>
-      <td>25.0774577</td>
       <td>0</td>
-      <td>[]</td>
+      <td>08:30-17:30</td>
+      <td>0.317307</td>
+      <td>[2001001002, 2003002013, 2007001018]</td>
+      <td>[c@wf7, c@wf35, c@wf28, c@wf4, c@wf31, c@wf9, ...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>0</td>
-      <td>10856947</td>
-      <td>數據科學家 Data Scientist</td>
-      <td>&lt;em class='b-txt--highlight'&gt;數據科學家&lt;/em&gt; &lt;em cl...</td>
+      <td>20250325</td>
       <td>1</td>
-      <td>1</td>
-      <td>6001001007</td>
-      <td>台北市信義區</td>
-      <td>松仁路100號10樓</td>
-      <td>Isobar作為數位轉型與數位創新的領導品牌，領先市場佈局打造專業的CR-Marketing...</td>
+      <td>1013001002</td>
+      <td>國防事業</td>
+      <td>國家中山科學研究院</td>
+      <td>130000000055232</td>
+      <td>錄取後依考生學經歷、專長、個人特質賦予以下部分或多項工作：\n1. 各類契約（包含中、英文契...</td>
+      <td>錄取後依考生學經歷、專長、個人特質賦予以下部分或多項工作：\n1. 各類契約（包含中、英文契...</td>
+      <td>0.00</td>
+      <td>中正路佳安段481號</td>
       <td>...</td>
-      <td>[員工120人]</td>
-      <td>距捷運象山站290公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>數據科學家 Data Scientist</td>
-      <td>安索帕股份有限公司</td>
-      <td>121.5678798</td>
-      <td>25.0344547</td>
       <td>0</td>
-      <td>[統計學相關, 一般商業學類, 資訊管理相關]</td>
+      <td></td>
+      <td>0.199704</td>
+      <td>[2002002004, 2002001007, 2002002006]</td>
+      <td>[c@wf1, c@wf10, c@wf29, c@wf30, c@wf8, c@wf16,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2</td>
-      <td>12988717</td>
-      <td>16A-T-0015 Data Scientist 資料科學家</td>
-      <td>16A-T-0015 &lt;em class='b-txt--highlight'&gt;Data&lt;/...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001016007</td>
-      <td>高雄市前鎮區</td>
-      <td>中六路一號</td>
-      <td>【工作內容】\n1. 跨部門合作，透過數據挖掘可能的應用。\n2. 統計分析、機器/深度學習...</td>
+      <td>20250319</td>
+      <td>7</td>
+      <td>1001004001</td>
+      <td>光電產業</td>
+      <td>聯齊科技股份有限公司</td>
+      <td>130000000047967</td>
+      <td>【關於 NextDrive 資料團隊】\nNextDrive 資料團隊專注於資料洞察與應用，...</td>
+      <td>【關於 NextDrive [[[資料]]]團隊】\nNextDrive [[[資料]]]團...</td>
+      <td>0.32</td>
+      <td>昆陽街18號2樓</td>
       <td>...</td>
-      <td>[上市上櫃, 員工19000人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>16A-T-0015 Data Scientist 資料科學家</td>
-      <td>瑞儀光電股份有限公司</td>
-      <td>120.2906511</td>
-      <td>22.5994751</td>
       <td>0</td>
-      <td>[應用數學相關, 統計學相關]</td>
+      <td></td>
+      <td>0.886519</td>
+      <td>[2007001021, 2007001018, 2007001022]</td>
+      <td>[c@wf26, c@wf10, c@wf1, c@wf29, c@wf8, c@wf11,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>0</td>
-      <td>12844505</td>
-      <td>Data Scientist資料科學家(遠端工作)-T05P</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001003</td>
-      <td>台北市中山區</td>
-      <td></td>
-      <td>•\tDesign, develop, and launch extremely effic...</td>
+      <td>20250327</td>
+      <td>8</td>
+      <td>1004003001</td>
+      <td>人身保險業</td>
+      <td>(總公司)南山人壽保險股份有限公司</td>
+      <td>11456006000</td>
+      <td>推動人工智能 (AI) 和其他資料科學新技術的應用，並將其成功地導入企業流程中，以提高效率、...</td>
+      <td>推動人工智能 (AI) 和其他[[[資料科學]]]新技術的應用，並將其成功地導入企業流程中，...</td>
+      <td>0.21</td>
+      <td>莊敬路168號</td>
       <td>...</td>
-      <td>[外商公司, 員工200人, 遠端工作]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Data Scientist資料科學家(遠端工作)-T05P</td>
-      <td>Tata Consultancy Services Limited Taiwan Branc...</td>
-      <td>121.5427093</td>
-      <td>25.0792018</td>
-      <td>2</td>
-      <td>[資訊工程相關, 數理統計相關, 資訊管理相關]</td>
+      <td>0</td>
+      <td>8:30-17:00</td>
+      <td>0.092319</td>
+      <td>[2007001021, 2007001022]</td>
+      <td>[c@wf3, foreigners@foreigners_tick, c@wf2, c@w...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2</td>
-      <td>12909698</td>
-      <td>Python Data Scientist</td>
-      <td>Python &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; ...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001016005</td>
-      <td>高雄市鼓山區</td>
-      <td>中華一路828號13樓</td>
-      <td>\n\n職務需求：\n\nPython [[[Data]]] [[[Scientist]]]...</td>
+      <td>20250313</td>
+      <td>12</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>詠鋐智能股份有限公司</td>
+      <td>130000000186926</td>
+      <td>執行資料科學專案，包含理解商務問題、資料分析、提出並驗證解決方案，以及展示專案成果。  \n...</td>
+      <td>執行[[[資料科學]]]專案，包含理解商務問題、[[[資料]]]分析、提出並驗證解決方案，以...</td>
+      <td>0.06</td>
+      <td>羅斯福路二段100號25樓</td>
       <td>...</td>
-      <td>[員工45人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Python Data Scientist</td>
-      <td>BigGo_樂方股份有限公司</td>
-      <td>120.2921244</td>
-      <td>22.6604715</td>
       <td>0</td>
-      <td>[]</td>
+      <td>09:00-18:00</td>
+      <td>0.634182</td>
+      <td>[2007001021, 2007001022, 2007001018]</td>
+      <td>[c@wf31, c@wf8, c@wf2, foreigners@foreigners_t...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>5</th>
-      <td>0</td>
-      <td>12348710</td>
-      <td>【AI Team】資料科學家 Data Scientist</td>
-      <td>【AI Team】&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/e...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001007</td>
-      <td>台北市信義區</td>
-      <td>東興路41號10樓</td>
-      <td>【Responsibilities】　\n1. Lead the team to drive...</td>
+      <td>20250304</td>
+      <td>9</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>維曙智能科技有限公司</td>
+      <td>130000000229061</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為資料科學家，需要對新技術保有高度熱誠，能夠歸...</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為[[[資料科學]]]家，需要對新技術保有高度...</td>
+      <td>0.18</td>
+      <td>忠孝東路二段116號5樓</td>
       <td>...</td>
-      <td>[員工150人, 遠端工作]</td>
-      <td>距捷運南京三民站470公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>【AI Team】資料科學家 Data Scientist</td>
-      <td>愛卡拉互動媒體股份有限公司</td>
-      <td>121.5666564</td>
-      <td>25.0480733</td>
-      <td>2</td>
-      <td>[]</td>
+      <td>0</td>
+      <td></td>
+      <td>0.560439</td>
+      <td>[2007001021, 2007001020, 2007001012]</td>
+      <td>[c@wf9, c@wf12, c@wf26, c@wf7, c@wf8]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>6</th>
-      <td>0</td>
-      <td>12504693</td>
-      <td>Data Scientist - Analytics (Product) / 資料科學家 -...</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001002</td>
-      <td>台北市大同區</td>
-      <td>承德路</td>
-      <td>be based under Product division and will be p...</td>
+      <td>20250325</td>
+      <td>8</td>
+      <td>1006003001</td>
+      <td>廣告行銷公關業</td>
+      <td>浩騰媒體股份有限公司</td>
+      <td>16832894000</td>
+      <td>道，協助生成動態數據可視化報告 ，讓內部團隊和客戶能快速理解數據結果並做出策略性決策。\n4...</td>
+      <td>道，協助生成動態數據可視化報告 ，讓內部團隊和客戶能快速理解數據結果並做出策略性決策。\n4...</td>
+      <td>0.03</td>
+      <td>復興北路378號9樓</td>
       <td>...</td>
-      <td>[員工180人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Data Scientist - Analytics (Product) / 資料科學家 -...</td>
-      <td>Pinkoi_香港商果翼科技股份有限公司台灣分公司</td>
-      <td>121.5169834</td>
-      <td>25.0504544</td>
       <td>0</td>
-      <td>[]</td>
+      <td>09:00~18:00</td>
+      <td>0.905547</td>
+      <td>[2007001022, 2007001021, 2007001018]</td>
+      <td>[c@wf2, c@wf35, c@wf9, c@wf31, c@wf10, c@wf7, ...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>7</th>
-      <td>0</td>
-      <td>11774964</td>
-      <td>Python programmer/data scientist for quantitat...</td>
-      <td>Python programmer/&lt;em class='b-txt--highlight'...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001010</td>
-      <td>台北市內湖區</td>
-      <td>港墘路200號5樓</td>
-      <td>Python programmer/[[[data]]] [[[scientist]]] f...</td>
+      <td>20250324</td>
+      <td>9</td>
+      <td>1001001003</td>
+      <td>網際網路相關業</td>
+      <td>易可思科技股份有限公司</td>
+      <td>130000000215354</td>
+      <td>\n2. 機器學習與深度學習演算法開發及優化。\n3. 進行資料統計分析與視覺化。\n4. ...</td>
+      <td>\n2. 機器學習與深度學習演算法開發及優化。\n3. 進行[[[資料]]]統計分析與視覺化...</td>
+      <td>0.32</td>
+      <td>吉林路24號8樓之2</td>
       <td>...</td>
-      <td>[員工95人]</td>
-      <td>距捷運港墘站470公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Python programmer/data scientist for quantitat...</td>
-      <td>中塑油品股份有限公司</td>
-      <td>121.5743267</td>
-      <td>25.0759802</td>
       <td>0</td>
-      <td>[數理統計相關, 其他數學及電算機科學相關, 財稅金融相關]</td>
+      <td></td>
+      <td>0.516875</td>
+      <td>[2007001021]</td>
+      <td>[c@wf24, c@wf4, c@wf1, c@wf26, c@wf7, c@wf8, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>8</th>
-      <td>2</td>
-      <td>12689367</td>
-      <td>Data Scientist / 資料科學家_11060</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001009</td>
-      <td>台北市北投區</td>
-      <td>立功街96號</td>
-      <td>learning / deep learning papers, and have the...</td>
+      <td>20250304</td>
+      <td>11</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>維曙智能科技有限公司</td>
+      <td>130000000229061</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為資料科學家，需要對新技術保有高度熱誠，能夠歸...</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為[[[資料科學]]]家，需要對新技術保有高度...</td>
+      <td>0.18</td>
+      <td>忠孝東路二段116號5樓</td>
       <td>...</td>
-      <td>[員工6000人]</td>
-      <td>距捷運關渡站410公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Data Scientist / 資料科學家_11060</td>
-      <td>和碩集團_和碩聯合科技股份有限公司</td>
-      <td>121.4712373</td>
-      <td>25.124796</td>
       <td>0</td>
-      <td>[資訊工程相關, 統計學相關]</td>
+      <td>9:30-18:30</td>
+      <td>0.510947</td>
+      <td>[2007001021, 2007001020, 2007001012]</td>
+      <td>[c@wf26, c@wf12, c@wf7, c@wf8, c@wf9]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>9</th>
-      <td>2</td>
-      <td>12110712</td>
-      <td>Data Scientist (士林)</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001008</td>
-      <td>台北市士林區</td>
-      <td>承德路四段166號</td>
-      <td>[[[Data]]]-Centric AI.\n\nThe organization re...</td>
+      <td>20250325</td>
+      <td>11</td>
+      <td>1006002002</td>
+      <td>電視業</td>
+      <td>緯來電視網股份有限公司</td>
+      <td>20913187000</td>
+      <td>1. 進行數據清洗、資料貼標以及特徵工程等資料前處理工作。 \n2. 選用資料科學或人工智慧...</td>
+      <td>1. 進行數據清洗、[[[資料]]]貼標以及特徵工程等[[[資料]]]前處理工作。 \n2....</td>
+      <td>0.43</td>
+      <td>瑞光路480號3樓</td>
       <td>...</td>
-      <td>[上市上櫃, 員工4000人]</td>
-      <td>距捷運劍潭站240公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Data Scientist (士林)</td>
-      <td>Inventec_英業達股份有限公司</td>
-      <td>121.5230712</td>
-      <td>25.0857408</td>
       <td>0</td>
-      <td>[數學及電算機科學學科類, 統計學相關, 電機電子工程相關]</td>
+      <td></td>
+      <td>0.775427</td>
+      <td>[2007001012, 2004001010, 2007001009]</td>
+      <td>[c@wf2, c@wf10, c@wf1, c@wf23, c@wf9, c@wf7]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>10</th>
-      <td>2</td>
-      <td>12602344</td>
-      <td>[AD RD] Sr. Data Scientist</td>
-      <td>[AD RD] Sr. &lt;em class='b-txt--highlight'&gt;Data&lt;...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001004</td>
-      <td>台北市松山區</td>
-      <td>復興北路337號7樓</td>
-      <td>numerical techniques, algorithms and ML model...</td>
+      <td>20250325</td>
+      <td>7</td>
+      <td>1004001007</td>
+      <td>金融控股業</td>
+      <td>國泰金控_國泰金融控股股份有限公司</td>
+      <td>70827406000</td>
+      <td>[工作內容]\n職務包含但不限於以下內容\n- 基於 Python 語言之產品開發，推廣及後...</td>
+      <td>[工作內容]\n職務包含但不限於以下內容\n- 基於 Python 語言之產品開發，推廣及後...</td>
+      <td>0.00</td>
+      <td></td>
       <td>...</td>
-      <td>[外商公司, 員工150人]</td>
-      <td>距捷運中山國中站70公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>[AD RD] Sr. Data Scientist</td>
-      <td>威朋大數據股份有限公司</td>
-      <td>121.5446271</td>
-      <td>25.060227</td>
       <td>0</td>
-      <td>[數學及電算機科學學科類, 物理學相關, 統計學相關]</td>
+      <td></td>
+      <td>0.172487</td>
+      <td>[2007001022, 2007001009]</td>
+      <td>[c@wf29, c@wf33, c@wf13, c@wf32, c@wf25, c@wf1...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>11</th>
-      <td>2</td>
-      <td>12839921</td>
-      <td>【IT】Data Scientist</td>
-      <td>【IT】&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001002004</td>
-      <td>新北市汐止區</td>
-      <td>新台五路一段88號8樓(221)</td>
-      <td>recommendations to facilitate [[[data]]]-driv...</td>
+      <td>20250324</td>
+      <td>12</td>
+      <td>1001001006</td>
+      <td>其它軟體及網路相關業</td>
+      <td>皓博科技股份有限公司</td>
+      <td>130000000076068</td>
+      <td>與部署。\n\n資料科學家在現今數據化時代中扮演重要的角色，憑藉數據分析技能和洞察力，能夠協...</td>
+      <td>與部署。\n\n[[[資料科學]]]家在現今數據化時代中扮演重要的角色，憑藉數據分析技能和洞...</td>
+      <td>0.27</td>
+      <td>忠孝東路五段508號20樓-3</td>
       <td>...</td>
-      <td>[上市上櫃, 員工7500人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>【IT】Data Scientist</td>
-      <td>宏碁股份有限公司</td>
-      <td>121.647472</td>
-      <td>25.0605179</td>
       <td>0</td>
-      <td>[資訊工程相關, 數理統計相關]</td>
+      <td></td>
+      <td>0.366117</td>
+      <td>[2007001012, 2007001021]</td>
+      <td>[c@wf26, c@wf7, c@wf32, c@wf8, c@wf1, c@wf4, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>12</th>
-      <td>2</td>
-      <td>12304173</td>
-      <td>RD20163 Data Scientist (資料科學家)</td>
-      <td>RD20163 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt;...</td>
-      <td>4</td>
-      <td>1</td>
-      <td>6001001009</td>
-      <td>台北市北投區</td>
-      <td></td>
-      <td>stakeholders to gain new insights from [[[dat...</td>
+      <td>20250327</td>
+      <td>7</td>
+      <td>1008003006</td>
+      <td>其他專業／科學及技術業</td>
+      <td>工研院 _財團法人工業技術研究院</td>
+      <td>2750963000</td>
+      <td>1. 資料分析軟體模組開發、系統整合與測試。 \n2. 針對資料科學應用主題瞭解領域知識，並...</td>
+      <td>1. [[[資料]]]分析軟體模組開發、系統整合與測試。 \n2. 針對[[[資料科學]]]...</td>
+      <td>0.00</td>
+      <td>工業二路31號</td>
       <td>...</td>
-      <td>[上市上櫃]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>RD20163 Data Scientist (資料科學家)</td>
-      <td>華碩電腦股份有限公司</td>
-      <td>121.515018</td>
-      <td>25.1151759</td>
       <td>0</td>
-      <td>[資訊工程相關, 資訊管理相關, 電機電子工程相關]</td>
+      <td>08:00~17:00</td>
+      <td>0.199704</td>
+      <td>[2007001004, 2008001009]</td>
+      <td>[c@wf3, c@wf23, c@wf21, c@wf30, c@wf1, c@wf12,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>13</th>
-      <td>2</td>
-      <td>10917374</td>
-      <td>AI人工智能資料科學家 (Data Scientist)</td>
-      <td>AI人工智能&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt; ...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001011</td>
-      <td>台北市南港區</td>
-      <td>三重路19-9號5樓</td>
-      <td>1.建立端對端(End-to-End) AI分析流程「數據收集-數據處理-特徵工程-模型訓練...</td>
+      <td>20250324</td>
+      <td>3</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>緯謙科技股份有限公司</td>
+      <td>130000000175101</td>
+      <td>透過數據蒐集、資料分析與可視化架構，解決商業痛點推動業務增長並提升運營效率，與各部門緊密協作...</td>
+      <td>透過數據蒐集、[[[資料]]]分析與可視化架構，解決商業痛點推動業務增長並提升運營效率，與各...</td>
+      <td>0.00</td>
+      <td>新台五路一段88號</td>
       <td>...</td>
-      <td>[上市上櫃, 員工2500人]</td>
-      <td>距捷運南港展覽館站270公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>AI人工智能資料科學家 (Data Scientist)</td>
-      <td>東元電機股份有限公司</td>
-      <td>121.6137637</td>
-      <td>25.05764</td>
       <td>0</td>
-      <td>[數學及電算機科學學科類, 資訊工程相關, 工程學科類]</td>
+      <td></td>
+      <td>0.867634</td>
+      <td>[2007001004, 2007001012, 2007001021]</td>
+      <td>[c@wf7, c@wf19, c@wf29, c@wf2, c@wf30, c@wf31,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>14</th>
-      <td>2</td>
-      <td>12463827</td>
-      <td>PD0751 資料科學家Data Scientist(內湖)</td>
-      <td>PD0751 &lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001010</td>
-      <td>台北市內湖區</td>
-      <td>瑞光路581號(114)</td>
-      <td>仁寶電腦集團全球化運營與永續經營，持續追求成長與創新，積極進行數位化與AI人工智能轉型，延攬...</td>
+      <td>20250326</td>
+      <td>8</td>
+      <td>1001001006</td>
+      <td>其它軟體及網路相關業</td>
+      <td>圖策科技股份有限公司</td>
+      <td>130000000151165</td>
+      <td>【職位名稱】 金融資料科學工程師\n\n【工作內容】\n1. 負責金融數據的蒐集、前處理與清...</td>
+      <td>【職位名稱】 金融[[[資料科學]]]工程師\n\n【工作內容】\n1. 負責金融數據的蒐集...</td>
+      <td>0.47</td>
+      <td>光復南路65號13樓</td>
       <td>...</td>
-      <td>[上市上櫃, 員工6500人]</td>
-      <td>距捷運西湖站270公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>PD0751 資料科學家Data Scientist(內湖)</td>
-      <td>仁寶電腦工業股份有限公司</td>
-      <td>121.5681287</td>
-      <td>25.0799209</td>
       <td>0</td>
-      <td>[資訊工程相關, 資訊管理相關, 電機電子工程相關]</td>
+      <td></td>
+      <td>0.914398</td>
+      <td>[2007001004, 2007001012]</td>
+      <td>[c@wf1, c@wf7]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>15</th>
-      <td>2</td>
-      <td>12385530</td>
-      <td>56957_Research Scientist / Data Scientist (Hsi...</td>
-      <td>56957_Research &lt;em class='b-txt--highlight'&gt;Sc...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001006009</td>
-      <td>新竹縣竹東鎮</td>
-      <td></td>
-      <td>projects and activities focusing on ML/DL to ...</td>
+      <td>20250326</td>
+      <td>7</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>QNAP_威聯通科技股份有限公司</td>
+      <td>80682695000</td>
+      <td>[工作內容]\n1. 透過 NLP 相關技術優化 Chatbot，以提升客戶體驗。\n2. ...</td>
+      <td>[工作內容]\n1. 透過 NLP 相關技術優化 Chatbot，以提升客戶體驗。\n2. ...</td>
+      <td>0.00</td>
+      <td>中興路22號</td>
       <td>...</td>
-      <td>[外商公司]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>56957_Research Scientist / Data Scientist (Hsi...</td>
-      <td>台灣康寧顯示玻璃股份有限公司</td>
-      <td>121.0449768</td>
-      <td>24.774922</td>
       <td>0</td>
-      <td>[數學及電算機科學學科類, 工程學科類, 資訊管理相關]</td>
+      <td></td>
+      <td>0.317307</td>
+      <td>[2007001021, 2007001022, 2007001012]</td>
+      <td>[c@wf15, c@wf14, c@wf26, c@wf2, c@wf29, c@wf3,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>16</th>
-      <td>0</td>
-      <td>12672283</td>
-      <td>Data Scientist, Analytics</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001007</td>
-      <td>台北市信義區</td>
-      <td>松仁路123號6樓</td>
-      <td>\n\n\nAbout the role\n\nWe are looking for [[[...</td>
+      <td>20250324</td>
+      <td>9</td>
+      <td>1008003006</td>
+      <td>其他專業／科學及技術業</td>
+      <td>工研院 _財團法人工業技術研究院</td>
+      <td>2750963000</td>
+      <td>\n\n【研究室簡介】\n本研究室專注在發展應用於材料科學與產業之AI相關技術，透過AI平台...</td>
+      <td>\n\n【研究室簡介】\n本研究室專注在發展應用於材料[[[科學]]]與產業之AI相關技術，...</td>
+      <td>0.00</td>
+      <td>中興路四段195號</td>
       <td>...</td>
-      <td>[員工500人]</td>
-      <td>距捷運象山站190公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Data Scientist, Analytics</td>
-      <td>沛星互動科技股份有限公司</td>
-      <td>121.5692094</td>
-      <td>25.0342822</td>
       <td>0</td>
-      <td>[]</td>
+      <td></td>
+      <td>0.611876</td>
+      <td>[2007001021, 2007001018, 2007001020]</td>
+      <td>[c@wf7, c@wf34, c@wf18, c@wf21, c@wf23, c@wf28...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>17</th>
-      <td>0</td>
-      <td>12267410</td>
-      <td>Quantitative Trader/ Data Scientist/ ML Engineer</td>
-      <td>Quantitative Trader/ &lt;em class='b-txt--highlig...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001005</td>
-      <td>台北市大安區</td>
-      <td>敦化南路二段</td>
-      <td>our operations to Shenzhen, China. We are act...</td>
+      <td>20250320</td>
+      <td>18</td>
+      <td>1008003001</td>
+      <td>工商顧問服務業</td>
+      <td>創代科技股份有限公司</td>
+      <td>130000000123231</td>
+      <td>我們正在尋找具備 LLM 經驗的資料科學家 Data Scientist，主要負責 大型語言...</td>
+      <td>我們正在尋找具備 LLM 經驗的[[[資料科學]]]家 Data Scientist，主要負...</td>
+      <td>0.11</td>
+      <td>松江路101號10樓</td>
       <td>...</td>
-      <td>[員工25人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Quantitative Trader/ Data Scientist/ ML Engineer</td>
-      <td>泰錸科技有限公司</td>
-      <td>121.5489794</td>
-      <td>25.0270855</td>
       <td>0</td>
-      <td>[數理統計相關, 資訊工程相關, 其他數學及電算機科學相關]</td>
+      <td></td>
+      <td>0.948939</td>
+      <td>[2007001021, 2007001018, 2007001012]</td>
+      <td>[c@wf1, c@wf7, c@wf29, c@wf12, c@wf17, c@wf34,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>18</th>
-      <td>0</td>
-      <td>12239109</td>
-      <td>資料工程師 Data Scientist</td>
-      <td>資料工程師 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001004</td>
-      <td>台北市松山區</td>
-      <td>復興北路369號14樓之2（中山國中捷運站附近）</td>
-      <td>熟悉語言要求：Python\n\n必備相關能力\n- 願意學習新語言(Python/SQL/...</td>
+      <td>20250324</td>
+      <td>5</td>
+      <td>1001006002</td>
+      <td>半導體製造業</td>
+      <td>中國砂輪企業股份有限公司</td>
+      <td>3089008000</td>
+      <td>1. 維護已開發之AI模型與Web介面\n2. 協助整合外部合作學校/公司開發之AI模型與W...</td>
+      <td>1. 維護已開發之AI模型與Web介面\n2. 協助整合外部合作學校/公司開發之AI模型與W...</td>
+      <td>0.00</td>
+      <td>中山路64號</td>
       <td>...</td>
-      <td>[員工50人, 遠端工作]</td>
-      <td>距捷運中山國中站220公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>資料工程師 Data Scientist</td>
-      <td>類神經網路股份有限公司</td>
-      <td>121.5447579</td>
-      <td>25.0626001</td>
-      <td>2</td>
-      <td>[統計學相關, 資訊工程相關, 工業工程相關]</td>
+      <td>0</td>
+      <td>08:00-17:00</td>
+      <td>0.123449</td>
+      <td>[2007001022, 2007001020, 2007001021]</td>
+      <td>[c@wf7, c@wf10, c@wf17, c@wf1, c@wf27, c@wf16,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>19</th>
-      <td>0</td>
-      <td>12716606</td>
-      <td>Data Scientist數據工程師-T03P</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; &lt;em cla...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001006001</td>
-      <td>新竹市</td>
+      <td>20250325</td>
+      <td>8</td>
+      <td>1004001007</td>
+      <td>金融控股業</td>
+      <td>國泰金控_國泰金融控股股份有限公司</td>
+      <td>70827406000</td>
+      <td>【團隊介紹】\n我們是一個充滿熱情與創意的團隊，致力於結合科技與數據驅動保險業的創新變革。在...</td>
+      <td>【團隊介紹】\n我們是一個充滿熱情與創意的團隊，致力於結合科技與數據驅動保險業的創新變革。在...</td>
+      <td>0.00</td>
       <td></td>
-      <td>the expected outcome\n•\tIdentify and select ...</td>
       <td>...</td>
-      <td>[外商公司, 員工200人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_a_relevance</td>
-      <td>Data Scientist數據工程師-T03P</td>
-      <td>Tata Consultancy Services Limited Taiwan Branc...</td>
-      <td>120.9674798</td>
-      <td>24.8138287</td>
       <td>0</td>
-      <td>[資訊工程相關, 數理統計相關, 資訊管理相關]</td>
+      <td></td>
+      <td>0.530392</td>
+      <td>[2007001012, 2007001020, 2007001021]</td>
+      <td>[c@wf2, c@wf7, c@wf8, c@wf23, c@wf25, c@wf4, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>20250325</td>
+      <td>13</td>
+      <td>1004001001</td>
+      <td>銀行業</td>
+      <td>國泰世華商業銀行股份有限公司</td>
+      <td>4231910004</td>
+      <td>性的環境下，實現個人專業成長、累積市場能見度，一起跟上東南亞數位金融市場的快速成長!\n\n...</td>
+      <td>性的環境下，實現個人專業成長、累積市場能見度，一起跟上東南亞數位金融市場的快速成長!\n\n...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.782332</td>
+      <td>[2007001021, 2007001018]</td>
+      <td>[c@wf7, c@wf1, c@wf2, c@wf10, c@wf9, c@wf30, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>20250324</td>
+      <td>6</td>
+      <td>1003001015</td>
+      <td>綜合商品批發代理業</td>
+      <td>華翰物產實業股份有限公司</td>
+      <td>80378420000</td>
+      <td>●我們正在尋找數名資料科學家，此職位將\n1. 與領域專家結合資料面將商業問題轉化為可分析的...</td>
+      <td>●我們正在尋找數名[[[資料科學]]]家，此職位將\n1. 與領域專家結合[[[資料]]]面...</td>
+      <td>0.00</td>
+      <td>青年一路156號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.907148</td>
+      <td>[2007001007, 2003002008]</td>
+      <td>[c@wf26, c@wf1, c@wf29, c@wf31, foreigners@for...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
   </tbody>
 </table>
-<p>20 rows × 40 columns</p>
+<p>22 rows × 41 columns</p>
 </div></div></div>
 </div>
 </section>
 <section id="step04-get-next-page-get-the-2nd-1st-3rd-page-urls">
 <h3>Step04. Get next page: get the 2nd, 1st, 3rd, …, page urls<a class="headerlink" href="#step04-get-next-page-get-the-2nd-1st-3rd-page-urls" title="Permalink to this heading">#</a></h3>
 <p>接下來要從Chrome Development Tools來觀察，下二頁、三頁、四頁的網址為何（例如以下網址）。然後要去觀察這些網址的變化，應該不難觀察在page=1, page=2, page=3的數字上有所變化。通常這種網址的變化都是有規律性的。</p>
-<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc
+<div class="highlight-default notranslate"><div class="highlight"><pre><span></span>https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;mode=s&amp;order=15&amp;page=2&amp;pagesize=20
 
-https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=1&amp;mode=s&amp;jobsource=2018indexpoc
 
-https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=3&amp;mode=s&amp;jobsource=2018indexpoc
+https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;mode=s&amp;order=15&amp;page=3&amp;pagesize=20
+
+
+https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=%E8%B3%87%E6%96%99%E7%A7%91%E5%AD%B8&amp;mode=s&amp;order=15&amp;page=40&amp;pagesize=20
 </pre></div>
 </div>
 <p>因為知道有這樣的規律性，所以就拆解要發出的網址，把網址的頁碼的獨立出來，然後用for-loop來走過每個頁面。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=</span><span class="si">%E</span><span class="s1">8%B3</span><span class="si">%87%</span><span class="s1">E6</span><span class="si">%96%</span><span class="s1">99</span><span class="si">%E</span><span class="s1">7%A7</span><span class="si">%91%</span><span class="s1">E5%AD%B8&amp;mode=s&amp;order=15&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;pagesize=20&#39;</span>
+    <span class="c1"># url = &#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39; + str(page) + &#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">]))</span>
+    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
-20
-20
-20
-20
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
 </pre></div>
 </div>
 </div>
@@ -1462,21 +1472,19 @@ https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scien
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">3</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=</span><span class="si">%E</span><span class="s1">8%B3</span><span class="si">%87%</span><span class="s1">E6</span><span class="si">%96%</span><span class="s1">99</span><span class="si">%E</span><span class="s1">7%A7</span><span class="si">%91%</span><span class="s1">E5%AD%B8&amp;mode=s&amp;order=15&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;pagesize=20&#39;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>30
-50
-70
-90
-110
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44
 </pre></div>
 </div>
 </div>
@@ -1491,8 +1499,8 @@ https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scien
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1250, 40)
-111
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(44, 41)
+44
 </pre></div>
 </div>
 </div>
@@ -1510,20 +1518,23 @@ https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data%20scien
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">]))</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;pageNo&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Total Page:&quot;</span><span class="p">,</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalPage&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;count&#39;</span><span class="p">])</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalCount&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">keys</span><span class="p">())</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;pagination&#39;</span><span class="p">])</span>
+<span class="nb">print</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;lastPage&#39;</span><span class="p">])</span>
+
+<span class="c1"># print(raw[&#39;data&#39;][&#39;pageNo&#39;])</span>
+<span class="c1"># print(&quot;Total Page:&quot;, raw[&#39;data&#39;][&#39;totalPage&#39;])</span>
+<span class="c1"># print(raw[&#39;data&#39;][&#39;count&#39;])</span>
+<span class="c1"># print(raw[&#39;data&#39;][&#39;totalCount&#39;])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;status&#39;, &#39;action&#39;, &#39;data&#39;, &#39;statusMsg&#39;, &#39;errorMsg&#39;])
-&lt;class &#39;dict&#39;&gt;
-2
-Total Page: 150
-[&#39;7927&#39;, &#39;7639&#39;, &#39;146&#39;, &#39;29&#39;, &#39;113&#39;, &#39;0&#39;, &#39;0&#39;]
-7927
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;data&#39;, &#39;metadata&#39;])
+&lt;class &#39;list&#39;&gt;
+dict_keys([&#39;pagination&#39;, &#39;isPreciseHotJob&#39;, &#39;filterQuery&#39;, &#39;personalBoost&#39;])
+{&#39;count&#39;: 22, &#39;currentPage&#39;: 2, &#39;lastPage&#39;: 94, &#39;total&#39;: 1867}
+94
 </pre></div>
 </div>
 </div>
@@ -1539,153 +1550,375 @@ Total Page: 150
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pprint</span>
 <span class="n">pp</span> <span class="o">=</span> <span class="n">pprint</span><span class="o">.</span><span class="n">PrettyPrinter</span><span class="p">(</span><span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">)</span>
-<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
+<span class="n">pp</span><span class="o">.</span><span class="n">pprint</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][:</span><span class="mi">2</span><span class="p">])</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   {   &#39;appearDate&#39;: &#39;20221006&#39;,
-        &#39;appearDateDesc&#39;: &#39;10/06&#39;,
-        &#39;applyCnt&#39;: &#39;00006&#39;,
-        &#39;applyDate&#39;: &#39;&#39;,
-        &#39;applyDesc&#39;: &#39;6~10人應徵&#39;,
-        &#39;coIndustry&#39;: &#39;1001001003&#39;,
-        &#39;coIndustryDesc&#39;: &#39;網際網路相關業&#39;,
-        &#39;custName&#39;: &#39;伊雲谷數位科技股份有限公司&#39;,
-        &#39;custNameRaw&#39;: &#39;伊雲谷數位科技股份有限公司&#39;,
-        &#39;custNo&#39;: &#39;130000000028759&#39;,
-        &#39;descSnippet&#39;: &#39;分群、推薦、迴歸預測等演算法理論基礎，並有實作經驗\r\n&#39;
-                       &#39;2. 熟悉程式與分析應用，如 Python, R, SPSS, MATLAB, SAS 等\r\n&#39;
-                       &quot;3. 熟悉大數據生態系(Big &lt;em class=&#39;b-txt--highlight&#39;&gt;Data&lt;/em&gt; &quot;
-                       &#39;Ecosystem)，如 Hadoop, Spark,&#39;,
-        &#39;description&#39;: &#39;分群、推薦、迴歸預測等演算法理論基礎，並有實作經驗\r\n&#39;
-                       &#39;2. 熟悉程式與分析應用，如 Python, R, SPSS, MATLAB, SAS 等\r\n&#39;
-                       &#39;3. 熟悉大數據生態系(Big [[[Data]]] Ecosystem)，如 Hadoop, Spark,&#39;,
-        &#39;isApply&#39;: &#39;0&#39;,
-        &#39;isSave&#39;: &#39;0&#39;,
-        &#39;jobAddrNo&#39;: &#39;6001002020&#39;,
-        &#39;jobAddrNoDesc&#39;: &#39;新北市三重區&#39;,
-        &#39;jobAddress&#39;: &#39;三和路四段111之32號7樓&#39;,
-        &#39;jobName&#39;: &#39;Data Scientist 資料科學家_數據分析師 | CBU_21_13&#39;,
-        &#39;jobNameRaw&#39;: &#39;Data Scientist 資料科學家_數據分析師 | CBU_21_13&#39;,
-        &#39;jobNameSnippet&#39;: &quot;&lt;em class=&#39;b-txt--highlight&#39;&gt;Data&lt;/em&gt; &lt;em &quot;
-                          &quot;class=&#39;b-txt--highlight&#39;&gt;Scientist&lt;/em&gt; &lt;em &quot;
-                          &quot;class=&#39;b-txt--highlight&#39;&gt;資料科學家&lt;/em&gt;_數據分析師 | &quot;
-                          &#39;CBU_21_13&#39;,
-        &#39;jobNo&#39;: &#39;10589685&#39;,
-        &#39;jobRo&#39;: &#39;1&#39;,
-        &#39;jobRole&#39;: &#39;1&#39;,
-        &#39;jobType&#39;: &#39;0&#39;,
-        &#39;jobsource&#39;: &#39;jolist_a_relevance&#39;,
-        &#39;landmark&#39;: &#39;距捷運三和國中站110公尺&#39;,
-        &#39;lat&#39;: &#39;25.0774577&#39;,
-        &#39;link&#39;: {   &#39;applyAnalyze&#39;: &#39;//www.104.com.tw/jobs/apply/analysis/6az1x?channel=104rpt&amp;jobsource=apply_analyze&#39;,
-                    &#39;cust&#39;: &#39;//www.104.com.tw/company/1a2x6bilhz?jobsource=jolist_a_relevance&#39;,
-                    &#39;job&#39;: &#39;//www.104.com.tw/job/6az1x?jobsource=jolist_a_relevance&#39;},
-        &#39;lon&#39;: &#39;121.4856118&#39;,
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[   {   &#39;appearDate&#39;: &#39;20250325&#39;,
+        &#39;applyCnt&#39;: 5,
+        &#39;applyDate&#39;: None,
+        &#39;coIndustry&#39;: 1011002002,
+        &#39;coIndustryDesc&#39;: &#39;建物裝修及裝潢業&#39;,
+        &#39;custName&#39;: &#39;名匠博物館多媒體設計_名匠設計室內裝修有限公司&#39;,
+        &#39;custNo&#39;: &#39;15879744000&#39;,
+        &#39;d3&#39;: &#39;8:00-17:30&#39;,
+        &#39;descSnippet&#39;: &#39;誠徵熟悉室內裝修業工地各式日報表撰寫及看懂施工圖，熟工程監造之內業工程師。\n&#39;
+                       &#39;\n&#39;
+                       &#39;本公司自1985年成立以來，作品無數，都是整個團隊努力的結果，歡迎你的加入。\n&#39;
+                       &#39;我們致力於投入博物館、展覽館從無到有的過程。將專業能力發揮極致、腦力激盪創造新思維，同時與業主共享心中開花結果的喜悅。我們可以很驕傲地說：「名匠設計是一間值得信賴的設計公司！」\n&#39;
+                       &#39;\n&#39;
+                       &#39;目前我們正在進行的是[國家軍事博物館]、[國家檔案館]以及高雄佛光山的[淨土洞窟]。希望對博物館施工工程有興趣的朋友們，加入名匠團隊，這裡絕對是最好的學習成長環境，在國家級的案子中增廣見聞。彼此腦力激盪、發揮創造力，共同打造最能打動人心的展覽！\n&#39;
+                       &#39;\n&#39;
+                       &#39;經營理念 /\n&#39;
+                       &#39;員工永遠是公司最寶貴的資產，我們致力提供優質的學習環境及成長空間。\n&#39;
+                       &#39;滿足客戶需求、追求金質獎章、建立良好口碑。\n&#39;
+                       &#39;熱忱的服務態度、優良的施工品質、打動無數業主與觀眾的心。\n&#39;
+                       &#39;\n&#39;
+                       &#39;獎項 /\n&#39;
+                       &#39;國立臺灣史前文化博物館已於2023年5月19日隆重開幕，文化部長史哲表示「史前館重新開館是今年博物館日最好的禮物，期許重新開館後的史前館，能讓2300萬的臺灣人都到訪一次」。其中，南島廳入口處動畫「世界開始的地方」更榮獲多項殊榮。\n&#39;
+                       &#39;2023 德國柏林iF設計獎\n&#39;
+                       &#39;2022 美國ADC獎動畫類入圍\n&#39;
+                       &#39;2022 臺灣金點設計獎\n&#39;
+                       &#39;\n&#39;
+                       &#39;工程查核 /\n&#39;
+                       &#39;近幾年政府工程品質查核，均獲甲等。\n&#39;
+                       &#39;2020 澎湖生活博物館\n&#39;
+                       &#39;2019 國立臺灣史前文化博物館\n&#39;
+                       &#39;2014 臺北市立天文科學教育館\n&#39;
+                       &#39;\n&#39;
+                       &#39;作品實績 /\n&#39;
+                       &#39;\uf06e\t世貿中心大型展覽：電腦展、食品展、國防展、資訊月；其中為來來飯店贏得五年美食展首獎。 \n&#39;
+                       &#39;\uf06e\t短期巡迴展：農業科技展、台灣燈會、醫療資訊展。 \n&#39;
+                       &#39;\uf06e\t博物館展示：自2002年與美國Museum Arts &#39;
+                       &#39;Inc.合作完成國立臺灣博物館「展示更新工程」設計監造案之後，邁入新的里程碑。\n&#39;
+                       &#39;2022年7月贏得「國家軍事博物館」典藏、圖書、展示、劇場、營運設備委託勞務採購案。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;文史類：國立故宮博物院、故宮南院、澎湖生活博物館、苗栗客家文物館、國立海洋科技博物館-海洋文化廳、台東國立史前文化博物館。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;科技類：臺北市立天文科學教育館、苗栗台灣油礦陳列館、國立科學工藝博物館-健康探索廳、國立自然科學博物館-半導體的世界(台積電)、友達光電-達達大師的魔術盒。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;自然與生態類：嘉義市立博物館、國立臺灣博物館-臺灣的生物、國立科學工藝博物館-氣候變遷、臺北花卉博覽會-養生館、湖山水庫管理中心。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;其他：佛光山-佛教節慶、蘭陽別院-甲子堂紀念館、臺北捷運逃生體驗營、睿澤香水觀光工廠、中國信託文薈館、法鼓山大愿校史館。\n&#39;
+                       &#39;\n&#39;
+                       &#39;更多作品 /\n&#39;
+                       &#39;https://www.craftsmen.com.tw\n&#39;
+                       &#39;\n&#39;
+                       &#39;福利制度 /\n&#39;
+                       &#39;\uf06e\t保險類 \n&#39;
+                       &#39;1.勞保 \n&#39;
+                       &#39;2.健保 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t其他\n&#39;
+                       &#39;1.年終獎金 \n&#39;
+                       &#39;2.三節獎金\n&#39;
+                       &#39;3.比圖獎金\n&#39;
+                       &#39;4.工作獎金\n&#39;
+                       &#39;5.每月全勤獎金\n&#39;
+                       &#39;6.依表現適時調薪\n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t休閒類 \n&#39;
+                       &#39;1.春酒聚餐  \n&#39;
+                       &#39;2.國外員工旅遊 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t請 / 休假制度 \n&#39;
+                       &#39;1.週休二日 \n&#39;
+                       &#39;2.特休/年假\n&#39;
+                       &#39;\n&#39;
+                       &#39;\n&#39;,
+        &#39;description&#39;: &#39;誠徵熟悉室內裝修業工地各式日報表撰寫及看懂施工圖，熟工程監造之內業工程師。\n&#39;
+                       &#39;\n&#39;
+                       &#39;本公司自1985年成立以來，作品無數，都是整個團隊努力的結果，歡迎你的加入。\n&#39;
+                       &#39;我們致力於投入博物館、展覽館從無到有的過程。將專業能力發揮極致、腦力激盪創造新思維，同時與業主共享心中開花結果的喜悅。我們可以很驕傲地說：「名匠設計是一間值得信賴的設計公司！」\n&#39;
+                       &#39;\n&#39;
+                       &#39;目前我們正在進行的是[國家軍事博物館]、[國家檔案館]以及高雄佛光山的[淨土洞窟]。希望對博物館施工工程有興趣的朋友們，加入名匠團隊，這裡絕對是最好的學習成長環境，在國家級的案子中增廣見聞。彼此腦力激盪、發揮創造力，共同打造最能打動人心的展覽！\n&#39;
+                       &#39;\n&#39;
+                       &#39;經營理念 /\n&#39;
+                       &#39;員工永遠是公司最寶貴的資產，我們致力提供優質的學習環境及成長空間。\n&#39;
+                       &#39;滿足客戶需求、追求金質獎章、建立良好口碑。\n&#39;
+                       &#39;熱忱的服務態度、優良的施工品質、打動無數業主與觀眾的心。\n&#39;
+                       &#39;\n&#39;
+                       &#39;獎項 /\n&#39;
+                       &#39;國立臺灣史前文化博物館已於2023年5月19日隆重開幕，文化部長史哲表示「史前館重新開館是今年博物館日最好的禮物，期許重新開館後的史前館，能讓2300萬的臺灣人都到訪一次」。其中，南島廳入口處動畫「世界開始的地方」更榮獲多項殊榮。\n&#39;
+                       &#39;2023 德國柏林iF設計獎\n&#39;
+                       &#39;2022 美國ADC獎動畫類入圍\n&#39;
+                       &#39;2022 臺灣金點設計獎\n&#39;
+                       &#39;\n&#39;
+                       &#39;工程查核 /\n&#39;
+                       &#39;近幾年政府工程品質查核，均獲甲等。\n&#39;
+                       &#39;2020 澎湖生活博物館\n&#39;
+                       &#39;2019 國立臺灣史前文化博物館\n&#39;
+                       &#39;2014 臺北市立天文科學教育館\n&#39;
+                       &#39;\n&#39;
+                       &#39;作品實績 /\n&#39;
+                       &#39;\uf06e\t世貿中心大型展覽：電腦展、食品展、國防展、資訊月；其中為來來飯店贏得五年美食展首獎。 \n&#39;
+                       &#39;\uf06e\t短期巡迴展：農業科技展、台灣燈會、醫療資訊展。 \n&#39;
+                       &#39;\uf06e\t博物館展示：自2002年與美國Museum Arts &#39;
+                       &#39;Inc.合作完成國立臺灣博物館「展示更新工程」設計監造案之後，邁入新的里程碑。\n&#39;
+                       &#39;2022年7月贏得「國家軍事博物館」典藏、圖書、展示、劇場、營運設備委託勞務採購案。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;文史類：國立故宮博物院、故宮南院、澎湖生活博物館、苗栗客家文物館、國立海洋科技博物館-海洋文化廳、台東國立史前文化博物館。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;科技類：臺北市立天文科學教育館、苗栗台灣油礦陳列館、國立科學工藝博物館-健康探索廳、國立自然科學博物館-半導體的世界(台積電)、友達光電-達達大師的魔術盒。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;自然與生態類：嘉義市立博物館、國立臺灣博物館-臺灣的生物、國立科學工藝博物館-氣候變遷、臺北花卉博覽會-養生館、湖山水庫管理中心。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;其他：佛光山-佛教節慶、蘭陽別院-甲子堂紀念館、臺北捷運逃生體驗營、睿澤香水觀光工廠、中國信託文薈館、法鼓山大愿校史館。\n&#39;
+                       &#39;\n&#39;
+                       &#39;更多作品 /\n&#39;
+                       &#39;https://www.craftsmen.com.tw\n&#39;
+                       &#39;\n&#39;
+                       &#39;福利制度 /\n&#39;
+                       &#39;\uf06e\t保險類 \n&#39;
+                       &#39;1.勞保 \n&#39;
+                       &#39;2.健保 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t其他\n&#39;
+                       &#39;1.年終獎金 \n&#39;
+                       &#39;2.三節獎金\n&#39;
+                       &#39;3.比圖獎金\n&#39;
+                       &#39;4.工作獎金\n&#39;
+                       &#39;5.每月全勤獎金\n&#39;
+                       &#39;6.依表現適時調薪\n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t休閒類 \n&#39;
+                       &#39;1.春酒聚餐  \n&#39;
+                       &#39;2.國外員工旅遊 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t請 / 休假制度 \n&#39;
+                       &#39;1.週休二日 \n&#39;
+                       &#39;2.特休/年假\n&#39;
+                       &#39;\n&#39;
+                       &#39;\n&#39;,
+        &#39;hrBehaviorPR&#39;: 0.8326258572997556,
+        &#39;isActivelyHiring&#39;: True,
+        &#39;isApplied&#39;: None,
+        &#39;isSave&#39;: None,
+        &#39;jobAddrNo&#39;: 6001001001,
+        &#39;jobAddrNoDesc&#39;: &#39;台北市中正區&#39;,
+        &#39;jobAddress&#39;: &#39;&#39;,
+        &#39;jobCat&#39;: [2012001009, 2012001010, 2012002002],
+        &#39;jobName&#39;: &#39;內業工程師/工務&#39;,
+        &#39;jobNameSnippet&#39;: &#39;內業工程師/工務&#39;,
+        &#39;jobNo&#39;: &#39;14406589&#39;,
+        &#39;jobRo&#39;: 1,
+        &#39;jobType&#39;: 1,
+        &#39;labels&#39;: [&#39;c@wf1&#39;, &#39;c@wf7&#39;, &#39;c@wf2&#39;],
+        &#39;lat&#39;: 25.0421407,
+        &#39;link&#39;: {   &#39;applyAnalyze&#39;: &#39;https://www.104.com.tw/jobs/apply/analysis/8ks71?channel=104rpt&#39;,
+                    &#39;cust&#39;: &#39;https://www.104.com.tw/company/7ame0w0&#39;,
+                    &#39;job&#39;: &#39;https://www.104.com.tw/job/8ks71&#39;},
+        &#39;lon&#39;: 121.5198716,
         &#39;major&#39;: [],
-        &#39;optionEdu&#39;: &#39;碩士&#39;,
-        &#39;optionZone&#39;: &#39;262144&#39;,
-        &#39;period&#39;: &#39;00&#39;,
-        &#39;periodDesc&#39;: &#39;經歷不拘&#39;,
+        &#39;mrt&#39;: &#39;&#39;,
+        &#39;mrtDesc&#39;: &#39;&#39;,
+        &#39;mrtDist&#39;: 0,
+        &#39;optionEdu&#39;: [2, 3, 4],
+        &#39;period&#39;: 3,
         &#39;remoteWorkType&#39;: 0,
-        &#39;s10&#39;: &#39;10&#39;,
-        &#39;salaryDesc&#39;: &#39;待遇面議&#39;,
-        &#39;salaryHigh&#39;: &#39;0000000&#39;,
-        &#39;salaryLow&#39;: &#39;0000000&#39;,
-        &#39;tags&#39;: [&#39;員工300人&#39;]},
-    {   &#39;appearDate&#39;: &#39;20221006&#39;,
-        &#39;appearDateDesc&#39;: &#39;10/06&#39;,
-        &#39;applyCnt&#39;: &#39;00001&#39;,
-        &#39;applyDate&#39;: &#39;&#39;,
-        &#39;applyDesc&#39;: &#39;0~5人應徵&#39;,
-        &#39;coIndustry&#39;: &#39;1001001003&#39;,
-        &#39;coIndustryDesc&#39;: &#39;網際網路相關業&#39;,
-        &#39;custName&#39;: &#39;安索帕股份有限公司&#39;,
-        &#39;custNameRaw&#39;: &#39;安索帕股份有限公司&#39;,
-        &#39;custNo&#39;: &#39;70396997000&#39;,
-        &#39;descSnippet&#39;: &#39;Isobar作為數位轉型與數位創新的領導品牌，領先市場佈局打造專業的CR-Marketing顧問諮詢團隊，集結了橫跨數據科學與數位創意的全腦競爭人才，面對高速演化的商業競爭市場，Isobar &#39;
-                       &#39;CR-Marketing顧問團隊扮演數據、創意與策略之間的關鍵轉譯角色，協助品牌透過自身的會員數據來優化CRM操作策略，累積會員數據資產、創造會員數據變現的新商業成長曲線。\n&#39;
+        &#39;s10&#39;: 50,
+        &#39;s5&#39;: 0,
+        &#39;s9&#39;: [1],
+        &#39;salaryHigh&#39;: 9999999,
+        &#39;salaryLow&#39;: 50000,
+        &#39;tags&#39;: {   &#39;wf1&#39;: {&#39;desc&#39;: &#39;&#39;, &#39;param&#39;: &#39;wf1&#39;},
+                    &#39;wf2&#39;: {&#39;desc&#39;: &#39;&#39;, &#39;param&#39;: &#39;wf2&#39;},
+                    &#39;wf7&#39;: {&#39;desc&#39;: &#39;&#39;, &#39;param&#39;: &#39;wf7&#39;}},
+        &#39;userApplyCount&#39;: None},
+    {   &#39;appearDate&#39;: &#39;20250327&#39;,
+        &#39;applyCnt&#39;: 2,
+        &#39;applyDate&#39;: None,
+        &#39;coIndustry&#39;: 1011002002,
+        &#39;coIndustryDesc&#39;: &#39;建物裝修及裝潢業&#39;,
+        &#39;custName&#39;: &#39;名匠博物館多媒體設計_名匠設計室內裝修有限公司&#39;,
+        &#39;custNo&#39;: &#39;15879744000&#39;,
+        &#39;d3&#39;: &#39;9:00am~06:30pm&#39;,
+        &#39;descSnippet&#39;: &#39;我們正在尋找對博物館有興趣，熟悉 Auto CAD 的施工圖繪製工程師。\n&#39;
                        &#39;\n&#39;
-                       &#39;在不斷研發創新演算與整合服務的同時，Isobar長期延攬跨界頂尖人才，持續優化團隊並擴大CRM顧問服務的差異化優勢。身為Isobar &#39;
-                       &#39;CR-Marketing團隊的數據科學家，主要的任務是要將品牌核心商業數據透過演算、模型轉化為商業決策的洞察，與CRM商業諮詢顧問共同擬定CRM作業策略建議以及建立具體行動方案。\n&#39;
+                       &#39;本公司自1985年成立以來，作品無數，都是整個團隊努力的結果，歡迎你的加入。\n&#39;
+                       &#39;我們致力於投入博物館、展覽館從無到有的過程。將專業能力發揮極致、腦力激盪創造新思維，同時與業主共享心中開花結果的喜悅。我們可以很驕傲地說：「名匠設計是一間值得信賴的設計公司！」\n&#39;
                        &#39;\n&#39;
-                       &#39;我們在找一個具備跨界思考能力的新數據力專業人才，貫穿商業思維、數據演算與行銷策略，徹底融入品牌營運的顧問服務，攜手打造數位轉型時代的新顧問服務模式，他/她將會協助：\n&#39;
-                       &#39;1. 研究跨產業會員關鍵價值行為模式，協助團隊提供客戶在CRM經營策略的建議\n&#39;
-                       &#39;2. 依據不同商業主題，建立分析或預測模型(含研究方法)以應用於CRM操作優化\n&#39;
-                       &#39;3. 定期協助諮詢顧問製作並優化顧問分析報告：CRM維運追蹤、活動成效......等\n&#39;
-                       &#39;4. 協助維護、優化既有的CRM會員現況診斷分析流程\n&#39;
-                       &#39;5. 配合客戶需求，提供特定商業與消費會員數據議題的研究分析報告以持續優化決策品質\n&#39;,
-        &#39;description&#39;: &#39;Isobar作為數位轉型與數位創新的領導品牌，領先市場佈局打造專業的CR-Marketing顧問諮詢團隊，集結了橫跨數據科學與數位創意的全腦競爭人才，面對高速演化的商業競爭市場，Isobar &#39;
-                       &#39;CR-Marketing顧問團隊扮演數據、創意與策略之間的關鍵轉譯角色，協助品牌透過自身的會員數據來優化CRM操作策略，累積會員數據資產、創造會員數據變現的新商業成長曲線。\n&#39;
+                       &#39;目前我們正在進行的是[國家軍事博物館]、[國家檔案館]以及高雄佛光山的[淨土洞窟]。希望對設計有想法、有興趣的朋友們，加入名匠團隊，這裡絕對是最好的學習成長環境，在國家級的案子中增廣見聞。彼此腦力激盪、發揮創造力，共同打造最能打動人心的展覽！\n&#39;
                        &#39;\n&#39;
-                       &#39;在不斷研發創新演算與整合服務的同時，Isobar長期延攬跨界頂尖人才，持續優化團隊並擴大CRM顧問服務的差異化優勢。身為Isobar &#39;
-                       &#39;CR-Marketing團隊的數據科學家，主要的任務是要將品牌核心商業數據透過演算、模型轉化為商業決策的洞察，與CRM商業諮詢顧問共同擬定CRM作業策略建議以及建立具體行動方案。\n&#39;
+                       &#39;經營理念 /\n&#39;
+                       &#39;員工永遠是公司最寶貴的資產，我們致力提供優質的學習環境及成長空間。\n&#39;
+                       &#39;滿足客戶需求、追求金質獎章、建立良好口碑。\n&#39;
+                       &#39;熱忱的服務態度、優良的施工品質、打動無數業主與觀眾的心。\n&#39;
                        &#39;\n&#39;
-                       &#39;我們在找一個具備跨界思考能力的新數據力專業人才，貫穿商業思維、數據演算與行銷策略，徹底融入品牌營運的顧問服務，攜手打造數位轉型時代的新顧問服務模式，他/她將會協助：\n&#39;
-                       &#39;1. 研究跨產業會員關鍵價值行為模式，協助團隊提供客戶在CRM經營策略的建議\n&#39;
-                       &#39;2. 依據不同商業主題，建立分析或預測模型(含研究方法)以應用於CRM操作優化\n&#39;
-                       &#39;3. 定期協助諮詢顧問製作並優化顧問分析報告：CRM維運追蹤、活動成效......等\n&#39;
-                       &#39;4. 協助維護、優化既有的CRM會員現況診斷分析流程\n&#39;
-                       &#39;5. 配合客戶需求，提供特定商業與消費會員數據議題的研究分析報告以持續優化決策品質\n&#39;,
-        &#39;isApply&#39;: &#39;0&#39;,
-        &#39;isSave&#39;: &#39;0&#39;,
-        &#39;jobAddrNo&#39;: &#39;6001001007&#39;,
-        &#39;jobAddrNoDesc&#39;: &#39;台北市信義區&#39;,
-        &#39;jobAddress&#39;: &#39;松仁路100號10樓&#39;,
-        &#39;jobName&#39;: &#39;數據科學家 Data Scientist&#39;,
-        &#39;jobNameRaw&#39;: &#39;數據科學家 Data Scientist&#39;,
-        &#39;jobNameSnippet&#39;: &quot;&lt;em class=&#39;b-txt--highlight&#39;&gt;數據科學家&lt;/em&gt; &lt;em &quot;
-                          &quot;class=&#39;b-txt--highlight&#39;&gt;Data&lt;/em&gt; &lt;em &quot;
-                          &quot;class=&#39;b-txt--highlight&#39;&gt;Scientist&lt;/em&gt;&quot;,
-        &#39;jobNo&#39;: &#39;10856947&#39;,
-        &#39;jobRo&#39;: &#39;1&#39;,
-        &#39;jobRole&#39;: &#39;1&#39;,
-        &#39;jobType&#39;: &#39;0&#39;,
-        &#39;jobsource&#39;: &#39;jolist_a_relevance&#39;,
-        &#39;landmark&#39;: &#39;距捷運象山站290公尺&#39;,
-        &#39;lat&#39;: &#39;25.0344547&#39;,
-        &#39;link&#39;: {   &#39;applyAnalyze&#39;: &#39;//www.104.com.tw/jobs/apply/analysis/6gp9v?channel=104rpt&amp;jobsource=apply_analyze&#39;,
-                    &#39;cust&#39;: &#39;//www.104.com.tw/company/wc8jyiw?jobsource=jolist_a_relevance&#39;,
-                    &#39;job&#39;: &#39;//www.104.com.tw/job/6gp9v?jobsource=jolist_a_relevance&#39;},
-        &#39;lon&#39;: &#39;121.5678798&#39;,
-        &#39;major&#39;: [&#39;統計學相關&#39;, &#39;一般商業學類&#39;, &#39;資訊管理相關&#39;],
-        &#39;optionEdu&#39;: &#39;專科&#39;,
-        &#39;optionZone&#39;: &#39;0&#39;,
-        &#39;period&#39;: &#39;06&#39;,
-        &#39;periodDesc&#39;: &#39;5年以上&#39;,
+                       &#39;獎項 /\n&#39;
+                       &#39;國立臺灣史前文化博物館已於2023年5月19日隆重開幕，文化部長史哲表示「史前館重新開館是今年博物館日最好的禮物，期許重新開館後的史前館，能讓2300萬的臺灣人都到訪一次」。其中，南島廳入口處動畫「世界開始的地方」更榮獲多項殊榮。\n&#39;
+                       &#39;2023 德國柏林iF設計獎\n&#39;
+                       &#39;2022 美國ADC獎動畫類入圍\n&#39;
+                       &#39;2022 臺灣金點設計獎\n&#39;
+                       &#39;\n&#39;
+                       &#39;工程查核 /\n&#39;
+                       &#39;近幾年政府工程品質查核，均獲甲等。\n&#39;
+                       &#39;2020 澎湖生活博物館\n&#39;
+                       &#39;2019 國立臺灣史前文化博物館\n&#39;
+                       &#39;2014 臺北市立天文科學教育館\n&#39;
+                       &#39;\n&#39;
+                       &#39;作品實績 /\n&#39;
+                       &#39;\uf06e\t世貿中心大型展覽：電腦展、食品展、國防展、資訊月；其中為來來飯店贏得五年美食展首獎。 \n&#39;
+                       &#39;\uf06e\t短期巡迴展：農業科技展、台灣燈會、醫療資訊展。 \n&#39;
+                       &#39;\uf06e\t博物館展示：自2002年與美國Museum Arts &#39;
+                       &#39;Inc.合作完成國立臺灣博物館「展示更新工程」設計監造案之後，邁入新的里程碑。\n&#39;
+                       &#39;2022年7月贏得「國家軍事博物館」典藏、圖書、展示、劇場、營運設備委託勞務採購案。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;文史類：國立故宮博物院、故宮南院、澎湖生活博物館、苗栗客家文物館、國立海洋科技博物館-海洋文化廳、台東國立史前文化博物館。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;科技類：臺北市立天文科學教育館、苗栗台灣油礦陳列館、國立科學工藝博物館-健康探索廳、國立自然科學博物館-半導體的世界(台積電)、友達光電-達達大師的魔術盒。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;自然與生態類：嘉義市立博物館、國立臺灣博物館-臺灣的生物、國立科學工藝博物館-氣候變遷、臺北花卉博覽會-養生館、湖山水庫管理中心。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;其他：佛光山-佛教節慶、蘭陽別院-甲子堂紀念館、臺北捷運逃生體驗營、睿澤香水觀光工廠、中國信託文薈館、法鼓山大愿校史館。\n&#39;
+                       &#39;\n&#39;
+                       &#39;更多作品 /\n&#39;
+                       &#39;https://www.craftsmen.com.tw\n&#39;
+                       &#39;\n&#39;
+                       &#39;福利制度 /\n&#39;
+                       &#39;\uf06e\t保險類 \n&#39;
+                       &#39;1.勞保 \n&#39;
+                       &#39;2.健保 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t其他\n&#39;
+                       &#39;1.年終獎金 \n&#39;
+                       &#39;2.三節獎金\n&#39;
+                       &#39;3.比圖獎金\n&#39;
+                       &#39;4.工作獎金\n&#39;
+                       &#39;5.每月全勤獎金\n&#39;
+                       &#39;6.依表現適時調薪\n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t休閒類 \n&#39;
+                       &#39;1.春酒聚餐  \n&#39;
+                       &#39;2.國外員工旅遊 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t請 / 休假制度 \n&#39;
+                       &#39;1.週休二日 \n&#39;
+                       &#39;2.特休/年假&#39;,
+        &#39;description&#39;: &#39;我們正在尋找對博物館有興趣，熟悉 Auto CAD 的施工圖繪製工程師。\n&#39;
+                       &#39;\n&#39;
+                       &#39;本公司自1985年成立以來，作品無數，都是整個團隊努力的結果，歡迎你的加入。\n&#39;
+                       &#39;我們致力於投入博物館、展覽館從無到有的過程。將專業能力發揮極致、腦力激盪創造新思維，同時與業主共享心中開花結果的喜悅。我們可以很驕傲地說：「名匠設計是一間值得信賴的設計公司！」\n&#39;
+                       &#39;\n&#39;
+                       &#39;目前我們正在進行的是[國家軍事博物館]、[國家檔案館]以及高雄佛光山的[淨土洞窟]。希望對設計有想法、有興趣的朋友們，加入名匠團隊，這裡絕對是最好的學習成長環境，在國家級的案子中增廣見聞。彼此腦力激盪、發揮創造力，共同打造最能打動人心的展覽！\n&#39;
+                       &#39;\n&#39;
+                       &#39;經營理念 /\n&#39;
+                       &#39;員工永遠是公司最寶貴的資產，我們致力提供優質的學習環境及成長空間。\n&#39;
+                       &#39;滿足客戶需求、追求金質獎章、建立良好口碑。\n&#39;
+                       &#39;熱忱的服務態度、優良的施工品質、打動無數業主與觀眾的心。\n&#39;
+                       &#39;\n&#39;
+                       &#39;獎項 /\n&#39;
+                       &#39;國立臺灣史前文化博物館已於2023年5月19日隆重開幕，文化部長史哲表示「史前館重新開館是今年博物館日最好的禮物，期許重新開館後的史前館，能讓2300萬的臺灣人都到訪一次」。其中，南島廳入口處動畫「世界開始的地方」更榮獲多項殊榮。\n&#39;
+                       &#39;2023 德國柏林iF設計獎\n&#39;
+                       &#39;2022 美國ADC獎動畫類入圍\n&#39;
+                       &#39;2022 臺灣金點設計獎\n&#39;
+                       &#39;\n&#39;
+                       &#39;工程查核 /\n&#39;
+                       &#39;近幾年政府工程品質查核，均獲甲等。\n&#39;
+                       &#39;2020 澎湖生活博物館\n&#39;
+                       &#39;2019 國立臺灣史前文化博物館\n&#39;
+                       &#39;2014 臺北市立天文科學教育館\n&#39;
+                       &#39;\n&#39;
+                       &#39;作品實績 /\n&#39;
+                       &#39;\uf06e\t世貿中心大型展覽：電腦展、食品展、國防展、資訊月；其中為來來飯店贏得五年美食展首獎。 \n&#39;
+                       &#39;\uf06e\t短期巡迴展：農業科技展、台灣燈會、醫療資訊展。 \n&#39;
+                       &#39;\uf06e\t博物館展示：自2002年與美國Museum Arts &#39;
+                       &#39;Inc.合作完成國立臺灣博物館「展示更新工程」設計監造案之後，邁入新的里程碑。\n&#39;
+                       &#39;2022年7月贏得「國家軍事博物館」典藏、圖書、展示、劇場、營運設備委託勞務採購案。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;文史類：國立故宮博物院、故宮南院、澎湖生活博物館、苗栗客家文物館、國立海洋科技博物館-海洋文化廳、台東國立史前文化博物館。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;科技類：臺北市立天文科學教育館、苗栗台灣油礦陳列館、國立科學工藝博物館-健康探索廳、國立自然科學博物館-半導體的世界(台積電)、友達光電-達達大師的魔術盒。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;自然與生態類：嘉義市立博物館、國立臺灣博物館-臺灣的生物、國立科學工藝博物館-氣候變遷、臺北花卉博覽會-養生館、湖山水庫管理中心。\n&#39;
+                       &#39;\uf06e\t&#39;
+                       &#39;其他：佛光山-佛教節慶、蘭陽別院-甲子堂紀念館、臺北捷運逃生體驗營、睿澤香水觀光工廠、中國信託文薈館、法鼓山大愿校史館。\n&#39;
+                       &#39;\n&#39;
+                       &#39;更多作品 /\n&#39;
+                       &#39;https://www.craftsmen.com.tw\n&#39;
+                       &#39;\n&#39;
+                       &#39;福利制度 /\n&#39;
+                       &#39;\uf06e\t保險類 \n&#39;
+                       &#39;1.勞保 \n&#39;
+                       &#39;2.健保 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t其他\n&#39;
+                       &#39;1.年終獎金 \n&#39;
+                       &#39;2.三節獎金\n&#39;
+                       &#39;3.比圖獎金\n&#39;
+                       &#39;4.工作獎金\n&#39;
+                       &#39;5.每月全勤獎金\n&#39;
+                       &#39;6.依表現適時調薪\n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t休閒類 \n&#39;
+                       &#39;1.春酒聚餐  \n&#39;
+                       &#39;2.國外員工旅遊 \n&#39;
+                       &#39;\n&#39;
+                       &#39;\uf06e\t請 / 休假制度 \n&#39;
+                       &#39;1.週休二日 \n&#39;
+                       &#39;2.特休/年假&#39;,
+        &#39;hrBehaviorPR&#39;: 0.6284257064192972,
+        &#39;isActivelyHiring&#39;: False,
+        &#39;isApplied&#39;: None,
+        &#39;isSave&#39;: None,
+        &#39;jobAddrNo&#39;: 6001001004,
+        &#39;jobAddrNoDesc&#39;: &#39;台北市松山區&#39;,
+        &#39;jobAddress&#39;: &#39;三民路108號4樓之14&#39;,
+        &#39;jobCat&#39;: [2012003006, 2012003001, 2012003002],
+        &#39;jobName&#39;: &#39;施工圖繪製工程師&#39;,
+        &#39;jobNameSnippet&#39;: &#39;施工圖繪製工程師&#39;,
+        &#39;jobNo&#39;: &#39;11805045&#39;,
+        &#39;jobRo&#39;: 1,
+        &#39;jobType&#39;: 1,
+        &#39;labels&#39;: [&#39;c@wf7&#39;, &#39;c@wf1&#39;, &#39;c@wf2&#39;],
+        &#39;lat&#39;: 25.057752,
+        &#39;link&#39;: {   &#39;applyAnalyze&#39;: &#39;https://www.104.com.tw/jobs/apply/analysis/710tx?channel=104rpt&#39;,
+                    &#39;cust&#39;: &#39;https://www.104.com.tw/company/7ame0w0&#39;,
+                    &#39;job&#39;: &#39;https://www.104.com.tw/job/710tx&#39;},
+        &#39;lon&#39;: 121.563733,
+        &#39;major&#39;: [&#39;其他相關科系&#39;, &#39;室內藝術相關&#39;, &#39;建築相關&#39;],
+        &#39;mrt&#39;: &#39;&#39;,
+        &#39;mrtDesc&#39;: &#39;&#39;,
+        &#39;mrtDist&#39;: 0,
+        &#39;optionEdu&#39;: [3, 4, 5],
+        &#39;period&#39;: 4,
         &#39;remoteWorkType&#39;: 0,
-        &#39;s10&#39;: &#39;10&#39;,
-        &#39;salaryDesc&#39;: &#39;待遇面議&#39;,
-        &#39;salaryHigh&#39;: &#39;0000000&#39;,
-        &#39;salaryLow&#39;: &#39;0000000&#39;,
-        &#39;tags&#39;: [&#39;員工120人&#39;]}]
+        &#39;s10&#39;: 50,
+        &#39;s5&#39;: 0,
+        &#39;s9&#39;: [1],
+        &#39;salaryHigh&#39;: 9999999,
+        &#39;salaryLow&#39;: 50000,
+        &#39;tags&#39;: {   &#39;wf1&#39;: {&#39;desc&#39;: &#39;&#39;, &#39;param&#39;: &#39;wf1&#39;},
+                    &#39;wf2&#39;: {&#39;desc&#39;: &#39;&#39;, &#39;param&#39;: &#39;wf2&#39;},
+                    &#39;wf7&#39;: {&#39;desc&#39;: &#39;&#39;, &#39;param&#39;: &#39;wf7&#39;}},
+        &#39;userApplyCount&#39;: None}]
 </pre></div>
 </div>
 </div>
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totalPage</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalPage&#39;</span><span class="p">]</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">totalPage</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;metadata&#39;</span><span class="p">][</span><span class="s1">&#39;pagination&#39;</span><span class="p">][</span><span class="s1">&#39;lastPage&#39;</span><span class="p">]</span>
 
+
+<span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
 
 <span class="c1"># Uncomment the next line code to scrape from 1 to totalage</span>
-<span class="c1"># for p in range(1, totalPage):</span>
-<span class="k">for</span> <span class="n">p</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=data</span><span class="si">%20s</span><span class="s1">cientist&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
-    <span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
+<span class="n">totalPage</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">totalPage</span><span class="o">+</span><span class="mi">1</span><span class="p">):</span>
+    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/api/jobs?jobsource=index_s&amp;keyword=</span><span class="si">%E</span><span class="s1">8%B3</span><span class="si">%87%</span><span class="s1">E6</span><span class="si">%96%</span><span class="s1">99</span><span class="si">%E</span><span class="s1">7%A7</span><span class="si">%91%</span><span class="s1">E5%AD%B8&amp;mode=s&amp;order=15&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;pagesize=20&#39;</span>
     <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
+    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">])</span>
     <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>230
-250
-270
-290
-310
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>22
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>44
 </pre></div>
 </div>
 </div>
@@ -1703,7 +1936,7 @@ Total Page: 150
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1430, 40)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(44, 41)
 </pre></div>
 </div>
 <div class="output text_html"><div>
@@ -1724,297 +1957,1089 @@ Total Page: 150
   <thead>
     <tr style="text-align: right;">
       <th></th>
-      <th>jobType</th>
-      <th>jobNo</th>
-      <th>jobName</th>
-      <th>jobNameSnippet</th>
-      <th>jobRole</th>
-      <th>jobRo</th>
-      <th>jobAddrNo</th>
-      <th>jobAddrNoDesc</th>
-      <th>jobAddress</th>
+      <th>appearDate</th>
+      <th>applyCnt</th>
+      <th>coIndustry</th>
+      <th>coIndustryDesc</th>
+      <th>custName</th>
+      <th>custNo</th>
       <th>description</th>
+      <th>descSnippet</th>
+      <th>mrtDist</th>
+      <th>jobAddress</th>
       <th>...</th>
-      <th>tags</th>
-      <th>landmark</th>
-      <th>link</th>
-      <th>jobsource</th>
-      <th>jobNameRaw</th>
-      <th>custNameRaw</th>
-      <th>lon</th>
-      <th>lat</th>
-      <th>remoteWorkType</th>
-      <th>major</th>
+      <th>s5</th>
+      <th>d3</th>
+      <th>hrBehaviorPR</th>
+      <th>jobCat</th>
+      <th>labels</th>
+      <th>isSave</th>
+      <th>isApplied</th>
+      <th>applyDate</th>
+      <th>userApplyCount</th>
+      <th>isActivelyHiring</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>0</th>
-      <td>1</td>
-      <td>12901787</td>
-      <td>日班倉管員(週休二日免排班)</td>
-      <td>日班倉管員(週休二日免排班)</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001005012</td>
-      <td>桃園市大園區</td>
-      <td></td>
-      <td>1.倉儲貨品管理及貨品環境維護 \n2.物流倉儲各項改包進貨及出貨作業,熟悉倉庫生態佳 \n...</td>
+      <td>20250324</td>
+      <td>5</td>
+      <td>1004001007</td>
+      <td>金融控股業</td>
+      <td>富邦產物保險股份有限公司</td>
+      <td>70826461000</td>
+      <td>★富邦產險招募MA：經營管理組\n目標以成為企業及個人保險之全方位經營管理人才為發展方向，歷...</td>
+      <td>★富邦產險招募MA：經營管理組\n目標以成為企業及個人保險之全方位經營管理人才為發展方向，歷...</td>
+      <td>0.00</td>
+      <td>(以大台北地區為主，依公司指派)</td>
       <td>...</td>
-      <td>[外商公司, 員工650人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>日班倉管員(週休二日免排班)</td>
-      <td>香港商台灣利豐物流有限公司台灣分公司_LF LOGISTICS (TAIWAN) LIMITED</td>
-      <td>121.193945</td>
-      <td>25.0492632</td>
       <td>0</td>
-      <td>[]</td>
+      <td>08:30-17:30</td>
+      <td>0.317307</td>
+      <td>[2001001002, 2003002013, 2007001018]</td>
+      <td>[c@wf7, c@wf35, c@wf28, c@wf4, c@wf31, c@wf9, ...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>1</th>
+      <td>20250325</td>
       <td>1</td>
-      <td>11726918</td>
-      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
-      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001008004</td>
-      <td>台中市西區</td>
-      <td></td>
-      <td>百貨公司專櫃儲備幹部及店長職務\r\n1.負責介紹及銷售商品。 \r\n2.提供顧客之接待與...</td>
+      <td>1013001002</td>
+      <td>國防事業</td>
+      <td>國家中山科學研究院</td>
+      <td>130000000055232</td>
+      <td>錄取後依考生學經歷、專長、個人特質賦予以下部分或多項工作：\n1. 各類契約（包含中、英文契...</td>
+      <td>錄取後依考生學經歷、專長、個人特質賦予以下部分或多項工作：\n1. 各類契約（包含中、英文契...</td>
+      <td>0.00</td>
+      <td>中正路佳安段481號</td>
       <td>...</td>
-      <td>[外商公司, 員工190人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
-      <td>香港商施華洛世奇有限公司台灣分公司</td>
-      <td>120.6631289</td>
-      <td>24.1430604</td>
       <td>0</td>
-      <td>[]</td>
+      <td></td>
+      <td>0.199704</td>
+      <td>[2002002004, 2002001007, 2002002006]</td>
+      <td>[c@wf1, c@wf10, c@wf29, c@wf30, c@wf8, c@wf16,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>1</td>
-      <td>8422468</td>
-      <td>(Human Resources) Learning and Development Tea...</td>
-      <td>(Human Resources) Learning and Development Tea...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001002011</td>
-      <td>新北市新店區</td>
-      <td></td>
-      <td>About HTC\n\nHTC built a vision of the future ...</td>
+      <td>20250319</td>
+      <td>7</td>
+      <td>1001004001</td>
+      <td>光電產業</td>
+      <td>聯齊科技股份有限公司</td>
+      <td>130000000047967</td>
+      <td>【關於 NextDrive 資料團隊】\nNextDrive 資料團隊專注於資料洞察與應用，...</td>
+      <td>【關於 NextDrive [[[資料]]]團隊】\nNextDrive [[[資料]]]團...</td>
+      <td>0.32</td>
+      <td>昆陽街18號2樓</td>
       <td>...</td>
-      <td>[上市上櫃, 員工2000人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>(Human Resources) Learning and Development Tea...</td>
-      <td>宏達電 HTC Corporation_宏達國際電子股份有限公司</td>
-      <td>121.5394822</td>
-      <td>24.978282</td>
       <td>0</td>
-      <td>[心理學相關, 人力資源相關]</td>
+      <td></td>
+      <td>0.886519</td>
+      <td>[2007001021, 2007001018, 2007001022]</td>
+      <td>[c@wf26, c@wf10, c@wf1, c@wf29, c@wf8, c@wf11,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>1</td>
-      <td>12388507</td>
-      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
-      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001002015</td>
-      <td>新北市中和區</td>
-      <td>興南路一段142號</td>
-      <td>▋ 關於德州儀器\n德州儀器(TI)是位居類比晶片世界領導地位的半導體設計與製造公司，持續提...</td>
+      <td>20250327</td>
+      <td>8</td>
+      <td>1004003001</td>
+      <td>人身保險業</td>
+      <td>(總公司)南山人壽保險股份有限公司</td>
+      <td>11456006000</td>
+      <td>推動人工智能 (AI) 和其他資料科學新技術的應用，並將其成功地導入企業流程中，以提高效率、...</td>
+      <td>推動人工智能 (AI) 和其他[[[資料科學]]]新技術的應用，並將其成功地導入企業流程中，...</td>
+      <td>0.21</td>
+      <td>莊敬路168號</td>
       <td>...</td>
-      <td>[外商公司, 員工2000人]</td>
-      <td>距捷運南勢角站320公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
-      <td>德州儀器工業股份有限公司</td>
-      <td>121.5083777</td>
-      <td>24.9871002</td>
       <td>0</td>
-      <td>[工程學科類]</td>
+      <td>8:30-17:00</td>
+      <td>0.092319</td>
+      <td>[2007001021, 2007001022]</td>
+      <td>[c@wf3, foreigners@foreigners_tick, c@wf2, c@w...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>1</td>
-      <td>12781781</td>
-      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
-      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001004</td>
-      <td>台北市松山區</td>
-      <td>敦化北路88號13樓</td>
-      <td>Planning and Budgeting\n- Assist in the prepar...</td>
+      <td>20250313</td>
+      <td>12</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>詠鋐智能股份有限公司</td>
+      <td>130000000186926</td>
+      <td>執行資料科學專案，包含理解商務問題、資料分析、提出並驗證解決方案，以及展示專案成果。  \n...</td>
+      <td>執行[[[資料科學]]]專案，包含理解商務問題、[[[資料]]]分析、提出並驗證解決方案，以...</td>
+      <td>0.06</td>
+      <td>羅斯福路二段100號25樓</td>
       <td>...</td>
-      <td>[外商公司, 員工250人]</td>
-      <td>距捷運台北小巨蛋站340公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>【外商】財務分析副理 Finance Planning &amp; Analysis Assista...</td>
-      <td>馬來西亞商白蘭氏三得利股份有限公司台灣分公司</td>
-      <td>121.5484798</td>
-      <td>25.0513338</td>
       <td>0</td>
-      <td>[財稅金融相關, 會計學相關, 企業管理相關]</td>
+      <td>09:00-18:00</td>
+      <td>0.634182</td>
+      <td>[2007001021, 2007001022, 2007001018]</td>
+      <td>[c@wf31, c@wf8, c@wf2, foreigners@foreigners_t...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>...</th>
+      <th>5</th>
+      <td>20250304</td>
+      <td>9</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>維曙智能科技有限公司</td>
+      <td>130000000229061</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為資料科學家，需要對新技術保有高度熱誠，能夠歸...</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為[[[資料科學]]]家，需要對新技術保有高度...</td>
+      <td>0.18</td>
+      <td>忠孝東路二段116號5樓</td>
       <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.560439</td>
+      <td>[2007001021, 2007001020, 2007001012]</td>
+      <td>[c@wf9, c@wf12, c@wf26, c@wf7, c@wf8]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>1425</th>
+      <th>6</th>
+      <td>20250325</td>
+      <td>8</td>
+      <td>1006003001</td>
+      <td>廣告行銷公關業</td>
+      <td>浩騰媒體股份有限公司</td>
+      <td>16832894000</td>
+      <td>道，協助生成動態數據可視化報告 ，讓內部團隊和客戶能快速理解數據結果並做出策略性決策。\n4...</td>
+      <td>道，協助生成動態數據可視化報告 ，讓內部團隊和客戶能快速理解數據結果並做出策略性決策。\n4...</td>
+      <td>0.03</td>
+      <td>復興北路378號9樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td>09:00~18:00</td>
+      <td>0.905547</td>
+      <td>[2007001022, 2007001021, 2007001018]</td>
+      <td>[c@wf2, c@wf35, c@wf9, c@wf31, c@wf10, c@wf7, ...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>7</th>
+      <td>20250324</td>
+      <td>9</td>
+      <td>1001001003</td>
+      <td>網際網路相關業</td>
+      <td>易可思科技股份有限公司</td>
+      <td>130000000215354</td>
+      <td>\n2. 機器學習與深度學習演算法開發及優化。\n3. 進行資料統計分析與視覺化。\n4. ...</td>
+      <td>\n2. 機器學習與深度學習演算法開發及優化。\n3. 進行[[[資料]]]統計分析與視覺化...</td>
+      <td>0.32</td>
+      <td>吉林路24號8樓之2</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.516875</td>
+      <td>[2007001021]</td>
+      <td>[c@wf24, c@wf4, c@wf1, c@wf26, c@wf7, c@wf8, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>8</th>
+      <td>20250304</td>
+      <td>11</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>維曙智能科技有限公司</td>
+      <td>130000000229061</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為資料科學家，需要對新技術保有高度熱誠，能夠歸...</td>
+      <td>會是您大展身手的地方。歡迎加入我們。\n\n作為[[[資料科學]]]家，需要對新技術保有高度...</td>
+      <td>0.18</td>
+      <td>忠孝東路二段116號5樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td>9:30-18:30</td>
+      <td>0.510947</td>
+      <td>[2007001021, 2007001020, 2007001012]</td>
+      <td>[c@wf26, c@wf12, c@wf7, c@wf8, c@wf9]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>9</th>
+      <td>20250325</td>
+      <td>11</td>
+      <td>1006002002</td>
+      <td>電視業</td>
+      <td>緯來電視網股份有限公司</td>
+      <td>20913187000</td>
+      <td>1. 進行數據清洗、資料貼標以及特徵工程等資料前處理工作。 \n2. 選用資料科學或人工智慧...</td>
+      <td>1. 進行數據清洗、[[[資料]]]貼標以及特徵工程等[[[資料]]]前處理工作。 \n2....</td>
+      <td>0.43</td>
+      <td>瑞光路480號3樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.775427</td>
+      <td>[2007001012, 2004001010, 2007001009]</td>
+      <td>[c@wf2, c@wf10, c@wf1, c@wf23, c@wf9, c@wf7]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>10</th>
+      <td>20250325</td>
+      <td>7</td>
+      <td>1004001007</td>
+      <td>金融控股業</td>
+      <td>國泰金控_國泰金融控股股份有限公司</td>
+      <td>70827406000</td>
+      <td>[工作內容]\n職務包含但不限於以下內容\n- 基於 Python 語言之產品開發，推廣及後...</td>
+      <td>[工作內容]\n職務包含但不限於以下內容\n- 基於 Python 語言之產品開發，推廣及後...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.172487</td>
+      <td>[2007001022, 2007001009]</td>
+      <td>[c@wf29, c@wf33, c@wf13, c@wf32, c@wf25, c@wf1...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>11</th>
+      <td>20250324</td>
+      <td>12</td>
+      <td>1001001006</td>
+      <td>其它軟體及網路相關業</td>
+      <td>皓博科技股份有限公司</td>
+      <td>130000000076068</td>
+      <td>與部署。\n\n資料科學家在現今數據化時代中扮演重要的角色，憑藉數據分析技能和洞察力，能夠協...</td>
+      <td>與部署。\n\n[[[資料科學]]]家在現今數據化時代中扮演重要的角色，憑藉數據分析技能和洞...</td>
+      <td>0.27</td>
+      <td>忠孝東路五段508號20樓-3</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.366117</td>
+      <td>[2007001012, 2007001021]</td>
+      <td>[c@wf26, c@wf7, c@wf32, c@wf8, c@wf1, c@wf4, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>12</th>
+      <td>20250327</td>
+      <td>7</td>
+      <td>1008003006</td>
+      <td>其他專業／科學及技術業</td>
+      <td>工研院 _財團法人工業技術研究院</td>
+      <td>2750963000</td>
+      <td>1. 資料分析軟體模組開發、系統整合與測試。 \n2. 針對資料科學應用主題瞭解領域知識，並...</td>
+      <td>1. [[[資料]]]分析軟體模組開發、系統整合與測試。 \n2. 針對[[[資料科學]]]...</td>
+      <td>0.00</td>
+      <td>工業二路31號</td>
+      <td>...</td>
+      <td>0</td>
+      <td>08:00~17:00</td>
+      <td>0.199704</td>
+      <td>[2007001004, 2008001009]</td>
+      <td>[c@wf3, c@wf23, c@wf21, c@wf30, c@wf1, c@wf12,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>13</th>
+      <td>20250324</td>
+      <td>3</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>緯謙科技股份有限公司</td>
+      <td>130000000175101</td>
+      <td>透過數據蒐集、資料分析與可視化架構，解決商業痛點推動業務增長並提升運營效率，與各部門緊密協作...</td>
+      <td>透過數據蒐集、[[[資料]]]分析與可視化架構，解決商業痛點推動業務增長並提升運營效率，與各...</td>
+      <td>0.00</td>
+      <td>新台五路一段88號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.867634</td>
+      <td>[2007001004, 2007001012, 2007001021]</td>
+      <td>[c@wf7, c@wf19, c@wf29, c@wf2, c@wf30, c@wf31,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>14</th>
+      <td>20250326</td>
+      <td>8</td>
+      <td>1001001006</td>
+      <td>其它軟體及網路相關業</td>
+      <td>圖策科技股份有限公司</td>
+      <td>130000000151165</td>
+      <td>【職位名稱】 金融資料科學工程師\n\n【工作內容】\n1. 負責金融數據的蒐集、前處理與清...</td>
+      <td>【職位名稱】 金融[[[資料科學]]]工程師\n\n【工作內容】\n1. 負責金融數據的蒐集...</td>
+      <td>0.47</td>
+      <td>光復南路65號13樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.914398</td>
+      <td>[2007001004, 2007001012]</td>
+      <td>[c@wf1, c@wf7]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>15</th>
+      <td>20250326</td>
+      <td>7</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>QNAP_威聯通科技股份有限公司</td>
+      <td>80682695000</td>
+      <td>[工作內容]\n1. 透過 NLP 相關技術優化 Chatbot，以提升客戶體驗。\n2. ...</td>
+      <td>[工作內容]\n1. 透過 NLP 相關技術優化 Chatbot，以提升客戶體驗。\n2. ...</td>
+      <td>0.00</td>
+      <td>中興路22號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.317307</td>
+      <td>[2007001021, 2007001022, 2007001012]</td>
+      <td>[c@wf15, c@wf14, c@wf26, c@wf2, c@wf29, c@wf3,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>16</th>
+      <td>20250324</td>
+      <td>9</td>
+      <td>1008003006</td>
+      <td>其他專業／科學及技術業</td>
+      <td>工研院 _財團法人工業技術研究院</td>
+      <td>2750963000</td>
+      <td>\n\n【研究室簡介】\n本研究室專注在發展應用於材料科學與產業之AI相關技術，透過AI平台...</td>
+      <td>\n\n【研究室簡介】\n本研究室專注在發展應用於材料[[[科學]]]與產業之AI相關技術，...</td>
+      <td>0.00</td>
+      <td>中興路四段195號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.611876</td>
+      <td>[2007001021, 2007001018, 2007001020]</td>
+      <td>[c@wf7, c@wf34, c@wf18, c@wf21, c@wf23, c@wf28...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>17</th>
+      <td>20250320</td>
+      <td>18</td>
+      <td>1008003001</td>
+      <td>工商顧問服務業</td>
+      <td>創代科技股份有限公司</td>
+      <td>130000000123231</td>
+      <td>我們正在尋找具備 LLM 經驗的資料科學家 Data Scientist，主要負責 大型語言...</td>
+      <td>我們正在尋找具備 LLM 經驗的[[[資料科學]]]家 Data Scientist，主要負...</td>
+      <td>0.11</td>
+      <td>松江路101號10樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.948939</td>
+      <td>[2007001021, 2007001018, 2007001012]</td>
+      <td>[c@wf1, c@wf7, c@wf29, c@wf12, c@wf17, c@wf34,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>18</th>
+      <td>20250324</td>
+      <td>5</td>
+      <td>1001006002</td>
+      <td>半導體製造業</td>
+      <td>中國砂輪企業股份有限公司</td>
+      <td>3089008000</td>
+      <td>1. 維護已開發之AI模型與Web介面\n2. 協助整合外部合作學校/公司開發之AI模型與W...</td>
+      <td>1. 維護已開發之AI模型與Web介面\n2. 協助整合外部合作學校/公司開發之AI模型與W...</td>
+      <td>0.00</td>
+      <td>中山路64號</td>
+      <td>...</td>
+      <td>0</td>
+      <td>08:00-17:00</td>
+      <td>0.123449</td>
+      <td>[2007001022, 2007001020, 2007001021]</td>
+      <td>[c@wf7, c@wf10, c@wf17, c@wf1, c@wf27, c@wf16,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>19</th>
+      <td>20250325</td>
+      <td>8</td>
+      <td>1004001007</td>
+      <td>金融控股業</td>
+      <td>國泰金控_國泰金融控股股份有限公司</td>
+      <td>70827406000</td>
+      <td>【團隊介紹】\n我們是一個充滿熱情與創意的團隊，致力於結合科技與數據驅動保險業的創新變革。在...</td>
+      <td>【團隊介紹】\n我們是一個充滿熱情與創意的團隊，致力於結合科技與數據驅動保險業的創新變革。在...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.530392</td>
+      <td>[2007001012, 2007001020, 2007001021]</td>
+      <td>[c@wf2, c@wf7, c@wf8, c@wf23, c@wf25, c@wf4, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>20</th>
+      <td>20250325</td>
+      <td>13</td>
+      <td>1004001001</td>
+      <td>銀行業</td>
+      <td>國泰世華商業銀行股份有限公司</td>
+      <td>4231910004</td>
+      <td>性的環境下，實現個人專業成長、累積市場能見度，一起跟上東南亞數位金融市場的快速成長!\n\n...</td>
+      <td>性的環境下，實現個人專業成長、累積市場能見度，一起跟上東南亞數位金融市場的快速成長!\n\n...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.782332</td>
+      <td>[2007001021, 2007001018]</td>
+      <td>[c@wf7, c@wf1, c@wf2, c@wf10, c@wf9, c@wf30, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>21</th>
+      <td>20250324</td>
+      <td>6</td>
+      <td>1003001015</td>
+      <td>綜合商品批發代理業</td>
+      <td>華翰物產實業股份有限公司</td>
+      <td>80378420000</td>
+      <td>●我們正在尋找數名資料科學家，此職位將\n1. 與領域專家結合資料面將商業問題轉化為可分析的...</td>
+      <td>●我們正在尋找數名[[[資料科學]]]家，此職位將\n1. 與領域專家結合[[[資料]]]面...</td>
+      <td>0.00</td>
+      <td>青年一路156號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.907148</td>
+      <td>[2007001007, 2003002008]</td>
+      <td>[c@wf26, c@wf1, c@wf29, c@wf31, foreigners@for...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>22</th>
+      <td>20250325</td>
+      <td>5</td>
+      <td>1011002002</td>
+      <td>建物裝修及裝潢業</td>
+      <td>名匠博物館多媒體設計_名匠設計室內裝修有限公司</td>
+      <td>15879744000</td>
+      <td>誠徵熟悉室內裝修業工地各式日報表撰寫及看懂施工圖，熟工程監造之內業工程師。\n\n本公司自1...</td>
+      <td>誠徵熟悉室內裝修業工地各式日報表撰寫及看懂施工圖，熟工程監造之內業工程師。\n\n本公司自1...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td>8:00-17:30</td>
+      <td>0.832626</td>
+      <td>[2012001009, 2012001010, 2012002002]</td>
+      <td>[c@wf1, c@wf7, c@wf2]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>23</th>
+      <td>20250327</td>
       <td>2</td>
-      <td>13009437</td>
-      <td>Data Specialist</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; Specialist</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001003</td>
-      <td>台北市中山區</td>
-      <td>南京東路三段168號</td>
-      <td>The [[[Data]]] Specialist is responsible for l...</td>
+      <td>1011002002</td>
+      <td>建物裝修及裝潢業</td>
+      <td>名匠博物館多媒體設計_名匠設計室內裝修有限公司</td>
+      <td>15879744000</td>
+      <td>我們正在尋找對博物館有興趣，熟悉 Auto CAD 的施工圖繪製工程師。\n\n本公司自19...</td>
+      <td>我們正在尋找對博物館有興趣，熟悉 Auto CAD 的施工圖繪製工程師。\n\n本公司自19...</td>
+      <td>0.00</td>
+      <td>三民路108號4樓之14</td>
       <td>...</td>
-      <td>[外商公司, 員工100人]</td>
-      <td>距捷運南京復興站230公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>Data Specialist</td>
-      <td>台灣保樂力加股份有限公司</td>
-      <td>121.5417771</td>
-      <td>25.0516218</td>
       <td>0</td>
-      <td>[]</td>
+      <td>9:00am~06:30pm</td>
+      <td>0.628426</td>
+      <td>[2012003006, 2012003001, 2012003002]</td>
+      <td>[c@wf7, c@wf1, c@wf2]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>1426</th>
-      <td>0</td>
-      <td>12850348</td>
-      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) Scientist</td>
-      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) &lt;em class...</td>
+      <th>24</th>
+      <td>20250224</td>
       <td>1</td>
-      <td>1</td>
-      <td>6001002025</td>
-      <td>新北市五股區</td>
-      <td>五工六路25號</td>
-      <td>Position Summary:\nPharmacology Discovery Serv...</td>
+      <td>1005001007</td>
+      <td>大專校院教育事業</td>
+      <td>慈濟學校財團法人慈濟大學</td>
+      <td>8152423000</td>
+      <td>SAS 或 STATA 或 R 等)及資料處理分析能力尤佳\n\n工作內容：\n1. 衛生福...</td>
+      <td>SAS 或 STATA 或 R 等)及[[[資料]]]處理分析能力尤佳\n\n工作內容：\n...</td>
+      <td>0.00</td>
+      <td>圓通路301號</td>
       <td>...</td>
-      <td>[員工130人]</td>
+      <td>0</td>
       <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) Scientist</td>
-      <td>汎球生物科技股份有限公司</td>
-      <td>121.4485193</td>
-      <td>25.0627591</td>
-      <td>0</td>
-      <td>[生物學相關, 醫學技術及檢驗相關, 藥學相關]</td>
+      <td>0.699350</td>
+      <td>[2016001013]</td>
+      <td>[c@wf7]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>1427</th>
+      <th>25</th>
+      <td>20250311</td>
+      <td>9</td>
+      <td>1001003003</td>
+      <td>消費性電子產品製造業</td>
+      <td>優式機器人股份有限公司</td>
+      <td>130000000137394</td>
+      <td>我們正在招募熱愛資料科學與深度學習的軟體工程師加入我們的新技術開發團隊。您將運用您對資料分析...</td>
+      <td>我們正在招募熱愛[[[資料科學]]]與深度學習的軟體工程師加入我們的新技術開發團隊。您將運用...</td>
+      <td>0.00</td>
+      <td>新湖一路151號5樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.455607</td>
+      <td>[2007001020, 2007001004, 2007001012]</td>
+      <td>[c@wf2, c@wf26, c@wf24, c@wf12, c@wf31, c@wf1,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>26</th>
+      <td>20250327</td>
+      <td>10</td>
+      <td>1002015001</td>
+      <td>精密儀器相關製造業</td>
+      <td>鴻海集團_英屬開曼群島商鴻騰精密科技股份有限公司台灣分公司</td>
+      <td>130000000109701</td>
+      <td>DaVinci應用程序。 \n\n所需條件：\n(學歷)\n 擁有計算機科學、數學、物理學、...</td>
+      <td>DaVinci應用程序。 \n\n所需條件：\n(學歷)\n 擁有計算機[[[科學]]]、數...</td>
+      <td>0.50</td>
+      <td>中山路66號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.524817</td>
+      <td>[2007001020, 2007001021, 2007001012]</td>
+      <td>[c@wf10, c@wf27, c@wf2, c@wf19, c@wf1, c@wf18,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>27</th>
+      <td>20250327</td>
+      <td>6</td>
+      <td>1001004001</td>
+      <td>光電產業</td>
+      <td>瀚宇彩晶股份有限公司</td>
+      <td>16450500000</td>
+      <td>1.分析社群平台事業單位用戶數據並產出洞見。\n2.依產品需求進行 ETL，資料清洗、分析、...</td>
+      <td>1.分析社群平台事業單位用戶數據並產出洞見。\n2.依產品需求進行 ETL，[[[資料]]]...</td>
+      <td>0.00</td>
+      <td>行善路168巷15號</td>
+      <td>...</td>
+      <td>0</td>
+      <td>08:40-17:40</td>
+      <td>0.545596</td>
+      <td>[2007001004, 2007001012]</td>
+      <td>[c@wf10, c@wf28, c@wf19, c@wf18, c@wf7, c@wf9,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>28</th>
+      <td>20250325</td>
       <td>2</td>
-      <td>12823438</td>
-      <td>資料工程師 Data Engineer</td>
-      <td>資料工程師 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; E...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001005</td>
-      <td>台北市大安區</td>
-      <td>近忠孝復興捷運站</td>
-      <td>與PM/UI/UX、前後端、資料、演算法工程師一同合作，開發與維護產品。\n   2. 負...</td>
-      <td>...</td>
-      <td>[員工650人]</td>
+      <td>1004001001</td>
+      <td>銀行業</td>
+      <td>國泰世華商業銀行股份有限公司</td>
+      <td>4231910004</td>
+      <td>\n4. 專案會議召集與議程規劃，並定期向上呈報專案進度\n5. 專案經驗傳承、專案文件管理...</td>
+      <td>\n4. 專案會議召集與議程規劃，並定期向上呈報專案進度\n5. 專案經驗傳承、專案文件管理...</td>
+      <td>0.00</td>
       <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>資料工程師 Data Engineer</td>
-      <td>東森新媒體控股股份有限公司</td>
-      <td>121.5425991</td>
-      <td>25.0418146</td>
+      <td>...</td>
       <td>0</td>
-      <td>[]</td>
+      <td></td>
+      <td>0.376735</td>
+      <td>[2004003003, 2004003004, 2004003005]</td>
+      <td>[c@wf10, c@wf1, c@wf9, c@wf7, c@wf30, c@wf3, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
     <tr>
-      <th>1428</th>
-      <td>0</td>
-      <td>13029724</td>
-      <td>Data Engineer 數據工程師</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; Enginee...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001016015</td>
-      <td>高雄市路竹區</td>
+      <th>29</th>
+      <td>20250115</td>
+      <td>18</td>
+      <td>1004001001</td>
+      <td>銀行業</td>
+      <td>台北富邦商業銀行股份有限公司</td>
+      <td>3750168000</td>
+      <td>習模型、數據特徵庫、產品推薦系統、大型語言模型(LLM)、自主數據分析平台等專案小組(視職能...</td>
+      <td>習模型、數據特徵庫、產品推薦系統、大型語言模型(LLM)、自主數據分析平台等專案小組(視職能...</td>
+      <td>0.00</td>
       <td></td>
-      <td>do we manage the complexities of our manufact...</td>
       <td>...</td>
-      <td>[員工260人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>Data Engineer 數據工程師</td>
-      <td>德商默克在台集團_美商慧盛先進科技有限公司台灣分公司</td>
-      <td>120.2628111</td>
-      <td>22.8494042</td>
       <td>0</td>
-      <td>[自然科學學科類, 數學及電算機科學學科類]</td>
+      <td></td>
+      <td>0.855133</td>
+      <td>[2007001018, 2007001021, 2007001012]</td>
+      <td>[c@wf2, c@wf30, c@wf3, c@wf7, c@wf9, c@wf28, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
     </tr>
     <tr>
-      <th>1429</th>
-      <td>0</td>
-      <td>12096096</td>
-      <td>資料科學家</td>
-      <td>&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001001</td>
-      <td>台北市中正區</td>
-      <td>羅斯福路一段七號六樓</td>
-      <td>1.建構數據分析環境。\n2.以機器、深度學習與統計分析等最佳化研究與開發。\n3.規劃數據...</td>
+      <th>30</th>
+      <td>20250324</td>
+      <td>14</td>
+      <td>1001003001</td>
+      <td>電腦及其週邊設備製造業</td>
+      <td>翔耀實業股份有限公司</td>
+      <td>12364770000</td>
+      <td>Python、R 或其他常見的資料科學編程語言的熟練操作經驗。\n4. 熟悉 SQL 及 ...</td>
+      <td>Python、R 或其他常見的[[[資料科學]]]編程語言的熟練操作經驗。\n4. 熟悉 ...</td>
+      <td>0.50</td>
+      <td>光復南路438號12樓</td>
       <td>...</td>
-      <td>[員工80人]</td>
-      <td>距捷運中正紀念堂站100公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>資料科學家</td>
-      <td>財團法人台灣地理資訊中心</td>
-      <td>121.5180143</td>
-      <td>25.0334886</td>
       <td>0</td>
-      <td>[]</td>
+      <td></td>
+      <td>0.194947</td>
+      <td>[2007001021, 2007001022, 2007001018]</td>
+      <td>[c@wf1, c@wf2, c@wf7, c@wf10]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>31</th>
+      <td>20241217</td>
+      <td>14</td>
+      <td>1001001003</td>
+      <td>網際網路相關業</td>
+      <td>奧丁丁集團英屬開曼群島商台灣子公司_歐簿客科技股份有限公司</td>
+      <td>130000000053344</td>
+      <td>【職務內容】\n1. 基於LLMs開發應用及聊天功能，設計並優化體驗內容 \n2. 機器學習...</td>
+      <td>【職務內容】\n1. 基於LLMs開發應用及聊天功能，設計並優化體驗內容 \n2. 機器學習...</td>
+      <td>0.00</td>
+      <td>士林科技園區</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.817841</td>
+      <td>[2007001021, 2007001022, 2007001020]</td>
+      <td>[c@wf9, c@wf8]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>32</th>
+      <td>20250324</td>
+      <td>9</td>
+      <td>1004003001</td>
+      <td>人身保險業</td>
+      <td>富邦人壽保險股份有限公司(總公司)</td>
+      <td>27935073000</td>
+      <td>1.開發深度學習/機器學習模型，或運用生成式AI(GenAI)、自然語言處理(NLP)、電腦...</td>
+      <td>1.開發深度學習/機器學習模型，或運用生成式AI(GenAI)、自然語言處理(NLP)、電腦...</td>
+      <td>0.00</td>
+      <td>東興路71號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.250251</td>
+      <td>[2007001021, 2007001022]</td>
+      <td>[c@wf2, c@wf9, c@wf25, c@wf27, c@wf28, c@wf7]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>33</th>
+      <td>20250322</td>
+      <td>14</td>
+      <td>1001001002</td>
+      <td>電腦軟體服務業</td>
+      <td>安瑟樂威股份有限公司</td>
+      <td>130000000176504</td>
+      <td>1. 設計、開發及維護大數據平臺、資料倉儲及相關服務\n2. 收集、清洗、轉換和整合資料，並...</td>
+      <td>1. 設計、開發及維護大數據平臺、[[[資料]]]倉儲及相關服務\n2. 收集、清洗、轉換和...</td>
+      <td>0.04</td>
+      <td>新生南路一段50號四樓之5</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.788082</td>
+      <td>[2007001012, 2007001018, 2007001020]</td>
+      <td>[c@wf1, c@wf9, c@wf10, c@wf26, c@wf32]</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>34</th>
+      <td>20250324</td>
+      <td>8</td>
+      <td>1001004002</td>
+      <td>光學器材製造業</td>
+      <td>晶碩光學股份有限公司</td>
+      <td>25021158000</td>
+      <td>1. 利用機器學習、深度學習，以研發廠內適用之模型\n2. 訪談模型需求單位，以適切規劃機器...</td>
+      <td>1. 利用機器學習、深度學習，以研發廠內適用之模型\n2. 訪談模型需求單位，以適切規劃機器...</td>
+      <td>0.00</td>
+      <td>仁和路二段255號</td>
+      <td>...</td>
+      <td>0</td>
+      <td>08:30-17:30</td>
+      <td>0.734386</td>
+      <td>[2007001020, 2007001021, 2007001012]</td>
+      <td>[c@wf7, c@wf2, c@wf18, c@wf10, c@wf4, c@wf9, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>35</th>
+      <td>20240808</td>
+      <td>9</td>
+      <td>1001006001</td>
+      <td>IC設計相關業</td>
+      <td>Phison Electronics Corp_群聯電子股份有限公司</td>
+      <td>12649951000</td>
+      <td>1. 數據特徵解析, 多維關聯分析.\n2. 各單位異常事件偵/預測.\n3. 藉由量化數據...</td>
+      <td>1. 數據特徵解析, 多維關聯分析.\n2. 各單位異常事件偵/預測.\n3. 藉由量化數據...</td>
+      <td>0.00</td>
+      <td>群義路1號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.805801</td>
+      <td>[2007001012, 2007001004]</td>
+      <td>[c@wf26, c@wf7, c@wf30, c@wf16, c@wf1, c@wf25,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>36</th>
+      <td>20250123</td>
+      <td>19</td>
+      <td>1001006001</td>
+      <td>IC設計相關業</td>
+      <td>華邦電子股份有限公司</td>
+      <td>22099218000</td>
+      <td>Win在起跑點、提早卡位！ \n\n\n華邦電子2025校園徵才-(竹北/中科)軟體類_資料...</td>
+      <td>Win在起跑點、提早卡位！ \n\n\n華邦電子2025校園徵才-(竹北/中科)軟體類_[[...</td>
+      <td>0.00</td>
+      <td>文興路二段539號</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.602780</td>
+      <td>[2007001021]</td>
+      <td>[c@wf7, c@wf1, c@wf2, c@wf4, deboost@kwdeboost...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>37</th>
+      <td>20250326</td>
+      <td>2</td>
+      <td>1001001005</td>
+      <td>數位內容產業</td>
+      <td>行動貝果有限公司</td>
+      <td>53550539000</td>
+      <td>Please submit your resume via the following li...</td>
+      <td>Please submit your resume via the following li...</td>
+      <td>0.50</td>
+      <td>東興路51號4樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.838981</td>
+      <td>[2007001004, 2016001007, 2007001012]</td>
+      <td>[foreigners@foreigners_tick, c@wf26, c@wf24, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>38</th>
+      <td>20250320</td>
+      <td>2</td>
+      <td>1004001001</td>
+      <td>銀行業</td>
+      <td>國泰世華商業銀行股份有限公司</td>
+      <td>4231910004</td>
+      <td>1. Hive資料市集設計、開發、管理維護\n2. ETL 問題追蹤與管理\n3. 資料處理...</td>
+      <td>1. Hive[[[資料]]]市集設計、開發、管理維護\n2. ETL 問題追蹤與管理\n3...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.240375</td>
+      <td>[2007001009]</td>
+      <td>[c@wf2, c@wf9, c@wf10, c@wf30, c@wf7, c@wf3, c...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>39</th>
+      <td>20250327</td>
+      <td>14</td>
+      <td>1003001004</td>
+      <td>家庭電器／設備及用品批發業</td>
+      <td>上洋產業股份有限公司</td>
+      <td>130000000044023</td>
+      <td>數位轉型和資料科學是提升上洋營運效率與決策效益的關鍵，我們正在尋找一位對數位轉型充滿熱情並具...</td>
+      <td>數位轉型和[[[資料科學]]]是提升上洋營運效率與決策效益的關鍵，我們正在尋找一位對數位轉型...</td>
+      <td>0.00</td>
+      <td>五權六路39號</td>
+      <td>...</td>
+      <td>0</td>
+      <td>08:00~17:00</td>
+      <td>0.971606</td>
+      <td>[2007001021, 2007001018, 2004001010]</td>
+      <td>[c@wf3, c@wf10, c@wf2, c@wf19, 45plus@45invite...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>40</th>
+      <td>20250323</td>
+      <td>17</td>
+      <td>1001001003</td>
+      <td>網際網路相關業</td>
+      <td>鈊象電子股份有限公司</td>
+      <td>23519738000</td>
+      <td>1.理解研發或商務單位提出之需求，使用數據或AI方法進行分析、提出並驗證解決方法，並展示工作...</td>
+      <td>1.理解研發或商務單位提出之需求，使用數據或AI方法進行分析、提出並驗證解決方法，並展示工作...</td>
+      <td>0.00</td>
+      <td>五工路130號</td>
+      <td>...</td>
+      <td>0</td>
+      <td>9:00-18:00</td>
+      <td>0.564394</td>
+      <td>[2007001021, 2007001022, 2007001018]</td>
+      <td>[c@wf34, c@wf9, c@wf27, c@wf3, c@wf25, c@wf7, ...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>41</th>
+      <td>20250321</td>
+      <td>14</td>
+      <td>1001002001</td>
+      <td>電信相關業</td>
+      <td>台灣大哥大股份有限公司</td>
+      <td>97176270000</td>
+      <td>1.創建並維運用戶特徵模型\n2.大量資料演算法效能優化\n3.以數據導向支援業務單位之問題...</td>
+      <td>1.創建並維運用戶特徵模型\n2.大量[[[資料]]]演算法效能優化\n3.以數據導向支援業...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.628426</td>
+      <td>[2007001021, 2007001018]</td>
+      <td>[c@wf30, c@wf4, c@wf28, c@wf26, c@wf7, c@wf2, ...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
+    </tr>
+    <tr>
+      <th>42</th>
+      <td>20250319</td>
+      <td>11</td>
+      <td>1008003001</td>
+      <td>工商顧問服務業</td>
+      <td>台灣經濟新報文化事業股份有限公司</td>
+      <td>23740225000</td>
+      <td>【關於這份工作】\nTEJ成立超過30年，擁有強大的財金數據分析基礎。\n我們希望能將這些數...</td>
+      <td>【關於這份工作】\nTEJ成立超過30年，擁有強大的財金數據分析基礎。\n我們希望能將這些數...</td>
+      <td>0.50</td>
+      <td>東興路57號11樓</td>
+      <td>...</td>
+      <td>0</td>
+      <td>8:30~17:30(午休12:00~13:00)</td>
+      <td>0.920437</td>
+      <td>[2003001003, 2007001021, 2007001022]</td>
+      <td>[c@wf31, c@wf7, c@wf32, c@wf24, c@wf8, c@wf10,...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>True</td>
+    </tr>
+    <tr>
+      <th>43</th>
+      <td>20250325</td>
+      <td>17</td>
+      <td>1004001001</td>
+      <td>銀行業</td>
+      <td>國泰世華商業銀行股份有限公司</td>
+      <td>4231910004</td>
+      <td>【職務說明 What will you do】\n1. 生成式AI、機器學習、深度學習或統計...</td>
+      <td>【職務說明 What will you do】\n1. 生成式AI、機器學習、深度學習或統計...</td>
+      <td>0.00</td>
+      <td></td>
+      <td>...</td>
+      <td>0</td>
+      <td></td>
+      <td>0.634182</td>
+      <td>[2007001007, 2007001012, 2016001007]</td>
+      <td>[c@wf10, boost@integ_recruit_5, c@wf9, c@wf7, ...</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>None</td>
+      <td>False</td>
     </tr>
   </tbody>
 </table>
-<p>1430 rows × 40 columns</p>
+<p>44 rows × 41 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -2064,317 +3089,6 @@ Total Page: 150
 </pre></div>
 </div>
 </div>
-<div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
-
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
-
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>jobType</th>
-      <th>jobNo</th>
-      <th>jobName</th>
-      <th>jobNameSnippet</th>
-      <th>jobRole</th>
-      <th>jobRo</th>
-      <th>jobAddrNo</th>
-      <th>jobAddrNoDesc</th>
-      <th>jobAddress</th>
-      <th>description</th>
-      <th>...</th>
-      <th>tags</th>
-      <th>landmark</th>
-      <th>link</th>
-      <th>jobsource</th>
-      <th>jobNameRaw</th>
-      <th>custNameRaw</th>
-      <th>lon</th>
-      <th>lat</th>
-      <th>remoteWorkType</th>
-      <th>major</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>1</td>
-      <td>12901787</td>
-      <td>日班倉管員(週休二日免排班)</td>
-      <td>日班倉管員(週休二日免排班)</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001005012</td>
-      <td>桃園市大園區</td>
-      <td></td>
-      <td>1.倉儲貨品管理及貨品環境維護 \n2.物流倉儲各項改包進貨及出貨作業,熟悉倉庫生態佳 \n...</td>
-      <td>...</td>
-      <td>[外商公司, 員工650人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>日班倉管員(週休二日免排班)</td>
-      <td>香港商台灣利豐物流有限公司台灣分公司_LF LOGISTICS (TAIWAN) LIMITED</td>
-      <td>121.193945</td>
-      <td>25.049263</td>
-      <td>0</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>1</td>
-      <td>11726918</td>
-      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
-      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001008004</td>
-      <td>台中市西區</td>
-      <td></td>
-      <td>百貨公司專櫃儲備幹部及店長職務\r\n1.負責介紹及銷售商品。 \r\n2.提供顧客之接待與...</td>
-      <td>...</td>
-      <td>[外商公司, 員工190人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>水晶軒專櫃店長(台中區)底薪固定13個月+獎金</td>
-      <td>香港商施華洛世奇有限公司台灣分公司</td>
-      <td>120.663129</td>
-      <td>24.143060</td>
-      <td>0</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>1</td>
-      <td>8422468</td>
-      <td>(Human Resources) Learning and Development Tea...</td>
-      <td>(Human Resources) Learning and Development Tea...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001002011</td>
-      <td>新北市新店區</td>
-      <td></td>
-      <td>About HTC\n\nHTC built a vision of the future ...</td>
-      <td>...</td>
-      <td>[上市上櫃, 員工2000人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>(Human Resources) Learning and Development Tea...</td>
-      <td>宏達電 HTC Corporation_宏達國際電子股份有限公司</td>
-      <td>121.539482</td>
-      <td>24.978282</td>
-      <td>0</td>
-      <td>[心理學相關, 人力資源相關]</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>1</td>
-      <td>12388507</td>
-      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
-      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001002015</td>
-      <td>新北市中和區</td>
-      <td>興南路一段142號</td>
-      <td>▋ 關於德州儀器\n德州儀器(TI)是位居類比晶片世界領導地位的半導體設計與製造公司，持續提...</td>
-      <td>...</td>
-      <td>[外商公司, 員工2000人]</td>
-      <td>距捷運南勢角站320公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>[2022科技菁英計畫]  產品測試工程師 Product/Test Engineer [限...</td>
-      <td>德州儀器工業股份有限公司</td>
-      <td>121.508378</td>
-      <td>24.987100</td>
-      <td>0</td>
-      <td>[工程學科類]</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>1</td>
-      <td>12781781</td>
-      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
-      <td>【外商】財務分析副理 Finance Planning &amp;amp; Analysis Ass...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001004</td>
-      <td>台北市松山區</td>
-      <td>敦化北路88號13樓</td>
-      <td>Planning and Budgeting\n- Assist in the prepar...</td>
-      <td>...</td>
-      <td>[外商公司, 員工250人]</td>
-      <td>距捷運台北小巨蛋站340公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>hotjob_chr</td>
-      <td>【外商】財務分析副理 Finance Planning &amp; Analysis Assista...</td>
-      <td>馬來西亞商白蘭氏三得利股份有限公司台灣分公司</td>
-      <td>121.548480</td>
-      <td>25.051334</td>
-      <td>0</td>
-      <td>[財稅金融相關, 會計學相關, 企業管理相關]</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>1425</th>
-      <td>2</td>
-      <td>13009437</td>
-      <td>Data Specialist</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; Specialist</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001003</td>
-      <td>台北市中山區</td>
-      <td>南京東路三段168號</td>
-      <td>The [[[Data]]] Specialist is responsible for l...</td>
-      <td>...</td>
-      <td>[外商公司, 員工100人]</td>
-      <td>距捷運南京復興站230公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>Data Specialist</td>
-      <td>台灣保樂力加股份有限公司</td>
-      <td>121.541777</td>
-      <td>25.051622</td>
-      <td>0</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>1426</th>
-      <td>0</td>
-      <td>12850348</td>
-      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) Scientist</td>
-      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) &lt;em class...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001002025</td>
-      <td>新北市五股區</td>
-      <td>五工六路25號</td>
-      <td>Position Summary:\nPharmacology Discovery Serv...</td>
-      <td>...</td>
-      <td>[員工130人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>微生物(資深) 研究員_Microbiology Senior(Sr.) Scientist</td>
-      <td>汎球生物科技股份有限公司</td>
-      <td>121.448519</td>
-      <td>25.062759</td>
-      <td>0</td>
-      <td>[生物學相關, 醫學技術及檢驗相關, 藥學相關]</td>
-    </tr>
-    <tr>
-      <th>1427</th>
-      <td>2</td>
-      <td>12823438</td>
-      <td>資料工程師 Data Engineer</td>
-      <td>資料工程師 &lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; E...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001005</td>
-      <td>台北市大安區</td>
-      <td>近忠孝復興捷運站</td>
-      <td>與PM/UI/UX、前後端、資料、演算法工程師一同合作，開發與維護產品。\n   2. 負...</td>
-      <td>...</td>
-      <td>[員工650人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>資料工程師 Data Engineer</td>
-      <td>東森新媒體控股股份有限公司</td>
-      <td>121.542599</td>
-      <td>25.041815</td>
-      <td>0</td>
-      <td>[]</td>
-    </tr>
-    <tr>
-      <th>1428</th>
-      <td>0</td>
-      <td>13029724</td>
-      <td>Data Engineer 數據工程師</td>
-      <td>&lt;em class='b-txt--highlight'&gt;Data&lt;/em&gt; Enginee...</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001016015</td>
-      <td>高雄市路竹區</td>
-      <td></td>
-      <td>do we manage the complexities of our manufact...</td>
-      <td>...</td>
-      <td>[員工260人]</td>
-      <td></td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>Data Engineer 數據工程師</td>
-      <td>德商默克在台集團_美商慧盛先進科技有限公司台灣分公司</td>
-      <td>120.262811</td>
-      <td>22.849404</td>
-      <td>0</td>
-      <td>[自然科學學科類, 數學及電算機科學學科類]</td>
-    </tr>
-    <tr>
-      <th>1429</th>
-      <td>0</td>
-      <td>12096096</td>
-      <td>資料科學家</td>
-      <td>&lt;em class='b-txt--highlight'&gt;資料科學家&lt;/em&gt;</td>
-      <td>1</td>
-      <td>1</td>
-      <td>6001001001</td>
-      <td>台北市中正區</td>
-      <td>羅斯福路一段七號六樓</td>
-      <td>1.建構數據分析環境。\n2.以機器、深度學習與統計分析等最佳化研究與開發。\n3.規劃數據...</td>
-      <td>...</td>
-      <td>[員工80人]</td>
-      <td>距捷運中正紀念堂站100公尺</td>
-      <td>{'applyAnalyze': '//www.104.com.tw/jobs/apply/...</td>
-      <td>jolist_c_relevance</td>
-      <td>資料科學家</td>
-      <td>財團法人台灣地理資訊中心</td>
-      <td>121.518014</td>
-      <td>25.033489</td>
-      <td>0</td>
-      <td>[]</td>
-    </tr>
-  </tbody>
-</table>
-<p>1430 rows × 40 columns</p>
-</div></div></div>
 </div>
 </section>
 <section id="m3-dump-multiple-variables-to-pickle">
@@ -2448,54 +3162,7 @@ Total Page: 150
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Current Time = 20221010120556
-</pre></div>
-</div>
-</div>
-</div>
-</section>
-<section id="clean-version-104">
-<h2>Clean version. 104<a class="headerlink" href="#clean-version-104" title="Permalink to this heading">#</a></h2>
-<div class="cell docutils container">
-<div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">headers</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;referer&#39;</span><span class="p">:</span> <span class="s1">&#39;https://www.104.com.tw/&#39;</span><span class="p">}</span>
-<span class="n">search_str</span> <span class="o">=</span> <span class="s1">&#39;數據分析&#39;</span>
-
-<span class="c1"># Detecting totalPage</span>
-<span class="n">url_104</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=&#39;</span> <span class="o">+</span> <span class="n">search_str</span> <span class="o">+</span> <span class="s1">&#39;&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=2&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
-<span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url_104</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-<span class="n">totalPage</span> <span class="o">=</span> <span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;totalPage&#39;</span><span class="p">]</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">totalPage</span><span class="p">)</span>
-
-<span class="c1"># Getting data by loop</span>
-<span class="n">all_data</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="c1"># for page in range(1, totalPage):</span>
-<span class="k">for</span> <span class="n">page</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">6</span><span class="p">):</span>
-    <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.104.com.tw/jobs/search/list?ro=0&amp;kwop=7&amp;keyword=&#39;</span> <span class="o">+</span> <span class="n">search_str</span> <span class="o">+</span> <span class="s1">&#39;&amp;expansionType=area%2Cspec%2Ccom%2Cjob%2Cwf%2Cwktm&amp;order=14&amp;asc=0&amp;page=&#39;</span> <span class="o">+</span> <span class="nb">str</span><span class="p">(</span><span class="n">page</span><span class="p">)</span> <span class="o">+</span> <span class="s1">&#39;&amp;mode=s&amp;jobsource=2018indexpoc&#39;</span>
-    <span class="n">raw</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
-    <span class="n">all_data</span><span class="o">.</span><span class="n">extend</span><span class="p">(</span><span class="n">raw</span><span class="p">[</span><span class="s1">&#39;data&#39;</span><span class="p">][</span><span class="s1">&#39;list&#39;</span><span class="p">])</span>
-    <span class="nb">print</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">all_data</span><span class="p">),</span> <span class="n">end</span> <span class="o">=</span> <span class="s2">&quot; &quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">()</span>
-<span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_data</span><span class="p">)</span>
-
-
-<span class="c1"># Saving and Backing up data</span>
-<span class="kn">import</span> <span class="nn">pickle</span>
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
-
-<span class="n">now</span> <span class="o">=</span> <span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="o">.</span><span class="n">strftime</span><span class="p">(</span><span class="s2">&quot;%Y%m</span><span class="si">%d</span><span class="s2">%H%M%S&quot;</span><span class="p">)</span>
-<span class="nb">print</span><span class="p">(</span><span class="s2">&quot;Current Time =&quot;</span><span class="p">,</span> <span class="n">now</span><span class="p">)</span>
-
-
-<span class="c1"># with open(&#39;104_%s_%s.pkl&#39;%(search_str, now), &#39;wb&#39;) as fout:  # Python 3: open(..., &#39;wb&#39;)</span>
-<span class="c1">#     pickle.dump([all_data, df], fout)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>150
-30 50 70 90 110 
-Current Time = 20221010134501
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Current Time = 20250327151830
 </pre></div>
 </div>
 </div>
@@ -2544,11 +3211,11 @@ Current Time = 20221010134501
       </div>
     </a>
     <a class="right-next"
-       href="P08_2_twitter_api.html"
+       href="P08_5_cases.html"
        title="next page">
       <div class="prev-next-info">
         <p class="prev-next-subtitle">next</p>
-        <p class="prev-next-title">Twitter API</p>
+        <p class="prev-next-title">Scraping cases</p>
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
@@ -2606,7 +3273,6 @@ Current Time = 20221010134501
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#using-timestamp-as-file-name">Using timestamp as file name</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#clean-version-104">Clean version. 104</a></li>
 </ul>
   </nav></div>
 

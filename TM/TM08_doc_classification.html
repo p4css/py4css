@@ -207,8 +207,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
 </ul>
 </li>
@@ -570,7 +568,7 @@ document.write(`
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model from cache /var/folders/4m/shks9p8j0dnbv51nf7cyysfc0000gn/T/jieba.cache
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.302 seconds.
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Loading model cost 0.300 seconds.
 </pre></div>
 </div>
 <div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Prefix dict has been built successfully.
@@ -1053,97 +1051,6 @@ Name: tag, Length: 6388, dtype: object
 
 <span class="n">classifier</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
                                  <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
-</pre></div>
-</div>
-</div>
-<div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">from</span> <span class="nn">sklearn.ensemble</span> <span class="kn">import</span> <span class="n">GradientBoostingClassifier</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">classifier</span> <span class="o">=</span> <span class="n">GradientBoostingClassifier</span><span class="p">(</span><span class="n">n_estimators</span><span class="o">=</span><span class="mi">100</span><span class="p">,</span> <span class="n">learning_rate</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span>
-<span class="ne">----&gt; </span><span class="mi">4</span>                                  <span class="n">max_depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">random_state</span><span class="o">=</span><span class="mi">0</span><span class="p">)</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X_tfidf_train</span><span class="p">,</span> <span class="n">y_tfidf_train</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/sklearn/ensemble/_gb.py:538,</span> in <span class="ni">BaseGradientBoosting.fit</span><span class="nt">(self, X, y, sample_weight, monitor)</span>
-<span class="g g-Whitespace">    </span><span class="mi">535</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_resize_state</span><span class="p">()</span>
-<span class="g g-Whitespace">    </span><span class="mi">537</span> <span class="c1"># fit the boosting stages</span>
-<span class="ne">--&gt; </span><span class="mi">538</span> <span class="n">n_stages</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_stages</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">540</span>     <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">541</span>     <span class="n">raw_predictions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">542</span>     <span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">543</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_rng</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">544</span>     <span class="n">X_val</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">545</span>     <span class="n">y_val</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">546</span>     <span class="n">sample_weight_val</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">547</span>     <span class="n">begin_at_stage</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">548</span>     <span class="n">monitor</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">549</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">551</span> <span class="c1"># change shape of arrays after fit (early-stopping or additional ests)</span>
-<span class="g g-Whitespace">    </span><span class="mi">552</span> <span class="k">if</span> <span class="n">n_stages</span> <span class="o">!=</span> <span class="bp">self</span><span class="o">.</span><span class="n">estimators_</span><span class="o">.</span><span class="n">shape</span><span class="p">[</span><span class="mi">0</span><span class="p">]:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/sklearn/ensemble/_gb.py:615,</span> in <span class="ni">BaseGradientBoosting._fit_stages</span><span class="nt">(self, X, y, raw_predictions, sample_weight, random_state, X_val, y_val, sample_weight_val, begin_at_stage, monitor)</span>
-<span class="g g-Whitespace">    </span><span class="mi">608</span>     <span class="n">old_oob_score</span> <span class="o">=</span> <span class="n">loss_</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">609</span>         <span class="n">y</span><span class="p">[</span><span class="o">~</span><span class="n">sample_mask</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">610</span>         <span class="n">raw_predictions</span><span class="p">[</span><span class="o">~</span><span class="n">sample_mask</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">611</span>         <span class="n">sample_weight</span><span class="p">[</span><span class="o">~</span><span class="n">sample_mask</span><span class="p">],</span>
-<span class="g g-Whitespace">    </span><span class="mi">612</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">614</span> <span class="c1"># fit next stage of trees</span>
-<span class="ne">--&gt; </span><span class="mi">615</span> <span class="n">raw_predictions</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_fit_stage</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">616</span>     <span class="n">i</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span>     <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">618</span>     <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span>     <span class="n">raw_predictions</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">620</span>     <span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">621</span>     <span class="n">sample_mask</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span>     <span class="n">random_state</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="n">X_csc</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">624</span>     <span class="n">X_csr</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">627</span> <span class="c1"># track deviance (= loss)</span>
-<span class="g g-Whitespace">    </span><span class="mi">628</span> <span class="k">if</span> <span class="n">do_oob</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/sklearn/ensemble/_gb.py:257,</span> in <span class="ni">BaseGradientBoosting._fit_stage</span><span class="nt">(self, i, X, y, raw_predictions, sample_weight, sample_mask, random_state, X_csc, X_csr)</span>
-<span class="g g-Whitespace">    </span><span class="mi">254</span>     <span class="n">sample_weight</span> <span class="o">=</span> <span class="n">sample_weight</span> <span class="o">*</span> <span class="n">sample_mask</span><span class="o">.</span><span class="n">astype</span><span class="p">(</span><span class="n">np</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">256</span> <span class="n">X</span> <span class="o">=</span> <span class="n">X_csr</span> <span class="k">if</span> <span class="n">X_csr</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span> <span class="k">else</span> <span class="n">X</span>
-<span class="ne">--&gt; </span><span class="mi">257</span> <span class="n">tree</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">X</span><span class="p">,</span> <span class="n">residual</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span> <span class="n">check_input</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">259</span> <span class="c1"># update tree leaves</span>
-<span class="g g-Whitespace">    </span><span class="mi">260</span> <span class="n">loss</span><span class="o">.</span><span class="n">update_terminal_regions</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">261</span>     <span class="n">tree</span><span class="o">.</span><span class="n">tree_</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">262</span>     <span class="n">X</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">269</span>     <span class="n">k</span><span class="o">=</span><span class="n">k</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">270</span> <span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/sklearn/tree/_classes.py:1247,</span> in <span class="ni">DecisionTreeRegressor.fit</span><span class="nt">(self, X, y, sample_weight, check_input)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1218</span> <span class="k">def</span> <span class="nf">fit</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span> <span class="n">check_input</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
-<span class="g g-Whitespace">   </span><span class="mi">1219</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;Build a decision tree regressor from the training set (X, y).</span>
-<span class="g g-Whitespace">   </span><span class="mi">1220</span><span class="sd"> </span>
-<span class="g g-Whitespace">   </span><span class="mi">1221</span><span class="sd">     Parameters</span>
-<span class="sd">   (...)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1244</span><span class="sd">         Fitted estimator.</span>
-<span class="g g-Whitespace">   </span><span class="mi">1245</span><span class="sd">     &quot;&quot;&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1247</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1248</span>         <span class="n">X</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1249</span>         <span class="n">y</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1250</span>         <span class="n">sample_weight</span><span class="o">=</span><span class="n">sample_weight</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1251</span>         <span class="n">check_input</span><span class="o">=</span><span class="n">check_input</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1252</span>     <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1253</span>     <span class="k">return</span> <span class="bp">self</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/sklearn/tree/_classes.py:379,</span> in <span class="ni">BaseDecisionTree.fit</span><span class="nt">(self, X, y, sample_weight, check_input)</span>
-<span class="g g-Whitespace">    </span><span class="mi">368</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">369</span>     <span class="n">builder</span> <span class="o">=</span> <span class="n">BestFirstTreeBuilder</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">370</span>         <span class="n">splitter</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">371</span>         <span class="n">min_samples_split</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">376</span>         <span class="bp">self</span><span class="o">.</span><span class="n">min_impurity_decrease</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">377</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">379</span> <span class="n">builder</span><span class="o">.</span><span class="n">build</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">tree_</span><span class="p">,</span> <span class="n">X</span><span class="p">,</span> <span class="n">y</span><span class="p">,</span> <span class="n">sample_weight</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">381</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_outputs_</span> <span class="o">==</span> <span class="mi">1</span> <span class="ow">and</span> <span class="n">is_classifier</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
-<span class="g g-Whitespace">    </span><span class="mi">382</span>     <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">n_classes_</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
 </pre></div>
 </div>
 </div>

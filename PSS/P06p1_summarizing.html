@@ -207,8 +207,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P08_2_twitter_api.html">Twitter API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
 </ul>
 </li>
@@ -937,7 +935,7 @@ Name: count, dtype: int64
 <span class="n">pd</span><span class="o">.</span><span class="n">set_option</span><span class="p">(</span><span class="s1">&#39;display.max_columns&#39;</span><span class="p">,</span> <span class="kc">None</span><span class="p">)</span>  <span class="c1"># 顯示所有欄位</span>
 
 <span class="kn">import</span> <span class="nn">requests</span>
-<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
+<span class="n">data</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json&#39;</span><span class="p">)</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 
 
 
@@ -951,6 +949,21 @@ Name: count, dtype: int64
     
 
 <span class="n">ubike_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_list</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
+<span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Convert dict of dict to list of dict</span>
+<span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">all_list</span> <span class="o">=</span> <span class="p">[]</span>
+<span class="ne">---&gt; </span><span class="mi">12</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
+<span class="g g-Whitespace">     </span><span class="mi">13</span>     <span class="n">all_list</span><span class="o">.</span><span class="n">append</span><span class="p">(</span><span class="n">v</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">15</span> <span class="c1"># Using list comprehension</span>
+<span class="g g-Whitespace">     </span><span class="mi">16</span> <span class="c1"># all_list = [v for v in data[&quot;retVal&quot;].values()]</span>
+
+<span class="ne">TypeError</span>: list indices must be integers or slices, not str
 </pre></div>
 </div>
 </div>
@@ -986,7 +999,7 @@ Name: count, dtype: int64
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: center;">
       <th></th>
       <th>sno</th>
       <th>sna</th>
@@ -1001,7 +1014,7 @@ Name: count, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>0</th>
+      <th>0001</th>
       <td>0001</td>
       <td>捷運市政府站(3號出口)</td>
       <td>84</td>
@@ -1013,7 +1026,7 @@ Name: count, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>1</th>
+      <th>0002</th>
       <td>0002</td>
       <td>捷運國父紀念館站(2號出口)</td>
       <td>16</td>
@@ -1025,7 +1038,7 @@ Name: count, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>2</th>
+      <th>0004</th>
       <td>0004</td>
       <td>市民廣場</td>
       <td>32</td>
@@ -1037,7 +1050,7 @@ Name: count, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>3</th>
+      <th>0005</th>
       <td>0005</td>
       <td>興雅國中</td>
       <td>10</td>
@@ -1049,7 +1062,7 @@ Name: count, dtype: int64
       <td>1</td>
     </tr>
     <tr>
-      <th>4</th>
+      <th>0006</th>
       <td>0006</td>
       <td>臺北南山廣場</td>
       <td>54</td>
@@ -1123,105 +1136,105 @@ Name: count, dtype: int64
       <td>500101001</td>
       <td>YouBike2.0_捷運科技大樓站</td>
       <td>大安區</td>
-      <td>2025-03-20 10:39:15</td>
+      <td>2025-03-13 22:40:32</td>
       <td>復興南路二段235號前</td>
       <td>Daan Dist.</td>
       <td>YouBike2.0_MRT Technology Bldg. Sta.</td>
       <td>No.235， Sec. 2， Fuxing S. Rd.</td>
       <td>1</td>
-      <td>2025-03-20 10:47:20</td>
-      <td>2025-03-20 10:47:52</td>
-      <td>2025-03-20 10:39:15</td>
-      <td>2025-03-20</td>
+      <td>2025-03-13 22:42:20</td>
+      <td>2025-03-13 22:42:52</td>
+      <td>2025-03-13 22:40:32</td>
+      <td>2025-03-13</td>
       <td>28</td>
-      <td>0</td>
+      <td>3</td>
       <td>25.02605</td>
       <td>121.54360</td>
-      <td>28</td>
+      <td>25</td>
     </tr>
     <tr>
       <th>1</th>
       <td>500101002</td>
       <td>YouBike2.0_復興南路二段273號前</td>
       <td>大安區</td>
-      <td>2025-03-20 10:05:16</td>
+      <td>2025-03-13 22:34:28</td>
       <td>復興南路二段273號西側</td>
       <td>Daan Dist.</td>
       <td>YouBike2.0_No.273， Sec. 2， Fuxing S. Rd.</td>
       <td>No.273， Sec. 2， Fuxing S. Rd. (West)</td>
       <td>1</td>
-      <td>2025-03-20 10:47:20</td>
-      <td>2025-03-20 10:47:52</td>
-      <td>2025-03-20 10:05:16</td>
-      <td>2025-03-20</td>
+      <td>2025-03-13 22:42:20</td>
+      <td>2025-03-13 22:42:52</td>
+      <td>2025-03-13 22:34:28</td>
+      <td>2025-03-13</td>
       <td>21</td>
-      <td>0</td>
+      <td>1</td>
       <td>25.02565</td>
       <td>121.54357</td>
-      <td>21</td>
+      <td>20</td>
     </tr>
     <tr>
       <th>2</th>
       <td>500101003</td>
       <td>YouBike2.0_國北教大實小東側門</td>
       <td>大安區</td>
-      <td>2025-03-20 10:36:15</td>
+      <td>2025-03-13 22:40:32</td>
       <td>和平東路二段96巷7號</td>
       <td>Daan Dist.</td>
       <td>YouBike2.0_NTUE Experiment Elementary School (...</td>
       <td>No. 7， Ln. 96， Sec. 2， Heping E. Rd</td>
       <td>1</td>
-      <td>2025-03-20 10:47:20</td>
-      <td>2025-03-20 10:47:52</td>
-      <td>2025-03-20 10:36:15</td>
-      <td>2025-03-20</td>
+      <td>2025-03-13 22:42:20</td>
+      <td>2025-03-13 22:42:52</td>
+      <td>2025-03-13 22:40:32</td>
+      <td>2025-03-13</td>
       <td>16</td>
-      <td>0</td>
+      <td>4</td>
       <td>25.02429</td>
       <td>121.54124</td>
-      <td>16</td>
+      <td>12</td>
     </tr>
     <tr>
       <th>3</th>
       <td>500101004</td>
       <td>YouBike2.0_和平公園東側</td>
       <td>大安區</td>
-      <td>2025-03-20 10:42:15</td>
+      <td>2025-03-13 22:33:30</td>
       <td>和平東路二段118巷33號</td>
       <td>Daan Dist.</td>
       <td>YouBike2.0_Heping Park (East)</td>
       <td>No. 33， Ln. 118， Sec. 2， Heping E. Rd</td>
       <td>1</td>
-      <td>2025-03-20 10:47:20</td>
-      <td>2025-03-20 10:47:52</td>
-      <td>2025-03-20 10:42:15</td>
-      <td>2025-03-20</td>
+      <td>2025-03-13 22:42:20</td>
+      <td>2025-03-13 22:42:52</td>
+      <td>2025-03-13 22:33:30</td>
+      <td>2025-03-13</td>
       <td>11</td>
-      <td>0</td>
+      <td>1</td>
       <td>25.02351</td>
       <td>121.54282</td>
-      <td>11</td>
+      <td>10</td>
     </tr>
     <tr>
       <th>4</th>
       <td>500101005</td>
       <td>YouBike2.0_辛亥復興路口西北側</td>
       <td>大安區</td>
-      <td>2025-03-20 10:30:16</td>
+      <td>2025-03-13 22:41:29</td>
       <td>復興南路二段368號</td>
       <td>Daan Dist.</td>
       <td>YouBike2.0_Xinhai Fuxing Rd. Intersection (Nor...</td>
       <td>No. 368， Sec. 2， Fuxing S. Rd.</td>
       <td>1</td>
-      <td>2025-03-20 10:47:20</td>
-      <td>2025-03-20 10:47:52</td>
-      <td>2025-03-20 10:30:16</td>
-      <td>2025-03-20</td>
+      <td>2025-03-13 22:42:20</td>
+      <td>2025-03-13 22:42:52</td>
+      <td>2025-03-13 22:41:29</td>
+      <td>2025-03-13</td>
       <td>16</td>
-      <td>0</td>
+      <td>2</td>
       <td>25.02153</td>
       <td>121.54299</td>
-      <td>16</td>
+      <td>14</td>
     </tr>
   </tbody>
 </table>
@@ -1241,7 +1254,7 @@ Name: count, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1551, 18)
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(1533, 18)
 </pre></div>
 </div>
 </div>
@@ -1281,27 +1294,27 @@ Name: count, dtype: int64
   <tbody>
     <tr>
       <th>count</th>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>26.490651</td>
-      <td>8.553191</td>
-      <td>25.052812</td>
-      <td>121.544826</td>
-      <td>17.168279</td>
+      <td>26.525766</td>
+      <td>8.622309</td>
+      <td>25.052833</td>
+      <td>121.544699</td>
+      <td>17.195042</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>13.535702</td>
-      <td>9.331990</td>
-      <td>0.033256</td>
-      <td>0.031701</td>
-      <td>12.612873</td>
+      <td>13.711934</td>
+      <td>8.789692</td>
+      <td>0.033320</td>
+      <td>0.031682</td>
+      <td>14.619827</td>
     </tr>
     <tr>
       <th>min</th>
@@ -1314,31 +1327,31 @@ Name: count, dtype: int64
     <tr>
       <th>25%</th>
       <td>16.000000</td>
-      <td>2.000000</td>
-      <td>25.029815</td>
-      <td>121.522315</td>
-      <td>9.000000</td>
+      <td>1.000000</td>
+      <td>25.029740</td>
+      <td>121.522240</td>
+      <td>7.000000</td>
     </tr>
     <tr>
       <th>50%</th>
       <td>23.000000</td>
       <td>6.000000</td>
-      <td>25.049920</td>
-      <td>121.540810</td>
+      <td>25.049870</td>
+      <td>121.540620</td>
       <td>14.000000</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>32.000000</td>
-      <td>12.000000</td>
-      <td>25.072460</td>
-      <td>121.565920</td>
-      <td>22.000000</td>
+      <td>13.000000</td>
+      <td>25.072640</td>
+      <td>121.565860</td>
+      <td>24.000000</td>
     </tr>
     <tr>
       <th>max</th>
       <td>99.000000</td>
-      <td>67.000000</td>
+      <td>55.000000</td>
       <td>25.145820</td>
       <td>121.623060</td>
       <td>99.000000</td>
@@ -1364,21 +1377,21 @@ Name: count, dtype: int64
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sno                                                               500101003
 sna                                                    YouBike2.0_國北教大實小東側門
 sarea                                                                   大安區
-mday                                                    2025-03-20 10:36:15
+mday                                                    2025-03-13 22:40:32
 ar                                                              和平東路二段96巷7號
 sareaen                                                          Daan Dist.
 snaen                     YouBike2.0_NTUE Experiment Elementary School (...
 aren                                    No. 7， Ln. 96， Sec. 2， Heping E. Rd
 act                                                                       1
-srcUpdateTime                                           2025-03-20 10:47:20
-updateTime                                              2025-03-20 10:47:52
-infoTime                                                2025-03-20 10:36:15
-infoDate                                                         2025-03-20
+srcUpdateTime                                           2025-03-13 22:42:20
+updateTime                                              2025-03-13 22:42:52
+infoTime                                                2025-03-13 22:40:32
+infoDate                                                         2025-03-13
 total                                                                    16
-available_rent_bikes                                                      0
+available_rent_bikes                                                      4
 latitude                                                           25.02429
 longitude                                                         121.54124
-available_return_bikes                                                   16
+available_return_bikes                                                   12
 Name: 2, dtype: object
 500101003
 </pre></div>
@@ -1426,7 +1439,7 @@ Name: 2, dtype: object
       <td>500101001</td>
       <td>YouBike2.0_捷運科技大樓站</td>
       <td>28</td>
-      <td>0</td>
+      <td>3</td>
       <td>大安區</td>
     </tr>
     <tr>
@@ -1434,7 +1447,7 @@ Name: 2, dtype: object
       <td>500101002</td>
       <td>YouBike2.0_復興南路二段273號前</td>
       <td>21</td>
-      <td>0</td>
+      <td>1</td>
       <td>大安區</td>
     </tr>
     <tr>
@@ -1442,7 +1455,7 @@ Name: 2, dtype: object
       <td>500101003</td>
       <td>YouBike2.0_國北教大實小東側門</td>
       <td>16</td>
-      <td>0</td>
+      <td>4</td>
       <td>大安區</td>
     </tr>
   </tbody>
@@ -1497,40 +1510,40 @@ Name: 2, dtype: object
       <td>500101001</td>
       <td>YouBike2.0_捷運科技大樓站</td>
       <td>28</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>3</td>
+      <td>0.107143</td>
     </tr>
     <tr>
       <th>1</th>
       <td>500101002</td>
       <td>YouBike2.0_復興南路二段273號前</td>
       <td>21</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>1</td>
+      <td>0.047619</td>
     </tr>
     <tr>
       <th>2</th>
       <td>500101003</td>
       <td>YouBike2.0_國北教大實小東側門</td>
       <td>16</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>4</td>
+      <td>0.250000</td>
     </tr>
     <tr>
       <th>3</th>
       <td>500101004</td>
       <td>YouBike2.0_和平公園東側</td>
       <td>11</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>1</td>
+      <td>0.090909</td>
     </tr>
     <tr>
       <th>4</th>
       <td>500101005</td>
       <td>YouBike2.0_辛亥復興路口西北側</td>
       <td>16</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>2</td>
+      <td>0.125000</td>
     </tr>
   </tbody>
 </table>
@@ -1591,40 +1604,40 @@ Name: 2, dtype: object
       <td>500101001</td>
       <td>YouBike2.0_捷運科技大樓站</td>
       <td>28</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>3</td>
+      <td>0.107143</td>
     </tr>
     <tr>
       <th>1</th>
       <td>500101002</td>
       <td>YouBike2.0_復興南路二段273號前</td>
       <td>21</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>1</td>
+      <td>0.047619</td>
     </tr>
     <tr>
       <th>2</th>
       <td>500101003</td>
       <td>YouBike2.0_國北教大實小東側門</td>
       <td>16</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>4</td>
+      <td>0.250000</td>
     </tr>
     <tr>
       <th>3</th>
       <td>500101004</td>
       <td>YouBike2.0_和平公園東側</td>
       <td>11</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>1</td>
+      <td>0.090909</td>
     </tr>
     <tr>
       <th>4</th>
       <td>500101005</td>
       <td>YouBike2.0_辛亥復興路口西北側</td>
       <td>16</td>
-      <td>0</td>
-      <td>0.0</td>
+      <td>2</td>
+      <td>0.125000</td>
     </tr>
   </tbody>
 </table>
@@ -1661,35 +1674,43 @@ Name: 2, dtype: object
       <th>longitude</th>
       <th>available_return_bikes</th>
       <th>ratio</th>
+      <th>sbi</th>
+      <th>tot</th>
     </tr>
   </thead>
   <tbody>
     <tr>
       <th>count</th>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
-      <td>1551.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
+      <td>1533.000000</td>
     </tr>
     <tr>
       <th>mean</th>
-      <td>26.490651</td>
-      <td>8.553191</td>
-      <td>25.052812</td>
-      <td>121.544826</td>
-      <td>17.168279</td>
-      <td>0.323020</td>
+      <td>26.525766</td>
+      <td>8.622309</td>
+      <td>25.052833</td>
+      <td>121.544699</td>
+      <td>17.195042</td>
+      <td>0.355990</td>
+      <td>8.622309</td>
+      <td>26.525766</td>
     </tr>
     <tr>
       <th>std</th>
-      <td>13.535702</td>
-      <td>9.331990</td>
-      <td>0.033256</td>
-      <td>0.031701</td>
-      <td>12.612873</td>
-      <td>0.274055</td>
+      <td>13.711934</td>
+      <td>8.789692</td>
+      <td>0.033320</td>
+      <td>0.031682</td>
+      <td>14.619827</td>
+      <td>0.311784</td>
+      <td>8.789692</td>
+      <td>13.711934</td>
     </tr>
     <tr>
       <th>min</th>
@@ -1699,42 +1720,52 @@ Name: 2, dtype: object
       <td>121.462280</td>
       <td>0.000000</td>
       <td>0.000000</td>
+      <td>0.000000</td>
+      <td>5.000000</td>
     </tr>
     <tr>
       <th>25%</th>
       <td>16.000000</td>
-      <td>2.000000</td>
-      <td>25.029815</td>
-      <td>121.522315</td>
-      <td>9.000000</td>
-      <td>0.074074</td>
+      <td>1.000000</td>
+      <td>25.029740</td>
+      <td>121.522240</td>
+      <td>7.000000</td>
+      <td>0.052632</td>
+      <td>1.000000</td>
+      <td>16.000000</td>
     </tr>
     <tr>
       <th>50%</th>
       <td>23.000000</td>
       <td>6.000000</td>
-      <td>25.049920</td>
-      <td>121.540810</td>
+      <td>25.049870</td>
+      <td>121.540620</td>
       <td>14.000000</td>
-      <td>0.263158</td>
+      <td>0.300000</td>
+      <td>6.000000</td>
+      <td>23.000000</td>
     </tr>
     <tr>
       <th>75%</th>
       <td>32.000000</td>
-      <td>12.000000</td>
-      <td>25.072460</td>
-      <td>121.565920</td>
-      <td>22.000000</td>
-      <td>0.529412</td>
+      <td>13.000000</td>
+      <td>25.072640</td>
+      <td>121.565860</td>
+      <td>24.000000</td>
+      <td>0.605263</td>
+      <td>13.000000</td>
+      <td>32.000000</td>
     </tr>
     <tr>
       <th>max</th>
       <td>99.000000</td>
-      <td>67.000000</td>
+      <td>55.000000</td>
       <td>25.145820</td>
       <td>121.623060</td>
       <td>99.000000</td>
       <td>1.000000</td>
+      <td>55.000000</td>
+      <td>99.000000</td>
     </tr>
   </tbody>
 </table>
@@ -1763,7 +1794,7 @@ Name: 2, dtype: object
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;廣播電台&#39;: 119, &#39;網路&#39;: 2609, &#39;平面媒體&#39;: 117, &#39;其他&#39;: 16, &#39;電視&#39;: 109, nan: 2})
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Counter({&#39;網路&#39;: 2609, &#39;廣播電台&#39;: 119, &#39;平面媒體&#39;: 117, &#39;電視&#39;: 109, &#39;其他&#39;: 16, nan: 2})
 </pre></div>
 </div>
 </div>
@@ -1791,7 +1822,7 @@ Name: 2, dtype: object
 </style>
 <table border="1" class="dataframe">
   <thead>
-    <tr style="text-align: right;">
+    <tr style="text-align: center;">
       <th></th>
       <th>pname</th>
       <th>cname</th>
@@ -2005,31 +2036,31 @@ Name: count, dtype: int64
       <th>0</th>
       <td>大安區</td>
       <td>28</td>
-      <td>0</td>
+      <td>3</td>
     </tr>
     <tr>
       <th>1</th>
       <td>大安區</td>
       <td>21</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>2</th>
       <td>大安區</td>
       <td>16</td>
-      <td>0</td>
+      <td>4</td>
     </tr>
     <tr>
       <th>3</th>
       <td>大安區</td>
       <td>11</td>
-      <td>0</td>
+      <td>1</td>
     </tr>
     <tr>
       <th>4</th>
       <td>大安區</td>
       <td>16</td>
-      <td>0</td>
+      <td>2</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2038,38 +2069,38 @@ Name: count, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>1546</th>
+      <th>1528</th>
       <td>臺大公館校區</td>
       <td>36</td>
-      <td>6</td>
+      <td>0</td>
     </tr>
     <tr>
-      <th>1547</th>
+      <th>1529</th>
       <td>臺大公館校區</td>
       <td>40</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1548</th>
+      <th>1530</th>
       <td>臺大公館校區</td>
       <td>33</td>
-      <td>16</td>
-    </tr>
-    <tr>
-      <th>1549</th>
-      <td>臺大公館校區</td>
-      <td>99</td>
       <td>0</td>
     </tr>
     <tr>
-      <th>1550</th>
+      <th>1531</th>
+      <td>臺大公館校區</td>
+      <td>99</td>
+      <td>46</td>
+    </tr>
+    <tr>
+      <th>1532</th>
       <td>臺大公館校區</td>
       <td>67</td>
       <td>0</td>
     </tr>
   </tbody>
 </table>
-<p>1551 rows × 3 columns</p>
+<p>1533 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -2082,19 +2113,19 @@ Name: count, dtype: int64
 </div>
 <div class="cell_output docutils container">
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sarea
-中山區       4372
-中正區       3497
-信義區       3594
-內湖區       4222
+中山區       4342
+中正區       3493
+信義區       3559
+內湖區       4181
 北投區       2832
 南港區       2723
-士林區       3209
-大同區       1944
-大安區       5362
-文山區       2526
-松山區       2630
+士林區       3162
+大同區       1899
+大安區       5348
+文山區       2478
+松山區       2490
 臺大公館校區    2048
-萬華區       2128
+萬華區       2109
 Name: total, dtype: int64
 </pre></div>
 </div>
@@ -2135,80 +2166,80 @@ Name: total, dtype: int64
     <tr>
       <th>0</th>
       <td>中山區</td>
-      <td>4372</td>
-      <td>1504</td>
+      <td>4342</td>
+      <td>1398</td>
     </tr>
     <tr>
       <th>1</th>
       <td>中正區</td>
-      <td>3497</td>
-      <td>1272</td>
+      <td>3493</td>
+      <td>892</td>
     </tr>
     <tr>
       <th>2</th>
       <td>信義區</td>
-      <td>3594</td>
-      <td>1123</td>
+      <td>3559</td>
+      <td>1077</td>
     </tr>
     <tr>
       <th>3</th>
       <td>內湖區</td>
-      <td>4222</td>
-      <td>1582</td>
+      <td>4181</td>
+      <td>1303</td>
     </tr>
     <tr>
       <th>4</th>
       <td>北投區</td>
       <td>2832</td>
-      <td>1097</td>
+      <td>1079</td>
     </tr>
     <tr>
       <th>5</th>
       <td>南港區</td>
       <td>2723</td>
-      <td>850</td>
+      <td>1107</td>
     </tr>
     <tr>
       <th>6</th>
       <td>士林區</td>
-      <td>3209</td>
-      <td>965</td>
+      <td>3162</td>
+      <td>1020</td>
     </tr>
     <tr>
       <th>7</th>
       <td>大同區</td>
-      <td>1944</td>
-      <td>514</td>
+      <td>1899</td>
+      <td>917</td>
     </tr>
     <tr>
       <th>8</th>
       <td>大安區</td>
-      <td>5362</td>
-      <td>1415</td>
+      <td>5348</td>
+      <td>1362</td>
     </tr>
     <tr>
       <th>9</th>
       <td>文山區</td>
-      <td>2526</td>
-      <td>819</td>
+      <td>2478</td>
+      <td>986</td>
     </tr>
     <tr>
       <th>10</th>
       <td>松山區</td>
-      <td>2630</td>
-      <td>889</td>
+      <td>2490</td>
+      <td>873</td>
     </tr>
     <tr>
       <th>11</th>
       <td>臺大公館校區</td>
       <td>2048</td>
-      <td>624</td>
+      <td>203</td>
     </tr>
     <tr>
       <th>12</th>
       <td>萬華區</td>
-      <td>2128</td>
-      <td>612</td>
+      <td>2109</td>
+      <td>1001</td>
     </tr>
   </tbody>
 </table>
@@ -2253,80 +2284,80 @@ Name: total, dtype: int64
     <tr>
       <th>8</th>
       <td>大安區</td>
-      <td>5362</td>
-      <td>1415</td>
+      <td>5348</td>
+      <td>1362</td>
     </tr>
     <tr>
       <th>0</th>
       <td>中山區</td>
-      <td>4372</td>
-      <td>1504</td>
+      <td>4342</td>
+      <td>1398</td>
     </tr>
     <tr>
       <th>3</th>
       <td>內湖區</td>
-      <td>4222</td>
-      <td>1582</td>
+      <td>4181</td>
+      <td>1303</td>
     </tr>
     <tr>
       <th>2</th>
       <td>信義區</td>
-      <td>3594</td>
-      <td>1123</td>
+      <td>3559</td>
+      <td>1077</td>
     </tr>
     <tr>
       <th>1</th>
       <td>中正區</td>
-      <td>3497</td>
-      <td>1272</td>
+      <td>3493</td>
+      <td>892</td>
     </tr>
     <tr>
       <th>6</th>
       <td>士林區</td>
-      <td>3209</td>
-      <td>965</td>
+      <td>3162</td>
+      <td>1020</td>
     </tr>
     <tr>
       <th>4</th>
       <td>北投區</td>
       <td>2832</td>
-      <td>1097</td>
+      <td>1079</td>
     </tr>
     <tr>
       <th>5</th>
       <td>南港區</td>
       <td>2723</td>
-      <td>850</td>
+      <td>1107</td>
     </tr>
     <tr>
       <th>10</th>
       <td>松山區</td>
-      <td>2630</td>
-      <td>889</td>
+      <td>2490</td>
+      <td>873</td>
     </tr>
     <tr>
       <th>9</th>
       <td>文山區</td>
-      <td>2526</td>
-      <td>819</td>
+      <td>2478</td>
+      <td>986</td>
     </tr>
     <tr>
       <th>12</th>
       <td>萬華區</td>
-      <td>2128</td>
-      <td>612</td>
+      <td>2109</td>
+      <td>1001</td>
     </tr>
     <tr>
       <th>11</th>
       <td>臺大公館校區</td>
       <td>2048</td>
-      <td>624</td>
+      <td>203</td>
     </tr>
     <tr>
       <th>7</th>
       <td>大同區</td>
-      <td>1944</td>
-      <td>514</td>
+      <td>1899</td>
+      <td>917</td>
     </tr>
   </tbody>
 </table>
@@ -2366,83 +2397,83 @@ Name: total, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>1501</th>
-      <td>500119047</td>
-      <td>YouBike2.0_臺大土木系館</td>
+      <th>1192</th>
+      <td>500111015</td>
+      <td>YouBike2.0_福山公園</td>
       <td>30</td>
       <td>30</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>1163</th>
-      <td>500110068</td>
-      <td>YouBike2.0_長春慶城街口</td>
-      <td>28</td>
-      <td>28</td>
+      <th>1235</th>
+      <td>500111058</td>
+      <td>YouBike2.0_舊莊國小(舊莊街一段)</td>
+      <td>18</td>
+      <td>18</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>769</th>
-      <td>500107142</td>
-      <td>YouBike2.0_朱崙公園</td>
-      <td>20</td>
-      <td>20</td>
+      <th>311</th>
+      <td>500104052</td>
+      <td>YouBike2.0_重慶北路四段190巷口</td>
+      <td>13</td>
+      <td>13</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>1055</th>
-      <td>500109064</td>
-      <td>YouBike2.0_臺北健康護理大學(教研大樓)</td>
-      <td>27</td>
-      <td>27</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>26</th>
-      <td>500101029</td>
-      <td>YouBike2.0_臺大環研大樓</td>
-      <td>15</td>
-      <td>15</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>304</th>
-      <td>500104043</td>
-      <td>YouBike2.0_士林高商</td>
-      <td>26</td>
-      <td>26</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1180</th>
-      <td>500110086</td>
-      <td>YouBike2.0_民權敦化路口(西北側)</td>
-      <td>24</td>
-      <td>24</td>
-      <td>1.0</td>
-    </tr>
-    <tr>
-      <th>1334</th>
-      <td>500112042</td>
-      <td>YouBike2.0_松高路(信義新天地A4館)</td>
+      <th>1138</th>
+      <td>500110052</td>
+      <td>YouBike2.0_南京東路五段59巷口</td>
       <td>17</td>
       <td>17</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>1169</th>
-      <td>500110074</td>
-      <td>YouBike2.0_民生復興路口</td>
+      <th>762</th>
+      <td>500107141</td>
+      <td>YouBike2.0_建國北路高架橋下停車場G區</td>
+      <td>18</td>
+      <td>18</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>757</th>
+      <td>500107136</td>
+      <td>YouBike2.0_建國五常街口</td>
+      <td>20</td>
+      <td>20</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1370</th>
+      <td>500112094</td>
+      <td>YouBike2.0_吳興街284巷(廣安宮)</td>
       <td>15</td>
       <td>15</td>
       <td>1.0</td>
     </tr>
     <tr>
-      <th>754</th>
-      <td>500107127</td>
-      <td>YouBike2.0_民權建國路口(南側)</td>
-      <td>15</td>
-      <td>15</td>
+      <th>1234</th>
+      <td>500111057</td>
+      <td>YouBike2.0_力行橋(南港)</td>
+      <td>18</td>
+      <td>18</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1236</th>
+      <td>500111059</td>
+      <td>YouBike2.0_向陽公園</td>
+      <td>17</td>
+      <td>17</td>
+      <td>1.0</td>
+    </tr>
+    <tr>
+      <th>1259</th>
+      <td>500111082</td>
+      <td>YouBike2.0_南港路三段130巷口</td>
+      <td>12</td>
+      <td>12</td>
       <td>1.0</td>
     </tr>
   </tbody>

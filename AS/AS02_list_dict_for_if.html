@@ -207,8 +207,6 @@ const thebe_selector_output = ".output, .cell_output"
 <ul class="nav bd-sidenav">
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_2_twitter_api.html">Twitter API</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_3%20tweepy.html">Tweepy for twitter API 2.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
 </ul>
 </li>
@@ -543,7 +541,7 @@ document.write(`
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting youtube data</span>
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
-<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/blobyoubike/YouBikeTP.gz&#39;</span><span class="p">)</span>
+<span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s1">&#39;https://tcgbusfs.blob.core.windows.net/dotapp/youbike/v2/youbike_immediate.json&#39;</span><span class="p">)</span>
 <span class="n">data</span> <span class="o">=</span> <span class="n">response</span><span class="o">.</span><span class="n">json</span><span class="p">()</span>
 </pre></div>
 </div>
@@ -562,7 +560,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>dict_keys([&#39;retCode&#39;, &#39;retVal&#39;])
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
+<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
+
+<span class="ne">AttributeError</span>: &#39;list&#39; object has no attribute &#39;keys&#39;
 </pre></div>
 </div>
 </div>
@@ -603,22 +606,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">ValueError</span><span class="g g-Whitespace">                                </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">4</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">random</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">random_sites</span> <span class="o">=</span> <span class="n">random</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="nb">list</span><span class="p">(</span><span class="n">site_dict</span><span class="o">.</span><span class="n">keys</span><span class="p">()),</span> <span class="mi">5</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="n">random_sites</span><span class="p">)</span>
-<span class="g g-Whitespace">      </span><span class="mi">5</span> <span class="k">for</span> <span class="n">site</span> <span class="ow">in</span> <span class="n">random_sites</span><span class="p">:</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/random.py:482,</span> in <span class="ni">Random.sample</span><span class="nt">(self, population, k, counts)</span>
-<span class="g g-Whitespace">    </span><span class="mi">480</span> <span class="n">randbelow</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_randbelow</span>
-<span class="g g-Whitespace">    </span><span class="mi">481</span> <span class="k">if</span> <span class="ow">not</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">k</span> <span class="o">&lt;=</span> <span class="n">n</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">482</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Sample larger than population or is negative&quot;</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">483</span> <span class="n">result</span> <span class="o">=</span> <span class="p">[</span><span class="kc">None</span><span class="p">]</span> <span class="o">*</span> <span class="n">k</span>
-<span class="g g-Whitespace">    </span><span class="mi">484</span> <span class="n">setsize</span> <span class="o">=</span> <span class="mi">21</span>        <span class="c1"># size of a small set minus size of an empty list</span>
-
-<span class="ne">ValueError</span>: Sample larger than population or is negative
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&#39;老松國小&#39;, &#39;重慶民族路口&#39;, &#39;朱崙商場&#39;, &#39;臺北醫學大學&#39;, &#39;臺北田徑場&#39;]
+dict_values([&#39;0090&#39;, &#39;老松國小&#39;, &#39;28&#39;, &#39;10&#39;, &#39;萬華區&#39;, &#39;20220924191842&#39;, &#39;25.037783&#39;, &#39;121.501708&#39;, &#39;康定路/桂林路(東南側)(鄰近艋舺龍山寺/艋舺清水巖祖師廟/台北市鄉土教育中心(剝皮寮歷史街區))&#39;, &#39;18&#39;, &#39;1&#39;])
+dict_values([&#39;0372&#39;, &#39;重慶民族路口&#39;, &#39;12&#39;, &#39;2&#39;, &#39;大同區&#39;, &#39;20220924191821&#39;, &#39;25.068250&#39;, &#39;121.513590&#39;, &#39;重慶北路三段154號(前方/東側)&#39;, &#39;10&#39;, &#39;1&#39;])
+dict_values([&#39;0294&#39;, &#39;朱崙商場&#39;, &#39;12&#39;, &#39;2&#39;, &#39;中山區&#39;, &#39;20220924191821&#39;, &#39;25.047617&#39;, &#39;121.540431&#39;, &#39;龍江路15號前方人行道(鄰近遼寧夜市)&#39;, &#39;10&#39;, &#39;1&#39;])
+dict_values([&#39;0012&#39;, &#39;臺北醫學大學&#39;, &#39;22&#39;, &#39;13&#39;, &#39;信義區&#39;, &#39;20220924191823&#39;, &#39;25.026679&#39;, &#39;121.561747&#39;, &#39;台北醫學大學(吳興街220巷59弄)(鄰近台北醫學大學)&#39;, &#39;9&#39;, &#39;1&#39;])
+dict_values([&#39;0055&#39;, &#39;臺北田徑場&#39;, &#39;22&#39;, &#39;5&#39;, &#39;松山區&#39;, &#39;20220924191834&#39;, &#39;25.049505&#39;, &#39;121.549408&#39;, &#39;敦化北路3號(鄰近臺北小巨蛋/台北田徑場)&#39;, &#39;16&#39;, &#39;1&#39;])
 </pre></div>
 </div>
 </div>
