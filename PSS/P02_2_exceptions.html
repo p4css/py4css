@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Exceptions(Errors) Handling &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P03-List and Dictionary" href="P03_list_dictionary.html" />
     <link rel="prev" title="Practices 02 for Python basic" href="P02p_basic.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -504,7 +503,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="exceptions-errors-handling">
-<h1>Exceptions(Errors) Handling<a class="headerlink" href="#exceptions-errors-handling" title="Permalink to this heading">#</a></h1>
+<h1>Exceptions(Errors) Handling<a class="headerlink" href="#exceptions-errors-handling" title="Permalink to this headline">#</a></h1>
 <p>程式撰寫過程有時候會因為語法錯誤、鍵盤輸入錯誤、變數型態錯誤或數值錯誤等被程式終止執行。這時候通常稱為有「例外事件（Exception）」發生了，當有例外事件發生時，程式便會停止執行。</p>
 <p>但即使語法或邏輯寫得很完整的程式碼，也常常因為輸入資料很多變的關係而產生例外。例如用while迴圈一直撈撈到沒資料可以撈了，或者在擷取政府開放資料時，109年的資料比108年多一個欄位，程式沒寫好可能就沒辦法讓變數和資料給Match起來。雖然不知道何時會發生例外，但通常在發生幾次例外後，程式設計師也知道會產生哪一種例外，例如語法例外，變數型態例外等。此時，通常會用一個try-catch的程式碼來捕捉這個例外，並做點事（例如把發生該例外的值給列印出來）。當在try的區段發生例外時，該例外會被捕捉，而讓程式得以繼續前進，而不會直接中斷。</p>
 </section>

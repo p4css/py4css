@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Pandas: Counting and Summarizing &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Pandas: filter, select, and timeline process" href="P06p2_filter_select_datetime.html" />
     <link rel="prev" title="P06 Pandas" href="P06_pandas.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -541,7 +540,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-counting-and-summarizing">
-<h1>Pandas: Counting and Summarizing<a class="headerlink" href="#pandas-counting-and-summarizing" title="Permalink to this heading">#</a></h1>
+<h1>Pandas: Counting and Summarizing<a class="headerlink" href="#pandas-counting-and-summarizing" title="Permalink to this headline">#</a></h1>
 <p>這個章節將更系統化地用實際案例來介紹，</p>
 <ol class="arabic simple">
 <li><p>Reading files: <code class="docutils literal notranslate"><span class="pre">pd.read_csv('data.csv')</span></code>或讀取JSON <code class="docutils literal notranslate"><span class="pre">pd.read_json('data.json')</span></code></p></li>
@@ -552,9 +551,9 @@ document.write(`
 <li><p>Concatenating data: <code class="docutils literal notranslate"><span class="pre">pd.concat([df1,</span> <span class="pre">df2])</span></code></p></li>
 </ol>
 <section id="p1-read-data">
-<h2>P1. Read data<a class="headerlink" href="#p1-read-data" title="Permalink to this heading">#</a></h2>
+<h2>P1. Read data<a class="headerlink" href="#p1-read-data" title="Permalink to this headline">#</a></h2>
 <section id="read-csv">
-<h3>1.1 Read CSV: 違規藥品廣告<a class="headerlink" href="#read-csv" title="Permalink to this heading">#</a></h3>
+<h3>1.1 Read CSV: 違規藥品廣告<a class="headerlink" href="#read-csv" title="Permalink to this headline">#</a></h3>
 <p>違規藥品廣告資料集 <a class="reference external" href="https://data.nat.gov.tw/dataset/14196">https://data.nat.gov.tw/dataset/14196</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -566,6 +565,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -681,7 +686,7 @@ document.write(`
 </div>
 </section>
 <section id="display-and-rename-columns">
-<h3>1.2 Display and rename columns<a class="headerlink" href="#display-and-rename-columns" title="Permalink to this heading">#</a></h3>
+<h3>1.2 Display and rename columns<a class="headerlink" href="#display-and-rename-columns" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>要大概觀察DataFrame的內容，我們可以使用<code class="docutils literal notranslate"><span class="pre">.head()</span></code>方法。這個方法將預設顯示DataFrame的前5行資料，以便我們快速查看資料的結構和內容。</p></li>
 <li><p>有時候，我們可能想要更改DataFrame中欄位的名稱，以使其更具描述性或符合我們的需求。可以像下面一樣直接將所有新欄位名稱傳遞給<code class="docutils literal notranslate"><span class="pre">.columns</span></code>屬性，或者使用<code class="docutils literal notranslate"><span class="pre">.rename()</span></code>方法來將舊欄位名稱映射到新欄位名稱。例如<code class="docutils literal notranslate"><span class="pre">df.rename(columns={'Name':</span> <span class="pre">'Full</span> <span class="pre">Name',</span> <span class="pre">'Age':</span> <span class="pre">'Years</span> <span class="pre">Old'},</span> <span class="pre">inplace=True)</span></code></p></li>
@@ -814,7 +819,7 @@ document.write(`
 </div>
 </section>
 <section id="pandas-series">
-<h3>1.3 Pandas series<a class="headerlink" href="#pandas-series" title="Permalink to this heading">#</a></h3>
+<h3>1.3 Pandas series<a class="headerlink" href="#pandas-series" title="Permalink to this headline">#</a></h3>
 <p>Pandas Series 是一種一維陣列結構，用於存儲同類型的資料，並且每個資料點都有一個與之相關聯的索引。與 Python 的原生 list 不同，Pandas Series 提供了更豐富的功能和操作，包括但不限於資料對齊、切片、過濾以及集成的描述性統計方法。除了這些，Pandas Series 支援更多複雜的資料類型，並且能夠更高效地進行向量化操作。簡而言之，雖然 Pandas Series 和 list 都可以用於存儲一維資料，但 Series 提供了更多專為數據分析而設計的功能和優化。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -882,7 +887,7 @@ document.write(`
 </div>
 </section>
 <section id="counting">
-<h3>1.4 Counting<a class="headerlink" href="#counting" title="Permalink to this heading">#</a></h3>
+<h3>1.4 Counting<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h3>
 <p>接下來希望計算一下每個廣告類型<code class="docutils literal notranslate"><span class="pre">pubMediaType</span></code>的數量，以便我們可以了解哪些類型的廣告最多。</p>
 <p>過去我們會用<code class="docutils literal notranslate"><span class="pre">collections</span></code>套件的<code class="docutils literal notranslate"><span class="pre">Counter</span></code>方法來計算。但是現在我們可以使用<code class="docutils literal notranslate"><span class="pre">.value_counts()</span></code>方法來計算每個類型的廣告數量。這個方法將返回一個包含每個類型廣告數量的 Pandas Series，其中索引是廣告類型，值是廣告數量。</p>
 <div class="cell docutils container">
@@ -925,9 +930,9 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="p2-read-json-youbike">
-<h2>P2. Read JSON : Youbike<a class="headerlink" href="#p2-read-json-youbike" title="Permalink to this heading">#</a></h2>
+<h2>P2. Read JSON : Youbike<a class="headerlink" href="#p2-read-json-youbike" title="Permalink to this headline">#</a></h2>
 <section id="convert-dict-of-dict-to-list-of-dict-then-to-dataframe">
-<h3>2.1 Convert dict of dict to list of dict, then to DataFrame<a class="headerlink" href="#convert-dict-of-dict-to-list-of-dict-then-to-dataframe" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Convert dict of dict to list of dict, then to DataFrame<a class="headerlink" href="#convert-dict-of-dict-to-list-of-dict-then-to-dataframe" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -955,7 +960,7 @@ Name: count, dtype: int64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">TypeError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">8</span><span class="p">],</span> <span class="n">line</span> <span class="mi">12</span>
+<span class="nn">Input In [8],</span> in <span class="ni">&lt;cell line: 12&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">     </span><span class="mi">10</span> <span class="c1"># Convert dict of dict to list of dict</span>
 <span class="g g-Whitespace">     </span><span class="mi">11</span> <span class="n">all_list</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="ne">---&gt; </span><span class="mi">12</span> <span class="k">for</span> <span class="n">k</span><span class="p">,</span> <span class="n">v</span> <span class="ow">in</span> <span class="n">data</span><span class="p">[</span><span class="s2">&quot;retVal&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">items</span><span class="p">():</span>
@@ -970,7 +975,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="display-part-of-columns">
-<h3>2.2 Display part of columns<a class="headerlink" href="#display-part-of-columns" title="Permalink to this heading">#</a></h3>
+<h3>2.2 Display part of columns<a class="headerlink" href="#display-part-of-columns" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>Subsetting them by passing a list of column names inside the square brackets <code class="docutils literal notranslate"><span class="pre">df[['col1',</span> <span class="pre">'col2']]</span></code></p></li>
 <li><p>Using the <code class="docutils literal notranslate"><span class="pre">.drop()</span></code> method to drop columns <code class="docutils literal notranslate"><span class="pre">df.drop(['col1',</span> <span class="pre">'col2'],</span> <span class="pre">axis=1)</span></code></p></li>
@@ -1079,7 +1084,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="using-built-in-function-to-pandas">
-<h3>2.3 Using built-in function to pandas<a class="headerlink" href="#using-built-in-function-to-pandas" title="Permalink to this heading">#</a></h3>
+<h3>2.3 Using built-in function to pandas<a class="headerlink" href="#using-built-in-function-to-pandas" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Using pandas built-in function to convert dictionary to pandas df</span>
@@ -1243,10 +1248,10 @@ Name: count, dtype: int64
 </section>
 </section>
 <section id="p2-observing-data">
-<h2>P2. Observing data<a class="headerlink" href="#p2-observing-data" title="Permalink to this heading">#</a></h2>
+<h2>P2. Observing data<a class="headerlink" href="#p2-observing-data" title="Permalink to this headline">#</a></h2>
 <p><strong>Oberserving data</strong> <code class="docutils literal notranslate"><span class="pre">df.info()</span></code> and <code class="docutils literal notranslate"><span class="pre">df.describe()</span></code> 觀察各個變數的分佈 to check data type or get basic summary of data 。</p>
 <section id="overview-whole-df">
-<h3>2.4 Overview whole df<a class="headerlink" href="#overview-whole-df" title="Permalink to this heading">#</a></h3>
+<h3>2.4 Overview whole df<a class="headerlink" href="#overview-whole-df" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="o">.</span><span class="n">shape</span>
@@ -1362,7 +1367,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="access-data-by-index">
-<h3>2.5 Access data by index<a class="headerlink" href="#access-data-by-index" title="Permalink to this heading">#</a></h3>
+<h3>2.5 Access data by index<a class="headerlink" href="#access-data-by-index" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Access single row</span>
@@ -1400,7 +1405,7 @@ Name: 2, dtype: object
 </div>
 </section>
 <section id="select-variables-and-slice-data">
-<h3>2.6 Select variables and slice data<a class="headerlink" href="#select-variables-and-slice-data" title="Permalink to this heading">#</a></h3>
+<h3>2.6 Select variables and slice data<a class="headerlink" href="#select-variables-and-slice-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">ubike_df</span><span class="p">[:</span><span class="mi">3</span><span class="p">][[</span><span class="s1">&#39;sno&#39;</span><span class="p">,</span> <span class="s1">&#39;sna&#39;</span><span class="p">,</span> <span class="s1">&#39;total&#39;</span><span class="p">,</span> <span class="s1">&#39;available_rent_bikes&#39;</span><span class="p">,</span> <span class="s1">&#39;sarea&#39;</span><span class="p">]]</span>
@@ -1464,7 +1469,7 @@ Name: 2, dtype: object
 </div>
 </section>
 <section id="convert-variable-type">
-<h3>2.7 Convert variable type<a class="headerlink" href="#convert-variable-type" title="Permalink to this heading">#</a></h3>
+<h3>2.7 Convert variable type<a class="headerlink" href="#convert-variable-type" title="Permalink to this headline">#</a></h3>
 <p><strong>Cleaning data</strong> <code class="docutils literal notranslate"><span class="pre">pd.to_numeric(var)</span></code> 修改變數型態 to convert data type</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1551,7 +1556,7 @@ Name: 2, dtype: object
 </div>
 </section>
 <section id="mutate-new-variable">
-<h3>2.8 Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this heading">#</a></h3>
+<h3>2.8 Mutate new variable<a class="headerlink" href="#mutate-new-variable" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">df</span> <span class="pre">=</span> <span class="pre">df.assign(new_var</span> <span class="pre">=</span> <span class="pre">old_var1</span> <span class="pre">/</span> <span class="pre">old_var2)</span></code> 產生新的變數（方法一） to create or convert new variable. Be careful! You must assign to left to overwrite original df.</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">df[&quot;new_var&quot;]</span> <span class="pre">=</span> <span class="pre">df.old_var1</span> <span class="pre">/</span> <span class="pre">df.old_var2</span></code> 產生新的變數（方法二）</p></li>
@@ -1774,7 +1779,7 @@ Name: 2, dtype: object
 </section>
 </section>
 <section id="p3-summarizing-data">
-<h2>P3. Summarizing data<a class="headerlink" href="#p3-summarizing-data" title="Permalink to this heading">#</a></h2>
+<h2>P3. Summarizing data<a class="headerlink" href="#p3-summarizing-data" title="Permalink to this headline">#</a></h2>
 <ul class="simple">
 <li><p>Tutorial: <a class="reference external" href="https://jamesrledoux.com/code/group-by-aggregate-pandas">groupby pandas</a></p></li>
 </ul>
@@ -1784,7 +1789,7 @@ Name: 2, dtype: object
 <li><p><code class="docutils literal notranslate"><span class="pre">df.groupby([col1,</span> <span class="pre">col3])[col2].count()</span></code> summarize col2 according to col1 and col3 by counting</p></li>
 </ul>
 <section id="count-single-variable-by-value-counts">
-<h3>3.1 Count single variable by <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code><a class="headerlink" href="#count-single-variable-by-value-counts" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Count single variable by <code class="docutils literal notranslate"><span class="pre">value_counts()</span></code><a class="headerlink" href="#count-single-variable-by-value-counts" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Conventional way</span>
@@ -1927,7 +1932,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="groupby-then-count">
-<h3>3.2 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then <code class="docutils literal notranslate"><span class="pre">count()</span></code><a class="headerlink" href="#groupby-then-count" title="Permalink to this heading">#</a></h3>
+<h3>3.2 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then <code class="docutils literal notranslate"><span class="pre">count()</span></code><a class="headerlink" href="#groupby-then-count" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">drug_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;pubMediaType&#39;</span><span class="p">)[[</span><span class="s1">&#39;pname&#39;</span><span class="p">,</span> <span class="s1">&#39;agency&#39;</span><span class="p">]]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1994,7 +1999,7 @@ Name: count, dtype: int64
 </div>
 </section>
 <section id="groupby-then-summarize">
-<h3>3.3 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then summarize<a class="headerlink" href="#groupby-then-summarize" title="Permalink to this heading">#</a></h3>
+<h3>3.3 <code class="docutils literal notranslate"><span class="pre">groupby()</span></code> then summarize<a class="headerlink" href="#groupby-then-summarize" title="Permalink to this headline">#</a></h3>
 <p>Format: <code class="docutils literal notranslate"><span class="pre">df.groupby(col_for_group)[variable_to_group].func()</span></code></p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">col_for_group</span></code>: 要作為群組根據的variable，例如將村里彙整為鄉鎮市區資料時，鄉鎮市區資料極為group的根據</p></li>
@@ -2248,7 +2253,7 @@ Name: total, dtype: int64
 </section>
 </section>
 <section id="p4-sort-by-arrange">
-<h2>P4. Sort-by (Arrange)<a class="headerlink" href="#p4-sort-by-arrange" title="Permalink to this heading">#</a></h2>
+<h2>P4. Sort-by (Arrange)<a class="headerlink" href="#p4-sort-by-arrange" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># ascending=False to sort by dscending order</span>

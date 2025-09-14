@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>P01-Counting &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P01-Practice" href="P01p_counting.html" />
     <link rel="prev" title="Programming for Social Scientists" href="../intro.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -501,12 +500,11 @@ document.write(`
             </div>
             <nav aria-label="Page">
                 <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">學習腳本</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">計數</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">計數任務的定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">運算思維的思考過程</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">以更接近程式邏輯的方式思考</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">用英文來撰寫上述的邏輯思考</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">計數</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">計數任務的定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">運算思維的思考過程</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">以更接近程式邏輯的方式思考</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">用英文來撰寫上述的邏輯思考</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-python">Convert to Python</a><ul class="nav section-nav flex-column">
@@ -521,13 +519,13 @@ document.write(`
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing">Printing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">印出整個變數內容</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">印出整個變數內容</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictkeyvalue">印出Dict中的所有Key或Value</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">印出List中的每個項目</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">印出Dict中的每個鍵值對</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">印出List中的每個項目</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">印出Dict中的每個鍵值對</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">計數的其他邏輯與語法</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">計數的其他邏輯與語法</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-using-list-count-key-to-count-the-frequency-of-something">V1. Using list.count(key) to count the frequency of something</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v2-using-set-dep-list-to-gaurantee-unique-value-in-the-list">V2. Using set(dep_list) to gaurantee unique value in the list¶</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v3-by-comprehensive-dictionary">V3. by Comprehensive dictionary</a></li>
@@ -550,7 +548,7 @@ document.write(`
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#more-sorting-all-pairs-of-key-and-value">More:Sorting all pairs of key and value</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">案例：成績百分制轉等第制</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">案例：成績百分制轉等第制</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-grades">Generating grades</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-dict-to-store-the-frequency">Initializing a dict to store the frequency</a></li>
 </ul>
@@ -575,33 +573,27 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p01-counting">
-<h1>P01-Counting<a class="headerlink" href="#p01-counting" title="Permalink to this heading">#</a></h1>
+<h1>P01-Counting<a class="headerlink" href="#p01-counting" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.google.com/presentation/d/e/2PACX-1vT9xw6FZzdlR1QcXHZe-bQ8eeYftltAAutHPNTyyMcLkevEr2bHOBfrpaaZpMaTb1gb1ufUX00jeu8w/pub?start=false&amp;loop=false&amp;delayms=3000">Slide: Py01 Counting</a></p></li>
 <li><p><a class="reference external" href="https://github.com/P4CSS/PSS">Github Repo</a></p></li>
 </ul>
-<section id="id1">
-<h2>學習腳本<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ol class="arabic simple">
-<li><p>如何用程式邏輯來計算數量？</p>
-<ol class="arabic simple">
-<li><p>如何把計算的結果輸出來觀察？</p></li>
-</ol>
-</li>
+<li><p>如何用程式邏輯來計算數量？</p></li>
 <li><p>計算數量完後，要如何呈現計數後的「資訊」？</p>
 <ol class="arabic simple">
-<li><p>最多的是哪一個科系？較少的是哪些科系？等等。</p></li>
-<li><p>怎麼視覺化？</p></li>
+<li><p>如何把計算的結果輸出來觀察？</p></li>
+<li><p>最多／最少的是哪一/幾個類別？</p></li>
+<li><p>如何將計數的結果視覺化？</p></li>
 </ol>
 </li>
 <li><p>程式語言有沒有更好的方法來計算數量？</p></li>
 <li><p>其他類似計數的問題有哪些？例如，計算詞頻、計算分數區間等等。</p></li>
 </ol>
 </div>
-</section>
-<section id="id2">
-<h2>計數<a class="headerlink" href="#id2" title="Permalink to this heading">#</a></h2>
+<section id="id1">
+<h2>計數<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <p>程式設計是對解決問題邏輯的模仿，這種模仿使得電腦能夠協助您進行大規模的重複性工作。因此，解決問題的邏輯成為至關重要之處。例如，「計數」就是一種簡單而實用的演算法邏輯。計數的程式邏輯的目的在於對於某一集合中的每個元素進行數量計算。以下列舉了一些相關的範例：</p>
 <ul class="simple">
 <li><p>假使我們身處於一個班級環境，其中學生眾多。您有意願計算每個不同科系的學生人數，以使得未來的專題分配能夠考慮到各科系的比例。</p></li>
@@ -610,12 +602,12 @@ document.write(`
 <li><p>在社會科學的範疇中，一個典型的任務涉及計算一篇文章中每個詞彙的出現次數（詞頻）。</p></li>
 </ul>
 <p>以下範例將引導您從基本語法開始，使用Python中最基本的資料型態來執行「計數」操作。</p>
-<section id="id3">
-<h3>計數任務的定義<a class="headerlink" href="#id3" title="Permalink to this heading">#</a></h3>
+<section id="id2">
+<h3>計數任務的定義<a class="headerlink" href="#id2" title="Permalink to this headline">#</a></h3>
 <p><span style="color:crimson">「想像老師遇到如下情境：有一個班級的人，約略六七十人，我不知道這些人來自哪些系所，我想對每個科系進行統計，我該如何運用程式來計數？」</span></p>
 </section>
-<section id="id4">
-<h3>運算思維的思考過程<a class="headerlink" href="#id4" title="Permalink to this heading">#</a></h3>
+<section id="id3">
+<h3>運算思維的思考過程<a class="headerlink" href="#id3" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>首先，我們擁有一系列不同科系的學生：jour(journalism), jour, econ(economic), jour, econ, poli(politics), econ, jour，等等。</p></li>
 <li><p>想像一下，如果你要實際數這些學生，你會如何進行？ 你會從第一個開始，一個接著一個地進行每個科系人數的累計，一直到結束為止（有多少位學生，就需要數多少次）。</p></li>
@@ -631,8 +623,8 @@ document.write(`
 <span class="n">iteration</span><span class="o">=</span> <span class="mi">8</span><span class="p">,</span> <span class="n">jour</span><span class="p">,</span> <span class="n">jour</span><span class="p">:</span> <span class="mi">4</span><span class="p">,</span> <span class="n">econ</span><span class="p">:</span> <span class="mi">3</span><span class="p">,</span> <span class="n">poli</span><span class="p">:</span> <span class="mi">1</span>
 </pre></div>
 </div>
-<section id="id5">
-<h4>以更接近程式邏輯的方式思考<a class="headerlink" href="#id5" title="Permalink to this heading">#</a></h4>
+<section id="id4">
+<h4>以更接近程式邏輯的方式思考<a class="headerlink" href="#id4" title="Permalink to this headline">#</a></h4>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ol class="arabic simple">
 <li><p>取一張紙用以建立對應表。在左邊一欄中寫下科系名稱，在右邊一欄中則記錄相對應的科系數量。</p></li>
@@ -653,8 +645,8 @@ document.write(`
 </li>
 </ol>
 </div></section>
-<section id="id6">
-<h4>用英文來撰寫上述的邏輯思考<a class="headerlink" href="#id6" title="Permalink to this heading">#</a></h4>
+<section id="id5">
+<h4>用英文來撰寫上述的邏輯思考<a class="headerlink" href="#id5" title="Permalink to this headline">#</a></h4>
 <p>程式語言的邏輯事實上和要解決問題的邏輯表述很像，連文字和關鍵字都很像。包含if-else（如果滿足條件就怎樣，不然就怎樣）等條件判斷結構，和<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">a</span> <span class="pre">in</span> <span class="pre">alist</span></code>對於<code class="docutils literal notranslate"><span class="pre">alist</span></code>中的每個元素。</p>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ol class="arabic simple">
@@ -685,7 +677,7 @@ document.write(`
 </div></section>
 </section>
 <section id="convert-to-python">
-<h3>Convert to Python<a class="headerlink" href="#convert-to-python" title="Permalink to this heading">#</a></h3>
+<h3>Convert to Python<a class="headerlink" href="#convert-to-python" title="Permalink to this headline">#</a></h3>
 <p>將上述用英文撰寫的程式邏輯改用Python語法來撰寫程式碼如下。其中包含了Dict(ionary)、List的資料結構和變數、以及for-loop反覆迴圈邏輯和if-else的條件式判斷。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -716,7 +708,7 @@ document.write(`
 </div>
 <p>在上述程式碼中，有幾個重要的概念</p>
 <section id="assignment">
-<h4>Assignment<a class="headerlink" href="#assignment" title="Permalink to this heading">#</a></h4>
+<h4>Assignment<a class="headerlink" href="#assignment" title="Permalink to this headline">#</a></h4>
 <p>Sure, here’s the modified content:</p>
 <ul class="simple">
 <li><p>The symbol <code class="docutils literal notranslate"><span class="pre">=</span></code> is referred to as “assignment,” which assigns the data on the right side to the variable on the left side.</p>
@@ -729,7 +721,7 @@ document.write(`
 <hr/>
 </section>
 <section id="list">
-<h4>List資料型態（資料結構）<a class="headerlink" href="#list" title="Permalink to this heading">#</a></h4>
+<h4>List資料型態（資料結構）<a class="headerlink" href="#list" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>List是一種有序（Ordered）結構，可以用整數作為索引（index）來存取，從0開始編號，第0個、第1個、第2個。</p>
 <ul>
@@ -741,7 +733,7 @@ document.write(`
 <hr/>
 </section>
 <section id="dict">
-<h4>Dict資料型態<a class="headerlink" href="#dict" title="Permalink to this heading">#</a></h4>
+<h4>Dict資料型態<a class="headerlink" href="#dict" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>Dict(tionary)是一種無序（Unordered）的鍵值（key-to-value）對應結構結構。如<code class="docutils literal notranslate"><span class="pre">adict</span> <span class="pre">=</span> <span class="pre">{'a':</span> <span class="pre">1,</span> <span class="pre">'b':</span> <span class="pre">2}</span></code>。</p></li>
 <li><p><strong>Access(Read)</strong>: 要知道Dict的某個key是mapping到哪一個value的話，亦是用<code class="docutils literal notranslate"><span class="pre">[]</span></code>來讀取，如上例<code class="docutils literal notranslate"><span class="pre">adict['a']</span></code>的值為1。</p></li>
@@ -750,7 +742,7 @@ document.write(`
 <hr/>
 </section>
 <section id="iteration-for">
-<h4>Iteration: for<a class="headerlink" href="#iteration-for" title="Permalink to this heading">#</a></h4>
+<h4>Iteration: for<a class="headerlink" href="#iteration-for" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p>這裡的for比較像是for-each的概念。<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">dep</span> <span class="pre">in</span> <span class="pre">dep_list:</span></code>的意思是，依序將<code class="docutils literal notranslate"><span class="pre">dep_list</span></code>中的每一個值，assign給<code class="docutils literal notranslate"><span class="pre">dep</span></code>；簡而言之，<code class="docutils literal notranslate"><span class="pre">dep</span></code>這個變項會走訪過每個<code class="docutils literal notranslate"><span class="pre">dep_list</span></code>中的值。</p></li>
 <li><p>for-loop中所要反覆執行的程式碼，必須向右多一個tab。</p></li>
@@ -758,7 +750,7 @@ document.write(`
 <hr/>
 </section>
 <section id="condition-if-else">
-<h4>Condition: if, else<a class="headerlink" href="#condition-if-else" title="Permalink to this heading">#</a></h4>
+<h4>Condition: if, else<a class="headerlink" href="#condition-if-else" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">if...else</span></code>表示式的意義如英文字，如果滿足前述條件的話，就做什麼事，不然的話（else），就做什麼事。</p></li>
 <li><p>if判斷式中，符合條件或不符合條件（else）所要執行的程式碼，亦必須向右多一個tab。</p></li>
@@ -774,7 +766,7 @@ document.write(`
 <hr/>
 </section>
 <section id="incremental">
-<h4>Incremental<a class="headerlink" href="#incremental" title="Permalink to this heading">#</a></h4>
+<h4>Incremental<a class="headerlink" href="#incremental" title="Permalink to this headline">#</a></h4>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">a</span> <span class="pre">=</span> <span class="pre">a</span> <span class="pre">+</span> <span class="pre">1</span></code>是一種遞增運算，將原本的<code class="docutils literal notranslate"><span class="pre">a</span></code>加上1後Assign給原本的<code class="docutils literal notranslate"><span class="pre">a</span></code>，除了會覆蓋掉原本<code class="docutils literal notranslate"><span class="pre">a</span></code>的數值外，相當於將<code class="docutils literal notranslate"><span class="pre">a</span></code>遞增一。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">dep_count[dep]</span> <span class="pre">=</span> <span class="pre">dep_count[dep]</span> <span class="pre">+</span> <span class="pre">1</span></code>即是將某種<code class="docutils literal notranslate"><span class="pre">dep</span></code>作為key所對應到的Dict值遞增一。</p></li>
@@ -783,10 +775,10 @@ document.write(`
 </section>
 </section>
 <section id="printing">
-<h2>Printing<a class="headerlink" href="#printing" title="Permalink to this heading">#</a></h2>
+<h2>Printing<a class="headerlink" href="#printing" title="Permalink to this headline">#</a></h2>
 <p>在前面我們介紹到兩種Python中非常重要的資料型態，寫程式過程經常會需要把這些變數或資料給列印出來看看，看是否資料處理是否照自己的邏輯走。</p>
-<section id="id7">
-<h3>印出整個變數內容<a class="headerlink" href="#id7" title="Permalink to this heading">#</a></h3>
+<section id="id6">
+<h3>印出整個變數內容<a class="headerlink" href="#id6" title="Permalink to this headline">#</a></h3>
 <p>如果是印出整個變數內容的話，那幾乎是差不多的，就直接用<code class="docutils literal notranslate"><span class="pre">print()</span></code>函式列印出該變數即可。如果沒有加上<code class="docutils literal notranslate"><span class="pre">print()</span></code>函式也會印出該變數的內容，但同一個cell，如果有多個變數在列，那只會印出最後一個，如下面的例子中，我希望印出<code class="docutils literal notranslate"><span class="pre">dep_list</span></code>和<code class="docutils literal notranslate"><span class="pre">dep_count</span></code>，在沒有用<code class="docutils literal notranslate"><span class="pre">print()</span></code>的狀況下，只會印出最後一個。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">{'jour':</span> <span class="pre">4,</span> <span class="pre">'econ':</span> <span class="pre">3,</span> <span class="pre">'poli':</span> <span class="pre">1}</span></code>這種從key-to-value對應形態的資料稱之為<code class="docutils literal notranslate"><span class="pre">Dictionary</span></code></p></li>
@@ -820,7 +812,7 @@ document.write(`
 </div>
 </section>
 <section id="dictkeyvalue">
-<h3>印出Dict中的所有Key或Value<a class="headerlink" href="#dictkeyvalue" title="Permalink to this heading">#</a></h3>
+<h3>印出Dict中的所有Key或Value<a class="headerlink" href="#dictkeyvalue" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">Dictionary</span></code>既然稱之為一種key-to-value鍵值對應形態的資料，那這種資料型態就應該會有一群keys，然後每個keys對應至唯一的values，不會有一個keys對應到多個values的情形。</p>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">keys()</span></code>可以傳回一個dictionary的所有keys</p></li>
@@ -853,8 +845,8 @@ dict_items([(&#39;jour&#39;, 4), (&#39;econ&#39;, 3), (&#39;poli&#39;, 1)])
 </div>
 </div>
 </section>
-<section id="id8">
-<h3>印出List中的每個項目<a class="headerlink" href="#id8" title="Permalink to this heading">#</a></h3>
+<section id="id7">
+<h3>印出List中的每個項目<a class="headerlink" href="#id7" title="Permalink to this headline">#</a></h3>
 <p>將List中每個項目依序印出非常容易，就只要把它當for-each指令，然後用<code class="docutils literal notranslate"><span class="pre">print()</span></code>函式印出即可。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -877,8 +869,8 @@ jour
 </div>
 </div>
 </section>
-<section id="id9">
-<h3>印出Dict中的每個鍵值對<a class="headerlink" href="#id9" title="Permalink to this heading">#</a></h3>
+<section id="id8">
+<h3>印出Dict中的每個鍵值對<a class="headerlink" href="#id8" title="Permalink to this headline">#</a></h3>
 <p>因為Dict是一個鍵值對應（key-to-value mapping）結構，所以要先想好，要印的是key還是value。但通常是</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -929,10 +921,10 @@ poli has 1
 </div>
 </section>
 </section>
-<section id="id10">
-<h2>計數的其他邏輯與語法<a class="headerlink" href="#id10" title="Permalink to this heading">#</a></h2>
+<section id="id9">
+<h2>計數的其他邏輯與語法<a class="headerlink" href="#id9" title="Permalink to this headline">#</a></h2>
 <section id="v1-using-list-count-key-to-count-the-frequency-of-something">
-<h3>V1. Using list.count(key) to count the frequency of something<a class="headerlink" href="#v1-using-list-count-key-to-count-the-frequency-of-something" title="Permalink to this heading">#</a></h3>
+<h3>V1. Using list.count(key) to count the frequency of something<a class="headerlink" href="#v1-using-list-count-key-to-count-the-frequency-of-something" title="Permalink to this headline">#</a></h3>
 <p>用<code class="docutils literal notranslate"><span class="pre">list.count(x)</span></code>函式可以計算出一個List中為x的有多少個。所以，只要知道有多少種物件，就可以用<code class="docutils literal notranslate"><span class="pre">list.count(x)</span></code>來計算每種物件的數量。（註：<code class="docutils literal notranslate"><span class="pre">list.count(x)</span></code>的寫法，表示<code class="docutils literal notranslate"><span class="pre">list</span></code>類別中有一個成員函式（Member function）為<code class="docutils literal notranslate"><span class="pre">count(x)</span></code>，可以計算List類別中某個物件的數量。）</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -968,7 +960,7 @@ poli has 1
 </div>
 </section>
 <section id="v2-using-set-dep-list-to-gaurantee-unique-value-in-the-list">
-<h3>V2. Using set(dep_list) to gaurantee unique value in the list¶<a class="headerlink" href="#v2-using-set-dep-list-to-gaurantee-unique-value-in-the-list" title="Permalink to this heading">#</a></h3>
+<h3>V2. Using set(dep_list) to gaurantee unique value in the list¶<a class="headerlink" href="#v2-using-set-dep-list-to-gaurantee-unique-value-in-the-list" title="Permalink to this headline">#</a></h3>
 <p>前一個範例中引入了<code class="docutils literal notranslate"><span class="pre">list</span></code>類別的成員函式<code class="docutils literal notranslate"><span class="pre">count()</span></code>來計算List中某個物件的數量。但仍須要用if-not-in這樣的判斷式來判斷每個物件是否已經計算過數量。那有沒有辦法取出某個List中有哪些種類的物件？有的，可以用<code class="docutils literal notranslate"><span class="pre">set(alist)</span></code>這樣的集合函式來取出某個List中所有的物件種類。亦即某個List <code class="docutils literal notranslate"><span class="pre">alist</span></code>其實是由<code class="docutils literal notranslate"><span class="pre">set(alist)</span></code>所組成的。<code class="docutils literal notranslate"><span class="pre">set(alist)</span></code>中不會有重複的元素。這個網站PythoTutor可以視覺化程式邏輯的運作流程，可以幫助了解計數的意涵<a class="reference external" href="https://pythontutor.com/render.html#code=dep_count%20%3D%20%7B%7D%20%23%20dictionary,%20key%20to%20value%20pairs%0A%0Adep_list%20%3D%20%5B'jour',%20'jour',%20'econ',%20'jour',%20'econ',%20'poli',%20'econ',%20'jour'%5D%20%23%20A%20list%20of%20dep%0A%0Afor%20dep%20in%20dep_list%3A%0A%20%20%20%20if%20dep%20not%20in%20dep_count%3A%0A%20%20%20%20%20%20%20%20dep_count%5Bdep%5D%20%3D%20dep_list.count%28dep%29%0Aprint%28dep_count%29&amp;cumulative=false&amp;curInstr=23&amp;heapPrimitives=nevernest&amp;mode=display&amp;origin=opt-frontend.js&amp;py=3&amp;rawInputLstJSON=%5B%5D&amp;textReferences=false">Visualized by PythonTutor</a>。</p>
 <p>如下例。雖然<code class="docutils literal notranslate"><span class="pre">dep_list</span></code>中的重複物件可能很多，但如果取<code class="docutils literal notranslate"><span class="pre">set(dep_list)</span></code>的話，僅會列出<code class="docutils literal notranslate"><span class="pre">dep_list</span></code>中的不重複物件。此時，只需要用for-loop把<code class="docutils literal notranslate"><span class="pre">set(dep_list)</span></code>中的每種物件都屬過一次各有幾個，便可以知道每種物件出現幾次。</p>
 <div class="alert alert-info">
@@ -1002,7 +994,7 @@ poli has 1
 </div>
 </section>
 <section id="v3-by-comprehensive-dictionary">
-<h3>V3. by Comprehensive dictionary<a class="headerlink" href="#v3-by-comprehensive-dictionary" title="Permalink to this heading">#</a></h3>
+<h3>V3. by Comprehensive dictionary<a class="headerlink" href="#v3-by-comprehensive-dictionary" title="Permalink to this headline">#</a></h3>
 <p>Python有一套很特別的、稱為Comprehension的寫法，可以將上述的迴圈式子寫成單一指令的模樣如下。可以查找網路上「Python Comprehension」獲得範例與說明。常用Python的工程師也常會用Comprehension的方式來寫作，尤其是做資料分析的工程師。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1012,14 +1004,14 @@ poli has 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;econ&#39;: 3, &#39;jour&#39;: 4, &#39;poli&#39;: 1}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;poli&#39;: 1, &#39;jour&#39;: 4, &#39;econ&#39;: 3}
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="v4-by-counter">
-<h3>V4. by <code class="docutils literal notranslate"><span class="pre">Counter()</span></code><a class="headerlink" href="#v4-by-counter" title="Permalink to this heading">#</a></h3>
+<h3>V4. by <code class="docutils literal notranslate"><span class="pre">Counter()</span></code><a class="headerlink" href="#v4-by-counter" title="Permalink to this headline">#</a></h3>
 <p>最後一個方法是我最愛用的方法，利用了<code class="docutils literal notranslate"><span class="pre">Collections</span></code>這個容器資料型態。<code class="docutils literal notranslate"><span class="pre">Collections</span></code>底下包含了<code class="docutils literal notranslate"><span class="pre">Counter()</span></code>這個Dict的子類別，可用來計算可雜湊 (hashable) 物件的數量。只要直接用<code class="docutils literal notranslate"><span class="pre">Counter(dep_list)</span></code>便可以計算該List中每種物件的數量。</p>
 <p>不過該函式不會在Python一啟動的時候就自動載入。所以需要先載入<code class="docutils literal notranslate"><span class="pre">from</span> <span class="pre">collections</span> <span class="pre">import</span> <span class="pre">Counter</span></code>。[Visualized by PythonTutor]</p>
 <div class="cell docutils container">
@@ -1042,7 +1034,7 @@ poli 	 1
 </div>
 </div>
 <section id="option-visualize-counter-results">
-<h4>(Option) Visualize Counter results<a class="headerlink" href="#option-visualize-counter-results" title="Permalink to this heading">#</a></h4>
+<h4>(Option) Visualize Counter results<a class="headerlink" href="#option-visualize-counter-results" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -1064,16 +1056,16 @@ poli 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/69b512f416382fbd731dd8fc562a1e09e22e65ea13fadb05c00ca2002aa1b1cc.png" src="../_images/69b512f416382fbd731dd8fc562a1e09e22e65ea13fadb05c00ca2002aa1b1cc.png" />
+<img alt="../_images/6868ca47de6d1edb66b787cb2ff5306671f5c4eb64a7443666ea7831cb3017f3.png" src="../_images/6868ca47de6d1edb66b787cb2ff5306671f5c4eb64a7443666ea7831cb3017f3.png" />
 </div>
 </div>
 </section>
 </section>
 </section>
 <section id="counting">
-<h2>Counting的應用<a class="headerlink" href="#counting" title="Permalink to this heading">#</a></h2>
+<h2>Counting的應用<a class="headerlink" href="#counting" title="Permalink to this headline">#</a></h2>
 <section id="wikipedia">
-<h3>案例：計算Wikipedia文章詞頻<a class="headerlink" href="#wikipedia" title="Permalink to this heading">#</a></h3>
+<h3>案例：計算Wikipedia文章詞頻<a class="headerlink" href="#wikipedia" title="Permalink to this headline">#</a></h3>
 <p>「計數」其實是很多程式會應用到的演算邏輯。其他的演算邏輯單元還包含搜尋、排序等等，這些都是運算思維的一部分。在這個例子中，我打算要用計數邏輯來計算一篇Wikipedia文章的詞頻（Term frequency），亦即該篇文章中每個字出現幾遍，相當於把字詞當成上述範例中的科系。因此，一開始我需要把一篇文章斷開成單詞並存成如前面例子中的List。我會用Python的Wikipedia套件來取得某個Wikipedia頁面的摘要，這個套件為第三方套件，通常你的電腦都還沒安裝過這個套件，所以你需要在Terminal.app或cmd.exe中用<code class="docutils literal notranslate"><span class="pre">pip</span> <span class="pre">install</span> <span class="pre">wikipedia</span></code>安裝這個套件。用wikipedia的函式把某頁wikipedia的內容抓少許回來後，要先把該篇文章拆成字（用<code class="docutils literal notranslate"><span class="pre">str.split()</span></code>）。然後再用前面教的方法來計算每個字的出現次數。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1082,24 +1074,20 @@ poli 	 1
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wikipedia in /Users/jirlong/anaconda3/lib/python3.10/site-packages (1.4.0)
-Requirement already satisfied: beautifulsoup4 in /Users/jirlong/anaconda3/lib/python3.10/site-packages (from wikipedia) (4.8.2)
-Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/anaconda3/lib/python3.10/site-packages (from wikipedia) (2.31.0)
-Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/jirlong/anaconda3/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
-Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/anaconda3/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.4)
-Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/jirlong/anaconda3/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.1.0)
-Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/anaconda3/lib/python3.10/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2024.2.2)
-Requirement already satisfied: soupsieve&gt;=1.2 in /Users/jirlong/anaconda3/lib/python3.10/site-packages (from beautifulsoup4-&gt;wikipedia) (2.5)
-</pre></div>
-</div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span><span class=" -Color -Color-Yellow">DEPRECATION: textract 1.6.5 has a non-standard dependency specifier extract-msg&lt;=0.29.*. pip 24.0 will enforce this behaviour change. A possible replacement is to upgrade to a newer version of textract or contact the author to suggest that they release a version with a conforming dependency specifiers. Discussion can be found at https://github.com/pypa/pip/issues/12063</span>
-
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Requirement already satisfied: wikipedia in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (1.4.0)
+Requirement already satisfied: beautifulsoup4 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (4.11.1)
+Requirement already satisfied: requests&lt;3.0.0,&gt;=2.0.0 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from wikipedia) (2.31.0)
+Requirement already satisfied: idna&lt;4,&gt;=2.5 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (3.3)
+Requirement already satisfied: urllib3&lt;3,&gt;=1.21.1 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (1.26.14)
+Requirement already satisfied: certifi&gt;=2017.4.17 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2022.5.18.1)
+Requirement already satisfied: charset-normalizer&lt;4,&gt;=2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from requests&lt;3.0.0,&gt;=2.0.0-&gt;wikipedia) (2.0.4)
+Requirement already satisfied: soupsieve&gt;1.2 in /Users/jirlong/opt/anaconda3/lib/python3.9/site-packages (from beautifulsoup4-&gt;wikipedia) (2.3.1)
 </pre></div>
 </div>
 </div>
 </div>
 <section id="obtaining-some-qurery-result-from-wikipedia">
-<h4>Obtaining some qurery result from wikipedia<a class="headerlink" href="#obtaining-some-qurery-result-from-wikipedia" title="Permalink to this heading">#</a></h4>
+<h4>Obtaining some qurery result from wikipedia<a class="headerlink" href="#obtaining-some-qurery-result-from-wikipedia" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">wikipedia</span>    <span class="c1"># import a 3rd-party library into runtime</span>
@@ -1111,19 +1099,63 @@ Requirement already satisfied: soupsieve&gt;=1.2 in /Users/jirlong/anaconda3/lib
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;str&#39;&gt;
-Big data primarily refers to data sets that are too large or complex to be dealt with by traditional data-processing software. Data with many entries (rows) offer greater statistical power, while data with higher complexity (more attributes or columns) may lead to a higher false discovery rate.
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">PageError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
+<span class="nn">Input In [16],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">wikipedia</span>    <span class="c1"># import a 3rd-party library into runtime</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">string_a</span>  <span class="o">=</span> <span class="n">wikipedia</span><span class="o">.</span><span class="n">summary</span><span class="p">(</span><span class="s2">&quot;Big_data&quot;</span><span class="p">,</span> <span class="n">sentences</span> <span class="o">=</span> <span class="mi">10</span><span class="p">)</span>   <span class="c1"># get data by 3rd-party function</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">string_a</span><span class="p">))</span>
+<span class="g g-Whitespace">      </span><span class="mi">4</span> <span class="nb">print</span><span class="p">(</span><span class="n">string_a</span><span class="p">)</span>
 
-Big data analysis challenges include capturing data, data storage, data analysis, search, sharing, transfer, visualization, querying, updating, information privacy, and data source. Big data was originally associated with three key concepts: volume, variety, and velocity. The analysis of big data presents challenges in sampling, and thus previously allowing for only observations and sampling. Thus a fourth concept, veracity, refers to the quality or insightfulness of the data. Without sufficient investment in expertise for big data veracity, the volume and variety of data can produce costs and risks that exceed an organization&#39;s capacity to create and capture value from big data.
-Current usage of the term big data tends to refer to the use of predictive analytics, user behavior analytics, or certain other advanced data analytics methods that extract value from big data, and seldom to a particular size of data set. &quot;There is little doubt that the quantities of data now available are indeed large, but that&#39;s not the most relevant characteristic of this new data ecosystem.&quot;
-Analysis of data sets can find new correlations to &quot;spot business trends, prevent diseases, combat crime and so on&quot;. Scientists, business executives, medical practitioners, advertising and governments alike regularly meet difficulties with large data-sets in areas including Internet searches, fintech, healthcare analytics, geographic information systems, urban informatics, and business informatics.
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/wikipedia/util.py:28,</span> in <span class="ni">cache.__call__</span><span class="nt">(self, *args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">26</span>   <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span>
+<span class="g g-Whitespace">     </span><span class="mi">27</span> <span class="k">else</span><span class="p">:</span>
+<span class="ne">---&gt; </span><span class="mi">28</span>   <span class="n">ret</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_cache</span><span class="p">[</span><span class="n">key</span><span class="p">]</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fn</span><span class="p">(</span><span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">30</span> <span class="k">return</span> <span class="n">ret</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/wikipedia/wikipedia.py:231,</span> in <span class="ni">summary</span><span class="nt">(title, sentences, chars, auto_suggest, redirect)</span>
+<span class="g g-Whitespace">    </span><span class="mi">216</span><span class="w"> </span><span class="sd">&#39;&#39;&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">217</span><span class="sd"> Plain text summary of the page.</span>
+<span class="g g-Whitespace">    </span><span class="mi">218</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">226</span><span class="sd"> * redirect - allow redirection without raising RedirectError</span>
+<span class="g g-Whitespace">    </span><span class="mi">227</span><span class="sd"> &#39;&#39;&#39;</span>
+<span class="g g-Whitespace">    </span><span class="mi">229</span> <span class="c1"># use auto_suggest and redirect to get the correct article</span>
+<span class="g g-Whitespace">    </span><span class="mi">230</span> <span class="c1"># also, use page&#39;s error checking to raise DisambiguationError if necessary</span>
+<span class="ne">--&gt; </span><span class="mi">231</span> <span class="n">page_info</span> <span class="o">=</span> <span class="n">page</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">auto_suggest</span><span class="o">=</span><span class="n">auto_suggest</span><span class="p">,</span> <span class="n">redirect</span><span class="o">=</span><span class="n">redirect</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">232</span> <span class="n">title</span> <span class="o">=</span> <span class="n">page_info</span><span class="o">.</span><span class="n">title</span>
+<span class="g g-Whitespace">    </span><span class="mi">233</span> <span class="n">pageid</span> <span class="o">=</span> <span class="n">page_info</span><span class="o">.</span><span class="n">pageid</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/wikipedia/wikipedia.py:276,</span> in <span class="ni">page</span><span class="nt">(title, pageid, auto_suggest, redirect, preload)</span>
+<span class="g g-Whitespace">    </span><span class="mi">273</span>     <span class="k">except</span> <span class="ne">IndexError</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">274</span>       <span class="c1"># if there is no suggestion or search results, the page doesn&#39;t exist</span>
+<span class="g g-Whitespace">    </span><span class="mi">275</span>       <span class="k">raise</span> <span class="n">PageError</span><span class="p">(</span><span class="n">title</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">276</span>   <span class="k">return</span> <span class="n">WikipediaPage</span><span class="p">(</span><span class="n">title</span><span class="p">,</span> <span class="n">redirect</span><span class="o">=</span><span class="n">redirect</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="n">preload</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">277</span> <span class="k">elif</span> <span class="n">pageid</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">278</span>   <span class="k">return</span> <span class="n">WikipediaPage</span><span class="p">(</span><span class="n">pageid</span><span class="o">=</span><span class="n">pageid</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="n">preload</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/wikipedia/wikipedia.py:299,</span> in <span class="ni">WikipediaPage.__init__</span><span class="nt">(self, title, pageid, redirect, preload, original_title)</span>
+<span class="g g-Whitespace">    </span><span class="mi">296</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">297</span>   <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span><span class="s2">&quot;Either a title or a pageid must be specified&quot;</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">299</span> <span class="bp">self</span><span class="o">.</span><span class="n">__load</span><span class="p">(</span><span class="n">redirect</span><span class="o">=</span><span class="n">redirect</span><span class="p">,</span> <span class="n">preload</span><span class="o">=</span><span class="n">preload</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">301</span> <span class="k">if</span> <span class="n">preload</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">302</span>   <span class="k">for</span> <span class="n">prop</span> <span class="ow">in</span> <span class="p">(</span><span class="s1">&#39;content&#39;</span><span class="p">,</span> <span class="s1">&#39;summary&#39;</span><span class="p">,</span> <span class="s1">&#39;images&#39;</span><span class="p">,</span> <span class="s1">&#39;references&#39;</span><span class="p">,</span> <span class="s1">&#39;links&#39;</span><span class="p">,</span> <span class="s1">&#39;sections&#39;</span><span class="p">):</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/wikipedia/wikipedia.py:345,</span> in <span class="ni">WikipediaPage.__load</span><span class="nt">(self, redirect, preload)</span>
+<span class="g g-Whitespace">    </span><span class="mi">343</span> <span class="k">if</span> <span class="s1">&#39;missing&#39;</span> <span class="ow">in</span> <span class="n">page</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">344</span>   <span class="k">if</span> <span class="nb">hasattr</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="s1">&#39;title&#39;</span><span class="p">):</span>
+<span class="ne">--&gt; </span><span class="mi">345</span>     <span class="k">raise</span> <span class="n">PageError</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">346</span>   <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">347</span>     <span class="k">raise</span> <span class="n">PageError</span><span class="p">(</span><span class="n">pageid</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">pageid</span><span class="p">)</span>
+
+<span class="ne">PageError</span>: Page id &quot;big date&quot; does not match any pages. Try another id!
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="text-process-replacing-punctuation">
-<h4>Text process - replacing punctuation<a class="headerlink" href="#text-process-replacing-punctuation" title="Permalink to this heading">#</a></h4>
+<h4>Text process - replacing punctuation<a class="headerlink" href="#text-process-replacing-punctuation" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">string</span>
@@ -1162,7 +1194,7 @@ Analysis of data sets can find new correlations to &quot;spot business trends, p
 </div>
 </section>
 <section id="capitalization-converting-string-to-lower">
-<h4>Capitalization: Converting string to lower<a class="headerlink" href="#capitalization-converting-string-to-lower" title="Permalink to this heading">#</a></h4>
+<h4>Capitalization: Converting string to lower<a class="headerlink" href="#capitalization-converting-string-to-lower" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">string_a</span> <span class="o">=</span> <span class="n">string_a</span><span class="o">.</span><span class="n">lower</span><span class="p">()</span>
@@ -1171,18 +1203,15 @@ Analysis of data sets can find new correlations to &quot;spot business trends, p
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>big data primarily refers to data sets that are too large or complex to be dealt with by traditional dataprocessing software data with many entries rows offer greater statistical power while data with higher complexity more attributes or columns may lead to a higher false discovery rate
-
-big data analysis challenges include capturing data data storage data analysis search sharing transfer visualization querying updating information privacy and data source big data was originally associated with three key concepts volume variety and velocity the analysis of big data presents challenges in sampling and thus previously allowing for only observations and sampling thus a fourth concept veracity refers to the quality or insightfulness of the data without sufficient investment in expertise for big data veracity the volume and variety of data can produce costs and risks that exceed an organizations capacity to create and capture value from big data
-current usage of the term big data tends to refer to the use of predictive analytics user behavior analytics or certain other advanced data analytics methods that extract value from big data and seldom to a particular size of data set there is little doubt that the quantities of data now available are indeed large but thats not the most relevant characteristic of this new data ecosystem
-analysis of data sets can find new correlations to spot business trends prevent diseases combat crime and so on scientists business executives medical practitioners advertising and governments alike regularly meet difficulties with large datasets in areas including internet searches fintech healthcare analytics geographic information systems urban informatics and business informatics
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>big data primarily refers to data sets that are too large or complex to be dealt with by traditional dataprocessing application software data with many entries rows offer greater statistical power while data with higher complexity more attributes or columns may lead to a higher false discovery rate though used sometimes loosely partly due to a lack of formal definition the best interpretation is that it is a large body of information that cannot be comprehended when used in small amounts onlybig data analysis challenges include capturing data data storage data analysis search sharing transfer visualization querying updating information privacy and data source big data was originally associated with three key concepts volume variety and velocity the analysis of big data presents challenges in sampling and thus previously allowing for only observations and sampling thus a fourth concept veracity refers to the quality or insightfulness of the data without sufficient investment in expertise for big data veracity then the volume and variety of data can produce costs and risks that exceed an organizations capacity to create and capture value from big datacurrent usage of the term big data tends to refer to the use of predictive analytics user behavior analytics or certain other advanced data analytics methods that extract value from big data and seldom to a particular size of data set there is little doubt that the quantities of data now available are indeed large but thats not the most relevant characteristic of this new data ecosystem
+analysis of data sets can find new correlations to spot business trends prevent diseases combat crime and so on scientists business executives medical practitioners advertising and governments alike regularly meet difficulties with large datasets in areas including internet searches fintech healthcare analytics geographic information systems urban informatics and business informatics scientists encounter limitations in escience work including meteorology genomics connectomics complex physics simulations biology and environmental researchthe size and number of available data sets have grown rapidly as data is collected by devices such as mobile devices cheap and numerous informationsensing internet of things devices aerial remote sensing software logs cameras microphones radiofrequency identification rfid readers and wireless sensor networks
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="tokenization-splitting-text-to-word">
-<h4>Tokenization: splitting text to word<a class="headerlink" href="#tokenization-splitting-text-to-word" title="Permalink to this heading">#</a></h4>
+<h4>Tokenization: splitting text to word<a class="headerlink" href="#tokenization-splitting-text-to-word" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># astring = astring.translate(None, string.punctuation) for python 2.x</span>
@@ -1208,7 +1237,7 @@ analysis of data sets can find new correlations to spot business trends prevent 
 </div>
 </section>
 <section id="counting-word-frequency">
-<h4>Counting word frequency<a class="headerlink" href="#counting-word-frequency" title="Permalink to this heading">#</a></h4>
+<h4>Counting word frequency<a class="headerlink" href="#counting-word-frequency" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_freq</span> <span class="o">=</span> <span class="p">{}</span>
@@ -1222,14 +1251,14 @@ analysis of data sets can find new correlations to spot business trends prevent 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>162
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>221
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="option-applications-zip-f-law">
-<h4>(Option) Applications: Zip’f law<a class="headerlink" href="#option-applications-zip-f-law" title="Permalink to this heading">#</a></h4>
+<h4>(Option) Applications: Zip’f law<a class="headerlink" href="#option-applications-zip-f-law" title="Permalink to this headline">#</a></h4>
 <p>圖書資訊學有個Zip’f law在描述每個文字（字詞）的出現機率分佈。在一篇或多篇文章中，會有極少部分的字出現非常多次（例如代名詞、定冠詞、冠詞）等、大部分的字在整篇文章中只會出現過一次，而其他文字則出現2~多次不等。這種字詞出現數量分佈會呈現Power Distribution冪次分佈，大部分的物件出現次數都很少，少部分物件出現次數幾乎佔掉全體數量的甚至80%。</p>
 <p>在計算完詞頻後，只要在用<code class="docutils literal notranslate"><span class="pre">Counter(word_freq)</span></code>計算一次每個詞頻的出現次數（存在<code class="docutils literal notranslate"><span class="pre">word_freq</span></code>中），意即去計算出現1次的字有幾個、出現2次的字有幾個、…、出現n次的字有幾個，就可以得到此分佈。</p>
 <div class="cell docutils container">
@@ -1245,16 +1274,16 @@ analysis of data sets can find new correlations to spot business trends prevent 
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>162
-dict_values([8, 22, 1, 2, 9, 2, 4, 2, 1, 3, 4, 1, 1, 1, 5, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 3, 1, 1, 1, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 11, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 8, 9, 1, 3, 2, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2])
-Counter({1: 130, 2: 17, 4: 4, 3: 4, 8: 2, 9: 2, 22: 1, 5: 1, 11: 1})
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>221
+dict_values([7, 23, 1, 2, 10, 3, 6, 2, 1, 4, 4, 2, 2, 1, 5, 2, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 5, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 13, 1, 1, 9, 1, 1, 4, 1, 1, 3, 1, 1, 1, 5, 1, 1, 1, 4, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 15, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 2, 2, 1, 1, 2, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 1, 4, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 3, 1, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 2, 1, 1, 1, 1, 1, 1, 2, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 2, 1, 3, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1])
+Counter({1: 176, 2: 26, 4: 5, 3: 4, 5: 3, 7: 1, 23: 1, 10: 1, 6: 1, 13: 1, 9: 1, 15: 1})
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="plot-histogram-of-word-frequency">
-<h4>Plot histogram of word frequency<a class="headerlink" href="#plot-histogram-of-word-frequency" title="Permalink to this heading">#</a></h4>
+<h4>Plot histogram of word frequency<a class="headerlink" href="#plot-histogram-of-word-frequency" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">%</span><span class="k">matplotlib</span> inline
@@ -1264,20 +1293,19 @@ Counter({1: 130, 2: 17, 4: 4, 3: 4, 8: 2, 9: 2, 22: 1, 5: 1, 11: 1})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([147.,   4.,   4.,   1.,   0.,   0.,   2.,   2.,   0.,   1.,   0.,
-          0.,   0.,   0.,   0.,   0.,   0.,   0.,   0.,   1.]),
- array([ 1.  ,  2.05,  3.1 ,  4.15,  5.2 ,  6.25,  7.3 ,  8.35,  9.4 ,
-        10.45, 11.5 , 12.55, 13.6 , 14.65, 15.7 , 16.75, 17.8 , 18.85,
-        19.9 , 20.95, 22.  ]),
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(array([202.,   4.,   5.,   3.,   1.,   1.,   0.,   1.,   1.,   0.,   1.,
+          0.,   1.,   0.,   0.,   0.,   0.,   0.,   0.,   1.]),
+ array([ 1. ,  2.1,  3.2,  4.3,  5.4,  6.5,  7.6,  8.7,  9.8, 10.9, 12. ,
+        13.1, 14.2, 15.3, 16.4, 17.5, 18.6, 19.7, 20.8, 21.9, 23. ]),
  &lt;BarContainer object of 20 artists&gt;)
 </pre></div>
 </div>
-<img alt="../_images/24581f2854ef558cdfe80c8f0ad801e3f0b1d76308d1221975ab3574467e8b26.png" src="../_images/24581f2854ef558cdfe80c8f0ad801e3f0b1d76308d1221975ab3574467e8b26.png" />
+<img alt="../_images/951be62cd2a4af8a81c659d57ed8487f6b1e3e5d7fcafdb0ffc1477e263570dd.png" src="../_images/951be62cd2a4af8a81c659d57ed8487f6b1e3e5d7fcafdb0ffc1477e263570dd.png" />
 </div>
 </div>
 </section>
 <section id="more-a-shortest-version-to-count-word-frequency">
-<h4>More: A shortest version to count word frequency<a class="headerlink" href="#more-a-shortest-version-to-count-word-frequency" title="Permalink to this heading">#</a></h4>
+<h4>More: A shortest version to count word frequency<a class="headerlink" href="#more-a-shortest-version-to-count-word-frequency" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">word_freq</span> <span class="o">=</span> <span class="p">{</span><span class="n">k</span><span class="p">:</span><span class="n">words</span><span class="o">.</span><span class="n">count</span><span class="p">(</span><span class="n">k</span><span class="p">)</span> <span class="k">for</span> <span class="n">k</span> <span class="ow">in</span> <span class="nb">set</span><span class="p">(</span><span class="n">words</span><span class="p">)}</span>
@@ -1287,7 +1315,7 @@ Counter({1: 130, 2: 17, 4: 4, 3: 4, 8: 2, 9: 2, 22: 1, 5: 1, 11: 1})
 </div>
 </section>
 <section id="more-sorting-all-pairs-of-key-and-value">
-<h4>More:Sorting all pairs of key and value<a class="headerlink" href="#more-sorting-all-pairs-of-key-and-value" title="Permalink to this heading">#</a></h4>
+<h4>More:Sorting all pairs of key and value<a class="headerlink" href="#more-sorting-all-pairs-of-key-and-value" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">operator</span>
@@ -1301,24 +1329,24 @@ Counter({1: 130, 2: 17, 4: 4, 3: 4, 8: 2, 9: 2, 22: 1, 5: 1, 11: 1})
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;data&#39;, 22)
-(&#39;and&#39;, 11)
-(&#39;of&#39;, 9)
-(&#39;to&#39;, 9)
-(&#39;big&#39;, 8)
-(&#39;the&#39;, 8)
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>(&#39;data&#39;, 23)
+(&#39;and&#39;, 15)
+(&#39;of&#39;, 13)
+(&#39;to&#39;, 10)
+(&#39;the&#39;, 9)
+(&#39;big&#39;, 7)
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 </section>
-<section id="id11">
-<h3>案例：成績百分制轉等第制<a class="headerlink" href="#id11" title="Permalink to this heading">#</a></h3>
+<section id="id10">
+<h3>案例：成績百分制轉等第制<a class="headerlink" href="#id10" title="Permalink to this headline">#</a></h3>
 <p>最近台灣也開始用等第制來給分，一方面是為了符合國際的標準，另一原因據說是為了避免學生對成績太錙銖必較，雖然我自己的感覺是，學生對於為何從A+和A的差別更計較了，甚至會來追問，原始成績是多少，為何會變成A。不過，很多老師在給分還是採用百分制，學校在讓老師上傳成績的時候，就有個選項是可自動把百分制轉為等第制，這個範例是這件事的簡化版，我們只轉出A、B、C和F四種等第。</p>
 <p>首先，先造一筆測試資料，分別是75個由35~99間的隨機整數，可重複取出。再來，初始化一個Dictionary來存放每個等第的個數（一開始均為0）。最後，使用if-elif-else條件判斷式來判斷每一筆成績落在哪個區間。</p>
 <section id="generating-grades">
-<h4>Generating grades<a class="headerlink" href="#generating-grades" title="Permalink to this heading">#</a></h4>
+<h4>Generating grades<a class="headerlink" href="#generating-grades" title="Permalink to this headline">#</a></h4>
 <p>先不要管下面怎麼做的，先知道這樣的方式可以產生隨機75個35~99間的數字並儲存到<code class="docutils literal notranslate"><span class="pre">grades</span></code>這個<code class="docutils literal notranslate"><span class="pre">list</span></code>中。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1331,14 +1359,14 @@ Counter({1: 130, 2: 17, 4: 4, 3: 4, 8: 2, 9: 2, 22: 1, 5: 1, 11: 1})
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Length of:  75
-Grades:  42 76 55 98 64 75 71 62 83 85 41 35 86 37 91 70 83 100 87 69 36 88 75 87 94 59 44 54 68 49 54 49 54 59 73 35 98 88 60 94 39 81 81 96 67 50 61 75 72 62 37 85 80 82 82 87 80 60 99 99 83 94 93 99 89 59 73 97 40 78 67 80 69 90 100
+Grades:  96 36 86 69 85 87 72 56 41 64 97 62 45 94 54 100 43 67 76 96 57 85 86 60 35 94 75 61 40 36 98 91 60 73 67 88 36 100 65 58 75 69 78 67 44 88 62 40 59 59 82 41 87 92 67 49 76 71 99 76 95 97 98 100 88 84 54 80 91 74 60 43 99 76 60
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="initializing-a-dict-to-store-the-frequency">
-<h4>Initializing a dict to store the frequency<a class="headerlink" href="#initializing-a-dict-to-store-the-frequency" title="Permalink to this heading">#</a></h4>
+<h4>Initializing a dict to store the frequency<a class="headerlink" href="#initializing-a-dict-to-store-the-frequency" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Initializing level frequency</span>
@@ -1359,7 +1387,7 @@ Grades:  42 76 55 98 64 75 71 62 83 85 41 35 86 37 91 70 83 100 87 69 36 88 75 8
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 20, &#39;C&#39;: 13, &#39;B&#39;: 8, &#39;A&#39;: 34}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{&#39;F&#39;: 20, &#39;C&#39;: 16, &#39;B&#39;: 10, &#39;A&#39;: 29}
 </pre></div>
 </div>
 </div>
@@ -1368,7 +1396,7 @@ Grades:  42 76 55 98 64 75 71 62 83 85 41 35 86 37 91 70 83 100 87 69 36 88 75 8
 </section>
 </section>
 <section id="sort-the-data-by-value">
-<h2>Sort the data by value<a class="headerlink" href="#sort-the-data-by-value" title="Permalink to this heading">#</a></h2>
+<h2>Sort the data by value<a class="headerlink" href="#sort-the-data-by-value" title="Permalink to this headline">#</a></h2>
 <p>前面的教學涵蓋了各種技術方法和Python程式語言的基本邏輯，但回到這個問題本身，尤其是「詞頻」這個議題，通常我們會想問，哪些詞出現的頻率最高、或者哪些種類的物件出現頻率最高。要用數據的方式來解答這個問題最好的方式就是將key-to-value的對應按照value由大到小來排列，這樣就可以知道，是哪些key的出現次數最高，這樣的動作稱為排序（Sorting）。</p>
 <p>如果是List的排序很簡單，只需要用<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>這個函式就可以將一個List從小到大或由大而小排序。但Dict是一種Mapping型態，需要照value將key-value對一起排序。注意，此時我們只是希望將排序的結果列印出來而已，不見得要保留原本Dict的資料型態。這樣一共有三種作法如下：</p>
 <div class="cell docutils container">
@@ -1384,7 +1412,7 @@ Grades:  42 76 55 98 64 75 71 62 83 85 41 35 86 37 91 70 83 100 87 69 36 88 75 8
 </div>
 </div>
 <section id="method-1">
-<h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this heading">#</a></h3>
+<h3>Method 1<a class="headerlink" href="#method-1" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>我們將<code class="docutils literal notranslate"><span class="pre">dep_count</span></code>字典使用<code class="docutils literal notranslate"><span class="pre">.items()</span></code>方法轉換成一個包含有數個tuple的列表。如<code class="docutils literal notranslate"><span class="pre">[('jour',</span> <span class="pre">4),</span> <span class="pre">('econ',</span> <span class="pre">3),</span> <span class="pre">('poli',</span> <span class="pre">1)]</span></code>。在每個tuple中，第一個元素是鍵（key），第二個元素是值（value）。</p></li>
 <li><p>接著，我們使用<code class="docutils literal notranslate"><span class="pre">sorted()</span></code>函式來對這個列表進行排序，排序的依據是tuple中的第二個元素，也就是值。使用<code class="docutils literal notranslate"><span class="pre">operator.itemgetter(1)</span></code>可以確保我們選取tuple的第二個位置作為排序的依據。而參數<code class="docutils literal notranslate"><span class="pre">reverse=True</span></code>則表示我們希望按照由大到小的順序進行排序。</p></li>
@@ -1440,7 +1468,7 @@ Grades:  42 76 55 98 64 75 71 62 83 85 41 35 86 37 91 70 83 100 87 69 36 88 75 8
 </div>
 </section>
 <section id="method-2">
-<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this heading">#</a></h3>
+<h3>Method 2<a class="headerlink" href="#method-2" title="Permalink to this headline">#</a></h3>
 <p>第二種寫法比較簡單，不用先用<code class="docutils literal notranslate"><span class="pre">items()</span></code>轉為tuple的型態，而直接用<code class="docutils literal notranslate"><span class="pre">.get()</span></code>這個Dict的成員函式指定用value來排序（<code class="docutils literal notranslate"><span class="pre">dict.get()</span></code>指的便是key-to-value的value）。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1471,7 +1499,7 @@ econ 3
 </div>
 </section>
 <section id="method-3">
-<h3>Method 3<a class="headerlink" href="#method-3" title="Permalink to this heading">#</a></h3>
+<h3>Method 3<a class="headerlink" href="#method-3" title="Permalink to this headline">#</a></h3>
 <p>第三種方式是我最愛用的方式，用<code class="docutils literal notranslate"><span class="pre">Counter()</span></code>直接計算個數後，用成員函式<code class="docutils literal notranslate"><span class="pre">most_common()</span></code>直接依照出現個數由大而小輸出。<code class="docutils literal notranslate"><span class="pre">most_commnon(n)</span></code>中可填入一數字，如果是10的話即為前10大。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1561,12 +1589,11 @@ poli 1
   </div>
   <nav class="bd-toc-nav page-toc">
     <ul class="visible nav section-nav flex-column">
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">學習腳本</a></li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">計數</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">計數任務的定義</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">運算思維的思考過程</a><ul class="nav section-nav flex-column">
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">以更接近程式邏輯的方式思考</a></li>
-<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">用英文來撰寫上述的邏輯思考</a></li>
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id1">計數</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id2">計數任務的定義</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id3">運算思維的思考過程</a><ul class="nav section-nav flex-column">
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id4">以更接近程式邏輯的方式思考</a></li>
+<li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#id5">用英文來撰寫上述的邏輯思考</a></li>
 </ul>
 </li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#convert-to-python">Convert to Python</a><ul class="nav section-nav flex-column">
@@ -1581,13 +1608,13 @@ poli 1
 </ul>
 </li>
 <li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#printing">Printing</a><ul class="nav section-nav flex-column">
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">印出整個變數內容</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id6">印出整個變數內容</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#dictkeyvalue">印出Dict中的所有Key或Value</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">印出List中的每個項目</a></li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">印出Dict中的每個鍵值對</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id7">印出List中的每個項目</a></li>
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id8">印出Dict中的每個鍵值對</a></li>
 </ul>
 </li>
-<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">計數的其他邏輯與語法</a><ul class="nav section-nav flex-column">
+<li class="toc-h2 nav-item toc-entry"><a class="reference internal nav-link" href="#id9">計數的其他邏輯與語法</a><ul class="nav section-nav flex-column">
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v1-using-list-count-key-to-count-the-frequency-of-something">V1. Using list.count(key) to count the frequency of something</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v2-using-set-dep-list-to-gaurantee-unique-value-in-the-list">V2. Using set(dep_list) to gaurantee unique value in the list¶</a></li>
 <li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#v3-by-comprehensive-dictionary">V3. by Comprehensive dictionary</a></li>
@@ -1610,7 +1637,7 @@ poli 1
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#more-sorting-all-pairs-of-key-and-value">More:Sorting all pairs of key and value</a></li>
 </ul>
 </li>
-<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id11">案例：成績百分制轉等第制</a><ul class="nav section-nav flex-column">
+<li class="toc-h3 nav-item toc-entry"><a class="reference internal nav-link" href="#id10">案例：成績百分制轉等第制</a><ul class="nav section-nav flex-column">
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#generating-grades">Generating grades</a></li>
 <li class="toc-h4 nav-item toc-entry"><a class="reference internal nav-link" href="#initializing-a-dict-to-store-the-frequency">Initializing a dict to store the frequency</a></li>
 </ul>

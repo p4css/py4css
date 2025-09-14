@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>AS02 Reading PTT data &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS02 List-dict-for-if" href="AS02_list_dict_for_if.html" />
     <link rel="prev" title="AS02 Youbike Applications" href="AS02_youbike.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -519,13 +518,13 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as02-reading-ptt-data">
-<h1>AS02 Reading PTT data<a class="headerlink" href="#as02-reading-ptt-data" title="Permalink to this heading">#</a></h1>
+<h1>AS02 Reading PTT data<a class="headerlink" href="#as02-reading-ptt-data" title="Permalink to this headline">#</a></h1>
 <p>在這個作業中，老師給了你一個檔案的資料是g0v所搜集的PTT資料，是2020-01-02當天發佈在Gosshiping版上的貼文及其留言。該檔案用jsonl的方式儲存，每一行是一個json格式的資料，包含了該篇貼文的標題、作者、發文時間、內容、留言等等資訊。你的任務是讀取該檔案，並且回答出該天發文數最多的作者是誰，以及該作者發了幾篇貼文等問題。</p>
 <ul class="simple">
 <li><p>資料鏈結：<a class="reference external" href="https://raw.githubusercontent.com/p4css/py4css/refs/heads/main/data/2021-01-02.jsonl">https://raw.githubusercontent.com/p4css/py4css/refs/heads/main/data/2021-01-02.jsonl</a></p></li>
 </ul>
 <section id="q1-read-jsonl-file-10-points">
-<h2>Q1. Read jsonl file (10 points)<a class="headerlink" href="#q1-read-jsonl-file-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q1. Read jsonl file (10 points)<a class="headerlink" href="#q1-read-jsonl-file-10-points" title="Permalink to this headline">#</a></h2>
 <p>該資料集中共包含幾篇貼文？（10 points）。請撰寫程式碼讀取jsonl資料，並將該檔案讀取到一個list或dict中。理想上，每篇貼文會是一個dict，而在貼文中，會有一個key對應到的value是comments，該comments也是一個list，裡面包含所有該貼文的comment。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -536,7 +535,7 @@ document.write(`
 </div>
 </section>
 <section id="q2-number-of-posts-and-comments-10-points">
-<h2>Q2. Number of posts and comments (10 points)<a class="headerlink" href="#q2-number-of-posts-and-comments-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q2. Number of posts and comments (10 points)<a class="headerlink" href="#q2-number-of-posts-and-comments-10-points" title="Permalink to this headline">#</a></h2>
 <p>印出該資料集中，共有幾篇貼文、幾篇留言？(10 points)</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -549,7 +548,7 @@ document.write(`
 </div>
 </section>
 <section id="q3-metadata-of-posts-and-comments-10-points">
-<h2>Q3. Metadata of posts and comments (10 points)<a class="headerlink" href="#q3-metadata-of-posts-and-comments-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q3. Metadata of posts and comments (10 points)<a class="headerlink" href="#q3-metadata-of-posts-and-comments-10-points" title="Permalink to this headline">#</a></h2>
 <p>該資料集中的貼文共有哪些欄位？留言共有哪些欄位？10分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -561,7 +560,7 @@ document.write(`
 </div>
 </section>
 <section id="q4-unique-posts-10-points">
-<h2>Q4. Unique posts (10 points)<a class="headerlink" href="#q4-unique-posts-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q4. Unique posts (10 points)<a class="headerlink" href="#q4-unique-posts-10-points" title="Permalink to this headline">#</a></h2>
 <p>該資料集中共有幾位貼文者？（注意，可能同一位版友會張貼超過一篇文章）10分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -573,7 +572,7 @@ document.write(`
 </div>
 </section>
 <section id="q5-top-1-commentors-10-points">
-<h2>Q5. Top 1 commentors (10 points)<a class="headerlink" href="#q5-top-1-commentors-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q5. Top 1 commentors (10 points)<a class="headerlink" href="#q5-top-1-commentors-10-points" title="Permalink to this headline">#</a></h2>
 <p>留言數最高的留言者是誰？10分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -585,7 +584,7 @@ document.write(`
 </div>
 </section>
 <section id="q6-top-10-commentors-10-points">
-<h2>Q6. Top-10 commentors (10 points)<a class="headerlink" href="#q6-top-10-commentors-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q6. Top-10 commentors (10 points)<a class="headerlink" href="#q6-top-10-commentors-10-points" title="Permalink to this headline">#</a></h2>
 <p>留言數最高的前10大留言者是誰？其分別發布了多少篇留言？20分</p>
 <p>Print out the top 10 authors with the most comments. The output format is as follows:</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Top</span> <span class="mi">1</span><span class="p">:</span> <span class="n">commentor_name</span><span class="p">,</span> <span class="mi">100</span> <span class="n">comments</span>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>P08 Web Crawler &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Web API: cnyes &amp; 104.com" href="P08_1_web_json.html" />
     <link rel="prev" title="Bokeh &amp; Seaborn(Vaccinating)" href="P07_2_bokeh.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 current active has-children"><a class="current reference internal" href="#">P08 Web Crawler</a><input checked="" class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -519,7 +518,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p08-web-crawler">
-<h1>P08 Web Crawler<a class="headerlink" href="#p08-web-crawler" title="Permalink to this heading">#</a></h1>
+<h1>P08 Web Crawler<a class="headerlink" href="#p08-web-crawler" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://docs.google.com/presentation/d/1gn4d5gzXzgyEAIz_AOdM3pmJ0-6iiN7EbTjKqCQlgPo/edit?usp=sharing">slide</a> for getting json data online</p></li>
 <li><p>Finding data url</p></li>
@@ -532,10 +531,11 @@ document.write(`
 <ul>
 <li class="toctree-l1"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l1"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l1"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </div>
 <section id="id1">
-<h2>8.1 網頁與瀏覽器的行為<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h2>
+<h2>8.1 網頁與瀏覽器的行為<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p><strong>瀏覽器的行為</strong>：瀏覽器不論檔案類型，無論是CSV、JSON還是HTML，它的行為都是將檔案下載回來。換句話說，無論你在瀏覽器中訪問的內容是什麼，瀏覽器都會將相關檔案下載到你的設備上以進行後續處理。</p></li>
 <li><p><strong>HTML 的處理</strong>：當瀏覽器遇到HTML檔案時，它會根據HTML和CSS樣式進行排版和渲染，最終呈現給用戶看到的網頁。換句話說，HTML檔案包含了網頁的結構和內容，而CSS則負責網頁的樣式和外觀。</p></li>
@@ -550,7 +550,7 @@ document.write(`
 </ol>
 </section>
 <section id="request-and-response">
-<h2>8.2 Request and Response<a class="headerlink" href="#request-and-response" title="Permalink to this heading">#</a></h2>
+<h2>8.2 Request and Response<a class="headerlink" href="#request-and-response" title="Permalink to this headline">#</a></h2>
 <p>當你使用瀏覽器發出一個網路請求（request）時，這個請求通常包含了一些額外的資訊，這些資訊被稱為request header。這些資訊幫助網站伺服器確認請求的合法性並提供更好的服務。以下是關於request和response的更多說明：</p>
 <p><strong>Request（請求）</strong>:</p>
 <ol class="arabic simple">
@@ -568,7 +568,7 @@ document.write(`
 </ol>
 </section>
 <section id="http-requests-by-requests-package">
-<h2>8.3 HTTP requests by requests package<a class="headerlink" href="#http-requests-by-requests-package" title="Permalink to this heading">#</a></h2>
+<h2>8.3 HTTP requests by requests package<a class="headerlink" href="#http-requests-by-requests-package" title="Permalink to this headline">#</a></h2>
 <p><code class="docutils literal notranslate"><span class="pre">requests</span></code> 是一個非常常用的Python函式庫，用於發送HTTP請求並與Web服務進行交互。它使你可以輕鬆地向網站伺服器發送GET或POST請求，並處理伺服器的回應。以下是介紹 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 函式庫的基本指令：</p>
 <ol class="arabic">
 <li><p><strong>安裝requests</strong>：首先，確保你已經安裝了 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 函式庫。你可以使用 <code class="docutils literal notranslate"><span class="pre">pip</span></code> 安裝它：</p>
@@ -611,7 +611,7 @@ document.write(`
 </li>
 </ol>
 <section id="cookie-and-referer">
-<h3>8.3.1 cookie and referer<a class="headerlink" href="#cookie-and-referer" title="Permalink to this heading">#</a></h3>
+<h3>8.3.1 cookie and referer<a class="headerlink" href="#cookie-and-referer" title="Permalink to this headline">#</a></h3>
 <p>當你需要在 <code class="docutils literal notranslate"><span class="pre">requests</span></code> 中添加 <code class="docutils literal notranslate"><span class="pre">Referer</span></code>（引用頁面）或 <code class="docutils literal notranslate"><span class="pre">Cookie</span></code>（cookie）時，你可以使用額外的參數來進行設置。以下是如何傳送 <code class="docutils literal notranslate"><span class="pre">Referer</span></code> 和 <code class="docutils literal notranslate"><span class="pre">Cookie</span></code> 的示例：</p>
 <p><strong>設置 Referer（引用頁面）</strong>：
 你可以在請求的 <code class="docutils literal notranslate"><span class="pre">headers</span></code> 中設置 <code class="docutils literal notranslate"><span class="pre">Referer</span></code>，以指示瀏覽器你是從哪個頁面來的。這對於一些網站需要引用頁面信息的情況很有用。</p>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>AS03: Summarizing Data by Pandas &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS04 Twitter API and Pandas Visualization" href="AS04_vis_twitter_api.html" />
     <link rel="prev" title="AS02 List-dict-for-if" href="AS02_list_dict_for_if.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -520,9 +519,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as03-summarizing-data-by-pandas">
-<h1>AS03: Summarizing Data by Pandas<a class="headerlink" href="#as03-summarizing-data-by-pandas" title="Permalink to this heading">#</a></h1>
+<h1>AS03: Summarizing Data by Pandas<a class="headerlink" href="#as03-summarizing-data-by-pandas" title="Permalink to this headline">#</a></h1>
 <section id="q1-loading-data-50-points">
-<h2>Q1. Loading data (50 points)<a class="headerlink" href="#q1-loading-data-50-points" title="Permalink to this heading">#</a></h2>
+<h2>Q1. Loading data (50 points)<a class="headerlink" href="#q1-loading-data-50-points" title="Permalink to this headline">#</a></h2>
 <p>請使用ChatGPT來幫你完成以下任務：</p>
 <ol class="arabic simple">
 <li><p>先把上個作業的jsonl檔讀取為pandas dataframe。問ChatGPT時，建議你稍微描述一下，該jsonl檔每列是一個dictionary。</p></li>
@@ -542,7 +541,7 @@ document.write(`
 </div>
 </section>
 <section id="q2-counting-10-points">
-<h2>Q2. Counting (10 points)<a class="headerlink" href="#q2-counting-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q2. Counting (10 points)<a class="headerlink" href="#q2-counting-10-points" title="Permalink to this headline">#</a></h2>
 <p>該資料集中共有幾位貼文者？（注意，可能同一位版友會張貼超過一篇文章）</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -553,7 +552,7 @@ document.write(`
 </div>
 </section>
 <section id="q3-sorting-15-points">
-<h2>Q3. Sorting (15 points)<a class="headerlink" href="#q3-sorting-15-points" title="Permalink to this heading">#</a></h2>
+<h2>Q3. Sorting (15 points)<a class="headerlink" href="#q3-sorting-15-points" title="Permalink to this headline">#</a></h2>
 <p>留言數前十高的留言者是誰？用dataframe的方式印出留言者的暱稱和留言則數。15分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -564,7 +563,7 @@ document.write(`
 </div>
 </section>
 <section id="q4-sorting-10-points">
-<h2>Q4. Sorting (10 points)<a class="headerlink" href="#q4-sorting-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q4. Sorting (10 points)<a class="headerlink" href="#q4-sorting-10-points" title="Permalink to this headline">#</a></h2>
 <p>留言數最高的前十篇文章是哪幾篇？各有多少篇留言？用dataframe的方式印出留言者的暱稱和留言則數df.head(10)可以印出前10筆資料。10分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -575,7 +574,7 @@ document.write(`
 </div>
 </section>
 <section id="q5-timestamp-processing-10-points">
-<h2>Q5. Timestamp Processing (10 points)<a class="headerlink" href="#q5-timestamp-processing-10-points" title="Permalink to this heading">#</a></h2>
+<h2>Q5. Timestamp Processing (10 points)<a class="headerlink" href="#q5-timestamp-processing-10-points" title="Permalink to this headline">#</a></h2>
 <p>這是某一天的資料，請問，若把時間拆解成24小時，請依照小時印出每個小時有幾篇貼文。（這題有點難，記得要把相關資料給ChatGPT，他才能幫你拆解）10分</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -586,7 +585,7 @@ document.write(`
 </div>
 </section>
 <section id="q6-summarizing-5-points">
-<h2>Q6. Summarizing (5 points)<a class="headerlink" href="#q6-summarizing-5-points" title="Permalink to this heading">#</a></h2>
+<h2>Q6. Summarizing (5 points)<a class="headerlink" href="#q6-summarizing-5-points" title="Permalink to this headline">#</a></h2>
 <p>留言過最多篇貼文的留言者，由高至低排列。注意，留言數最高的人不見得是留言過最多貼文的人，搞不好有人在同一篇貼文有超多留言。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -597,7 +596,7 @@ document.write(`
 </div>
 </section>
 <section id="more">
-<h2>More<a class="headerlink" href="#more" title="Permalink to this heading">#</a></h2>
+<h2>More<a class="headerlink" href="#more" title="Permalink to this headline">#</a></h2>
 <p>把前十高留言者、留言數最高的前十篇文章用橫向Bar chart繪圖。你可以考慮用plotly、原生的matplotlib、seaborn，但要注意有可能遇到無法處理中文字型的問題，可能要問看看ChatGPT要處理圖表中的中文字型。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

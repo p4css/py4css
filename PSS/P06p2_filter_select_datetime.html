@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Pandas: filter, select, and timeline process &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P06-3 Processing timestamp" href="P06p3_timestamp.html" />
     <link rel="prev" title="Pandas: Counting and Summarizing" href="P06p1_summarizing.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -544,9 +543,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="pandas-filter-select-and-timeline-process">
-<h1>Pandas: filter, select, and timeline process<a class="headerlink" href="#pandas-filter-select-and-timeline-process" title="Permalink to this heading">#</a></h1>
+<h1>Pandas: filter, select, and timeline process<a class="headerlink" href="#pandas-filter-select-and-timeline-process" title="Permalink to this headline">#</a></h1>
 <section id="p1-load-data-twitter-account">
-<h2>P1. Load data (twitter account)<a class="headerlink" href="#p1-load-data-twitter-account" title="Permalink to this heading">#</a></h2>
+<h2>P1. Load data (twitter account)<a class="headerlink" href="#p1-load-data-twitter-account" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -556,6 +555,12 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+</pre></div>
+</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -657,7 +662,7 @@ document.write(`
 </div></div></div>
 </div>
 <section id="drop-columns">
-<h3>1.1 Drop columns<a class="headerlink" href="#drop-columns" title="Permalink to this heading">#</a></h3>
+<h3>1.1 Drop columns<a class="headerlink" href="#drop-columns" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">user_df</span><span class="o">.</span><span class="n">drop</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">[</span><span class="s1">&#39;user_reported_location&#39;</span><span class="p">,</span> <span class="s1">&#39;user_profile_description&#39;</span><span class="p">,</span> <span class="s1">&#39;user_profile_url&#39;</span><span class="p">],</span> <span class="n">inplace</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  
@@ -771,9 +776,9 @@ dtype: object
 </section>
 </section>
 <section id="p2-tweets-over-time">
-<h2>P2. Tweets over time<a class="headerlink" href="#p2-tweets-over-time" title="Permalink to this heading">#</a></h2>
+<h2>P2. Tweets over time<a class="headerlink" href="#p2-tweets-over-time" title="Permalink to this headline">#</a></h2>
 <section id="convert-str-to-datetime">
-<h3>2.1 Convert str to datetime<a class="headerlink" href="#convert-str-to-datetime" title="Permalink to this heading">#</a></h3>
+<h3>2.1 Convert str to datetime<a class="headerlink" href="#convert-str-to-datetime" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://datatofish.com/strings-to-datetime-pandas/">https://datatofish.com/strings-to-datetime-pandas/</a></p></li>
 <li><p><a class="reference external" href="https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.to_period.html">https://pandas.pydata.org/docs/reference/api/pandas.Series.dt.to_period.html</a></p></li>
@@ -1119,7 +1124,7 @@ Name: userid, Length: 289, dtype: int64
 </section>
 </section>
 <section id="p3-iterate-each-row-of-dataframe">
-<h2>P3. Iterate each row of dataframe<a class="headerlink" href="#p3-iterate-each-row-of-dataframe" title="Permalink to this heading">#</a></h2>
+<h2>P3. Iterate each row of dataframe<a class="headerlink" href="#p3-iterate-each-row-of-dataframe" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">row</span> <span class="ow">in</span> <span class="n">sum_df</span><span class="o">.</span><span class="n">iterrows</span><span class="p">():</span>
@@ -1236,7 +1241,7 @@ Name: userid, Length: 289, dtype: int64
 </div>
 </div>
 <section id="plotting">
-<h3>3.1 Plotting<a class="headerlink" href="#plotting" title="Permalink to this heading">#</a></h3>
+<h3>3.1 Plotting<a class="headerlink" href="#plotting" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.w3schools.com/python/pandas/pandas_plotting.asp">https://www.w3schools.com/python/pandas/pandas_plotting.asp</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1253,13 +1258,13 @@ Name: userid, Length: 289, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/b003b561141c4c56fa40ab127c7a7801622087037dd2417d7f943dd462719471.png" src="../_images/b003b561141c4c56fa40ab127c7a7801622087037dd2417d7f943dd462719471.png" />
+<img alt="../_images/7f75f50a008bdc80aa8f8ce4b9b01f5ecfbad34140faecfb257a5cb6c39a8976.png" src="../_images/7f75f50a008bdc80aa8f8ce4b9b01f5ecfbad34140faecfb257a5cb6c39a8976.png" />
 </div>
 </div>
 </section>
 </section>
 <section id="p4-twitter-user-productivity">
-<h2>P4. Twitter User Productivity<a class="headerlink" href="#p4-twitter-user-productivity" title="Permalink to this heading">#</a></h2>
+<h2>P4. Twitter User Productivity<a class="headerlink" href="#p4-twitter-user-productivity" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lang_count</span> <span class="o">=</span> <span class="n">user_df</span><span class="o">.</span><span class="n">groupby</span><span class="p">(</span><span class="s1">&#39;account_language&#39;</span><span class="p">)[</span><span class="s2">&quot;userid&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">count</span><span class="p">()</span>
@@ -1285,16 +1290,16 @@ Name: userid, Length: 289, dtype: int64
 </div>
 </div>
 <div class="cell_output docutils container">
-<img alt="../_images/2848f6af454e189aa5efc8a031c1f0b014bf02570ecf8ec2462509872d3a750e.png" src="../_images/2848f6af454e189aa5efc8a031c1f0b014bf02570ecf8ec2462509872d3a750e.png" />
-<img alt="../_images/12a587455c82521738e4da4be9df9de79a7f26dd9aa935db52c06b7c10abc3f9.png" src="../_images/12a587455c82521738e4da4be9df9de79a7f26dd9aa935db52c06b7c10abc3f9.png" />
-<img alt="../_images/d3ab6756ac5d730d7639e43e8565a3ee7f631e6b136de23f9a831b80a2ceca68.png" src="../_images/d3ab6756ac5d730d7639e43e8565a3ee7f631e6b136de23f9a831b80a2ceca68.png" />
+<img alt="../_images/1c7101013436b302131b7957f2887564d47c5afa47b876db202bcb416540f5a5.png" src="../_images/1c7101013436b302131b7957f2887564d47c5afa47b876db202bcb416540f5a5.png" />
+<img alt="../_images/4d665eb6d76dc2382ed6f2863c0f9e3edbe04eb275fd515f5e34ddb5426e50ca.png" src="../_images/4d665eb6d76dc2382ed6f2863c0f9e3edbe04eb275fd515f5e34ddb5426e50ca.png" />
+<img alt="../_images/790a18c977e58cc0601f8006e3e90c4bdf4a64b04183ae5b2baf49d2b6b570f9.png" src="../_images/790a18c977e58cc0601f8006e3e90c4bdf4a64b04183ae5b2baf49d2b6b570f9.png" />
 </div>
 </div>
 </section>
 <section id="p5-filter-rows-by-column-value-very-important">
-<h2>P5. Filter rows by column value (Very Important)<a class="headerlink" href="#p5-filter-rows-by-column-value-very-important" title="Permalink to this heading">#</a></h2>
+<h2>P5. Filter rows by column value (Very Important)<a class="headerlink" href="#p5-filter-rows-by-column-value-very-important" title="Permalink to this headline">#</a></h2>
 <section id="load-data-drug-ill-ad">
-<h3>Load data (drug ill-ad)<a class="headerlink" href="#load-data-drug-ill-ad" title="Permalink to this heading">#</a></h3>
+<h3>Load data (drug ill-ad)<a class="headerlink" href="#load-data-drug-ill-ad" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -1500,7 +1505,7 @@ Name: userid, Length: 289, dtype: int64
 </div>
 </section>
 <section id="detecting-patterns-in-strings-by-str-contains">
-<h3>5.1  Detecting patterns in strings by <code class="docutils literal notranslate"><span class="pre">str.contains()</span></code><a class="headerlink" href="#detecting-patterns-in-strings-by-str-contains" title="Permalink to this heading">#</a></h3>
+<h3>5.1  Detecting patterns in strings by <code class="docutils literal notranslate"><span class="pre">str.contains()</span></code><a class="headerlink" href="#detecting-patterns-in-strings-by-str-contains" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.geeksforgeeks.org/python-pandas-series-str-contains/">Python | Pandas Series.str.contains() - GeeksforGeeks</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">pat</span> <span class="o">=</span> <span class="s1">&#39;假[\s\S]{0,6}新聞|假[\s\S]{0,6}消息|不實[\s\S]{0,6}新聞|不實[\s\S]{0,6}消息|假[\s\S]{0,6}訊息|不實[\s\S]{0,6}訊息&#39;</span>
 <span class="n">filtered_comment</span> <span class="o">=</span> <span class="n">comment</span><span class="p">[</span><span class="n">comment</span><span class="p">[</span><span class="s1">&#39;ccontent&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">str</span><span class="o">.</span><span class="n">contains</span><span class="p">(</span><span class="n">pat</span><span class="o">=</span><span class="n">pat</span><span class="p">,</span> <span class="n">na</span><span class="o">=</span><span class="kc">False</span><span class="p">)]</span>
@@ -1696,7 +1701,7 @@ Name: userid, Length: 289, dtype: int64
 </div>
 </section>
 <section id="filtered-by-arithemetic-comparison">
-<h3>5.2 Filtered by arithemetic comparison<a class="headerlink" href="#filtered-by-arithemetic-comparison" title="Permalink to this heading">#</a></h3>
+<h3>5.2 Filtered by arithemetic comparison<a class="headerlink" href="#filtered-by-arithemetic-comparison" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.geeksforgeeks.org/ways-to-filter-pandas-dataframe-by-column-values/">https://www.geeksforgeeks.org/ways-to-filter-pandas-dataframe-by-column-values/</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2020,7 +2025,7 @@ Name: userid, Length: 289, dtype: int64
 </div>
 </section>
 <section id="filtered-by-one-of-by-isin">
-<h3>5.3 Filtered by one-of by <code class="docutils literal notranslate"><span class="pre">.isin()</span></code><a class="headerlink" href="#filtered-by-one-of-by-isin" title="Permalink to this heading">#</a></h3>
+<h3>5.3 Filtered by one-of by <code class="docutils literal notranslate"><span class="pre">.isin()</span></code><a class="headerlink" href="#filtered-by-one-of-by-isin" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://www.geeksforgeeks.org/ways-to-filter-pandas-dataframe-by-column-values/">https://www.geeksforgeeks.org/ways-to-filter-pandas-dataframe-by-column-values/</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -2033,7 +2038,7 @@ Name: userid, Length: 289, dtype: int64
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexes/base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:3805,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3804</span> <span class="k">try</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">3805</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">casted_key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3806</span> <span class="k">except</span> <span class="ne">KeyError</span> <span class="k">as</span> <span class="n">err</span><span class="p">:</span>
@@ -2051,18 +2056,18 @@ Name: userid, Length: 289, dtype: int64
 <span class="n">The</span> <span class="n">above</span> <span class="n">exception</span> <span class="n">was</span> <span class="n">the</span> <span class="n">direct</span> <span class="n">cause</span> <span class="n">of</span> <span class="n">the</span> <span class="n">following</span> <span class="n">exception</span><span class="p">:</span>
 
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">19</span><span class="p">],</span> <span class="n">line</span> <span class="mi">3</span>
+<span class="nn">Input In [19],</span> in <span class="ni">&lt;cell line: 3&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">options</span> <span class="o">=</span> <span class="p">[</span><span class="s1">&#39;蝦皮購物&#39;</span><span class="p">,</span> <span class="s1">&#39;露天拍賣&#39;</span><span class="p">]</span> 
 <span class="ne">----&gt; </span><span class="mi">3</span> <span class="n">media_count</span><span class="o">.</span><span class="n">loc</span><span class="p">[</span><span class="n">media_count</span><span class="p">[</span><span class="s2">&quot;media&quot;</span><span class="p">]</span><span class="o">.</span><span class="n">isin</span><span class="p">(</span><span class="n">options</span><span class="p">)]</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/frame.py:4090,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py:4090,</span> in <span class="ni">DataFrame.__getitem__</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">   </span><span class="mi">4088</span> <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">nlevels</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
 <span class="g g-Whitespace">   </span><span class="mi">4089</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_getitem_multilevel</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="ne">-&gt; </span><span class="mi">4090</span> <span class="n">indexer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">columns</span><span class="o">.</span><span class="n">get_loc</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">4091</span> <span class="k">if</span> <span class="n">is_integer</span><span class="p">(</span><span class="n">indexer</span><span class="p">):</span>
 <span class="g g-Whitespace">   </span><span class="mi">4092</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="p">[</span><span class="n">indexer</span><span class="p">]</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/indexes/base.py:3812,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/indexes/base.py:3812,</span> in <span class="ni">Index.get_loc</span><span class="nt">(self, key)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3807</span>     <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="ow">or</span> <span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">3808</span>         <span class="nb">isinstance</span><span class="p">(</span><span class="n">casted_key</span><span class="p">,</span> <span class="n">abc</span><span class="o">.</span><span class="n">Iterable</span><span class="p">)</span>
 <span class="g g-Whitespace">   </span><span class="mi">3809</span>         <span class="ow">and</span> <span class="nb">any</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">x</span><span class="p">,</span> <span class="nb">slice</span><span class="p">)</span> <span class="k">for</span> <span class="n">x</span> <span class="ow">in</span> <span class="n">casted_key</span><span class="p">)</span>
@@ -2083,7 +2088,7 @@ Name: userid, Length: 289, dtype: int64
 </section>
 </section>
 <section id="p6-plotting">
-<h2>P6. Plotting<a class="headerlink" href="#p6-plotting" title="Permalink to this heading">#</a></h2>
+<h2>P6. Plotting<a class="headerlink" href="#p6-plotting" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pat1</span> <span class="o">=</span> <span class="s1">&#39;代購|帶回&#39;</span>
@@ -2282,7 +2287,7 @@ Name: userid, Length: 289, dtype: int64
 </div>
 </div>
 <section id="about-the-matplotlib-resolution">
-<h3>6.1 About the matplotlib resolution<a class="headerlink" href="#about-the-matplotlib-resolution" title="Permalink to this heading">#</a></h3>
+<h3>6.1 About the matplotlib resolution<a class="headerlink" href="#about-the-matplotlib-resolution" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p>change font type: <code class="docutils literal notranslate"><span class="pre">matplotlib.rcParams['font.family']</span> <span class="pre">=</span> <span class="pre">['Heiti</span> <span class="pre">TC']</span></code></p></li>
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/39870642/matplotlib-how-to-plot-a-high-resolution-graph">https://stackoverflow.com/questions/39870642/matplotlib-how-to-plot-a-high-resolution-graph</a></p></li>
@@ -2296,7 +2301,7 @@ Name: userid, Length: 289, dtype: int64
 </ul>
 </section>
 <section id="plot-with-chinese-font">
-<h3>6.2 Plot with Chinese font<a class="headerlink" href="#plot-with-chinese-font" title="Permalink to this heading">#</a></h3>
+<h3>6.2 Plot with Chinese font<a class="headerlink" href="#plot-with-chinese-font" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://colab.research.google.com/github/willismax/matplotlib_show_chinese_in_colab/blob/master/matplotlib_show_chinese_in_colab.ipynb">https://colab.research.google.com/github/willismax/matplotlib_show_chinese_in_colab/blob/master/matplotlib_show_chinese_in_colab.ipynb</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span># Colab 進行matplotlib繪圖時顯示繁體中文
 # 下載台北思源黑體並命名taipei_sans_tc_beta.ttf，移至指定路徑
@@ -2332,16 +2337,16 @@ mpl.rc(&#39;font&#39;, family=&#39;Taipei Sans TC Beta&#39;)
 </section>
 </section>
 <section id="p7-pivot-groupby-and-summarize">
-<h2>P7. Pivot: groupby and summarize<a class="headerlink" href="#p7-pivot-groupby-and-summarize" title="Permalink to this heading">#</a></h2>
+<h2>P7. Pivot: groupby and summarize<a class="headerlink" href="#p7-pivot-groupby-and-summarize" title="Permalink to this headline">#</a></h2>
 <p><a class="reference external" href="https://pandas.pydata.org/docs/user_guide/reshaping.html">Reshaping and pivot tables — pandas 1.4.2 documentation (pydata.org)</a></p>
 <section id="multiple-factors-to-one-new-column">
-<h3>7.1 Multiple factors to one new column<a class="headerlink" href="#multiple-factors-to-one-new-column" title="Permalink to this heading">#</a></h3>
+<h3>7.1 Multiple factors to one new column<a class="headerlink" href="#multiple-factors-to-one-new-column" title="Permalink to this headline">#</a></h3>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">count</span> <span class="o">=</span> <span class="n">raw</span><span class="o">.</span><span class="n">groupby</span><span class="p">([</span><span class="s2">&quot;authorDisplayName&quot;</span><span class="p">,</span> <span class="s2">&quot;isSimplified2&quot;</span><span class="p">])</span><span class="o">.</span><span class="n">size</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;Time&quot;</span><span class="p">)</span>
 </pre></div>
 </div>
 </section>
 <section id="one-column-summarized-to-multiple-columns">
-<h3>7.2 One column summarized to multiple columns<a class="headerlink" href="#one-column-summarized-to-multiple-columns" title="Permalink to this heading">#</a></h3>
+<h3>7.2 One column summarized to multiple columns<a class="headerlink" href="#one-column-summarized-to-multiple-columns" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://stackoverflow.com/questions/14529838/apply-multiple-functions-to-multiple-groupby-columns/53096340">https://stackoverflow.com/questions/14529838/apply-multiple-functions-to-multiple-groupby-columns/53096340</a></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span>
     <span class="n">animals</span>
@@ -2376,7 +2381,7 @@ mpl.rc(&#39;font&#39;, family=&#39;Taipei Sans TC Beta&#39;)
 </div>
 </section>
 <section id="multiple-columns-to-multiple-columns-with-different-functions">
-<h3>7.3 Multiple columns to multiple columns with different functions<a class="headerlink" href="#multiple-columns-to-multiple-columns-with-different-functions" title="Permalink to this heading">#</a></h3>
+<h3>7.3 Multiple columns to multiple columns with different functions<a class="headerlink" href="#multiple-columns-to-multiple-columns-with-different-functions" title="Permalink to this headline">#</a></h3>
 <p><a class="reference external" href="https://stackoverflow.com/questions/14529838/apply-multiple-functions-to-multiple-groupby-columns/53096340">https://stackoverflow.com/questions/14529838/apply-multiple-functions-to-multiple-groupby-columns/53096340</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

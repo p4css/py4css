@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>Making Charts with Pandas &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="Bokeh &amp; Seaborn(Vaccinating)" href="P07_2_bokeh.html" />
     <link rel="prev" title="P07 Visualization" href="P07_0_visualization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -522,15 +521,23 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="making-charts-with-pandas">
-<h1>Making Charts with Pandas<a class="headerlink" href="#making-charts-with-pandas" title="Permalink to this heading">#</a></h1>
+<h1>Making Charts with Pandas<a class="headerlink" href="#making-charts-with-pandas" title="Permalink to this headline">#</a></h1>
 <section id="line-chart">
-<h2>Line chart<a class="headerlink" href="#line-chart" title="Permalink to this heading">#</a></h2>
+<h2>Line chart<a class="headerlink" href="#line-chart" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
 <span class="n">user_df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/p4css/py4css/main/data/twitter_user1_hashed.csv&quot;</span><span class="p">)</span>
 <span class="n">user_df</span><span class="p">[</span><span class="s1">&#39;account_creation_date&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">user_df</span><span class="p">[</span><span class="s1">&#39;account_creation_date&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s2">&quot;%Y-%m-</span><span class="si">%d</span><span class="s2">&quot;</span><span class="p">)</span>
 <span class="n">user_df</span><span class="p">[</span><span class="s1">&#39;account_creation_ym&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">user_df</span><span class="p">[</span><span class="s1">&#39;account_creation_date&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">to_period</span><span class="p">(</span><span class="s2">&quot;M&quot;</span><span class="p">)</span>
+</pre></div>
+</div>
+</div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
 </pre></div>
 </div>
 </div>
@@ -640,11 +647,11 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">KeyError</span><span class="g g-Whitespace">                                  </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">month_count</span> <span class="o">=</span> <span class="n">user_df</span><span class="p">[</span><span class="s1">&#39;account_creation_ym&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s1">&#39;n&#39;</span><span class="p">)</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">month_count</span> <span class="o">=</span> <span class="n">month_count</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;index&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/frame.py:7176,</span> in <span class="ni">DataFrame.sort_values</span><span class="nt">(self, by, axis, ascending, inplace, kind, na_position, ignore_index, key)</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/frame.py:7176,</span> in <span class="ni">DataFrame.sort_values</span><span class="nt">(self, by, axis, ascending, inplace, kind, na_position, ignore_index, key)</span>
 <span class="g g-Whitespace">   </span><span class="mi">7170</span>     <span class="n">indexer</span> <span class="o">=</span> <span class="n">lexsort_indexer</span><span class="p">(</span>
 <span class="g g-Whitespace">   </span><span class="mi">7171</span>         <span class="n">keys</span><span class="p">,</span> <span class="n">orders</span><span class="o">=</span><span class="n">ascending</span><span class="p">,</span> <span class="n">na_position</span><span class="o">=</span><span class="n">na_position</span><span class="p">,</span> <span class="n">key</span><span class="o">=</span><span class="n">key</span>
 <span class="g g-Whitespace">   </span><span class="mi">7172</span>     <span class="p">)</span>
@@ -656,7 +663,7 @@ document.write(`
 <span class="g g-Whitespace">   </span><span class="mi">7180</span>         <span class="c1"># error: Incompatible types in assignment (expression has type</span>
 <span class="g g-Whitespace">   </span><span class="mi">7181</span>         <span class="c1"># &quot;Series&quot;, variable has type &quot;ndarray&quot;)</span>
 
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/pandas/core/generic.py:1910,</span> in <span class="ni">NDFrame._get_label_or_level_values</span><span class="nt">(self, key, axis)</span>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/core/generic.py:1910,</span> in <span class="ni">NDFrame._get_label_or_level_values</span><span class="nt">(self, key, axis)</span>
 <span class="g g-Whitespace">   </span><span class="mi">1908</span>     <span class="n">values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">axes</span><span class="p">[</span><span class="n">axis</span><span class="p">]</span><span class="o">.</span><span class="n">get_level_values</span><span class="p">(</span><span class="n">key</span><span class="p">)</span><span class="o">.</span><span class="n">_values</span>
 <span class="g g-Whitespace">   </span><span class="mi">1909</span> <span class="k">else</span><span class="p">:</span>
 <span class="ne">-&gt; </span><span class="mi">1910</span>     <span class="k">raise</span> <span class="ne">KeyError</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
@@ -698,7 +705,7 @@ document.write(`
 </div>
 </div>
 <section id="plot-resolution">
-<h3>Plot resolution<a class="headerlink" href="#plot-resolution" title="Permalink to this heading">#</a></h3>
+<h3>Plot resolution<a class="headerlink" href="#plot-resolution" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://stackoverflow.com/questions/39870642/matplotlib-how-to-plot-a-high-resolution-graph">https://stackoverflow.com/questions/39870642/matplotlib-how-to-plot-a-high-resolution-graph</a></p></li>
 <li><p>Best result: <code class="docutils literal notranslate"><span class="pre">plt.savefig('filename.pdf')</span></code></p></li>
@@ -728,7 +735,7 @@ document.write(`
 </section>
 </section>
 <section id="bar-chart">
-<h2>Bar chart<a class="headerlink" href="#bar-chart" title="Permalink to this heading">#</a></h2>
+<h2>Bar chart<a class="headerlink" href="#bar-chart" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lang_count</span> <span class="o">=</span> <span class="n">user_df</span><span class="p">[</span><span class="s1">&#39;account_language&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">value_counts</span><span class="p">()</span><span class="o">.</span><span class="n">reset_index</span><span class="p">(</span><span class="n">name</span><span class="o">=</span><span class="s2">&quot;n&quot;</span><span class="p">)</span><span class="o">.</span><span class="n">sort_values</span><span class="p">(</span><span class="s1">&#39;n&#39;</span><span class="p">,</span> <span class="n">ascending</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span><span class="o">.</span><span class="n">rename</span><span class="p">(</span><span class="n">columns</span><span class="o">=</span><span class="p">{</span><span class="s2">&quot;index&quot;</span><span class="p">:</span><span class="s2">&quot;account_language&quot;</span><span class="p">})</span>
@@ -818,7 +825,7 @@ document.write(`
 </div>
 </div>
 <section id="coordinate-flip">
-<h3>Coordinate-flip<a class="headerlink" href="#coordinate-flip" title="Permalink to this heading">#</a></h3>
+<h3>Coordinate-flip<a class="headerlink" href="#coordinate-flip" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">lang_count</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">kind</span><span class="o">=</span><span class="s2">&quot;barh&quot;</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s2">&quot;account_language&quot;</span><span class="p">)</span>
@@ -836,7 +843,7 @@ document.write(`
 </section>
 </section>
 <section id="plot-with-chinese-font">
-<h2>Plot with Chinese font<a class="headerlink" href="#plot-with-chinese-font" title="Permalink to this heading">#</a></h2>
+<h2>Plot with Chinese font<a class="headerlink" href="#plot-with-chinese-font" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>

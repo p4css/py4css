@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>P05-1 Read CSV &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P05-2 Load and dump ubike json data" href="P05p2_read_json.html" />
     <link rel="prev" title="P05 READ Files" href="P05_read_csv_json.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -531,7 +530,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p05-1-read-csv">
-<h1>P05-1 Read CSV<a class="headerlink" href="#p05-1-read-csv" title="Permalink to this heading">#</a></h1>
+<h1>P05-1 Read CSV<a class="headerlink" href="#p05-1-read-csv" title="Permalink to this headline">#</a></h1>
 <p>資料來源：政府開放資料<a class="reference external" href="https://data.gov.tw/dataset/14196">違規藥品廣告資料集</a></p>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ul class="simple">
@@ -558,14 +557,14 @@ document.write(`
 </ul>
 </div>
 <section id="get-and-open-file">
-<h2>Get and Open File<a class="headerlink" href="#get-and-open-file" title="Permalink to this heading">#</a></h2>
+<h2>Get and Open File<a class="headerlink" href="#get-and-open-file" title="Permalink to this headline">#</a></h2>
 <ol class="arabic simple">
 <li><p>如果是在Colab或JupyterLab上，可以用<code class="docutils literal notranslate"><span class="pre">wget</span></code>指令將該檔案抓回來現在的資料夾中（推薦上課中這麼做）。</p></li>
 <li><p>如果是用VSCode或jupyter撰寫，建議把csv檔下載回本機端，放到程式碼的資料夾。接下來只要弄懂資料路徑就可以讀取。<a class="reference external" href="https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv">https://raw.githubusercontent.com/p4css/py4css/main/data/drug_156_2.csv</a></p></li>
 <li><p>如果是在colab上執行，可以先在程式中mount google drive，並把位置指到相對應的路徑。</p></li>
 </ol>
 <section id="method-1-colab-jupyterlab-read-file-via-link">
-<h3>Method 1：Colab/jupyterlab. Read file via link<a class="headerlink" href="#method-1-colab-jupyterlab-read-file-via-link" title="Permalink to this heading">#</a></h3>
+<h3>Method 1：Colab/jupyterlab. Read file via link<a class="headerlink" href="#method-1-colab-jupyterlab-read-file-via-link" title="Permalink to this headline">#</a></h3>
 <p>在Colab上可以用<code class="docutils literal notranslate"><span class="pre">wget</span></code>指令，將該檔案讀回來，<code class="docutils literal notranslate"><span class="pre">-o</span></code>的意思是代表如果已經有一樣的檔案就覆寫（Overwrite）過去，<code class="docutils literal notranslate"><span class="pre">-o</span></code>後面是新的檔名，可以用此命名為比較好記的檔名，但我個人習慣保持一樣的檔名。<code class="docutils literal notranslate"><span class="pre">wget</span></code>的步驟是把檔案抓回Colab的工作環境中。下一步才是開啟檔案。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -581,7 +580,7 @@ document.write(`
 </div>
 </section>
 <section id="method-2-jupyterlab-read-from-local-pc">
-<h3>Method 2：Jupyterlab. Read from local PC<a class="headerlink" href="#method-2-jupyterlab-read-from-local-pc" title="Permalink to this heading">#</a></h3>
+<h3>Method 2：Jupyterlab. Read from local PC<a class="headerlink" href="#method-2-jupyterlab-read-from-local-pc" title="Permalink to this headline">#</a></h3>
 <p>如果是在個人PC上，用VS Code或Jupyter等自行安裝的編輯器寫作的話，那就需要在程式碼中指定該檔案的路徑，通常以指定相對路徑為佳。相關說明如<a class="reference external" href="https://www.injerry.com/blog_view/131#:~:text=%E7%9B%B8%E5%B0%8D%E8%B7%AF%E5%BE%91%E6%8C%87%E7%9A%84%E6%98%AF,%E5%9C%A8%E9%80%99%E5%80%8B%E8%B3%87%E6%96%99%E5%A4%BE%E8%A3%A1%E9%9D%A2%E3%80%82">相對路徑</a></p>
 <ol class="arabic simple">
 <li><p>如果.ipynb和test.csv在同一個資料夾內，用<code class="docutils literal notranslate"><span class="pre">test.csv</span></code>或者<code class="docutils literal notranslate"><span class="pre">./test.csv</span></code>便可讀取在同一個資料夾內的檔案。</p></li>
@@ -600,20 +599,11 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="c1"># Be sure to specify right path</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;drug_156_2.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;r&quot;</span><span class="p">,</span> <span class="n">encoding</span><span class="o">=</span><span class="s2">&quot;utf-8-sig&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="p">)</span>
 <span class="g g-Whitespace">      </span><span class="mi">4</span>     <span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">f</span><span class="p">))</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;drug_156_2.csv&#39;
 </pre></div>
@@ -622,7 +612,7 @@ document.write(`
 </div>
 </section>
 <section id="method-3-colab-mount-drive-then-read">
-<h3>Method 3：Colab. Mount drive then read<a class="headerlink" href="#method-3-colab-mount-drive-then-read" title="Permalink to this heading">#</a></h3>
+<h3>Method 3：Colab. Mount drive then read<a class="headerlink" href="#method-3-colab-mount-drive-then-read" title="Permalink to this headline">#</a></h3>
 <p>Google Colab提供一個選項是把個人的Google Drive 掛載（Mount）到Colab的執行環境中，意味著可以用程式直接讀取個人放在Google drive裡面的資料。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span>
 <span class="c1"># Mount google drive as data</span>
@@ -637,7 +627,7 @@ document.write(`
 </section>
 </section>
 <section id="read-opened-csv">
-<h2>Read opened CSV<a class="headerlink" href="#read-opened-csv" title="Permalink to this heading">#</a></h2>
+<h2>Read opened CSV<a class="headerlink" href="#read-opened-csv" title="Permalink to this headline">#</a></h2>
 <p>當規劃要讀進一個CSV檔時，可以有三種做法：</p>
 <div style="border:2px solid gray; padding:5px; background-color:#F8F8F8">
 <ol class="arabic simple">
@@ -664,7 +654,7 @@ document.write(`
 </div>
 </div>
 <section id="method-1-by-f-read">
-<h3>Method 1: by <code class="docutils literal notranslate"><span class="pre">f.read()</span></code><a class="headerlink" href="#method-1-by-f-read" title="Permalink to this heading">#</a></h3>
+<h3>Method 1: by <code class="docutils literal notranslate"><span class="pre">f.read()</span></code><a class="headerlink" href="#method-1-by-f-read" title="Permalink to this headline">#</a></h3>
 <p>當我用<code class="docutils literal notranslate"><span class="pre">f.read()</span></code>讀取純文字檔案內的內容時，整個內容會被轉為單一string。由於我加了Slicing <code class="docutils literal notranslate"><span class="pre">f.read()[:400]</span></code>來取出前400個字，剛好可以看見第一列的詮釋資料、第一二三筆資料，但到了第三筆資料的一半，便超過400個字。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -698,7 +688,7 @@ document.write(`
 </div>
 </section>
 <section id="method-2-by-readlines">
-<h3>Method 2: by <code class="docutils literal notranslate"><span class="pre">readlines()</span></code><a class="headerlink" href="#method-2-by-readlines" title="Permalink to this heading">#</a></h3>
+<h3>Method 2: by <code class="docutils literal notranslate"><span class="pre">readlines()</span></code><a class="headerlink" href="#method-2-by-readlines" title="Permalink to this headline">#</a></h3>
 <p>逐行讀取 CSV 檔案時，我們使用 <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> 函式，它會自動判斷換行符號，將所有資料按行切割成一個清單中的元素。每一行都是一個字串，表示檔案中的一行資料。這是相對於使用 <code class="docutils literal notranslate"><span class="pre">read()</span></code> 函式的方式，後者讀取整個檔案內容為一個大字串，然後我們需要手動根據換行符號 <code class="docutils literal notranslate"><span class="pre">\n</span></code> 來切割成各行。</p>
 <p>CSV 檔案的每一列都以換行符號 <code class="docutils literal notranslate"><span class="pre">\n</span></code> 作為換行，因此我們可以使用 <code class="docutils literal notranslate"><span class="pre">readlines()</span></code> 讀取每一行的資料。這個函式遇到換行符號 <code class="docutils literal notranslate"><span class="pre">\n</span></code> 時就會自動將資料分成多個行，每一行的資料都被存儲為字串。接著，我們可以遍歷這些行（例如，使用變數 <code class="docutils literal notranslate"><span class="pre">line</span></code>），再使用逗號 <code class="docutils literal notranslate"><span class="pre">,</span></code> 來切割每一行的資料，例如 <code class="docutils literal notranslate"><span class="pre">line.split(&quot;,&quot;)</span></code>，這樣每一列的資料就變成了一個 List。最終，我們會得到一個兩層的 List，也就是 List of Lists，其中每個內部的 List 代表 CSV 檔案的一行資料。</p>
 <div class="cell docutils container">
@@ -736,7 +726,7 @@ document.write(`
 </div>
 </section>
 <section id="method-3-by-csv-reader">
-<h3>Method 3: by <code class="docutils literal notranslate"><span class="pre">csv.reader()</span></code><a class="headerlink" href="#method-3-by-csv-reader" title="Permalink to this heading">#</a></h3>
+<h3>Method 3: by <code class="docutils literal notranslate"><span class="pre">csv.reader()</span></code><a class="headerlink" href="#method-3-by-csv-reader" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">csv_read()</span></code>並非預載於python runtime environment的基本函式，因此要import csv library，才可以使用該library中的<code class="docutils literal notranslate"><span class="pre">csv_read()</span></code></p>
 <p><strong>Code Sample 1</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
@@ -775,9 +765,9 @@ document.write(`
 </section>
 </section>
 <section id="write-csv">
-<h2>Write CSV<a class="headerlink" href="#write-csv" title="Permalink to this heading">#</a></h2>
+<h2>Write CSV<a class="headerlink" href="#write-csv" title="Permalink to this headline">#</a></h2>
 <section id="by-csv-writer-recommended">
-<h3>by <code class="docutils literal notranslate"><span class="pre">csv.writer()</span></code>  &lt;- Recommended!<a class="headerlink" href="#by-csv-writer-recommended" title="Permalink to this heading">#</a></h3>
+<h3>by <code class="docutils literal notranslate"><span class="pre">csv.writer()</span></code>  &lt;- Recommended!<a class="headerlink" href="#by-csv-writer-recommended" title="Permalink to this headline">#</a></h3>
 <p>如果要將list-of-list的資料寫回CSV檔的話，可以使用<code class="docutils literal notranslate"><span class="pre">csv</span></code>這個函式庫的<code class="docutils literal notranslate"><span class="pre">writer.writerows()</span></code>函式，就可以直接把一個list-of-list寫回CSV檔</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">csv</span>
 <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
@@ -787,7 +777,7 @@ document.write(`
 </div>
 </section>
 <section id="write-line-by-line">
-<h3>Write line by line<a class="headerlink" href="#write-line-by-line" title="Permalink to this heading">#</a></h3>
+<h3>Write line by line<a class="headerlink" href="#write-line-by-line" title="Permalink to this headline">#</a></h3>
 <p>但如果你有一種「寫程式的浪漫」想自己操控寫回一個文字檔案的每一行每一個字的話，可以用下面的方式寫回去。
 把第二層list的每一個元素用<code class="docutils literal notranslate"><span class="pre">,</span></code>給黏起來，在後面再黏上一個<code class="docutils literal notranslate"><span class="pre">\n</span></code>。</p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;output.csv&quot;</span><span class="p">,</span> <span class="s2">&quot;w&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fout</span><span class="p">:</span>
@@ -797,7 +787,7 @@ document.write(`
 </div>
 </section>
 <section id="option">
-<h3>(Option) 字串操作的小技巧<a class="headerlink" href="#option" title="Permalink to this heading">#</a></h3>
+<h3>(Option) 字串操作的小技巧<a class="headerlink" href="#option" title="Permalink to this headline">#</a></h3>
 <p><code class="docutils literal notranslate"><span class="pre">&quot;,&quot;.join(a-list)</span></code>是一個非常好用的字串函式，可以把一個list中的每個項目用某個符號（例如前面的<code class="docutils literal notranslate"><span class="pre">,</span></code>)黏成字串。測試並觀察以下<code class="docutils literal notranslate"><span class="pre">.join()</span></code>函式的操作</p>
 <p><strong>Code for Practice 01</strong></p>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="n">blist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">3</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">1</span><span class="p">]</span>

@@ -1,0 +1,81 @@
+Traceback (most recent call last):
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+    executenb(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
+    return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
+    return future.result()
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
+    await self.async_execute_cell(
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+from googleapiclient.discovery import build
+
+# Replace with the ID of the channel you want to retrieve videos from
+channel_id = "UC5nwNW4KdC0SzrhF9BXEYOQ"
+
+# Create a YouTube API client
+youtube = build('youtube', 'v3', developerKey=api_key)
+
+# Use the channels().list() method to get the default upload playlist ID of the channel
+channel_response = youtube.channels().list(
+    part='contentDetails',
+    id=channel_id
+).execute()
+
+# Extract the upload playlist ID
+if 'items' in channel_response:
+    upload_playlist_id = channel_response['items'][0]['contentDetails']['relatedPlaylists']['uploads']
+
+    # Use the playlistItems().list() method to get all video items from the upload playlist
+
+videos = []
+next_page_token = None
+limit = 0
+
+# Loop through the pages of the playlist items (videos)
+while True:
+#    if limit > 5:  # Limit the number of pages to retrieve (adjust as needed)
+#        break
+    playlist_items_response = youtube.playlistItems().list(
+        part='snippet',
+        maxResults=50,  
+        playlistId=upload_playlist_id,
+
+        pageToken=next_page_token
+    ).execute()
+
+    videos.extend(playlist_items_response.get('items', []))
+
+    next_page_token = playlist_items_response.get('nextPageToken')
+    if not next_page_token:
+        break
+#    limit += 1
+
+# Print the number of videos retrieved
+print(f'Number of videos: {len(videos)}')
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mNameError[0m                                 Traceback (most recent call last)
+Input [0;32mIn [1][0m, in [0;36m<cell line: 7>[0;34m()[0m
+[1;32m      4[0m channel_id [38;5;241m=[39m [38;5;124m"[39m[38;5;124mUC5nwNW4KdC0SzrhF9BXEYOQ[39m[38;5;124m"[39m
+[1;32m      6[0m [38;5;66;03m# Create a YouTube API client[39;00m
+[0;32m----> 7[0m youtube [38;5;241m=[39m build([38;5;124m'[39m[38;5;124myoutube[39m[38;5;124m'[39m, [38;5;124m'[39m[38;5;124mv3[39m[38;5;124m'[39m, developerKey[38;5;241m=[39m[43mapi_key[49m)
+[1;32m      9[0m [38;5;66;03m# Use the channels().list() method to get the default upload playlist ID of the channel[39;00m
+[1;32m     10[0m channel_response [38;5;241m=[39m youtube[38;5;241m.[39mchannels()[38;5;241m.[39mlist(
+[1;32m     11[0m     part[38;5;241m=[39m[38;5;124m'[39m[38;5;124mcontentDetails[39m[38;5;124m'[39m,
+[1;32m     12[0m     [38;5;28mid[39m[38;5;241m=[39mchannel_id
+[1;32m     13[0m )[38;5;241m.[39mexecute()
+
+[0;31mNameError[0m: name 'api_key' is not defined
+NameError: name 'api_key' is not defined
+

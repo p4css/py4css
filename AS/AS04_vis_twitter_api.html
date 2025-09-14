@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>AS04 Twitter API and Pandas Visualization &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS05 Scraping youtube" href="AS05_scraping_youtube.html" />
     <link rel="prev" title="AS03: Summarizing Data by Pandas" href="AS03_summarize_ptt.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -542,7 +541,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as04-twitter-api-and-pandas-visualization">
-<h1>AS04 Twitter API and Pandas Visualization<a class="headerlink" href="#as04-twitter-api-and-pandas-visualization" title="Permalink to this heading">#</a></h1>
+<h1>AS04 Twitter API and Pandas Visualization<a class="headerlink" href="#as04-twitter-api-and-pandas-visualization" title="Permalink to this headline">#</a></h1>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -568,9 +567,17 @@ document.write(`
 </pre></div>
 </div>
 </div>
+<div class="cell_output docutils container">
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+</pre></div>
+</div>
+</div>
 </div>
 <section id="cleaning-twitter-data">
-<h2>Cleaning twitter data<a class="headerlink" href="#cleaning-twitter-data" title="Permalink to this heading">#</a></h2>
+<h2>Cleaning twitter data<a class="headerlink" href="#cleaning-twitter-data" title="Permalink to this headline">#</a></h2>
 <p>以下程式碼為爬取tweets資料的主要片段，請稍微觀察一下<code class="docutils literal notranslate"><span class="pre">query_params</span></code>怎麼下，和資料怎麼存起來，會有助於答題（Q1~Q3）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">query_params</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;query&#39;</span><span class="p">:</span> <span class="s1">&#39;(taiwan -is:retweet) OR #taiwan&#39;</span><span class="p">,</span>
                 <span class="s1">&#39;tweet.fields&#39;</span><span class="p">:</span> <span class="s1">&#39;author_id,conversation_id,created_at,id,in_reply_to_user_id,lang,public_metrics,source&#39;</span><span class="p">,</span>
@@ -607,7 +614,34 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-09-14 22:22:12--  https://raw.githubusercontent.com/p4css/py4css/main/data/sample_tweets.json
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185.199.110.133, 185.199.109.133, 185.199.111.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.110.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+Length: 103598 (101K) [text/plain]
+Saving to: &#39;sample_tweets.json&#39;
+
+
+sample_tweets.json    0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_tweets.json   39%[======&gt;             ]  40.00K   120KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>sample_tweets.json  100%[===================&gt;] 101.17K   197KB/s    in 0.5s    
+
+2025-09-14 22:22:15 (197 KB/s) - &#39;sample_tweets.json&#39; saved [103598/103598]
 </pre></div>
 </div>
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>資料中共有 109 則tweets
@@ -619,7 +653,7 @@ document.write(`
 </div>
 </div>
 <section id="q1-keep-unique-user">
-<h3>Q1. Keep unique user<a class="headerlink" href="#q1-keep-unique-user" title="Permalink to this heading">#</a></h3>
+<h3>Q1. Keep unique user<a class="headerlink" href="#q1-keep-unique-user" title="Permalink to this headline">#</a></h3>
 <p>前面for-loop在爬取tweets資料時，有可能在不同圈的loop會爬取到相同的users，亦即這些tweets中有些tweets是同一個人發表的。因此造成上面雖然有109個users，但實際上只有103個不同的users。</p>
 <p>任務：請將<code class="docutils literal notranslate"><span class="pre">users_all</span></code>中相同的使用者資料刪除，保持<code class="docutils literal notranslate"><span class="pre">users_all</span></code>資料的唯一性（uniqueness）</p>
 <div class="cell docutils container">
@@ -630,7 +664,7 @@ document.write(`
 </div>
 </div>
 <section id="q1-verification">
-<h4>Q1. Verification<a class="headerlink" href="#q1-verification" title="Permalink to this heading">#</a></h4>
+<h4>Q1. Verification<a class="headerlink" href="#q1-verification" title="Permalink to this headline">#</a></h4>
 <p>執行以下驗證程式碼，驗證結果應該要是</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">資料中共有</span> <span class="mi">109</span> <span class="n">則tweets</span>
 <span class="n">資料中共有</span> <span class="mi">109</span> <span class="n">則不同的tweets</span>
@@ -659,7 +693,7 @@ document.write(`
 </section>
 </section>
 <section id="q2-flatten-multi-layered-data">
-<h3>Q2. flatten multi-layered data<a class="headerlink" href="#q2-flatten-multi-layered-data" title="Permalink to this heading">#</a></h3>
+<h3>Q2. flatten multi-layered data<a class="headerlink" href="#q2-flatten-multi-layered-data" title="Permalink to this headline">#</a></h3>
 <p>若單獨列印一筆<code class="docutils literal notranslate"><span class="pre">users_all</span></code>的資料出來觀察，或用pandas.DataFrame來觀察<code class="docutils literal notranslate"><span class="pre">users_all</span></code>，可發現<code class="docutils literal notranslate"><span class="pre">public_metrics</span></code>這個欄位是個階層欄位，如果希望把<code class="docutils literal notranslate"><span class="pre">followers_count</span></code>、<code class="docutils literal notranslate"><span class="pre">following_count</span></code>、<code class="docutils literal notranslate"><span class="pre">tweet_count</span></code>、<code class="docutils literal notranslate"><span class="pre">listed_count</span></code>分別獨立出來變成一個變項，使得用pandas.DataFrame的時候，這四個變項分別為該DataFrame的columns，要怎麼做？</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -782,7 +816,7 @@ document.write(`
 </div>
 </div>
 <section id="q2-verification">
-<h4>Q2. Verification<a class="headerlink" href="#q2-verification" title="Permalink to this heading">#</a></h4>
+<h4>Q2. Verification<a class="headerlink" href="#q2-verification" title="Permalink to this headline">#</a></h4>
 <p>用下列程式碼列印出結果應該如下，沒有<code class="docutils literal notranslate"><span class="pre">public_metrics</span></code>這個column，但多出了四個裡面的columns：<code class="docutils literal notranslate"><span class="pre">followers_count</span></code>, <code class="docutils literal notranslate"><span class="pre">following_count</span></code>, <code class="docutils literal notranslate"><span class="pre">tweet_count</span></code>, <code class="docutils literal notranslate"><span class="pre">listed_count</span></code>。</p>
 <p>Following output should be …</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;description&#39;</span><span class="p">,</span> <span class="s1">&#39;verified&#39;</span><span class="p">,</span> <span class="s1">&#39;username&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="s1">&#39;name&#39;</span><span class="p">,</span>
@@ -808,7 +842,7 @@ document.write(`
 </section>
 </section>
 <section id="repeats-on-tweets-data">
-<h3>Repeats on tweets data<a class="headerlink" href="#repeats-on-tweets-data" title="Permalink to this heading">#</a></h3>
+<h3>Repeats on tweets data<a class="headerlink" href="#repeats-on-tweets-data" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">json</span><span class="o">.</span><span class="n">dumps</span><span class="p">(</span><span class="n">tweets_all</span><span class="p">[</span><span class="mi">0</span><span class="p">],</span> <span class="n">indent</span><span class="o">=</span><span class="mi">4</span><span class="p">))</span>
@@ -945,7 +979,7 @@ document.write(`
 </div>
 </div>
 <section id="id1">
-<h4>Q2. Verification<a class="headerlink" href="#id1" title="Permalink to this heading">#</a></h4>
+<h4>Q2. Verification<a class="headerlink" href="#id1" title="Permalink to this headline">#</a></h4>
 <p>Following output should be …</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;lang&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span>
        <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_count&#39;</span><span class="p">,</span> <span class="s1">&#39;reply_count&#39;</span><span class="p">,</span> <span class="s1">&#39;like_count&#39;</span><span class="p">,</span>
@@ -971,7 +1005,7 @@ document.write(`
 </section>
 </section>
 <section id="q3-join-tweets-and-users-data">
-<h3>Q3. Join tweets and users data<a class="headerlink" href="#q3-join-tweets-and-users-data" title="Permalink to this heading">#</a></h3>
+<h3>Q3. Join tweets and users data<a class="headerlink" href="#q3-join-tweets-and-users-data" title="Permalink to this headline">#</a></h3>
 <p>下一個任務是把tweets和users兩個資料整合起來，使得不同的users資料可以根據tweet中的<code class="docutils literal notranslate"><span class="pre">author_id</span></code>加入tweets資料中，整合成一份大的資料。要注意的是，此時，每一則tweets都是唯一的，但不同tweets的作者卻可能相同。要整合這樣的資料有兩種做法，</p>
 <ol class="arabic simple">
 <li><p>傳統做法是，把每一則tweet掃過一遍，看看他的<code class="docutils literal notranslate"><span class="pre">author_id</span></code>是誰，就從users資料中抽取出該<code class="docutils literal notranslate"><span class="pre">id</span></code>的資料，加入該則tweet中。</p></li>
@@ -992,7 +1026,7 @@ HINT: 其實本題是希望你嘗試用第二種方法，參考資料如下，�
 </div>
 </div>
 <section id="q3-verification">
-<h4>Q3. Verification<a class="headerlink" href="#q3-verification" title="Permalink to this heading">#</a></h4>
+<h4>Q3. Verification<a class="headerlink" href="#q3-verification" title="Permalink to this headline">#</a></h4>
 <p>以下程式碼的輸出結果應該是</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">Index</span><span class="p">([</span><span class="s1">&#39;lang&#39;</span><span class="p">,</span> <span class="s1">&#39;created_at&#39;</span><span class="p">,</span> <span class="s1">&#39;conversation_id&#39;</span><span class="p">,</span> <span class="s1">&#39;text&#39;</span><span class="p">,</span> <span class="s1">&#39;id&#39;</span><span class="p">,</span> <span class="s1">&#39;source&#39;</span><span class="p">,</span>
        <span class="s1">&#39;author_id&#39;</span><span class="p">,</span> <span class="s1">&#39;retweet_count&#39;</span><span class="p">,</span> <span class="s1">&#39;reply_count&#39;</span><span class="p">,</span> <span class="s1">&#39;like_count&#39;</span><span class="p">,</span>
@@ -1011,7 +1045,7 @@ HINT: 其實本題是希望你嘗試用第二種方法，參考資料如下，�
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">12</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="nn">Input In [12],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">merged_df</span><span class="o">.</span><span class="n">columns</span>
 
 <span class="ne">NameError</span>: name &#39;merged_df&#39; is not defined
@@ -1023,7 +1057,7 @@ HINT: 其實本題是希望你嘗試用第二種方法，參考資料如下，�
 </section>
 </section>
 <section id="explore-twitter-information-operation-data">
-<h2>Explore twitter information operation data<a class="headerlink" href="#explore-twitter-information-operation-data" title="Permalink to this heading">#</a></h2>
+<h2>Explore twitter information operation data<a class="headerlink" href="#explore-twitter-information-operation-data" title="Permalink to this headline">#</a></h2>
 <p>以下主要作業是練習篩選資料（Filter）、簡單地視覺化資料。</p>
 <p>閱讀READr關於資訊操作的相關報導：</p>
 <ol class="arabic simple">
@@ -1090,7 +1124,7 @@ memory usage: 3.6+ MB
 </div>
 </div>
 <section id="q4-filter-hk-related-tweets">
-<h3>Q4. Filter HK-related tweets<a class="headerlink" href="#q4-filter-hk-related-tweets" title="Permalink to this heading">#</a></h3>
+<h3>Q4. Filter HK-related tweets<a class="headerlink" href="#q4-filter-hk-related-tweets" title="Permalink to this headline">#</a></h3>
 <p>原本<code class="docutils literal notranslate"><span class="pre">users</span></code>共有744個accounts，但希望像報導https://www.readr.tw/post/2013 所做的，嘗試篩選出曾經討論香港反送中運動，或者在那段時間中，討論香港相關議題的tweets和帳號。第一步要先找出，哪些tweets提及香港相關關鍵字。</p>
 <p>任務：自tweets這個DataFrame中篩選出與香港議題相關的tweets後，指給新變數<code class="docutils literal notranslate"><span class="pre">hk_tweets</span></code>。</p>
 <div class="cell docutils container">
@@ -1112,7 +1146,7 @@ memory usage: 3.6+ MB
 </div>
 </section>
 <section id="q5-filter-users-data-in-hl-related-tweets">
-<h3>Q5. Filter users data in HL-related tweets<a class="headerlink" href="#q5-filter-users-data-in-hl-related-tweets" title="Permalink to this heading">#</a></h3>
+<h3>Q5. Filter users data in HL-related tweets<a class="headerlink" href="#q5-filter-users-data-in-hl-related-tweets" title="Permalink to this headline">#</a></h3>
 <p>下一步便是找出，發表這些香港相關tweets的帳號有哪些，然後將這些帳號篩選出來。</p>
 <p>任務：自<code class="docutils literal notranslate"><span class="pre">users</span></code>這個DataFrame中篩選出包含在上題<code class="docutils literal notranslate"><span class="pre">hk_tweets</span></code>中的帳號，指給新變數<code class="docutils literal notranslate"><span class="pre">hk_users</span></code>。</p>
 <div class="cell docutils container">
@@ -1162,7 +1196,7 @@ memory usage: 58.2+ KB
 </div>
 </section>
 <section id="q6-account-languages-of-questionable-accounts">
-<h3>Q6 Account languages of questionable accounts<a class="headerlink" href="#q6-account-languages-of-questionable-accounts" title="Permalink to this heading">#</a></h3>
+<h3>Q6 Account languages of questionable accounts<a class="headerlink" href="#q6-account-languages-of-questionable-accounts" title="Permalink to this headline">#</a></h3>
 <p>仿照https://www.readr.tw/post/2013 之「被刪除的帳號註冊語言」一圖，繪製長條圖以視覺化<code class="docutils literal notranslate"><span class="pre">hk_users</span></code>的帳號註冊語言。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1173,7 +1207,7 @@ memory usage: 58.2+ KB
 </div>
 </section>
 <section id="q7-activities-of-questionable-accounts">
-<h3>Q7 Activities of questionable accounts<a class="headerlink" href="#q7-activities-of-questionable-accounts" title="Permalink to this heading">#</a></h3>
+<h3>Q7 Activities of questionable accounts<a class="headerlink" href="#q7-activities-of-questionable-accounts" title="Permalink to this headline">#</a></h3>
 <p>仿照https://www.readr.tw/post/2013 之「反送中帳號過去推文時間分佈」一圖，資料繪製折線圖以呈現這些帳號的發文活動。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -1183,7 +1217,7 @@ memory usage: 58.2+ KB
 </div>
 </div>
 <section id="q8-social-reputation-of-questionable-accounts">
-<h4>Q8 Social reputation of questionable accounts<a class="headerlink" href="#q8-social-reputation-of-questionable-accounts" title="Permalink to this heading">#</a></h4>
+<h4>Q8 Social reputation of questionable accounts<a class="headerlink" href="#q8-social-reputation-of-questionable-accounts" title="Permalink to this headline">#</a></h4>
 <p>仿照https://www.readr.tw/post/2029 之「從散佈圖看Twitter網軍的社群行為」一圖的紅點部分，繪製上述<code class="docutils literal notranslate"><span class="pre">hk_users</span></code>的follower/followings人數之散佈圖。</p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">

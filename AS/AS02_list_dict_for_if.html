@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>AS02 List-dict-for-if &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS03: Summarizing Data by Pandas" href="AS03_summarize_ptt.html" />
     <link rel="prev" title="AS02 Reading PTT data" href="AS02_ptt_jsonl.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -533,9 +532,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as02-list-dict-for-if">
-<h1>AS02 List-dict-for-if<a class="headerlink" href="#as02-list-dict-for-if" title="Permalink to this heading">#</a></h1>
+<h1>AS02 List-dict-for-if<a class="headerlink" href="#as02-list-dict-for-if" title="Permalink to this headline">#</a></h1>
 <section id="q1-using-site-name-as-dict-id">
-<h2>Q1 Using site name as dict id<a class="headerlink" href="#q1-using-site-name-as-dict-id" title="Permalink to this heading">#</a></h2>
+<h2>Q1 Using site name as dict id<a class="headerlink" href="#q1-using-site-name-as-dict-id" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Getting youtube data</span>
@@ -548,7 +547,7 @@ document.write(`
 </div>
 </div>
 <section id="q1-code">
-<h3>Q1_Code<a class="headerlink" href="#q1-code" title="Permalink to this heading">#</a></h3>
+<h3>Q1_Code<a class="headerlink" href="#q1-code" title="Permalink to this headline">#</a></h3>
 <ol class="arabic simple">
 <li><p>建立一個<code class="docutils literal notranslate"><span class="pre">site_dict</span></code>，可用以查詢某個youbike站台的資料。原本的Youbike data除了第一層有<code class="docutils literal notranslate"><span class="pre">retCode</span></code>和<code class="docutils literal notranslate"><span class="pre">retVal</span></code>外，在<code class="docutils literal notranslate"><span class="pre">retVal</span></code>所對應到的資料中，是以<code class="docutils literal notranslate"><span class="pre">sno</span></code>也就是駐車站編號作為dict的key。我希望把整筆資料轉個型態，仍保持dict of dict，但最外層的dictionary裡面的每個key是站台「中文名稱」，並以<code class="docutils literal notranslate"><span class="pre">site_dict</span></code>來作為新的dictionary的變數名稱。</p></li>
 <li><p>除此之外，請參考下列資料，移除幾個儲存英文站名、英文區域和英文地址的keys與values，有<code class="docutils literal notranslate"><span class="pre">['sareaen',</span> <span class="pre">'snaen',</span> <span class="pre">'aren']</span></code>。參考資料：<a class="reference external" href="https://stackoverflow.com/questions/8995611/removing-multiple-keys-from-a-dictionary-safely">Removing multiple keys from a dictionary safely (stackoverflow)</a></p></li>
@@ -562,7 +561,7 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">AttributeError</span><span class="g g-Whitespace">                            </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">1</span>
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 1&gt;</span><span class="nt">()</span>
 <span class="ne">----&gt; </span><span class="mi">1</span> <span class="n">data</span><span class="o">.</span><span class="n">keys</span><span class="p">()</span>
 
 <span class="ne">AttributeError</span>: &#39;list&#39; object has no attribute &#39;keys&#39;
@@ -582,7 +581,7 @@ document.write(`
 </div>
 </section>
 <section id="q1-verification">
-<h3>Q1_Verification<a class="headerlink" href="#q1-verification" title="Permalink to this heading">#</a></h3>
+<h3>Q1_Verification<a class="headerlink" href="#q1-verification" title="Permalink to this headline">#</a></h3>
 <p>執行以下程式碼以驗證你的程式撰寫是否成功。你不能更動以下Cell的Code，僅能在上面的Cell撰寫程式，使得以下的Code列印出來的資料與預期相同。助教會看這個Cell的結果來判斷你是否達到題目要求。以下的程式碼會從你所建立的<code class="docutils literal notranslate"><span class="pre">site_dict</span></code>中隨機抽五個站，然後列印出這些站的資料。</p>
 <p>輸出參考（因隨機挑選，站台可能不同）</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">[</span><span class="s1">&#39;老松國小&#39;</span><span class="p">,</span> <span class="s1">&#39;重慶民族路口&#39;</span><span class="p">,</span> <span class="s1">&#39;朱崙商場&#39;</span><span class="p">,</span> <span class="s1">&#39;臺北醫學大學&#39;</span><span class="p">,</span> <span class="s1">&#39;臺北田徑場&#39;</span><span class="p">]</span>
@@ -619,9 +618,9 @@ dict_values([&#39;0055&#39;, &#39;臺北田徑場&#39;, &#39;22&#39;, &#39;5&#39
 </section>
 </section>
 <section id="q2-calculating-the-fullness-of-each-youbike-site">
-<h2>Q2 Calculating the fullness of each youbike site<a class="headerlink" href="#q2-calculating-the-fullness-of-each-youbike-site" title="Permalink to this heading">#</a></h2>
+<h2>Q2 Calculating the fullness of each youbike site<a class="headerlink" href="#q2-calculating-the-fullness-of-each-youbike-site" title="Permalink to this headline">#</a></h2>
 <section id="q2-code">
-<h3>Q2_Code<a class="headerlink" href="#q2-code" title="Permalink to this heading">#</a></h3>
+<h3>Q2_Code<a class="headerlink" href="#q2-code" title="Permalink to this headline">#</a></h3>
 <p>建立一個新的指標<code class="docutils literal notranslate"><span class="pre">perc</span> <span class="pre">=</span> <span class="pre">sbi/tot</span></code>，為現有單車數(<code class="docutils literal notranslate"><span class="pre">sbi</span></code>)除以總單車格數（<code class="docutils literal notranslate"><span class="pre">tot</span></code>）作為滿站的比例，並希望在每個駐車站的資料中多一個key為<code class="docutils literal notranslate"><span class="pre">perc</span></code>來存放滿站比例。你可以接續上題作，或者回到原本撈回來的資料做。</p>
 <p>例如</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="p">{</span> <span class="s1">&#39;捷運市政府站(3號出口)&#39;</span><span class="p">:{</span>
@@ -644,7 +643,7 @@ dict_values([&#39;0055&#39;, &#39;臺北田徑場&#39;, &#39;22&#39;, &#39;5&#39
 </div>
 </section>
 <section id="q2-code-verification">
-<h3>Q2_Code &amp; Verification<a class="headerlink" href="#q2-code-verification" title="Permalink to this heading">#</a></h3>
+<h3>Q2_Code &amp; Verification<a class="headerlink" href="#q2-code-verification" title="Permalink to this headline">#</a></h3>
 <p>以下所附的Code將會隨機選出五個站台於list <code class="docutils literal notranslate"><span class="pre">random_sites</span></code>中，請用for-loop印出這五個站台的sbi, tot, perc, 和sna。<br>
 預期結果如下，請嘗試用format()格式化你的輸出，讓你的輸出符合以下浮點數以下二位的樣子。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="mi">3</span>	<span class="mi">20</span>	      <span class="mf">0.15</span>	<span class="n">捷運芝山站</span><span class="p">(</span><span class="mi">2</span><span class="n">號出口</span><span class="p">)</span>
@@ -676,9 +675,9 @@ dict_values([&#39;0055&#39;, &#39;臺北田徑場&#39;, &#39;22&#39;, &#39;5&#39
 </section>
 </section>
 <section id="q3-finding-maximum">
-<h2>Q3 Finding Maximum<a class="headerlink" href="#q3-finding-maximum" title="Permalink to this heading">#</a></h2>
+<h2>Q3 Finding Maximum<a class="headerlink" href="#q3-finding-maximum" title="Permalink to this headline">#</a></h2>
 <section id="q3-code-verification-finding-sites-with-maximum-perc">
-<h3>Q3_Code &amp; Verification: Finding sites with maximum <code class="docutils literal notranslate"><span class="pre">perc</span></code><a class="headerlink" href="#q3-code-verification-finding-sites-with-maximum-perc" title="Permalink to this heading">#</a></h3>
+<h3>Q3_Code &amp; Verification: Finding sites with maximum <code class="docutils literal notranslate"><span class="pre">perc</span></code><a class="headerlink" href="#q3-code-verification-finding-sites-with-maximum-perc" title="Permalink to this headline">#</a></h3>
 <p>用<code class="docutils literal notranslate"><span class="pre">for-loop</span></code>和<code class="docutils literal notranslate"><span class="pre">if-else</span></code>找出<code class="docutils literal notranslate"><span class="pre">perc</span></code>(fullness)最高的駐車站，並印出其站名和<code class="docutils literal notranslate"><span class="pre">perc</span></code>數值，以及時間。<br>
 預期輸出格式如下（至於最高<code class="docutils literal notranslate"><span class="pre">perc</span></code>與其站台則因個人查詢當時狀態而不同）：</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">At</span> <span class="mi">20211014204443</span><span class="p">,</span> <span class="n">the</span> <span class="n">highest</span> <span class="n">perc</span> <span class="ow">is</span> <span class="mf">0.937500</span> <span class="p">(</span><span class="n">Station</span><span class="p">:</span> <span class="n">士林運動中心</span><span class="p">)</span>
@@ -709,7 +708,7 @@ dict_values([&#39;0055&#39;, &#39;臺北田徑場&#39;, &#39;22&#39;, &#39;5&#39
 </div>
 </section>
 <section id="q3-code-verification-top-10">
-<h3>Q3_Code &amp; Verification: Top 10<a class="headerlink" href="#q3-code-verification-top-10" title="Permalink to this heading">#</a></h3>
+<h3>Q3_Code &amp; Verification: Top 10<a class="headerlink" href="#q3-code-verification-top-10" title="Permalink to this headline">#</a></h3>
 <p>用內建或第三方的sorting函式，將<code class="docutils literal notranslate"><span class="pre">perc</span></code>(fullness)按照full to empty排序，用for-loop列印出，<code class="docutils literal notranslate"><span class="pre">perc</span></code>最高的10個駐車站的<code class="docutils literal notranslate"><span class="pre">sna</span></code>、<code class="docutils literal notranslate"><span class="pre">perc</span></code>、<code class="docutils literal notranslate"><span class="pre">tot</span></code>、<code class="docutils literal notranslate"><span class="pre">sbi</span></code>(（請善用printing formation和<code class="docutils literal notranslate"><span class="pre">\t</span></code>將之對齊排列好，不用到完全一樣、不用照高低順序、對齊即可）。<br></p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span> <span class="mi">16</span>	 <span class="mi">15</span>	<span class="mf">0.94</span>	<span class="n">成功國宅</span>
  <span class="mi">24</span>	 <span class="mi">21</span>	<span class="mf">0.88</span>	<span class="n">新東公園</span>
@@ -746,10 +745,10 @@ dict_values([&#39;0055&#39;, &#39;臺北田徑場&#39;, &#39;22&#39;, &#39;5&#39
 </section>
 </section>
 <section id="q4-categorizing-fullness">
-<h2>Q4: Categorizing fullness<a class="headerlink" href="#q4-categorizing-fullness" title="Permalink to this heading">#</a></h2>
+<h2>Q4: Categorizing fullness<a class="headerlink" href="#q4-categorizing-fullness" title="Permalink to this headline">#</a></h2>
 <p>當要建立回歸模型來預測腳踏車的滿站程度時，我們需要的可能是上述的<code class="docutils literal notranslate"><span class="pre">perc</span></code>來作為依變項Y；但我如果只是要仿照Youbike地圖，用顏色來標示出滿站程度時（如https://taipei.youbike.com.tw/station/map） ，就需要將<code class="docutils literal notranslate"><span class="pre">perc</span></code>按數值分區。</p>
 <section id="q4-code-verification">
-<h3>Q4_Code &amp; Verification<a class="headerlink" href="#q4-code-verification" title="Permalink to this heading">#</a></h3>
+<h3>Q4_Code &amp; Verification<a class="headerlink" href="#q4-code-verification" title="Permalink to this headline">#</a></h3>
 <p>設計if-else搭配for-loop來計算每個資料區間各有多少個腳踏車站台。一共分成以下幾個label。</p>
 <ul class="simple">
 <li><p>full: perc = 1.0，</p></li>
@@ -769,7 +768,7 @@ dict_values([&#39;0055&#39;, &#39;臺北田徑場&#39;, &#39;22&#39;, &#39;5&#39
 </section>
 </section>
 <section id="q5-e">
-<h2>Q5_e 自然常數的泰勒展式<a class="headerlink" href="#q5-e" title="Permalink to this heading">#</a></h2>
+<h2>Q5_e 自然常數的泰勒展式<a class="headerlink" href="#q5-e" title="Permalink to this headline">#</a></h2>
 <p>e的值可用以下的泰勒展式去逼近，請嘗試完成下列迴圈，計算e的近似值。</p>
 <ul class="simple">
 <li><p>e ≈ 2.71828 18284 59045 23536</p></li>

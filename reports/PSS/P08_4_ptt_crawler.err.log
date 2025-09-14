@@ -17,67 +17,96 @@ Traceback (most recent call last):
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import requests
-url = 'https://www.ptt.cc/bbs/Boy-Girl/index.html'
-print(url)
-
-response = requests.get(url, timeout=(2, 3))
-print(response.text[:500])
+from bs4 import NavigableString
+for link in links[:5]:
+    print(link)
+    res = requests.get(link, timeout=(1, 2))
+    soup = BeautifulSoup(res.text, "html.parser")
+    metas = soup.find_all(class_='article-meta-value')
+    if len(metas) == 0: 
+        continue
+    author = metas[0].text
+    title = metas[-2].text
+    timestamp = metas[-1].text
+    
+    content = ''
+    for text in soup.find(id='main-content'):
+        if isinstance(text, NavigableString):
+            content += text.strip()
+    print(len(content)) # calculating number of words
 ------------------
 
 [0;31m---------------------------------------------------------------------------[0m
 [0;31mtimeout[0m                                   Traceback (most recent call last)
-File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:449[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
-[1;32m    445[0m         [38;5;28;01mexcept[39;00m [38;5;167;01mBaseException[39;00m [38;5;28;01mas[39;00m e:
-[1;32m    446[0m             [38;5;66;03m# Remove the TypeError from the exception chain in[39;00m
-[1;32m    447[0m             [38;5;66;03m# Python 3 (including for exceptions like SystemExit).[39;00m
-[1;32m    448[0m             [38;5;66;03m# Otherwise it looks like a bug in the code.[39;00m
-[0;32m--> 449[0m             [43msix[49m[38;5;241;43m.[39;49m[43mraise_from[49m[43m([49m[43me[49m[43m,[49m[43m [49m[38;5;28;43;01mNone[39;49;00m[43m)[49m
-[1;32m    450[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError, SocketError) [38;5;28;01mas[39;00m e:
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:386[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
+[1;32m    385[0m [38;5;28;01mtry[39;00m:
+[0;32m--> 386[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_validate_conn[49m[43m([49m[43mconn[49m[43m)[49m
+[1;32m    387[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError) [38;5;28;01mas[39;00m e:
+[1;32m    388[0m     [38;5;66;03m# Py2 raises this as a BaseSSLError, Py3 raises it as socket timeout.[39;00m
 
-File [0;32m<string>:3[0m, in [0;36mraise_from[0;34m(value, from_value)[0m
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:1042[0m, in [0;36mHTTPSConnectionPool._validate_conn[0;34m(self, conn)[0m
+[1;32m   1041[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m [38;5;28mgetattr[39m(conn, [38;5;124m"[39m[38;5;124msock[39m[38;5;124m"[39m, [38;5;28;01mNone[39;00m):  [38;5;66;03m# AppEngine might not have  `.sock`[39;00m
+[0;32m-> 1042[0m     [43mconn[49m[38;5;241;43m.[39;49m[43mconnect[49m[43m([49m[43m)[49m
+[1;32m   1044[0m [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m conn[38;5;241m.[39mis_verified:
 
-File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:444[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
-[1;32m    443[0m [38;5;28;01mtry[39;00m:
-[0;32m--> 444[0m     httplib_response [38;5;241m=[39m [43mconn[49m[38;5;241;43m.[39;49m[43mgetresponse[49m[43m([49m[43m)[49m
-[1;32m    445[0m [38;5;28;01mexcept[39;00m [38;5;167;01mBaseException[39;00m [38;5;28;01mas[39;00m e:
-[1;32m    446[0m     [38;5;66;03m# Remove the TypeError from the exception chain in[39;00m
-[1;32m    447[0m     [38;5;66;03m# Python 3 (including for exceptions like SystemExit).[39;00m
-[1;32m    448[0m     [38;5;66;03m# Otherwise it looks like a bug in the code.[39;00m
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connection.py:414[0m, in [0;36mHTTPSConnection.connect[0;34m(self)[0m
+[1;32m    412[0m     context[38;5;241m.[39mload_default_certs()
+[0;32m--> 414[0m [38;5;28mself[39m[38;5;241m.[39msock [38;5;241m=[39m [43mssl_wrap_socket[49m[43m([49m
+[1;32m    415[0m [43m    [49m[43msock[49m[38;5;241;43m=[39;49m[43mconn[49m[43m,[49m
+[1;32m    416[0m [43m    [49m[43mkeyfile[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mkey_file[49m[43m,[49m
+[1;32m    417[0m [43m    [49m[43mcertfile[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcert_file[49m[43m,[49m
+[1;32m    418[0m [43m    [49m[43mkey_password[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mkey_password[49m[43m,[49m
+[1;32m    419[0m [43m    [49m[43mca_certs[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mca_certs[49m[43m,[49m
+[1;32m    420[0m [43m    [49m[43mca_cert_dir[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mca_cert_dir[49m[43m,[49m
+[1;32m    421[0m [43m    [49m[43mca_cert_data[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mca_cert_data[49m[43m,[49m
+[1;32m    422[0m [43m    [49m[43mserver_hostname[49m[38;5;241;43m=[39;49m[43mserver_hostname[49m[43m,[49m
+[1;32m    423[0m [43m    [49m[43mssl_context[49m[38;5;241;43m=[39;49m[43mcontext[49m[43m,[49m
+[1;32m    424[0m [43m    [49m[43mtls_in_tls[49m[38;5;241;43m=[39;49m[43mtls_in_tls[49m[43m,[49m
+[1;32m    425[0m [43m[49m[43m)[49m
+[1;32m    427[0m [38;5;66;03m# If we're using all defaults and the connection[39;00m
+[1;32m    428[0m [38;5;66;03m# is TLSv1 or TLSv1.1 we throw a DeprecationWarning[39;00m
+[1;32m    429[0m [38;5;66;03m# for the host.[39;00m
 
-File [0;32m~/opt/anaconda3/lib/python3.9/http/client.py:1377[0m, in [0;36mHTTPConnection.getresponse[0;34m(self)[0m
-[1;32m   1376[0m [38;5;28;01mtry[39;00m:
-[0;32m-> 1377[0m     [43mresponse[49m[38;5;241;43m.[39;49m[43mbegin[49m[43m([49m[43m)[49m
-[1;32m   1378[0m [38;5;28;01mexcept[39;00m [38;5;167;01mConnectionError[39;00m:
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/util/ssl_.py:449[0m, in [0;36mssl_wrap_socket[0;34m(sock, keyfile, certfile, cert_reqs, ca_certs, server_hostname, ssl_version, ciphers, ssl_context, ca_cert_dir, key_password, ca_cert_data, tls_in_tls)[0m
+[1;32m    448[0m [38;5;28;01mif[39;00m send_sni:
+[0;32m--> 449[0m     ssl_sock [38;5;241m=[39m [43m_ssl_wrap_socket_impl[49m[43m([49m
+[1;32m    450[0m [43m        [49m[43msock[49m[43m,[49m[43m [49m[43mcontext[49m[43m,[49m[43m [49m[43mtls_in_tls[49m[43m,[49m[43m [49m[43mserver_hostname[49m[38;5;241;43m=[39;49m[43mserver_hostname[49m
+[1;32m    451[0m [43m    [49m[43m)[49m
+[1;32m    452[0m [38;5;28;01melse[39;00m:
 
-File [0;32m~/opt/anaconda3/lib/python3.9/http/client.py:320[0m, in [0;36mHTTPResponse.begin[0;34m(self)[0m
-[1;32m    319[0m [38;5;28;01mwhile[39;00m [38;5;28;01mTrue[39;00m:
-[0;32m--> 320[0m     version, status, reason [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_read_status[49m[43m([49m[43m)[49m
-[1;32m    321[0m     [38;5;28;01mif[39;00m status [38;5;241m!=[39m CONTINUE:
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/util/ssl_.py:493[0m, in [0;36m_ssl_wrap_socket_impl[0;34m(sock, ssl_context, tls_in_tls, server_hostname)[0m
+[1;32m    492[0m [38;5;28;01mif[39;00m server_hostname:
+[0;32m--> 493[0m     [38;5;28;01mreturn[39;00m [43mssl_context[49m[38;5;241;43m.[39;49m[43mwrap_socket[49m[43m([49m[43msock[49m[43m,[49m[43m [49m[43mserver_hostname[49m[38;5;241;43m=[39;49m[43mserver_hostname[49m[43m)[49m
+[1;32m    494[0m [38;5;28;01melse[39;00m:
 
-File [0;32m~/opt/anaconda3/lib/python3.9/http/client.py:281[0m, in [0;36mHTTPResponse._read_status[0;34m(self)[0m
-[1;32m    280[0m [38;5;28;01mdef[39;00m [38;5;21m_read_status[39m([38;5;28mself[39m):
-[0;32m--> 281[0m     line [38;5;241m=[39m [38;5;28mstr[39m([38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mfp[49m[38;5;241;43m.[39;49m[43mreadline[49m[43m([49m[43m_MAXLINE[49m[43m [49m[38;5;241;43m+[39;49m[43m [49m[38;5;241;43m1[39;49m[43m)[49m, [38;5;124m"[39m[38;5;124miso-8859-1[39m[38;5;124m"[39m)
-[1;32m    282[0m     [38;5;28;01mif[39;00m [38;5;28mlen[39m(line) [38;5;241m>[39m _MAXLINE:
+File [0;32m~/opt/anaconda3/lib/python3.9/ssl.py:500[0m, in [0;36mSSLContext.wrap_socket[0;34m(self, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, session)[0m
+[1;32m    494[0m [38;5;28;01mdef[39;00m [38;5;21mwrap_socket[39m([38;5;28mself[39m, sock, server_side[38;5;241m=[39m[38;5;28;01mFalse[39;00m,
+[1;32m    495[0m                 do_handshake_on_connect[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m    496[0m                 suppress_ragged_eofs[38;5;241m=[39m[38;5;28;01mTrue[39;00m,
+[1;32m    497[0m                 server_hostname[38;5;241m=[39m[38;5;28;01mNone[39;00m, session[38;5;241m=[39m[38;5;28;01mNone[39;00m):
+[1;32m    498[0m     [38;5;66;03m# SSLSocket class handles server_hostname encoding before it calls[39;00m
+[1;32m    499[0m     [38;5;66;03m# ctx._wrap_socket()[39;00m
+[0;32m--> 500[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43msslsocket_class[49m[38;5;241;43m.[39;49m[43m_create[49m[43m([49m
+[1;32m    501[0m [43m        [49m[43msock[49m[38;5;241;43m=[39;49m[43msock[49m[43m,[49m
+[1;32m    502[0m [43m        [49m[43mserver_side[49m[38;5;241;43m=[39;49m[43mserver_side[49m[43m,[49m
+[1;32m    503[0m [43m        [49m[43mdo_handshake_on_connect[49m[38;5;241;43m=[39;49m[43mdo_handshake_on_connect[49m[43m,[49m
+[1;32m    504[0m [43m        [49m[43msuppress_ragged_eofs[49m[38;5;241;43m=[39;49m[43msuppress_ragged_eofs[49m[43m,[49m
+[1;32m    505[0m [43m        [49m[43mserver_hostname[49m[38;5;241;43m=[39;49m[43mserver_hostname[49m[43m,[49m
+[1;32m    506[0m [43m        [49m[43mcontext[49m[38;5;241;43m=[39;49m[38;5;28;43mself[39;49m[43m,[49m
+[1;32m    507[0m [43m        [49m[43msession[49m[38;5;241;43m=[39;49m[43msession[49m
+[1;32m    508[0m [43m    [49m[43m)[49m
 
-File [0;32m~/opt/anaconda3/lib/python3.9/socket.py:704[0m, in [0;36mSocketIO.readinto[0;34m(self, b)[0m
-[1;32m    703[0m [38;5;28;01mtry[39;00m:
-[0;32m--> 704[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_sock[49m[38;5;241;43m.[39;49m[43mrecv_into[49m[43m([49m[43mb[49m[43m)[49m
-[1;32m    705[0m [38;5;28;01mexcept[39;00m timeout:
+File [0;32m~/opt/anaconda3/lib/python3.9/ssl.py:1040[0m, in [0;36mSSLSocket._create[0;34m(cls, sock, server_side, do_handshake_on_connect, suppress_ragged_eofs, server_hostname, context, session)[0m
+[1;32m   1039[0m             [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m([38;5;124m"[39m[38;5;124mdo_handshake_on_connect should not be specified for non-blocking sockets[39m[38;5;124m"[39m)
+[0;32m-> 1040[0m         [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mdo_handshake[49m[43m([49m[43m)[49m
+[1;32m   1041[0m [38;5;28;01mexcept[39;00m ([38;5;167;01mOSError[39;00m, [38;5;167;01mValueError[39;00m):
 
-File [0;32m~/opt/anaconda3/lib/python3.9/ssl.py:1241[0m, in [0;36mSSLSocket.recv_into[0;34m(self, buffer, nbytes, flags)[0m
-[1;32m   1238[0m         [38;5;28;01mraise[39;00m [38;5;167;01mValueError[39;00m(
-[1;32m   1239[0m           [38;5;124m"[39m[38;5;124mnon-zero flags not allowed in calls to recv_into() on [39m[38;5;132;01m%s[39;00m[38;5;124m"[39m [38;5;241m%[39m
-[1;32m   1240[0m           [38;5;28mself[39m[38;5;241m.[39m[38;5;18m__class__[39m)
-[0;32m-> 1241[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[43mnbytes[49m[43m,[49m[43m [49m[43mbuffer[49m[43m)[49m
-[1;32m   1242[0m [38;5;28;01melse[39;00m:
+File [0;32m~/opt/anaconda3/lib/python3.9/ssl.py:1309[0m, in [0;36mSSLSocket.do_handshake[0;34m(self, block)[0m
+[1;32m   1308[0m         [38;5;28mself[39m[38;5;241m.[39msettimeout([38;5;28;01mNone[39;00m)
+[0;32m-> 1309[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_sslobj[49m[38;5;241;43m.[39;49m[43mdo_handshake[49m[43m([49m[43m)[49m
+[1;32m   1310[0m [38;5;28;01mfinally[39;00m:
 
-File [0;32m~/opt/anaconda3/lib/python3.9/ssl.py:1099[0m, in [0;36mSSLSocket.read[0;34m(self, len, buffer)[0m
-[1;32m   1098[0m [38;5;28;01mif[39;00m buffer [38;5;129;01mis[39;00m [38;5;129;01mnot[39;00m [38;5;28;01mNone[39;00m:
-[0;32m-> 1099[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_sslobj[49m[38;5;241;43m.[39;49m[43mread[49m[43m([49m[38;5;28;43mlen[39;49m[43m,[49m[43m [49m[43mbuffer[49m[43m)[49m
-[1;32m   1100[0m [38;5;28;01melse[39;00m:
-
-[0;31mtimeout[0m: The read operation timed out
+[0;31mtimeout[0m: _ssl.c:1112: The handshake operation timed out
 
 During handling of the above exception, another exception occurred:
 
@@ -132,10 +161,11 @@ File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.p
 [1;32m    715[0m [38;5;66;03m# it will also try to release it and we'll have a double-release[39;00m
 [1;32m    716[0m [38;5;66;03m# mess.[39;00m
 
-File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:451[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
-[1;32m    450[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError, SocketError) [38;5;28;01mas[39;00m e:
-[0;32m--> 451[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_raise_timeout[49m[43m([49m[43merr[49m[38;5;241;43m=[39;49m[43me[49m[43m,[49m[43m [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m[43m [49m[43mtimeout_value[49m[38;5;241;43m=[39;49m[43mread_timeout[49m[43m)[49m
-[1;32m    452[0m     [38;5;28;01mraise[39;00m
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:389[0m, in [0;36mHTTPConnectionPool._make_request[0;34m(self, conn, method, url, timeout, chunked, **httplib_request_kw)[0m
+[1;32m    387[0m [38;5;28;01mexcept[39;00m (SocketTimeout, BaseSSLError) [38;5;28;01mas[39;00m e:
+[1;32m    388[0m     [38;5;66;03m# Py2 raises this as a BaseSSLError, Py3 raises it as socket timeout.[39;00m
+[0;32m--> 389[0m     [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_raise_timeout[49m[43m([49m[43merr[49m[38;5;241;43m=[39;49m[43me[49m[43m,[49m[43m [49m[43murl[49m[38;5;241;43m=[39;49m[43murl[49m[43m,[49m[43m [49m[43mtimeout_value[49m[38;5;241;43m=[39;49m[43mconn[49m[38;5;241;43m.[39;49m[43mtimeout[49m[43m)[49m
+[1;32m    390[0m     [38;5;28;01mraise[39;00m
 
 File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.py:340[0m, in [0;36mHTTPConnectionPool._raise_timeout[0;34m(self, err, url, timeout_value)[0m
 [1;32m    339[0m [38;5;28;01mif[39;00m [38;5;28misinstance[39m(err, SocketTimeout):
@@ -145,16 +175,17 @@ File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/urllib3/connectionpool.p
 [1;32m    344[0m [38;5;66;03m# See the above comment about EAGAIN in Python 3. In Python 2 we have[39;00m
 [1;32m    345[0m [38;5;66;03m# to specifically catch it and throw the timeout error[39;00m
 
-[0;31mReadTimeoutError[0m: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=3)
+[0;31mReadTimeoutError[0m: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=1)
 
 During handling of the above exception, another exception occurred:
 
 [0;31mReadTimeout[0m                               Traceback (most recent call last)
-Input [0;32mIn [1][0m, in [0;36m<cell line: 5>[0;34m()[0m
-[1;32m      2[0m url [38;5;241m=[39m [38;5;124m'[39m[38;5;124mhttps://www.ptt.cc/bbs/Boy-Girl/index.html[39m[38;5;124m'[39m
-[1;32m      3[0m [38;5;28mprint[39m(url)
-[0;32m----> 5[0m response [38;5;241m=[39m [43mrequests[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[43murl[49m[43m,[49m[43m [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43m([49m[38;5;241;43m2[39;49m[43m,[49m[43m [49m[38;5;241;43m3[39;49m[43m)[49m[43m)[49m
-[1;32m      6[0m [38;5;28mprint[39m(response[38;5;241m.[39mtext[:[38;5;241m500[39m])
+Input [0;32mIn [24][0m, in [0;36m<cell line: 2>[0;34m()[0m
+[1;32m      2[0m [38;5;28;01mfor[39;00m link [38;5;129;01min[39;00m links[:[38;5;241m5[39m]:
+[1;32m      3[0m     [38;5;28mprint[39m(link)
+[0;32m----> 4[0m     res [38;5;241m=[39m [43mrequests[49m[38;5;241;43m.[39;49m[43mget[49m[43m([49m[43mlink[49m[43m,[49m[43m [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43m([49m[38;5;241;43m1[39;49m[43m,[49m[43m [49m[38;5;241;43m2[39;49m[43m)[49m[43m)[49m
+[1;32m      5[0m     soup [38;5;241m=[39m BeautifulSoup(res[38;5;241m.[39mtext, [38;5;124m"[39m[38;5;124mhtml.parser[39m[38;5;124m"[39m)
+[1;32m      6[0m     metas [38;5;241m=[39m soup[38;5;241m.[39mfind_all(class_[38;5;241m=[39m[38;5;124m'[39m[38;5;124marticle-meta-value[39m[38;5;124m'[39m)
 
 File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/api.py:73[0m, in [0;36mget[0;34m(url, params, **kwargs)[0m
 [1;32m     62[0m [38;5;28;01mdef[39;00m [38;5;21mget[39m(url, params[38;5;241m=[39m[38;5;28;01mNone[39;00m, [38;5;241m*[39m[38;5;241m*[39mkwargs):
@@ -196,6 +227,6 @@ File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/requests/adapters.py:532
 [1;32m    533[0m [38;5;28;01melif[39;00m [38;5;28misinstance[39m(e, _InvalidHeader):
 [1;32m    534[0m     [38;5;28;01mraise[39;00m InvalidHeader(e, request[38;5;241m=[39mrequest)
 
-[0;31mReadTimeout[0m: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=3)
-ReadTimeout: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=3)
+[0;31mReadTimeout[0m: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=1)
+ReadTimeout: HTTPSConnectionPool(host='www.ptt.cc', port=443): Read timed out. (read timeout=1)
 

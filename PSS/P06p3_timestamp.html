@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>P06-3 Processing timestamp &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="P07 Visualization" href="P07_0_visualization.html" />
     <link rel="prev" title="Pandas: filter, select, and timeline process" href="P06p2_filter_select_datetime.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -522,9 +521,9 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p06-3-processing-timestamp">
-<h1>P06-3 Processing timestamp<a class="headerlink" href="#p06-3-processing-timestamp" title="Permalink to this heading">#</a></h1>
+<h1>P06-3 Processing timestamp<a class="headerlink" href="#p06-3-processing-timestamp" title="Permalink to this headline">#</a></h1>
 <section id="overview-time-objects">
-<h2>Overview: Time objects<a class="headerlink" href="#overview-time-objects" title="Permalink to this heading">#</a></h2>
+<h2>Overview: Time objects<a class="headerlink" href="#overview-time-objects" title="Permalink to this headline">#</a></h2>
 <p>我們可以認得<code class="docutils literal notranslate"><span class="pre">20210509</span></code>或<code class="docutils literal notranslate"><span class="pre">Sun</span> <span class="pre">May</span> <span class="pre">9</span> <span class="pre">10:52:43</span> <span class="pre">2021</span></code>或<code class="docutils literal notranslate"><span class="pre">2021-05-09</span> <span class="pre">10:52:43</span></code>是一個時間，但對程式而言，這就是一個字串。
 如果我們希望可以從中取出年、月、週、日、Weekday或做時間的運算（例如把時間加一週），然後來觀察時間上的分佈特徵（例如觀察所有貼文在時間軸上的生產力曲線），那就得把這些字串轉為時間型態，而Python的時間型態是<code class="docutils literal notranslate"><span class="pre">datetime</span></code>。</p>
 <p>通常就是兩個步驟，分別是<code class="docutils literal notranslate"><span class="pre">strptime()</span></code>和<code class="docutils literal notranslate"><span class="pre">strftime()</span></code>。前者將文字轉為時間物件、後者將時間物件轉為指定的字串格式。而轉換的方法並非程式會自動轉，而是你要告訴程式，你這個字串的格式為何？或者反過來，是告訴程式，你要轉為什麼格式的字串。例如<code class="docutils literal notranslate"><span class="pre">Sun</span> <span class="pre">May</span> <span class="pre">9</span> <span class="pre">10:52:43</span> <span class="pre">2021</span></code>如果要正確地轉為時間格式的話，應該是用以下格式轉：</p>
@@ -545,7 +544,7 @@ document.write(`
 <p>你可以從這個Python Doc的<a class="reference external" href="https://docs.python.org/3/library/datetime.html#strftime-and-strptime-behavior">strftime() and strptime() Behavior</a>這一節找到相關資訊。</p>
 </section>
 <section id="loading-data">
-<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading data<a class="headerlink" href="#loading-data" title="Permalink to this headline">#</a></h2>
 <p>Testing picle data download from <a class="github reference external" href="https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat">P4CSS/PSS</a></p>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
@@ -576,19 +575,10 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">2</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;../AS/data/pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span>     <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;../AS/data/pttpost_20210509_n178.dat&#39;
 </pre></div>
@@ -596,7 +586,7 @@ document.write(`
 </div>
 </div>
 <section id="post-df">
-<h3>post_df<a class="headerlink" href="#post-df" title="Permalink to this heading">#</a></h3>
+<h3>post_df<a class="headerlink" href="#post-df" title="Permalink to this headline">#</a></h3>
 <p>Processing</p>
 <ol class="arabic simple">
 <li><p>Convert list-of-dict to dataframe</p></li>
@@ -697,7 +687,7 @@ document.write(`
 </div>
 </section>
 <section id="comment-df">
-<h3>comment_df<a class="headerlink" href="#comment-df" title="Permalink to this heading">#</a></h3>
+<h3>comment_df<a class="headerlink" href="#comment-df" title="Permalink to this headline">#</a></h3>
 <p>Processing</p>
 <ol class="arabic simple">
 <li><p>Select <code class="docutils literal notranslate"><span class="pre">link</span></code> and <code class="docutils literal notranslate"><span class="pre">comments</span></code> columns</p></li>
@@ -906,7 +896,7 @@ document.write(`
 </section>
 </section>
 <section id="convert-timestamp">
-<h2>Convert timestamp<a class="headerlink" href="#convert-timestamp" title="Permalink to this heading">#</a></h2>
+<h2>Convert timestamp<a class="headerlink" href="#convert-timestamp" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">to_datetime</span><span class="p">(</span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">],</span> <span class="nb">format</span><span class="o">=</span><span class="s1">&#39;</span><span class="si">%a</span><span class="s1"> %b </span><span class="si">%d</span><span class="s1"> %H:%M:%S %Y&#39;</span><span class="p">)</span>
@@ -1038,7 +1028,7 @@ dtype: object
 </div>
 </section>
 <section id="retrieve-time-features">
-<h2>Retrieve time features<a class="headerlink" href="#retrieve-time-features" title="Permalink to this heading">#</a></h2>
+<h2>Retrieve time features<a class="headerlink" href="#retrieve-time-features" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;year&#39;</span><span class="p">]</span> <span class="o">=</span> <span class="n">post_df</span><span class="p">[</span><span class="s1">&#39;timestamp&#39;</span><span class="p">]</span><span class="o">.</span><span class="n">dt</span><span class="o">.</span><span class="n">year</span>
@@ -1159,7 +1149,7 @@ dtype: object
 </div>
 </section>
 <section id="plot-timeline">
-<h2>Plot timeline<a class="headerlink" href="#plot-timeline" title="Permalink to this heading">#</a></h2>
+<h2>Plot timeline<a class="headerlink" href="#plot-timeline" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># 按月份分組帖子的數量</span>

@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>CSS01 Network Analysis &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="CSS02 Simulation" href="CSS02_Simulation.html" />
     <link rel="prev" title="TM10 Using Open AI" href="../TM/TM10_Using_Open_AI.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -550,7 +549,7 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="css01-network-analysis">
-<h1>CSS01 Network Analysis<a class="headerlink" href="#css01-network-analysis" title="Permalink to this heading">#</a></h1>
+<h1>CSS01 Network Analysis<a class="headerlink" href="#css01-network-analysis" title="Permalink to this headline">#</a></h1>
 <ul class="simple">
 <li><p><a class="reference external" href="https://networkx.org/documentation/stable/tutorial.html">Networkx Tutorial</a></p></li>
 <li><p><a class="reference external" href="https://trenton3983.github.io/files/projects/2020-05-21_intro_to_network_analysis_in_python/2020-05-21_intro_to_network_analysis_in_python.html">Intro to network analysis in python</a> by Trenton McKinney (Recommended!)</p></li>
@@ -561,7 +560,7 @@ document.write(`
 <li><p><a class="reference external" href="https://towardsdatascience.com/text-network-analysis-generate-beautiful-network-visualisations-a373dbe183ca">Text network analysis</a> towarddatascience (Good!)</p></li>
 </ul>
 <section id="building-network">
-<h2>Building Network<a class="headerlink" href="#building-network" title="Permalink to this heading">#</a></h2>
+<h2>Building Network<a class="headerlink" href="#building-network" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># colab</span>
@@ -573,13 +572,78 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-09-14 22:22:30--  https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat
+Resolving github.com (github.com)... 20.27.177.113
+Connecting to github.com (github.com)|20.27.177.113|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
+Location: https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat [following]
+--2025-09-14 22:22:31--  https://raw.githubusercontent.com/P4CSS/PSS/master/data/pttpost_20210509_n178.dat
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>185.199.111.133, 185.199.108.133, 185.199.109.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.111.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+Length: 992132 (969K) [application/octet-stream]
+Saving to: &#39;pttpost_20210509_n178.dat&#39;
+
+
+          pttpost_2   0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>         pttpost_20   4%[                    ]  40.37K   141KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>        pttpost_202  12%[=&gt;                  ] 123.69K   205KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>       pttpost_2021  19%[==&gt;                 ] 187.69K   234KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>      pttpost_20210  29%[====&gt;               ] 283.69K   266KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>     pttpost_202105  37%[======&gt;             ] 363.69K   283KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>    pttpost_2021050  48%[========&gt;           ] 473.19K   316KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>   pttpost_20210509  57%[==========&gt;         ] 553.19K   312KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>  pttpost_20210509_  65%[============&gt;       ] 633.19K   319KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span> pttpost_20210509_n  70%[=============&gt;      ] 681.19K   293KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pttpost_20210509_n1  90%[=================&gt;  ] 873.19K   305KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>pttpost_20210509_n1 100%[===================&gt;] 968.88K   319KB/s    in 3.0s    
+
+2025-09-14 22:22:38 (319 KB/s) - &#39;pttpost_20210509_n178.dat&#39; saved [992132/992132]
 </pre></div>
 </div>
 </div>
 </div>
 <section id="collocation-as-cooccurrence">
-<h3>Collocation as Cooccurrence<a class="headerlink" href="#collocation-as-cooccurrence" title="Permalink to this heading">#</a></h3>
+<h3>Collocation as Cooccurrence<a class="headerlink" href="#collocation-as-cooccurrence" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -624,7 +688,7 @@ lagadidi	AIronKuma	14
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">NameError</span><span class="g g-Whitespace">                                 </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">3</span><span class="p">],</span> <span class="n">line</span> <span class="mi">2</span>
+<span class="nn">Input In [3],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>
 <span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="o">.</span><span class="n">from_records</span><span class="p">(</span><span class="n">li</span><span class="p">,</span> <span class="n">columns</span> <span class="o">=</span><span class="p">[</span><span class="s1">&#39;u1&#39;</span><span class="p">,</span> <span class="s1">&#39;u2&#39;</span><span class="p">,</span> <span class="s1">&#39;n&#39;</span><span class="p">])</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span>
@@ -637,9 +701,9 @@ lagadidi	AIronKuma	14
 </section>
 </section>
 <section id="drawing-network">
-<h2>Drawing network<a class="headerlink" href="#drawing-network" title="Permalink to this heading">#</a></h2>
+<h2>Drawing network<a class="headerlink" href="#drawing-network" title="Permalink to this headline">#</a></h2>
 <section id="matplotlib-networkx">
-<h3>matplotlib &amp; networkx<a class="headerlink" href="#matplotlib-networkx" title="Permalink to this heading">#</a></h3>
+<h3>matplotlib &amp; networkx<a class="headerlink" href="#matplotlib-networkx" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
@@ -693,7 +757,7 @@ lagadidi	AIronKuma	14
 </div>
 </section>
 <section id="pyvis-network">
-<h3>pyvis.network<a class="headerlink" href="#pyvis-network" title="Permalink to this heading">#</a></h3>
+<h3>pyvis.network<a class="headerlink" href="#pyvis-network" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">pyvis.network</span> <span class="kn">import</span> <span class="n">Network</span>
@@ -721,7 +785,7 @@ lagadidi	AIronKuma	14
 </section>
 </section>
 <section id="node-level-analysis">
-<h2>Node-level analysis<a class="headerlink" href="#node-level-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Node-level analysis<a class="headerlink" href="#node-level-analysis" title="Permalink to this headline">#</a></h2>
 <p>Reference</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://trenton3983.github.io/files/projects/2020-05-21_intro_to_network_analysis_in_python/2020-05-21_intro_to_network_analysis_in_python.html">https://trenton3983.github.io/files/projects/2020-05-21_intro_to_network_analysis_in_python/2020-05-21_intro_to_network_analysis_in_python.html</a></p></li>
@@ -764,7 +828,7 @@ Matplotlib version: 3.5.1
 </div>
 </div>
 <section id="degree-histogram">
-<h3>Degree histogram<a class="headerlink" href="#degree-histogram" title="Permalink to this heading">#</a></h3>
+<h3>Degree histogram<a class="headerlink" href="#degree-histogram" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dhist</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_histogram</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -797,7 +861,7 @@ Matplotlib version: 3.5.1
 </div>
 </section>
 <section id="degree-centrality">
-<h3>Degree centrality<a class="headerlink" href="#degree-centrality" title="Permalink to this heading">#</a></h3>
+<h3>Degree centrality<a class="headerlink" href="#degree-centrality" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">dc</span> <span class="o">=</span> <span class="n">nx</span><span class="o">.</span><span class="n">degree_centrality</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -920,7 +984,7 @@ Matplotlib version: 3.5.1
 </section>
 </section>
 <section id="global-network-analysis">
-<h2>Global network analysis<a class="headerlink" href="#global-network-analysis" title="Permalink to this heading">#</a></h2>
+<h2>Global network analysis<a class="headerlink" href="#global-network-analysis" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nx</span><span class="o">.</span><span class="n">density</span><span class="p">(</span><span class="n">G</span><span class="p">)</span>
@@ -977,7 +1041,7 @@ density: 0.026851851851851852
 </div>
 </section>
 <section id="components">
-<h2>Components<a class="headerlink" href="#components" title="Permalink to this heading">#</a></h2>
+<h2>Components<a class="headerlink" href="#components" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="s2">&quot; &quot;</span><span class="o">.</span><span class="n">join</span><span class="p">([</span><span class="nb">str</span><span class="p">(</span><span class="nb">len</span><span class="p">(</span><span class="n">conn</span><span class="p">))</span> <span class="k">for</span> <span class="n">conn</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)])</span>
@@ -991,7 +1055,7 @@ density: 0.026851851851851852
 </div>
 </div>
 <section id="get-top-3-components">
-<h3>Get top 3 components<a class="headerlink" href="#get-top-3-components" title="Permalink to this heading">#</a></h3>
+<h3>Get top 3 components<a class="headerlink" href="#get-top-3-components" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">nodelist</span> <span class="ow">in</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[:</span><span class="mi">3</span><span class="p">]:</span>
@@ -1043,7 +1107,7 @@ density: 0.026851851851851852
 </div>
 </section>
 <section id="viz-by-matplotlib">
-<h3>Viz by matplotlib<a class="headerlink" href="#viz-by-matplotlib" title="Permalink to this heading">#</a></h3>
+<h3>Viz by matplotlib<a class="headerlink" href="#viz-by-matplotlib" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
@@ -1079,7 +1143,7 @@ density: 0.026851851851851852
 </div>
 </section>
 <section id="vis-by-pyviz">
-<h3>Vis by pyviz<a class="headerlink" href="#vis-by-pyviz" title="Permalink to this heading">#</a></h3>
+<h3>Vis by pyviz<a class="headerlink" href="#vis-by-pyviz" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">attr</span> <span class="o">=</span> <span class="p">{</span><span class="n">node</span><span class="p">:</span><span class="n">index</span> <span class="k">for</span> <span class="n">index</span><span class="p">,</span> <span class="n">sg</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">subG</span><span class="p">))</span> <span class="k">for</span> <span class="n">node</span> <span class="ow">in</span> <span class="n">sg</span><span class="p">}</span>
@@ -1112,9 +1176,9 @@ density: 0.026851851851851852
 </section>
 </section>
 <section id="community">
-<h2>Community<a class="headerlink" href="#community" title="Permalink to this heading">#</a></h2>
+<h2>Community<a class="headerlink" href="#community" title="Permalink to this headline">#</a></h2>
 <section id="build-up-network">
-<h3>Build-up network<a class="headerlink" href="#build-up-network" title="Permalink to this heading">#</a></h3>
+<h3>Build-up network<a class="headerlink" href="#build-up-network" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">collections</span> <span class="kn">import</span> <span class="n">Counter</span>
@@ -1245,7 +1309,7 @@ sl11pman	frank355571	270
 </div></div></div>
 </div>
 <section id="drawing-original-network">
-<h4>Drawing original network<a class="headerlink" href="#drawing-original-network" title="Permalink to this heading">#</a></h4>
+<h4>Drawing original network<a class="headerlink" href="#drawing-original-network" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">math</span>
@@ -1300,7 +1364,7 @@ sl11pman	frank355571	270
 </section>
 </section>
 <section id="maximum-component">
-<h3>Maximum component<a class="headerlink" href="#maximum-component" title="Permalink to this heading">#</a></h3>
+<h3>Maximum component<a class="headerlink" href="#maximum-component" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">topG</span> <span class="o">=</span> <span class="nb">sorted</span><span class="p">(</span><span class="n">nx</span><span class="o">.</span><span class="n">connected_components</span><span class="p">(</span><span class="n">G</span><span class="p">),</span> <span class="n">key</span><span class="o">=</span><span class="nb">len</span><span class="p">,</span> <span class="n">reverse</span><span class="o">=</span><span class="kc">True</span><span class="p">)[</span><span class="mi">0</span><span class="p">]</span>
@@ -1312,7 +1376,7 @@ sl11pman	frank355571	270
 </div>
 </div>
 <section id="viz-the-maximum-component">
-<h4>Viz the maximum component<a class="headerlink" href="#viz-the-maximum-component" title="Permalink to this heading">#</a></h4>
+<h4>Viz the maximum component<a class="headerlink" href="#viz-the-maximum-component" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
@@ -1348,7 +1412,7 @@ sl11pman	frank355571	270
 </section>
 </section>
 <section id="detect-communities">
-<h3>Detect communities<a class="headerlink" href="#detect-communities" title="Permalink to this heading">#</a></h3>
+<h3>Detect communities<a class="headerlink" href="#detect-communities" title="Permalink to this headline">#</a></h3>
 <ul class="simple">
 <li><p><a class="reference external" href="https://networkx.org/documentation/stable/reference/algorithms/community.html">https://networkx.org/documentation/stable/reference/algorithms/community.html</a></p></li>
 </ul>
@@ -1377,7 +1441,7 @@ sl11pman	frank355571	270
 </div>
 </div>
 <section id="viz-communities">
-<h4>Viz communities<a class="headerlink" href="#viz-communities" title="Permalink to this heading">#</a></h4>
+<h4>Viz communities<a class="headerlink" href="#viz-communities" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">fig</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">figure</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">10</span><span class="p">,</span> <span class="mi">10</span><span class="p">),</span> <span class="n">dpi</span><span class="o">=</span><span class="mi">130</span><span class="p">)</span>
@@ -1411,7 +1475,7 @@ sl11pman	frank355571	270
 </div>
 </section>
 <section id="viz-communities-by-pyvis">
-<h4>viz communities by pyvis<a class="headerlink" href="#viz-communities-by-pyvis" title="Permalink to this heading">#</a></h4>
+<h4>viz communities by pyvis<a class="headerlink" href="#viz-communities-by-pyvis" title="Permalink to this headline">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># from pyvis.network import Network as net</span>

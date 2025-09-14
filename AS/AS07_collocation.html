@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>AS07 Collocation for finding enthusiastic commentors &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS08 Youtube comment clustering" href="AS08_clustering_yt_comment.html" />
     <link rel="prev" title="AS06 - Tokenization and keywords" href="AS06_Tokenization.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -524,10 +523,10 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as07-collocation-for-finding-enthusiastic-commentors">
-<h1>AS07 Collocation for finding enthusiastic commentors<a class="headerlink" href="#as07-collocation-for-finding-enthusiastic-commentors" title="Permalink to this heading">#</a></h1>
+<h1>AS07 Collocation for finding enthusiastic commentors<a class="headerlink" href="#as07-collocation-for-finding-enthusiastic-commentors" title="Permalink to this headline">#</a></h1>
 <p>在文字探勘的第二單元我們介紹了Collocation來找出significant word pair。同樣的方法，我也可以把他改造來找出，在討論板上哪兩個人老是一起出現。你可以想像說在一個討論板中，某一主題一出來，某些人就會突然冒出來開始Comment。並且A下了Comment後，很快的B也會跟著下Comment。我們可以用Collocation的概念來找出這些總是一起出現的Commentors。但社會科學會把這樣的關係稱為Cooccurrence（共現）。</p>
 <section id="convert-collocation-as-network">
-<h2>Convert Collocation as Network<a class="headerlink" href="#convert-collocation-as-network" title="Permalink to this heading">#</a></h2>
+<h2>Convert Collocation as Network<a class="headerlink" href="#convert-collocation-as-network" title="Permalink to this headline">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># colab</span>
@@ -541,20 +540,11 @@ document.write(`
 <div class="cell_output docutils container">
 <div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
 <span class="ne">FileNotFoundError</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="n">Cell</span> <span class="n">In</span><span class="p">[</span><span class="mi">1</span><span class="p">],</span> <span class="n">line</span> <span class="mi">4</span>
+<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
 <span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">pickle</span>
 <span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="c1"># !wget https://github.com/P4CSS/PSS/raw/master/data/pttpost_20210509_n178.dat -O pttpost_20210509_n178.dat</span>
 <span class="ne">----&gt; </span><span class="mi">4</span> <span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="s2">&quot;data/pttpost_20210509_n178.dat&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span> <span class="k">as</span> <span class="n">fin</span><span class="p">:</span>
 <span class="g g-Whitespace">      </span><span class="mi">5</span>     <span class="n">all_post</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">fin</span><span class="p">)</span>
-
-<span class="nn">File ~/anaconda3/lib/python3.10/site-packages/IPython/core/interactiveshell.py:282,</span> in <span class="ni">_modified_open</span><span class="nt">(file, *args, **kwargs)</span>
-<span class="g g-Whitespace">    </span><span class="mi">275</span> <span class="k">if</span> <span class="n">file</span> <span class="ow">in</span> <span class="p">{</span><span class="mi">0</span><span class="p">,</span> <span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">}:</span>
-<span class="g g-Whitespace">    </span><span class="mi">276</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">277</span>         <span class="sa">f</span><span class="s2">&quot;IPython won&#39;t let you open fd=</span><span class="si">{</span><span class="n">file</span><span class="si">}</span><span class="s2"> by default &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">278</span>         <span class="s2">&quot;as it is likely to crash IPython. If you know what you are doing, &quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">279</span>         <span class="s2">&quot;you can use builtins&#39; open.&quot;</span>
-<span class="g g-Whitespace">    </span><span class="mi">280</span>     <span class="p">)</span>
-<span class="ne">--&gt; </span><span class="mi">282</span> <span class="k">return</span> <span class="n">io_open</span><span class="p">(</span><span class="n">file</span><span class="p">,</span> <span class="o">*</span><span class="n">args</span><span class="p">,</span> <span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
 
 <span class="ne">FileNotFoundError</span>: [Errno 2] No such file or directory: &#39;data/pttpost_20210509_n178.dat&#39;
 </pre></div>
@@ -658,7 +648,7 @@ document.write(`
 </div>
 </div>
 <section id="collocation-as-cooccurrence">
-<h3>1. Collocation as Cooccurrence<a class="headerlink" href="#collocation-as-cooccurrence" title="Permalink to this heading">#</a></h3>
+<h3>1. Collocation as Cooccurrence<a class="headerlink" href="#collocation-as-cooccurrence" title="Permalink to this headline">#</a></h3>
 <p>只要在同一則貼文的comments內，我們把任兩個commentor視為有co-comment，也就是Cooccurrence（共現）的關係。請計算出共現於本資料集中，頻率最高的前20對commentor（必須印出Collocation times作為參考）。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">s72005ming</span>	<span class="n">sl11pman</span>	<span class="mi">450</span>
 <span class="n">loham</span>	<span class="n">sl11pman</span>	<span class="mi">450</span>
@@ -691,7 +681,7 @@ document.write(`
 </div>
 </section>
 <section id="using-mi">
-<h3>2. Using MI<a class="headerlink" href="#using-mi" title="Permalink to this heading">#</a></h3>
+<h3>2. Using MI<a class="headerlink" href="#using-mi" title="Permalink to this headline">#</a></h3>
 <p>MI的計算方式主要是為了要標準化任一字的出現次數和任兩個字的出現次數的影響。請用MI的方式計算出哪兩個人特別常一起出現在同一則貼文的comments中。請用<code class="docutils literal notranslate"><span class="pre">most_common()</span></code>印出M前20大MI的Pairs（必須印出MI值作為參考）。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">loham</span> <span class="n">sl11pman</span> <span class="mi">450</span> <span class="mf">5.535381</span>
 <span class="n">sl11pman</span> <span class="n">loham</span> <span class="mi">450</span> <span class="mf">5.535381</span>
@@ -725,7 +715,7 @@ document.write(`
 </div>
 </section>
 <section id="cooccurrence-with-distance">
-<h3>3. Cooccurrence with distance<a class="headerlink" href="#cooccurrence-with-distance" title="Permalink to this heading">#</a></h3>
+<h3>3. Cooccurrence with distance<a class="headerlink" href="#cooccurrence-with-distance" title="Permalink to this headline">#</a></h3>
 <p>就上述的資料集，我想定義的人與人的關係是「這兩個人老是一前一後出現」，所以我規劃僅計算前後5則以內的comments，也就是說，在同一貼文中，如果A是第一則comment，B是第六則comment，C是第七則，那我不列計A和C的關係，但列計A和B的關係。請用collocation with distance的觀念，計算任兩個comment間的平均距離，並用<code class="docutils literal notranslate"><span class="pre">most_comment()</span></code>列印出平均距離最短的前二十對commentors。</p>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">chen0625</span><span class="o">-</span><span class="n">Qinsect</span>	<span class="mf">1.500000</span>	<span class="mi">2</span>
 <span class="n">kenryu</span><span class="o">-</span><span class="n">bar1005</span>	<span class="mf">1.500000</span>	<span class="mi">2</span>
@@ -759,11 +749,11 @@ document.write(`
 </section>
 </section>
 <section id="drawing-collocation-network">
-<h2>Drawing collocation network<a class="headerlink" href="#drawing-collocation-network" title="Permalink to this heading">#</a></h2>
+<h2>Drawing collocation network<a class="headerlink" href="#drawing-collocation-network" title="Permalink to this headline">#</a></h2>
 <p>以下已經提供給你部分不同網絡的視覺化方法和參數調整方法。如果你要看懂每個函式有可能要查閱Networkx的Document，不過這是為了push你去查閱document來理解這些程式碼。</p>
 <p>列印出mi值或count值前500大、前1000大、前2000大（會有點吃力）的pairs of user，並觀察該圖型。基於co-commentor的網絡視覺化，你認為這群co-commenter有什麼特性？請多列印幾種版本，並將你的看法寫在以下的ANSWER後：</p>
 <section id="construct-edgelist-dataframe">
-<h3>Construct edgelist dataframe<a class="headerlink" href="#construct-edgelist-dataframe" title="Permalink to this heading">#</a></h3>
+<h3>Construct edgelist dataframe<a class="headerlink" href="#construct-edgelist-dataframe" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -884,7 +874,7 @@ document.write(`
 </div>
 </section>
 <section id="filter-high-frequency-pairs">
-<h3>Filter high frequency pairs<a class="headerlink" href="#filter-high-frequency-pairs" title="Permalink to this heading">#</a></h3>
+<h3>Filter high frequency pairs<a class="headerlink" href="#filter-high-frequency-pairs" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">li</span> <span class="o">=</span> <span class="p">[(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">,</span> <span class="n">n</span><span class="p">)</span><span class="k">for</span> <span class="p">(</span><span class="n">u1</span><span class="p">,</span> <span class="n">u2</span><span class="p">),</span> <span class="n">n</span> <span class="ow">in</span> <span class="n">user_pair_counts</span><span class="o">.</span><span class="n">most_common</span><span class="p">()</span> <span class="k">if</span> <span class="n">n</span> <span class="o">&gt;</span> <span class="mi">3</span><span class="p">]</span>

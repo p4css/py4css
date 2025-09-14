@@ -3,11 +3,11 @@
 <!DOCTYPE html>
 
 
-<html lang="en" >
+<html >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.18.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
 
     <title>AS08 Youtube comment clustering &#8212; Programming for Social Scientists</title>
   
@@ -46,7 +46,6 @@
     <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
     <script src="../_static/jquery.js"></script>
     <script src="../_static/underscore.js"></script>
-    <script src="../_static/_sphinx_javascript_frameworks_compat.js"></script>
     <script src="../_static/doctools.js"></script>
     <script src="../_static/clipboard.min.js"></script>
     <script src="../_static/copybutton.js"></script>
@@ -69,7 +68,7 @@ const thebe_selector_output = ".output, .cell_output"
     <link rel="next" title="AS08 - Clustering Commenters Based on Behavior" href="AS08_clustering_people.html" />
     <link rel="prev" title="AS07 Collocation for finding enthusiastic commentors" href="AS07_collocation.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="en"/>
+  <meta name="docsearch:language" content="None"/>
   </head>
   
   
@@ -179,7 +178,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p1_for.html">P04 Practice01: for loop</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-<li class="toctree-l2"><a class="reference internal" href="../PSS/P04p3_twitter_users.html">P04 Practice03 Twitter Users</a></li>
 </ul>
 </li>
 </ul>
@@ -208,6 +206,7 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="../PSS/P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="../PSS/P08_5_cases.html">Scraping cases</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../PSS/P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
 </li>
 <li class="toctree-l1"><a class="reference internal" href="../PSS/P08_4_ptt_crawler.html">P08 HTML Parsing - Crawling PTT</a></li>
@@ -536,14 +535,14 @@ document.write(`
                 <article class="bd-article" role="main">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="as08-youtube-comment-clustering">
-<h1>AS08 Youtube comment clustering<a class="headerlink" href="#as08-youtube-comment-clustering" title="Permalink to this heading">#</a></h1>
+<h1>AS08 Youtube comment clustering<a class="headerlink" href="#as08-youtube-comment-clustering" title="Permalink to this headline">#</a></h1>
 <p>在AS06萃取關鍵字的練習中，我們曾使用反送中相關影片之留言共八千則作為範例。這次的作業將邀請你使用該筆資料，先篩檢關鍵字，再透過群集法，嘗試找出留言有哪些主題、立場、或者網民討論的面向等等。這次的作業是開放式的結果，也就是每個人所找出來的主題或立場等可能不太一樣，但目標是一致的，找出這些文本裡面有哪些主題、在討論什麼。這種問問題的方式其實也出現在不少專題組別中。你在寫作業的過程，應該會不斷地感受到，這怎麼抽得出來主題？這真的抽得出來嗎？這樣抽出來的主題有效嗎？有意義嗎？然後為了獲得能說服自己的主題，你可能會不斷反覆篩選這些留言，卻又會遇到對代表性的質疑，也就是，縮減到這麼小的資料集合，做出來的結果會有代表性嗎？</p>
 <p>所以這個作業有個目的是先讓你透過做作業了解到，如果你做的專題是想回答「這些文本裡面有哪些主題」，很可能會遇到什麼樣的問題。</p>
 <p>本週的作業程式碼無特殊規定，要怎麼處理這些資料，或者要怎麼解釋跑出來的東西，都讓同學自由發揮。唯獨需要回答你做了什麼樣的篩檢，還有繪製出視覺化的群集結果，和自我評估用群集來找主題是否有效。</p>
 <section id="todo-answer-the-following-questions">
-<h2>(TODO) Answer the following questions<a class="headerlink" href="#todo-answer-the-following-questions" title="Permalink to this heading">#</a></h2>
+<h2>(TODO) Answer the following questions<a class="headerlink" href="#todo-answer-the-following-questions" title="Permalink to this headline">#</a></h2>
 <section id="todo-document-filtering-strategies">
-<h3>(TODO)Document filtering strategies<a class="headerlink" href="#todo-document-filtering-strategies" title="Permalink to this heading">#</a></h3>
+<h3>(TODO)Document filtering strategies<a class="headerlink" href="#todo-document-filtering-strategies" title="Permalink to this headline">#</a></h3>
 <p>目前作業給的資料一共有8000筆留言，每筆留言的欄位有發佈時間、更新時間、按讚數、也可以計算留言的字數，請問你採用了什麼樣的篩選策略？請於以下的文字框回答（編輯下方Markdown，需說明至少五個連續處理過程）。這種過程的書寫通常會出現在論文或者研究報告中，或者出現在學術海報的一小塊paragraph。</p>
 <p>（範例答案）</p>
 <ol class="arabic simple">
@@ -555,7 +554,7 @@ document.write(`
 </ol>
 </section>
 <section id="todo-vocabulary-filtering-strategies">
-<h3>(TODO)Vocabulary filtering strategies<a class="headerlink" href="#todo-vocabulary-filtering-strategies" title="Permalink to this heading">#</a></h3>
+<h3>(TODO)Vocabulary filtering strategies<a class="headerlink" href="#todo-vocabulary-filtering-strategies" title="Permalink to this headline">#</a></h3>
 <p>在教學範例中，我們介紹不少Strategy來篩選不必要或必要的文字，請問你怎麼做關鍵字篩選？</p>
 <ol class="arabic simple">
 <li><p>原始資料在斷詞後共有XXX個相異字詞。（規定填寫）</p></li>
@@ -567,9 +566,9 @@ document.write(`
 </section>
 </section>
 <section id="loading-youtube-data">
-<h2>Loading youtube data<a class="headerlink" href="#loading-youtube-data" title="Permalink to this heading">#</a></h2>
+<h2>Loading youtube data<a class="headerlink" href="#loading-youtube-data" title="Permalink to this headline">#</a></h2>
 <section id="by-colab-or-jupyter-lab">
-<h3>by colab or jupyter-lab<a class="headerlink" href="#by-colab-or-jupyter-lab" title="Permalink to this heading">#</a></h3>
+<h3>by colab or jupyter-lab<a class="headerlink" href="#by-colab-or-jupyter-lab" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="o">!</span>mkdir<span class="w"> </span>./data
@@ -581,7 +580,78 @@ document.write(`
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>mkdir: ./data: File exists
 </pre></div>
 </div>
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>zsh:1: command not found: wget
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>--2025-09-14 22:22:21--  https://github.com/p4css/py4css/raw/main/data/yt-comment-antiELAB.xlsx
+Resolving github.com (github.com)... 20.27.177.113
+Connecting to github.com (github.com)|20.27.177.113|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>302 Found
+Location: https://raw.githubusercontent.com/p4css/py4css/main/data/yt-comment-antiELAB.xlsx [following]
+--2025-09-14 22:22:22--  https://raw.githubusercontent.com/p4css/py4css/main/data/yt-comment-antiELAB.xlsx
+Resolving raw.githubusercontent.com (raw.githubusercontent.com)... 185.199.109.133, 185.199.111.133, 185.199.108.133, ...
+Connecting to raw.githubusercontent.com (raw.githubusercontent.com)|185.199.109.133|:443... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>connected.
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>HTTP request sent, awaiting response... 
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>200 OK
+Length: 644405 (629K) [application/octet-stream]
+Saving to: &#39;./data/yt-comment-antiELAB.xlsx&#39;
+
+
+yt-comment-antiELAB   0%[                    ]       0  --.-KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB   6%[&gt;                   ]  40.00K   111KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  16%[==&gt;                 ] 104.00K   106KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  34%[=====&gt;              ] 216.00K   157KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  41%[=======&gt;            ] 264.00K   163KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  44%[=======&gt;            ] 280.00K   153KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  54%[=========&gt;          ] 344.00K   159KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  62%[===========&gt;        ] 392.00K   165KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  67%[============&gt;       ] 424.00K   164KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  72%[=============&gt;      ] 456.00K   159KB/s               
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  82%[===============&gt;    ] 520.00K   167KB/s    eta 1s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  87%[================&gt;   ] 552.00K   162KB/s    eta 1s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB  98%[==================&gt; ] 619.62K   166KB/s    eta 1s     
+</pre></div>
+</div>
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>yt-comment-antiELAB 100%[===================&gt;] 629.30K   168KB/s    in 3.7s    
+
+Last-modified header missing -- time-stamps turned off.
+2025-09-14 22:22:28 (168 KB/s) - &#39;./data/yt-comment-antiELAB.xlsx&#39; saved [644405/644405]
 </pre></div>
 </div>
 </div>
@@ -595,164 +665,78 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_html"><div>
-<style scoped>
-    .dataframe tbody tr th:only-of-type {
-        vertical-align: middle;
-    }
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
+  from pandas.core.computation.check import NUMEXPR_INSTALLED
+/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
+  from pandas.core import (
+</pre></div>
+</div>
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">ImportError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [2],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">df</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_excel</span><span class="p">(</span><span class="s1">&#39;data/yt-comment-antiELAB.xlsx&#39;</span><span class="p">)</span> 
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">df</span>
 
-    .dataframe tbody tr th {
-        vertical-align: top;
-    }
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/excel/_base.py:495,</span> in <span class="ni">read_excel</span><span class="nt">(io, sheet_name, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skiprows, nrows, na_values, keep_default_na, na_filter, verbose, parse_dates, date_parser, date_format, thousands, decimal, comment, skipfooter, storage_options, dtype_backend, engine_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">493</span> <span class="k">if</span> <span class="ow">not</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">io</span><span class="p">,</span> <span class="n">ExcelFile</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">494</span>     <span class="n">should_close</span> <span class="o">=</span> <span class="kc">True</span>
+<span class="ne">--&gt; </span><span class="mi">495</span>     <span class="n">io</span> <span class="o">=</span> <span class="n">ExcelFile</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">496</span>         <span class="n">io</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">497</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">498</span>         <span class="n">engine</span><span class="o">=</span><span class="n">engine</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">499</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">500</span>     <span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">501</span> <span class="k">elif</span> <span class="n">engine</span> <span class="ow">and</span> <span class="n">engine</span> <span class="o">!=</span> <span class="n">io</span><span class="o">.</span><span class="n">engine</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">502</span>     <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">503</span>         <span class="s2">&quot;Engine should not be specified when passing &quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">504</span>         <span class="s2">&quot;an ExcelFile - ExcelFile already has the engine set&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">505</span>     <span class="p">)</span>
 
-    .dataframe thead th {
-        text-align: right;
-    }
-</style>
-<table border="1" class="dataframe">
-  <thead>
-    <tr style="text-align: right;">
-      <th></th>
-      <th>videoId</th>
-      <th>commentId</th>
-      <th>parentId</th>
-      <th>authorDisplayName</th>
-      <th>textOriginal</th>
-      <th>likeCount</th>
-      <th>publishedAt</th>
-      <th>updatedAt</th>
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th>0</th>
-      <td>2_tXjqhbe5E</td>
-      <td>UgwQIF9qNqGydjE2NkN4AaABAg</td>
-      <td>NaN</td>
-      <td>CHI-HAU CHEN</td>
-      <td>鄭大哥和吉雷米的互動很可愛，歡迎加入台灣這個溫馨的家庭喔~~~~</td>
-      <td>19</td>
-      <td>2020-04-02T01:40:29Z</td>
-      <td>2020-04-02T01:40:29Z</td>
-    </tr>
-    <tr>
-      <th>1</th>
-      <td>2_tXjqhbe5E</td>
-      <td>UgwuP0Jva-U69xTMaEF4AaABAg</td>
-      <td>NaN</td>
-      <td>Funky Duck</td>
-      <td>牛嘴掩.....\n這高雄老外的台語能力應該比台北人好</td>
-      <td>1</td>
-      <td>2020-04-07T04:36:37Z</td>
-      <td>2020-04-07T04:36:37Z</td>
-    </tr>
-    <tr>
-      <th>2</th>
-      <td>2_tXjqhbe5E</td>
-      <td>UgyVlhx36V2XWLOM9MZ4AaABAg</td>
-      <td>NaN</td>
-      <td>Ally</td>
-      <td>Zoom把客戶資料洩給中國，現在紐約市已不讓學生用這系統視訊上課了!</td>
-      <td>0</td>
-      <td>2020-04-06T19:54:04Z</td>
-      <td>2020-04-06T19:54:04Z</td>
-    </tr>
-    <tr>
-      <th>3</th>
-      <td>2_tXjqhbe5E</td>
-      <td>Ugz4v7OudQxaDXYyegZ4AaABAg</td>
-      <td>NaN</td>
-      <td>Ally</td>
-      <td>法國人執行居家避疫比起美國比較確實，外出還要有通行證</td>
-      <td>0</td>
-      <td>2020-04-06T19:18:24Z</td>
-      <td>2020-04-06T19:18:24Z</td>
-    </tr>
-    <tr>
-      <th>4</th>
-      <td>2_tXjqhbe5E</td>
-      <td>Ugyb-ogACbZWVewnU-94AaABAg</td>
-      <td>NaN</td>
-      <td>Kitty Wong</td>
-      <td>仆街鄭</td>
-      <td>0</td>
-      <td>2020-04-06T15:20:34Z</td>
-      <td>2020-04-06T15:20:34Z</td>
-    </tr>
-    <tr>
-      <th>...</th>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-      <td>...</td>
-    </tr>
-    <tr>
-      <th>7995</th>
-      <td>ySMAcMAL6rY</td>
-      <td>UgzU9oD5I6q1qHLzx_B4AaABAg</td>
-      <td>NaN</td>
-      <td>nova lee</td>
-      <td>自己不是會算嗎</td>
-      <td>1</td>
-      <td>2019-08-22T04:00:31Z</td>
-      <td>2019-08-22T04:00:31Z</td>
-    </tr>
-    <tr>
-      <th>7996</th>
-      <td>zHlhQoT9OF0</td>
-      <td>Ugz2ff-Be0yCoEUY-Rd4AaABAg</td>
-      <td>NaN</td>
-      <td>the world Rock</td>
-      <td>常德說的真好</td>
-      <td>3</td>
-      <td>2020-04-10T03:21:34Z</td>
-      <td>2020-04-10T03:21:34Z</td>
-    </tr>
-    <tr>
-      <th>7997</th>
-      <td>zQWzh4yj_g8</td>
-      <td>Ugwex9I2lZWa-DgeWrx4AaABAg</td>
-      <td>NaN</td>
-      <td>Zoe Su</td>
-      <td>自私的人多的是，水準就和中國人一樣</td>
-      <td>1</td>
-      <td>2020-02-12T22:13:24Z</td>
-      <td>2020-02-12T22:13:24Z</td>
-    </tr>
-    <tr>
-      <th>7998</th>
-      <td>zQWzh4yj_g8</td>
-      <td>UgxpokMr9hHK0Ugcvl94AaABAg</td>
-      <td>NaN</td>
-      <td>非也非也</td>
-      <td>人都自私自利的，適者生存，不適者自己想辦法，沒有人會幫的，靠自己最實在</td>
-      <td>0</td>
-      <td>2020-02-12T04:53:28Z</td>
-      <td>2020-02-12T04:53:28Z</td>
-    </tr>
-    <tr>
-      <th>7999</th>
-      <td>zQWzh4yj_g8</td>
-      <td>Ugwhiijo6yStMhOZqVB4AaABAg</td>
-      <td>NaN</td>
-      <td>你们是愚民</td>
-      <td>鑽石公主號我們的同胞22人以及留在大陸我們的同胞救回來了沒有，菜英文民進黨更無情，更自私吧！...</td>
-      <td>0</td>
-      <td>2020-02-12T04:25:58Z</td>
-      <td>2020-02-12T04:25:58Z</td>
-    </tr>
-  </tbody>
-</table>
-<p>8000 rows × 8 columns</p>
-</div></div></div>
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/excel/_base.py:1567,</span> in <span class="ni">ExcelFile.__init__</span><span class="nt">(self, path_or_buffer, engine, storage_options, engine_kwargs)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1564</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span> <span class="o">=</span> <span class="n">engine</span>
+<span class="g g-Whitespace">   </span><span class="mi">1565</span> <span class="bp">self</span><span class="o">.</span><span class="n">storage_options</span> <span class="o">=</span> <span class="n">storage_options</span>
+<span class="ne">-&gt; </span><span class="mi">1567</span> <span class="bp">self</span><span class="o">.</span><span class="n">_reader</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engines</span><span class="p">[</span><span class="n">engine</span><span class="p">](</span>
+<span class="g g-Whitespace">   </span><span class="mi">1568</span>     <span class="bp">self</span><span class="o">.</span><span class="n">_io</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1569</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1570</span>     <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">   </span><span class="mi">1571</span> <span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/excel/_openpyxl.py:552,</span> in <span class="ni">OpenpyxlReader.__init__</span><span class="nt">(self, filepath_or_buffer, storage_options, engine_kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">534</span> <span class="nd">@doc</span><span class="p">(</span><span class="n">storage_options</span><span class="o">=</span><span class="n">_shared_docs</span><span class="p">[</span><span class="s2">&quot;storage_options&quot;</span><span class="p">])</span>
+<span class="g g-Whitespace">    </span><span class="mi">535</span> <span class="k">def</span> <span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">536</span>     <span class="bp">self</span><span class="p">,</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">539</span>     <span class="n">engine_kwargs</span><span class="p">:</span> <span class="nb">dict</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">540</span> <span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">541</span><span class="w">     </span><span class="sd">&quot;&quot;&quot;</span>
+<span class="g g-Whitespace">    </span><span class="mi">542</span><span class="sd">     Reader using openpyxl engine.</span>
+<span class="g g-Whitespace">    </span><span class="mi">543</span><span class="sd"> </span>
+<span class="sd">   (...)</span>
+<span class="g g-Whitespace">    </span><span class="mi">550</span><span class="sd">         Arbitrary keyword arguments passed to excel engine.</span>
+<span class="g g-Whitespace">    </span><span class="mi">551</span><span class="sd">     &quot;&quot;&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">552</span>     <span class="n">import_optional_dependency</span><span class="p">(</span><span class="s2">&quot;openpyxl&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">553</span>     <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">(</span>
+<span class="g g-Whitespace">    </span><span class="mi">554</span>         <span class="n">filepath_or_buffer</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">555</span>         <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">556</span>         <span class="n">engine_kwargs</span><span class="o">=</span><span class="n">engine_kwargs</span><span class="p">,</span>
+<span class="g g-Whitespace">    </span><span class="mi">557</span>     <span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/compat/_optional.py:164,</span> in <span class="ni">import_optional_dependency</span><span class="nt">(name, extra, errors, min_version)</span>
+<span class="g g-Whitespace">    </span><span class="mi">162</span>     <span class="k">return</span> <span class="kc">None</span>
+<span class="g g-Whitespace">    </span><span class="mi">163</span> <span class="k">elif</span> <span class="n">errors</span> <span class="o">==</span> <span class="s2">&quot;raise&quot;</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">164</span>     <span class="k">raise</span> <span class="ne">ImportError</span><span class="p">(</span><span class="n">msg</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">165</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">166</span>     <span class="k">return</span> <span class="kc">None</span>
+
+<span class="ne">ImportError</span>: Pandas requires version &#39;3.1.0&#39; or newer of &#39;openpyxl&#39; (version &#39;3.0.9&#39; currently installed).
+</pre></div>
+</div>
+</div>
 </div>
 </section>
 <section id="by-local-notebook">
-<h3>by local notebook<a class="headerlink" href="#by-local-notebook" title="Permalink to this heading">#</a></h3>
+<h3>by local notebook<a class="headerlink" href="#by-local-notebook" title="Permalink to this headline">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
@@ -920,34 +904,34 @@ document.write(`
 </section>
 </section>
 <section id="feature-selections">
-<h2>Feature selections<a class="headerlink" href="#feature-selections" title="Permalink to this heading">#</a></h2>
+<h2>Feature selections<a class="headerlink" href="#feature-selections" title="Permalink to this headline">#</a></h2>
 <p>用tf-idf或者word2vec的方式做Feature representation</p>
 </section>
 <section id="clustering">
-<h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this heading">#</a></h2>
+<h2>Clustering<a class="headerlink" href="#clustering" title="Permalink to this headline">#</a></h2>
 <p>照K-mean Clustering的步驟做Clustering。</p>
 <section id="evaluating">
-<h3>Evaluating<a class="headerlink" href="#evaluating" title="Permalink to this heading">#</a></h3>
+<h3>Evaluating<a class="headerlink" href="#evaluating" title="Permalink to this headline">#</a></h3>
 <p>K-mean需要先找到比較好的K值，也就是要分為多少群，所以要照教學<a class="reference external" href="https://p4css.github.io/py4css/TM/TM06_Clustering.html">Clustering</a>先找到比較好的K。</p>
 </section>
 <section id="final-clustering-by-k">
-<h3>Final clustering by k=?<a class="headerlink" href="#final-clustering-by-k" title="Permalink to this heading">#</a></h3>
+<h3>Final clustering by k=?<a class="headerlink" href="#final-clustering-by-k" title="Permalink to this headline">#</a></h3>
 <p>用前面所找到的K值來做Clustering</p>
 </section>
 </section>
 <section id="visualization">
-<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this heading">#</a></h2>
+<h2>Visualization<a class="headerlink" href="#visualization" title="Permalink to this headline">#</a></h2>
 <section id="visualizing-doc-distribution">
-<h3>Visualizing Doc distribution<a class="headerlink" href="#visualizing-doc-distribution" title="Permalink to this heading">#</a></h3>
+<h3>Visualizing Doc distribution<a class="headerlink" href="#visualizing-doc-distribution" title="Permalink to this headline">#</a></h3>
 <p>仿照<a class="reference external" href="https://p4css.github.io/py4css/TM/TM06_Clustering.html">Clustering</a>將所有的文本降為二維後繪製其Scatter，看看分群的結果是否有效呈現出視覺化上可見的群集。</p>
 </section>
 <section id="visualizing-words-distribution-of-each-cluster">
-<h3>Visualizing Words distribution of each cluster<a class="headerlink" href="#visualizing-words-distribution-of-each-cluster" title="Permalink to this heading">#</a></h3>
+<h3>Visualizing Words distribution of each cluster<a class="headerlink" href="#visualizing-words-distribution-of-each-cluster" title="Permalink to this headline">#</a></h3>
 <p>仿照<a class="reference external" href="https://p4css.github.io/py4css/TM/TM06_Clustering.html">Clustering</a>分別計算每一個群中文章的關鍵字分佈，刪除停用詞或標點符號後，找到每個群的重要關鍵字，並用長條橫圖（Horizontal Bar chart）表示出每個群的前十大關鍵字，以觀察群間的關鍵字差異。</p>
 </section>
 </section>
 <section id="explaining-your-results">
-<h2>Explaining your results<a class="headerlink" href="#explaining-your-results" title="Permalink to this heading">#</a></h2>
+<h2>Explaining your results<a class="headerlink" href="#explaining-your-results" title="Permalink to this headline">#</a></h2>
 <p>從上述群集的結果，你觀察到有哪些留言群集？請評估你所找出來的關鍵字群集。</p>
 <p>(Your Answer here)
 在前述篩選策略下，從Evaluating的結果，我選擇以k=?作為群集數。
@@ -962,7 +946,7 @@ document.write(`
 <p>有效的主題我認為共有「XXXX（k=0, 1」、「XXXXX（k=2）」、「XXXXX（k=3, 4）」、「」等n個主題。<code class="docutils literal notranslate"><span class="pre">k=5</span></code>的群集只有單一關鍵字極高，其他關鍵字稀少，可能是受到……的影響。將包含關鍵字相關的留言抽出結果如下方dataFrame所示，為…的主題。</p>
 </section>
 <section id="final-modification-if-you-have">
-<h2>Final Modification (if you have)<a class="headerlink" href="#final-modification-if-you-have" title="Permalink to this heading">#</a></h2>
+<h2>Final Modification (if you have)<a class="headerlink" href="#final-modification-if-you-have" title="Permalink to this headline">#</a></h2>
 <p>（這部分不計分）經觀察前述群集結果後，我篩除了XXX關鍵字，重新進行群集後所得到的結果為以下幾個主題，分別包含「XXXX（k=0, 1」、「XXXXX（k=2）」、「XXXXX（k=3, 4）」、「」</p>
 </section>
 </section>
