@@ -171,8 +171,6 @@ const thebe_selector_output = ".output, .cell_output"
 <li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
 <li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
 
-<li class="toctree-l2"><a class="reference internal" href="P03p_ans.html">P03 Practice: Accessing dict and list</a></li>
-
 </ul>
 </li>
 <li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
@@ -571,116 +569,6 @@ document.write(`
   from pandas.core import (
 </pre></div>
 </div>
-<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
-<span class="ne">KeyboardInterrupt</span><span class="g g-Whitespace">                         </span>Traceback (most recent call last)
-<span class="nn">Input In [1],</span> in <span class="ni">&lt;cell line: 2&gt;</span><span class="nt">()</span>
-<span class="g g-Whitespace">      </span><span class="mi">1</span> <span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
-<span class="ne">----&gt; </span><span class="mi">2</span> <span class="n">raw</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">read_csv</span><span class="p">(</span><span class="s2">&quot;https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv&quot;</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1026,</span> in <span class="ni">read_csv</span><span class="nt">(filepath_or_buffer, sep, delimiter, header, names, index_col, usecols, dtype, engine, converters, true_values, false_values, skipinitialspace, skiprows, skipfooter, nrows, na_values, keep_default_na, na_filter, verbose, skip_blank_lines, parse_dates, infer_datetime_format, keep_date_col, date_parser, date_format, dayfirst, cache_dates, iterator, chunksize, compression, thousands, decimal, lineterminator, quotechar, quoting, doublequote, escapechar, comment, encoding, encoding_errors, dialect, on_bad_lines, delim_whitespace, low_memory, memory_map, float_precision, storage_options, dtype_backend)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1013</span> <span class="n">kwds_defaults</span> <span class="o">=</span> <span class="n">_refine_defaults_read</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1014</span>     <span class="n">dialect</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1015</span>     <span class="n">delimiter</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1022</span>     <span class="n">dtype_backend</span><span class="o">=</span><span class="n">dtype_backend</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1023</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1024</span> <span class="n">kwds</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">kwds_defaults</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1026</span> <span class="k">return</span> <span class="n">_read</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="n">kwds</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:620,</span> in <span class="ni">_read</span><span class="nt">(filepath_or_buffer, kwds)</span>
-<span class="g g-Whitespace">    </span><span class="mi">617</span> <span class="n">_validate_names</span><span class="p">(</span><span class="n">kwds</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;names&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">619</span> <span class="c1"># Create the parser.</span>
-<span class="ne">--&gt; </span><span class="mi">620</span> <span class="n">parser</span> <span class="o">=</span> <span class="n">TextFileReader</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">,</span> <span class="o">**</span><span class="n">kwds</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">622</span> <span class="k">if</span> <span class="n">chunksize</span> <span class="ow">or</span> <span class="n">iterator</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">623</span>     <span class="k">return</span> <span class="n">parser</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1620,</span> in <span class="ni">TextFileReader.__init__</span><span class="nt">(self, f, engine, **kwds)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1617</span>     <span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span> <span class="o">=</span> <span class="n">kwds</span><span class="p">[</span><span class="s2">&quot;has_index_names&quot;</span><span class="p">]</span>
-<span class="g g-Whitespace">   </span><span class="mi">1619</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="p">:</span> <span class="n">IOHandles</span> <span class="o">|</span> <span class="kc">None</span> <span class="o">=</span> <span class="kc">None</span>
-<span class="ne">-&gt; </span><span class="mi">1620</span> <span class="bp">self</span><span class="o">.</span><span class="n">_engine</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_make_engine</span><span class="p">(</span><span class="n">f</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">engine</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/parsers/readers.py:1880,</span> in <span class="ni">TextFileReader._make_engine</span><span class="nt">(self, f, engine)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1878</span>     <span class="k">if</span> <span class="s2">&quot;b&quot;</span> <span class="ow">not</span> <span class="ow">in</span> <span class="n">mode</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1879</span>         <span class="n">mode</span> <span class="o">+=</span> <span class="s2">&quot;b&quot;</span>
-<span class="ne">-&gt; </span><span class="mi">1880</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="o">=</span> <span class="n">get_handle</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1881</span>     <span class="n">f</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1882</span>     <span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1883</span>     <span class="n">encoding</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1884</span>     <span class="n">compression</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;compression&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1885</span>     <span class="n">memory_map</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;memory_map&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1886</span>     <span class="n">is_text</span><span class="o">=</span><span class="n">is_text</span><span class="p">,</span>
-<span class="g g-Whitespace">   </span><span class="mi">1887</span>     <span class="n">errors</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;encoding_errors&quot;</span><span class="p">,</span> <span class="s2">&quot;strict&quot;</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1888</span>     <span class="n">storage_options</span><span class="o">=</span><span class="bp">self</span><span class="o">.</span><span class="n">options</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;storage_options&quot;</span><span class="p">,</span> <span class="kc">None</span><span class="p">),</span>
-<span class="g g-Whitespace">   </span><span class="mi">1889</span> <span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1890</span> <span class="k">assert</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span>
-<span class="g g-Whitespace">   </span><span class="mi">1891</span> <span class="n">f</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">handles</span><span class="o">.</span><span class="n">handle</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:728,</span> in <span class="ni">get_handle</span><span class="nt">(path_or_buf, mode, encoding, compression, memory_map, is_text, errors, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">725</span>     <span class="n">codecs</span><span class="o">.</span><span class="n">lookup_error</span><span class="p">(</span><span class="n">errors</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">727</span> <span class="c1"># open URLs</span>
-<span class="ne">--&gt; </span><span class="mi">728</span> <span class="n">ioargs</span> <span class="o">=</span> <span class="n">_get_filepath_or_buffer</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">729</span>     <span class="n">path_or_buf</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">730</span>     <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">731</span>     <span class="n">compression</span><span class="o">=</span><span class="n">compression</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">732</span>     <span class="n">mode</span><span class="o">=</span><span class="n">mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">733</span>     <span class="n">storage_options</span><span class="o">=</span><span class="n">storage_options</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">734</span> <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">736</span> <span class="n">handle</span> <span class="o">=</span> <span class="n">ioargs</span><span class="o">.</span><span class="n">filepath_or_buffer</span>
-<span class="g g-Whitespace">    </span><span class="mi">737</span> <span class="n">handles</span><span class="p">:</span> <span class="nb">list</span><span class="p">[</span><span class="n">BaseBuffer</span><span class="p">]</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/io/common.py:389,</span> in <span class="ni">_get_filepath_or_buffer</span><span class="nt">(filepath_or_buffer, encoding, compression, mode, storage_options)</span>
-<span class="g g-Whitespace">    </span><span class="mi">386</span>         <span class="k">if</span> <span class="n">content_encoding</span> <span class="o">==</span> <span class="s2">&quot;gzip&quot;</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">387</span>             <span class="c1"># Override compression based on Content-Encoding header</span>
-<span class="g g-Whitespace">    </span><span class="mi">388</span>             <span class="n">compression</span> <span class="o">=</span> <span class="p">{</span><span class="s2">&quot;method&quot;</span><span class="p">:</span> <span class="s2">&quot;gzip&quot;</span><span class="p">}</span>
-<span class="ne">--&gt; </span><span class="mi">389</span>         <span class="n">reader</span> <span class="o">=</span> <span class="n">BytesIO</span><span class="p">(</span><span class="n">req</span><span class="o">.</span><span class="n">read</span><span class="p">())</span>
-<span class="g g-Whitespace">    </span><span class="mi">390</span>     <span class="k">return</span> <span class="n">IOArgs</span><span class="p">(</span>
-<span class="g g-Whitespace">    </span><span class="mi">391</span>         <span class="n">filepath_or_buffer</span><span class="o">=</span><span class="n">reader</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">392</span>         <span class="n">encoding</span><span class="o">=</span><span class="n">encoding</span><span class="p">,</span>
-   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">395</span>         <span class="n">mode</span><span class="o">=</span><span class="n">fsspec_mode</span><span class="p">,</span>
-<span class="g g-Whitespace">    </span><span class="mi">396</span>     <span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">398</span> <span class="k">if</span> <span class="n">is_fsspec_url</span><span class="p">(</span><span class="n">filepath_or_buffer</span><span class="p">):</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/http/client.py:476,</span> in <span class="ni">HTTPResponse.read</span><span class="nt">(self, amt)</span>
-<span class="g g-Whitespace">    </span><span class="mi">474</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">475</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">476</span>         <span class="n">s</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">_safe_read</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">length</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">477</span>     <span class="k">except</span> <span class="n">IncompleteRead</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">478</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_close_conn</span><span class="p">()</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/http/client.py:626,</span> in <span class="ni">HTTPResponse._safe_read</span><span class="nt">(self, amt)</span>
-<span class="g g-Whitespace">    </span><span class="mi">624</span> <span class="n">s</span> <span class="o">=</span> <span class="p">[]</span>
-<span class="g g-Whitespace">    </span><span class="mi">625</span> <span class="k">while</span> <span class="n">amt</span> <span class="o">&gt;</span> <span class="mi">0</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">626</span>     <span class="n">chunk</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">fp</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">min</span><span class="p">(</span><span class="n">amt</span><span class="p">,</span> <span class="n">MAXAMOUNT</span><span class="p">))</span>
-<span class="g g-Whitespace">    </span><span class="mi">627</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">chunk</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">628</span>         <span class="k">raise</span> <span class="n">IncompleteRead</span><span class="p">(</span><span class="sa">b</span><span class="s1">&#39;&#39;</span><span class="o">.</span><span class="n">join</span><span class="p">(</span><span class="n">s</span><span class="p">),</span> <span class="n">amt</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/socket.py:704,</span> in <span class="ni">SocketIO.readinto</span><span class="nt">(self, b)</span>
-<span class="g g-Whitespace">    </span><span class="mi">702</span> <span class="k">while</span> <span class="kc">True</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">703</span>     <span class="k">try</span><span class="p">:</span>
-<span class="ne">--&gt; </span><span class="mi">704</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sock</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">b</span><span class="p">)</span>
-<span class="g g-Whitespace">    </span><span class="mi">705</span>     <span class="k">except</span> <span class="n">timeout</span><span class="p">:</span>
-<span class="g g-Whitespace">    </span><span class="mi">706</span>         <span class="bp">self</span><span class="o">.</span><span class="n">_timeout_occurred</span> <span class="o">=</span> <span class="kc">True</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/ssl.py:1241,</span> in <span class="ni">SSLSocket.recv_into</span><span class="nt">(self, buffer, nbytes, flags)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1237</span>     <span class="k">if</span> <span class="n">flags</span> <span class="o">!=</span> <span class="mi">0</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1238</span>         <span class="k">raise</span> <span class="ne">ValueError</span><span class="p">(</span>
-<span class="g g-Whitespace">   </span><span class="mi">1239</span>           <span class="s2">&quot;non-zero flags not allowed in calls to recv_into() on </span><span class="si">%s</span><span class="s2">&quot;</span> <span class="o">%</span>
-<span class="g g-Whitespace">   </span><span class="mi">1240</span>           <span class="bp">self</span><span class="o">.</span><span class="vm">__class__</span><span class="p">)</span>
-<span class="ne">-&gt; </span><span class="mi">1241</span>     <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="n">nbytes</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1242</span> <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1243</span>     <span class="k">return</span> <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="n">recv_into</span><span class="p">(</span><span class="n">buffer</span><span class="p">,</span> <span class="n">nbytes</span><span class="p">,</span> <span class="n">flags</span><span class="p">)</span>
-
-<span class="nn">File ~/opt/anaconda3/lib/python3.9/ssl.py:1099,</span> in <span class="ni">SSLSocket.read</span><span class="nt">(self, len, buffer)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1097</span> <span class="k">try</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1098</span>     <span class="k">if</span> <span class="n">buffer</span> <span class="ow">is</span> <span class="ow">not</span> <span class="kc">None</span><span class="p">:</span>
-<span class="ne">-&gt; </span><span class="mi">1099</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">,</span> <span class="n">buffer</span><span class="p">)</span>
-<span class="g g-Whitespace">   </span><span class="mi">1100</span>     <span class="k">else</span><span class="p">:</span>
-<span class="g g-Whitespace">   </span><span class="mi">1101</span>         <span class="k">return</span> <span class="bp">self</span><span class="o">.</span><span class="n">_sslobj</span><span class="o">.</span><span class="n">read</span><span class="p">(</span><span class="nb">len</span><span class="p">)</span>
-
-<span class="ne">KeyboardInterrupt</span>: 
-</pre></div>
-</div>
 </div>
 </div>
 <div class="cell docutils container">
@@ -737,20 +625,20 @@ document.write(`
       <td>AFG</td>
       <td>Asia</td>
       <td>Afghanistan</td>
-      <td>2020-02-24</td>
-      <td>5.0</td>
-      <td>5.0</td>
+      <td>2020-01-05</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>37.746</td>
+      <td>37.75</td>
       <td>0.5</td>
       <td>64.83</td>
-      <td>0.511</td>
-      <td>41128772.0</td>
+      <td>0.51</td>
+      <td>41128772</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -761,20 +649,20 @@ document.write(`
       <td>AFG</td>
       <td>Asia</td>
       <td>Afghanistan</td>
-      <td>2020-02-25</td>
-      <td>5.0</td>
+      <td>2020-01-06</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>37.746</td>
+      <td>37.75</td>
       <td>0.5</td>
       <td>64.83</td>
-      <td>0.511</td>
-      <td>41128772.0</td>
+      <td>0.51</td>
+      <td>41128772</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -785,20 +673,20 @@ document.write(`
       <td>AFG</td>
       <td>Asia</td>
       <td>Afghanistan</td>
-      <td>2020-02-26</td>
-      <td>5.0</td>
+      <td>2020-01-07</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>37.746</td>
+      <td>37.75</td>
       <td>0.5</td>
       <td>64.83</td>
-      <td>0.511</td>
-      <td>41128772.0</td>
+      <td>0.51</td>
+      <td>41128772</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -809,20 +697,20 @@ document.write(`
       <td>AFG</td>
       <td>Asia</td>
       <td>Afghanistan</td>
-      <td>2020-02-27</td>
-      <td>5.0</td>
+      <td>2020-01-08</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>37.746</td>
+      <td>37.75</td>
       <td>0.5</td>
       <td>64.83</td>
-      <td>0.511</td>
-      <td>41128772.0</td>
+      <td>0.51</td>
+      <td>41128772</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -833,20 +721,20 @@ document.write(`
       <td>AFG</td>
       <td>Asia</td>
       <td>Afghanistan</td>
-      <td>2020-02-28</td>
-      <td>5.0</td>
+      <td>2020-01-09</td>
+      <td>0.0</td>
       <td>0.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.0</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
-      <td>37.746</td>
+      <td>37.75</td>
       <td>0.5</td>
       <td>64.83</td>
-      <td>0.511</td>
-      <td>41128772.0</td>
+      <td>0.51</td>
+      <td>41128772</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -877,120 +765,120 @@ document.write(`
       <td>...</td>
     </tr>
     <tr>
-      <th>233050</th>
+      <th>429430</th>
       <td>ZWE</td>
       <td>Africa</td>
       <td>Zimbabwe</td>
-      <td>2022-11-02</td>
-      <td>257893.0</td>
+      <td>2024-07-31</td>
+      <td>266386.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>5606.0</td>
+      <td>5740.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>30.7</td>
-      <td>36.791</td>
+      <td>36.79</td>
       <td>1.7</td>
       <td>61.49</td>
-      <td>0.571</td>
-      <td>16320539.0</td>
+      <td>0.57</td>
+      <td>16320539</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>233051</th>
+      <th>429431</th>
       <td>ZWE</td>
       <td>Africa</td>
       <td>Zimbabwe</td>
-      <td>2022-11-03</td>
-      <td>257893.0</td>
+      <td>2024-08-01</td>
+      <td>266386.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>5606.0</td>
+      <td>5740.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>30.7</td>
-      <td>36.791</td>
+      <td>36.79</td>
       <td>1.7</td>
       <td>61.49</td>
-      <td>0.571</td>
-      <td>16320539.0</td>
+      <td>0.57</td>
+      <td>16320539</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>233052</th>
+      <th>429432</th>
       <td>ZWE</td>
       <td>Africa</td>
       <td>Zimbabwe</td>
-      <td>2022-11-04</td>
-      <td>257893.0</td>
+      <td>2024-08-02</td>
+      <td>266386.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>5606.0</td>
+      <td>5740.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>30.7</td>
-      <td>36.791</td>
+      <td>36.79</td>
       <td>1.7</td>
       <td>61.49</td>
-      <td>0.571</td>
-      <td>16320539.0</td>
+      <td>0.57</td>
+      <td>16320539</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>233053</th>
+      <th>429433</th>
       <td>ZWE</td>
       <td>Africa</td>
       <td>Zimbabwe</td>
-      <td>2022-11-05</td>
-      <td>257893.0</td>
+      <td>2024-08-03</td>
+      <td>266386.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>5606.0</td>
+      <td>5740.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>30.7</td>
-      <td>36.791</td>
+      <td>36.79</td>
       <td>1.7</td>
       <td>61.49</td>
-      <td>0.571</td>
-      <td>16320539.0</td>
+      <td>0.57</td>
+      <td>16320539</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>233054</th>
+      <th>429434</th>
       <td>ZWE</td>
       <td>Africa</td>
       <td>Zimbabwe</td>
-      <td>2022-11-06</td>
-      <td>257893.0</td>
+      <td>2024-08-04</td>
+      <td>266386.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>5606.0</td>
+      <td>5740.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>...</td>
       <td>30.7</td>
-      <td>36.791</td>
+      <td>36.79</td>
       <td>1.7</td>
       <td>61.49</td>
-      <td>0.571</td>
-      <td>16320539.0</td>
+      <td>0.57</td>
+      <td>16320539</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -998,7 +886,7 @@ document.write(`
     </tr>
   </tbody>
 </table>
-<p>233055 rows × 67 columns</p>
+<p>429435 rows × 67 columns</p>
 </div></div></div>
 </div>
 <section id="observing-data">
@@ -1051,16 +939,17 @@ document.write(`
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{nan, &#39;Oceania&#39;, &#39;Africa&#39;, &#39;South America&#39;, &#39;Asia&#39;, &#39;North America&#39;, &#39;Europe&#39;}
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>{nan, &#39;South America&#39;, &#39;Asia&#39;, &#39;Africa&#39;, &#39;Oceania&#39;, &#39;North America&#39;, &#39;Europe&#39;}
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Europe           53357
-Africa           52948
-Asia             49281
-North America    35177
-Oceania          16422
-South America    12716
-Name: continent, dtype: int64
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>continent
+Africa           95419
+Europe           91031
+Asia             84199
+North America    68638
+Oceania          40183
+South America    23440
+Name: count, dtype: int64
 </pre></div>
 </div>
 </div>
@@ -1086,6 +975,7 @@ Name: continent, dtype: int64
  &#39;Brunei&#39;,
  &#39;Cambodia&#39;,
  &#39;China&#39;,
+ &#39;East Timor&#39;,
  &#39;Georgia&#39;,
  &#39;Hong Kong&#39;,
  &#39;India&#39;,
@@ -1121,7 +1011,6 @@ Name: continent, dtype: int64
  &#39;Taiwan&#39;,
  &#39;Tajikistan&#39;,
  &#39;Thailand&#39;,
- &#39;Timor&#39;,
  &#39;Turkey&#39;,
  &#39;Turkmenistan&#39;,
  &#39;United Arab Emirates&#39;,
@@ -1187,7 +1076,7 @@ Name: continent, dtype: int64
   </thead>
   <tbody>
     <tr>
-      <th>203086</th>
+      <th>374304</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1204,14 +1093,14 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203087</th>
+      <th>374305</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1228,14 +1117,14 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203088</th>
+      <th>374306</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1252,14 +1141,14 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203089</th>
+      <th>374307</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1276,14 +1165,14 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203090</th>
+      <th>374308</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1300,7 +1189,7 @@ Name: continent, dtype: int64
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1331,120 +1220,120 @@ Name: continent, dtype: int64
       <td>...</td>
     </tr>
     <tr>
-      <th>204107</th>
+      <th>375647</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-02</td>
-      <td>7780125.0</td>
-      <td>33156.0</td>
-      <td>32034.429</td>
-      <td>12929.0</td>
-      <td>53.0</td>
-      <td>64.286</td>
+      <td>2023-09-20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204108</th>
+      <th>375648</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-03</td>
-      <td>7810077.0</td>
-      <td>29952.0</td>
-      <td>31219.429</td>
-      <td>13010.0</td>
-      <td>81.0</td>
-      <td>63.857</td>
+      <td>2023-09-21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204109</th>
+      <th>375649</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-04</td>
-      <td>7837658.0</td>
-      <td>27581.0</td>
-      <td>30222.143</td>
-      <td>13084.0</td>
-      <td>74.0</td>
-      <td>66.286</td>
+      <td>2023-09-22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204110</th>
+      <th>375650</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-05</td>
-      <td>7863193.0</td>
-      <td>25535.0</td>
-      <td>29230.429</td>
-      <td>13151.0</td>
-      <td>67.0</td>
-      <td>65.000</td>
+      <td>2023-09-23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204111</th>
+      <th>375651</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-06</td>
-      <td>7887538.0</td>
-      <td>24345.0</td>
-      <td>28204.000</td>
-      <td>13198.0</td>
-      <td>47.0</td>
-      <td>60.857</td>
+      <td>2023-09-24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1452,7 +1341,7 @@ Name: continent, dtype: int64
     </tr>
   </tbody>
 </table>
-<p>1026 rows × 67 columns</p>
+<p>1348 rows × 67 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1468,7 +1357,7 @@ location                                    object
 date                                        object
 total_cases                                float64
                                             ...   
-population                                 float64
+population                                   int64
 excess_mortality_cumulative_absolute       float64
 excess_mortality_cumulative                float64
 excess_mortality                           float64
@@ -1501,11 +1390,11 @@ Length: 67, dtype: object
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;pandas.core.series.Series&#39;&gt;
-datetime64[ns]
+object
 datetime64[ns]
 </pre></div>
 </div>
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0p/7xy1_dzx0_s5rnf06c0b316w0000gn/T/ipykernel_38668/1951838620.py:8: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_38646/1951838620.py:8: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -1565,7 +1454,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   </thead>
   <tbody>
     <tr>
-      <th>203086</th>
+      <th>374304</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1582,14 +1471,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203087</th>
+      <th>374305</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1606,14 +1495,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203088</th>
+      <th>374306</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1630,14 +1519,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203089</th>
+      <th>374307</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1654,14 +1543,14 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>203090</th>
+      <th>374308</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
@@ -1678,7 +1567,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1709,120 +1598,120 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>204107</th>
+      <th>375647</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-02</td>
-      <td>7780125.0</td>
-      <td>33156.0</td>
-      <td>32034.429</td>
-      <td>12929.0</td>
-      <td>53.0</td>
-      <td>64.286</td>
+      <td>2023-09-20</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204108</th>
+      <th>375648</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-03</td>
-      <td>7810077.0</td>
-      <td>29952.0</td>
-      <td>31219.429</td>
-      <td>13010.0</td>
-      <td>81.0</td>
-      <td>63.857</td>
+      <td>2023-09-21</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204109</th>
+      <th>375649</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-04</td>
-      <td>7837658.0</td>
-      <td>27581.0</td>
-      <td>30222.143</td>
-      <td>13084.0</td>
-      <td>74.0</td>
-      <td>66.286</td>
+      <td>2023-09-22</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204110</th>
+      <th>375650</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-05</td>
-      <td>7863193.0</td>
-      <td>25535.0</td>
-      <td>29230.429</td>
-      <td>13151.0</td>
-      <td>67.0</td>
-      <td>65.000</td>
+      <td>2023-09-23</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>204111</th>
+      <th>375651</th>
       <td>TWN</td>
       <td>Asia</td>
       <td>Taiwan</td>
-      <td>2022-11-06</td>
-      <td>7887538.0</td>
-      <td>24345.0</td>
-      <td>28204.000</td>
-      <td>13198.0</td>
-      <td>47.0</td>
-      <td>60.857</td>
+      <td>2023-09-24</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>...</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>80.46</td>
       <td>NaN</td>
-      <td>23893396.0</td>
+      <td>23893396</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -1830,7 +1719,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
     </tr>
   </tbody>
 </table>
-<p>1026 rows × 67 columns</p>
+<p>1348 rows × 67 columns</p>
 </div></div></div>
 </div>
 <section id="plot-1-line-by-pandas">
@@ -1849,7 +1738,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/05ace346069af120e390cb0adc56b129b37952d4d42461bd1f4ece87025d0430.png" src="../_images/05ace346069af120e390cb0adc56b129b37952d4d42461bd1f4ece87025d0430.png" />
+<img alt="../_images/daae1f5ad28968cfeb7269324e978e1854a9faaa83399f3d98da9f1add86add9.png" src="../_images/daae1f5ad28968cfeb7269324e978e1854a9faaa83399f3d98da9f1add86add9.png" />
 </div>
 </div>
 </section>
@@ -1867,7 +1756,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0p/7xy1_dzx0_s5rnf06c0b316w0000gn/T/ipykernel_38668/2904734101.py:2: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_38646/2904734101.py:2: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -1912,34 +1801,34 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   </thead>
   <tbody>
     <tr>
-      <th>104856</th>
+      <th>188626</th>
       <td>Japan</td>
-      <td>2020-01-22</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>104857</th>
-      <td>Japan</td>
-      <td>2020-01-23</td>
+      <td>2020-01-05</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>104858</th>
+      <th>188627</th>
       <td>Japan</td>
-      <td>2020-01-24</td>
+      <td>2020-01-06</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>104859</th>
+      <th>188628</th>
       <td>Japan</td>
-      <td>2020-01-25</td>
+      <td>2020-01-07</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>104860</th>
+      <th>188629</th>
       <td>Japan</td>
-      <td>2020-01-26</td>
-      <td>2.0</td>
+      <td>2020-01-08</td>
+      <td>0.0</td>
+    </tr>
+    <tr>
+      <th>188630</th>
+      <td>Japan</td>
+      <td>2020-01-09</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -1948,38 +1837,38 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>204107</th>
+      <th>375647</th>
       <td>Taiwan</td>
-      <td>2022-11-02</td>
-      <td>33156.0</td>
+      <td>2023-09-20</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>204108</th>
+      <th>375648</th>
       <td>Taiwan</td>
-      <td>2022-11-03</td>
-      <td>29952.0</td>
+      <td>2023-09-21</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>204109</th>
+      <th>375649</th>
       <td>Taiwan</td>
-      <td>2022-11-04</td>
-      <td>27581.0</td>
+      <td>2023-09-22</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>204110</th>
+      <th>375650</th>
       <td>Taiwan</td>
-      <td>2022-11-05</td>
-      <td>25535.0</td>
+      <td>2023-09-23</td>
+      <td>NaN</td>
     </tr>
     <tr>
-      <th>204111</th>
+      <th>375651</th>
       <td>Taiwan</td>
-      <td>2022-11-06</td>
-      <td>24345.0</td>
+      <td>2023-09-24</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>2046 rows × 3 columns</p>
+<p>3022 rows × 3 columns</p>
 </div></div></div>
 </div>
 <div class="cell docutils container">
@@ -1994,7 +1883,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/2b3f91e686581fa46fcc0947e8928f7c4d40c25dfe9be41d5bdbbd64d8d9d608.png" src="../_images/2b3f91e686581fa46fcc0947e8928f7c4d40c25dfe9be41d5bdbbd64d8d9d608.png" />
+<img alt="../_images/d16afb1454d517269565b99f6bd3433c738537fe6a5f2f2415f17535e45fcedc.png" src="../_images/d16afb1454d517269565b99f6bd3433c738537fe6a5f2f2415f17535e45fcedc.png" />
 </div>
 </div>
 <div class="cell docutils container">
@@ -2053,46 +1942,46 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   </thead>
   <tbody>
     <tr>
-      <th>2020-01-16</th>
+      <th>2020-01-05</th>
+      <td>0.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-01-17</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>2020-01-18</th>
+      <th>2020-01-06</th>
+      <td>0.0</td>
       <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
-    </tr>
-    <tr>
-      <th>2020-01-19</th>
-      <td>NaN</td>
-      <td>NaN</td>
-      <td>NaN</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>2020-01-20</th>
+      <th>2020-01-07</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2020-01-08</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2020-01-09</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>0.0</td>
       <td>NaN</td>
       <td>NaN</td>
       <td>NaN</td>
@@ -2107,53 +1996,53 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-11-02</th>
-      <td>70396.0</td>
-      <td>33156.0</td>
-      <td>22460268.0</td>
-      <td>7780125.0</td>
-      <td>268.25</td>
-      <td>264.69</td>
-    </tr>
-    <tr>
-      <th>2022-11-03</th>
-      <td>67473.0</td>
-      <td>29952.0</td>
-      <td>22527741.0</td>
-      <td>7810077.0</td>
-      <td>268.34</td>
-      <td>264.83</td>
-    </tr>
-    <tr>
-      <th>2022-11-04</th>
-      <td>34064.0</td>
-      <td>27581.0</td>
-      <td>22561805.0</td>
-      <td>7837658.0</td>
-      <td>268.56</td>
-      <td>265.00</td>
-    </tr>
-    <tr>
-      <th>2022-11-05</th>
-      <td>74170.0</td>
-      <td>25535.0</td>
-      <td>22635975.0</td>
-      <td>7863193.0</td>
-      <td>268.81</td>
+      <th>2024-07-31</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>33803572.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
       <td>NaN</td>
     </tr>
     <tr>
-      <th>2022-11-06</th>
-      <td>66397.0</td>
-      <td>24345.0</td>
-      <td>22702372.0</td>
-      <td>7887538.0</td>
-      <td>268.90</td>
-      <td>265.15</td>
+      <th>2024-08-01</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>33803572.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2024-08-02</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>33803572.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2024-08-03</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>33803572.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
+    </tr>
+    <tr>
+      <th>2024-08-04</th>
+      <td>0.0</td>
+      <td>NaN</td>
+      <td>33803572.0</td>
+      <td>NaN</td>
+      <td>NaN</td>
+      <td>NaN</td>
     </tr>
   </tbody>
 </table>
-<p>1026 rows × 6 columns</p>
+<p>1674 rows × 6 columns</p>
 </div></div></div>
 </div>
 <section id="fillna">
@@ -2214,49 +2103,49 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   </thead>
   <tbody>
     <tr>
-      <th>2020-01-16</th>
+      <th>2020-01-05</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2020-01-17</th>
+      <th>2020-01-06</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2020-01-18</th>
+      <th>2020-01-07</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2020-01-19</th>
+      <th>2020-01-08</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2020-01-20</th>
+      <th>2020-01-09</th>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2268,53 +2157,53 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>2022-11-02</th>
-      <td>70396.0</td>
-      <td>33156.0</td>
-      <td>22460268.0</td>
-      <td>7780125.0</td>
-      <td>268.25</td>
-      <td>264.69</td>
+      <th>2024-07-31</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2022-11-03</th>
-      <td>67473.0</td>
-      <td>29952.0</td>
-      <td>22527741.0</td>
-      <td>7810077.0</td>
-      <td>268.34</td>
-      <td>264.83</td>
+      <th>2024-08-01</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2022-11-04</th>
-      <td>34064.0</td>
-      <td>27581.0</td>
-      <td>22561805.0</td>
-      <td>7837658.0</td>
-      <td>268.56</td>
-      <td>265.00</td>
+      <th>2024-08-02</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2022-11-05</th>
-      <td>74170.0</td>
-      <td>25535.0</td>
-      <td>22635975.0</td>
-      <td>7863193.0</td>
-      <td>268.81</td>
-      <td>0.00</td>
+      <th>2024-08-03</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>2022-11-06</th>
-      <td>66397.0</td>
-      <td>24345.0</td>
-      <td>22702372.0</td>
-      <td>7887538.0</td>
-      <td>268.90</td>
-      <td>265.15</td>
+      <th>2024-08-04</th>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>1026 rows × 6 columns</p>
+<p>1674 rows × 6 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -2367,53 +2256,53 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   <tbody>
     <tr>
       <th>0</th>
-      <td>2020-01-16</td>
+      <td>2020-01-05</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>1</th>
-      <td>2020-01-17</td>
+      <td>2020-01-06</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>2</th>
-      <td>2020-01-18</td>
+      <td>2020-01-07</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>3</th>
-      <td>2020-01-19</td>
+      <td>2020-01-08</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>4</th>
-      <td>2020-01-20</td>
+      <td>2020-01-09</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
       <td>0.0</td>
-      <td>0.00</td>
-      <td>0.00</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2426,58 +2315,58 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>1021</th>
-      <td>2022-11-02</td>
-      <td>70396.0</td>
-      <td>33156.0</td>
-      <td>22460268.0</td>
-      <td>7780125.0</td>
-      <td>268.25</td>
-      <td>264.69</td>
+      <th>1669</th>
+      <td>2024-07-31</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>1022</th>
-      <td>2022-11-03</td>
-      <td>67473.0</td>
-      <td>29952.0</td>
-      <td>22527741.0</td>
-      <td>7810077.0</td>
-      <td>268.34</td>
-      <td>264.83</td>
+      <th>1670</th>
+      <td>2024-08-01</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>1023</th>
-      <td>2022-11-04</td>
-      <td>34064.0</td>
-      <td>27581.0</td>
-      <td>22561805.0</td>
-      <td>7837658.0</td>
-      <td>268.56</td>
-      <td>265.00</td>
+      <th>1671</th>
+      <td>2024-08-02</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>1024</th>
-      <td>2022-11-05</td>
-      <td>74170.0</td>
-      <td>25535.0</td>
-      <td>22635975.0</td>
-      <td>7863193.0</td>
-      <td>268.81</td>
-      <td>0.00</td>
+      <th>1672</th>
+      <td>2024-08-03</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>1025</th>
-      <td>2022-11-06</td>
-      <td>66397.0</td>
-      <td>24345.0</td>
-      <td>22702372.0</td>
-      <td>7887538.0</td>
-      <td>268.90</td>
-      <td>265.15</td>
+      <th>1673</th>
+      <td>2024-08-04</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>33803572.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>1026 rows × 7 columns</p>
+<p>1674 rows × 7 columns</p>
 </div></div></div>
 </div>
 </section>
@@ -2495,7 +2384,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/7212a7135e3ac44944aa1fa04fcd203209904ebe04860f50384c206468777520.png" src="../_images/7212a7135e3ac44944aa1fa04fcd203209904ebe04860f50384c206468777520.png" />
+<img alt="../_images/541b4f7b3da2c65aa79c746cb99056cd91e6c329b717e1c7df50e431667cf627.png" src="../_images/541b4f7b3da2c65aa79c746cb99056cd91e6c329b717e1c7df50e431667cf627.png" />
 </div>
 </div>
 <section id="more-params">
@@ -2512,7 +2401,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;&gt;
 </pre></div>
 </div>
-<img alt="../_images/3467c8f49c18f979032a84fc114ccdca7c1378444bf204680aff11992eabc379.png" src="../_images/3467c8f49c18f979032a84fc114ccdca7c1378444bf204680aff11992eabc379.png" />
+<img alt="../_images/bb91b21e529142682495fea2f5042a5af575ca30cd04376a8986f83a2debe134.png" src="../_images/bb91b21e529142682495fea2f5042a5af575ca30cd04376a8986f83a2debe134.png" />
 </div>
 </div>
 </section>
@@ -2531,7 +2420,7 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/0p/7xy1_dzx0_s5rnf06c0b316w0000gn/T/ipykernel_38668/2059310855.py:2: SettingWithCopyWarning: 
+<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/var/folders/j3/p4x0mssx55nd8dn903h5wdb00000gn/T/ipykernel_38646/2059310855.py:2: SettingWithCopyWarning: 
 A value is trying to be set on a copy of a slice from a DataFrame.
 Try using .loc[row_indexer,col_indexer] = value instead
 
@@ -2564,34 +2453,34 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
   </thead>
   <tbody>
     <tr>
-      <th>104856</th>
+      <th>188626</th>
       <td>Japan</td>
-      <td>2020-01-22</td>
+      <td>2020-01-05</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>104857</th>
+      <th>188627</th>
       <td>Japan</td>
-      <td>2020-01-23</td>
+      <td>2020-01-06</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>104858</th>
+      <th>188628</th>
       <td>Japan</td>
-      <td>2020-01-24</td>
+      <td>2020-01-07</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>104859</th>
+      <th>188629</th>
       <td>Japan</td>
-      <td>2020-01-25</td>
+      <td>2020-01-08</td>
       <td>0.0</td>
     </tr>
     <tr>
-      <th>104860</th>
+      <th>188630</th>
       <td>Japan</td>
-      <td>2020-01-26</td>
-      <td>2.0</td>
+      <td>2020-01-09</td>
+      <td>0.0</td>
     </tr>
     <tr>
       <th>...</th>
@@ -2600,38 +2489,38 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
       <td>...</td>
     </tr>
     <tr>
-      <th>204107</th>
+      <th>375647</th>
       <td>Taiwan</td>
-      <td>2022-11-02</td>
-      <td>33156.0</td>
+      <td>2023-09-20</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>204108</th>
+      <th>375648</th>
       <td>Taiwan</td>
-      <td>2022-11-03</td>
-      <td>29952.0</td>
+      <td>2023-09-21</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>204109</th>
+      <th>375649</th>
       <td>Taiwan</td>
-      <td>2022-11-04</td>
-      <td>27581.0</td>
+      <td>2023-09-22</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>204110</th>
+      <th>375650</th>
       <td>Taiwan</td>
-      <td>2022-11-05</td>
-      <td>25535.0</td>
+      <td>2023-09-23</td>
+      <td>0.0</td>
     </tr>
     <tr>
-      <th>204111</th>
+      <th>375651</th>
       <td>Taiwan</td>
-      <td>2022-11-06</td>
-      <td>24345.0</td>
+      <td>2023-09-24</td>
+      <td>0.0</td>
     </tr>
   </tbody>
 </table>
-<p>3066 rows × 3 columns</p>
+<p>4696 rows × 3 columns</p>
 </div></div></div>
 </div>
 <p>Seaborn繪圖還是基於matplotlib套件，但他的<code class="docutils literal notranslate"><span class="pre">lineplot()</span></code>可以多給一個參數<code class="docutils literal notranslate"><span class="pre">hue</span></code>，並將<code class="docutils literal notranslate"><span class="pre">location</span></code>指定給該參數，這樣繪圖時便會依照不同的<code class="docutils literal notranslate"><span class="pre">location</span></code>進行繪圖。</p>
@@ -2645,10 +2534,82 @@ See the caveats in the documentation: https://pandas.pydata.org/pandas-docs/stab
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;AxesSubplot:xlabel=&#39;date&#39;, ylabel=&#39;new_cases&#39;&gt;
+<div class="output traceback highlight-ipythontb notranslate"><div class="highlight"><pre><span></span><span class="gt">---------------------------------------------------------------------------</span>
+<span class="ne">OptionError</span><span class="g g-Whitespace">                               </span>Traceback (most recent call last)
+<span class="nn">Input In [20],</span> in <span class="ni">&lt;cell line: 4&gt;</span><span class="nt">()</span>
+<span class="g g-Whitespace">      </span><span class="mi">2</span> <span class="kn">import</span> <span class="nn">seaborn</span> <span class="k">as</span> <span class="nn">sns</span>
+<span class="g g-Whitespace">      </span><span class="mi">3</span> <span class="n">fig</span><span class="p">,</span> <span class="n">ax</span> <span class="o">=</span> <span class="n">plt</span><span class="o">.</span><span class="n">subplots</span><span class="p">(</span><span class="n">figsize</span><span class="o">=</span><span class="p">(</span><span class="mi">11</span><span class="p">,</span> <span class="mi">6</span><span class="p">))</span>
+<span class="ne">----&gt; </span><span class="mi">4</span> <span class="n">sns</span><span class="o">.</span><span class="n">lineplot</span><span class="p">(</span><span class="n">data</span><span class="o">=</span><span class="n">df_sns</span><span class="p">,</span> <span class="n">x</span><span class="o">=</span><span class="s1">&#39;date&#39;</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="s1">&#39;new_cases&#39;</span><span class="p">,</span> <span class="n">hue</span><span class="o">=</span><span class="s1">&#39;location&#39;</span><span class="p">,</span> <span class="n">ax</span><span class="o">=</span><span class="n">ax</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/seaborn/_decorators.py:46,</span> in <span class="ni">_deprecate_positional_args.&lt;locals&gt;.inner_f</span><span class="nt">(*args, **kwargs)</span>
+<span class="g g-Whitespace">     </span><span class="mi">36</span>     <span class="n">warnings</span><span class="o">.</span><span class="n">warn</span><span class="p">(</span>
+<span class="g g-Whitespace">     </span><span class="mi">37</span>         <span class="s2">&quot;Pass the following variable</span><span class="si">{}</span><span class="s2"> as </span><span class="si">{}</span><span class="s2">keyword arg</span><span class="si">{}</span><span class="s2">: </span><span class="si">{}</span><span class="s2">. &quot;</span>
+<span class="g g-Whitespace">     </span><span class="mi">38</span>         <span class="s2">&quot;From version 0.12, the only valid positional argument &quot;</span>
+   <span class="p">(</span><span class="o">...</span><span class="p">)</span>
+<span class="g g-Whitespace">     </span><span class="mi">43</span>         <span class="ne">FutureWarning</span>
+<span class="g g-Whitespace">     </span><span class="mi">44</span>     <span class="p">)</span>
+<span class="nn">     45 kwargs.update({k: arg for k, arg</span> in <span class="ni">zip</span><span class="nt">(sig.parameters, args)})</span>
+<span class="ne">---&gt; </span><span class="mi">46</span> <span class="k">return</span> <span class="n">f</span><span class="p">(</span><span class="o">**</span><span class="n">kwargs</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/seaborn/relational.py:710,</span> in <span class="ni">lineplot</span><span class="nt">(x, y, hue, size, style, data, palette, hue_order, hue_norm, sizes, size_order, size_norm, dashes, markers, style_order, units, estimator, ci, n_boot, seed, sort, err_style, err_kws, legend, ax, **kwargs)</span>
+<span class="g g-Whitespace">    </span><span class="mi">706</span>     <span class="k">return</span> <span class="n">ax</span>
+<span class="g g-Whitespace">    </span><span class="mi">708</span> <span class="n">p</span><span class="o">.</span><span class="n">_attach</span><span class="p">(</span><span class="n">ax</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">710</span> <span class="n">p</span><span class="o">.</span><span class="n">plot</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="n">kwargs</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">711</span> <span class="k">return</span> <span class="n">ax</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/seaborn/relational.py:471,</span> in <span class="ni">_LinePlotter.plot</span><span class="nt">(self, ax, kws)</span>
+<span class="g g-Whitespace">    </span><span class="mi">469</span> <span class="c1"># Loop over the semantic subsets and add to the plot</span>
+<span class="g g-Whitespace">    </span><span class="mi">470</span> <span class="n">grouping_vars</span> <span class="o">=</span> <span class="s2">&quot;hue&quot;</span><span class="p">,</span> <span class="s2">&quot;size&quot;</span><span class="p">,</span> <span class="s2">&quot;style&quot;</span>
+<span class="ne">--&gt; </span><span class="mi">471</span> <span class="k">for</span> <span class="n">sub_vars</span><span class="p">,</span> <span class="n">sub_data</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">iter_data</span><span class="p">(</span><span class="n">grouping_vars</span><span class="p">,</span> <span class="n">from_comp_data</span><span class="o">=</span><span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">    </span><span class="mi">473</span>     <span class="k">if</span> <span class="bp">self</span><span class="o">.</span><span class="n">sort</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">474</span>         <span class="n">sort_vars</span> <span class="o">=</span> <span class="p">[</span><span class="s2">&quot;units&quot;</span><span class="p">,</span> <span class="s2">&quot;x&quot;</span><span class="p">,</span> <span class="s2">&quot;y&quot;</span><span class="p">]</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/seaborn/_core.py:983,</span> in <span class="ni">VectorPlotter.iter_data</span><span class="nt">(self, grouping_vars, reverse, from_comp_data)</span>
+<span class="g g-Whitespace">    </span><span class="mi">978</span> <span class="n">grouping_vars</span> <span class="o">=</span> <span class="p">[</span>
+<span class="g g-Whitespace">    </span><span class="mi">979</span>     <span class="n">var</span> <span class="k">for</span> <span class="n">var</span> <span class="ow">in</span> <span class="n">grouping_vars</span> <span class="k">if</span> <span class="n">var</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">variables</span>
+<span class="g g-Whitespace">    </span><span class="mi">980</span> <span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">982</span> <span class="k">if</span> <span class="n">from_comp_data</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">983</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">comp_data</span>
+<span class="g g-Whitespace">    </span><span class="mi">984</span> <span class="k">else</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">985</span>     <span class="n">data</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/seaborn/_core.py:1054,</span> in <span class="ni">VectorPlotter.comp_data</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1050</span> <span class="n">axis</span> <span class="o">=</span> <span class="nb">getattr</span><span class="p">(</span><span class="n">ax</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">var</span><span class="si">}</span><span class="s2">axis&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">   </span><span class="mi">1052</span> <span class="c1"># Use the converter assigned to the axis to get a float representation</span>
+<span class="g g-Whitespace">   </span><span class="mi">1053</span> <span class="c1"># of the data, passing np.nan or pd.NA through (pd.NA becomes np.nan)</span>
+<span class="ne">-&gt; </span><span class="mi">1054</span> <span class="k">with</span> <span class="n">pd</span><span class="o">.</span><span class="n">option_context</span><span class="p">(</span><span class="s1">&#39;mode.use_inf_as_null&#39;</span><span class="p">,</span> <span class="kc">True</span><span class="p">):</span>
+<span class="g g-Whitespace">   </span><span class="mi">1055</span>     <span class="n">orig</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">plot_data</span><span class="p">[</span><span class="n">var</span><span class="p">]</span><span class="o">.</span><span class="n">dropna</span><span class="p">()</span>
+<span class="g g-Whitespace">   </span><span class="mi">1056</span> <span class="n">comp_col</span> <span class="o">=</span> <span class="n">pd</span><span class="o">.</span><span class="n">Series</span><span class="p">(</span><span class="n">index</span><span class="o">=</span><span class="n">orig</span><span class="o">.</span><span class="n">index</span><span class="p">,</span> <span class="n">dtype</span><span class="o">=</span><span class="nb">float</span><span class="p">,</span> <span class="n">name</span><span class="o">=</span><span class="n">var</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:480,</span> in <span class="ni">option_context.__enter__</span><span class="nt">(self)</span>
+<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">480</span>     <span class="bp">self</span><span class="o">.</span><span class="n">undo</span> <span class="o">=</span> <span class="p">[(</span><span class="n">pat</span><span class="p">,</span> <span class="n">_get_option</span><span class="p">(</span><span class="n">pat</span><span class="p">))</span> <span class="k">for</span> <span class="n">pat</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span>     <span class="k">for</span> <span class="n">pat</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>         <span class="n">_set_option</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:480,</span> in <span class="ni">&lt;listcomp&gt;</span><span class="nt">(.0)</span>
+<span class="g g-Whitespace">    </span><span class="mi">479</span> <span class="k">def</span> <span class="fm">__enter__</span><span class="p">(</span><span class="bp">self</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="kc">None</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">480</span>     <span class="bp">self</span><span class="o">.</span><span class="n">undo</span> <span class="o">=</span> <span class="p">[(</span><span class="n">pat</span><span class="p">,</span> <span class="n">_get_option</span><span class="p">(</span><span class="n">pat</span><span class="p">))</span> <span class="k">for</span> <span class="n">pat</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span><span class="p">]</span>
+<span class="g g-Whitespace">    </span><span class="mi">482</span>     <span class="k">for</span> <span class="n">pat</span><span class="p">,</span> <span class="n">val</span> <span class="ow">in</span> <span class="bp">self</span><span class="o">.</span><span class="n">ops</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">483</span>         <span class="n">_set_option</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">val</span><span class="p">,</span> <span class="n">silent</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:146,</span> in <span class="ni">_get_option</span><span class="nt">(pat, silent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">145</span> <span class="k">def</span> <span class="nf">_get_option</span><span class="p">(</span><span class="n">pat</span><span class="p">:</span> <span class="nb">str</span><span class="p">,</span> <span class="n">silent</span><span class="p">:</span> <span class="nb">bool</span> <span class="o">=</span> <span class="kc">False</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Any</span><span class="p">:</span>
+<span class="ne">--&gt; </span><span class="mi">146</span>     <span class="n">key</span> <span class="o">=</span> <span class="n">_get_single_key</span><span class="p">(</span><span class="n">pat</span><span class="p">,</span> <span class="n">silent</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">148</span>     <span class="c1"># walk the nested dict</span>
+<span class="g g-Whitespace">    </span><span class="mi">149</span>     <span class="n">root</span><span class="p">,</span> <span class="n">k</span> <span class="o">=</span> <span class="n">_get_root</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
+
+<span class="nn">File ~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:132,</span> in <span class="ni">_get_single_key</span><span class="nt">(pat, silent)</span>
+<span class="g g-Whitespace">    </span><span class="mi">130</span>     <span class="k">if</span> <span class="ow">not</span> <span class="n">silent</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">131</span>         <span class="n">_warn_if_deprecated</span><span class="p">(</span><span class="n">pat</span><span class="p">)</span>
+<span class="ne">--&gt; </span><span class="mi">132</span>     <span class="k">raise</span> <span class="n">OptionError</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;No such keys(s): </span><span class="si">{</span><span class="nb">repr</span><span class="p">(</span><span class="n">pat</span><span class="p">)</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="g g-Whitespace">    </span><span class="mi">133</span> <span class="k">if</span> <span class="nb">len</span><span class="p">(</span><span class="n">keys</span><span class="p">)</span> <span class="o">&gt;</span> <span class="mi">1</span><span class="p">:</span>
+<span class="g g-Whitespace">    </span><span class="mi">134</span>     <span class="k">raise</span> <span class="n">OptionError</span><span class="p">(</span><span class="s2">&quot;Pattern matched multiple keys&quot;</span><span class="p">)</span>
+
+<span class="ne">OptionError</span>: &quot;No such keys(s): &#39;mode.use_inf_as_null&#39;&quot;
 </pre></div>
 </div>
-<img alt="../_images/f17de11095a299dddbe955c8eb4085c0676b66f32b22f0a6ea5c87d3ade81665.png" src="../_images/f17de11095a299dddbe955c8eb4085c0676b66f32b22f0a6ea5c87d3ade81665.png" />
+<img alt="../_images/ca88714b3828d7fa3e52dbce0bada0d9d465ef3e22375036bf7084cb0932599f.png" src="../_images/ca88714b3828d7fa3e52dbce0bada0d9d465ef3e22375036bf7084cb0932599f.png" />
 </div>
 </div>
 </section>

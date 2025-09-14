@@ -1,15 +1,4 @@
 Traceback (most recent call last):
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 730, in _async_poll_for_reply
-    msg = await ensure_async(self.kc.shell_channel.get_msg(timeout=new_timeout))
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 96, in ensure_async
-    result = await obj
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_client/channels.py", line 230, in get_msg
-    raise Empty
-_queue.Empty
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
@@ -22,17 +11,90 @@ Traceback (most recent call last):
     return future.result()
   File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 949, in async_execute_cell
-    exec_reply = await self.task_poll_for_reply
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 754, in _async_poll_for_reply
-    await self._async_handle_timeout(timeout, cell)
-  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 801, in _async_handle_timeout
-    raise CellTimeoutError.error_from_timeout_and_cell(
-nbclient.exceptions.CellTimeoutError: A cell timed out while it was being executed, after 30 seconds.
-The message was: Cell execution timed out.
-Here is a preview of the cell contents:
--------------------
-import pandas as pd
-raw = pd.read_csv("https://raw.githubusercontent.com/owid/covid-19-data/master/public/data/owid-covid-data.csv")
--------------------
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
+    await self._check_raise_for_error(cell, cell_index, exec_reply)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
+    raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
+nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
+------------------
+import matplotlib.pyplot as plt
+import seaborn as sns
+fig, ax = plt.subplots(figsize=(11, 6))
+sns.lineplot(data=df_sns, x='date', y='new_cases', hue='location', ax=ax)
+------------------
+
+[0;31m---------------------------------------------------------------------------[0m
+[0;31mOptionError[0m                               Traceback (most recent call last)
+Input [0;32mIn [20][0m, in [0;36m<cell line: 4>[0;34m()[0m
+[1;32m      2[0m [38;5;28;01mimport[39;00m [38;5;21;01mseaborn[39;00m [38;5;28;01mas[39;00m [38;5;21;01msns[39;00m
+[1;32m      3[0m fig, ax [38;5;241m=[39m plt[38;5;241m.[39msubplots(figsize[38;5;241m=[39m([38;5;241m11[39m, [38;5;241m6[39m))
+[0;32m----> 4[0m [43msns[49m[38;5;241;43m.[39;49m[43mlineplot[49m[43m([49m[43mdata[49m[38;5;241;43m=[39;49m[43mdf_sns[49m[43m,[49m[43m [49m[43mx[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mdate[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43my[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mnew_cases[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43mhue[49m[38;5;241;43m=[39;49m[38;5;124;43m'[39;49m[38;5;124;43mlocation[39;49m[38;5;124;43m'[39;49m[43m,[49m[43m [49m[43max[49m[38;5;241;43m=[39;49m[43max[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/seaborn/_decorators.py:46[0m, in [0;36m_deprecate_positional_args.<locals>.inner_f[0;34m(*args, **kwargs)[0m
+[1;32m     36[0m     warnings[38;5;241m.[39mwarn(
+[1;32m     37[0m         [38;5;124m"[39m[38;5;124mPass the following variable[39m[38;5;132;01m{}[39;00m[38;5;124m as [39m[38;5;132;01m{}[39;00m[38;5;124mkeyword arg[39m[38;5;132;01m{}[39;00m[38;5;124m: [39m[38;5;132;01m{}[39;00m[38;5;124m. [39m[38;5;124m"[39m
+[1;32m     38[0m         [38;5;124m"[39m[38;5;124mFrom version 0.12, the only valid positional argument [39m[38;5;124m"[39m
+[0;32m   (...)[0m
+[1;32m     43[0m         [38;5;167;01mFutureWarning[39;00m
+[1;32m     44[0m     )
+[1;32m     45[0m kwargs[38;5;241m.[39mupdate({k: arg [38;5;28;01mfor[39;00m k, arg [38;5;129;01min[39;00m [38;5;28mzip[39m(sig[38;5;241m.[39mparameters, args)})
+[0;32m---> 46[0m [38;5;28;01mreturn[39;00m [43mf[49m[43m([49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/seaborn/relational.py:710[0m, in [0;36mlineplot[0;34m(x, y, hue, size, style, data, palette, hue_order, hue_norm, sizes, size_order, size_norm, dashes, markers, style_order, units, estimator, ci, n_boot, seed, sort, err_style, err_kws, legend, ax, **kwargs)[0m
+[1;32m    706[0m     [38;5;28;01mreturn[39;00m ax
+[1;32m    708[0m p[38;5;241m.[39m_attach(ax)
+[0;32m--> 710[0m [43mp[49m[38;5;241;43m.[39;49m[43mplot[49m[43m([49m[43max[49m[43m,[49m[43m [49m[43mkwargs[49m[43m)[49m
+[1;32m    711[0m [38;5;28;01mreturn[39;00m ax
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/seaborn/relational.py:471[0m, in [0;36m_LinePlotter.plot[0;34m(self, ax, kws)[0m
+[1;32m    469[0m [38;5;66;03m# Loop over the semantic subsets and add to the plot[39;00m
+[1;32m    470[0m grouping_vars [38;5;241m=[39m [38;5;124m"[39m[38;5;124mhue[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124msize[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mstyle[39m[38;5;124m"[39m
+[0;32m--> 471[0m [38;5;28;01mfor[39;00m sub_vars, sub_data [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39miter_data(grouping_vars, from_comp_data[38;5;241m=[39m[38;5;28;01mTrue[39;00m):
+[1;32m    473[0m     [38;5;28;01mif[39;00m [38;5;28mself[39m[38;5;241m.[39msort:
+[1;32m    474[0m         sort_vars [38;5;241m=[39m [[38;5;124m"[39m[38;5;124munits[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mx[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124my[39m[38;5;124m"[39m]
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/seaborn/_core.py:983[0m, in [0;36mVectorPlotter.iter_data[0;34m(self, grouping_vars, reverse, from_comp_data)[0m
+[1;32m    978[0m grouping_vars [38;5;241m=[39m [
+[1;32m    979[0m     var [38;5;28;01mfor[39;00m var [38;5;129;01min[39;00m grouping_vars [38;5;28;01mif[39;00m var [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mvariables
+[1;32m    980[0m ]
+[1;32m    982[0m [38;5;28;01mif[39;00m from_comp_data:
+[0;32m--> 983[0m     data [38;5;241m=[39m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mcomp_data[49m
+[1;32m    984[0m [38;5;28;01melse[39;00m:
+[1;32m    985[0m     data [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mplot_data
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/seaborn/_core.py:1054[0m, in [0;36mVectorPlotter.comp_data[0;34m(self)[0m
+[1;32m   1050[0m axis [38;5;241m=[39m [38;5;28mgetattr[39m(ax, [38;5;124mf[39m[38;5;124m"[39m[38;5;132;01m{[39;00mvar[38;5;132;01m}[39;00m[38;5;124maxis[39m[38;5;124m"[39m)
+[1;32m   1052[0m [38;5;66;03m# Use the converter assigned to the axis to get a float representation[39;00m
+[1;32m   1053[0m [38;5;66;03m# of the data, passing np.nan or pd.NA through (pd.NA becomes np.nan)[39;00m
+[0;32m-> 1054[0m [38;5;28;01mwith[39;00m pd[38;5;241m.[39moption_context([38;5;124m'[39m[38;5;124mmode.use_inf_as_null[39m[38;5;124m'[39m, [38;5;28;01mTrue[39;00m):
+[1;32m   1055[0m     orig [38;5;241m=[39m [38;5;28mself[39m[38;5;241m.[39mplot_data[var][38;5;241m.[39mdropna()
+[1;32m   1056[0m comp_col [38;5;241m=[39m pd[38;5;241m.[39mSeries(index[38;5;241m=[39morig[38;5;241m.[39mindex, dtype[38;5;241m=[39m[38;5;28mfloat[39m, name[38;5;241m=[39mvar)
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:480[0m, in [0;36moption_context.__enter__[0;34m(self)[0m
+[1;32m    479[0m [38;5;28;01mdef[39;00m [38;5;21m__enter__[39m([38;5;28mself[39m) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[0;32m--> 480[0m     [38;5;28mself[39m[38;5;241m.[39mundo [38;5;241m=[39m [(pat, _get_option(pat)) [38;5;28;01mfor[39;00m pat, val [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mops]
+[1;32m    482[0m     [38;5;28;01mfor[39;00m pat, val [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mops:
+[1;32m    483[0m         _set_option(pat, val, silent[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:480[0m, in [0;36m<listcomp>[0;34m(.0)[0m
+[1;32m    479[0m [38;5;28;01mdef[39;00m [38;5;21m__enter__[39m([38;5;28mself[39m) [38;5;241m-[39m[38;5;241m>[39m [38;5;28;01mNone[39;00m:
+[0;32m--> 480[0m     [38;5;28mself[39m[38;5;241m.[39mundo [38;5;241m=[39m [(pat, [43m_get_option[49m[43m([49m[43mpat[49m[43m)[49m) [38;5;28;01mfor[39;00m pat, val [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mops]
+[1;32m    482[0m     [38;5;28;01mfor[39;00m pat, val [38;5;129;01min[39;00m [38;5;28mself[39m[38;5;241m.[39mops:
+[1;32m    483[0m         _set_option(pat, val, silent[38;5;241m=[39m[38;5;28;01mTrue[39;00m)
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:146[0m, in [0;36m_get_option[0;34m(pat, silent)[0m
+[1;32m    145[0m [38;5;28;01mdef[39;00m [38;5;21m_get_option[39m(pat: [38;5;28mstr[39m, silent: [38;5;28mbool[39m [38;5;241m=[39m [38;5;28;01mFalse[39;00m) [38;5;241m-[39m[38;5;241m>[39m Any:
+[0;32m--> 146[0m     key [38;5;241m=[39m [43m_get_single_key[49m[43m([49m[43mpat[49m[43m,[49m[43m [49m[43msilent[49m[43m)[49m
+[1;32m    148[0m     [38;5;66;03m# walk the nested dict[39;00m
+[1;32m    149[0m     root, k [38;5;241m=[39m _get_root(key)
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/pandas/_config/config.py:132[0m, in [0;36m_get_single_key[0;34m(pat, silent)[0m
+[1;32m    130[0m     [38;5;28;01mif[39;00m [38;5;129;01mnot[39;00m silent:
+[1;32m    131[0m         _warn_if_deprecated(pat)
+[0;32m--> 132[0m     [38;5;28;01mraise[39;00m OptionError([38;5;124mf[39m[38;5;124m"[39m[38;5;124mNo such keys(s): [39m[38;5;132;01m{[39;00m[38;5;28mrepr[39m(pat)[38;5;132;01m}[39;00m[38;5;124m"[39m)
+[1;32m    133[0m [38;5;28;01mif[39;00m [38;5;28mlen[39m(keys) [38;5;241m>[39m [38;5;241m1[39m:
+[1;32m    134[0m     [38;5;28;01mraise[39;00m OptionError([38;5;124m"[39m[38;5;124mPattern matched multiple keys[39m[38;5;124m"[39m)
+
+[0;31mOptionError[0m: "No such keys(s): 'mode.use_inf_as_null'"
+OptionError: "No such keys(s): 'mode.use_inf_as_null'"
 
