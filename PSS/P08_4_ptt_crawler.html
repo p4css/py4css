@@ -1,13 +1,12 @@
 
-
 <!DOCTYPE html>
 
 
-<html >
+<html lang="en" data-content_root="../" >
 
   <head>
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="generator" content="Docutils 0.17.1: http://docutils.sourceforge.net/" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" /><meta name="viewport" content="width=device-width, initial-scale=1" />
 
     <title>P08 HTML Parsing - Crawling PTT &#8212; Programming for Social Scientists</title>
   
@@ -15,60 +14,58 @@
   
   <script data-cfasync="false">
     document.documentElement.dataset.mode = localStorage.getItem("mode") || "";
-    document.documentElement.dataset.theme = localStorage.getItem("theme") || "light";
+    document.documentElement.dataset.theme = localStorage.getItem("theme") || "";
   </script>
   
   <!-- Loaded before other Sphinx assets -->
-  <link href="../_static/styles/theme.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/bootstrap.css?digest=e353d410970836974a52" rel="stylesheet" />
-<link href="../_static/styles/pydata-sphinx-theme.css?digest=e353d410970836974a52" rel="stylesheet" />
+  <link href="../_static/styles/theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/bootstrap.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+<link href="../_static/styles/pydata-sphinx-theme.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
 
   
-  <link href="../_static/vendor/fontawesome/6.1.2/css/all.min.css?digest=e353d410970836974a52" rel="stylesheet" />
-  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-solid-900.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-brands-400.woff2" />
-<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.1.2/webfonts/fa-regular-400.woff2" />
+  <link href="../_static/vendor/fontawesome/6.5.2/css/all.min.css?digest=dfe6caa3a7d634c4db9b" rel="stylesheet" />
+  <link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-solid-900.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-brands-400.woff2" />
+<link rel="preload" as="font" type="font/woff2" crossorigin href="../_static/vendor/fontawesome/6.5.2/webfonts/fa-regular-400.woff2" />
 
-    <link rel="stylesheet" type="text/css" href="../_static/pygments.css" />
-    <link rel="stylesheet" href="../_static/styles/sphinx-book-theme.css?digest=14f4ca6b54d191a8c7657f6c759bf11a5fb86285" type="text/css" />
-    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/mystnb.4510f1fc1dee50b3e5859aac5469c37c29e427902b24a333a5f9fcb2f0b3ac41.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/custom.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/pygments.css?v=03e43079" />
+    <link rel="stylesheet" type="text/css" href="../_static/styles/sphinx-book-theme.css?v=eba8b062" />
+    <link rel="stylesheet" type="text/css" href="../_static/togglebutton.css?v=13237357" />
+    <link rel="stylesheet" type="text/css" href="../_static/copybutton.css?v=76b2166b" />
+    <link rel="stylesheet" type="text/css" href="../_static/mystnb.8ecb98da25f57f5357bf6f572d296f466b2cfe2517ffebfabe82451661e28f02.css" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-thebe.css?v=4fa983c6" />
+    <link rel="stylesheet" type="text/css" href="../_static/sphinx-design.min.css?v=95c83b7e" />
+    <link rel="stylesheet" type="text/css" href="../_static/custom.css?v=cf725d29" />
     <link rel="stylesheet" type="text/css" href="../_static/.ipynb_checkpoints/custom-checkpoint.css" />
-    <link rel="stylesheet" type="text/css" href="../_static/design-style.4045f2051d55cab465a707391d5b2007.min.css" />
   
   <!-- Pre-loaded scripts that we'll load fully later -->
-  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=e353d410970836974a52" />
-<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52" />
+  <link rel="preload" as="script" href="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b" />
+<link rel="preload" as="script" href="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b" />
+  <script src="../_static/vendor/fontawesome/6.5.2/js/all.min.js?digest=dfe6caa3a7d634c4db9b"></script>
 
-    <script data-url_root="../" id="documentation_options" src="../_static/documentation_options.js"></script>
-    <script src="../_static/jquery.js"></script>
-    <script src="../_static/underscore.js"></script>
-    <script src="../_static/doctools.js"></script>
-    <script src="../_static/clipboard.min.js"></script>
-    <script src="../_static/copybutton.js"></script>
-    <script src="../_static/scripts/sphinx-book-theme.js?digest=5a5c038af52cf7bc1a1ec88eea08e6366ee68824"></script>
+    <script src="../_static/documentation_options.js?v=9eb32ce0"></script>
+    <script src="../_static/doctools.js?v=9a2dae69"></script>
+    <script src="../_static/sphinx_highlight.js?v=dc90522c"></script>
+    <script src="../_static/clipboard.min.js?v=a7894cd8"></script>
+    <script src="../_static/copybutton.js?v=f281be69"></script>
+    <script src="../_static/scripts/sphinx-book-theme.js?v=887ef09a"></script>
     <script>let toggleHintShow = 'Click to show';</script>
     <script>let toggleHintHide = 'Click to hide';</script>
     <script>let toggleOpenOnPrint = 'true';</script>
-    <script src="../_static/togglebutton.js"></script>
+    <script src="../_static/togglebutton.js?v=4a39c7ea"></script>
     <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
-    <script src="../_static/design-tabs.js"></script>
-    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"
-const thebe_selector = ".thebe,.cell"
-const thebe_selector_input = "pre"
-const thebe_selector_output = ".output, .cell_output"
-</script>
-    <script async="async" src="../_static/sphinx-thebe.js"></script>
+    <script src="../_static/design-tabs.js?v=36754332"></script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
+    <script async="async" src="../_static/sphinx-thebe.js?v=c100c467"></script>
+    <script>var togglebuttonSelector = '.toggle, .admonition.dropdown';</script>
+    <script>const THEBE_JS_URL = "https://unpkg.com/thebe@0.8.2/lib/index.js"; const thebe_selector = ".thebe,.cell"; const thebe_selector_input = "pre"; const thebe_selector_output = ".output, .cell_output"</script>
     <script>DOCUMENTATION_OPTIONS.pagename = 'PSS/P08_4_ptt_crawler';</script>
     <link rel="index" title="Index" href="../genindex.html" />
     <link rel="search" title="Search" href="../search.html" />
     <link rel="next" title="P09 Database" href="P09_database.html" />
     <link rel="prev" title="Youtube Scraper" href="P08_6_youtube_scraper.html" />
   <meta name="viewport" content="width=device-width, initial-scale=1"/>
-  <meta name="docsearch:language" content="None"/>
+  <meta name="docsearch:language" content="en"/>
   </head>
   
   
@@ -76,19 +73,23 @@ const thebe_selector_output = ".output, .cell_output"
 
   
   
-  <a class="skip-link" href="#main-content">Skip to main content</a>
+  <div id="pst-skip-link" class="skip-link d-print-none"><a href="#main-content">Skip to main content</a></div>
+  
+  <div id="pst-scroll-pixel-helper"></div>
+  
+  <button type="button" class="btn rounded-pill" id="pst-back-to-top">
+    <i class="fa-solid fa-arrow-up"></i>Back to top</button>
+
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__primary"
-          id="__primary"/>
-  <label class="overlay overlay-primary" for="__primary"></label>
+          id="pst-primary-sidebar-checkbox"/>
+  <label class="overlay overlay-primary" for="pst-primary-sidebar-checkbox"></label>
   
   <input type="checkbox"
           class="sidebar-toggle"
-          name="__secondary"
-          id="__secondary"/>
-  <label class="overlay overlay-secondary" for="__secondary"></label>
+          id="pst-secondary-sidebar-checkbox"/>
+  <label class="overlay overlay-secondary" for="pst-secondary-sidebar-checkbox"></label>
   
   <div class="search-button__wrapper">
     <div class="search-button__overlay"></div>
@@ -110,12 +111,20 @@ const thebe_selector_output = ".output, .cell_output"
   <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd>K</kbd></span>
 </form></div>
   </div>
+
+  <div class="pst-async-banner-revealer d-none">
+  <aside id="bd-header-version-warning" class="d-none d-print-none" aria-label="Version warning"></aside>
+</div>
+
   
-    <nav class="bd-header navbar navbar-expand-lg bd-navbar">
-    </nav>
+    <header class="bd-header navbar navbar-expand-lg bd-navbar d-print-none">
+    </header>
   
+
   <div class="bd-container">
     <div class="bd-container__inner bd-page-width">
+      
+      
       
       <div class="bd-sidebar-primary bd-sidebar">
         
@@ -130,9 +139,13 @@ const thebe_selector_output = ".output, .cell_output"
   
     <div class="sidebar-primary-items__start sidebar-primary__section">
         <div class="sidebar-primary-item">
+
+  
+    
   
 
 <a class="navbar-brand logo" href="../intro.html">
+  
   
   
   
@@ -142,12 +155,23 @@ const thebe_selector_output = ".output, .cell_output"
       
     
     
-    <img src="../_static/logo.png" class="logo__image only-light" alt="Logo image"/>
-    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Logo image"/>`);</script>
+    <img src="../_static/logo.png" class="logo__image only-light" alt="Programming for Social Scientists - Home"/>
+    <script>document.write(`<img src="../_static/logo.png" class="logo__image only-dark" alt="Programming for Social Scientists - Home"/>`);</script>
   
   
 </a></div>
-        <div class="sidebar-primary-item"><nav class="bd-links" id="bd-docs-nav" aria-label="Main">
+        <div class="sidebar-primary-item">
+
+ <script>
+ document.write(`
+   <button class="btn search-button-field search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass"></i>
+    <span class="search-button__default-text">Search</span>
+    <span class="search-button__kbd-shortcut"><kbd class="kbd-shortcut__modifier">Ctrl</kbd>+<kbd class="kbd-shortcut__modifier">K</kbd></span>
+   </button>
+ `);
+ </script></div>
+        <div class="sidebar-primary-item"><nav class="bd-links bd-docs-nav" aria-label="Main">
     <div class="bd-toc-item navbar-nav active">
         
         <ul class="nav bd-sidenav bd-sidenav__home-link">
@@ -159,60 +183,57 @@ const thebe_selector_output = ".output, .cell_output"
         </ul>
         <p aria-level="2" class="caption" role="heading"><span class="caption-text">Basic Logic</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><input class="toctree-checkbox" id="toctree-checkbox-1" name="toctree-checkbox-1" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-1"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P01_counting.html">P01-Counting</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="P01p_counting.html">P01-Practice</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><input class="toctree-checkbox" id="toctree-checkbox-2" name="toctree-checkbox-2" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-2"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P02_0_basic.html">P02-Python Basic</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="P02p_basic.html">Practices 02 for Python basic</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P02_2_exceptions.html">Exceptions(Errors) Handling</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><input class="toctree-checkbox" id="toctree-checkbox-3" name="toctree-checkbox-3" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-3"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P03_list_dictionary.html">P03-List and Dictionary</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="P03p.html">P03 Practice: Accessing dict and list</a></li>
 
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="P04_for.html">P04 Flow Control</a><input class="toctree-checkbox" id="toctree-checkbox-4" name="toctree-checkbox-4" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-4"><i class="fa-solid fa-chevron-down"></i></label><ul>
-<li class="toctree-l2"><a class="reference internal" href="P04p1_for.html">P04 Practice01: for loop</a></li>
-<li class="toctree-l2"><a class="reference internal" href="P04p2_search_maximum.html">P04 Practice02 Search &amp; Maximum</a></li>
-</ul>
-</li>
+</details></li>
+<li class="toctree-l1"><a class="reference internal" href="P04_for.html">P04 Flow Control</a></li>
+
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Exploration</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><input class="toctree-checkbox" id="toctree-checkbox-5" name="toctree-checkbox-5" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-5"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P05_read_csv_json.html">P05 READ Files</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="P05p1_read_csv.html">P05-1 Read CSV</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P05p2_read_json.html">P05-2 Load and dump ubike json data</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P05p3_read_other_format.html">Read more formats</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><input class="toctree-checkbox" id="toctree-checkbox-6" name="toctree-checkbox-6" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-6"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P06_pandas.html">P06 Pandas</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="P06p1_summarizing.html">Pandas: Counting and Summarizing</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P06p2_filter_select_datetime.html">Pandas: filter, select, and timeline process</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P06p3_timestamp.html">P06-3 Processing timestamp</a></li>
 </ul>
-</li>
-<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><input class="toctree-checkbox" id="toctree-checkbox-7" name="toctree-checkbox-7" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-7"><i class="fa-solid fa-chevron-down"></i></label><ul>
+</details></li>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P07_0_visualization.html">P07 Visualization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="P07_1_plot_pandas.html">Making Charts with Pandas</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P07_2_bokeh.html">Bokeh &amp; Seaborn(Vaccinating)</a></li>
 </ul>
-</li>
+</details></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Data Acquisition</span></p>
 <ul class="current nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><input class="toctree-checkbox" id="toctree-checkbox-8" name="toctree-checkbox-8" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-8"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="P08_0_scraper.html">P08 Web Crawler</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="P08_1_web_json.html">Web API: cnyes &amp; 104.com</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_5_cases.html">Scraping cases</a></li>
 <li class="toctree-l2"><a class="reference internal" href="P08_6_youtube_scraper.html">Youtube Scraper</a></li>
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1 current active"><a class="current reference internal" href="#">P08 HTML Parsing - Crawling PTT</a></li>
 <li class="toctree-l1"><a class="reference internal" href="P09_database.html">P09 Database</a></li>
 </ul>
 <p aria-level="2" class="caption" role="heading"><span class="caption-text">Text Mining</span></p>
 <ul class="nav bd-sidenav">
-<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><input class="toctree-checkbox" id="toctree-checkbox-9" name="toctree-checkbox-9" type="checkbox"/><label class="toctree-toggle" for="toctree-checkbox-9"><i class="fa-solid fa-chevron-down"></i></label><ul>
+<li class="toctree-l1 has-children"><a class="reference internal" href="../TM/TM01_tokenization.html">TM01 Tokenization</a><details><summary><span class="toctree-toggle" role="presentation"><i class="fa-solid fa-chevron-down"></i></span></summary><ul>
 <li class="toctree-l2"><a class="reference internal" href="../TM/TM01_tokenization%28chi%29.html">Chinese Processing</a></li>
 
 
@@ -220,7 +241,7 @@ const thebe_selector_output = ".output, .cell_output"
 
 
 </ul>
-</li>
+</details></li>
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM02_collocation.html">TM02 Collocation</a></li>
 
 <li class="toctree-l1"><a class="reference internal" href="../TM/TM03_POS%20Tagging.html">TM03 POS Tagging</a></li>
@@ -289,7 +310,7 @@ const thebe_selector_output = ".output, .cell_output"
 
       </div>
       
-      <main id="main-content" class="bd-main">
+      <main id="main-content" class="bd-main" role="main">
         
         
 
@@ -298,14 +319,14 @@ const thebe_selector_output = ".output, .cell_output"
           <div class="bd-content">
             <div class="bd-article-container">
               
-              <div class="bd-header-article">
+              <div class="bd-header-article d-print-none">
 <div class="header-article-items header-article__inner">
   
     <div class="header-article-items__start">
       
-        <div class="header-article-item"><label class="sidebar-toggle primary-toggle btn btn-sm" for="__primary" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+        <div class="header-article-item"><button class="sidebar-toggle primary-toggle btn btn-sm" title="Toggle primary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
   <span class="fa-solid fa-bars"></span>
-</label></div>
+</button></div>
       
     </div>
   
@@ -330,14 +351,14 @@ const thebe_selector_output = ".output, .cell_output"
       
       <li><a href="https://colab.research.google.com/github/p4css/py4css/blob/master/_sources/PSS/P08_4_ptt_crawler.ipynb" target="_blank"
    class="btn btn-sm dropdown-item"
-   title="Launch onColab"
+   title="Launch on Colab"
    data-bs-placement="left" data-bs-toggle="tooltip"
 >
   
 
 <span class="btn__icon-container">
   
-    <img src="../_static/images/logo_colab.png">
+    <img alt="Colab logo" src="../_static/images/logo_colab.png">
   </span>
 <span class="btn__text-container">Colab</span>
 </a>
@@ -458,26 +479,28 @@ const thebe_selector_output = ".output, .cell_output"
 </button>
 
 
+
 <script>
 document.write(`
-  <button class="theme-switch-button btn btn-sm btn-outline-primary navbar-btn rounded-circle" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <span class="theme-switch" data-mode="light"><i class="fa-solid fa-sun"></i></span>
-    <span class="theme-switch" data-mode="dark"><i class="fa-solid fa-moon"></i></span>
-    <span class="theme-switch" data-mode="auto"><i class="fa-solid fa-circle-half-stroke"></i></span>
+  <button class="btn btn-sm nav-link pst-navbar-icon theme-switch-button" title="light/dark" aria-label="light/dark" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="theme-switch fa-solid fa-sun fa-lg" data-mode="light"></i>
+    <i class="theme-switch fa-solid fa-moon fa-lg" data-mode="dark"></i>
+    <i class="theme-switch fa-solid fa-circle-half-stroke fa-lg" data-mode="auto"></i>
   </button>
 `);
 </script>
 
+
 <script>
 document.write(`
-  <button class="btn btn-sm navbar-btn search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
-    <i class="fa-solid fa-magnifying-glass"></i>
+  <button class="btn btn-sm pst-navbar-icon search-button search-button__button" title="Search" aria-label="Search" data-bs-placement="bottom" data-bs-toggle="tooltip">
+    <i class="fa-solid fa-magnifying-glass fa-lg"></i>
   </button>
 `);
 </script>
-<label class="sidebar-toggle secondary-toggle btn btn-sm" for="__secondary"title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
+<button class="sidebar-toggle secondary-toggle btn btn-sm" title="Toggle secondary sidebar" data-bs-placement="bottom" data-bs-toggle="tooltip">
     <span class="fa-solid fa-list"></span>
-</label>
+</button>
 </div></div>
       
     </div>
@@ -552,19 +575,19 @@ document.write(`
               
                 
 <div id="searchbox"></div>
-                <article class="bd-article" role="main">
+                <article class="bd-article">
                   
   <section class="tex2jax_ignore mathjax_ignore" id="p08-html-parsing-crawling-ptt">
-<h1>P08 HTML Parsing - Crawling PTT<a class="headerlink" href="#p08-html-parsing-crawling-ptt" title="Permalink to this headline">#</a></h1>
+<h1>P08 HTML Parsing - Crawling PTT<a class="headerlink" href="#p08-html-parsing-crawling-ptt" title="Link to this heading">#</a></h1>
 <ul class="simple">
 <li><p>Using BeautifulSoup Extract Text without Tags <a class="reference external" href="http://stackoverflow.com/questions/23380171/using-beautifulsoup-extract-text-without-tags">http://stackoverflow.com/questions/23380171/using-beautifulsoup-extract-text-without-tags</a></p></li>
 <li><p>Scraper: <a class="reference external" href="https://stackoverflow.com/questions/19687421/difference-between-beautifulsoup-and-scrapy-crawler">comparing beautifulsoup vs. scrapy</a></p></li>
 <li><p><a class="reference external" href="https://blog.michaelyin.info/scrapy-tutorial-1-scrapy-vs-beautiful-soup/">comparing beautifulsoup vs. scrapy 2</a></p></li>
 </ul>
 <section id="i-introduction">
-<h2>I. Introduction<a class="headerlink" href="#i-introduction" title="Permalink to this headline">#</a></h2>
+<h2>I. Introduction<a class="headerlink" href="#i-introduction" title="Link to this heading">#</a></h2>
 <section id="get-url-content-by-requests">
-<h3>1.1 Get url content by requests<a class="headerlink" href="#get-url-content-by-requests" title="Permalink to this headline">#</a></h3>
+<h3>1.1 Get url content by requests<a class="headerlink" href="#get-url-content-by-requests" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Try to get the following links (click and observe them, get them by <code class="docutils literal notranslate"><span class="pre">request.get()</span></code>)</p>
 <ul>
@@ -576,7 +599,7 @@ document.write(`
 </ul>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc/bbs/Boy-Girl/index.html&#39;</span>
 <span class="nb">print</span><span class="p">(</span><span class="n">url</span><span class="p">)</span>
 
@@ -609,26 +632,26 @@ document.write(`
 </div>
 </section>
 <section id="using-chrome-devtools-to-get-right-elements">
-<h3>1.2 Using Chrome DevTools to get right elements<a class="headerlink" href="#using-chrome-devtools-to-get-right-elements" title="Permalink to this headline">#</a></h3>
+<h3>1.2 Using Chrome DevTools to get right elements<a class="headerlink" href="#using-chrome-devtools-to-get-right-elements" title="Link to this heading">#</a></h3>
 <ul class="simple">
-<li><p><a class="reference external" href="https://docs.google.com/presentation/d/e/2PACX-1vSrIfJQJpr_24wwIjMaTMKiq_xrhZ5n-J26G7xbXC1HIMMKWfMsm6zFWOsX8NxNEN_S46z9PnsASj32/pub?start=false&amp;loop=false&amp;delayms=3000">Slide: Inspecting HTML by Chrome DevTools</a></p></li>
+<li><p><a class="reference external" href="https://docs.google.com/presentation/d/e/2PACX-1vSrIfJQJpr_24wwIjMaTMKiq_xrhZ5n-J26G7xbXC1HIMMKWfMsm6zFWOsX8NxNEN_S46z9PnsASj32/pub?start=false&amp;amp;loop=false&amp;amp;delayms=3000">Slide: Inspecting HTML by Chrome DevTools</a></p></li>
 </ul>
 </section>
 <section id="parsing-url-content-by-beautifulsoup">
-<h3>1.3 Parsing url content by beautifulsoup<a class="headerlink" href="#parsing-url-content-by-beautifulsoup" title="Permalink to this headline">#</a></h3>
+<h3>1.3 Parsing url content by beautifulsoup<a class="headerlink" href="#parsing-url-content-by-beautifulsoup" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p>Beautifulsoup4 <a class="reference external" href="https://www.crummy.com/software/BeautifulSoup/bs4/doc/">https://www.crummy.com/software/BeautifulSoup/bs4/doc/</a></p></li>
 </ul>
 </section>
 </section>
 <section id="ii-get-links-from-a-page">
-<h2>II. Get links from a page<a class="headerlink" href="#ii-get-links-from-a-page" title="Permalink to this headline">#</a></h2>
+<h2>II. Get links from a page<a class="headerlink" href="#ii-get-links-from-a-page" title="Link to this heading">#</a></h2>
 <section id="getting-response">
-<h3>2.1 Getting response<a class="headerlink" href="#getting-response" title="Permalink to this headline">#</a></h3>
+<h3>2.1 Getting response<a class="headerlink" href="#getting-response" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc/bbs/Boy-Girl/index.html&#39;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -638,7 +661,7 @@ document.write(`
 </div>
 </section>
 <section id="converting-webpage-to-a-soup-object">
-<h3>2.2 Converting webpage to a soup object<a class="headerlink" href="#converting-webpage-to-a-soup-object" title="Permalink to this headline">#</a></h3>
+<h3>2.2 Converting webpage to a soup object<a class="headerlink" href="#converting-webpage-to-a-soup-object" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">soup</span> <span class="o">=</span> <span class="n">BeautifulSoup</span><span class="p">(</span><span class="n">response</span><span class="o">.</span><span class="n">text</span><span class="p">,</span> <span class="s1">&#39;html.parser&#39;</span><span class="p">)</span>
@@ -701,7 +724,7 @@ document.write(`
       &lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Boy-Girl/index1.html&quot;&gt;
        最舊
       &lt;/a&gt;
-      &lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Boy-Girl/index6499.html&quot;&gt;
+      &lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Boy-Girl/index6502.html&quot;&gt;
        ‹ 上頁
       &lt;/a&gt;
       &lt;a class=&quot;btn wide disabled&quot;&gt;
@@ -722,17 +745,17 @@ document.write(`
     &lt;div class=&quot;r-ent&quot;&gt;
      &lt;div class=&quot;nrec&quot;&gt;
       &lt;span class=&quot;hl f2&quot;&gt;
-       6
+       1
       &lt;/span&gt;
      &lt;/div&gt;
      &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757741934.A.98D.html&quot;&gt;
-       [分享] 男人其實比女人更重視浪漫關係(科學人)
+      &lt;a href=&quot;/bbs/Boy-Girl/M.1758357165.A.3B5.html&quot;&gt;
+       Re: [心情] 交友軟體好難用
       &lt;/a&gt;
      &lt;/div&gt;
      &lt;div class=&quot;meta&quot;&gt;
       &lt;div class=&quot;author&quot;&gt;
-       LoveSports
+       Subaru5566
       &lt;/div&gt;
       &lt;div class=&quot;article-menu&quot;&gt;
        &lt;div class=&quot;trigger&quot;&gt;
@@ -740,58 +763,19 @@ document.write(`
        &lt;/div&gt;
        &lt;div class=&quot;dropdown&quot;&gt;
         &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%88%86%E4%BA%AB%5D+%E7%94%B7%E4%BA%BA%E5%85%B6%E5%AF%A6%E6%AF%94%E5%A5%B3%E4%BA%BA%E6%9B%B4%E9%87%8D%E8%A6%96%E6%B5%AA%E6%BC%AB%E9%97%9C%E4%BF%82%28%E7%A7%91%E5%AD%B8%E4%BA%BA%29&quot;&gt;
+         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E4%BA%A4%E5%8F%8B%E8%BB%9F%E9%AB%94%E5%A5%BD%E9%9B%A3%E7%94%A8&quot;&gt;
           搜尋同標題文章
          &lt;/a&gt;
         &lt;/div&gt;
         &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3ALoveSports&quot;&gt;
-          搜尋看板內 LoveSports 的文章
+         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3ASubaru5566&quot;&gt;
+          搜尋看板內 Subaru5566 的文章
          &lt;/a&gt;
         &lt;/div&gt;
        &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;date&quot;&gt;
-       9/13
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       2
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757751642.A.5D2.html&quot;&gt;
-       [分享] 媽寶男與越南妻 離婚後的近況
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       b122771
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%88%86%E4%BA%AB%5D+%E5%AA%BD%E5%AF%B6%E7%94%B7%E8%88%87%E8%B6%8A%E5%8D%97%E5%A6%BB+%E9%9B%A2%E5%A9%9A%E5%BE%8C%E7%9A%84%E8%BF%91%E6%B3%81&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ab122771&quot;&gt;
-          搜尋看板內 b122771 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/13
+       9/20
       &lt;/div&gt;
       &lt;div class=&quot;mark&quot;&gt;
       &lt;/div&gt;
@@ -801,13 +785,13 @@ document.write(`
      &lt;div class=&quot;nrec&quot;&gt;
      &lt;/div&gt;
      &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757761468.A.1B3.html&quot;&gt;
-       Re: [心情] 被女友說沒有成長要有上進心
+      &lt;a href=&quot;/bbs/Boy-Girl/M.1758380453.A.393.html&quot;&gt;
+       [閒聊] GetMarry板主連署宣傳
       &lt;/a&gt;
      &lt;/div&gt;
      &lt;div class=&quot;meta&quot;&gt;
       &lt;div class=&quot;author&quot;&gt;
-       r6TSGs
+       NomeL
       &lt;/div&gt;
       &lt;div class=&quot;article-menu&quot;&gt;
        &lt;div class=&quot;trigger&quot;&gt;
@@ -815,458 +799,19 @@ document.write(`
        &lt;/div&gt;
        &lt;div class=&quot;dropdown&quot;&gt;
         &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E8%A2%AB%E5%A5%B3%E5%8F%8B%E8%AA%AA%E6%B2%92%E6%9C%89%E6%88%90%E9%95%B7%E8%A6%81%E6%9C%89%E4%B8%8A%E9%80%B2%E5%BF%83&quot;&gt;
+         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E9%96%92%E8%81%8A%5D+GetMarry%E6%9D%BF%E4%B8%BB%E9%80%A3%E7%BD%B2%E5%AE%A3%E5%82%B3&quot;&gt;
           搜尋同標題文章
          &lt;/a&gt;
         &lt;/div&gt;
         &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ar6TSGs&quot;&gt;
-          搜尋看板內 r6TSGs 的文章
+         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3ANomeL&quot;&gt;
+          搜尋看板內 NomeL 的文章
          &lt;/a&gt;
         &lt;/div&gt;
        &lt;/div&gt;
       &lt;/div&gt;
       &lt;div class=&quot;date&quot;&gt;
-       9/13
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757772866.A.622.html&quot;&gt;
-       Re: [心情] 被女友說沒有成長要有上進心
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       nojobman
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E8%A2%AB%E5%A5%B3%E5%8F%8B%E8%AA%AA%E6%B2%92%E6%9C%89%E6%88%90%E9%95%B7%E8%A6%81%E6%9C%89%E4%B8%8A%E9%80%B2%E5%BF%83&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Anojobman&quot;&gt;
-          搜尋看板內 nojobman 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/13
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       4
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757776454.A.C50.html&quot;&gt;
-       [閒聊] 越南表妹拿到韓國國籍了。可雙重國籍
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       b122771
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E9%96%92%E8%81%8A%5D+%E8%B6%8A%E5%8D%97%E8%A1%A8%E5%A6%B9%E6%8B%BF%E5%88%B0%E9%9F%93%E5%9C%8B%E5%9C%8B%E7%B1%8D%E4%BA%86%E3%80%82%E5%8F%AF%E9%9B%99%E9%87%8D%E5%9C%8B%E7%B1%8D&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ab122771&quot;&gt;
-          搜尋看板內 b122771 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/13
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       4
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757812683.A.900.html&quot;&gt;
-       Re: [心情] 被女友說沒有成長要有上進心
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       CuLiZn5566
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E8%A2%AB%E5%A5%B3%E5%8F%8B%E8%AA%AA%E6%B2%92%E6%9C%89%E6%88%90%E9%95%B7%E8%A6%81%E6%9C%89%E4%B8%8A%E9%80%B2%E5%BF%83&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3ACuLiZn5566&quot;&gt;
-          搜尋看板內 CuLiZn5566 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       9
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757817108.A.0BB.html&quot;&gt;
-       [新聞] 中市大雅戶政單身聯誼 38人參加15對配對
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       yokann
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D+%E4%B8%AD%E5%B8%82%E5%A4%A7%E9%9B%85%E6%88%B6%E6%94%BF%E5%96%AE%E8%BA%AB%E8%81%AF%E8%AA%BC+38%E4%BA%BA%E5%8F%83%E5%8A%A015%E5%B0%8D%E9%85%8D%E5%B0%8D&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ayokann&quot;&gt;
-          搜尋看板內 yokann 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f3&quot;&gt;
-       36
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757825782.A.C4A.html&quot;&gt;
-       [閒聊] 學歷跟外表哪個重要
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       r6TSGs
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E9%96%92%E8%81%8A%5D+%E5%AD%B8%E6%AD%B7%E8%B7%9F%E5%A4%96%E8%A1%A8%E5%93%AA%E5%80%8B%E9%87%8D%E8%A6%81&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ar6TSGs&quot;&gt;
-          搜尋看板內 r6TSGs 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       2
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757828860.A.C87.html&quot;&gt;
-       Re: [閒聊] 學歷跟外表哪個重要
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       sky2030
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E9%96%92%E8%81%8A%5D+%E5%AD%B8%E6%AD%B7%E8%B7%9F%E5%A4%96%E8%A1%A8%E5%93%AA%E5%80%8B%E9%87%8D%E8%A6%81&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Asky2030&quot;&gt;
-          搜尋看板內 sky2030 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757833468.A.41D.html&quot;&gt;
-       Re: [心情] 被女友說沒有成長要有上進心
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       gn02334523
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E8%A2%AB%E5%A5%B3%E5%8F%8B%E8%AA%AA%E6%B2%92%E6%9C%89%E6%88%90%E9%95%B7%E8%A6%81%E6%9C%89%E4%B8%8A%E9%80%B2%E5%BF%83&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Agn02334523&quot;&gt;
-          搜尋看板內 gn02334523 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       2
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757839283.A.4F7.html&quot;&gt;
-       Re: [討論] 年薪80 萬真的是魯蛇？
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       eulbos
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E8%A8%8E%E8%AB%96%5D+%E5%B9%B4%E8%96%AA80+%E8%90%AC%E7%9C%9F%E7%9A%84%E6%98%AF%E9%AD%AF%E8%9B%87%EF%BC%9F&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Aeulbos&quot;&gt;
-          搜尋看板內 eulbos 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       3
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757839704.A.DBA.html&quot;&gt;
-       Re: [心情] 被女友說沒有成長要有上進心
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       albert30615
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E8%A2%AB%E5%A5%B3%E5%8F%8B%E8%AA%AA%E6%B2%92%E6%9C%89%E6%88%90%E9%95%B7%E8%A6%81%E6%9C%89%E4%B8%8A%E9%80%B2%E5%BF%83&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Aalbert30615&quot;&gt;
-          搜尋看板內 albert30615 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      (本文已被刪除) [juliepretty]
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       -
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-      &lt;span class=&quot;hl f2&quot;&gt;
-       9
-      &lt;/span&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757862448.A.D39.html&quot;&gt;
-       [求助] 要不要放棄
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       juliepretty
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E6%B1%82%E5%8A%A9%5D+%E8%A6%81%E4%B8%8D%E8%A6%81%E6%94%BE%E6%A3%84&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ajuliepretty&quot;&gt;
-          搜尋看板內 juliepretty 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
-      &lt;/div&gt;
-      &lt;div class=&quot;mark&quot;&gt;
-      &lt;/div&gt;
-     &lt;/div&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;r-ent&quot;&gt;
-     &lt;div class=&quot;nrec&quot;&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;title&quot;&gt;
-      &lt;a href=&quot;/bbs/Boy-Girl/M.1757864315.A.4DB.html&quot;&gt;
-       Re: [心情] 被女友說沒有成長要有上進心
-      &lt;/a&gt;
-     &lt;/div&gt;
-     &lt;div class=&quot;meta&quot;&gt;
-      &lt;div class=&quot;author&quot;&gt;
-       hamerlenin
-      &lt;/div&gt;
-      &lt;div class=&quot;article-menu&quot;&gt;
-       &lt;div class=&quot;trigger&quot;&gt;
-        ⋯
-       &lt;/div&gt;
-       &lt;div class=&quot;dropdown&quot;&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E8%A2%AB%E5%A5%B3%E5%8F%8B%E8%AA%AA%E6%B2%92%E6%9C%89%E6%88%90%E9%95%B7%E8%A6%81%E6%9C%89%E4%B8%8A%E9%80%B2%E5%BF%83&quot;&gt;
-          搜尋同標題文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-        &lt;div class=&quot;item&quot;&gt;
-         &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ahamerlenin&quot;&gt;
-          搜尋看板內 hamerlenin 的文章
-         &lt;/a&gt;
-        &lt;/div&gt;
-       &lt;/div&gt;
-      &lt;/div&gt;
-      &lt;div class=&quot;date&quot;&gt;
-       9/14
+       9/20
       &lt;/div&gt;
       &lt;div class=&quot;mark&quot;&gt;
       &lt;/div&gt;
@@ -1499,7 +1044,7 @@ document.write(`
   &lt;script src=&quot;//images.ptt.cc/bbs/v2.27/bbs.js&quot;&gt;
   &lt;/script&gt;
   &lt;script&gt;
-   (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement(&#39;script&#39;);d.innerHTML=&quot;window.__CF$cv$params={r:&#39;97f10ae9a8cea609&#39;,t:&#39;MTc1Nzg2NTA1Mw==&#39;};var a=document.createElement(&#39;script&#39;);a.src=&#39;/cdn-cgi/challenge-platform/scripts/jsd/main.js&#39;;document.getElementsByTagName(&#39;head&#39;)[0].appendChild(a);&quot;;b.getElementsByTagName(&#39;head&#39;)[0].appendChild(d)}}if(document.body){var a=document.createElement(&#39;iframe&#39;);a.height=1;a.width=1;a.style.position=&#39;absolute&#39;;a.style.top=0;a.style.left=0;a.style.border=&#39;none&#39;;a.style.visibility=&#39;hidden&#39;;document.body.appendChild(a);if(&#39;loading&#39;!==document.readyState)c();else if(window.addEventListener)document.addEventListener(&#39;DOMContentLoaded&#39;,c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);&#39;loading&#39;!==document.readyState&amp;&amp;(document.onreadystatechange=e,c())}}}})();
+   (function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement(&#39;script&#39;);d.innerHTML=&quot;window.__CF$cv$params={r:&#39;98229d5aed73cb9b&#39;,t:&#39;MTc1ODM4NDg1NA==&#39;};var a=document.createElement(&#39;script&#39;);a.src=&#39;/cdn-cgi/challenge-platform/scripts/jsd/main.js&#39;;document.getElementsByTagName(&#39;head&#39;)[0].appendChild(a);&quot;;b.getElementsByTagName(&#39;head&#39;)[0].appendChild(d)}}if(document.body){var a=document.createElement(&#39;iframe&#39;);a.height=1;a.width=1;a.style.position=&#39;absolute&#39;;a.style.top=0;a.style.left=0;a.style.border=&#39;none&#39;;a.style.visibility=&#39;hidden&#39;;document.body.appendChild(a);if(&#39;loading&#39;!==document.readyState)c();else if(window.addEventListener)document.addEventListener(&#39;DOMContentLoaded&#39;,c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);&#39;loading&#39;!==document.readyState&amp;&amp;(document.onreadystatechange=e,c())}}}})();
   &lt;/script&gt;
  &lt;/body&gt;
 &lt;/html&gt;
@@ -1509,7 +1054,7 @@ document.write(`
 </div>
 </section>
 <section id="traversing-an-html-file-by-soup">
-<h3>2.3 Traversing an html file by soup<a class="headerlink" href="#traversing-an-html-file-by-soup" title="Permalink to this headline">#</a></h3>
+<h3>2.3 Traversing an html file by soup<a class="headerlink" href="#traversing-an-html-file-by-soup" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">title</span><span class="p">)</span>
@@ -1530,7 +1075,7 @@ head
 </div>
 </section>
 <section id="finding-all-links-in-the-doc">
-<h3>2.4 Finding all links in the doc<a class="headerlink" href="#finding-all-links-in-the-doc" title="Permalink to this headline">#</a></h3>
+<h3>2.4 Finding all links in the doc<a class="headerlink" href="#finding-all-links-in-the-doc" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="nb">print</span><span class="p">(</span><span class="nb">type</span><span class="p">(</span><span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s2">&quot;a&quot;</span><span class="p">)))</span>
@@ -1541,7 +1086,7 @@ head
 </div>
 <div class="cell_output docutils container">
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;class &#39;bs4.element.ResultSet&#39;&gt;
-67
+31
 </pre></div>
 </div>
 <div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[&lt;a href=&quot;/bbs/&quot; id=&quot;logo&quot;&gt;批踢踢實業坊&lt;/a&gt;,
@@ -1555,7 +1100,7 @@ head
 </div>
 </section>
 <section id="extracting-element-content-and-attribute">
-<h3>2.5 Extracting element content and attribute<a class="headerlink" href="#extracting-element-content-and-attribute" title="Permalink to this headline">#</a></h3>
+<h3>2.5 Extracting element content and attribute<a class="headerlink" href="#extracting-element-content-and-attribute" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">nodes_a</span> <span class="o">=</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="s1">&#39;a&#39;</span><span class="p">)</span>
@@ -1592,7 +1137,7 @@ head
 </div>
 </section>
 <section id="append-links-into-a-list">
-<h3>2.6 <code class="docutils literal notranslate"><span class="pre">append()</span></code> links into a list<a class="headerlink" href="#append-links-into-a-list" title="Permalink to this headline">#</a></h3>
+<h3>2.6 <code class="docutils literal notranslate"><span class="pre">append()</span></code> links into a list<a class="headerlink" href="#append-links-into-a-list" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
@@ -1603,7 +1148,7 @@ head
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>67
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>31
 </pre></div>
 </div>
 </div>
@@ -1611,7 +1156,7 @@ head
 </section>
 </section>
 <section id="iii-get-article-links-from-the-first-page">
-<h2>III. Get article links from the first page<a class="headerlink" href="#iii-get-article-links-from-the-first-page" title="Permalink to this headline">#</a></h2>
+<h2>III. Get article links from the first page<a class="headerlink" href="#iii-get-article-links-from-the-first-page" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>注意這行code的class的寫法<code class="docutils literal notranslate"><span class="pre">for</span> <span class="pre">link</span> <span class="pre">in</span> <span class="pre">soup.find_all(class_</span> <span class="pre">=</span> <span class="pre">&quot;r-ent&quot;):</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">str.strip()</span></code>可以幫你把一個字串前後的空白拿掉。</p></li>
@@ -1622,12 +1167,12 @@ head
 </pre></div>
 </div>
 <section id="get-elements-by-a-specific-class">
-<h3>3.1 Get elements by a specific class<a class="headerlink" href="#get-elements-by-a-specific-class" title="Permalink to this headline">#</a></h3>
+<h3>3.1 Get elements by a specific class<a class="headerlink" href="#get-elements-by-a-specific-class" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Just re-run this</span>
-<span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc/bbs/Boy-Girl/index.html&#39;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="p">(</span><span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">))</span>
@@ -1648,17 +1193,17 @@ head
 <div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;div class=&quot;r-ent&quot;&gt;
  &lt;div class=&quot;nrec&quot;&gt;
   &lt;span class=&quot;hl f2&quot;&gt;
-   6
+   1
   &lt;/span&gt;
  &lt;/div&gt;
  &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/bbs/Boy-Girl/M.1757741934.A.98D.html&quot;&gt;
-   [分享] 男人其實比女人更重視浪漫關係(科學人)
+  &lt;a href=&quot;/bbs/Boy-Girl/M.1758357165.A.3B5.html&quot;&gt;
+   Re: [心情] 交友軟體好難用
   &lt;/a&gt;
  &lt;/div&gt;
  &lt;div class=&quot;meta&quot;&gt;
   &lt;div class=&quot;author&quot;&gt;
-   LoveSports
+   Subaru5566
   &lt;/div&gt;
   &lt;div class=&quot;article-menu&quot;&gt;
    &lt;div class=&quot;trigger&quot;&gt;
@@ -1666,19 +1211,57 @@ head
    &lt;/div&gt;
    &lt;div class=&quot;dropdown&quot;&gt;
     &lt;div class=&quot;item&quot;&gt;
-     &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%88%86%E4%BA%AB%5D+%E7%94%B7%E4%BA%BA%E5%85%B6%E5%AF%A6%E6%AF%94%E5%A5%B3%E4%BA%BA%E6%9B%B4%E9%87%8D%E8%A6%96%E6%B5%AA%E6%BC%AB%E9%97%9C%E4%BF%82%28%E7%A7%91%E5%AD%B8%E4%BA%BA%29&quot;&gt;
+     &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E4%BA%A4%E5%8F%8B%E8%BB%9F%E9%AB%94%E5%A5%BD%E9%9B%A3%E7%94%A8&quot;&gt;
       搜尋同標題文章
      &lt;/a&gt;
     &lt;/div&gt;
     &lt;div class=&quot;item&quot;&gt;
-     &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3ALoveSports&quot;&gt;
-      搜尋看板內 LoveSports 的文章
+     &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3ASubaru5566&quot;&gt;
+      搜尋看板內 Subaru5566 的文章
      &lt;/a&gt;
     &lt;/div&gt;
    &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;date&quot;&gt;
-   9/13
+   9/20
+  &lt;/div&gt;
+  &lt;div class=&quot;mark&quot;&gt;
+  &lt;/div&gt;
+ &lt;/div&gt;
+&lt;/div&gt;
+
+--------------------------------------------------------------------------------
+&lt;div class=&quot;r-ent&quot;&gt;
+ &lt;div class=&quot;nrec&quot;&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;title&quot;&gt;
+  &lt;a href=&quot;/bbs/Boy-Girl/M.1758380453.A.393.html&quot;&gt;
+   [閒聊] GetMarry板主連署宣傳
+  &lt;/a&gt;
+ &lt;/div&gt;
+ &lt;div class=&quot;meta&quot;&gt;
+  &lt;div class=&quot;author&quot;&gt;
+   NomeL
+  &lt;/div&gt;
+  &lt;div class=&quot;article-menu&quot;&gt;
+   &lt;div class=&quot;trigger&quot;&gt;
+    ⋯
+   &lt;/div&gt;
+   &lt;div class=&quot;dropdown&quot;&gt;
+    &lt;div class=&quot;item&quot;&gt;
+     &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E9%96%92%E8%81%8A%5D+GetMarry%E6%9D%BF%E4%B8%BB%E9%80%A3%E7%BD%B2%E5%AE%A3%E5%82%B3&quot;&gt;
+      搜尋同標題文章
+     &lt;/a&gt;
+    &lt;/div&gt;
+    &lt;div class=&quot;item&quot;&gt;
+     &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3ANomeL&quot;&gt;
+      搜尋看板內 NomeL 的文章
+     &lt;/a&gt;
+    &lt;/div&gt;
+   &lt;/div&gt;
+  &lt;/div&gt;
+  &lt;div class=&quot;date&quot;&gt;
+   9/20
   &lt;/div&gt;
   &lt;div class=&quot;mark&quot;&gt;
   &lt;/div&gt;
@@ -1689,17 +1272,17 @@ head
 &lt;div class=&quot;r-ent&quot;&gt;
  &lt;div class=&quot;nrec&quot;&gt;
   &lt;span class=&quot;hl f2&quot;&gt;
-   2
+   7
   &lt;/span&gt;
  &lt;/div&gt;
  &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/bbs/Boy-Girl/M.1757751642.A.5D2.html&quot;&gt;
-   [分享] 媽寶男與越南妻 離婚後的近況
+  &lt;a href=&quot;/bbs/Boy-Girl/M.1729589160.A.FF1.html&quot;&gt;
+   [公告] 板規四侮辱標準2025.01更新
   &lt;/a&gt;
  &lt;/div&gt;
  &lt;div class=&quot;meta&quot;&gt;
   &lt;div class=&quot;author&quot;&gt;
-   b122771
+   eulbos
   &lt;/div&gt;
   &lt;div class=&quot;article-menu&quot;&gt;
    &lt;div class=&quot;trigger&quot;&gt;
@@ -1707,59 +1290,22 @@ head
    &lt;/div&gt;
    &lt;div class=&quot;dropdown&quot;&gt;
     &lt;div class=&quot;item&quot;&gt;
-     &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%88%86%E4%BA%AB%5D+%E5%AA%BD%E5%AF%B6%E7%94%B7%E8%88%87%E8%B6%8A%E5%8D%97%E5%A6%BB+%E9%9B%A2%E5%A9%9A%E5%BE%8C%E7%9A%84%E8%BF%91%E6%B3%81&quot;&gt;
+     &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D+%E6%9D%BF%E8%A6%8F%E5%9B%9B%E4%BE%AE%E8%BE%B1%E6%A8%99%E6%BA%962025.01%E6%9B%B4%E6%96%B0&quot;&gt;
       搜尋同標題文章
      &lt;/a&gt;
     &lt;/div&gt;
     &lt;div class=&quot;item&quot;&gt;
-     &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ab122771&quot;&gt;
-      搜尋看板內 b122771 的文章
+     &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Aeulbos&quot;&gt;
+      搜尋看板內 eulbos 的文章
      &lt;/a&gt;
     &lt;/div&gt;
    &lt;/div&gt;
   &lt;/div&gt;
   &lt;div class=&quot;date&quot;&gt;
-   9/13
+   10/22
   &lt;/div&gt;
   &lt;div class=&quot;mark&quot;&gt;
-  &lt;/div&gt;
- &lt;/div&gt;
-&lt;/div&gt;
-
---------------------------------------------------------------------------------
-&lt;div class=&quot;r-ent&quot;&gt;
- &lt;div class=&quot;nrec&quot;&gt;
- &lt;/div&gt;
- &lt;div class=&quot;title&quot;&gt;
-  &lt;a href=&quot;/bbs/Boy-Girl/M.1757761468.A.1B3.html&quot;&gt;
-   Re: [心情] 被女友說沒有成長要有上進心
-  &lt;/a&gt;
- &lt;/div&gt;
- &lt;div class=&quot;meta&quot;&gt;
-  &lt;div class=&quot;author&quot;&gt;
-   r6TSGs
-  &lt;/div&gt;
-  &lt;div class=&quot;article-menu&quot;&gt;
-   &lt;div class=&quot;trigger&quot;&gt;
-    ⋯
-   &lt;/div&gt;
-   &lt;div class=&quot;dropdown&quot;&gt;
-    &lt;div class=&quot;item&quot;&gt;
-     &lt;a href=&quot;/bbs/Boy-Girl/search?q=thread%3A%5B%E5%BF%83%E6%83%85%5D+%E8%A2%AB%E5%A5%B3%E5%8F%8B%E8%AA%AA%E6%B2%92%E6%9C%89%E6%88%90%E9%95%B7%E8%A6%81%E6%9C%89%E4%B8%8A%E9%80%B2%E5%BF%83&quot;&gt;
-      搜尋同標題文章
-     &lt;/a&gt;
-    &lt;/div&gt;
-    &lt;div class=&quot;item&quot;&gt;
-     &lt;a href=&quot;/bbs/Boy-Girl/search?q=author%3Ar6TSGs&quot;&gt;
-      搜尋看板內 r6TSGs 的文章
-     &lt;/a&gt;
-    &lt;/div&gt;
-   &lt;/div&gt;
-  &lt;/div&gt;
-  &lt;div class=&quot;date&quot;&gt;
-   9/13
-  &lt;/div&gt;
-  &lt;div class=&quot;mark&quot;&gt;
+   M
   &lt;/div&gt;
  &lt;/div&gt;
 &lt;/div&gt;
@@ -1770,7 +1316,7 @@ head
 </div>
 </div>
 <section id="soup-select-with-css-selector">
-<h4>3.2 <code class="docutils literal notranslate"><span class="pre">soup.select()</span></code> with CSS selector<a class="headerlink" href="#soup-select-with-css-selector" title="Permalink to this headline">#</a></h4>
+<h4>3.2 <code class="docutils literal notranslate"><span class="pre">soup.select()</span></code> with CSS selector<a class="headerlink" href="#soup-select-with-css-selector" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">select</span><span class="p">(</span><span class="s2">&quot;.r-ent&quot;</span><span class="p">)[:</span><span class="mi">10</span><span class="p">]:</span>
@@ -1780,25 +1326,19 @@ head
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6[分享] 男人其實比女人更重視浪漫關係(科學人)LoveSports⋯搜尋同標題文章搜尋看板內 LoveSports 的文章9/13
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1Re: [心情] 交友軟體好難用Subaru5566⋯搜尋同標題文章搜尋看板內 Subaru5566 的文章9/20
 --------------------------------------------------------------------------------
-2[分享] 媽寶男與越南妻 離婚後的近況b122771⋯搜尋同標題文章搜尋看板內 b122771 的文章9/13
+[閒聊] GetMarry板主連署宣傳NomeL⋯搜尋同標題文章搜尋看板內 NomeL 的文章9/20
 --------------------------------------------------------------------------------
-Re: [心情] 被女友說沒有成長要有上進心r6TSGs⋯搜尋同標題文章搜尋看板內 r6TSGs 的文章9/13
+7[公告] 板規四侮辱標準2025.01更新eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章10/22M
 --------------------------------------------------------------------------------
-Re: [心情] 被女友說沒有成長要有上進心nojobman⋯搜尋同標題文章搜尋看板內 nojobman 的文章9/13
+2[公告] 關於肉搜/公開個資eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章11/25M
 --------------------------------------------------------------------------------
-4[閒聊] 越南表妹拿到韓國國籍了。可雙重國籍b122771⋯搜尋同標題文章搜尋看板內 b122771 的文章9/13
+47[公告] 置底檢舉暨閒聊區2025.01~eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章1/03M
 --------------------------------------------------------------------------------
-4Re: [心情] 被女友說沒有成長要有上進心CuLiZn5566⋯搜尋同標題文章搜尋看板內 CuLiZn5566 的文章9/14
+5[公告] Boy-Girl板規 25.01.13eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章1/10M
 --------------------------------------------------------------------------------
-9[新聞] 中市大雅戶政單身聯誼 38人參加15對配對yokann⋯搜尋同標題文章搜尋看板內 yokann 的文章9/14
---------------------------------------------------------------------------------
-36[閒聊] 學歷跟外表哪個重要r6TSGs⋯搜尋同標題文章搜尋看板內 r6TSGs 的文章9/14
---------------------------------------------------------------------------------
-2Re: [閒聊] 學歷跟外表哪個重要sky2030⋯搜尋同標題文章搜尋看板內 sky2030 的文章9/14
---------------------------------------------------------------------------------
-Re: [心情] 被女友說沒有成長要有上進心gn02334523⋯搜尋同標題文章搜尋看板內 gn02334523 的文章9/14
+[公告] 9月水桶公告eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章9/06M
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -1813,25 +1353,19 @@ Re: [心情] 被女友說沒有成長要有上進心gn02334523⋯搜尋同標題
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6[分享] 男人其實比女人更重視浪漫關係(科學人)LoveSports⋯搜尋同標題文章搜尋看板內 LoveSports 的文章9/13
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1Re: [心情] 交友軟體好難用Subaru5566⋯搜尋同標題文章搜尋看板內 Subaru5566 的文章9/20
 --------------------------------------------------------------------------------
-2[分享] 媽寶男與越南妻 離婚後的近況b122771⋯搜尋同標題文章搜尋看板內 b122771 的文章9/13
+[閒聊] GetMarry板主連署宣傳NomeL⋯搜尋同標題文章搜尋看板內 NomeL 的文章9/20
 --------------------------------------------------------------------------------
-Re: [心情] 被女友說沒有成長要有上進心r6TSGs⋯搜尋同標題文章搜尋看板內 r6TSGs 的文章9/13
+7[公告] 板規四侮辱標準2025.01更新eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章10/22M
 --------------------------------------------------------------------------------
-Re: [心情] 被女友說沒有成長要有上進心nojobman⋯搜尋同標題文章搜尋看板內 nojobman 的文章9/13
+2[公告] 關於肉搜/公開個資eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章11/25M
 --------------------------------------------------------------------------------
-4[閒聊] 越南表妹拿到韓國國籍了。可雙重國籍b122771⋯搜尋同標題文章搜尋看板內 b122771 的文章9/13
+47[公告] 置底檢舉暨閒聊區2025.01~eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章1/03M
 --------------------------------------------------------------------------------
-4Re: [心情] 被女友說沒有成長要有上進心CuLiZn5566⋯搜尋同標題文章搜尋看板內 CuLiZn5566 的文章9/14
+5[公告] Boy-Girl板規 25.01.13eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章1/10M
 --------------------------------------------------------------------------------
-9[新聞] 中市大雅戶政單身聯誼 38人參加15對配對yokann⋯搜尋同標題文章搜尋看板內 yokann 的文章9/14
---------------------------------------------------------------------------------
-36[閒聊] 學歷跟外表哪個重要r6TSGs⋯搜尋同標題文章搜尋看板內 r6TSGs 的文章9/14
---------------------------------------------------------------------------------
-2Re: [閒聊] 學歷跟外表哪個重要sky2030⋯搜尋同標題文章搜尋看板內 sky2030 的文章9/14
---------------------------------------------------------------------------------
-Re: [心情] 被女友說沒有成長要有上進心gn02334523⋯搜尋同標題文章搜尋看板內 gn02334523 的文章9/14
+[公告] 9月水桶公告eulbos⋯搜尋同標題文章搜尋看板內 eulbos 的文章9/06M
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -1839,7 +1373,7 @@ Re: [心情] 被女友說沒有成長要有上進心gn02334523⋯搜尋同標題
 </div>
 </section>
 <section id="get-href-of-a">
-<h4>Get <code class="docutils literal notranslate"><span class="pre">href</span></code> of <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code><a class="headerlink" href="#get-href-of-a" title="Permalink to this headline">#</a></h4>
+<h4>Get <code class="docutils literal notranslate"><span class="pre">href</span></code> of <code class="docutils literal notranslate"><span class="pre">&lt;a&gt;</span></code><a class="headerlink" href="#get-href-of-a" title="Link to this heading">#</a></h4>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">div</span> <span class="ow">in</span> <span class="n">soup</span><span class="o">.</span><span class="n">find_all</span><span class="p">(</span><span class="n">class_</span> <span class="o">=</span> <span class="s2">&quot;r-ent&quot;</span><span class="p">)[:</span><span class="mi">5</span><span class="p">]:</span>
@@ -1853,35 +1387,35 @@ Re: [心情] 被女友說沒有成長要有上進心gn02334523⋯搜尋同標題
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>6
-9/13
-LoveSports
-[分享] 男人其實比女人更重視浪漫關係(科學人)
-/bbs/Boy-Girl/M.1757741934.A.98D.html
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1
+9/20
+Subaru5566
+Re: [心情] 交友軟體好難用
+/bbs/Boy-Girl/M.1758357165.A.3B5.html
+--------------------------------------------------------------------------------
+
+9/20
+NomeL
+[閒聊] GetMarry板主連署宣傳
+/bbs/Boy-Girl/M.1758380453.A.393.html
+--------------------------------------------------------------------------------
+7
+10/22
+eulbos
+[公告] 板規四侮辱標準2025.01更新
+/bbs/Boy-Girl/M.1729589160.A.FF1.html
 --------------------------------------------------------------------------------
 2
-9/13
-b122771
-[分享] 媽寶男與越南妻 離婚後的近況
-/bbs/Boy-Girl/M.1757751642.A.5D2.html
+11/25
+eulbos
+[公告] 關於肉搜/公開個資
+/bbs/Boy-Girl/M.1732475209.A.AAE.html
 --------------------------------------------------------------------------------
-
-9/13
-r6TSGs
-Re: [心情] 被女友說沒有成長要有上進心
-/bbs/Boy-Girl/M.1757761468.A.1B3.html
---------------------------------------------------------------------------------
-
-9/13
-nojobman
-Re: [心情] 被女友說沒有成長要有上進心
-/bbs/Boy-Girl/M.1757772866.A.622.html
---------------------------------------------------------------------------------
-4
-9/13
-b122771
-[閒聊] 越南表妹拿到韓國國籍了。可雙重國籍
-/bbs/Boy-Girl/M.1757776454.A.C50.html
+47
+1/03
+eulbos
+[公告] 置底檢舉暨閒聊區2025.01~
+/bbs/Boy-Girl/M.1735917789.A.F1A.html
 --------------------------------------------------------------------------------
 </pre></div>
 </div>
@@ -1890,7 +1424,7 @@ b122771
 </section>
 </section>
 <section id="using-try-and-except-to-handle-exception">
-<h3>3.3 Using <code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> to handle exception<a class="headerlink" href="#using-try-and-except-to-handle-exception" title="Permalink to this headline">#</a></h3>
+<h3>3.3 Using <code class="docutils literal notranslate"><span class="pre">try</span></code> and <code class="docutils literal notranslate"><span class="pre">except</span></code> to handle exception<a class="headerlink" href="#using-try-and-except-to-handle-exception" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc/bbs/Boy-Girl/index.html&#39;</span>
@@ -1907,19 +1441,19 @@ b122771
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[分享] 男人其實比女人更重視浪漫關係(科學人)
-/bbs/Boy-Girl/M.1757741934.A.98D.html
-[分享] 媽寶男與越南妻 離婚後的近況
-/bbs/Boy-Girl/M.1757751642.A.5D2.html
-Re: [心情] 被女友說沒有成長要有上進心
-/bbs/Boy-Girl/M.1757761468.A.1B3.html
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Re: [心情] 交友軟體好難用
+/bbs/Boy-Girl/M.1758357165.A.3B5.html
+[閒聊] GetMarry板主連署宣傳
+/bbs/Boy-Girl/M.1758380453.A.393.html
+[公告] 板規四侮辱標準2025.01更新
+/bbs/Boy-Girl/M.1729589160.A.FF1.html
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="add-the-prefix-url-to-each-url">
-<h3>3.4 Add the prefix url to each url<a class="headerlink" href="#add-the-prefix-url-to-each-url" title="Permalink to this headline">#</a></h3>
+<h3>3.4 Add the prefix url to each url<a class="headerlink" href="#add-the-prefix-url-to-each-url" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc&#39;</span>
@@ -1936,35 +1470,10 @@ Re: [心情] 被女友說沒有成長要有上進心
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[分享] 男人其實比女人更重視浪漫關係(科學人)
-https://www.ptt.cc/bbs/Boy-Girl/M.1757741934.A.98D.html
-[分享] 媽寶男與越南妻 離婚後的近況
-https://www.ptt.cc/bbs/Boy-Girl/M.1757751642.A.5D2.html
-Re: [心情] 被女友說沒有成長要有上進心
-https://www.ptt.cc/bbs/Boy-Girl/M.1757761468.A.1B3.html
-Re: [心情] 被女友說沒有成長要有上進心
-https://www.ptt.cc/bbs/Boy-Girl/M.1757772866.A.622.html
-[閒聊] 越南表妹拿到韓國國籍了。可雙重國籍
-https://www.ptt.cc/bbs/Boy-Girl/M.1757776454.A.C50.html
-Re: [心情] 被女友說沒有成長要有上進心
-https://www.ptt.cc/bbs/Boy-Girl/M.1757812683.A.900.html
-[新聞] 中市大雅戶政單身聯誼 38人參加15對配對
-https://www.ptt.cc/bbs/Boy-Girl/M.1757817108.A.0BB.html
-[閒聊] 學歷跟外表哪個重要
-https://www.ptt.cc/bbs/Boy-Girl/M.1757825782.A.C4A.html
-Re: [閒聊] 學歷跟外表哪個重要
-https://www.ptt.cc/bbs/Boy-Girl/M.1757828860.A.C87.html
-Re: [心情] 被女友說沒有成長要有上進心
-https://www.ptt.cc/bbs/Boy-Girl/M.1757833468.A.41D.html
-Re: [討論] 年薪80 萬真的是魯蛇？
-https://www.ptt.cc/bbs/Boy-Girl/M.1757839283.A.4F7.html
-Re: [心情] 被女友說沒有成長要有上進心
-https://www.ptt.cc/bbs/Boy-Girl/M.1757839704.A.DBA.html
-(本文已被刪除) [juliepretty]
-[求助] 要不要放棄
-https://www.ptt.cc/bbs/Boy-Girl/M.1757862448.A.D39.html
-Re: [心情] 被女友說沒有成長要有上進心
-https://www.ptt.cc/bbs/Boy-Girl/M.1757864315.A.4DB.html
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Re: [心情] 交友軟體好難用
+https://www.ptt.cc/bbs/Boy-Girl/M.1758357165.A.3B5.html
+[閒聊] GetMarry板主連署宣傳
+https://www.ptt.cc/bbs/Boy-Girl/M.1758380453.A.393.html
 [公告] 板規四侮辱標準2025.01更新
 https://www.ptt.cc/bbs/Boy-Girl/M.1729589160.A.FF1.html
 [公告] 關於肉搜/公開個資
@@ -1981,7 +1490,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1757140752.A.AFC.html
 </div>
 </section>
 <section id="appending-scraped-urls-to-a-list">
-<h3>3.5 Appending scraped urls to a list<a class="headerlink" href="#appending-scraped-urls-to-a-list" title="Permalink to this headline">#</a></h3>
+<h3>3.5 Appending scraped urls to a list<a class="headerlink" href="#appending-scraped-urls-to-a-list" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">links</span> <span class="o">=</span> <span class="p">[]</span>
@@ -2001,7 +1510,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1757140752.A.AFC.html
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>19
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>7
 </pre></div>
 </div>
 </div>
@@ -2009,7 +1518,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1757140752.A.AFC.html
 </section>
 </section>
 <section id="iv-get-more-links-from-more-pages">
-<h2>IV. Get more links from more pages<a class="headerlink" href="#iv-get-more-links-from-more-pages" title="Permalink to this headline">#</a></h2>
+<h2>IV. Get more links from more pages<a class="headerlink" href="#iv-get-more-links-from-more-pages" title="Link to this heading">#</a></h2>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ptt</span><span class="o">.</span><span class="n">cc</span><span class="o">/</span><span class="n">bbs</span><span class="o">/</span><span class="n">Boy</span><span class="o">-</span><span class="n">Girl</span><span class="o">/</span><span class="n">M</span><span class="mf">.1463279135</span><span class="o">.</span><span class="n">A</span><span class="mf">.825</span><span class="o">.</span><span class="n">html</span>
 <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ptt</span><span class="o">.</span><span class="n">cc</span><span class="o">/</span><span class="n">bbs</span><span class="o">/</span><span class="n">Boy</span><span class="o">-</span><span class="n">Girl</span><span class="o">/</span><span class="n">M</span><span class="mf">.1463280694</span><span class="o">.</span><span class="n">A</span><span class="mf">.659</span><span class="o">.</span><span class="n">html</span>
 <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">www</span><span class="o">.</span><span class="n">ptt</span><span class="o">.</span><span class="n">cc</span><span class="o">/</span><span class="n">bbs</span><span class="o">/</span><span class="n">Boy</span><span class="o">-</span><span class="n">Girl</span><span class="o">/</span><span class="n">M</span><span class="mf">.1463280951</span><span class="o">.</span><span class="n">A</span><span class="mf">.42</span><span class="n">C</span><span class="o">.</span><span class="n">html</span>
@@ -2020,10 +1529,10 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1757140752.A.AFC.html
 </pre></div>
 </div>
 <section id="get-the-last-page">
-<h3>4.1 Get the last page<a class="headerlink" href="#get-the-last-page" title="Permalink to this headline">#</a></h3>
+<h3>4.1 Get the last page<a class="headerlink" href="#get-the-last-page" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">re</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">re</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc/bbs/Boy-Girl/index.html&#39;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -2036,15 +1545,15 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1757140752.A.AFC.html
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/bbs/Boy-Girl/index6499.html
-6500
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/bbs/Boy-Girl/index6502.html
+6503
 </pre></div>
 </div>
 </div>
 </div>
 </section>
 <section id="get-the-last-10-pages">
-<h3>4.2 Get the last 10 pages<a class="headerlink" href="#get-the-last-10-pages" title="Permalink to this headline">#</a></h3>
+<h3>4.2 Get the last 10 pages<a class="headerlink" href="#get-the-last-10-pages" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">pre</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc&#39;</span>
@@ -2083,7 +1592,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1757140752.A.AFC.html
 </div>
 </section>
 <section id="notes-break-continue-and-pass">
-<h3>Notes: break, continue, and pass<a class="headerlink" href="#notes-break-continue-and-pass" title="Permalink to this headline">#</a></h3>
+<h3>Notes: break, continue, and pass<a class="headerlink" href="#notes-break-continue-and-pass" title="Link to this heading">#</a></h3>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">break</span></code>: 符合條件的時候，就跳出迴圈，別再執行了。</p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">continue</span></code>: 符合條件的時候，就不要執行這一圈了，接下去執行下一圈</p></li>
@@ -2092,7 +1601,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1757140752.A.AFC.html
 </section>
 </section>
 <section id="v-getting-post-content-for-each-post-link">
-<h2>V. Getting post content for each post link<a class="headerlink" href="#v-getting-post-content-for-each-post-link" title="Permalink to this headline">#</a></h2>
+<h2>V. Getting post content for each post link<a class="headerlink" href="#v-getting-post-content-for-each-post-link" title="Link to this heading">#</a></h2>
 <ul class="simple">
 <li><p>Beautifulsoup has two ways to detect elements and its attributes</p>
 <ul>
@@ -2158,7 +1667,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 </div>
 </div>
 <section id="get-metadata">
-<h3>5.1 Get metadata<a class="headerlink" href="#get-metadata" title="Permalink to this headline">#</a></h3>
+<h3>5.1 Get metadata<a class="headerlink" href="#get-metadata" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
@@ -2215,7 +1724,7 @@ Re: [討論] 通常會見面幾個人才會交往
 </div>
 </section>
 <section id="assign-data-to-variables">
-<h3>5.2 Assign data to variables<a class="headerlink" href="#assign-data-to-variables" title="Permalink to this headline">#</a></h3>
+<h3>5.2 Assign data to variables<a class="headerlink" href="#assign-data-to-variables" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
@@ -2249,7 +1758,7 @@ Re: [討論] 通常會見面幾個人才會交往
 </div>
 </section>
 <section id="get-all-content">
-<h3>5.3 Get all content<a class="headerlink" href="#get-all-content" title="Permalink to this headline">#</a></h3>
+<h3>5.3 Get all content<a class="headerlink" href="#get-all-content" title="Link to this heading">#</a></h3>
 <div class="highlight-default notranslate"><div class="highlight"><pre><span></span><span class="n">alist</span> <span class="o">=</span> <span class="p">[</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">,</span> <span class="mi">3</span><span class="p">]</span>
 <span class="nb">print</span><span class="p">(</span><span class="nb">isinstance</span><span class="p">(</span><span class="n">alist</span><span class="p">,</span> <span class="nb">tuple</span><span class="p">))</span>
 <span class="p">:</span> <span class="kc">False</span>
@@ -2257,7 +1766,7 @@ Re: [討論] 通常會見面幾個人才會交往
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">NavigableString</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">NavigableString</span>
 <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
     <span class="n">res</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">link</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -2304,10 +1813,10 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 </div>
 </section>
 <section id="save-them-all-to-a-dictionary-and-append-to-a-list">
-<h3>5.4 Save them all to a dictionary and append to a list<a class="headerlink" href="#save-them-all-to-a-dictionary-and-append-to-a-list" title="Permalink to this headline">#</a></h3>
+<h3>5.4 Save them all to a dictionary and append to a list<a class="headerlink" href="#save-them-all-to-a-dictionary-and-append-to-a-list" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">NavigableString</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">NavigableString</span>
 <span class="n">all_post</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
@@ -2353,18 +1862,12 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 </div>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pandas</span> <span class="k">as</span> <span class="nn">pd</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pandas</span><span class="w"> </span><span class="k">as</span><span class="w"> </span><span class="nn">pd</span>
 <span class="n">pd</span><span class="o">.</span><span class="n">DataFrame</span><span class="p">(</span><span class="n">all_post</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stderr highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/computation/expressions.py:21: UserWarning: Pandas requires version &#39;2.8.4&#39; or newer of &#39;numexpr&#39; (version &#39;2.8.1&#39; currently installed).
-  from pandas.core.computation.check import NUMEXPR_INSTALLED
-/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/pandas/core/arrays/masked.py:60: UserWarning: Pandas requires version &#39;1.3.6&#39; or newer of &#39;bottleneck&#39; (version &#39;1.3.4&#39; currently installed).
-  from pandas.core import (
-</pre></div>
-</div>
 <div class="output text_html"><div>
 <style scoped>
     .dataframe tbody tr th:only-of-type {
@@ -2438,10 +1941,10 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 </section>
 </section>
 <section id="vi-scraping-comments">
-<h2>VI. Scraping comments<a class="headerlink" href="#vi-scraping-comments" title="Permalink to this headline">#</a></h2>
+<h2>VI. Scraping comments<a class="headerlink" href="#vi-scraping-comments" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">NavigableString</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">NavigableString</span>
 <span class="n">all_post</span> <span class="o">=</span> <span class="p">[]</span>
 <span class="k">for</span> <span class="n">link</span> <span class="ow">in</span> <span class="n">links</span><span class="p">[:</span><span class="mi">5</span><span class="p">]:</span>
     <span class="nb">print</span><span class="p">(</span><span class="n">link</span><span class="p">)</span>
@@ -2665,10 +2168,10 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 </div>
 </section>
 <section id="vii-saving-data">
-<h2>VII. Saving data<a class="headerlink" href="#vii-saving-data" title="Permalink to this headline">#</a></h2>
+<h2>VII. Saving data<a class="headerlink" href="#vii-saving-data" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">pickle</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">pickle</span>
 <span class="c1"># with open(&#39;ptt1092_testing.pkl&#39;, &#39;wb&#39;) as fout:  # Python 3: open(..., &#39;wb&#39;)</span>
 <span class="c1">#     pickle.dump(all_post, fout)</span>
 </pre></div>
@@ -2677,11 +2180,11 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 </div>
 </section>
 <section id="viii-scraping-with-cookies">
-<h2>VIII. Scraping with Cookies<a class="headerlink" href="#viii-scraping-with-cookies" title="Permalink to this headline">#</a></h2>
+<h2>VIII. Scraping with Cookies<a class="headerlink" href="#viii-scraping-with-cookies" title="Link to this heading">#</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">requests</span>
-<span class="kn">from</span> <span class="nn">bs4</span> <span class="kn">import</span> <span class="n">BeautifulSoup</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span><span class="w"> </span><span class="nn">requests</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">bs4</span><span class="w"> </span><span class="kn">import</span> <span class="n">BeautifulSoup</span>
 
 <span class="n">url</span> <span class="o">=</span> <span class="s1">&#39;https://www.ptt.cc/bbs/Gossiping/index.html&#39;</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="n">url</span><span class="p">,</span> <span class="n">timeout</span><span class="o">=</span><span class="p">(</span><span class="mi">1</span><span class="p">,</span> <span class="mi">2</span><span class="p">))</span>
@@ -2740,7 +2243,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 			&lt;/div&gt;
 			&lt;div class=&quot;btn-group btn-group-paging&quot;&gt;
 				&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index1.html&quot;&gt;最舊&lt;/a&gt;
-				&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index38921.html&quot;&gt;&amp;lsaquo; 上頁&lt;/a&gt;
+				&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index39343.html&quot;&gt;&amp;lsaquo; 上頁&lt;/a&gt;
 				&lt;a class=&quot;btn wide disabled&quot;&gt;下頁 &amp;rsaquo;&lt;/a&gt;
 				&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index.html&quot;&gt;最新&lt;/a&gt;
 			&lt;/div&gt;
@@ -2760,200 +2263,26 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
         
         
 		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;3&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864365.A.69B.html&quot;&gt;[問卦] 明天又要上班解bug 真的好累&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;david0426&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%98%8E%E5%A4%A9%E5%8F%88%E8%A6%81%E4%B8%8A%E7%8F%AD%E8%A7%A3bug&amp;#43;%E7%9C%9F%E7%9A%84%E5%A5%BD%E7%B4%AF&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Adavid0426&quot;&gt;搜尋看板內 david0426 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
 			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;
 			&lt;div class=&quot;title&quot;&gt;
 			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864453.A.F20.html&quot;&gt;[問卦] 聽過Blue的歌的人都幾歲了？&lt;/a&gt;
+				&lt;a href=&quot;/bbs/Gossiping/M.1758384611.A.A91.html&quot;&gt;Re: [新聞] 不用怕手滑！普發一萬擬增「不領取」選項&lt;/a&gt;
 			
 			&lt;/div&gt;
 			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;LukeSkywaker&lt;/div&gt;
+				&lt;div class=&quot;author&quot;&gt;D600dust&lt;/div&gt;
 				&lt;div class=&quot;article-menu&quot;&gt;
 					
 					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
 					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E8%81%BD%E9%81%8EBlue%E7%9A%84%E6%AD%8C%E7%9A%84%E4%BA%BA%E9%83%BD%E5%B9%BE%E6%AD%B2%E4%BA%86%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E4%B8%8D%E7%94%A8%E6%80%95%E6%89%8B%E6%BB%91%EF%BC%81%E6%99%AE%E7%99%BC%E4%B8%80%E8%90%AC%E6%93%AC%E5%A2%9E%E3%80%8C%E4%B8%8D%E9%A0%98%E5%8F%96%E3%80%8D%E9%81%B8%E9%A0%85&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
 						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3ALukeSkywaker&quot;&gt;搜尋看板內 LukeSkywaker 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;6&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864468.A.F95.html&quot;&gt;[問卦] 結婚的意義在哪&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;spirit119&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%B5%90%E5%A9%9A%E7%9A%84%E6%84%8F%E7%BE%A9%E5%9C%A8%E5%93%AA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aspirit119&quot;&gt;搜尋看板內 spirit119 的文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AD600dust&quot;&gt;搜尋看板內 D600dust 的文章&lt;/a&gt;&lt;/div&gt;
 						
 					&lt;/div&gt;
 					
 				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;4&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864493.A.38E.html&quot;&gt;[新聞] 捷克展故宮文物 眾議長看到「翠玉白菜」說&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;Yirgacheffe&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E6%8D%B7%E5%85%8B%E5%B1%95%E6%95%85%E5%AE%AE%E6%96%87%E7%89%A9&amp;#43;%E7%9C%BE%E8%AD%B0%E9%95%B7%E7%9C%8B%E5%88%B0%E3%80%8C%E7%BF%A0%E7%8E%89%E7%99%BD%E8%8F%9C%E3%80%8D%E8%AA%AA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AYirgacheffe&quot;&gt;搜尋看板內 Yirgacheffe 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864525.A.F13.html&quot;&gt;Re: [問卦] 為何不喊「我蓋了多少社宅」？&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;aulau&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%82%BA%E4%BD%95%E4%B8%8D%E5%96%8A%E3%80%8C%E6%88%91%E8%93%8B%E4%BA%86%E5%A4%9A%E5%B0%91%E7%A4%BE%E5%AE%85%E3%80%8D%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aaulau&quot;&gt;搜尋看板內 aulau 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864557.A.50D.html&quot;&gt;[問卦] 日本飯店床墊普遍偏軟？&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;s820912gmail&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%97%A5%E6%9C%AC%E9%A3%AF%E5%BA%97%E5%BA%8A%E5%A2%8A%E6%99%AE%E9%81%8D%E5%81%8F%E8%BB%9F%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3As820912gmail&quot;&gt;搜尋看板內 s820912gmail 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;4&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864574.A.9BD.html&quot;&gt;[新聞] 檢舉魔人？北市商圈騎樓近期天天被檢舉 地方盼比照高雄&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;usnavyseal&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E6%AA%A2%E8%88%89%E9%AD%94%E4%BA%BA%EF%BC%9F%E5%8C%97%E5%B8%82%E5%95%86%E5%9C%88%E9%A8%8E%E6%A8%93%E8%BF%91%E6%9C%9F%E5%A4%A9%E5%A4%A9%E8%A2%AB%E6%AA%A2%E8%88%89&amp;#43;%E5%9C%B0%E6%96%B9%E7%9B%BC%E6%AF%94%E7%85%A7%E9%AB%98%E9%9B%84&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Ausnavyseal&quot;&gt;搜尋看板內 usnavyseal 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
+				&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;
 				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
@@ -2966,168 +2295,23 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 			&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;
 			&lt;div class=&quot;title&quot;&gt;
 			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864678.A.D22.html&quot;&gt;Re: [新聞] 「投降都是假訊息！」　全新民防手冊將出&lt;/a&gt;
+				&lt;a href=&quot;/bbs/Gossiping/M.1758384622.A.F6C.html&quot;&gt;Re: [新聞] 不用怕手滑！普發一萬擬增「不領取」選項&lt;/a&gt;
 			
 			&lt;/div&gt;
 			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;Alertme&lt;/div&gt;
+				&lt;div class=&quot;author&quot;&gt;gino0717&lt;/div&gt;
 				&lt;div class=&quot;article-menu&quot;&gt;
 					
 					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
 					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E3%80%8C%E6%8A%95%E9%99%8D%E9%83%BD%E6%98%AF%E5%81%87%E8%A8%8A%E6%81%AF%EF%BC%81%E3%80%8D%E3%80%80%E5%85%A8%E6%96%B0%E6%B0%91%E9%98%B2%E6%89%8B%E5%86%8A%E5%B0%87%E5%87%BA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E4%B8%8D%E7%94%A8%E6%80%95%E6%89%8B%E6%BB%91%EF%BC%81%E6%99%AE%E7%99%BC%E4%B8%80%E8%90%AC%E6%93%AC%E5%A2%9E%E3%80%8C%E4%B8%8D%E9%A0%98%E5%8F%96%E3%80%8D%E9%81%B8%E9%A0%85&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
 						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AAlertme&quot;&gt;搜尋看板內 Alertme 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;8&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864694.A.C33.html&quot;&gt;[問卦] 台灣變成詐騙天堂的主因是什麼 ？&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;WayneTsai&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%8F%B0%E7%81%A3%E8%AE%8A%E6%88%90%E8%A9%90%E9%A8%99%E5%A4%A9%E5%A0%82%E7%9A%84%E4%B8%BB%E5%9B%A0%E6%98%AF%E4%BB%80%E9%BA%BC&amp;#43;%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AWayneTsai&quot;&gt;搜尋看板內 WayneTsai 的文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Agino0717&quot;&gt;搜尋看板內 gino0717 的文章&lt;/a&gt;&lt;/div&gt;
 						
 					&lt;/div&gt;
 					
 				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;4&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864732.A.EE0.html&quot;&gt;[問卦] 指虎有什麼好禁的？&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;MJ02&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%8C%87%E8%99%8E%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E7%A6%81%E7%9A%84%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AMJ02&quot;&gt;搜尋看板內 MJ02 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864766.A.3FD.html&quot;&gt;[問卦] 大俠任賢齊的武俠三部曲是不是絕響&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;YesNoter&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%A4%A7%E4%BF%A0%E4%BB%BB%E8%B3%A2%E9%BD%8A%E7%9A%84%E6%AD%A6%E4%BF%A0%E4%B8%89%E9%83%A8%E6%9B%B2%E6%98%AF%E4%B8%8D%E6%98%AF%E7%B5%95%E9%9F%BF&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AYesNoter&quot;&gt;搜尋看板內 YesNoter 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;1&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864837.A.09B.html&quot;&gt;[問卦] 抗議要怎麼看是真心還是演的?&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;emperor&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%8A%97%E8%AD%B0%E8%A6%81%E6%80%8E%E9%BA%BC%E7%9C%8B%E6%98%AF%E7%9C%9F%E5%BF%83%E9%82%84%E6%98%AF%E6%BC%94%E7%9A%84%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aemperor&quot;&gt;搜尋看板內 emperor 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864910.A.9E7.html&quot;&gt;[問卦] 月亮湖217上車舞有6種語言可以選?&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;tose4433&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%9C%88%E4%BA%AE%E6%B9%96217%E4%B8%8A%E8%BB%8A%E8%88%9E%E6%9C%896%E7%A8%AE%E8%AA%9E%E8%A8%80%E5%8F%AF%E4%BB%A5%E9%81%B8%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Atose4433&quot;&gt;搜尋看板內 tose4433 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
+				&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;
 				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
@@ -3140,23 +2324,23 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;3&lt;/span&gt;&lt;/div&gt;
 			&lt;div class=&quot;title&quot;&gt;
 			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864927.A.897.html&quot;&gt;[問卦] 外省人不反中才正常吧&lt;/a&gt;
+				&lt;a href=&quot;/bbs/Gossiping/M.1758384650.A.A0D.html&quot;&gt;[問卦] 要怎區分邪教跟較正派的宗教阿??&lt;/a&gt;
 			
 			&lt;/div&gt;
 			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;astrayzip&lt;/div&gt;
+				&lt;div class=&quot;author&quot;&gt;a6234709&lt;/div&gt;
 				&lt;div class=&quot;article-menu&quot;&gt;
 					
 					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
 					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%A4%96%E7%9C%81%E4%BA%BA%E4%B8%8D%E5%8F%8D%E4%B8%AD%E6%89%8D%E6%AD%A3%E5%B8%B8%E5%90%A7&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E8%A6%81%E6%80%8E%E5%8D%80%E5%88%86%E9%82%AA%E6%95%99%E8%B7%9F%E8%BC%83%E6%AD%A3%E6%B4%BE%E7%9A%84%E5%AE%97%E6%95%99%E9%98%BF%3F%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
 						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aastrayzip&quot;&gt;搜尋看板內 astrayzip 的文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aa6234709&quot;&gt;搜尋看板內 a6234709 的文章&lt;/a&gt;&lt;/div&gt;
 						
 					&lt;/div&gt;
 					
 				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
+				&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;
 				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
@@ -3169,110 +2353,23 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 			&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;
 			&lt;div class=&quot;title&quot;&gt;
 			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864934.A.227.html&quot;&gt;[問卦] 婷姐現在還是屌打線上的選手吧？&lt;/a&gt;
+				&lt;a href=&quot;/bbs/Gossiping/M.1758384687.A.C8B.html&quot;&gt;Re: [問卦] Spice Girls之前很紅嗎?&lt;/a&gt;
 			
 			&lt;/div&gt;
 			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;hatephubbing&lt;/div&gt;
+				&lt;div class=&quot;author&quot;&gt;rapnose&lt;/div&gt;
 				&lt;div class=&quot;article-menu&quot;&gt;
 					
 					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
 					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%A9%B7%E5%A7%90%E7%8F%BE%E5%9C%A8%E9%82%84%E6%98%AF%E5%B1%8C%E6%89%93%E7%B7%9A%E4%B8%8A%E7%9A%84%E9%81%B8%E6%89%8B%E5%90%A7%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;Spice&amp;#43;Girls%E4%B9%8B%E5%89%8D%E5%BE%88%E7%B4%85%E5%97%8E%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
 						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Ahatephubbing&quot;&gt;搜尋看板內 hatephubbing 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864936.A.11B.html&quot;&gt;[問卦] 為什麼叫快樂水?&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;cake10414&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%82%BA%E4%BB%80%E9%BA%BC%E5%8F%AB%E5%BF%AB%E6%A8%82%E6%B0%B4%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Acake10414&quot;&gt;搜尋看板內 cake10414 的文章&lt;/a&gt;&lt;/div&gt;
+						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Arapnose&quot;&gt;搜尋看板內 rapnose 的文章&lt;/a&gt;&lt;/div&gt;
 						
 					&lt;/div&gt;
 					
 				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757864969.A.A2D.html&quot;&gt;[問卦] 現在的印度 是不是像二十年前的中國一樣?&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;arnold3&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%8F%BE%E5%9C%A8%E7%9A%84%E5%8D%B0%E5%BA%A6&amp;#43;%E6%98%AF%E4%B8%8D%E6%98%AF%E5%83%8F%E4%BA%8C%E5%8D%81%E5%B9%B4%E5%89%8D%E7%9A%84%E4%B8%AD%E5%9C%8B%E4%B8%80%E6%A8%A3%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aarnold3&quot;&gt;搜尋看板內 arnold3 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-		
-            
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757865017.A.AB1.html&quot;&gt;Re: [新聞] 「投降都是假訊息！」　全新民防手冊將出&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;lwt501cx&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E3%80%8C%E6%8A%95%E9%99%8D%E9%83%BD%E6%98%AF%E5%81%87%E8%A8%8A%E6%81%AF%EF%BC%81%E3%80%8D%E3%80%80%E5%85%A8%E6%96%B0%E6%B0%91%E9%98%B2%E6%89%8B%E5%86%8A%E5%B0%87%E5%87%BA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Alwt501cx&quot;&gt;搜尋看板內 lwt501cx 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
+				&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;
 				&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
@@ -3346,35 +2443,6 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f1&quot;&gt;爆&lt;/span&gt;&lt;/div&gt;
 			&lt;div class=&quot;title&quot;&gt;
 			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757319304.A.3A8.html&quot;&gt;Fw: [情報] 42屆小天使招考（9/8～9/17）發錢&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;ubcs&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%83%85%E5%A0%B1%5D&amp;#43;42%E5%B1%86%E5%B0%8F%E5%A4%A9%E4%BD%BF%E6%8B%9B%E8%80%83%EF%BC%889%2F8%EF%BD%9E9%2F17%EF%BC%89%E7%99%BC%E9%8C%A2&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aubcs&quot;&gt;搜尋看板內 ubcs 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/08&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-            
-                
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f1&quot;&gt;爆&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
 				&lt;a href=&quot;/bbs/Gossiping/M.1757649342.A.A14.html&quot;&gt;[公告] PTT三十周年站慶徵文活動-走過來時路&lt;/a&gt;
 			
 			&lt;/div&gt;
@@ -3392,35 +2460,6 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 					
 				&lt;/div&gt;
 				&lt;div class=&quot;date&quot;&gt; 9/12&lt;/div&gt;
-				&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;
-			&lt;/div&gt;
-		&lt;/div&gt;
-
-            
-                
-        
-        
-		&lt;div class=&quot;r-ent&quot;&gt;
-			&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f1&quot;&gt;爆&lt;/span&gt;&lt;/div&gt;
-			&lt;div class=&quot;title&quot;&gt;
-			
-				&lt;a href=&quot;/bbs/Gossiping/M.1757822878.A.B70.html&quot;&gt;[公告] PTT 18歲成年 生日快樂 發錢豹 水桶&lt;/a&gt;
-			
-			&lt;/div&gt;
-			&lt;div class=&quot;meta&quot;&gt;
-				&lt;div class=&quot;author&quot;&gt;August2006&lt;/div&gt;
-				&lt;div class=&quot;article-menu&quot;&gt;
-					
-					&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;
-					&lt;div class=&quot;dropdown&quot;&gt;
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;PTT&amp;#43;18%E6%AD%B2%E6%88%90%E5%B9%B4&amp;#43;%E7%94%9F%E6%97%A5%E5%BF%AB%E6%A8%82&amp;#43;%E7%99%BC%E9%8C%A2%E8%B1%B9&amp;#43;%E6%B0%B4%E6%A1%B6&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;
-						
-						&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AAugust2006&quot;&gt;搜尋看板內 August2006 的文章&lt;/a&gt;&lt;/div&gt;
-						
-					&lt;/div&gt;
-					
-				&lt;/div&gt;
-				&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;
 				&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;
 			&lt;/div&gt;
 		&lt;/div&gt;
@@ -3464,14 +2503,14 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 &lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;
 &lt;script src=&quot;//images.ptt.cc/bbs/v2.27/bbs.js&quot;&gt;&lt;/script&gt;
 
-    &lt;script&gt;(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement(&#39;script&#39;);d.innerHTML=&quot;window.__CF$cv$params={r:&#39;97f10b95b94f69b8&#39;,t:&#39;MTc1Nzg2NTA4MQ==&#39;};var a=document.createElement(&#39;script&#39;);a.src=&#39;/cdn-cgi/challenge-platform/scripts/jsd/main.js&#39;;document.getElementsByTagName(&#39;head&#39;)[0].appendChild(a);&quot;;b.getElementsByTagName(&#39;head&#39;)[0].appendChild(d)}}if(document.body){var a=document.createElement(&#39;iframe&#39;);a.height=1;a.width=1;a.style.position=&#39;absolute&#39;;a.style.top=0;a.style.left=0;a.style.border=&#39;none&#39;;a.style.visibility=&#39;hidden&#39;;document.body.appendChild(a);if(&#39;loading&#39;!==document.readyState)c();else if(window.addEventListener)document.addEventListener(&#39;DOMContentLoaded&#39;,c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);&#39;loading&#39;!==document.readyState&amp;&amp;(document.onreadystatechange=e,c())}}}})();&lt;/script&gt;&lt;/body&gt;
+    &lt;script&gt;(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement(&#39;script&#39;);d.innerHTML=&quot;window.__CF$cv$params={r:&#39;98229e00b82ff7c9&#39;,t:&#39;MTc1ODM4NDg4MA==&#39;};var a=document.createElement(&#39;script&#39;);a.src=&#39;/cdn-cgi/challenge-platform/scripts/jsd/main.js&#39;;document.getElementsByTagName(&#39;head&#39;)[0].appendChild(a);&quot;;b.getElementsByTagName(&#39;head&#39;)[0].appendChild(d)}}if(document.body){var a=document.createElement(&#39;iframe&#39;);a.height=1;a.width=1;a.style.position=&#39;absolute&#39;;a.style.top=0;a.style.left=0;a.style.border=&#39;none&#39;;a.style.visibility=&#39;hidden&#39;;document.body.appendChild(a);if(&#39;loading&#39;!==document.readyState)c();else if(window.addEventListener)document.addEventListener(&#39;DOMContentLoaded&#39;,c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);&#39;loading&#39;!==document.readyState&amp;&amp;(document.onreadystatechange=e,c())}}}})();&lt;/script&gt;&lt;/body&gt;
 &lt;/html&gt;
 </pre></div>
 </div>
 </div>
 </div>
 <section id="adding-cookies">
-<h3>8.1 Adding cookies<a class="headerlink" href="#adding-cookies" title="Permalink to this headline">#</a></h3>
+<h3>8.1 Adding cookies<a class="headerlink" href="#adding-cookies" title="Link to this heading">#</a></h3>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">cookies</span> <span class="o">=</span> <span class="p">{</span><span class="s1">&#39;over18&#39;</span><span class="p">:</span> <span class="s1">&#39;1&#39;</span><span class="p">}</span>
@@ -3481,7 +2520,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n\t&lt;head&gt;\n\t\t&lt;meta charset=&quot;utf-8&quot;&gt;\n\t\t\n\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;\n\n&lt;title&gt;看板 Gossiping 文章列表 - 批踢踢實業坊&lt;/title&gt;\n\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-common.css&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-base.css&quot; media=&quot;screen&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-custom.css&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/pushstream.css&quot; media=&quot;screen&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-print.css&quot; media=&quot;print&quot;&gt;\n\n\n\n\n&lt;script&gt;\n(() =&gt; {\n    if (document.cookie.indexOf(\&#39;over18=1\&#39;) === -1) {\n\tlocation = \&#39;https://www.ptt.cc/ask/over18?from=\&#39; + encodeURIComponent(location.pathname);\n    }\n})();\n&lt;/script&gt;\n\n\n\t&lt;/head&gt;\n    &lt;body&gt;\n\t\t\n&lt;div id=&quot;topbar-container&quot;&gt;\n\t&lt;div id=&quot;topbar&quot; class=&quot;bbs-content&quot;&gt;\n\t\t&lt;a id=&quot;logo&quot; href=&quot;/bbs/&quot;&gt;批踢踢實業坊&lt;/a&gt;\n\t\t&lt;span&gt;&amp;rsaquo;&lt;/span&gt;\n\t\t&lt;a class=&quot;board&quot; href=&quot;/bbs/Gossiping/index.html&quot;&gt;&lt;span class=&quot;board-label&quot;&gt;看板 &lt;/span&gt;Gossiping&lt;/a&gt;\n\t\t&lt;a class=&quot;right small&quot; href=&quot;/about.html&quot;&gt;關於我們&lt;/a&gt;\n\t\t&lt;a class=&quot;right small&quot; href=&quot;/contact.html&quot;&gt;聯絡資訊&lt;/a&gt;\n\t&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;div id=&quot;main-container&quot;&gt;\n\t&lt;div id=&quot;action-bar-container&quot;&gt;\n\t\t&lt;div class=&quot;action-bar&quot;&gt;\n\t\t\t&lt;div class=&quot;btn-group btn-group-dir&quot;&gt;\n\t\t\t\t&lt;a class=&quot;btn selected&quot; href=&quot;/bbs/Gossiping/index.html&quot;&gt;看板&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn&quot; href=&quot;/man/Gossiping/index.html&quot;&gt;精華區&lt;/a&gt;\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;btn-group btn-group-paging&quot;&gt;\n\t\t\t\t&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index1.html&quot;&gt;最舊&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index38921.html&quot;&gt;&amp;lsaquo; 上頁&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn wide disabled&quot;&gt;下頁 &amp;rsaquo;&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index.html&quot;&gt;最新&lt;/a&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\t&lt;/div&gt;\n\n\t&lt;div class=&quot;r-list-container action-bar-margin bbs-screen&quot;&gt;\n\t\t&lt;div class=&quot;search-bar&quot;&gt;\n\t\t\t&lt;form type=&quot;get&quot; action=&quot;search&quot; id=&quot;search-bar&quot;&gt;\n\t\t\t\t&lt;input class=&quot;query&quot; type=&quot;text&quot; name=&quot;q&quot; value=&quot;&quot; placeholder=&quot;搜尋文章&amp;#x22ef;&quot;&gt;\n\t\t\t&lt;/form&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;3&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864365.A.69B.html&quot;&gt;[問卦] 明天又要上班解bug 真的好累&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;david0426&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%98%8E%E5%A4%A9%E5%8F%88%E8%A6%81%E4%B8%8A%E7%8F%AD%E8%A7%A3bug&amp;#43;%E7%9C%9F%E7%9A%84%E5%A5%BD%E7%B4%AF&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Adavid0426&quot;&gt;搜尋看板內 david0426 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864453.A.F20.html&quot;&gt;[問卦] 聽過Blue的歌的人都幾歲了？&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;LukeSkywaker&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E8%81%BD%E9%81%8EBlue%E7%9A%84%E6%AD%8C%E7%9A%84%E4%BA%BA%E9%83%BD%E5%B9%BE%E6%AD%B2%E4%BA%86%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3ALukeSkywaker&quot;&gt;搜尋看板內 LukeSkywaker 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;6&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864468.A.F95.html&quot;&gt;[問卦] 結婚的意義在哪&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;spirit119&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%B5%90%E5%A9%9A%E7%9A%84%E6%84%8F%E7%BE%A9%E5%9C%A8%E5%93%AA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aspirit119&quot;&gt;搜尋看板內 spirit119 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;4&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864493.A.38E.html&quot;&gt;[新聞] 捷克展故宮文物 眾議長看到「翠玉白菜」說&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;Yirgacheffe&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E6%8D%B7%E5%85%8B%E5%B1%95%E6%95%85%E5%AE%AE%E6%96%87%E7%89%A9&amp;#43;%E7%9C%BE%E8%AD%B0%E9%95%B7%E7%9C%8B%E5%88%B0%E3%80%8C%E7%BF%A0%E7%8E%89%E7%99%BD%E8%8F%9C%E3%80%8D%E8%AA%AA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AYirgacheffe&quot;&gt;搜尋看板內 Yirgacheffe 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864525.A.F13.html&quot;&gt;Re: [問卦] 為何不喊「我蓋了多少社宅」？&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;aulau&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%82%BA%E4%BD%95%E4%B8%8D%E5%96%8A%E3%80%8C%E6%88%91%E8%93%8B%E4%BA%86%E5%A4%9A%E5%B0%91%E7%A4%BE%E5%AE%85%E3%80%8D%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aaulau&quot;&gt;搜尋看板內 aulau 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864557.A.50D.html&quot;&gt;[問卦] 日本飯店床墊普遍偏軟？&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;s820912gmail&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%97%A5%E6%9C%AC%E9%A3%AF%E5%BA%97%E5%BA%8A%E5%A2%8A%E6%99%AE%E9%81%8D%E5%81%8F%E8%BB%9F%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3As820912gmail&quot;&gt;搜尋看板內 s820912gmail 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;4&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864574.A.9BD.html&quot;&gt;[新聞] 檢舉魔人？北市商圈騎樓近期天天被檢舉 地方盼比照高雄&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;usnavyseal&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E6%AA%A2%E8%88%89%E9%AD%94%E4%BA%BA%EF%BC%9F%E5%8C%97%E5%B8%82%E5%95%86%E5%9C%88%E9%A8%8E%E6%A8%93%E8%BF%91%E6%9C%9F%E5%A4%A9%E5%A4%A9%E8%A2%AB%E6%AA%A2%E8%88%89&amp;#43;%E5%9C%B0%E6%96%B9%E7%9B%BC%E6%AF%94%E7%85%A7%E9%AB%98%E9%9B%84&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Ausnavyseal&quot;&gt;搜尋看板內 usnavyseal 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864678.A.D22.html&quot;&gt;Re: [新聞] 「投降都是假訊息！」\u3000全新民防手冊將出&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;Alertme&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E3%80%8C%E6%8A%95%E9%99%8D%E9%83%BD%E6%98%AF%E5%81%87%E8%A8%8A%E6%81%AF%EF%BC%81%E3%80%8D%E3%80%80%E5%85%A8%E6%96%B0%E6%B0%91%E9%98%B2%E6%89%8B%E5%86%8A%E5%B0%87%E5%87%BA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AAlertme&quot;&gt;搜尋看板內 Alertme 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;8&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864694.A.C33.html&quot;&gt;[問卦] 台灣變成詐騙天堂的主因是什麼 ？&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;WayneTsai&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%8F%B0%E7%81%A3%E8%AE%8A%E6%88%90%E8%A9%90%E9%A8%99%E5%A4%A9%E5%A0%82%E7%9A%84%E4%B8%BB%E5%9B%A0%E6%98%AF%E4%BB%80%E9%BA%BC&amp;#43;%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AWayneTsai&quot;&gt;搜尋看板內 WayneTsai 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;4&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864732.A.EE0.html&quot;&gt;[問卦] 指虎有什麼好禁的？&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;MJ02&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%8C%87%E8%99%8E%E6%9C%89%E4%BB%80%E9%BA%BC%E5%A5%BD%E7%A6%81%E7%9A%84%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AMJ02&quot;&gt;搜尋看板內 MJ02 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864766.A.3FD.html&quot;&gt;[問卦] 大俠任賢齊的武俠三部曲是不是絕響&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;YesNoter&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%A4%A7%E4%BF%A0%E4%BB%BB%E8%B3%A2%E9%BD%8A%E7%9A%84%E6%AD%A6%E4%BF%A0%E4%B8%89%E9%83%A8%E6%9B%B2%E6%98%AF%E4%B8%8D%E6%98%AF%E7%B5%95%E9%9F%BF&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AYesNoter&quot;&gt;搜尋看板內 YesNoter 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;1&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864837.A.09B.html&quot;&gt;[問卦] 抗議要怎麼看是真心還是演的?&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;emperor&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%8A%97%E8%AD%B0%E8%A6%81%E6%80%8E%E9%BA%BC%E7%9C%8B%E6%98%AF%E7%9C%9F%E5%BF%83%E9%82%84%E6%98%AF%E6%BC%94%E7%9A%84%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aemperor&quot;&gt;搜尋看板內 emperor 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864910.A.9E7.html&quot;&gt;[問卦] 月亮湖217上車舞有6種語言可以選?&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;tose4433&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E6%9C%88%E4%BA%AE%E6%B9%96217%E4%B8%8A%E8%BB%8A%E8%88%9E%E6%9C%896%E7%A8%AE%E8%AA%9E%E8%A8%80%E5%8F%AF%E4%BB%A5%E9%81%B8%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Atose4433&quot;&gt;搜尋看板內 tose4433 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;3&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864927.A.897.html&quot;&gt;[問卦] 外省人不反中才正常吧&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;astrayzip&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%A4%96%E7%9C%81%E4%BA%BA%E4%B8%8D%E5%8F%8D%E4%B8%AD%E6%89%8D%E6%AD%A3%E5%B8%B8%E5%90%A7&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aastrayzip&quot;&gt;搜尋看板內 astrayzip 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864934.A.227.html&quot;&gt;[問卦] 婷姐現在還是屌打線上的選手吧？&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;hatephubbing&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E5%A9%B7%E5%A7%90%E7%8F%BE%E5%9C%A8%E9%82%84%E6%98%AF%E5%B1%8C%E6%89%93%E7%B7%9A%E4%B8%8A%E7%9A%84%E9%81%B8%E6%89%8B%E5%90%A7%EF%BC%9F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Ahatephubbing&quot;&gt;搜尋看板內 hatephubbing 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864936.A.11B.html&quot;&gt;[問卦] 為什麼叫快樂水?&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;cake10414&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%82%BA%E4%BB%80%E9%BA%BC%E5%8F%AB%E5%BF%AB%E6%A8%82%E6%B0%B4%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Acake10414&quot;&gt;搜尋看板內 cake10414 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757864969.A.A2D.html&quot;&gt;[問卦] 現在的印度 是不是像二十年前的中國一樣?&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;arnold3&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E7%8F%BE%E5%9C%A8%E7%9A%84%E5%8D%B0%E5%BA%A6&amp;#43;%E6%98%AF%E4%B8%8D%E6%98%AF%E5%83%8F%E4%BA%8C%E5%8D%81%E5%B9%B4%E5%89%8D%E7%9A%84%E4%B8%AD%E5%9C%8B%E4%B8%80%E6%A8%A3%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aarnold3&quot;&gt;搜尋看板內 arnold3 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757865017.A.AB1.html&quot;&gt;Re: [新聞] 「投降都是假訊息！」\u3000全新民防手冊將出&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;lwt501cx&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E3%80%8C%E6%8A%95%E9%99%8D%E9%83%BD%E6%98%AF%E5%81%87%E8%A8%8A%E6%81%AF%EF%BC%81%E3%80%8D%E3%80%80%E5%85%A8%E6%96%B0%E6%B0%91%E9%98%B2%E6%89%8B%E5%86%8A%E5%B0%87%E5%87%BA&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Alwt501cx&quot;&gt;搜尋看板內 lwt501cx 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n        \n        &lt;div class=&quot;r-list-sep&quot;&gt;&lt;/div&gt;\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1737398137.A.644.html&quot;&gt;[公告] 八卦板板規(2025.01.21)&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;ubcs&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;%E5%85%AB%E5%8D%A6%E6%9D%BF%E6%9D%BF%E8%A6%8F%282025.01.21%29&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aubcs&quot;&gt;搜尋看板內 ubcs 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 1/21&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;!&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f3&quot;&gt;12&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1750650751.A.E4B.html&quot;&gt;[公告] 【八卦金曲獎】一曲封神，全員高能爆燈！&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;August2006&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;%E3%80%90%E5%85%AB%E5%8D%A6%E9%87%91%E6%9B%B2%E7%8D%8E%E3%80%91%E4%B8%80%E6%9B%B2%E5%B0%81%E7%A5%9E%EF%BC%8C%E5%85%A8%E5%93%A1%E9%AB%98%E8%83%BD%E7%88%86%E7%87%88%EF%BC%81&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AAugust2006&quot;&gt;搜尋看板內 August2006 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 6/23&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f1&quot;&gt;爆&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757319304.A.3A8.html&quot;&gt;Fw: [情報] 42屆小天使招考（9/8～9/17）發錢&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;ubcs&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%83%85%E5%A0%B1%5D&amp;#43;42%E5%B1%86%E5%B0%8F%E5%A4%A9%E4%BD%BF%E6%8B%9B%E8%80%83%EF%BC%889%2F8%EF%BD%9E9%2F17%EF%BC%89%E7%99%BC%E9%8C%A2&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aubcs&quot;&gt;搜尋看板內 ubcs 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/08&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f1&quot;&gt;爆&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757649342.A.A14.html&quot;&gt;[公告] PTT三十周年站慶徵文活動-走過來時路&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;ubcs&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;PTT%E4%B8%89%E5%8D%81%E5%91%A8%E5%B9%B4%E7%AB%99%E6%85%B6%E5%BE%B5%E6%96%87%E6%B4%BB%E5%8B%95-%E8%B5%B0%E9%81%8E%E4%BE%86%E6%99%82%E8%B7%AF&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aubcs&quot;&gt;搜尋看板內 ubcs 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/12&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f1&quot;&gt;爆&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757822878.A.B70.html&quot;&gt;[公告] PTT 18歲成年 生日快樂 發錢豹 水桶&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;August2006&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;PTT&amp;#43;18%E6%AD%B2%E6%88%90%E5%B9%B4&amp;#43;%E7%94%9F%E6%97%A5%E5%BF%AB%E6%A8%82&amp;#43;%E7%99%BC%E9%8C%A2%E8%B1%B9&amp;#43;%E6%B0%B4%E6%A1%B6&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AAugust2006&quot;&gt;搜尋看板內 August2006 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/14&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n        \n\t&lt;/div&gt;\n\n    \n&lt;div class=&quot;bbs-screen bbs-footer-message&quot;&gt;本網站已依台灣網站內容分級規定處理。此區域為限制級，未滿十八歲者不得瀏覽。&lt;/div&gt;\n\n&lt;/div&gt;\n\n\t\t\n\n\n\n&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-DZ6Y3BY9GW&quot;&gt;&lt;/script&gt;\n&lt;script&gt;\n      window.dataLayer = window.dataLayer || [];\n      function gtag(){dataLayer.push(arguments);}\n      gtag(\&#39;js\&#39;, new Date());\n\n      gtag(\&#39;config\&#39;, \&#39;G-DZ6Y3BY9GW\&#39;);\n&lt;/script&gt;\n&lt;script&gt;\n  (function(i,s,o,g,r,a,m){i[\&#39;GoogleAnalyticsObject\&#39;]=r;i[r]=i[r]||function(){\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n  })(window,document,\&#39;script\&#39;,\&#39;https://www.google-analytics.com/analytics.js\&#39;,\&#39;ga\&#39;);\n\n  ga(\&#39;create\&#39;, \&#39;UA-32365737-1\&#39;, {\n    cookieDomain: \&#39;ptt.cc\&#39;,\n    legacyCookieDomain: \&#39;ptt.cc\&#39;\n  });\n  ga(\&#39;send\&#39;, \&#39;pageview\&#39;);\n&lt;/script&gt;\n\n\n\t\t\n&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;\n&lt;script src=&quot;//images.ptt.cc/bbs/v2.27/bbs.js&quot;&gt;&lt;/script&gt;\n\n    &lt;script&gt;(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement(\&#39;script\&#39;);d.innerHTML=&quot;window.__CF$cv$params={r:\&#39;97f10b9a0a7f7bdf\&#39;,t:\&#39;MTc1Nzg2NTA4MQ==\&#39;};var a=document.createElement(\&#39;script\&#39;);a.src=\&#39;/cdn-cgi/challenge-platform/scripts/jsd/main.js\&#39;;document.getElementsByTagName(\&#39;head\&#39;)[0].appendChild(a);&quot;;b.getElementsByTagName(\&#39;head\&#39;)[0].appendChild(d)}}if(document.body){var a=document.createElement(\&#39;iframe\&#39;);a.height=1;a.width=1;a.style.position=\&#39;absolute\&#39;;a.style.top=0;a.style.left=0;a.style.border=\&#39;none\&#39;;a.style.visibility=\&#39;hidden\&#39;;document.body.appendChild(a);if(\&#39;loading\&#39;!==document.readyState)c();else if(window.addEventListener)document.addEventListener(\&#39;DOMContentLoaded\&#39;,c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);\&#39;loading\&#39;!==document.readyState&amp;&amp;(document.onreadystatechange=e,c())}}}})();&lt;/script&gt;&lt;/body&gt;\n&lt;/html&gt;\n&#39;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&#39;&lt;!DOCTYPE html&gt;\n&lt;html&gt;\n\t&lt;head&gt;\n\t\t&lt;meta charset=&quot;utf-8&quot;&gt;\n\t\t\n\n&lt;meta name=&quot;viewport&quot; content=&quot;width=device-width, initial-scale=1&quot;&gt;\n\n&lt;title&gt;看板 Gossiping 文章列表 - 批踢踢實業坊&lt;/title&gt;\n\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-common.css&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-base.css&quot; media=&quot;screen&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-custom.css&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/pushstream.css&quot; media=&quot;screen&quot;&gt;\n&lt;link rel=&quot;stylesheet&quot; type=&quot;text/css&quot; href=&quot;//images.ptt.cc/bbs/v2.27/bbs-print.css&quot; media=&quot;print&quot;&gt;\n\n\n\n\n&lt;script&gt;\n(() =&gt; {\n    if (document.cookie.indexOf(\&#39;over18=1\&#39;) === -1) {\n\tlocation = \&#39;https://www.ptt.cc/ask/over18?from=\&#39; + encodeURIComponent(location.pathname);\n    }\n})();\n&lt;/script&gt;\n\n\n\t&lt;/head&gt;\n    &lt;body&gt;\n\t\t\n&lt;div id=&quot;topbar-container&quot;&gt;\n\t&lt;div id=&quot;topbar&quot; class=&quot;bbs-content&quot;&gt;\n\t\t&lt;a id=&quot;logo&quot; href=&quot;/bbs/&quot;&gt;批踢踢實業坊&lt;/a&gt;\n\t\t&lt;span&gt;&amp;rsaquo;&lt;/span&gt;\n\t\t&lt;a class=&quot;board&quot; href=&quot;/bbs/Gossiping/index.html&quot;&gt;&lt;span class=&quot;board-label&quot;&gt;看板 &lt;/span&gt;Gossiping&lt;/a&gt;\n\t\t&lt;a class=&quot;right small&quot; href=&quot;/about.html&quot;&gt;關於我們&lt;/a&gt;\n\t\t&lt;a class=&quot;right small&quot; href=&quot;/contact.html&quot;&gt;聯絡資訊&lt;/a&gt;\n\t&lt;/div&gt;\n&lt;/div&gt;\n\n&lt;div id=&quot;main-container&quot;&gt;\n\t&lt;div id=&quot;action-bar-container&quot;&gt;\n\t\t&lt;div class=&quot;action-bar&quot;&gt;\n\t\t\t&lt;div class=&quot;btn-group btn-group-dir&quot;&gt;\n\t\t\t\t&lt;a class=&quot;btn selected&quot; href=&quot;/bbs/Gossiping/index.html&quot;&gt;看板&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn&quot; href=&quot;/man/Gossiping/index.html&quot;&gt;精華區&lt;/a&gt;\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;btn-group btn-group-paging&quot;&gt;\n\t\t\t\t&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index1.html&quot;&gt;最舊&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index39343.html&quot;&gt;&amp;lsaquo; 上頁&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn wide disabled&quot;&gt;下頁 &amp;rsaquo;&lt;/a&gt;\n\t\t\t\t&lt;a class=&quot;btn wide&quot; href=&quot;/bbs/Gossiping/index.html&quot;&gt;最新&lt;/a&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\t&lt;/div&gt;\n\n\t&lt;div class=&quot;r-list-container action-bar-margin bbs-screen&quot;&gt;\n\t\t&lt;div class=&quot;search-bar&quot;&gt;\n\t\t\t&lt;form type=&quot;get&quot; action=&quot;search&quot; id=&quot;search-bar&quot;&gt;\n\t\t\t\t&lt;input class=&quot;query&quot; type=&quot;text&quot; name=&quot;q&quot; value=&quot;&quot; placeholder=&quot;搜尋文章&amp;#x22ef;&quot;&gt;\n\t\t\t&lt;/form&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1758384611.A.A91.html&quot;&gt;Re: [新聞] 不用怕手滑！普發一萬擬增「不領取」選項&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;D600dust&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E4%B8%8D%E7%94%A8%E6%80%95%E6%89%8B%E6%BB%91%EF%BC%81%E6%99%AE%E7%99%BC%E4%B8%80%E8%90%AC%E6%93%AC%E5%A2%9E%E3%80%8C%E4%B8%8D%E9%A0%98%E5%8F%96%E3%80%8D%E9%81%B8%E9%A0%85&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AD600dust&quot;&gt;搜尋看板內 D600dust 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1758384622.A.F6C.html&quot;&gt;Re: [新聞] 不用怕手滑！普發一萬擬增「不領取」選項&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;gino0717&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E6%96%B0%E8%81%9E%5D&amp;#43;%E4%B8%8D%E7%94%A8%E6%80%95%E6%89%8B%E6%BB%91%EF%BC%81%E6%99%AE%E7%99%BC%E4%B8%80%E8%90%AC%E6%93%AC%E5%A2%9E%E3%80%8C%E4%B8%8D%E9%A0%98%E5%8F%96%E3%80%8D%E9%81%B8%E9%A0%85&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Agino0717&quot;&gt;搜尋看板內 gino0717 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;3&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1758384650.A.A0D.html&quot;&gt;[問卦] 要怎區分邪教跟較正派的宗教阿??&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;a6234709&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;%E8%A6%81%E6%80%8E%E5%8D%80%E5%88%86%E9%82%AA%E6%95%99%E8%B7%9F%E8%BC%83%E6%AD%A3%E6%B4%BE%E7%9A%84%E5%AE%97%E6%95%99%E9%98%BF%3F%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aa6234709&quot;&gt;搜尋看板內 a6234709 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n            \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1758384687.A.C8B.html&quot;&gt;Re: [問卦] Spice Girls之前很紅嗎?&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;rapnose&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%95%8F%E5%8D%A6%5D&amp;#43;Spice&amp;#43;Girls%E4%B9%8B%E5%89%8D%E5%BE%88%E7%B4%85%E5%97%8E%3F&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Arapnose&quot;&gt;搜尋看板內 rapnose 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/21&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n\t\t\n        \n        &lt;div class=&quot;r-list-sep&quot;&gt;&lt;/div&gt;\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f2&quot;&gt;2&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1737398137.A.644.html&quot;&gt;[公告] 八卦板板規(2025.01.21)&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;ubcs&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;%E5%85%AB%E5%8D%A6%E6%9D%BF%E6%9D%BF%E8%A6%8F%282025.01.21%29&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aubcs&quot;&gt;搜尋看板內 ubcs 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 1/21&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;!&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f3&quot;&gt;12&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1750650751.A.E4B.html&quot;&gt;[公告] 【八卦金曲獎】一曲封神，全員高能爆燈！&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;August2006&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;%E3%80%90%E5%85%AB%E5%8D%A6%E9%87%91%E6%9B%B2%E7%8D%8E%E3%80%91%E4%B8%80%E6%9B%B2%E5%B0%81%E7%A5%9E%EF%BC%8C%E5%85%A8%E5%93%A1%E9%AB%98%E8%83%BD%E7%88%86%E7%87%88%EF%BC%81&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3AAugust2006&quot;&gt;搜尋看板內 August2006 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 6/23&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n                \n        \n        \n\t\t&lt;div class=&quot;r-ent&quot;&gt;\n\t\t\t&lt;div class=&quot;nrec&quot;&gt;&lt;span class=&quot;hl f1&quot;&gt;爆&lt;/span&gt;&lt;/div&gt;\n\t\t\t&lt;div class=&quot;title&quot;&gt;\n\t\t\t\n\t\t\t\t&lt;a href=&quot;/bbs/Gossiping/M.1757649342.A.A14.html&quot;&gt;[公告] PTT三十周年站慶徵文活動-走過來時路&lt;/a&gt;\n\t\t\t\n\t\t\t&lt;/div&gt;\n\t\t\t&lt;div class=&quot;meta&quot;&gt;\n\t\t\t\t&lt;div class=&quot;author&quot;&gt;ubcs&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;article-menu&quot;&gt;\n\t\t\t\t\t\n\t\t\t\t\t&lt;div class=&quot;trigger&quot;&gt;&amp;#x22ef;&lt;/div&gt;\n\t\t\t\t\t&lt;div class=&quot;dropdown&quot;&gt;\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=thread%3A%5B%E5%85%AC%E5%91%8A%5D&amp;#43;PTT%E4%B8%89%E5%8D%81%E5%91%A8%E5%B9%B4%E7%AB%99%E6%85%B6%E5%BE%B5%E6%96%87%E6%B4%BB%E5%8B%95-%E8%B5%B0%E9%81%8E%E4%BE%86%E6%99%82%E8%B7%AF&quot;&gt;搜尋同標題文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t\t&lt;div class=&quot;item&quot;&gt;&lt;a href=&quot;/bbs/Gossiping/search?q=author%3Aubcs&quot;&gt;搜尋看板內 ubcs 的文章&lt;/a&gt;&lt;/div&gt;\n\t\t\t\t\t\t\n\t\t\t\t\t&lt;/div&gt;\n\t\t\t\t\t\n\t\t\t\t&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;date&quot;&gt; 9/12&lt;/div&gt;\n\t\t\t\t&lt;div class=&quot;mark&quot;&gt;M&lt;/div&gt;\n\t\t\t&lt;/div&gt;\n\t\t&lt;/div&gt;\n\n            \n        \n\t&lt;/div&gt;\n\n    \n&lt;div class=&quot;bbs-screen bbs-footer-message&quot;&gt;本網站已依台灣網站內容分級規定處理。此區域為限制級，未滿十八歲者不得瀏覽。&lt;/div&gt;\n\n&lt;/div&gt;\n\n\t\t\n\n\n\n&lt;script async src=&quot;https://www.googletagmanager.com/gtag/js?id=G-DZ6Y3BY9GW&quot;&gt;&lt;/script&gt;\n&lt;script&gt;\n      window.dataLayer = window.dataLayer || [];\n      function gtag(){dataLayer.push(arguments);}\n      gtag(\&#39;js\&#39;, new Date());\n\n      gtag(\&#39;config\&#39;, \&#39;G-DZ6Y3BY9GW\&#39;);\n&lt;/script&gt;\n&lt;script&gt;\n  (function(i,s,o,g,r,a,m){i[\&#39;GoogleAnalyticsObject\&#39;]=r;i[r]=i[r]||function(){\n  (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),\n  m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)\n  })(window,document,\&#39;script\&#39;,\&#39;https://www.google-analytics.com/analytics.js\&#39;,\&#39;ga\&#39;);\n\n  ga(\&#39;create\&#39;, \&#39;UA-32365737-1\&#39;, {\n    cookieDomain: \&#39;ptt.cc\&#39;,\n    legacyCookieDomain: \&#39;ptt.cc\&#39;\n  });\n  ga(\&#39;send\&#39;, \&#39;pageview\&#39;);\n&lt;/script&gt;\n\n\n\t\t\n&lt;script src=&quot;//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js&quot;&gt;&lt;/script&gt;\n&lt;script src=&quot;//images.ptt.cc/bbs/v2.27/bbs.js&quot;&gt;&lt;/script&gt;\n\n    &lt;script&gt;(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement(\&#39;script\&#39;);d.innerHTML=&quot;window.__CF$cv$params={r:\&#39;98229e047a034e41\&#39;,t:\&#39;MTc1ODM4NDg4MQ==\&#39;};var a=document.createElement(\&#39;script\&#39;);a.src=\&#39;/cdn-cgi/challenge-platform/scripts/jsd/main.js\&#39;;document.getElementsByTagName(\&#39;head\&#39;)[0].appendChild(a);&quot;;b.getElementsByTagName(\&#39;head\&#39;)[0].appendChild(d)}}if(document.body){var a=document.createElement(\&#39;iframe\&#39;);a.height=1;a.width=1;a.style.position=\&#39;absolute\&#39;;a.style.top=0;a.style.left=0;a.style.border=\&#39;none\&#39;;a.style.visibility=\&#39;hidden\&#39;;document.body.appendChild(a);if(\&#39;loading\&#39;!==document.readyState)c();else if(window.addEventListener)document.addEventListener(\&#39;DOMContentLoaded\&#39;,c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);\&#39;loading\&#39;!==document.readyState&amp;&amp;(document.onreadystatechange=e,c())}}}})();&lt;/script&gt;&lt;/body&gt;\n&lt;/html&gt;\n&#39;
 </pre></div>
 </div>
 </div>
@@ -3515,11 +2554,10 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
 
               
               
-                <footer class="bd-footer-article">
+              
+              
+                <footer class="prev-next-footer d-print-none">
                   
-<div class="footer-article-items footer-article__inner">
-  
-    <div class="footer-article-item"><!-- Previous / next buttons -->
 <div class="prev-next-area">
     <a class="left-prev"
        href="P08_6_youtube_scraper.html"
@@ -3539,10 +2577,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
       </div>
       <i class="fa-solid fa-angle-right"></i>
     </a>
-</div></div>
-  
 </div>
-
                 </footer>
               
             </div>
@@ -3550,6 +2585,7 @@ https://www.ptt.cc/bbs/Boy-Girl/M.1630987147.A.E87.html
             
               
                 <div class="bd-sidebar-secondary bd-toc"><div class="sidebar-secondary-items sidebar-secondary__inner">
+
 
   <div class="sidebar-secondary-item">
   <div class="page-toc tocsection onthispage">
@@ -3623,9 +2659,10 @@ By JILUNG
   
   <div class="footer-item">
     
+
   <p class="copyright">
     
-      © Copyright 2022.
+      © Copyright 2023.
       <br/>
     
   </p>
@@ -3649,8 +2686,8 @@ By JILUNG
   </div>
   
   <!-- Scripts loaded after <body> so the DOM is not blocked -->
-  <script src="../_static/scripts/bootstrap.js?digest=e353d410970836974a52"></script>
-<script src="../_static/scripts/pydata-sphinx-theme.js?digest=e353d410970836974a52"></script>
+  <script src="../_static/scripts/bootstrap.js?digest=dfe6caa3a7d634c4db9b"></script>
+<script src="../_static/scripts/pydata-sphinx-theme.js?digest=dfe6caa3a7d634c4db9b"></script>
 
   <footer class="bd-footer">
   </footer>
