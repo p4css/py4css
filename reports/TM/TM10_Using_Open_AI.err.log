@@ -1,55 +1,161 @@
 Traceback (most recent call last):
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 154, in wrapped
-    asyncio.get_running_loop()
-RuntimeError: no running event loop
-
-During handling of the above exception, another exception occurred:
-
-Traceback (most recent call last):
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/jupyter_cache/executors/utils.py", line 58, in single_nb_execution
     executenb(
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/site-packages/nbclient/client.py", line 1319, in execute
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 1204, in execute
     return NotebookClient(nb=nb, resources=resources, km=km, **kwargs).execute()
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/site-packages/jupyter_core/utils/__init__.py", line 158, in wrapped
-    return loop.run_until_complete(inner)
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/asyncio/base_events.py", line 649, in run_until_complete
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 84, in wrapped
+    return just_run(coro(*args, **kwargs))
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/util.py", line 62, in just_run
+    return loop.run_until_complete(coro)
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/asyncio/base_events.py", line 647, in run_until_complete
     return future.result()
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/site-packages/nbclient/client.py", line 709, in async_execute
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 663, in async_execute
     await self.async_execute_cell(
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/site-packages/nbclient/client.py", line 1062, in async_execute_cell
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 965, in async_execute_cell
     await self._check_raise_for_error(cell, cell_index, exec_reply)
-  File "/Users/jirlong/opt/anaconda3/envs/new_tm_py310/lib/python3.10/site-packages/nbclient/client.py", line 918, in _check_raise_for_error
+  File "/Users/jirlong/opt/anaconda3/lib/python3.9/site-packages/nbclient/client.py", line 862, in _check_raise_for_error
     raise CellExecutionError.from_cell_and_msg(cell, exec_reply_content)
 nbclient.exceptions.CellExecutionError: An error occurred while executing the following cell:
 ------------------
-import pandas as pd
-from IPython.display import display
-pd.options.display.float_format = '{:.4f}'.format
+for i in range(10):
+    comment = df["cleaned"][i]
+    completion = ask_gpt(comment)
+    response = completion.choices[0].message.content.strip()
+    print(response, "\t", comment)
 
-import warnings
-warnings.filterwarnings("ignore", message=".*The 'nopython' keyword.*")
-# import os
-# os.environ["TOKENIZERS_PARALLELISM"] = "false"
-
-import re
-import zhon.hanzi
-from collections import Counter
-zh_pat = f"[{zhon.hanzi.characters}|{zhon.hanzi.punctuation}]"
-
-with open("data/stopwords_zh-tw.txt", encoding="utf-8") as fin:
-    stopwords = fin.read().split("\n")[1:]
+"""
+D-3C用品 	 店家很給力，快遞也是相當快，第三次光顧啦
+D-3C用品 	 這樣的配置用系統還是有點卡。指紋收集器。沒送原裝滑鼠還需要自己買，不太好。
+A-旅館 	 不錯，在同等檔次酒店中應該是值得推薦的！
+B-食品 	 哎！不會是蒙牛乾的吧嚴懲真凶！
+D-3C用品 	 空尤其是三立電視臺女主播做的序尤其無趣像是硬湊那麼多字
+D-3C用品 	 明明買了本書，只到了本，也沒有說是什麼原因，以後怎麼信的過？？？？？？？？？？？
+E-其他 	 看了一下感覺還可以
+D-3C用品 	 散熱還不錯，玩遊戲溫度和硬碟溫度都在以下，速度很好，顯示卡也不錯
+D-3C用品 	 外觀好看，白色的自己貼紙也方便，執行起來速度也還不錯屬於主流配置了。一般用用可以的
+D-3C用品 	 水超級小用的時候還要先修理一下花灑售後還說是水壓問題說本來標配都是這樣還要自己重新換一個
+"""
 ------------------
 
-
 [0;31m---------------------------------------------------------------------------[0m
-[0;31mModuleNotFoundError[0m                       Traceback (most recent call last)
-Cell [0;32mIn[1], line 11[0m
-[1;32m      7[0m [38;5;66;03m# import os[39;00m
-[1;32m      8[0m [38;5;66;03m# os.environ["TOKENIZERS_PARALLELISM"] = "false"[39;00m
-[1;32m     10[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mre[39;00m
-[0;32m---> 11[0m [38;5;28;01mimport[39;00m[38;5;250m [39m[38;5;21;01mzhon[39;00m[38;5;21;01m.[39;00m[38;5;21;01mhanzi[39;00m
-[1;32m     12[0m [38;5;28;01mfrom[39;00m[38;5;250m [39m[38;5;21;01mcollections[39;00m[38;5;250m [39m[38;5;28;01mimport[39;00m Counter
-[1;32m     13[0m zh_pat [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124m[[39m[38;5;132;01m{[39;00mzhon[38;5;241m.[39mhanzi[38;5;241m.[39mcharacters[38;5;132;01m}[39;00m[38;5;124m|[39m[38;5;132;01m{[39;00mzhon[38;5;241m.[39mhanzi[38;5;241m.[39mpunctuation[38;5;132;01m}[39;00m[38;5;124m][39m[38;5;124m"[39m
+[0;31mAuthenticationError[0m                       Traceback (most recent call last)
+Input [0;32mIn [4][0m, in [0;36m<cell line: 1>[0;34m()[0m
+[1;32m      1[0m [38;5;28;01mfor[39;00m i [38;5;129;01min[39;00m [38;5;28mrange[39m([38;5;241m10[39m):
+[1;32m      2[0m     comment [38;5;241m=[39m df[[38;5;124m"[39m[38;5;124mcleaned[39m[38;5;124m"[39m][i]
+[0;32m----> 3[0m     completion [38;5;241m=[39m [43mask_gpt[49m[43m([49m[43mcomment[49m[43m)[49m
+[1;32m      4[0m     response [38;5;241m=[39m completion[38;5;241m.[39mchoices[[38;5;241m0[39m][38;5;241m.[39mmessage[38;5;241m.[39mcontent[38;5;241m.[39mstrip()
+[1;32m      5[0m     [38;5;28mprint[39m(response, [38;5;124m"[39m[38;5;130;01m\t[39;00m[38;5;124m"[39m, comment)
 
-[0;31mModuleNotFoundError[0m: No module named 'zhon'
+Input [0;32mIn [3][0m, in [0;36mask_gpt[0;34m(query)[0m
+[1;32m     12[0m [38;5;28;01mdef[39;00m [38;5;21mask_gpt[39m(query):
+[0;32m---> 13[0m     completion [38;5;241m=[39m [43mclient[49m[38;5;241;43m.[39;49m[43mchat[49m[38;5;241;43m.[39;49m[43mcompletions[49m[38;5;241;43m.[39;49m[43mcreate[49m[43m([49m
+[1;32m     14[0m [43m        [49m[43mmodel[49m[38;5;241;43m=[39;49m[38;5;124;43m"[39;49m[38;5;124;43mgpt-3.5-turbo-1106[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m     15[0m [43m        [49m[43mmessages[49m[38;5;241;43m=[39;49m[43m[[49m
+[1;32m     16[0m [43m            [49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mrole[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43msystem[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mcontent[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43m以下留言是各類商店討論版中的評論，請協助分析，這些留言的評論對象是[39;49m[38;5;124;43m"[39;49m[43m}[49m[43m,[49m
+[1;32m     17[0m [43m            [49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mrole[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43msystem[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mcontent[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"""[39;49m
+[1;32m     18[0m [38;5;124;43m                A-旅館[39;49m
+[1;32m     19[0m [38;5;124;43m                B-食品[39;49m
+[1;32m     20[0m [38;5;124;43m                C-餐廳[39;49m
+[1;32m     21[0m [38;5;124;43m                D-3C用品[39;49m
+[1;32m     22[0m [38;5;124;43m                E-其他[39;49m[38;5;124;43m"""[39;49m[43m}[49m[43m,[49m
+[1;32m     23[0m [43m            [49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mrole[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43msystem[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mcontent[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43m只要回答A|B|C|D|E即可，謝謝！你也可以照你的判斷新增新label![39;49m[38;5;124;43m"[39;49m[43m}[49m[43m,[49m
+[1;32m     24[0m [43m            [49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mrole[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43muser[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mcontent[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43mf[39;49m[38;5;124;43m"[39;49m[38;5;124;43m留言內容為「[39;49m[38;5;132;43;01m{[39;49;00m[43mquery[49m[38;5;132;43;01m}[39;49;00m[38;5;124;43m」[39;49m[38;5;124;43m"[39;49m[43m}[49m[43m,[49m
+[1;32m     25[0m [43m            [49m[43m{[49m[38;5;124;43m"[39;49m[38;5;124;43mrole[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43massistant[39;49m[38;5;124;43m"[39;49m[43m,[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43mcontent[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[38;5;124;43m"[39;49m[38;5;124;43m你的答案是：[39;49m[38;5;124;43m"[39;49m[43m}[49m[43m,[49m
+[1;32m     26[0m [43m            [49m[43m][49m[43m,[49m
+[1;32m     27[0m [43m        [49m[38;5;66;43;03m# n=1,[39;49;00m
+[1;32m     28[0m [43m        [49m[38;5;66;43;03m# stop=["\n"], [39;49;00m
+[1;32m     29[0m [43m        [49m[43mtemperature[49m[38;5;241;43m=[39;49m[38;5;241;43m0[39;49m[43m,[49m
+[1;32m     30[0m [43m        [49m[43mfrequency_penalty[49m[38;5;241;43m=[39;49m[38;5;241;43m0.0[39;49m[43m,[49m
+[1;32m     31[0m [43m        [49m[43mpresence_penalty[49m[38;5;241;43m=[39;49m[38;5;241;43m0.0[39;49m
+[1;32m     32[0m [43m    [49m[43m)[49m
+[1;32m     33[0m     [38;5;28;01mreturn[39;00m completion
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/openai/_utils/_utils.py:274[0m, in [0;36mrequired_args.<locals>.inner.<locals>.wrapper[0;34m(*args, **kwargs)[0m
+[1;32m    272[0m             msg [38;5;241m=[39m [38;5;124mf[39m[38;5;124m"[39m[38;5;124mMissing required argument: [39m[38;5;132;01m{[39;00mquote(missing[[38;5;241m0[39m])[38;5;132;01m}[39;00m[38;5;124m"[39m
+[1;32m    273[0m     [38;5;28;01mraise[39;00m [38;5;167;01mTypeError[39;00m(msg)
+[0;32m--> 274[0m [38;5;28;01mreturn[39;00m [43mfunc[49m[43m([49m[38;5;241;43m*[39;49m[43margs[49m[43m,[49m[43m [49m[38;5;241;43m*[39;49m[38;5;241;43m*[39;49m[43mkwargs[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/openai/resources/chat/completions.py:704[0m, in [0;36mCompletions.create[0;34m(self, messages, model, frequency_penalty, function_call, functions, logit_bias, logprobs, max_completion_tokens, max_tokens, n, parallel_tool_calls, presence_penalty, response_format, seed, service_tier, stop, stream, stream_options, temperature, tool_choice, tools, top_logprobs, top_p, user, extra_headers, extra_query, extra_body, timeout)[0m
+[1;32m    668[0m [38;5;129m@required_args[39m([[38;5;124m"[39m[38;5;124mmessages[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mmodel[39m[38;5;124m"[39m], [[38;5;124m"[39m[38;5;124mmessages[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mmodel[39m[38;5;124m"[39m, [38;5;124m"[39m[38;5;124mstream[39m[38;5;124m"[39m])
+[1;32m    669[0m [38;5;28;01mdef[39;00m [38;5;21mcreate[39m(
+[1;32m    670[0m     [38;5;28mself[39m,
+[0;32m   (...)[0m
+[1;32m    701[0m     timeout: [38;5;28mfloat[39m [38;5;241m|[39m httpx[38;5;241m.[39mTimeout [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m|[39m NotGiven [38;5;241m=[39m NOT_GIVEN,
+[1;32m    702[0m ) [38;5;241m-[39m[38;5;241m>[39m ChatCompletion [38;5;241m|[39m Stream[ChatCompletionChunk]:
+[1;32m    703[0m     validate_response_format(response_format)
+[0;32m--> 704[0m     [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_post[49m[43m([49m
+[1;32m    705[0m [43m        [49m[38;5;124;43m"[39;49m[38;5;124;43m/chat/completions[39;49m[38;5;124;43m"[39;49m[43m,[49m
+[1;32m    706[0m [43m        [49m[43mbody[49m[38;5;241;43m=[39;49m[43mmaybe_transform[49m[43m([49m
+[1;32m    707[0m [43m            [49m[43m{[49m
+[1;32m    708[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mmessages[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mmessages[49m[43m,[49m
+[1;32m    709[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mmodel[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mmodel[49m[43m,[49m
+[1;32m    710[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mfrequency_penalty[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mfrequency_penalty[49m[43m,[49m
+[1;32m    711[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mfunction_call[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mfunction_call[49m[43m,[49m
+[1;32m    712[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mfunctions[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mfunctions[49m[43m,[49m
+[1;32m    713[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mlogit_bias[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mlogit_bias[49m[43m,[49m
+[1;32m    714[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mlogprobs[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mlogprobs[49m[43m,[49m
+[1;32m    715[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mmax_completion_tokens[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mmax_completion_tokens[49m[43m,[49m
+[1;32m    716[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mmax_tokens[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mmax_tokens[49m[43m,[49m
+[1;32m    717[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mn[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mn[49m[43m,[49m
+[1;32m    718[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mparallel_tool_calls[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mparallel_tool_calls[49m[43m,[49m
+[1;32m    719[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mpresence_penalty[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mpresence_penalty[49m[43m,[49m
+[1;32m    720[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mresponse_format[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mresponse_format[49m[43m,[49m
+[1;32m    721[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mseed[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mseed[49m[43m,[49m
+[1;32m    722[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mservice_tier[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mservice_tier[49m[43m,[49m
+[1;32m    723[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mstop[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mstop[49m[43m,[49m
+[1;32m    724[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mstream[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mstream[49m[43m,[49m
+[1;32m    725[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mstream_options[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mstream_options[49m[43m,[49m
+[1;32m    726[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mtemperature[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mtemperature[49m[43m,[49m
+[1;32m    727[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mtool_choice[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mtool_choice[49m[43m,[49m
+[1;32m    728[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mtools[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mtools[49m[43m,[49m
+[1;32m    729[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mtop_logprobs[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mtop_logprobs[49m[43m,[49m
+[1;32m    730[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43mtop_p[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43mtop_p[49m[43m,[49m
+[1;32m    731[0m [43m                [49m[38;5;124;43m"[39;49m[38;5;124;43muser[39;49m[38;5;124;43m"[39;49m[43m:[49m[43m [49m[43muser[49m[43m,[49m
+[1;32m    732[0m [43m            [49m[43m}[49m[43m,[49m
+[1;32m    733[0m [43m            [49m[43mcompletion_create_params[49m[38;5;241;43m.[39;49m[43mCompletionCreateParams[49m[43m,[49m
+[1;32m    734[0m [43m        [49m[43m)[49m[43m,[49m
+[1;32m    735[0m [43m        [49m[43moptions[49m[38;5;241;43m=[39;49m[43mmake_request_options[49m[43m([49m
+[1;32m    736[0m [43m            [49m[43mextra_headers[49m[38;5;241;43m=[39;49m[43mextra_headers[49m[43m,[49m[43m [49m[43mextra_query[49m[38;5;241;43m=[39;49m[43mextra_query[49m[43m,[49m[43m [49m[43mextra_body[49m[38;5;241;43m=[39;49m[43mextra_body[49m[43m,[49m[43m [49m[43mtimeout[49m[38;5;241;43m=[39;49m[43mtimeout[49m
+[1;32m    737[0m [43m        [49m[43m)[49m[43m,[49m
+[1;32m    738[0m [43m        [49m[43mcast_to[49m[38;5;241;43m=[39;49m[43mChatCompletion[49m[43m,[49m
+[1;32m    739[0m [43m        [49m[43mstream[49m[38;5;241;43m=[39;49m[43mstream[49m[43m [49m[38;5;129;43;01mor[39;49;00m[43m [49m[38;5;28;43;01mFalse[39;49;00m[43m,[49m
+[1;32m    740[0m [43m        [49m[43mstream_cls[49m[38;5;241;43m=[39;49m[43mStream[49m[43m[[49m[43mChatCompletionChunk[49m[43m][49m[43m,[49m
+[1;32m    741[0m [43m    [49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/openai/_base_client.py:1270[0m, in [0;36mSyncAPIClient.post[0;34m(self, path, cast_to, body, options, files, stream, stream_cls)[0m
+[1;32m   1256[0m [38;5;28;01mdef[39;00m [38;5;21mpost[39m(
+[1;32m   1257[0m     [38;5;28mself[39m,
+[1;32m   1258[0m     path: [38;5;28mstr[39m,
+[0;32m   (...)[0m
+[1;32m   1265[0m     stream_cls: [38;5;28mtype[39m[_StreamT] [38;5;241m|[39m [38;5;28;01mNone[39;00m [38;5;241m=[39m [38;5;28;01mNone[39;00m,
+[1;32m   1266[0m ) [38;5;241m-[39m[38;5;241m>[39m ResponseT [38;5;241m|[39m _StreamT:
+[1;32m   1267[0m     opts [38;5;241m=[39m FinalRequestOptions[38;5;241m.[39mconstruct(
+[1;32m   1268[0m         method[38;5;241m=[39m[38;5;124m"[39m[38;5;124mpost[39m[38;5;124m"[39m, url[38;5;241m=[39mpath, json_data[38;5;241m=[39mbody, files[38;5;241m=[39mto_httpx_files(files), [38;5;241m*[39m[38;5;241m*[39moptions
+[1;32m   1269[0m     )
+[0;32m-> 1270[0m     [38;5;28;01mreturn[39;00m cast(ResponseT, [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43mrequest[49m[43m([49m[43mcast_to[49m[43m,[49m[43m [49m[43mopts[49m[43m,[49m[43m [49m[43mstream[49m[38;5;241;43m=[39;49m[43mstream[49m[43m,[49m[43m [49m[43mstream_cls[49m[38;5;241;43m=[39;49m[43mstream_cls[49m[43m)[49m)
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/openai/_base_client.py:947[0m, in [0;36mSyncAPIClient.request[0;34m(self, cast_to, options, remaining_retries, stream, stream_cls)[0m
+[1;32m    944[0m [38;5;28;01melse[39;00m:
+[1;32m    945[0m     retries_taken [38;5;241m=[39m [38;5;241m0[39m
+[0;32m--> 947[0m [38;5;28;01mreturn[39;00m [38;5;28;43mself[39;49m[38;5;241;43m.[39;49m[43m_request[49m[43m([49m
+[1;32m    948[0m [43m    [49m[43mcast_to[49m[38;5;241;43m=[39;49m[43mcast_to[49m[43m,[49m
+[1;32m    949[0m [43m    [49m[43moptions[49m[38;5;241;43m=[39;49m[43moptions[49m[43m,[49m
+[1;32m    950[0m [43m    [49m[43mstream[49m[38;5;241;43m=[39;49m[43mstream[49m[43m,[49m
+[1;32m    951[0m [43m    [49m[43mstream_cls[49m[38;5;241;43m=[39;49m[43mstream_cls[49m[43m,[49m
+[1;32m    952[0m [43m    [49m[43mretries_taken[49m[38;5;241;43m=[39;49m[43mretries_taken[49m[43m,[49m
+[1;32m    953[0m [43m[49m[43m)[49m
+
+File [0;32m~/opt/anaconda3/lib/python3.9/site-packages/openai/_base_client.py:1051[0m, in [0;36mSyncAPIClient._request[0;34m(self, cast_to, options, retries_taken, stream, stream_cls)[0m
+[1;32m   1048[0m         err[38;5;241m.[39mresponse[38;5;241m.[39mread()
+[1;32m   1050[0m     log[38;5;241m.[39mdebug([38;5;124m"[39m[38;5;124mRe-raising status error[39m[38;5;124m"[39m)
+[0;32m-> 1051[0m     [38;5;28;01mraise[39;00m [38;5;28mself[39m[38;5;241m.[39m_make_status_error_from_response(err[38;5;241m.[39mresponse) [38;5;28;01mfrom[39;00m [38;5;28mNone[39m
+[1;32m   1053[0m [38;5;28;01mreturn[39;00m [38;5;28mself[39m[38;5;241m.[39m_process_response(
+[1;32m   1054[0m     cast_to[38;5;241m=[39mcast_to,
+[1;32m   1055[0m     options[38;5;241m=[39moptions,
+[0;32m   (...)[0m
+[1;32m   1059[0m     retries_taken[38;5;241m=[39mretries_taken,
+[1;32m   1060[0m )
+
+[0;31mAuthenticationError[0m: Error code: 401 - {'error': {'message': 'Incorrect API key provided: YOUR_API_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
+AuthenticationError: Error code: 401 - {'error': {'message': 'Incorrect API key provided: YOUR_API_KEY. You can find your API key at https://platform.openai.com/account/api-keys.', 'type': 'invalid_request_error', 'param': None, 'code': 'invalid_api_key'}}
 
